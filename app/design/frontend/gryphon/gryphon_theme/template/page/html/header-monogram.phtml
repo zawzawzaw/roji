@@ -1,0 +1,380 @@
+<?php
+$count = $this->helper('checkout/cart')->getSummaryCount();
+$quote = Mage::getModel('checkout/session')->getQuote();
+$quoteData= $quote->getData();
+?>
+<div id="mobile-header-spacer" class="visible-sm visible-xs"></div>
+<header id="mobile-header" class="visible-sm visible-xs">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-3">
+
+        <div id="mobile-header-menu-btn-container">
+          <div id="mobile-header-menu-btn" class="fa fa-bars"></div>
+        </div>
+
+      </div>
+      <div class="col-xs-6">
+
+        <a id="mobile-header-monogram-name-container" href="<?php echo $this->getUrl('') ?>">
+          <div id="mobile-header-monogram-name"></div>
+        </a>
+
+      </div>
+      <div class="col-xs-3">
+
+        <div id="mobile-header-cart-btn-container">
+          <a href="<?php echo $this->getUrl('checkout/cart'); ?>">
+            <div id="mobile-header-cart-btn" class="fa fa-shopping-cart"></div>            
+            <div class="counter">
+              <span class="count">(<?php echo (!empty($count)) ? $count : 0; ?>)</span>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="mobile-expand-container">
+
+      <div class="mobile-submenu">
+        <?php 
+        $session = Mage::getSingleton('customer/session');
+        if($session->isLoggedIn()): ?>                      
+          <div class="mobile-submenu-header">
+            <?php 
+            $session = Mage::getSingleton('customer/session');
+            if($session->isLoggedIn()) {
+               $customer = $session->getCustomer();
+               // echo $customer->getName();
+               $customer_name = $customer->getFirstname();
+            }
+            ?>            
+            <?php echo (isset($customer_name)) ? 'Welcome, '.$customer_name : $this->__('Welcome'); ?>
+          </div>
+          <ul>
+            <?php 
+              $groupname = '';              
+                $customerGroupId = $customer->getGroupId();
+                $groupname = Mage::getModel('customer/group')->load($customerGroupId)->getCustomerGroupCode();                
+            ?>
+            <li><a href="<?php echo Mage::getUrl('customer/account/'); ?>">my account</a></li>
+            <li><a href="<?php echo Mage::getUrl('customer/address/'); ?>">address book</a></li>
+            <li><a href="<?php echo Mage::getUrl('sales/order/history/'); ?>">order history</a></li>
+            <?php if(($groupname!=='Trader-Temp' && $groupname!=='Trader-Regular' && $groupname!=='Trader-Priority' && $groupname!=='Trader-Premium')): ?>
+              <li><a href="<?php echo Mage::getUrl('giftvoucher/index/index'); ?>">gift card</a></li>
+              <li><a href="<?php echo Mage::getUrl('rewardpoints/index/points/'); ?>">rebate history</a></li>
+              <li><a href="<?php echo Mage::getUrl('rewardpoints/index/referral/'); ?>">friend referral</a></li>
+              <li><a href="<?php echo Mage::getUrl('admin_savelayering/customer/view/'); ?>">saved layering</a></li>
+            <?php endif; ?>
+            <li><a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>">log out</a></li>
+          </ul>
+        <?php else: ?>
+          <div class="mobile-submenu-header">         
+            Welcome                     
+          </div>
+          <ul>
+            <li><a href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>">Join | Log In</a></li>
+          </ul>
+        <?php endif; ?>       
+      </div>
+
+      <div id="mobile-currency">
+
+        <div id="mobile-currency-header">
+          <?php $currency_code_02 = Mage::app()->getStore()->getCurrentCurrencyCode(); ?>
+          <p>Currency: <?php echo $currency_code_02; ?></p> 
+          <div id="mobile-currency-expand-button"></div>
+        </div>              
+
+        <div id="mobile-currency-expand-container">
+        </div>
+        
+      </div> <!-- mobile-currency -->
+
+      <div class="mobile-submenu">
+        <div class="mobile-submenu-header">About Monogram</div>
+        <ul>          
+          <li><a href="<?php echo $this->getUrl('experience'); ?>">Experience Monogram</a></li>
+          <li><a href="<?php echo $this->getUrl('/'); ?>#graph/cherry-japonais">Layering Suggestions</a></li>
+          <li><a href="<?php echo $this->getUrl('tea-layering'); ?>">Tea Layering</a></li>              
+          <li><a href="<?php echo $this->getUrl('tea-matrix'); ?>">Tea Matrix</a></li>
+          <li><a href="<?php echo $this->getUrl('monolog'); ?>">Monolog</a></li>          
+        </ul>
+      </div>
+
+      <div class="mobile-submenu">
+        <div class="mobile-submenu-header">Shop</div>
+        <?php $store_category = Mage::getModel('catalog/category')->loadByAttribute('name', 'Store'); ?>
+        <ul>
+          <li><a href="<?php echo $store_category->getUrl(); ?>">Tea Bar</a></li>
+          <li><a href="<?php echo $this->getUrl('subscription'); ?>">Subscription</a></li>
+          <li><a href="<?php echo $this->getUrl('monogram-service'); ?>">Monogram Services</a></li> 
+        </ul>
+      </div>
+
+      <div class="mobile-submenu">
+        <div class="mobile-submenu-header">Support</div>
+        <ul>          
+          <li><a href="<?php echo $this->getUrl('faq'); ?>">Frequently Asked Questions</a></li>
+          <li><a href="<?php echo $this->getUrl('shipping-info'); ?>">Shipping Information</a></li>
+          <li><a href="http://www.trackntrace.com.sg/">Track Order</a></li>
+        </ul>
+      </div>
+
+      <div class="mobile-submenu">
+        <div class="mobile-submenu-header">Contact</div>
+        <ul>          
+          <li><a href="<?php echo $this->getUrl('contact'); ?>">Contact</a></li>          
+        </ul>
+      </div>
+
+      <div class="mobile-submenu">
+        <div class="mobile-submenu-header">
+          <span>Follow Us</span>
+          <ul class="social-media-icons">
+            <li><a href="https://www.pinterest.com/monogramtea" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+            <li><a href="https://www.facebook.com/monogramtea" target="_blank"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://instagram.com/monogram_tea" target="_blank"><i class="fa fa-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div id="mobile-header-footer-copy" class="mobile-footer">
+        <div id="mobile-footer-copy-section">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs-12">
+
+
+                  
+                <div id="mobile-footer-copy">
+                  <h4>Newsletter</h4>
+                  <p>Get the latest news, product, announcments, promotions, and more!</p>
+                </div> <!-- mobile-footer-copy -->
+
+                <form id="mobile-newsletter-subscribe-form" class="header-mobile-subscribe-form simple-form-check">
+                  <div class="form-group">
+                    <input type="text" name="subscribe_email" class="subscribe_email required only-email" placeholder="Enter Your Email Address">
+                    <input type="submit" class="subscribe_newsletter">
+                    <span class='newsletter_ajax_loader' style='display:none'><img src='<?php echo $this->getSkinUrl('images/icons/spin.svg')?>'/></span>
+                  </div>
+                  <span class="ajax_msg italic"></span>
+                </form>
+
+                <div id="mobile-footer-links">
+                  <ul>
+                    <li><a href="<?php echo $this->getUrl('privacy-policy'); ?>">Privacy Policy</a></li>
+                    <li><a href="<?php echo $this->getUrl('terms-and-conditions'); ?>">Terms & Conditions</a></li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+
+
+
+          </div>
+        </div> <!-- mobile-footer-copy-section -->
+
+        <div id="mobile-footer-copyright-section">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs-12">
+
+                <div id="mobile-footer-copyright">
+                  <a href="<?php echo $this->getUrl('') ?>" id="mobile-footer-logo"></a>
+                  <h4>Monogram by Gryphon Tea Company</h4>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div> <!-- mobile-footer-copywrite-section -->
+
+      </div>
+    
+  </div>
+</header>
+
+<script>
+    jQuery(document).ready(function($){
+      $('.header-mobile-subscribe-form').find('.subscribe_email').keypress(function(event){
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13') 
+          $('.header-mobile-subscribe-form').find('.subscribe_newsletter').trigger('click');
+      });
+      $('.header-mobile-subscribe-form').find('.subscribe_newsletter').click(function(e){
+        e.preventDefault();        
+        var subscribe_email = $(this).prev('.subscribe_email').val();
+
+        console.log(subscribe_email);
+
+        if(subscribe_email!=="" && subscribe_email!=="Enter Your Email Address") {
+
+          $('.newsletter_ajax_loader').show();
+
+          var request = $.ajax({
+              url: "<?php echo $this->getUrl('discovertea/index/subscribe', array('_secure'=>true)) ?>",
+              method: "POST",
+              data: { subscribe_email : subscribe_email },
+              dataType: "html"
+          });
+           
+          request.done(function( msg ) {
+            var message = JSON.parse(msg);
+            console.log(message);
+            $('.newsletter_ajax_loader').hide();
+            if(message.error_messages)
+              $('span.ajax_msg').html('<p>'+message.error_messages+'</p>').show().delay(5000).fadeOut();              
+              else
+              $('span.ajax_msg').html('<p>Successfully subscribed to newsletter</p>').show().delay(5000).fadeOut();
+          });
+
+        }
+      });      
+    });
+  </script>
+
+<header id="desktop-header" class="hidden-sm hidden-xs">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-9">
+        <div id="desktop-header-right-container">
+          <div id="desktop-header-logo-container">
+            <a href="<?php echo $this->getUrl('') ?>">
+              <span id="desktop-header-logo"></span>
+              <span id="monogram-name"></span>
+            </a>
+          </div>
+          <div id="desktop-header-menu-conainer">
+            <?php 
+              // $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+              // $url = Mage::getSingleton('core/url')->parseUrl($currentUrl);
+              // $path = $url->getPath();
+
+              // if (strpos($path,'checkout') === false) {
+                echo $this->getChildHtml('topMenu');
+              // }
+            ?>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        
+        <div id="desktop-header-cart">
+          <?php 
+            $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+            $url = Mage::getSingleton('core/url')->parseUrl($currentUrl);
+            $path = $url->getPath();
+
+            if (strpos($path,'checkout') === false): ?>
+              <ul>
+                <li>
+                  <?php $currency_code = Mage::app()->getStore()->getCurrentCurrencyCode(); ?>
+                  <a href="#" class="currency text"><span class="hidden-xs hidden-sm">
+                  <?php if($currency_code=='SGD'): ?>
+                    <i class="currency-icon">S</i><i class="fa fa-dollar"></i> Currency</span></a>
+                  <?php elseif($currency_code=='AUD'): ?>
+                    <i class="currency-icon">A</i><i class="fa fa-dollar"></i> Currency</span></a>
+                  <?php elseif($currency_code=='HKD'): ?>
+                    <i class="currency-icon">HK</i><i class="fa fa-dollar"></i> Currency</span></a>
+                  <?php elseif($currency_code=='JPY'): ?>
+                    <i class="fa fa-jpy"></i> Currency</span></a>
+                  <?php elseif($currency_code=='EUR'): ?>
+                    <i class="fa fa-eur"></i> Currency</span></a>
+                  <?php elseif($currency_code=='GBP'): ?>
+                    <i class="fa fa-gbp"></i> Currency</span></a>
+                  <?php elseif($currency_code=='CNY'): ?>
+                    <i class="fa fa-cny"></i> Currency</span></a>
+                  <?php elseif($currency_code=='MYR'): ?>
+                    <i class="currency-icon">RM</i> Currency</span></a>
+                  <?php else: ?>
+                    <i class="fa fa-dollar"></i> Currency</span></a>
+                  <?php endif; ?>
+                  <!-- <a href="#" class="text">Currency</a> -->
+                </li>
+                <?php $session = Mage::getSingleton('customer/session'); ?>
+                <?php if($session->isLoggedIn()): ?>
+                <li><a href="<?php echo Mage::getUrl('customer/account'); ?>" class="text">My Account</a></li>    
+                <?php else: ?>
+                <li><a href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>" class="text">Join/Log in</a></li>
+                <?php endif; ?>            
+                <li class="cart-count-update"><a href="<?php echo $this->getUrl('checkout/cart'); ?>" class="text">Cart <span class="count">(<?php echo (!empty($count)) ? $count : 0; ?>)</span></a></li>
+
+                <!-- removed jan 06 -->
+                <!-- <li><a href="#" class="menu-opener fa fa-bars" id="desktop-header-menu-btn"></a></li> -->
+              </ul>
+            <?php else: ?>
+              <ul>
+                <li><a href="<?php echo $this->getUrl('shipping-info') ?>" class="text">Shipping Information</a></li>
+                <li><a href="<?php echo $this->getUrl('faq') ?>" class="text">FAQ</a></li>
+                
+                <!-- removed jan 06 -->
+                <!-- <li><a href="#" class="menu-opener fa fa-bars" id="desktop-header-menu-btn"></a></li> -->
+              </ul>
+            <?php endif; ?>
+          <!-- ?> -->
+        </div>
+
+        <?php echo $this->getChildHtml('currency_top') ?>
+
+      </div>
+    </div>
+  </div>
+</header>
+
+<script type="text/javascript">
+  $j(document).ready(function($) {
+    $("#mobile-header").find("#mobile-header-menu-btn").on("click", function(e){
+      e.preventDefault(); 
+      $("html, body").animate({
+          scrollTop: 0
+      }, 600);
+      $('html').toggleClass("mobile-menu-open");
+    });
+
+    var currency_open_state = "close";
+    var $currency_expand_container = $('#mobile-currency-expand-container');
+    var $currency_expand_button = $('#mobile-currency-expand-button');
+    var $currency_expand_header = $('#mobile-currency-header');
+
+    function open_currency() {
+      if(currency_open_state != "open"){
+        currency_open_state = "open";        
+        $currency_expand_container.stop(0).slideDown(500);
+        $currency_expand_button.addClass('expanded');
+      }
+    }
+
+    function close_currency() {
+      if(currency_open_state != "close"){
+        currency_open_state = "close";
+        $currency_expand_container.stop(0).slideUp(500);
+        $currency_expand_button.removeClass('expanded');
+      }
+    }
+
+    var new_currency_dropdown = $('#desktop-header .currency-switcher .currency-select.all-dropdown').clone();
+    $currency_expand_container.append(new_currency_dropdown);    
+
+    $currency_expand_header.on('click', function(e){
+      e.preventDefault();      
+
+      if(currency_open_state == "close"){
+        open_currency();
+      } else {
+        close_currency();
+      }
+    });
+
+    $currency_expand_container.find('.currency-select li a').on('click', function(e){
+        e.preventDefault();            
+        var currencyCode = $(this).attr('id');
+        console.log(currencyCode);
+        $("#select-currency option:contains(" + currencyCode + ")").attr('selected', 'selected').trigger("change");           
+    });
+
+  });
+</script>

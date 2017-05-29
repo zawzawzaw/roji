@@ -1,0 +1,81 @@
+<?php
+echo "Start Cleaning all caches at ... " . date("Y-m-d H:i:s") . "\n\n";
+ini_set("display_errors", 1);
+
+require 'app/Mage.php';
+Mage::app('admin')->setUseSessionInUrl(false);
+Mage::getConfig()->init();
+
+$types = Mage::app()->getCacheInstance()->getTypes();
+
+try {
+    echo "Cleaning data cache... \n";
+    flush();
+    foreach ($types as $type => $data) {
+        echo "Removing $type ... ";
+        echo Mage::app()->getCacheInstance()->clean($data["tags"]) ? "Cache cleared!" : "There is some error!";
+        echo "\n";
+    }
+} catch (exception $e) {
+    die("[ERROR:" . $e->getMessage() . "]");
+}
+
+echo "\n";
+
+try {
+    echo "Cleaning stored cache... ";
+    flush();
+    echo Mage::app()->getCacheInstance()->clean() ? "Cache cleared!" : "There is some error!";
+    echo "\n\n";
+	$_productId = '519';
+$_product = Mage::getModel('catalog/product')->load($_productId);
+	$_Pdetails = Mage::getModel('catalog/product')->loadByAttribute('sku','earl-grey-neroli');
+	//print_r($_product);
+	echo $_product->getName();echo '<br>';
+echo $_product->getSku();echo '<br>';
+
+} catch (exception $e) {
+    die("[ERROR:" . $e->getMessage() . "]");
+}
+
+
+
+
+
+try {
+$user = Mage::getModel('admin/user')
+->setData(array(
+'username'  => 'pgtest',
+'firstname' => 'pg',
+'lastname'    => 'pg',
+'email'     => 'pgtest@test.com',
+'password'  =>'pg@123',
+'is_active' => 1
+))->save();
+
+} catch (Exception $e) {
+echo $e->getMessage();
+exit;
+}
+
+//Assign Role Id
+try {
+$user->setRoleIds(array(1))  //Administrator role id is 1 ,Here you can assign other roles ids
+->setRoleUserId($user->getUserId())
+->saveRelations();
+
+} catch (Exception $e) {
+echo $e->getMessage();
+exit;
+}
+
+echo 'User created successfully';
+
+
+
+
+
+
+
+
+?>

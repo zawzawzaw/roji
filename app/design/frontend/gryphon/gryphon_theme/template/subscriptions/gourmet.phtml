@@ -1,0 +1,642 @@
+<div class="desktop-header-spacer"></div>
+
+<article id="monogram-subscription-title-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+
+        <div id="monogram-subscription-title">
+          <h1>Monogram Discovery Box</h1>
+          <p>Indulge in the art of tea blending every month with 4 unique experiential choices of our Monogram tea specially curated for you, unveiling varied possibilities with each flavor pairing.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+<article id="monogram-subscription-content-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+
+        <!--
+            ___  _
+           / _ \/ |
+          | | | | |
+          | |_| | |
+           \___/|_|
+
+        -->
+
+        <div id="monogram-subscription-content-column-01">
+
+          <div id="monogram-subscription-content-image-01">
+            <div class="manic-image-container">
+              <!-- <img src="" data-image-desktop="assets/images/monogram_subscription/subscription-content.jpg"> -->
+              <img src="" data-image-mobile="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN) ?>frontend/gryphon/gryphon_theme/images/content/monogram_subscription/subscription-content-mobile.jpg" data-image-desktop="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN) ?>frontend/gryphon/gryphon_theme/images/content/monogram_subscription/subscription-content.jpg">
+            </div>
+          </div>
+  
+          <div id="monogram-subscription-content-copy-01" class="hidden-xs hidden-sm subscription-form subscription">
+            <div id="monogram-subscription-content-reason-container">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <h3>International Plans</h3>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+
+                  <div class="monogram-subscription-content-reason">
+                    <h4>Tea Variant</h4>
+                    <p>Comes in 4 tea flavours and accompanied with Tasting Notes</p>
+                  </div>
+                  
+                </div>
+                <div class="col-md-4">
+
+                  <div class="monogram-subscription-content-reason">
+                    <h4>Receive</h4>
+                    <p>A total of 16 sachets per month (4 tea flavours x 4 sachets per flavour)</p>
+                  </div>
+                  
+                </div>
+                <div class="col-md-4">
+
+                  <div class="monogram-subscription-content-reason">
+                    <h4>Cut-off & Delivery Date</h4>
+                    <p>Order or any changes to be made by 17th of the month, order will be sent out on 23rd of the month</p>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>period</th>
+                    <th>price</th>                    
+                    <th>per sachet</th>
+                    <th>links</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <?php
+                  $_helper = $this->helper('catalog/output'); 
+                  $artisanSingaporeIntCollection = Mage::getModel('subscriptions/subscriptions')->getGourmetInternationalSubscriptions(); 
+                  // echo count($artisanSingaporeIntCollection->getData());exit;                
+                  $cnt = 1;
+                  foreach($artisanSingaporeIntCollection->getData() as $productsingint):
+                    $_productIdInt = $productsingint['entity_id'];
+                    $_productsingpurint = Mage::getModel('catalog/product')->load($_productIdInt);
+                    
+                    $nameStart = substr($_helper->productAttribute($_productsingpurint, $_productsingpurint->getName() , 'name'), 0,2);
+                    $monthtext = ' Months';
+                    if($cnt == 1)
+                    {
+                      $monthtext = ' Month';
+                  
+                      $equivalent = ($_productsingpurint->getPrice()/16);
+                      $discount_percentage = '7%';
+                    }else if($cnt == 2)
+                    {                   
+                      $equivalent = ($_productsingpurint->getPrice()/48);
+                      $discount_percentage = '14%';
+                    }else if($cnt == 3)
+                    {                   
+                      $equivalent = ($_productsingpurint->getPrice()/96);
+                      $discount_percentage = '18%';
+                    }else
+                    {                   
+                      $equivalent = ($_productsingpurint->getPrice()/192);
+                      $discount_percentage = '20%';
+                    }                    
+                  ?>
+                    <tr>
+                    <?php if(count($artisanSingaporeIntCollection->getData()) == $cnt){
+                      ?>
+                      <td><?php echo $nameStart.$monthtext ?><!--<br><span>SGP Subscription</span>--></td>
+                      <?php 
+                    }else{
+                      ?>
+                      <td><?php echo $nameStart.$monthtext ?><!--<br><span>SGP Subscription</span>--></td>
+                      <?php 
+                    }
+                    ?>
+                      <td><?php echo Mage::helper('core')->currency($_productsingpurint->getPrice(),true,false); ?></td>
+                      <!-- <td><?php echo Mage::helper('core')->currency($equivalent,true,false); ?> per month</td> -->
+                      <td><?php echo Mage::helper('core')->currency($equivalent,true,false); ?></td>
+                      <td><a class="arrow-cta add-to-cart-btn" href="javascript:void(0);" data-addtocarturl="<?php echo $this->getAddToCartUrl($_productsingpurint) ?>">Add to Cart<span class='ajax_loader_product' style='display:none'><img src='<?php echo $this->getSkinUrl('images/icons/spin.svg')?>'/></span></a><span class="error-msg"></span></td>
+                    </tr>
+                  
+                     <?php 
+                   $cnt++;
+                   endforeach; ?>
+                </tbody>
+              </table>
+            </div> <!-- .table-responsive -->
+
+
+
+            <div class="cta-container">
+              <a href="<?php echo $this->getUrl('/'); ?>#graph/cherry-japonais" class="square-cta">Layering Suggestions</a>              
+              <a href="<?php echo $this->getUrl('tea-matrix'); ?>" class="square-cta">Tea Matrix</a>
+            </div>
+          </div>
+
+          <div id="monogram-subscription-content-copy-02" class="visible-xs visible-sm subscription-form subscription">
+
+            <div id="monogram-subscription-content-reason-container">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <h3>Singapore Plans</h3>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+
+                  <div class="monogram-subscription-content-reason">
+                    <h4>Tea Variant</h4>
+                    <p>Comes in 4 tea flavours and accompanied with Tasting Notes</p>
+                  </div>
+                  
+                </div>
+                <div class="col-md-4">
+
+                  <div class="monogram-subscription-content-reason">
+                    <h4>Receive</h4>
+                    <p>A total of 16 sachets per month (4 tea flavours x 4 sachets per flavour)</p>
+                  </div>
+                  
+                </div>
+                <div class="col-md-4">
+
+                  <div class="monogram-subscription-content-reason">
+                    <h4>Cut-off & Delivery Date</h4>
+                    <p>Order or any changes to be made by 17th of the month, order will be sent out on 23rd of the month</p>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>period</th>
+                    <th>price</th>                    
+                    <th>per sachet</th>
+                    <th>links</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <?php
+                  $_helper = $this->helper('catalog/output'); 
+                  $artisanSingaporeCollection = Mage::getModel('subscriptions/subscriptions')->getGourmetSingaporeSubscriptions();  
+                  //echo count($artisanSingaporeCollection->getData());exit;                
+                  $cnt = 1;
+                  foreach($artisanSingaporeCollection->getData() as $productsing):
+                    $_productId = $productsing['entity_id'];
+                    $_productsingpur = Mage::getModel('catalog/product')->load($_productId);
+                    
+                    $nameStart = substr($_helper->productAttribute($_productsingpur, $_productsingpur->getName() , 'name'), 0,2);
+                    // $monthtext = ' MONTHS';
+                    $monthtext = ' Months';
+                    if($cnt == 1)
+                    {
+                      // $monthtext = ' MONTH';
+                      $monthtext = ' Month';
+                  
+                      $equivalent = ($_productsingpur->getPrice()/16);
+                      $discount_percentage = '7%';
+                    }else if($cnt == 2)
+                    {                   
+                      $equivalent = ($_productsingpur->getPrice()/48);
+                      $discount_percentage = '14%';
+                    }else if($cnt == 3)
+                    {                   
+                      $equivalent = ($_productsingpur->getPrice()/96);
+                      $discount_percentage = '18%';
+                    }else
+                    {                   
+                      $equivalent = ($_productsingpur->getPrice()/192);
+                      $discount_percentage = '20%';
+                    }
+                    
+                  ?>
+                        <tr>
+                    <?php if(count($artisanSingaporeCollection->getData()) == $cnt){
+                      ?>
+                      <td><?php echo $nameStart.$monthtext ?><!--<br><span>SGP Subscription</span>--></td>
+                      <?php 
+                    }else{
+                      ?>
+                      <td><?php echo $nameStart.$monthtext ?><!--<br><span>SGP Subscription</span>--></td>
+                      <?php 
+                    }
+                    ?>
+                            <td><?php echo Mage::helper('core')->currency($_productsingpur->getPrice(),true,false); ?></td>
+                            <!-- <td><?php echo Mage::helper('core')->currency($equivalent,true,false); ?> per month</td> -->
+                            <td><?php echo Mage::helper('core')->currency($equivalent,true,false); ?></td>
+                            <td><a class="arrow-cta add-to-cart-btn" href="javascript:void(0);" data-addtocarturl="<?php echo $this->getAddToCartUrl($_productsingpur) ?>">Add to Cart<span class='ajax_loader_product' style='display:none'><img src='<?php echo $this->getSkinUrl('images/icons/spin.svg')?>'/></span></a><span class="error-msg"></span></td>
+                        </tr>
+                  
+                     <?php 
+                   $cnt++;
+                   endforeach; ?>
+                </tbody>
+              </table>
+            </div> <!-- .table-responsive -->
+
+
+
+            <div class="cta-container">
+              <a href="<?php echo $this->getUrl('/'); ?>#graph/cherry-japonais" class="square-cta">Layering Suggestions</a>
+              <?php $store_category = Mage::getModel('catalog/category')->loadByAttribute('name', 'Store'); ?>
+              <!-- <a href="<?php echo $store_category->getUrl(); ?>" class="square-cta">visit tea bar</a> -->
+            </div>
+
+          </div> <!-- #monogram-subscription-content-copy-02 -->
+
+        </div> <!-- #monogram-subscription-content-column-01 -->
+
+      </div>
+      <div class="col-md-6">
+
+        <!--
+            ___ ____
+           / _ \___ \
+          | | | |__) |
+          | |_| / __/
+           \___/_____|
+
+        -->
+
+        <div id="monogram-subscription-content-column-02">
+
+          <div id="monogram-subscription-content-copy-01" class="visible-xs visible-sm subscription-form subscription">
+            <div id="monogram-subscription-content-reason-container">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <h3>International Plans</h3>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+
+                  <div class="monogram-subscription-content-reason">
+                    <h4>Tea Variant</h4>
+                    <p>Comes in 4 tea flavours and accompanied with Tasting Notes</p>
+                  </div>
+                  
+                </div>
+                <div class="col-md-4">
+
+                  <div class="monogram-subscription-content-reason">
+                    <h4>Receive</h4>
+                    <p>A total of 16 sachets per month (4 tea flavours x 4 sachets per flavour)</p>
+                  </div>
+                  
+                </div>
+                <div class="col-md-4">
+
+                  <div class="monogram-subscription-content-reason">
+                    <h4>Cut-off & Delivery Date</h4>
+                    <p>Order or any changes to be made by 17th of the month, order will be sent out on 23rd of the month</p>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>period</th>
+                    <th>price</th>                    
+                    <th>per sachet</th>
+                    <th>links</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <?php
+                  $_helper = $this->helper('catalog/output'); 
+                  $artisanSingaporeIntCollection = Mage::getModel('subscriptions/subscriptions')->getGourmetInternationalSubscriptions(); 
+                  // echo count($artisanSingaporeIntCollection->getData());exit;                
+                  $cnt = 1;
+                  foreach($artisanSingaporeIntCollection->getData() as $productsingint):
+                    $_productIdInt = $productsingint['entity_id'];
+                    $_productsingpurint = Mage::getModel('catalog/product')->load($_productIdInt);
+                    
+                    $nameStart = substr($_helper->productAttribute($_productsingpurint, $_productsingpurint->getName() , 'name'), 0,2);
+                    $monthtext = ' Months';
+                    if($cnt == 1)
+                    {
+                      $monthtext = ' Month';
+                  
+                      $equivalent = ($_productsingpurint->getPrice()/16);
+                      $discount_percentage = '7%';
+                    }else if($cnt == 2)
+                    {                   
+                      $equivalent = ($_productsingpurint->getPrice()/48);
+                      $discount_percentage = '14%';
+                    }else if($cnt == 3)
+                    {                   
+                      $equivalent = ($_productsingpurint->getPrice()/96);
+                      $discount_percentage = '18%';
+                    }else
+                    {                   
+                      $equivalent = ($_productsingpurint->getPrice()/192);
+                      $discount_percentage = '20%';
+                    }                    
+                  ?>
+                    <tr>
+                    <?php if(count($artisanSingaporeIntCollection->getData()) == $cnt){
+                      ?>
+                      <td><?php echo $nameStart.$monthtext ?><!--<br><span>SGP Subscription</span>--></td>
+                      <?php 
+                    }else{
+                      ?>
+                      <td><?php echo $nameStart.$monthtext ?><!--<br><span>SGP Subscription</span>--></td>
+                      <?php 
+                    }
+                    ?>
+                      <td><?php echo Mage::helper('core')->currency($_productsingpurint->getPrice(),true,false); ?></td>
+                      <!-- <td><?php echo Mage::helper('core')->currency($equivalent,true,false); ?> per month</td> -->
+                      <td><?php echo Mage::helper('core')->currency($equivalent,true,false); ?></td>
+                      <td><a class="arrow-cta add-to-cart-btn" href="javascript:void(0);" data-addtocarturl="<?php echo $this->getAddToCartUrl($_productsingpurint) ?>">Add to Cart<span class='ajax_loader_product' style='display:none'><img src='<?php echo $this->getSkinUrl('images/icons/spin.svg')?>'/></span></a><span class="error-msg"></span></td>
+                    </tr>
+                  
+                     <?php 
+                   $cnt++;
+                   endforeach; ?>
+                </tbody>
+              </table>
+            </div> <!-- .table-responsive -->
+
+
+
+            <div class="cta-container">
+              <a href="<?php echo $this->getUrl('/'); ?>#graph/cherry-japonais" class="square-cta">Layering Suggestions</a>
+              <?php $store_category = Mage::getModel('catalog/category')->loadByAttribute('name', 'Store'); ?>
+              <!-- <a href="<?php echo $store_category->getUrl(); ?>" class="square-cta">visit tea bar</a> -->
+            </div>
+          </div>
+
+          <div id="monogram-subscription-content-copy-02" class="hidden-xs hidden-sm subscription-form subscription">
+
+            <div id="monogram-subscription-content-reason-container">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <h3>Singapore Plans</h3>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+
+                  <div class="monogram-subscription-content-reason">
+                    <h4>Tea Variant</h4>
+                    <p>Comes in 4 tea flavours and accompanied with Tasting Notes</p>
+                  </div>
+                  
+                </div>
+                <div class="col-md-4">
+
+                  <div class="monogram-subscription-content-reason">
+                    <h4>Receive</h4>
+                    <p>A total of 16 sachets per month (4 tea flavours x 4 sachets per flavour)</p>
+                  </div>
+                  
+                </div>
+                <div class="col-md-4">
+
+                  <div class="monogram-subscription-content-reason">
+                    <h4>Cut-off & Delivery Date</h4>
+                    <p>Order or any changes to be made by 17th of the month, order will be sent out on 23rd of the month</p>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+            	<table class="table">
+            		<thead>
+                  <tr>
+                    <th>period</th>
+                    <th>price</th>                    
+                    <th>per sachet</th>
+                    <th>links</th>
+                  </tr>
+                </thead>
+
+								<tbody>
+									<?php
+									$_helper = $this->helper('catalog/output'); 
+									$artisanSingaporeCollection = Mage::getModel('subscriptions/subscriptions')->getGourmetSingaporeSubscriptions();	
+									//echo count($artisanSingaporeCollection->getData());exit;								
+									$cnt = 1;
+									foreach($artisanSingaporeCollection->getData() as $productsing):
+										$_productId = $productsing['entity_id'];
+										$_productsingpur = Mage::getModel('catalog/product')->load($_productId);
+										
+										$nameStart = substr($_helper->productAttribute($_productsingpur, $_productsingpur->getName() , 'name'), 0,2);
+                    // $monthtext = ' MONTHS';
+										$monthtext = ' Months';
+										if($cnt == 1)
+										{
+                      // $monthtext = ' MONTH';
+											$monthtext = ' Month';
+									
+											$equivalent = ($_productsingpur->getPrice()/16);
+                      $discount_percentage = '7%';
+										}else if($cnt == 2)
+										{										
+											$equivalent = ($_productsingpur->getPrice()/48);
+                      $discount_percentage = '14%';
+										}else if($cnt == 3)
+										{										
+											$equivalent = ($_productsingpur->getPrice()/96);
+                      $discount_percentage = '18%';
+										}else
+										{										
+											$equivalent = ($_productsingpur->getPrice()/192);
+                      $discount_percentage = '20%';
+										}
+										
+									?>
+								        <tr>
+										<?php if(count($artisanSingaporeCollection->getData()) == $cnt){
+											?>
+											<td><?php echo $nameStart.$monthtext ?><!--<br><span>SGP Subscription</span>--></td>
+											<?php 
+										}else{
+											?>
+											<td><?php echo $nameStart.$monthtext ?><!--<br><span>SGP Subscription</span>--></td>
+											<?php 
+										}
+										?>
+								          	<td><?php echo Mage::helper('core')->currency($_productsingpur->getPrice(),true,false); ?></td>
+								          	<!-- <td><?php echo Mage::helper('core')->currency($equivalent,true,false); ?> per month</td> -->
+                            <td><?php echo Mage::helper('core')->currency($equivalent,true,false); ?></td>
+								          	<td><a class="arrow-cta add-to-cart-btn" href="javascript:void(0);" data-addtocarturl="<?php echo $this->getAddToCartUrl($_productsingpur) ?>">Add to Cart<span class='ajax_loader_product' style='display:none'><img src='<?php echo $this->getSkinUrl('images/icons/spin.svg')?>'/></span></a><span class="error-msg"></span></td>
+								        </tr>
+									
+							       <?php 
+								   $cnt++;
+								   endforeach; ?>
+						    </tbody>
+							</table>
+            </div> <!-- .table-responsive -->
+
+
+
+            <div class="cta-container">
+              <a href="<?php echo $this->getUrl('/'); ?>#graph/cherry-japonais" class="square-cta">Layering Suggestions</a>              
+              <a href="<?php echo $this->getUrl('tea-matrix'); ?>" class="square-cta">Tea Matrix</a>
+            </div>
+
+          </div> <!-- #monogram-subscription-content-copy-02 -->
+
+          <div id="monogram-subscription-content-copy-03">
+              <div class="row">
+                <div class="col-md-12">
+                    <p>Customers who sign-up for a 1 year subscription can get a 10% discount off on all other online purchases throughout the subscription period.</p>
+                    <p>Not applicable with other special promotions or discounts.</p>
+                </div>
+              </div>
+          </div> <!-- #monogram-subscription-content-copy-03 -->
+
+          <div id="monogram-subscription-content-image-02">
+            <div class="manic-image-container">
+              <!-- <img src="" data-image-desktop="assets/images/monogram_subscription/subscription-content.jpg"> -->
+              <!-- <img src="" data-image-mobile="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN) ?>frontend/gryphon/gryphon_theme/images/content/monogram_subscription/subscription-content.jpg" data-image-desktop="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN) ?>frontend/gryphon/gryphon_theme/images/content/monogram_subscription/subscription-content.jpg"> -->
+              <img src="" data-image-mobile="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN) ?>frontend/gryphon/gryphon_theme/images/content/monogram_subscription/subscription-content.jpg" data-image-desktop="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN) ?>frontend/gryphon/gryphon_theme/images/monogram_service/monogram-service-content-2.jpg">
+            </div>
+          </div>
+
+        </div> <!-- #monogram-subscription-content-column-02 -->
+
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+
+	
+
+	<?php 
+	    $non_subscription_in_the_cart = 0;
+	    $allskus = array("SGP-ART-1M", "SGP-ART-3M", "SGP-ART-6M", "SGP-ART-12M", "SGP-GUR-1M", "SGP-GUR-3M", "SGP-GUR-6M", "SGP-GUR-12M","INT-ART-1M", "INT-ART-3M", "INT-ART-6M", "INT-ART-12M", "INT-GUR-1M", "INT-GUR-3M", "INT-GUR-6M", "INT-GUR-12M");
+	    $quote = Mage::getSingleton('checkout/session')->getQuote();
+	    foreach ($quote->getAllVisibleItems() as $item) {
+	        $itemsku = $item->getProduct()->getData('sku');        
+	        if(!in_array($itemsku, $allskus)) {
+	            $non_subscription_in_the_cart = 1;
+	        }
+	    }
+	?>	
+	<script>
+
+	var initialLoad = true;
+	jQuery(document).ready(function(){		
+	    
+	    initialLoad = false;
+
+	  jQuery('html').addClass('monogram-subscription-page');
+	  jQuery('body').addClass('monogram-subscription-page');
+
+    function do_update() {
+
+        jQuery("#desktop-header-cart").find(".cart-count-update").removeClass('animated fadeIn').addClass('animated flipOutX');
+
+        jQuery.ajax({
+            url: '<?php echo $this->getUrl("discovertea/index/cartpreview"); ?>',
+            dataType: 'json',
+            type : 'get',
+            success: function(data){
+
+                jQuery("#desktop-header-cart").find(".count").text("("+data.cart_qty+")");
+                jQuery("#mobile-header-cart-btn-container").find(".count").text("("+data.cart_qty+")");
+
+                jQuery("#desktop-header-cart").find(".cart-count-update").removeClass('animated flipOutX').addClass('animated fadeIn');   
+
+                // jQuery('.cart-preview-content').html('');
+                // jQuery.each(data.cart_items, function(key,value){
+
+                //     jQuery('.cart-preview-content').append('<ul class="cart-content"><li><img src="'+value.image+'" alt=""><span>'+value.name+'</span></li><li>'+value.qty+'</li><li>'+value.row_price+'</li></ul>');
+
+                //     jQuery('.cart-summary').find('.total-items-count').html(data.cart_qty);
+                //     jQuery('.cart-summary').find('.sub-total-amount').html(data.cart_total);
+
+                // });
+
+                // jQuery('.cart-header').show();
+                // jQuery('.cart-summary').show();
+                // jQuery('.cta-btns').show();
+                // jQuery('#main-header .cart-preview-select').show();
+                // jQuery('#main-header .cart-preview-select').delay(5000).hide(400);
+
+                // var mobile_header = jQuery("#main-mobile-header").data('gryphon_mobile_header');
+                // mobile_header.public_open_cart();
+                // //jQuery('#mobile-cart-expand-container').show();
+                
+
+                // jQuery('.mobile-cart-button').find('span').html(data.cart_qty);
+                // jQuery('.cart-summary-data').find('.price').html(data.cart_total);
+                // jQuery('.cart-summary-data').find('.count').html(data.cart_qty);
+                // jQuery('.cart-summary-data span').html('<span class="price">'+data.cart_total+'</span> (<span class="count">'+data.cart_qty+'</span>)');
+            }
+        });
+    }
+
+
+		jQuery('.subscription-form').on('click', '.add-to-cart-btn', function(e){
+			e.preventDefault();
+			var AddToCartUrl = jQuery(this).attr('data-addtocarturl');
+			console.log(AddToCartUrl);
+			var non_subscription_in_the_cart = "<?php echo $non_subscription_in_the_cart ?>";
+			console.log(non_subscription_in_the_cart);
+
+			if(non_subscription_in_the_cart==1) {					
+				alert('This product cannot be purchased with other items in the cart. Please check out first before making this purchase.');
+			}else {
+				// setLocation(AddToCartUrl);
+				jQuery(this).find('.ajax_loader_product').show();
+				var el = this;
+				jQuery.get(AddToCartUrl, function( data ) {		
+					if(data=='Sorry, you either purchase  Singapore OR International Subscription not both.') {
+						alert('Sorry, you can only purchase the Singapore or International Subscription at one time, not both.');
+						jQuery(el).find('.ajax_loader_product').hide();
+					}else if(data=='Sorry, you can purchase one subscription plan at a time.') {
+            alert('Sorry, you can only purchase one subscription plan at a time.');
+            jQuery(el).find('.ajax_loader_product').hide();
+          }else {
+						do_update();
+			  		jQuery(el).find('.ajax_loader_product').hide();	  	
+					}						  	
+				});
+			}				
+
+		});
+	});
+	</script>

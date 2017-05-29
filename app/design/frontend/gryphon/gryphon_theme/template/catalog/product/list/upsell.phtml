@@ -1,0 +1,194 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php if(count($this->getItemCollection()->getItems())): ?>
+
+<div class="suggestion similar-product">
+<?php 
+    $object = Mage::getModel('catalog/product');
+    $product_id = $this->getProduct()->getId();    
+    $_product = $object->load($product_id);
+    $upsell_product = $_product->getUpSellProductCollection()->addAttributeToSort('position', Varien_Db_Select::SQL_ASC)->addStoreFilter(); 
+
+    $main_product_name = strtolower(str_replace(" ", "-", $_product->getName()));
+    $count = count($upsell_product);
+
+    $lowercase_product_name = strtolower($_product->getName());
+    $no_hover = false;
+
+    if(strpos($lowercase_product_name, 'selection') !== false || strpos($lowercase_product_name, 'assortment') !== false ):
+      $no_hover = true;
+    ?>
+      <h5><?php echo $this->__('you may also like'); ?></h5>
+    <?php else: ?>
+      <h5><?php echo $this->__('tea layering suggestions'); ?></h5>
+    <?php endif; ?>
+
+    <ul class="suggestion-list all-products <?php if($count > 3): ?>two-column <?php echo $count; ?><?php endif; ?>">
+        <?php // $this->setColumnCount(5); // uncomment this line if you want to have another number of columns. also can be changed in layout ?>        
+        <?php foreach($upsell_product as $_upsell): ?>
+            <?php 
+            $upsp = $object->load($_upsell->getId());
+            $add_to_cart_url = Mage::helper('checkout/cart')->getAddUrl($upsp);
+            $upsp_name = strtolower(str_replace(" ", "-", $upsp->getName()));
+            $base_url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
+            ?>
+            <li class="each-product">
+                <a href="<?php echo $upsp->getProductUrl() ?>" data-graph-link="<?php echo $base_url . '#graph/'.$main_product_name.'/'.$upsp_name; ?>" title="<?php echo $this->escapeHtml($upsp->getName()) ?>" class="product-image <?php if($no_hover): ?>no-hover<?php endif; ?> img-responsive">
+                    <img class="actual-product-image" src="<?php echo $this->helper('catalog/image')->init($upsp, 'thumbnail')->backgroundColor(array(0, 0, 0))->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false)->resize(140, 104) ?>" alt="<?php echo $this->escapeHtml($upsp->getName()) ?>" />
+                    <?php if($no_hover==false): ?>
+                      <div class="graph-combination-hover-img">
+                        <div class="graph-img-1" style="background-image: url(<?php echo $this->getSkinUrl('images/products_svg/'.$upsp_name.'.svg'); ?>)"></div>
+                        <div class="graph-img-2" style="background-image: url(<?php echo $this->getSkinUrl('images/products_svg/'.$main_product_name.'.svg'); ?>)"></div>
+                      </div>
+                    <?php endif; ?>
+                </a>
+                <ul>
+                    <li><a href="<?php echo $upsp->getProductUrl() ?>" class="view-details"><?php echo $upsp->getName() ?></a></li>
+                    <li><a href="<?php echo $add_to_cart_url; ?>" class="suggestion-add-to-cart">Add To Cart <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                </ul>                        
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+<?php 
+    $subscription_in_the_cart = 0;
+    $allskus = array("SGP-ART-1M", "SGP-ART-3M", "SGP-ART-6M", "SGP-ART-12M", "SGP-GUR-1M", "SGP-GUR-3M", "SGP-GUR-6M", "SGP-GUR-12M","INT-ART-1M", "INT-ART-3M", "INT-ART-6M", "INT-ART-12M", "INT-GUR-1M", "INT-GUR-3M", "INT-GUR-6M", "INT-GUR-12M");
+    $quote = Mage::getSingleton('checkout/session')->getQuote();
+    foreach ($quote->getAllVisibleItems() as $item) {
+        $itemsku = $item->getProduct()->getData('sku');        
+        if(in_array($itemsku, $allskus)) {
+            $subscription_in_the_cart = 1;
+        }
+    }
+
+    $gift_in_the_cart = 0;
+    $giftsku = array("testGiftCard2");
+    foreach ($quote->getAllVisibleItems() as $item) {
+        $itemsku = $item->getProduct()->getData('sku');        
+        if(in_array($itemsku, $giftsku)) {
+            $gift_in_the_cart = 1;
+        }   
+    }
+?>
+<script>
+$j(document).ready(function(){
+    $j('.suggestion-list').slick({
+      dots: false,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      arrows: true,
+      responsive: [
+        {
+          breakpoint: 2000,
+          settings: "unslick"
+        },
+        {
+          breakpoint: 991,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: false
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 330,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+        // You can unslick at a given breakpoint now by adding:
+        // settings: "unslick"
+        // instead of a settings object
+      ]
+    });
+
+    function do_update() {
+
+      $j("#desktop-header-cart").find(".cart-count-update").removeClass('animated fadeIn').addClass('animated flipOutX');
+
+      $j.ajax({
+          url: '/discovertea/index/cartpreview',
+          dataType: 'json',
+          type : 'get',
+          success: function(data){
+            // update product count in cart
+            $j("#desktop-header-cart").find(".count").text("("+data.cart_qty+")");    
+            $j("#mobile-header-cart-btn-container").find(".count").text("("+data.cart_qty+")");    
+
+            $j("#desktop-header-cart").find(".cart-count-update").removeClass('animated flipOutX').addClass('animated fadeIn'); 
+          }
+      });                     
+    }
+
+    var subscription_in_the_cart = <?php echo $subscription_in_the_cart; ?>;
+    var gift_in_the_cart = <?php echo $gift_in_the_cart; ?>;
+
+    $j('.suggestion-add-to-cart').on("click", function(e){
+      e.preventDefault();
+      var add_to_cart_url = $j(".suggestion-add-to-cart").attr("href");
+
+      if(subscription_in_the_cart == 1) {
+          alert("This product cannot be purchased with other items in the cart. Please check out first before making this purchase.")
+      } else if(gift_in_the_cart == 1) {
+          alert("This product cannot be purchased with other items in the cart. Please check out first before making this purchase.")
+      } else {
+          $j.get( add_to_cart_url, function( data ) {
+           do_update();
+          });
+          // alert("Added to cart.")
+      }  
+    });
+
+    <?php if($no_hover==false): ?>
+    $j('.product-image').on("mouseover", function(e){
+      var graph_url = $j(this).data('graph-link');
+      console.log(graph_url);
+      $j(this).attr('href', graph_url);
+    });
+    <?php endif; ?>
+});
+</script>
+
+<?php endif; ?>
