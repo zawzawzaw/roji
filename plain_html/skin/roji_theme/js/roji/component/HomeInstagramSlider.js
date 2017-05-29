@@ -120,7 +120,7 @@ roji.component.HomeInstagramSlider.prototype.create_slider = function() {
       'pauseOnHover': false,
       'autoplay': true,
       // 'autoplaySpeed': 1000,
-      'autoplaySpeed': 4000,
+      'autoplaySpeed': 4000
     });
 
   }

@@ -5,7 +5,7 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Open+Sans:300,400,400i,600|Raleway:300,600" rel="stylesheet">
 
 
-  <?php $is_debug = true; ?>
+  <?php $is_debug = false; ?>
 
   <?php if ($is_debug == true): ?>
 
