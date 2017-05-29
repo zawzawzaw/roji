@@ -17,12 +17,12 @@
   <footer id="desktop-footer" class="visible-md visible-lg">
     <div class="container-fluid has-breakpoint">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-5">
           <div id="desktop-footer-copyright">
             <p>Roji by gryphon tea company &copy; 2017</p>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-7">
 
           <div id="desktop-footer-links">
             <ul>
@@ -98,7 +98,7 @@
         </div>
       </div>
 
-      <div id="mailing-list-close-btn"></div>
+      <div id="mailing-list-close-btn" class="close-btn"></div>
 
     </div> <!-- mailing-list-popup -->
   </div> <!-- mailing-list-popup-container -->
