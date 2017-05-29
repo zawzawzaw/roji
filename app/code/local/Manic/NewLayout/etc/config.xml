@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+  <config>
+     <modules>
+        <Manic_NewLayout>
+          <version>1.0.0</version>
+        </Manic_NewLayout>
+     </modules>
+     <global>
+        <page>
+            <layouts> 
+                <new_cms_layout module="page" translate="label">
+                    <label>New Home Layout</label>
+                    <template>page/home-layout.phtml</template>
+                </new_cms_layout> 
+            </layouts>
+        </page>
+    </global>
+</config>

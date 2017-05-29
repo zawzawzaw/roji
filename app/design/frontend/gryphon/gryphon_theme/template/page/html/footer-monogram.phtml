@@ -1,0 +1,184 @@
+
+
+  <footer id="desktop-footer" class="visible-md visible-lg">
+    <div id="desktop-footer-ctas-container">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-2">
+            <h5>About Monogram</h5>
+            <ul>
+              <li><a href="<?php echo $this->getUrl('experience'); ?>">Experience Monogram</a></li>
+              <li><a href="<?php echo $this->getUrl('/'); ?>#graph/cherry-japonais">Layering Suggestions</a></li>
+              <li><a href="<?php echo $this->getUrl('tea-layering'); ?>">Tea Layering</a></li>              
+              <li><a href="<?php echo $this->getUrl('tea-matrix'); ?>">Tea Matrix</a></li>
+              <li><a href="<?php echo $this->getUrl('monolog'); ?>">Monolog</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <h5>Shop</h5>
+            <?php $store_category = Mage::getModel('catalog/category')->loadByAttribute('name', 'Store'); ?>
+            <ul>
+              <li><a href="<?php echo $store_category->getUrl(); ?>">Tea Bar</a></li>
+              <li><a href="<?php echo $this->getUrl('subscription'); ?>">Subscription</a></li>
+              <li><a href="<?php echo $this->getUrl('monogram-service'); ?>">Monogram Services</a></li> 
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <h5>Support</h5>
+            <ul>
+              <!-- <li><a href="<?php echo $this->getUrl('customer/account/create/') ?>">Account Registration</a></li> -->
+              <li><a href="<?php echo $this->getUrl('faq'); ?>">Frequently Asked Questions</a></li>
+              <li><a href="<?php echo $this->getUrl('shipping-info'); ?>">Shipping Information</a></li>
+              <li><a href="http://www.trackntrace.com.sg/">Track Order</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <div class="footer-follow-us-section">
+              <h5>Follow Us</h5>
+              <ul class="social-media-icons">
+                <li><a href="https://www.pinterest.com/monogramtea" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+                <li><a href="https://www.twitter.com/monogramtea" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="https://www.facebook.com/monogramtea" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://instagram.com/monogram_tea" target="_blank"><i class="fa fa-instagram"></i></a></li>
+              </ul>
+
+              <h5>Contact Us</h5>
+              <a href="<?php echo $this->getUrl('contact') ?>">Get In Touch</a>
+              <!-- <a href="javascript:void(0);" class="telephone">+65 67792948</a> -->
+            </div>
+          </div>
+          <div class="col-md-3 col-md-offset-1">
+            <h5>Newsletter</h5>
+            <p>Get the latest news, product <br> announcements, promotions, and more!</p>
+          
+            <div id="footer-newsletter-input">
+              <input type="text" name="subscribe_email" class="subscribe_email" placeholder="Enter your email address" />
+              <a href="#" class="signup subscribe_newsletter footer-newsletter-send-btn"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
+              <span class='newsletter_ajax_loader' style='display:none'><img src='<?php echo $this->getSkinUrl('images/icons/spin.svg')?>'/></span>             
+            </div>
+            <span class="ajax_msg italic"></span>
+          </div>
+        </div>
+       </div>
+    </div>
+    <div id="desktop-footer-logo-tnc-container">
+      <div class="container-fluid">
+        <div class="col-md-4">
+          <a href="<?php echo $this->getUrl('') ?>">
+            <span id="desktop-footer-logo"></span>
+            <h5 id="monogram-name">monogram by gryphon tea company</h5>
+          </a>
+        </div>
+        <div class="col-md-3 col-md-offset-5">
+          <ul>
+            <li><a href="<?php echo $this->getUrl('privacy-policy'); ?>">Privacy Policy</a></li>
+            <li><a href="<?php echo $this->getUrl('terms-and-conditions'); ?>">Terms & Condition</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    jQuery(document).ready(function($){
+      $('#footer-newsletter-input').find('.subscribe_email').keypress(function(event){
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13') 
+          $('#footer-newsletter-input').find('.subscribe_newsletter').trigger('click');
+      });
+      $('#footer-newsletter-input').find('.subscribe_newsletter').click(function(e){
+        e.preventDefault();        
+        var subscribe_email = $(this).prev('.subscribe_email').val();
+
+        console.log(subscribe_email);
+
+        if(subscribe_email!=="" && subscribe_email!=="Enter Your Email Address") {
+
+          $('.newsletter_ajax_loader').show();
+
+          var request = $.ajax({
+              url: "<?php echo $this->getUrl('discovertea/index/subscribe', array('_secure'=>true)) ?>",
+              method: "POST",
+              data: { subscribe_email : subscribe_email },
+              dataType: "html"
+          });
+           
+          request.done(function( msg ) {
+            var message = JSON.parse(msg);
+            console.log(message);
+            $('.newsletter_ajax_loader').hide();
+            if(message.error_messages)
+              $('span.ajax_msg').html('<p>'+message.error_messages+'</p>').show().delay(5000).fadeOut();
+            else
+              $('span.ajax_msg').html('<p>Successfully subscribed to newsletter</p>').show().delay(5000).fadeOut();
+          });
+
+        }
+      });
+    });
+  </script>
+
+  <!--
+     __  __  ___  ____ ___ _     _____   _____ ___   ___ _____ _____ ____
+    |  \/  |/ _ \| __ )_ _| |   | ____| |  ___/ _ \ / _ \_   _| ____|  _ \
+    | |\/| | | | |  _ \| || |   |  _|   | |_ | | | | | | || | |  _| | |_) |
+    | |  | | |_| | |_) | || |___| |___  |  _|| |_| | |_| || | | |___|  _ <
+    |_|  |_|\___/|____/___|_____|_____| |_|   \___/ \___/ |_| |_____|_| \_\
+
+  -->
+
+  <!-- not sure why it's not available in the home page... -->
+
+  <footer id="mobile-footer" class="visible-sm visible-xs">
+
+    <div id="mobile-footer-copy-section">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+
+
+              
+            <div id="mobile-footer-copy">
+              <h4>Newsletter</h4>
+              <p>Get the latest news, product, announcments, promotions, and more!</p>
+            </div> <!-- mobile-footer-copy -->
+
+            <form id="mobile-newsletter-subscribe-form" class="simple-form-check">
+              <div class="form-group">
+                <input type="text" name="subscribe_email" class="subscribe_email required only-email" placeholder="Enter Your Email Address">
+                <input type="submit" class="subscribe_newsletter">
+                <span class='newsletter_ajax_loader' style='display:none'><img src='<?php echo $this->getSkinUrl('images/icons/spin.svg')?>'/></span>
+              </div>
+              <span class="ajax_msg italic"></span>
+            </form>
+
+            <div id="mobile-footer-links">
+              <ul>
+                <li><a href="<?php echo $this->getUrl('privacy-policy'); ?>">Privacy Policy</a></li>
+                <li><a href="<?php echo $this->getUrl('terms-and-conditions'); ?>">Terms & Conditions</a></li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+
+
+      </div>
+    </div> <!-- mobile-footer-copy-section -->
+
+    <div id="mobile-footer-copyright-section">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+
+            <div id="mobile-footer-copyright">
+              <a href="<?php echo $this->getUrl('') ?>" id="mobile-footer-logo"></a>
+              <h4>Monogram by Gryphon Tea Company</h4>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div> <!-- mobile-footer-copywrite-section -->
+
+  </footer>

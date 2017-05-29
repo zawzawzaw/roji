@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Manic_NewLayout>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Page />
+            </depends>
+        </Manic_NewLayout>
+    </modules>
+</config>

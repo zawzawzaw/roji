@@ -1,0 +1,277 @@
+<article id="tea-layering-section-1" class="hidden-sm hidden-xs">
+  <div class="desktop-header-spacer"></div>
+
+  
+  <div id="heading-text">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+
+          <div id="monogram-tea-layering-title">
+            <h1>monogram tea layering</h1>
+            <p>Each Monogram Tea is carefully curated to complement one another. Discover the simplexity of layered tea flavours in each blend.</p>
+          </div>
+          
+        </div>
+
+      </div>
+    </div>    
+  </div>
+  
+  <div id="tea-layering-table">
+    <div class="container-fluid">
+      <div id="tea-layering-table-header" class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <hr class="top">
+        </div>
+        <div class="col-md-3 col-md-offset-1 table-header-text">
+          <h5>monogram teas</h5>
+        </div>
+        <div class="col-md-3 table-header-text">
+          <h5>layering suggestions</h5>
+        </div>
+        <div class="col-md-4 table-header-text">
+          <h5>tasting notes</h5>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+          <hr class="bottom">
+        </div>
+      </div>
+      <?php
+      $groupname = '';
+      if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+          $customerData = Mage::getSingleton('customer/session')->getCustomer();
+          $customerGroupId = $customerData->getGroupId();
+          $groupname = Mage::getModel('customer/group')->load($customerGroupId)->getCustomerGroupCode();  
+      }
+      if($groupname=='Trader-Temp' || $groupname=='Trader-Regular' || $groupname=='Trader-Priority' || $groupname=='Trader-Premium') $categoryId = 118;        
+      else $categoryId = 92;
+
+      $_productCollection = Mage::getModel('catalog/category')->load($categoryId)
+                           ->getProductCollection()
+                           ->addAttributeToSelect('*')
+                           ->addAttributeToFilter('status', 1) // enabled
+                           ->addAttributeToFilter('visibility', 4) //visibility in catalog,search
+                           ->addAttributeToSort('position', Varien_Data_Collection::SORT_ORDER_ASC);
+      $_helper = $this->helper('catalog/output');   
+      ?>
+
+      <?php foreach ($_productCollection as $key => $_product):            
+          $product_name = $_product->getName();
+
+          $product_name = strtolower($product_name);
+          $product_name = str_replace(" ", "-", $product_name);
+
+          $name_id_arr = [
+            'cherry-japonais'=>'1', 
+            'uji-sencha'=>'2', 
+            'jasmine-silk-pearls'=>'3', 
+            'milky-oolong'=>'4',
+            'lapsang-florale'=>'5',
+            'kashmere'=>'6',
+            'earl-grey-neroli'=>'7',
+            'morning-english'=>'8',
+            'provencal-herbs'=>'9',
+            'saffronais'=>'10',
+            'rose-of-ariana'=>'11',
+            'shiso-mint'=>'12'
+          ];
+
+          $desc = array();
+          $desc['cherry-japonais'] = [
+            'rose-of-ariana' => 'Light and gentle blend with aroma of cherries and Ispahan Rose. The brew whispers of sweetness and romance in warm embrace.',
+            'saffronais' => 'Exquisite in taste, Saffronias elevates the intensity of sweet floral notes. The lingering creamy finish is the perfect treat to carry through the day.',
+            'provencal-herbs' => 'Jubilant blend of herbs and rose hips lends a tartness to a fruity aroma of sencha. The combination projects a softer silhouette to the firm structure.',
+          ];
+          $desc['uji-sencha'] = [
+            'shiso-mint' => 'Fresh notes of shiso and mint provides lift to mellow umami flavour of sencha. An enduring finale and a pleasure to all senses.',
+            'saffronais' => 'Magnificently magical honey sweetness of Saffronais tame by the umami flavour of sencha. An enchanting delicious and flavorsome experience.',
+            'provencal-herbs' => 'Soft floral acentuates sublime nature of Uji Sencha, complemented by sparkling notes of fresh lemon. A soothing blend for a perfect summer quencher.'
+          ];
+          $desc['jasmine-silk-pearls'] = [
+            'rose-of-ariana' => 'Obssessive combination of jasmine and rose for a distinctly floral palate. Individualistic, yet complementary for a matrimony of icons.',
+            'saffronais' => 'Flowery blend where lovely midnght Jasmine Silk Pearl meets crimson Saffronais for a subtle alchemy.'
+          ];
+          $desc['milky-oolong'] = [
+            'provencal-herbs' => 'Healthy dose of delicious vanilla with citrus herbs. A functional brew that is tantalising on the taste buds.',
+            'saffronais' => 'Soft notes of flowery hyacith and vanilla marries the elegance of honeyed Saffronais. When two royals meet, magic happens.'
+          ];
+          $desc['lapsang-florale'] = [
+            'rose-of-ariana' => 'Rich and robust with trail of smoke magnificiently entwined under layer of floral veil. A perfect tea for a comfortable refuge.',
+            'saffronais' => 'A glorious blend with exotic notes of Spanish saffron, pine smoke and white florals. An opulent tea with a sophisticated flair.'
+          ];
+          $desc['kashmere'] = [
+            'rose-of-ariana' => 'Complex yet smooth on the palate with soft sweetness of rose on the first sip. Fruity notes of lychee on the finish, this melodious pairing is ideal as a refreshing ice tea.',
+            'saffronais' => 'Elegant and refined blend of exotic spice with redolent black tea. A wholesome interpretation of a sweet escapade.',
+            'shiso-mint' => 'Robust and invigorating blend with accenting notes of fresh cut flowers. Touch of Middle Eastern mystic and Oriental finesse dreams of a surreal experience.'
+          ];
+          $desc['earl-grey-neroli'] = [
+            'rose-of-ariana' => 'Elegant brew with an evened profile of bergamot and rose awaken the senses. The floral and citrus notes soothe the palate for a lasting impression',
+            'provencal-herbs' => 'Eclectic combination of bergamot, lemon verbena, lemon myrtle, eucalyptus, lavender and rosemary. Treat your senses to a exclusive journey.',
+            'shiso-mint' => 'Fresh approach to a unique blend of mint and bergamot. An alluring experience that promises more adventure to come.'
+          ];
+          $desc['morning-english'] = [
+            'rose-of-ariana' => 'Bold yet dainty blend with delicate notes of Ispahan Rose. An indulgent combination, perfect for an afternoon retreat.',
+            'shiso-mint' => 'Enjoy a spirited brew with dose of shiso mint to brighten up the flavour. A combination that goes well after hearty feast.'
+          ];
+          $desc['provencal-herbs'] = [
+            'cherry-japonais' => 'Jubilant blend of herbs and rose hips lends a tartness to a fruity aroma of sencha. The combination projects a softer silhouette to the firm structure.',
+            'milky-oolong' => 'Healthy dose of delicious vanilla with citrus herbs. A functional brew that is tantalising on the taste buds.',
+            'earl-grey-neroli' => 'Eclectic combination of bergamot, lemon verbena, lemon myrtle, eucalyptus, lavender and rosemary. Treat your senses to a exclusive journey.'
+          ];
+          $desc['saffronais'] = [
+            'cherry-japonais' => 'Exquisite in taste, Saffronias elevates the intensity of sweet floral notes. The lingering creamy finish is the perfect treat to carry through the day.',
+            'lapsang-florale' => 'A glorious blend with exotic notes of Spanish saffron, pine smoke and white florals. An opulent tea with a sophisticated flair.',
+            'kashmere' => 'Elegant and refined blend of exotic spice with redolent black tea. A wholesome interpretation of a sweet escapade.',
+            'milky-oolong' => 'Soft notes of flowery hyacith and vanilla marries the elegance of honeyed Saffronais. When two royals meet, magic happens.',
+            'jasmine-silk-pearls' => 'Flowery blend where lovely midnght Jasmine Silk Pearl meets crimson Saffronais for a subtle alchemy.',
+            'uji-sencha' => 'Magnificently magical honey sweetness of Saffronais tame by the umami flavour of sencha. An enchanting delicious and flavorsome experience.'
+          ];
+          $desc['rose-of-ariana'] = [
+            'cherry-japonais' => 'Light and gentle blend with aroma of cherries and Ispahan Rose. The brew whispers of sweetness and romance in warm embrace.',
+            'lapsang-florale' => 'Rich and robust with trail of smoke magnificiently entwined under layer of floral veil. A perfect tea for a comfortable refuge.',
+            'kashmere' => 'Complex yet smooth on the palate with soft sweetness of rose on the first sip. Fruity notes of lychee on the finish, this melodious pairing is ideal as a refreshing ice tea.',
+            'jasmine-silk-pearls' => 'Obssessive combination of jasmine and rose for a distinctly floral palate. Individualistic, yet complementary for a matrimony of icons.',
+            'morning-english' => 'Bold yet dainty blend with delicate notes of Ispahan Rose. An indulgent combination, perfect for an afternoon retreat.',
+            'earl-grey-neroli' => 'Elegant brew with an evened profile of bergamot and rose awaken the senses. The floral and citrus notes soothe the palate for a lasting impression'
+          ];
+          $desc['shiso-mint'] = [
+            'kashmere' => 'Robust and invigorating blend with accenting notes of fresh cut flowers. Touch of Middle Eastern mystic and Oriental finesse dreams of a surreal experience.',
+            'morning-english' => 'Enjoy a spirited brew with dose of shiso mint to brighten up the flavour. A combination that goes well after hearty feast.',
+            'earl-grey-neroli' => 'Fresh approach to a unique blend of mint and bergamot. An alluring experience that promises more adventure to come.'
+          ];
+      ?>
+      <div class="row tea-layering-table-contents">
+        <div class="col-md-3 col-md-offset-1 tea-layering-table-text">
+          <?php if(!empty($_product->getData('product_name_in_color'))): ?>
+          <a href="/tea-matrix#<?php echo $name_id_arr[$product_name]; ?>"><h3><?php echo $_product->getData('product_name_in_color') ?></h3></a>
+          <?php else: ?>
+          <a href="/tea-matrix#<?php echo $name_id_arr[$product_name]; ?>"><h3><?php echo $_product->getName(); ?></h3></a>
+          <?php endif; ?>
+        </div>
+        <div class="col-md-7">
+          <?php 
+          $object = Mage::getModel('catalog/product');
+          $upsell_product = $_product->getUpSellProductCollection()->addAttributeToSort('position', Varien_Db_Select::SQL_ASC)->addStoreFilter();
+          $count = 1;
+          foreach($upsell_product as $_upsell):
+            //get detail of single upsell prdocut using upsell product id
+            $upsp = $object->load($_upsell->getId());
+
+            $upsp_name = $upsp->getName();
+            $upsp_name = strtolower($upsp_name);
+            $upsp_name = str_replace(" ", "-", $upsp_name);
+          ?>      
+          <div class="row">
+            <div class="col-md-5 tea-layering-table-text">
+              <?php 
+                $child_product_name = $upsp->getName();
+                $child_product_name = strtolower($child_product_name);
+                $child_product_name = str_replace(" ", "-", $child_product_name);
+              ?>
+              <?php if(!empty($upsp->getData('product_name_in_color'))): ?>
+              <a href="/tea-matrix#<?php echo $name_id_arr[$child_product_name]; ?>"><h3><?php echo $upsp->getData('product_name_in_color') ?></h3></a>
+              <?php else: ?>
+              <a href="/tea-matrix#<?php echo $name_id_arr[$child_product_name]; ?>"><h3><?php echo $upsp->getName(); ?></h3></a>
+              <?php endif; ?>
+            </div>
+            <div class="col-md-6 tea-layering-table-text">
+              <div class="tea-layering-text">
+                <a href="/#graph/<?php echo $product_name; ?>/<?php echo $upsp_name; ?>" class="tea-layering-text-link">See Layering Suggestions >></a>
+                <span>
+                <?php 
+                print_r($desc[$product_name][$child_product_name]);
+                // echo $upsp->getDescription(); 
+                ?></span>
+              </div> 
+            </div>
+          </div>
+          <?php
+            $count++;
+          endforeach; 
+          ?>    
+        </div>        
+        <div class="col-md-10 col-md-offset-1"><hr class="bottom"></div>
+      </div>
+      <?php endforeach; ?>   
+
+
+    </div>
+  </div>
+
+  <div class="desktop-header-spacer" style="height: 100px;"></div>
+</article>     
+
+<article id="home-mobile-tea-layering-section">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div id="home-mobile-tea-layering-title">
+          <h4>Tea Layering Suggestions</h4>
+          <p>Choose a tea to see its layering suggestion.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--
+     __  __  ___  ____ ___ _     _____   ____  ____   ___  ____  _   _  ____ _____   _     ___ ____ _____
+    |  \/  |/ _ \| __ )_ _| |   | ____| |  _ \|  _ \ / _ \|  _ \| | | |/ ___|_   _| | |   |_ _/ ___|_   _|
+    | |\/| | | | |  _ \| || |   |  _|   | |_) | |_) | | | | | | | | | | |     | |   | |    | |\___ \ | |
+    | |  | | |_| | |_) | || |___| |___  |  __/|  _ <| |_| | |_| | |_| | |___  | |   | |___ | | ___) || |
+    |_|  |_|\___/|____/___|_____|_____| |_|   |_| \_\\___/|____/ \___/ \____| |_|   |_____|___|____/ |_|
+
+  -->
+
+
+  <?php 
+    $_productCollection = Mage::getModel('catalog/category')->load(92)
+                         ->getProductCollection()
+                         ->addAttributeToSelect('*')
+                         ->addAttributeToFilter('status', 1) // enabled
+                         ->addAttributeToFilter('visibility', 4) //visibility in catalog,search
+                         ->addAttributeToSort('position', Varien_Data_Collection::SORT_ORDER_ASC);
+    $_helper = $this->helper('catalog/output');
+
+
+  ?>
+
+
+  <div id="home-tea-item-container-mobile">
+      <?php $count = 0; ?>
+      <?php foreach ($_productCollection as $key => $_product):    
+          $_imgSize = 300;
+          $_imgSize2x = 600;
+          $categoryIds = $_product->getCategoryIds();
+
+          $color_arr = ["#eebec7", "#abc6ca", "#a1b2ca", "#d9d1c3", "#c7b4e3", "#f0a693", "#beced6", "#fed198", "#c2cb7e", "#f9a960", "#fa91a2", "#bac4b8"];        
+
+          $product_name = $_product->getName();
+
+          $product_name = strtolower($product_name);
+          $product_name = str_replace(" ", "-", $product_name);
+      ?>
+
+      <a href="<?php echo $this->getUrl('/'); ?>#graph/<?php echo $product_name; ?>" class="home-tea-item-mobile home-page-add-to-cart-mobile" id="add-to-cart-<?php echo $product_name; ?>"  data-id="<?php echo $product_name; ?>">
+          <div class="home-tea-item-bg" style="background-color: <?php echo $color_arr[$count]; ?>;"></div>
+          <div class="home-tea-item-text">
+              <?php if(!empty($_product->getData('product_name_in_color'))): ?>
+              <h2><?php echo $_product->getData('product_name_in_color') ?></h2>
+              <?php else: ?>
+              <h2><?php echo $_product->getName(); ?></h2>
+              <?php endif; ?>
+
+
+          </div>
+      </a>
+      <?php $count++; ?>
+      <?php endforeach; ?>        
+  </div> <!-- #home-tea-item-container -->
+  
+</article> <!-- home-mobile-tea-layering-section -->
+<script>
+  $j('body').addClass("mobile-home-tea-layering-version");
+</script>

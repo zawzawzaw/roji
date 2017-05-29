@@ -1,0 +1,285 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Category view template
+ *
+ * @see Mage_Catalog_Block_Category_View
+ */
+?>
+<?php
+    $_helper    = $this->helper('catalog/output');
+    $_category  = $this->getCurrentCategory();
+    $current_category_data = $_category->getData();
+    $_imgHtml   = '';
+    if ($_imgUrl = $_category->getImageUrl()) {
+        $_imgHtml = '<p class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" title="'.$this->escapeHtml($_category->getName()).'" /></p>';
+        $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
+    }    
+
+    function getUserIP() {
+        $ipaddress = '';
+        if (isset($_SERVER['HTTP_CLIENT_IP']))
+            $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+        else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+            $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        else if(isset($_SERVER['HTTP_X_FORWARDED']))
+            $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+        else if(isset($_SERVER['HTTP_X_CLUSTER_CLIENT_IP']))
+            $ipaddress = $_SERVER['HTTP_X_CLUSTER_CLIENT_IP'];
+        else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
+            $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+        else if(isset($_SERVER['HTTP_FORWARDED']))
+            $ipaddress = $_SERVER['HTTP_FORWARDED'];
+        else if(isset($_SERVER['REMOTE_ADDR']))
+            $ipaddress = $_SERVER['REMOTE_ADDR'];
+        else
+            $ipaddress = 'UNKNOWN';
+        return $ipaddress;
+    }
+
+    function isMobile()  
+    {  
+        $regex_match = "/(nokia|iphone|android|motorola|^mot\-|softbank|foma|docomo|kddi|up\.browser|up\.link|"  
+                     . "htc|dopod|blazer|netfront|helio|hosin|huawei|novarra|CoolPad|webos|techfaith|palmsource|"  
+                     . "blackberry|alcatel|amoi|ktouch|nexian|samsung|^sam\-|s[cg]h|^lge|ericsson|philips|sagem|wellcom|bunjalloo|maui|"  
+                     . "symbian|smartphone|mmp|midp|wap|phone|windows ce|iemobile|^spice|^bird|^zte\-|longcos|pantech|gionee|^sie\-|portalmmm|"  
+                     . "jig\s browser|hiptop|^ucweb|^benq|haier|^lct|opera\s*mobi|opera\*mini|320x320|240x320|176x220"  
+                     . ")/i";  
+
+        if (preg_match($regex_match, strtolower($_SERVER['HTTP_USER_AGENT']))) {  
+            return TRUE;  
+        }  
+
+        if ((strpos(strtolower($_SERVER['HTTP_ACCEPT']),'application/vnd.wap.xhtml+xml') > 0) or ((isset($_SERVER['HTTP_X_WAP_PROFILE']) or isset($_SERVER['HTTP_PROFILE'])))) {  
+            return TRUE;  
+        }      
+
+        $mobile_ua = strtolower(substr($_SERVER['HTTP_USER_AGENT'], 0, 4));  
+        $mobile_agents = array(  
+            'w3c ','acs-','alav','alca','amoi','audi','avan','benq','bird','blac',  
+            'blaz','brew','cell','cldc','cmd-','dang','doco','eric','hipt','inno',  
+            'ipaq','java','jigs','kddi','keji','leno','lg-c','lg-d','lg-g','lge-',  
+            'maui','maxo','midp','mits','mmef','mobi','mot-','moto','mwbp','nec-',  
+            'newt','noki','oper','palm','pana','pant','phil','play','port','prox',  
+            'qwap','sage','sams','sany','sch-','sec-','send','seri','sgh-','shar',  
+            'sie-','siem','smal','smar','sony','sph-','symb','t-mo','teli','tim-',  
+            'tosh','tsm-','upg1','upsi','vk-v','voda','wap-','wapa','wapi','wapp',  
+            'wapr','webc','winw','winw','xda ','xda-');  
+
+        if (in_array($mobile_ua,$mobile_agents)) {  
+            return TRUE;  
+        }  
+
+        if (isset($_SERVER['ALL_HTTP']) && strpos(strtolower($_SERVER['ALL_HTTP']),'OperaMini') > 0) {  
+            return TRUE;  
+        }  
+
+        return FALSE;  
+    }
+    $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
+?>
+<div id="content-wrapper" class="product">
+    <article id="tea-store-section-1" class="store">
+
+        <!-- <div class="store-banner <?php echo strtolower($_category->getName()); ?>-banner">
+            <div class="image-text-content container">
+                <div class="row">
+                    <div class="col-md-12">                    
+                        <div class="caption">
+                            <h1><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
+                            <?php if($current_category_data['url_key']!=='gifts' && $current_category_data['url_key']!=='pantry'): ?>
+                                <p><?php echo $_helper->categoryAttribute($_category, $current_category_data['description'], 'description') ?></p>
+                            <?php endif; ?>
+
+                            <?php echo $this->getMessagesBlock()->toHtml() ?>
+
+                            <?php if($_imgUrl): ?>
+                                <?php //echo $_imgHtml ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="desktop-header-spacer" style="height: 130px;"></div>
+
+        <div class="main-content">
+            <div class="container-fluid image-text-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <?php echo $this->getChildHtml('category.sidebar'); ?>
+                        
+                        <div class="all-products tea-store-products">
+                            <?php if($this->isContentMode()): ?>
+                                <?php echo $this->getCmsBlockHtml() ?>
+
+                            <?php elseif($this->isMixedMode()): ?>
+                                <?php echo $this->getCmsBlockHtml() ?>
+                                <?php echo $this->getProductListHtml() ?>
+
+                            <?php else: ?>
+                                <?php echo $this->getProductListHtml() ?>
+                            <?php endif; ?>
+
+                            <div id="loading-mask" style="display: none;">
+                                <div class="loader">
+                                    <img src="<?php echo $this->getSkinUrl('images/content/products/ajax-loader.gif'); ?>" alt="<?php echo $this->__('Loading...'); ?>">
+                                    <br /><?php echo $this->__('Loading...'); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </article>
+</div>
+
+<div id="newsletter-popup" style="display: none;">
+    <div id="newsletter-popup-image">
+        <img src="<?php echo $this->getSkinUrl('images/content/newsletter-popup.png'); ?>" alt="">
+    </div>
+    <div id="newsletter-popup-text">
+        <div class="newsletter-popup-close"></div>
+        <div class="v-align-table">
+            <div class="v-align-table-cell">
+                <h2>Be the first to know!</h2>    
+                <p>Receive Monogram Tea's latest news, product announcements, exclusive promotions and more!</p>
+                <p>Earn $1 in rebate upon our newsletter subscription.</p>
+
+                <div id="newsletter-popup-input">
+                    <input type="text" name="subscribe_email" id="newsletter-popup-email-input" class="subscribe_email" placeholder="Enter your email address" />
+                    <a href="#" id="newsletter-popup-send-btn" class="signup subscribe_newsletter"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
+                    <span class='newsletter_ajax_loader' style='display:none'><img src='<?php echo $this->getSkinUrl('images/icons/spin.svg')?>'/></span>                   
+                    <span class="ajax_msg italic"></span>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+jQuery(document).ready(function($){
+    $('body').on('keypress', '#newsletter-popup-email-input', function(event){
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13') 
+            $(this).parent().find('#newsletter-popup-send-btn').trigger('click');
+    });
+    $('body').on('click', '#newsletter-popup-send-btn', function(e){
+        e.preventDefault();        
+        var subscribe_email = $(this).prev('.subscribe_email').val();
+
+        console.log(subscribe_email);
+
+        if(subscribe_email!=="" && subscribe_email!=="Enter Your Email Address") {
+
+                $('.newsletter_ajax_loader').show();
+
+                var request = $.ajax({
+                    url: "<?php echo $this->getUrl('discovertea/index/subscribe', array('_secure'=>true)) ?>",
+                    method: "POST",
+                    data: { subscribe_email : subscribe_email },
+                    dataType: "html"
+                });
+                 
+                request.done(function( msg ) {
+                    var message = JSON.parse(msg);
+                    console.log(message);
+                    $('.newsletter_ajax_loader').hide();
+                    if(message.error_messages)
+                        $('span.ajax_msg').html('<p>'+message.error_messages+'</p>').show().delay(5000).fadeOut();
+                    else
+                        $('span.ajax_msg').html('<p>Successfully subscribed to newsletter</p>').show().delay(5000).fadeOut();
+                });
+
+        }else {
+            $('span.ajax_msg').html('<p>Invalid email address.</p>').show().delay(5000).fadeOut();
+        }
+    });
+
+    <?php if((getUserIP()=='119.74.10.62' || getUserIP()=='219.74.46.210') && isMobile()!==true): ?>
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            var expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function checkCookie() {
+            var nswletpopup = getCookie("nswletpopup");
+            if (nswletpopup == "") {                
+                $.blockUI({ 
+                    message: $('#newsletter-popup'),             
+                    css: { 
+                        margin:         0,
+                        width:          'auto',
+                        height:         'auto',
+                        top:            '50%',
+                        left:           '50%', 
+                        transform:      'translate(-50%, -50%)',                       
+                        textAlign:      'center', 
+                        color:          '#f1efee', 
+                        border:         '10px', 
+                        backgroundColor:'#7b706b',
+                        cursor:         'wait',     
+                        border:         'none!important',
+                        paddingRight:   '60px'             
+                    }
+                });
+                setCookie('nswletpopup', 'open before', 1);
+            }
+        }
+        
+        checkCookie();
+
+        $('.newsletter-popup-close').click(function(e) {
+            e.preventDefault();
+            $.unblockUI(); 
+            return false; 
+        });
+    <?php endif; ?>
+});
+</script>

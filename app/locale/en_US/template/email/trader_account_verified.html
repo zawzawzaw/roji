@@ -1,0 +1,65 @@
+<!--@subject Welcome, {{var customer.name}}! @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"var logo_url":"Email Logo Image Url",
+"htmlescape var=$customer.name":"Customer Name",
+"store url=\"customer/account/\"":"Customer Account Url",
+"var customer.email":"Customer Email",
+"htmlescape var=$customer.password":"Customer Password"}
+@-->
+
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
+
+<!-- ONE COLUMN SECTION -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+      <td align="center" style="padding: 70px 15px 70px 15px;" class="section-padding">
+          <table border="0" cellpadding="0" cellspacing="0" width="600" class="responsive-table">
+              <tr>
+                  <td>
+                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          
+                          <tr>
+                              <td align="center" style="font-family: 'BrandonGrotesqueWeb-Bold',Arial Black,Gadget,sans-serif;font-style: normal;font-weight: 400;font-size: 25px;line-height: 35px;letter-spacing: .1em; color: #efeeed;text-transform: uppercase;" class="padding-copy">
+                                  Welcome, {{htmlescape var=$customer.name}}
+                              </td>
+                          </tr>                          
+                          <tr>
+                              <td align="center" style="padding: 0px 20px 0 20px;">
+                                  <!-- COPY -->       
+                                  <p style="padding: 20px 45px 0 45px; font-size: 12px;line-height: 21px; font-family: Domine,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #efeeed;">Thank you for your interest to partner with us. Your account has been approved.</p>
+                                  
+                                  <p style="padding: 20px 45px 0 45px; font-size: 12px;line-height: 21px; font-family: Domine,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #efeeed;">You may proceed to <a href='{{store url="customer/account/"}}' style="color:#1E7EC8;">Login</a> and place your first order.</p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td align="center">
+                                <!-- BULLETPROOF BUTTON -->
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
+                                  <tr>
+                                    <td align="center" style="padding: 25px 0 0 0;" class="padding-copy">
+                                      <table border="0" cellspacing="0" cellpadding="0" class="responsive-table">
+                                        <tr>
+                                          <td align="center"><a href="{{store url=''}}" target="_blank" style="font-family: 'BrandonGrotesqueWeb-Bold',Arial Black,Gadget,sans-serif;font-style: normal;font-weight: 400;font-size: 10px;text-transform: uppercase;letter-spacing: .05em;color: #fff;border: 1px solid #fff;padding-left: 9px;padding-right: 9px;-webkit-transition: all .3s cubic-bezier(.645,.045,.355,1) 0s;-moz-transition: all .3s cubic-bezier(.645,.045,.355,1) 0s;-o-transition: all .3s cubic-bezier(.645,.045,.355,1) 0s;transition: all .3s cubic-bezier(.645,.045,.355,1) 0s;height: auto;line-height: 30px;background: 0 0;display: inline-block;vertical-align: top;zoom: 1;text-decoration: none;width: 168px;height: 30px;vertical-align: middle;" class="mobile-button">Monogram Website</a></td>
+                                        </tr>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                </table>                                       
+                              </td>
+                          </tr>
+                          
+                      </table>
+                  </td>
+              </tr>
+          </table>
+      </td>
+  </tr>
+</table>
+
+{{template config_path="design/email/footer"}}

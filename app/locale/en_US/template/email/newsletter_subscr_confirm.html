@@ -1,0 +1,46 @@
+<!--@subject Monogram Newsletters: Please confirm your subscription @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"var logo_url":"Email Logo Image Url",
+"var logo_alt":"Email Logo Image Alt",
+"htmlescape var=$customer.name":"Customer Name",
+"var subscriber.getConfirmationLink()":"Subscriber Confirmation Url"}
+@-->
+<!--@styles
+@-->
+
+{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
+
+<!-- ONE COLUMN SECTION -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+      <td align="center" style="padding: 70px 15px 70px 15px;" class="section-padding">
+          <table border="0" cellpadding="0" cellspacing="0" width="600" class="responsive-table">
+              <tr>
+                  <td>
+                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td align="center" style="font-family: 'BrandonGrotesqueWeb-Bold',Arial Black,Gadget,sans-serif;font-style: normal;font-weight: 400;font-size: 25px;line-height: 35px;letter-spacing: .1em; color: #efeeed;text-transform: uppercase;" class="padding-copy">
+                                  THANK YOU FOR SUBSCRIBING TO OUR MONOGRAM NEWSLETTER 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" style="padding: 0px 20px 0 20px;">
+                                <!-- COPY -->                                     
+                                <p style="padding-bottom: 20px;font-size: 12px;line-height: 21px; font-family: Domine,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #efeeed;">To begin receiving the newsletter, please confirm your subscription.</p>                                   
+                                <a href="{{var subscriber.getConfirmationLink()}}" target="_blank" style="margin-bottom: 20px;font-family: 'BrandonGrotesqueWeb-Bold',Arial Black,Gadget,sans-serif;font-style: normal;font-weight: 400;font-size: 10px;text-transform: uppercase;letter-spacing: .05em;color: #fff;border: 1px solid #fff;padding-left: 9px;padding-right: 9px;-webkit-transition: all .3s cubic-bezier(.645,.045,.355,1) 0s;-moz-transition: all .3s cubic-bezier(.645,.045,.355,1) 0s;-o-transition: all .3s cubic-bezier(.645,.045,.355,1) 0s;transition: all .3s cubic-bezier(.645,.045,.355,1) 0s;height: auto;line-height: 30px;background: 0 0;display: inline-block;vertical-align: top;zoom: 1;text-decoration: none;height: 30px;vertical-align: middle;" class="mobile-button">Yes, subscribe me to this list.</a>   
+                                <p style="padding-bottom: 20px;font-size: 12px;line-height: 21px; font-family: Domine,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #efeeed;">If you have received this email by mistake, kindly ignore it. Without your confirmation, you will not receive any newsletters from us. </p>
+
+                                <p style="padding-bottom: 20px;font-size: 12px;line-height: 21px; font-family: Domine,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #efeeed;">For any questions regarding our Monogram newsletter subscription program, please email us at <a href="mailto:bespoke@monogram.com" style="color: #efeeed; text-decoration: none;">bespoke@monogram.com.</a></p>
+                            </td>
+                        </tr>                                                  
+                      </table>
+                  </td>
+              </tr>
+          </table>
+      </td>
+  </tr>
+</table>
+
+{{template config_path="design/email/footer"}}

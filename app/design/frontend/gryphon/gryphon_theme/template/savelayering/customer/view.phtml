@@ -1,0 +1,161 @@
+<div id="monogram-page-account-mobile-header" class="visible-sm visible-xs">
+  <h4>membership services</h4>
+  <h2>saved layering</h2>
+</div>
+
+<div id="monogram-page-account-reward-points-container">
+
+  <div class="my-account reward-page">
+      <div class="page-title">
+          <h1><?php echo $this->__('Saved Layering') ?></h1>
+          <hr class="small">
+      </div>
+
+      <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+      <?php $collection = $this->getCollection(); ?>      
+          
+
+          <div class="">				
+              <div class="table-responsive">
+                  <table cellspacing="0" class="saved-layering data-table linearize-table" id="reward-points-table">
+                      <thead>
+                          <tr>
+                              <th><?php echo $this->__('Date') ?></th>
+                              <th><?php echo $this->__('Layering Suggestions') ?></th>
+                              <th><?php echo $this->__('Action') ?></th>                              
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <?php if($collection->getSize()): ?>
+                          <?php $_odd = ''; ?>
+                          <?php foreach ($collection as $obj): ?>
+                              <?php $pointData = $obj->getData(); ?>
+                              <tr class="">
+                                  <td data-theme-label="<?php echo $this->__('Date') ?>">
+                                      <?php $newDate = date("d-m-Y", strtotime($pointData['created_time'])); echo $newDate; ?>
+                                  </td>
+                									<td data-theme-label="<?php echo $this->__('Layering Product') ?>">
+                                  <p class="product-name">
+                									<?php 
+                									$pids = explode(',',$pointData['products_id']);
+                									$_product1 = Mage::getModel('catalog/product')->load($pids[0]);
+                                  $pname1 = $_product1->getName();
+                									$pname1 = $_product1->getName();                  
+                									$_product2 = Mage::getModel('catalog/product')->load($pids[1]);
+                									$pname2 = $_product2->getName();
+
+                                  $pname1_to_file_name = strtolower($pname1);
+                                  $pname1_to_file_name = str_replace(" ", "-", $pname1_to_file_name);
+
+                                  $pname2_to_file_name = strtolower($pname2);
+                                  $pname2_to_file_name = str_replace(" ", "-", $pname2_to_file_name);
+
+                									echo $_product1->getData('product_name_in_color') .' + '. $_product2->getData('product_name_in_color'); ?></p></td>
+                									<td data-theme-label="<?php echo $this->__('Action') ?>">
+                									<a class="savelayering-cta" href="/#graph/<?php echo $pname1_to_file_name; ?>/<?php echo $pname2_to_file_name; ?>">SEE LAYERING</a> 
+                									
+                                  <?php $session = Mage::getSingleton('customer/session');
+                                        $groupname = '';                            
+                                        if($session->isLoggedIn()) {
+                                            $customer = $session->getCustomer();
+                                            $customerGroupId = $customer->getGroupId();
+                                            $groupname = Mage::getModel('customer/group')->load($customerGroupId)->getCustomerGroupCode();
+                                        }    
+                                  ?>
+                                  <?php if(($groupname!=='Trader-Temp' && $groupname!=='Trader-Regular' && $groupname!=='Trader-Priority' && $groupname!=='Trader-Premium')): ?>
+                                  <span class="savelayering-cta-divider"> | </span>
+                                  <a class="savelayering-cta" href="javascript:;" id="addbothincart" onclick="savebothproducts('<?php echo $pointData['products_id']; ?>', this)">ADD TO CART</a>
+                                  <?php endif; ?>
+                                  <div class="successmsg"></div>
+                                  <div class="ajax_loadermsg"><img src='<?php echo $this->getSkinUrl('images/icons/spin.svg')?>'/></div>
+                									</td>
+                              </tr>
+                          <?php endforeach; ?>
+                        <?php else: ?>
+                          <tr>
+                            <td colspan="3">
+                              <p><?php echo $this->__('You don\'t have any saved layering products.'); ?></p>
+                            </td>
+                          </tr>
+                        <?php endif ?>
+                      </tbody>
+                  </table>
+              </div>              
+          </div>          
+          <?php echo $this->getPagerHtml() ?>      
+  </div>
+</div>
+<?php 
+    $subscription_in_the_cart = 0;
+    $allskus = array("SGP-ART-1M", "SGP-ART-3M", "SGP-ART-6M", "SGP-ART-12M", "SGP-GUR-1M", "SGP-GUR-3M", "SGP-GUR-6M", "SGP-GUR-12M","INT-ART-1M", "INT-ART-3M", "INT-ART-6M", "INT-ART-12M", "INT-GUR-1M", "INT-GUR-3M", "INT-GUR-6M", "INT-GUR-12M");
+    $quote = Mage::getSingleton('checkout/session')->getQuote();
+    foreach ($quote->getAllVisibleItems() as $item) {
+        $itemsku = $item->getProduct()->getData('sku');        
+        if(in_array($itemsku, $allskus)) {
+            $subscription_in_the_cart = 1;
+        }
+    }
+
+    $gift_in_the_cart = 0;
+    $giftsku = array("testGiftCard2");
+    foreach ($quote->getAllVisibleItems() as $item) {
+        $itemsku = $item->getProduct()->getData('sku');        
+        if(in_array($itemsku, $giftsku)) {
+            $gift_in_the_cart = 1;
+        }   
+    }
+?>
+<script type="text/javascript">
+  function do_update() {
+
+    $j("#desktop-header-cart").find(".cart-count-update").removeClass('animated fadeIn').addClass('animated flipOutX');
+
+    $j.ajax({
+        url: '/discovertea/index/cartpreview',
+        dataType: 'json',
+        type : 'get',
+        success: function(data){
+          // update product count in cart
+          $j("#desktop-header-cart").find(".count").text("("+data.cart_qty+")");    
+          $j("#mobile-header-cart-btn-container").find(".count").text("("+data.cart_qty+")");    
+
+          $j("#desktop-header-cart").find(".cart-count-update").removeClass('animated flipOutX').addClass('animated fadeIn'); 
+        }
+    });                     
+  }
+
+	function savebothproducts(pids, that){					
+
+			var dataString = 'productids='+ pids;
+
+      var subscription_in_the_cart = <?php echo $subscription_in_the_cart; ?>;
+      var gift_in_the_cart = <?php echo $gift_in_the_cart; ?>;
+
+      if(subscription_in_the_cart == 1) {
+          alert("This product cannot be purchased with other items in the cart. Please check out first before making this purchase.")
+      } else if(gift_in_the_cart == 1) {
+          alert("This product cannot be purchased with other items in the cart. Please check out first before making this purchase.")
+      } else {
+
+        // jQuery(that).parent().find(".successmsg").hide();
+        jQuery(that).parent().find(".ajax_loadermsg").show();         
+            
+            jQuery.ajax({
+				type: "POST",
+				data: dataString,
+                url: "<?php echo Mage::getUrl('savelayering/index/addproduct'); ?>"
+            }).done(function(result) { 
+
+              console.log(jQuery(that).parent());
+              do_update();
+
+				jQuery(that).parent().find(".ajax_loadermsg").hide();
+				// jQuery(that).parent().find(".successmsg").show();
+				// jQuery(that).parent().find(".successmsg").html("Added to cart").delay(5000).fadeOut();	
+				// location.reload();
+				//alert(result);
+            });
+
+      }
+	}
+</script>
