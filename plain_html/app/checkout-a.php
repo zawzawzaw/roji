@@ -121,13 +121,19 @@
                           <h4 class="center-aligned">Description</h4>
                         </div>
                         <div class="col-md-2">
-                          <h4 class="center-aligned">Unit Price</h4>
+                          <div class="forced-move-left">
+                            <h4 class="center-aligned">Unit Price</h4>
+                          </div>
                         </div>
                         <div class="col-md-2">
-                          <h4 class="center-aligned">Quantity</h4>
+                          <div class="forced-move-left">
+                            <h4 class="center-aligned">Quantity</h4>
+                          </div>
                         </div>
                         <div class="col-md-2">
-                          <h4 class="center-aligned">Subtotal</h4>
+                          <div class="forced-move-left">
+                            <h4 class="center-aligned">Subtotal</h4>
+                          </div>
                         </div>
                       </div>
                     </div> <!-- page-checkout-cart-table-header -->
@@ -168,27 +174,33 @@
                           </div>
                           <div class="col-md-2">
 
-                            <div class="cart-item-value">$16.90</div>
-
-                          </div>
-                          <div class="col-md-2">
-
-                            <div class="cart-item-quantity-container">
-
-                              <div class="form-quantity">
-                                <a href="javascript:void(0);" class="form-quantity-minus-btn"></a>
-                                <input type="text" id="" name="" class="form-quantity-input-txt" value="2">
-                                <a href="javascript:void(0);" class="form-quantity-plus-btn"></a>
-                              </div>
-
+                            <div class="forced-move-left">
+                              <div class="cart-item-value">$16.90</div>
                             </div>
 
                           </div>
                           <div class="col-md-2">
 
-                            <div class="cart-item-value-and-button">
-                              <div class="cart-item-value">$33.80</div>
-                              <a href="javascript:void(0);" class="cart-item-close-btn close-btn"></a>
+                            <div class="forced-move-left">
+                              <div class="cart-item-quantity-container">
+
+                                <div class="form-quantity">
+                                  <a href="javascript:void(0);" class="form-quantity-minus-btn"></a>
+                                  <input type="text" id="" name="" class="form-quantity-input-txt" value="2">
+                                  <a href="javascript:void(0);" class="form-quantity-plus-btn"></a>
+                                </div>
+
+                              </div>
+                            </div>
+
+                          </div>
+                          <div class="col-md-2">
+
+                            <div class="forced-move-left">
+                              <div class="cart-item-value-and-button">
+                                <div class="cart-item-value">$33.80</div>
+                                <a href="javascript:void(0);" class="cart-item-close-btn close-btn"></a>
+                              </div>
                             </div>
 
                           </div>
@@ -230,27 +242,33 @@
                           </div>
                           <div class="col-md-2">
 
-                            <div class="cart-item-value">$16.90</div>
-
-                          </div>
-                          <div class="col-md-2">
-
-                            <div class="cart-item-quantity-container">
-
-                              <div class="form-quantity">
-                                <a href="javascript:void(0);" class="form-quantity-minus-btn"></a>
-                                <input type="text" id="" name="" class="form-quantity-input-txt" value="2">
-                                <a href="javascript:void(0);" class="form-quantity-plus-btn"></a>
-                              </div>
-
+                            <div class="forced-move-left">
+                              <div class="cart-item-value">$16.90</div>
                             </div>
 
                           </div>
                           <div class="col-md-2">
 
-                            <div class="cart-item-value-and-button">
-                              <div class="cart-item-value">$33.80</div>
-                              <a href="javascript:void(0);" class="cart-item-close-btn close-btn"></a>
+                            <div class="forced-move-left">
+                              <div class="cart-item-quantity-container">
+
+                                <div class="form-quantity">
+                                  <a href="javascript:void(0);" class="form-quantity-minus-btn"></a>
+                                  <input type="text" id="" name="" class="form-quantity-input-txt" value="2">
+                                  <a href="javascript:void(0);" class="form-quantity-plus-btn"></a>
+                                </div>
+
+                              </div>
+                            </div>
+
+                          </div>
+                          <div class="col-md-2">
+
+                            <div class="forced-move-left">
+                              <div class="cart-item-value-and-button">
+                                <div class="cart-item-value">$33.80</div>
+                                <a href="javascript:void(0);" class="cart-item-close-btn close-btn"></a>
+                              </div>
                             </div>
 
                           </div>
