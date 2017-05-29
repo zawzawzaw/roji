@@ -33,8 +33,6 @@
     </div>
   </article> <!-- page-default-title-section -->
 
-
-
   <!--
      __  __    _    ____   ___  _   _ ______   __
     |  \/  |  / \  / ___| / _ \| \ | |  _ \ \ / /
@@ -44,7 +42,7 @@
 
   -->
 
-  <article id="page-home-masonry-section" class="visible-md visible-lg">
+  <article id="page-home-masonry-section">
     <div class="container-fluid has-breakpoint">
       <div class="row">
         <div class="col-md-12">
@@ -74,7 +72,10 @@
 
               <div class="page-home-masonry-tile page-home-about-tile width-2 height-2">
                 <div class="tile-bg manic-image-container">
-                  <img src="" data-image-desktop="images_cms/home/home-about-tile-bg.jpg">
+                  <img src="" 
+                    data-image-desktop="images_cms/home/home-about-tile-bg.jpg"
+                    data-image-tablet="images_cms/home/home-about-tile-bg-tablet.jpg"
+                    data-image-mobile="images_cms/home/home-about-tile-bg-mobile.jpg">
                 </div>
                 <div class="tile-content">
                   <h2>Let us share our story</h2>
@@ -83,7 +84,10 @@
 
               <div class="page-home-masonry-tile page-home-shop-tile height-2">
                 <div class="tile-bg manic-image-container">
-                  <img src="" data-image-desktop="images_cms/home/home-shop-tile-bg.jpg">
+                  <img src="" 
+                    data-image-desktop="images_cms/home/home-shop-tile-bg.jpg"
+                    data-image-tablet="images_cms/home/home-shop-tile-bg-tablet.jpg"
+                    data-image-mobile="images_cms/home/home-shop-tile-bg-mobile.jpg">
                 </div>
                 <div class="tile-content">
 
@@ -101,7 +105,10 @@
 
               <div class="page-home-masonry-tile page-home-our-teas-tile width-2">
                 <div class="tile-bg manic-image-container">
-                  <img src="" data-image-desktop="images_cms/home/home-our-teas-tile-bg.jpg">
+                  <img src="" 
+                    data-image-desktop="images_cms/home/home-our-teas-tile-bg.jpg"
+                    data-image-tablet="images_cms/home/home-our-teas-tile-bg-tablet.jpg"
+                    data-image-mobile="images_cms/home/home-our-teas-tile-bg-mobile.jpg">
                 </div>
                 <div class="tile-content">
                   <h2>Origins: Our teas are sourced <br>from various parts of Japan</h2>
@@ -220,7 +227,10 @@
 
               <div class="page-home-masonry-tile page-home-giftcard-tile">
                 <div class="tile-bg manic-image-container">
-                  <img src="" data-image-desktop="images_cms/home/home-giftcard-tile-bg.jpg">
+                  <img src="" 
+                    data-image-desktop="images_cms/home/home-giftcard-tile-bg.jpg"
+                    data-image-tablet="images_cms/home/home-giftcard-tile-bg-tablet.jpg"
+                    data-image-mobile="images_cms/home/home-giftcard-tile-bg-mobile.jpg">
                 </div>
                 <div class="tile-content">
 
@@ -258,7 +268,10 @@
 
               <div class="page-home-masonry-tile page-home-faq-tile">
                 <div class="tile-bg manic-image-container">
-                  <img src="" data-image-desktop="images_cms/home/home-faq-tile-bg.jpg">
+                  <img src="" 
+                    data-image-desktop="images_cms/home/home-faq-tile-bg.jpg"
+                    data-image-tablet="images_cms/home/home-faq-tile-bg.jpg"
+                    data-image-mobile="images_cms/home/home-faq-tile-bg.jpg">
                 </div>
                 <div class="tile-content">
                   <h2>Frequently asked questions</h2>
@@ -328,8 +341,6 @@
       </div>
     </div>
   </article>
-
-  
 
   <?php include "footer.php"; ?>
   <?php include "script_home.php" ?>

@@ -137,7 +137,18 @@
 } // .arrow-cta.reverse-version
 
 
-
+@media only screen and (max-width: 767px) {
+  .arrow-cta{
+    font-size: 10px;
+    padding-right: 16px;
+    &:after{
+      top: -1px;
+    }
+  }
+  .arrow-cta.reverse-version{
+    padding-left: 16px;
+  }
+}
 
 
 //    ____  _    _   _ ____

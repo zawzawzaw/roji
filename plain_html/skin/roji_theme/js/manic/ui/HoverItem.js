@@ -28,48 +28,59 @@ manic.ui.HoverItem = function(options, element) {
   this.on_element_mouseenter = function(event) {
     this.is_inside = true;
 
-    if (this.is_animating == false) {
-      this.is_animating = true;
-      this.element.addClass('hover-version');
+    if (manic.IS_MOBILE == false) {
+      if (this.is_animating == false) {
+        this.is_animating = true;
+        this.element.addClass('hover-version');
 
-      TweenMax.killDelayedCallsTo(this.on_element_mouseenter_delayed);
-      TweenMax.delayedCall(0.55, this.on_element_mouseenter_delayed, [], this);
+        TweenMax.killDelayedCallsTo(this.on_element_mouseenter_delayed);
+        TweenMax.delayedCall(0.55, this.on_element_mouseenter_delayed, [], this);
+      }
     }
+
   }.bind(this);
 
   this.on_element_mouseenter_delayed = function(event){
-    this.is_animating = false;
     
-    if (this.is_inside == false){
-      this.is_animating = true;
-      this.element.removeClass('hover-version');
+    if (manic.IS_MOBILE == false) {
+      this.is_animating = false;
 
-      TweenMax.killDelayedCallsTo(this.on_element_mouseleave_delayed);
-      TweenMax.delayedCall(0.55, this.on_element_mouseleave_delayed, [], this);
+      if (this.is_inside == false){
+        this.is_animating = true;
+        this.element.removeClass('hover-version');
+
+        TweenMax.killDelayedCallsTo(this.on_element_mouseleave_delayed);
+        TweenMax.delayedCall(0.55, this.on_element_mouseleave_delayed, [], this);
+      }
     }
   }.bind(this);
 
   this.on_element_mouseleave = function(event) {
     this.is_inside = false;
     
-    if (this.is_animating == false) {
-      this.is_animating = true;
-      this.element.removeClass('hover-version');
+    if (manic.IS_MOBILE == false) {
+      if (this.is_animating == false) {
+        this.is_animating = true;
+        this.element.removeClass('hover-version');
 
-      TweenMax.killDelayedCallsTo(this.on_element_mouseleave_delayed);
-      TweenMax.delayedCall(0.55, this.on_element_mouseleave_delayed, [], this);
+        TweenMax.killDelayedCallsTo(this.on_element_mouseleave_delayed);
+        TweenMax.delayedCall(0.55, this.on_element_mouseleave_delayed, [], this);
+      }
     }
   }.bind(this);
 
   this.on_element_mouseleave_delayed = function(){
-    this.is_animating = false;
     
-    if (this.is_inside == true){
-      this.is_animating = true;
-      this.element.addClass('hover-version');
+    if (manic.IS_MOBILE == false) {
+      this.is_animating = false;
+      
+      if (this.is_inside == true){
+        this.is_animating = true;
+        this.element.addClass('hover-version');
 
-      TweenMax.killDelayedCallsTo(this.on_element_mouseenter_delayed);
-      TweenMax.delayedCall(0.55, this.on_element_mouseenter_delayed, [], this);
+        TweenMax.killDelayedCallsTo(this.on_element_mouseenter_delayed);
+        TweenMax.delayedCall(0.55, this.on_element_mouseenter_delayed, [], this);
+      }
     }
   }.bind(this);
 

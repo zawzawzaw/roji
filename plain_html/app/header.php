@@ -71,10 +71,39 @@
         </div>
       </div>
     </div>
-  </header>
+  </header> <!-- desktop-header -->
 
   <header id="mobile-header" class="visible-sm visible-xs">
-  </header>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+
+          <div id="mobile-header-content">
+            <div class="row">
+              <div class="col-xs-3">
+                <div id="mobile-header-logo-container">
+                  <a href="index.php" id="mobile-header-logo"></a>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div id="mobile-header-title">
+
+                </div>
+              </div>
+              <div class="col-xs-3">
+                <div id="mobile-header-cart-container">
+                  <div id="mobile-header-cart-btn">
+                    <span class="cart-btn-value">222</span>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- row -->
+          </div> <!-- mobile-header-content -->
+
+        </div> <!-- col-md-12 -->
+      </div> <!-- row -->
+    </div> <!-- container-fluid -->
+  </header> <!-- mobile-header -->
 
   <div id="page-wrapper">
     <div id="page-wrapper-content">
