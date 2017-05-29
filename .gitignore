@@ -4,5 +4,3 @@ media
 var
 cgi-bin
 downloader
-www/*
-!www/.htaccess
