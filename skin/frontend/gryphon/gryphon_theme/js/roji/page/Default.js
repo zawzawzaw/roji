@@ -74,9 +74,48 @@ roji.page.Default = function(options, element) {
   this.mobile_header_element = $j('#mobile-header');
   this.desktop_footer_element = $j('#desktop-footer');
   this.mobile_footer_element = $j('#mobile-footer');
+
+
+  var product_price = $j("#page-product-detail-content").find(".regular-price").html();
+  $j("#page-product-detail-form").find('.form-total-value').html(product_price);
+
+  $j('#page-product-detail-form .form-quantity').find(".form-quantity-plus-btn").click(function(e){
+    e.preventDefault();
+    var $qty=$j(this).parent().find('.qty');
+    var currentVal = parseInt($qty.val());
+
+    if (!isNaN(currentVal)) {
+      currentVal = currentVal + 1;
+      $qty.val(currentVal);
+    
+      var product_price = $j("#page-product-detail-content").find(".regular-price").html();
+      var currency_symbol = $j("#page-product-detail-form").find('.form-total-value').data('currency');
+      product_price = product_price.replace( /^\D+/g, '');
+      
+      var total_price = product_price * currentVal;
+
+      $j("#page-product-detail-form").find('.form-total-value').html(currency_symbol + total_price.toFixed(2));
+    }
+  });
+
+  $j('#page-product-detail-form .form-quantity').find(".form-quantity-minus-btn").click(function(e){
+    e.preventDefault();
+    var $qty=$j(this).parent().find('.qty');
+    var currentVal = parseInt($qty.val());
+
+    if (!isNaN(currentVal) && currentVal > 1) {
+      currentVal = currentVal - 1;
+      $qty.val(currentVal);
   
+      var product_price = $j("#page-product-detail-content").find(".regular-price").html();
+      var currency_symbol = $j("#page-product-detail-form").find('.form-total-value').data('currency');
+      product_price = product_price.replace( /^\D+/g, '');
+      var total_price = product_price * currentVal;
 
+      $j("#page-product-detail-form").find('.form-total-value').html(currency_symbol + total_price.toFixed(2));
+    }
 
+  })
 
 
   console.log('roji.page.Default: init');

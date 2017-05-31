@@ -16,7 +16,7 @@ $quoteData= $quote->getData();
       <div class="col-md-2">
 
         <div id="desktop-header-logo-container">
-          <a href="index.php" id="desktop-header-logo"></a>
+          <a href="<?php echo $this->getUrl('') ?>" id="desktop-header-logo"></a>
         </div> <!-- desktop-header-logo-container -->
 
       </div>
@@ -24,46 +24,26 @@ $quoteData= $quote->getData();
 
         <div id="desktop-header-menu-container">
           <div id="desktop-header-menu">
-            <nav>
-              <ul>
-                <li><a href="about.php">About</a></li>
-                <li><a href="shop.php">Shop</a></li>
-                <li><a href="our-teas.php">Our Teas</a></li>
-
-                <!-- CLASS HAS TO BE ADDED BY THE JAVASCRIPT -->
-                <li class="submenu-version">
-                  <a href="gifts.php">Gifts</a>
-                  <ul>
-                    <li><a href="gifts.php">Tin</a></li>
-                  </ul>
-                </li>
-
-                <li><a href="blog.php">Blog</a></li>
-                <li><a href="faq.php">FAQ</a></li>
-                <li><a href="contact.php">Contact</a></li>
-              </ul>
-            </nav>
+            <?php echo $this->getChildHtml('topMenu'); ?>            
           </div> <!-- desktop-header-menu -->
 
           <div id="desktop-header-login-menu">
-            <a href="login.php">Join/log in</a>
+            <a href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>">Join/log in</a>
           </div> <!-- desktop-header-login-menu -->
-
+          
           <div id="desktop-header-currency-menu">
-            <div class="manic-dropdown">
-              <select name="desktop-header-currency-select" id="desktop-header-currency-select">
-                <option value="sgd">SGD</option>
-                <option value="usd">USD</option>
-                <option value="yen">YEN</option>
-              </select>
-            </div>
+            <!-- <div class="manic-dropdown"> -->
+              <?php echo $this->getChildHtml('currency_top') ?>              
+            <!-- </div> -->
           </div> <!-- desktop-header-currency-menu -->
 
           <div id="desktop-header-cart-menu">
-
-            <div id="desktop-header-cart-btn">
-              <span class="cart-btn-value">222</span>
-            </div>
+            
+            <a href="<?php echo $this->getUrl('checkout/cart'); ?>">
+              <div id="desktop-header-cart-btn">
+                <span class="cart-btn-value"><?php echo (!empty($count)) ? $count : 0; ?></span>
+              </div>
+            </a>
 
             <div id="desktop-header-cart-expand-container">
 

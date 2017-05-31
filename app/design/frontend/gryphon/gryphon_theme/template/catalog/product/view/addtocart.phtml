@@ -32,46 +32,52 @@ if(Mage::getSingleton('customer/session')->isLoggedIn()) {
     $groupname = Mage::getModel('customer/group')->load($customerGroupId)->getCustomerGroupCode();  
 } 
 ?>
+
 <?php $_product = $this->getProduct(); ?>
 <?php $buttonTitle = $this->__('Add to Cart'); ?>
 <?php $isGiftcardType = $this->helper('catalogcustomiser')->isGiftcardType($_product); ?>
 <?php if($_product->isSaleable()): ?>
     <?php if(!$_product->isGrouped()): ?>
-    <div class="col-md-6 col-sm-6 col-xs-6 product-info-col-1">        
+    <div class="col-md-7">
+        <div class="form-quantity-top-spacer"></div>
         <?php if (!$isGiftcardType && $_product->getTypeId() !== 'tin') : ?>
-            <div class="qty-wrapper">
+            <div class="form-quantity-container">
                 <?php if($groupname=='Trader-Temp' || $groupname=='Trader-Regular' || $groupname=='Trader-Priority' || $groupname=='Trader-Premium'): ?>
                     <?php 
                     $categoryIds = $_product->getCategoryIds();
                     $productId = $_product->getId();
 
                     if (count($parentIds)>0 || in_array(107, $categoryIds) || in_array(102, $categoryIds) || $productId == 157 || $productId == 33): ?>
-                        <h5><?php echo $this->__('Quantity') ?></h5>
+                        <h4><?php echo $this->__('Quantity') ?></h4>
                     <?php else: ?>
-                        <h5><?php echo $this->__('WEIGHT (KG)') ?></h5>
+                        <h4><?php echo $this->__('WEIGHT (KG)') ?></h4>
                     <?php endif; ?>
                 <?php else: ?>
-                    <h5><?php echo $this->__('Quantity') ?></h5>
+                    <h4><?php echo $this->__('Quantity') ?></h4>
                 <?php endif; ?>
-                <a href="#" class="minus"></a><!--
-                --><input type="text" pattern="\d*" name="qty" id="qty" maxlength="12" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" /><!--
-                --><a href="#" class="plus"></a>            
-            </div>
+                <div class="form-quantity">
+                    <a href="#" class="form-quantity-minus-btn minus"></a>
+                    <input type="text" pattern="\d*" name="qty" id="qty" maxlength="12" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty form-quantity-input-txt" />
+                    <a href="#" class="form-quantity-plus-btn plus"></a>            
+                </div>
+            </div> <!-- form-quantity-container -->
         <?php endif; ?>        
     </div>
     <?php endif; ?>
-    <div class="col-md-6 col-sm-6 col-xs-6 <?php if(!$_product->isGrouped()): ?>product-info-col-2<?php endif; ?>">        
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
 
         <?php if (count($this->getTierPrices()) > 0): ?>   
         <br/> <?php echo $this->getTierPriceHtml() ?>   
         <?php endif; ?>
 
-        <div class="cta-btn add-to-cart-buttons">
-            
-            <button id="add-to-cart" type="button" title="<?php echo $buttonTitle ?>" class="square-cta cta add-to-cart button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
-            <span id='ajax_loader_product' style='display:none'><img src='<?php echo $this->getSkinUrl('images/icons/spin.svg')?>'/></span>
-            <!-- <span class="ajax_msg_product italic"></span> -->
-                        
-        </div>
+        <div class="form-total">
+          <h4>
+            <span class="form-total-label">Total:</span>
+            <span class="form-total-value" data-currency="<?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?>">$33.80</span>
+          </h4>
+          <button id="add-to-cart" style="width: 100%;" type="button" title="<?php echo $buttonTitle ?>" class="square-cta cta add-to-cart button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+            <!-- <span id='ajax_loader_product' style='display:none'><img src='<?php echo $this->getSkinUrl('images/icons/spin.svg')?>'/></span> -->
+        </div> <!-- form-total -->        
     </div>    
 <?php endif; ?>
