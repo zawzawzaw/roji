@@ -19,15 +19,16 @@
 
   -->
 
-  <article id="page-home-title-section" class="visible-md visible-lg">
+  <article id="page-home-title-section">
     <div class="container-fluid has-breakpoint">
       <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-8">
+        <div class="col-md-3 col-tablet-landscape-2 col-sm-0 col-xs-0"></div>
+        <div class="col-md-9 col-tablet-landscape-10 col-sm-10 col-xs-12">
+
           <div id="page-home-title">
             <h1>Live in the present moment and fully savour the brew in hand.<br>A playful whisk of tradition awaits.</h1>
-
           </div> <!-- page-default-title -->
+          
         </div>
       </div>
     </div>

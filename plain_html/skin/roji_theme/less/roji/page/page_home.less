@@ -13,6 +13,21 @@
   text-align: right;
 }
 
+// TABLET PORTRAIT
+@media only screen and (max-width: 991px) {
+  #page-home-title-section{
+    padding-top: 34px;
+    padding-bottom: 30px;
+  }
+  #page-home-title{
+    text-align: left;
+    br{
+      display: none;
+    }
+  }
+}
+
+
 
 
 
@@ -32,7 +47,15 @@
 
 #page-home-masonry-section{
   padding-bottom: 115px;
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    padding-bottom: 45px;
+  }
+
 }
+
+
 #page-home-masonry-container{
   margin-left: -1 * @masonry-gutter / 2;
   margin-right: -1 * @masonry-gutter / 2;

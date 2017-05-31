@@ -1,0 +1,138 @@
+
+
+#mobile-header{
+  position: fixed;
+  z-index: 200000;
+  width: 100%;
+  height: @mobile-header-height;
+
+  
+
+  .mobile-header-bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: @mobile-header-height;
+    background: @off-white-1;
+
+    .box-shadow (1px, 1px, 4px, #e5e5e5);
+  }
+
+}
+
+
+#mobile-header-spacer{
+  height: @mobile-header-height;
+}
+
+
+#mobile-menu-btn-container{
+  margin-left: -10px;
+}
+#mobile-menu-btn{
+  display: block;
+  position: relative;
+
+  width: @mobile-header-height;
+  height: @mobile-header-height;
+
+  .line-01,
+  .line-02,
+  .line-03{
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 18px;
+    height: 1px;
+    background: @dark-grey;
+  }
+
+  .line-01{
+    top: 23px;
+  }
+  .line-02{
+    top: 29px;
+  }
+  .line-03{
+    top: 35px;
+  }
+}
+
+
+#mobile-header-logo-container{
+  padding-top: 21px;
+  text-align: center;
+}
+
+#mobile-header-logo{
+  .logo-mobile-header;
+  .display-inline-block;
+}
+
+
+#mobile-header-cart-container{
+
+  padding-top: 18px;
+  padding-right: 1px;
+
+  text-align: right;
+}
+
+
+#mobile-header-cart-btn{
+  position: relative;
+
+  .display-inline-block;
+  text-align: right;
+
+  cursor: pointer;
+
+
+  width: 30px;
+  height: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  &:before{
+    .fa;
+    // content: "\f07a"; // .fa-shopping-cart
+    content: "\f291"; // .fa-shopping-basket
+
+    font-size: 16px;
+    line-height: 20px;
+    color: @dark-grey;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+  }
+
+  .cart-btn-value{
+
+    .h4-style-light;
+    font-size: 12px;
+    line-height: 16px;
+    // text-align: center;
+    text-align: right;
+    color: @white;
+
+    position: absolute;
+    top: -7px;
+    right: 10px;
+    // right: -16px;
+    min-width: 20px;
+    height: 20px;
+
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+    .round(10px);
+    background: @off-black;
+
+  }
+}

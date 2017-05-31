@@ -19,11 +19,11 @@
 
   -->
 
-  <article id="page-shop-title-section" class="visible-md visible-lg">
+  <article id="page-shop-title-section">
     <div class="container-fluid has-breakpoint">
       <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-9">
+        <div class="col-md-3 col-sm-1 col-xs-0"></div>
+        <div class="col-md-9 col-sm-10 col-xs-12">
           <div id="page-shop-title">
             <h1>A beautiful selection of flavours to suit every mood. <br>We’ve got you covered from the true classics to bold delights! </h1>
           </div> <!-- page-shop-title -->
@@ -43,7 +43,7 @@
 
   -->
 
-  <article id="page-shop-product-section" class="visible-md visible-lg">
+  <article id="page-shop-product-section">
     <div class="container-fluid has-breakpoint">
       <div class="row">
         <div class="col-md-12">
@@ -54,7 +54,10 @@
               <div class="product-item-content manic-hover-item">
                 <a href="product-detail.php" class="product-item-image">
                   <div class="manic-image-container">
-                    <img src="" data-image-desktop="images_cms/shop/shop-product-kyo-breakfast.png">
+                    <img src="" 
+                      data-image-desktop="images_cms/shop/shop-product-kyo-breakfast.png"
+                      data-image-tablet="images_cms/shop/shop-product-kyo-breakfast.png"
+                      data-image-mobile="images_cms/shop/shop-product-kyo-breakfast.png">
                   </div>
                 </a>
                 <a href="product-detail.php" class="product-item-title">
@@ -74,7 +77,10 @@
               <div class="product-item-content manic-hover-item">
                 <a href="product-detail.php" class="product-item-image">
                   <div class="manic-image-container">
-                    <img src="" data-image-desktop="images_cms/shop/shop-product-ume-ume.png">
+                    <img src="" 
+                      data-image-desktop="images_cms/shop/shop-product-ume-ume.png"
+                      data-image-tablet="images_cms/shop/shop-product-ume-ume.png"
+                      data-image-mobile="images_cms/shop/shop-product-ume-ume.png">
                   </div>
                 </a>
                 <a href="product-detail.php" class="product-item-title">
@@ -94,7 +100,10 @@
               <div class="product-item-content manic-hover-item">
                 <a href="product-detail.php" class="product-item-image">
                   <div class="manic-image-container">
-                    <img src="" data-image-desktop="images_cms/shop/shop-product-momotaro.png">
+                    <img src="" 
+                      data-image-desktop="images_cms/shop/shop-product-momotaro.png"
+                      data-image-tablet="images_cms/shop/shop-product-momotaro.png"
+                      data-image-mobile="images_cms/shop/shop-product-momotaro.png">
                   </div>
                 </a>
                 <a href="product-detail.php" class="product-item-title">
@@ -114,7 +123,10 @@
               <div class="product-item-content manic-hover-item">
                 <a href="product-detail.php" class="product-item-image">
                   <div class="manic-image-container">
-                    <img src="" data-image-desktop="images_cms/shop/shop-product-xoxolat-hojicha.png">
+                    <img src="" 
+                      data-image-desktop="images_cms/shop/shop-product-xoxolat-hojicha.png"
+                      data-image-tablet="images_cms/shop/shop-product-xoxolat-hojicha.png"
+                      data-image-mobile="images_cms/shop/shop-product-xoxolat-hojicha.png">
                   </div>
                 </a>
                 <a href="product-detail.php" class="product-item-title">
@@ -134,7 +146,10 @@
               <div class="product-item-content manic-hover-item">
                 <a href="product-detail.php" class="product-item-image">
                   <div class="manic-image-container">
-                    <img src="" data-image-desktop="images_cms/shop/shop-product-koku-yuzu-kukicha.png">
+                    <img src="" 
+                      data-image-desktop="images_cms/shop/shop-product-koku-yuzu-kukicha.png"
+                      data-image-tablet="images_cms/shop/shop-product-koku-yuzu-kukicha.png"
+                      data-image-mobile="images_cms/shop/shop-product-koku-yuzu-kukicha.png">
                   </div>
                 </a>
                 <a href="product-detail.php" class="product-item-title">
@@ -154,7 +169,10 @@
               <div class="product-item-content manic-hover-item">
                 <a href="product-detail.php" class="product-item-image">
                   <div class="manic-image-container">
-                    <img src="" data-image-desktop="images_cms/shop/shop-product-milky-popcorn.png">
+                    <img src="" 
+                      data-image-desktop="images_cms/shop/shop-product-milky-popcorn.png"
+                      data-image-tablet="images_cms/shop/shop-product-milky-popcorn.png"
+                      data-image-mobile="images_cms/shop/shop-product-milky-popcorn.png">
                   </div>
                 </a>
                 <a href="product-detail.php" class="product-item-title">
@@ -174,7 +192,10 @@
               <div class="product-item-content manic-hover-item">
                 <a href="product-detail.php" class="product-item-image">
                   <div class="manic-image-container">
-                    <img src="" data-image-desktop="images_cms/shop/shop-product-melona-manpuku.png">
+                    <img src="" 
+                      data-image-desktop="images_cms/shop/shop-product-melona-manpuku.png"
+                      data-image-tablet="images_cms/shop/shop-product-melona-manpuku.png"
+                      data-image-mobile="images_cms/shop/shop-product-melona-manpuku.png">
                   </div>
                 </a>
                 <a href="product-detail.php" class="product-item-title">
@@ -194,7 +215,10 @@
               <div class="product-item-content manic-hover-item">
                 <a href="product-detail.php" class="product-item-image">
                   <div class="manic-image-container">
-                    <img src="" data-image-desktop="images_cms/shop/shop-product-earl-grey.png">
+                    <img src="" 
+                      data-image-desktop="images_cms/shop/shop-product-earl-grey.png"
+                      data-image-tablet="images_cms/shop/shop-product-earl-grey.png"
+                      data-image-mobile="images_cms/shop/shop-product-earl-grey.png">
                   </div>
                 </a>
                 <a href="product-detail.php" class="product-item-title">

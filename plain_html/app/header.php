@@ -74,33 +74,39 @@
   </header> <!-- desktop-header -->
 
   <header id="mobile-header" class="visible-sm visible-xs">
+
+    <div class="mobile-header-bg"></div>
+
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-xs-3">
 
-          <div id="mobile-header-content">
-            <div class="row">
-              <div class="col-xs-3">
-                <div id="mobile-header-logo-container">
-                  <a href="index.php" id="mobile-header-logo"></a>
-                </div>
-              </div>
-              <div class="col-xs-6">
-                <div id="mobile-header-title">
+          <div id="mobile-menu-btn-container">
+            <div id="mobile-menu-btn">
+              <span class="line-01"></span>
+              <span class="line-02"></span>
+              <span class="line-03"></span>
+            </div>
+          </div>
+          
+        </div>
+        <div class="col-xs-6">
 
-                </div>
-              </div>
-              <div class="col-xs-3">
-                <div id="mobile-header-cart-container">
-                  <div id="mobile-header-cart-btn">
-                    <span class="cart-btn-value">222</span>
-                  </div>
-                </div>
-              </div>
-            </div> <!-- row -->
-          </div> <!-- mobile-header-content -->
+          <div id="mobile-header-logo-container">
+            <a href="index.php" id="mobile-header-logo"></a>
+          </div>
 
-        </div> <!-- col-md-12 -->
+        </div>
+        <div class="col-xs-3">
+
+          <div id="mobile-header-cart-container">
+            <div id="mobile-header-cart-btn">
+              <span class="cart-btn-value">222</span>
+            </div>
+          </div>
+
+        </div>
+
       </div> <!-- row -->
     </div> <!-- container-fluid -->
   </header> <!-- mobile-header -->
@@ -108,7 +114,7 @@
   <div id="page-wrapper">
     <div id="page-wrapper-content">
 
-      <div id="desktop-header-spacer"></div>
-      <div id="mobile-header-spacer"></div>
+      <div id="desktop-header-spacer" class="visible-md visible-lg"></div>
+      <div id="mobile-header-spacer" class="visible-sm visible-xs"></div>
 
       <!-- inside #page-wrapper-content -->

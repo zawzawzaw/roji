@@ -14,6 +14,21 @@
   text-align: right;
 }
 
+// TABLET PORTRAIT
+@media only screen and (max-width: 991px) {
+  #page-checkout-title-section{
+    padding-top: 34px;
+    padding-bottom: 34px;
+  }
+  #page-checkout-title{
+    text-align: left;
+    br{
+      display: none;
+    }
+  }
+}
+
+
 
 //    ____ ___ ____  _____ ____    _    ____
 //   / ___|_ _|  _ \| ____| __ )  / \  |  _ \
@@ -89,6 +104,27 @@
     } // ul
   } // nav
 
+}
+
+
+// MOBILE
+
+#page-checkout-sidebar-section-mobile{
+  background: @off-white-2;
+
+  padding-top: 13px;
+  padding-bottom: 12px;
+}
+
+#page-checkout-sidebar-mobile{
+  
+  // text-align: center;
+
+  p{
+    .h4-style;
+    color: @dark-grey-2;
+
+  }
 }
 
 
@@ -276,6 +312,14 @@
 
 
 
+
+//     ____    _    ____ _____   ___ _____ _____ __  __
+//    / ___|  / \  |  _ \_   _| |_ _|_   _| ____|  \/  |
+//   | |     / _ \ | |_) || |    | |  | | |  _| | |\/| |
+//   | |___ / ___ \|  _ < | |    | |  | | | |___| |  | |
+//    \____/_/   \_\_| \_\|_|   |___| |_| |_____|_|  |_|
+//
+
 .page-checkout-cart-table-item{
   position: relative;
 
@@ -366,6 +410,10 @@
 
     margin-left: auto;
     margin-right: auto;
+
+    h4{
+      display: none;
+    }
     
 
     .form-quantity{
@@ -397,13 +445,95 @@
   }
 
 
+  .page-checkout-cart-table-item-desc-mobile{
+    position: relative;
+
+  }
+
 
   // TABLET PORTRAIT
   @media only screen and (max-width: 991px) {
+
+    padding-top: 27px;
+    padding-bottom: 29px;
+
+
     .forced-move-left{
       left: 0px;
+    } 
+
+
+    .cart-item-quantity-container{
+      text-align: left;
+      padding-top: 17px;
+
+      h4{
+        display: block;
+        margin-bottom: 3px;
+      }
     }
-  }
+
+
+    .cart-item-image{
+      position: relative;
+      top: -4px;
+
+      .manic-image-container{
+        height: 140px;
+      }
+
+    }
+    .cart-item-description{
+      text-align: left;
+
+      padding-top: 0px;
+      padding-left: 0px;
+
+      h3{
+        font-size: 11px;
+        line-height: 18px;
+      }
+      h2 + h3{
+        margin-top: 1px;
+      }
+    }
+    .cart-item-value{
+      font-size: 12px;
+      line-height: 18px;
+      text-align: left;
+
+      padding-top: 4px;
+    }
+
+    .page-checkout-cart-table-item-desc-mobile{
+
+      .cart-item-description{
+
+      }
+      .cart-item-close-btn{
+        position: absolute;
+        top: 2px;
+        right: 5px;
+      }
+    }
+
+
+  } // TABLET PORTRAIT
+
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+    .cart-item-image{
+      margin-left: -5px;
+    }
+  } // MOBILE
+
+  // MOBILE
+  @media only screen and (max-width: 320px) {
+    .cart-item-image{
+      margin-left: -5px;
+      margin-right: -5px;
+    }
+  } // MOBILE
 
 } // .page-checkout-cart-table-item
 

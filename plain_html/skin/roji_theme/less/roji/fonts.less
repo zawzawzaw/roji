@@ -154,6 +154,12 @@
 }
 
 
+
+
+
+
+
+
 .h1-style{
   .raleway-light;
   font-size: 22px;
@@ -167,12 +173,39 @@
   letter-spacing: 0.075em;
 }
 
+.h1-style-mobile{
+  .raleway-light;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.075em;
+}
+.h1-style-bold-mobile{
+  .raleway-semibold;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.075em;
+}
+
+
+
+
+
+
+
 .h2-style{
   .raleway-semibold;
   font-size: 16px;
   line-height: 24px;
   letter-spacing: 0.075em;
 }
+.h2-style-mobile{
+  .raleway-semibold;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0.075em;
+}
+
+
 
 .h3-style{
   .noto-sans-light;
@@ -286,6 +319,21 @@ p{
     .body-font-italic;
   }
 }
+
+
+// TABLET PORTRAIT
+@media only screen and (max-width: 991px) {
+  h1{
+    .h1-style-mobile;
+    strong{
+      .h1-style-bold-mobile;
+    }
+  }
+  h2{
+    .h2-style-mobile;
+  }
+}
+
 
 
 //    ____  _____ _____ _   _   _ _   _____    ____ ___  ______   __

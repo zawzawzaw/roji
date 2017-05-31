@@ -38,6 +38,15 @@
   </footer>
 
   <footer id="mobile-footer" class="visible-sm visible-xs">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12">
+          <div id="mobile-footer-copyright">
+            <p>Roji by gryphon tea company &copy; 2017</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </footer>
 
 

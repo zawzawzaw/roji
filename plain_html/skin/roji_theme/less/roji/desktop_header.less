@@ -3,6 +3,11 @@
 #desktop-header{
   padding-top: 80px;
   height: 145px;
+
+  @media only screen and (max-width: 1199px) {
+    padding-top: 80px - 35px;
+    height: 145px - 35px;
+  }
 }
 
 
@@ -68,6 +73,13 @@
 
 
   }
+
+
+  @media only screen and (max-width: 1199px) {
+    right: 0px;
+    left: auto;
+  }
+
 }
 
 
@@ -180,10 +192,10 @@
   margin-right: 59px;
 
   @media only screen and (max-width: 1299px) {
-    margin-right: 50px;
+    margin-right: 45px;
   }
   @media only screen and (max-width: 1199px) {
-    margin-right: 40px;
+    margin-right: 35px;
   }
 
   &:last-child{

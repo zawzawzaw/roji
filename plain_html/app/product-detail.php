@@ -10,6 +10,17 @@
 <body>
   <?php include "header.php"; ?>
 
+
+  <!--
+     ____  _____ ____  _  _______ ___  ____
+    |  _ \| ____/ ___|| |/ /_   _/ _ \|  _ \
+    | | | |  _| \___ \| ' /  | || | | | |_) |
+    | |_| | |___ ___) | . \  | || |_| |  __/
+    |____/|_____|____/|_|\_\ |_| \___/|_|
+
+  -->
+
+
   <article id="page-product-detail-content-section" class="visible-md visible-lg">
     <div class="container-fluid has-breakpoint">
 
@@ -224,7 +235,6 @@
     </div> <!-- container-fluid -->
   </article> <!-- page-product-detail-content-section -->
 
-
   <!--
      _____ ___   ___ _____ _____ ____
     |  ___/ _ \ / _ \_   _| ____|  _ \
@@ -257,6 +267,182 @@
       </div>
     </div>
   </article>
+
+
+
+  <!--
+     __  __  ___  ____ ___ _     _____
+    |  \/  |/ _ \| __ )_ _| |   | ____|
+    | |\/| | | | |  _ \| || |   |  _|
+    | |  | | |_| | |_) | || |___| |___
+    |_|  |_|\___/|____/___|_____|_____|
+
+  -->
+
+  <article id="page-product-detail-banner-section-mobile" class="visible-sm visible-xs">
+
+    <div id="page-product-detail-banner-mobile">
+      <div class="manic-image-container">
+        <img src="" 
+          data-image-tablet="images_cms/product-detail/product-detail-banner-tablet.jpg"
+          data-image-mobile="images_cms/product-detail/product-detail-banner-mobile.jpg">
+      </div>
+    </div> <!-- page-product-detail-banner -->
+
+  </article> <!-- page-product-detail-banner-section-mobile -->
+
+  
+
+  <article id="page-product-detail-content-section-mobile" class="visible-sm visible-xs">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-0 col-sm-2"></div>
+        <div class="col-xs-12 col-sm-8">
+
+          <div id="page-product-detail-content-mobile">
+
+            <div class="copy-title">
+              <h1>Momotaro</h1>
+              <h3><strong>ももたろう</strong></h3>
+            </div>
+
+            <div class="copy-price red-version">
+              <ul>
+                <li>$16.90</li>
+                <li>16 sachets</li>
+                <li>30 g</li>
+              </ul>
+            </div>
+
+            <div id="page-product-detail-closeup-mobile">
+              <div class="manic-image-container">
+                <img src="" 
+                  data-image-tablet="images_cms/product-detail/product-detail-closeup-tablet.jpg"
+                  data-image-mobile="images_cms/product-detail/product-detail-closeup-mobile.jpg">
+              </div>
+            </div>
+
+            <div class="copy-desc">
+              <p>Japanese Sencha with White Peach</p>
+            </div> <!-- copy-desc -->
+
+            <div class="detail-item-container">
+              <div class="detail-item">
+                <h4>Ingredients</h4>
+                <p>Green Tea, Dried Peach, Peach Blossoms, Natural flavourings</p>
+              </div>
+            </div>
+
+            <div id="page-product-detail-form-mobile">
+
+              <div class="form-quantity-container">
+                <h4>Quantity</h4>
+
+                <div class="form-quantity">
+                  <a href="javascript:void(0);" class="form-quantity-minus-btn"></a>
+                  <input type="text" id="" name="" class="form-quantity-input-txt" value="2">
+                  <a href="javascript:void(0);" class="form-quantity-plus-btn"></a>
+                </div>
+              </div> <!-- form-quantity-container -->
+
+              <div class="cta-container">
+                <a href="javascript:void(0);" class="square-cta full-width-version">Add to Cart</a>
+              </div>
+
+            </div> <!-- page-product-detail-form-mobile -->
+
+          </div> <!-- page-product-detail-content-mobile -->
+
+        </div>
+      </div>
+    </div>
+  </article> <!-- page-product-detail-content-section-mobile -->
+
+  <article id="page-product-detail-expanding-section-mobile" class="visible-sm visible-xs">
+
+    <div class="manic-expand-container" data-group="mobile-product-detail">
+      <div class="manic-expand-container-title">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-0 col-sm-2"></div>
+            <div class="col-xs-12 col-sm-8">
+              <h4>Product Details</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="manic-expand-container-btn"></div>
+      <div class="manic-expand-container-content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-0 col-sm-2"></div>
+            <div class="col-xs-12 col-sm-8">
+
+              <div class="detail-item-container">
+                <div class="detail-item">
+                  <h4>Tea Type:</h4>
+                  <p>Sencha</p>
+                </div>
+                <div class="detail-item">
+                  <h4>Origin:</h4>
+                  <p>Kagoshima Prefecture</p>
+                </div>
+                <div class="detail-item">
+                  <h4>Harvest period:</h4>
+                  <p>Spring</p>
+                </div>
+                <div class="detail-item">
+                  <h4>Tea Maker’s Note:</h4>
+                  <p>Delicate, floral sweet aroma of white peach brings harmony to a smooth finish.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="manic-expand-container" data-group="mobile-product-detail">
+      <div class="manic-expand-container-title">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-0 col-sm-2"></div>
+            <div class="col-xs-12 col-sm-8">
+              <h4>Brewing Instructions</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="manic-expand-container-btn"></div>
+      <div class="manic-expand-container-content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-0 col-sm-2"></div>
+            <div class="col-xs-12 col-sm-8">
+
+              <div class="detail-icon-container">
+                <div class="detail-icon">
+                  <div class="detail-icon-image icon-teapot"></div>
+                  <p>&lt; 80°C</p>
+                </div>
+                <div class="detail-icon">
+                  <div class="detail-icon-image icon-clock"></div>
+                  <p>2 mins</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </article> <!-- page-product-detail-expanding-section-mobile -->
+
+
+  
 
   
 

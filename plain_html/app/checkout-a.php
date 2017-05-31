@@ -20,12 +20,11 @@
   -->
 
 
-  <article id="page-checkout-title-section" class="visible-md visible-lg">
+  <article id="page-checkout-title-section">
     <div class="container-fluid has-breakpoint">
       <div class="row">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-9">
+        <div class="col-md-3 col-tablet-landscape-2 col-sm-1 col-xs-0"></div>
+        <div class="col-md-9 col-tablet-landscape-10 col-sm-10 col-xs-12">
           <div id="page-checkout-title">
             <h1>You have <strong>3</strong> items in your cart.</h1>
           </div>
@@ -43,17 +42,33 @@
 
   -->
 
-  <form class="checkout-form">
-    <article id="page-checkout-content-section" class="visible-md visible-lg">
+  <article id="page-checkout-sidebar-section-mobile" class="visible-sm visible-xs">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-10 col-sm-push-1 col-xs-12">
 
-      <div id="page-checkout-content-section-bg">
+          <div id="page-checkout-sidebar-mobile">
+            <p>1. Your Cart</p>
+          </div> <!-- page-checkout-sidebar-mobile -->
+
+        </div>
+      </div>
+    </div>
+  </article> <!-- page-checkout-sidebar-section-mobile -->
+  
+
+
+  <form class="checkout-form">
+    <article id="page-checkout-content-section">
+
+      <div id="page-checkout-content-section-bg" class="visible-md visible-lg">
         <div class="sidebar-bg"></div>
         <div class="content-bg"></div>
       </div>
 
       <div class="container-fluid has-breakpoint">
         <div class="row">
-          <div class="col-md-2 col-tablet-landscape-1">
+          <div class="col-md-2 col-tablet-landscape-1 hidden-sm hidden-xs">
 
             <!--
                ____ ___ ____  _____ ____    _    ____
@@ -78,9 +93,10 @@
             </div> <!-- page-checkout-sidebar -->
 
 
-
           </div> <!-- col-md-2 -->
-          <div class="col-md-10 col-tablet-landscape-11">
+          
+          <div class="col-md-0 col-tablet-landscape-0 col-sm-1 col-xs-0"></div>
+          <div class="col-md-10 col-tablet-landscape-11 col-sm-10 col-xs-12">
 
 
             <!--
@@ -112,7 +128,7 @@
 
                   <div id="page-checkout-cart-table">
 
-                    <div id="page-checkout-cart-table-header">
+                    <div id="page-checkout-cart-table-header" class="visible-md visible-lg">
                       <div class="row">
                         <div class="col-md-2">
                           <h4 class="left-aligned">Product</h4>
@@ -151,7 +167,7 @@
 
                       <div class="page-checkout-cart-table-item">
                         <div class="row">
-                          <div class="col-md-2">
+                          <div class="col-md-2 col-sm-4 col-xs-5">
 
                             <a href="product-detail.php" title="Momotaro" class="cart-item-image">
                               <div class="manic-image-container" data-scale-mode="show_all" data-horizontal-align="left">
@@ -163,7 +179,7 @@
                             </a>
 
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-4 hidden-sm hidden-xs">
 
                             <div class="cart-item-description">
                               <h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2>
@@ -172,17 +188,33 @@
                             </div>
 
                           </div>
-                          <div class="col-md-2">
+                          <div class="col-md-2 hidden-sm hidden-xs">
 
                             <div class="forced-move-left">
                               <div class="cart-item-value">$16.90</div>
                             </div>
 
                           </div>
-                          <div class="col-md-2">
+                          <div class="col-md-2 col-sm-8 col-xs-7">
+
+
+                            <div class="page-checkout-cart-table-item-desc-mobile visible-sm visible-xs">
+
+                              <div class="cart-item-description">
+                                <h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2>
+                                <h3>ももたろう</h3>
+                              </div>
+
+                              <div class="cart-item-value">$16.90</div>
+
+                              <a href="javascript:void(0);" class="cart-item-close-btn close-btn"></a>
+
+                            </div> <!-- page-checkout-cart-table-item-desc-mobile -->
 
                             <div class="forced-move-left">
                               <div class="cart-item-quantity-container">
+
+                                <h4>Quantity:</h4>
 
                                 <div class="form-quantity">
                                   <a href="javascript:void(0);" class="form-quantity-minus-btn"></a>
@@ -194,7 +226,7 @@
                             </div>
 
                           </div>
-                          <div class="col-md-2">
+                          <div class="col-md-2 hidden-sm hidden-xs">
 
                             <div class="forced-move-left">
                               <div class="cart-item-value-and-button">
@@ -205,8 +237,8 @@
 
                           </div>
                           
-                        </div>
-                      </div>
+                        </div> <!-- row -->
+                      </div> <!-- page-checkout-cart-table-item -->
 
                       <!--
                           ___ ____
