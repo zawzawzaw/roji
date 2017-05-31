@@ -265,6 +265,7 @@
   padding-top: 20px;
   // padding-right: 1px;
   margin-right: -10px;
+  position: relative;
 
 } // #desktop-header-cart-menu
 
@@ -341,5 +342,103 @@
 
 
 #desktop-header-cart-expand-container{
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  min-width: 255px;
+  z-index: 10;
+  padding: 20px;
+  .box-shadow (1px, 1px, 4px, #e5e5e5);
+  text-align: left;
+  background: @white;
+  display: none;
+
+  &.stick {
+    position: fixed;
+    top: 20px;
+    right: 60px;
+  }
+
+  .manic-image-container {
+    width: 50px;
+    height: 60px;
+    img {
+      width: 100%;
+    }
+  }
+
+  h4.desktop-header-cart-expand-title {
+    color: @off-black;
+  }
+
+  ul.desktop-header-cart-expand-content {
+    display: block;
+    padding-bottom: 15px;
+    &:before {
+      content: "";
+      display: block;
+      border-top: 1px solid @border-grey;
+      padding-top: 15px;      
+    }
+    li {
+      display: inline-block;
+      vertical-align: top;
+      font-size: 0px;
+      &:first-child {
+        width: 30%;
+      }
+      &:nth-of-type(2) {
+        width: 60%;
+      }
+      &:nth-of-type(3) {
+        width: 10%;
+      }
+      &.empty-cart {
+        width: 100%;
+      }
+    }
+  }
+
+  p {
+    .raleway-regular;
+    font-size: 11px;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+    color: @dark-grey;
+  }
+
+  h4.desktop-header-cart-expand-title {    
+  }
+
+  h4.sub-total, h4.sub-total-amount {
+    color: @dark-grey;
+  }
+
+  ul.desktop-header-cart-expand-summary {
+    padding-bottom: 20px;
+    &:before {
+      content: "";
+      display: block;
+      border-top: 1px solid @border-grey;
+      padding-top: 15px;      
+    }
+
+    li {
+      display: inline-block;
+      width: 50%;
+      font-size: 0px;
+      &:nth-of-type(2) {
+        text-align: right;
+      }
+    }
+  }
+
+  .desktop-header-cart-expand-cta-btn {
+    a.shopping-cart {
+      button {
+        width: 100%;  
+      }      
+    }
+  }
 
 } // #desktop-header-cart-expand-container

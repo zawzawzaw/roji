@@ -98,7 +98,7 @@
                   <?php echo $this->getPriceHtml($_product, true) ?>
                 </div>
                 <div class="product-item-cta">
-                  <a href="javascript:void(0);" class="plus-cta">Add to cart</a>
+                  <a href="<?php echo $this->getAddToCartUrl($_product) ?>" class="add-to-cart-links plus-cta">Add to cart</a>
                 </div>
             </div>
         </div>

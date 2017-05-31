@@ -20,12 +20,11 @@ roji.component.DesktopHeader = function(options, element) {
   //goog.events.EventTarget.call(this, options, element);
   //this.options = $j.extend(this.options, roji.component.DesktopHeader.DEFAULT, options);
   
+  window.header_cart_is_open = false;
 
+  this.sticky_header_cart();  
 
-
-
-  
-
+  this.element.find("#desktop-header-cart-btn").click(this.on_desktop_header_cart_btn_click.bind(this));  
 
   console.log('roji.component.DesktopHeader: init');
 };
@@ -80,9 +79,25 @@ roji.component.DesktopHeader.prototype.private_method_06 = function() {};
 //
 
 
-roji.component.DesktopHeader.prototype.public_method_01 = function() {};
-roji.component.DesktopHeader.prototype.public_method_02 = function() {};
-roji.component.DesktopHeader.prototype.public_method_03 = function() {};
+roji.component.DesktopHeader.prototype.sticky_header_cart = function() {
+  if(this.controller==null){
+    this.controller = new ScrollMagic.Controller(); // needed by some components
+  }
+  this.sticky_sidebar_scence = new ScrollMagic.Scene({triggerElement: "#desktop-header-cart-menu", triggerHook: 'onLeave', offset: 60 }) //offset: $('#sticky-sidebar').height()
+    .setClassToggle("#desktop-header-cart-expand-container", "stick") // add class toggle
+    // .setPin("#sticky-sidebar")
+    // .addIndicators({name: ("" + Math.random()) }) // add indicators (requires plugin)
+    .addTo(this.controller);
+
+};
+roji.component.DesktopHeader.prototype.open_header_cart = function() {
+  window.header_cart_is_open = true;
+  this.element.find("#desktop-header-cart-expand-container").slideDown(300);
+};
+roji.component.DesktopHeader.prototype.close_header_cart = function() {
+  window.header_cart_is_open = false;
+  this.element.find("#desktop-header-cart-expand-container").slideUp(300);
+};
 roji.component.DesktopHeader.prototype.public_method_04 = function() {};
 roji.component.DesktopHeader.prototype.public_method_05 = function() {};
 roji.component.DesktopHeader.prototype.public_method_06 = function() {};
@@ -98,7 +113,12 @@ roji.component.DesktopHeader.prototype.public_method_06 = function() {};
 /**
  * @param {object} event
  */
-roji.component.DesktopHeader.prototype.on_event_handler_01 = function(event) {
+roji.component.DesktopHeader.prototype.on_desktop_header_cart_btn_click = function(event) {
+  if(window.header_cart_is_open==false) {
+    this.open_header_cart();
+  }else {
+    this.close_header_cart();
+  }
 };
 
 /**

@@ -115,8 +115,26 @@ roji.page.Default = function(options, element) {
       $j("#page-product-detail-form").find('.form-total-value').html(currency_symbol + total_price.toFixed(2));
     }
 
-  })
+  });
 
+  $j(".add-to-cart-links").click(this.on_add_to_cart_link_click.bind(this));
+
+  $j("#desktop-header-cart-expand-container").on("click", '.remove-item', function(e){
+      e.preventDefault();
+      var item_id = $j(e.currentTarget).data("item-id");
+
+      var request = $j.ajax({
+          url: "/discovertea/index/deletecartitem",
+          method: "POST",
+          data: { item_id : item_id },
+          dataType: "html"
+      });
+
+      request.done(function() {
+          this.update_header_cart();
+      }.bind(this));
+      
+  }.bind(this));
 
   console.log('roji.page.Default: init');
 };
@@ -237,6 +255,71 @@ roji.page.Default.prototype.on_scroll_to_no_target = function() {
   
 }
 
+roji.page.Default.prototype.update_header_cart = function() {
 
+  $j("#desktop-header-cart-menu").find(".cart-btn-value").removeClass('animated fadeIn').addClass('animated flipOutX');
+
+  $j.ajax({
+      url: '/discovertea/index/cartpreview',
+      dataType: 'json',
+      type : 'get',
+      success: function(data){
+
+          // update product count in cart
+          $j("#desktop-header-cart-menu").find(".cart-btn-value").text(data.cart_qty);
+          // $j("#mobile-header-cart-btn-container").find(".count").text(data.cart_qty);
+
+          $j("#desktop-header-cart-menu").find(".cart-btn-value").removeClass('animated flipOutX').addClass('animated fadeIn');
+
+          $j('.desktop-header-cart-expand').html('');
+
+          if(data.cart_qty > 0) {
+
+              $j.each(data.cart_items, function(key,value){
+
+                  $j('.desktop-header-cart-expand').append('<ul class="desktop-header-cart-expand-content"><li><div class="manic-image-container"><img src="'+value.image+'" alt=""></div></li><li><p>'+value.qty+' x</p><p>'+value.name+'</p><p>'+value.name_in_color+'</p><p>'+value.row_price+'</p></li><li><a href="#" title="Remove item" data-item-id="'+value.id+'" class="close-btn remove-item"></a></li></ul>');
+
+              });                    
+
+          } else {
+
+              $j('.desktop-header-cart-expand').append('<ul class="desktop-header-cart-expand-content"><li class="empty-cart"><p>Your cart is empty.</p></li></ul>');
+
+          }       
+
+          $j('.desktop-header-cart-expand-summary').find('.sub-total-amount').html(data.cart_total);
+
+          $j('#desktop-header-cart-expand-container').slideDown(300);
+          window.header_cart_is_open = true;
+          $j('#desktop-header-cart-expand-container').delay(5000).slideUp(300);
+
+          setTimeout(function() {
+            window.header_cart_is_open = false;
+          }, 5000);
+
+          // var mobile_header = $j("#main-mobile-header").data('gryphon_mobile_header');
+          // mobile_header.public_open_cart();
+          //$j('#mobile-cart-expand-container').show();
+          
+
+          // $j('.mobile-cart-button').find('span').html(data.cart_qty);
+          // $j('.cart-summary-data').find('.price').html(data.cart_total);
+          // $j('.cart-summary-data').find('.count').html(data.cart_qty);
+          // $j('.cart-summary-data span').html('<span class="price">'+data.cart_total+'</span> (<span class="count">'+data.cart_qty+'</span>)');                            
+      }
+  });                     
+}
+
+
+roji.page.Default.prototype.on_add_to_cart_link_click = function(event){
+    event.preventDefault();
+
+    var add_to_cart_url = $j(event.currentTarget).attr("href");
+
+    $j.get( add_to_cart_url, function( data ) {
+       this.update_header_cart();
+    }.bind(this));         
+    
+}
 
 
