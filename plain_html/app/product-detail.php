@@ -261,6 +261,7 @@
   
 
   <?php include "footer.php"; ?>
+  <?php include "mailing-list.php"; ?>
   <?php include "script.php" ?>
 </body>
 </html>

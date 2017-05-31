@@ -939,6 +939,7 @@
 //
 
 @container-fluid-padding: 60px;
+@container-fluid-padding-tablet-landscape: 30px;
 @container-fluid-padding-mobile: 20px;
 
 .container-fluid{
@@ -958,3 +959,88 @@
     padding-right: @container-fluid-padding-mobile;
   }
 }
+
+
+
+
+
+//    _____  _    ____  _     _____ _____
+//   |_   _|/ \  | __ )| |   | ____|_   _|
+//     | | / _ \ |  _ \| |   |  _|   | |
+//     | |/ ___ \| |_) | |___| |___  | |
+//     |_/_/   \_\____/|_____|_____| |_|
+//
+
+
+
+
+.col-tablet-landscape-1,
+.col-tablet-landscape-2,
+.col-tablet-landscape-3,
+.col-tablet-landscape-4,
+.col-tablet-landscape-5,
+.col-tablet-landscape-6,
+.col-tablet-landscape-7,
+.col-tablet-landscape-8,
+.col-tablet-landscape-9,
+.col-tablet-landscape-10,
+.col-tablet-landscape-11,
+.col-tablet-landscape-12{
+  position: relative;
+  min-height: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  float: left;
+}
+
+
+
+
+@media only screen and (max-width: 1024px) and (min-width: 992px) {
+
+  .container-fluid{
+    padding-left: @container-fluid-padding-tablet-landscape;
+    padding-right: @container-fluid-padding-tablet-landscape;
+  }
+  
+
+  .col-tablet-landscape-12 {
+    width: 100%;
+  }
+  .col-tablet-landscape-11 {
+    width: 91.66666667%;
+  }
+  .col-tablet-landscape-10 {
+    width: 83.33333333%;
+  }
+  .col-tablet-landscape-9 {
+    width: 75%;
+  }
+  .col-tablet-landscape-8 {
+    width: 66.66666667%;
+  }
+  .col-tablet-landscape-7 {
+    width: 58.33333333%;
+  }
+  .col-tablet-landscape-6 {
+    width: 50%;
+  }
+  .col-tablet-landscape-5 {
+    width: 41.66666667%;
+  }
+  .col-tablet-landscape-4 {
+    width: 33.33333333%;
+  }
+  .col-tablet-landscape-3 {
+    width: 25%;
+  }
+  .col-tablet-landscape-2 {
+    width: 16.66666667%;
+  }
+  .col-tablet-landscape-1 {
+    width: 8.33333333%;
+  }
+}
+
+

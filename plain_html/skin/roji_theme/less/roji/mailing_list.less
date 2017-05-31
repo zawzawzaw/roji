@@ -119,59 +119,11 @@
   
   cursor: pointer;
 
-  position: absolute;
+  position: absolute !important;
   top: 15px;
   right: 15px;
 
-  width: 23px;
-  height: 23px;
-
-  border: 1px solid @dark-grey;
-  .transition-in-single(border-color, 0.15s);
-
-  .round(15px);
-
-  &:before{
-    .icon-close;
-
-    content: '';
-    display: block;
-    position: absolute;
-    top: -1px;
-    left: -1px;
-
-    .opacity(1);
-    .transition-in(0.15s);
-  }
-  &:after{
-    .icon-close-off-black;
-
-    content: '';
-    display: block;
-    position: absolute;
-    top: -1px;
-    left: -1px;
-
-    .opacity(0);
-    .transition-in(0.15s);
-  }
-
-  &:hover,
-  &:focus{
-
-    border-color: @off-black;
-    .transition-in-single(border-color, 0.2s, cubic-bezier(0.7,0,0.3,1), 0.05s);
-    
-    &:before{
-      .opacity(0);
-      .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.05s);
-    }
-    &:after{
-      .opacity(1);
-      .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.05s);
-    }
-
-  }
+  
 
 } // #mailing-list-close-btn
 
