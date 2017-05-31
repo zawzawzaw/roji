@@ -51,94 +51,159 @@
                              ->addAttributeToFilter('status', 1) // enabled
                              ->addAttributeToFilter('visibility', 4) //visibility in catalog,search
                              ->addAttributeToSort('position', Varien_Data_Collection::SORT_ORDER_ASC);
-        $_helper = $this->helper('catalog/output');    
-
-    function isMobile()  
-    {  
-        $regex_match = "/(nokia|iphone|android|motorola|^mot\-|softbank|foma|docomo|kddi|up\.browser|up\.link|"  
-                     . "htc|dopod|blazer|netfront|helio|hosin|huawei|novarra|CoolPad|webos|techfaith|palmsource|"  
-                     . "blackberry|alcatel|amoi|ktouch|nexian|samsung|^sam\-|s[cg]h|^lge|ericsson|philips|sagem|wellcom|bunjalloo|maui|"  
-                     . "symbian|smartphone|mmp|midp|wap|phone|windows ce|iemobile|^spice|^bird|^zte\-|longcos|pantech|gionee|^sie\-|portalmmm|"  
-                     . "jig\s browser|hiptop|^ucweb|^benq|haier|^lct|opera\s*mobi|opera\*mini|320x320|240x320|176x220"  
-                     . ")/i";  
-
-        if (preg_match($regex_match, strtolower($_SERVER['HTTP_USER_AGENT']))) {  
-            return TRUE;  
-        }  
-
-        if ((strpos(strtolower($_SERVER['HTTP_ACCEPT']),'application/vnd.wap.xhtml+xml') > 0) or ((isset($_SERVER['HTTP_X_WAP_PROFILE']) or isset($_SERVER['HTTP_PROFILE'])))) {  
-            return TRUE;  
-        }      
-
-        $mobile_ua = strtolower(substr($_SERVER['HTTP_USER_AGENT'], 0, 4));  
-        $mobile_agents = array(  
-            'w3c ','acs-','alav','alca','amoi','audi','avan','benq','bird','blac',  
-            'blaz','brew','cell','cldc','cmd-','dang','doco','eric','hipt','inno',  
-            'ipaq','java','jigs','kddi','keji','leno','lg-c','lg-d','lg-g','lge-',  
-            'maui','maxo','midp','mits','mmef','mobi','mot-','moto','mwbp','nec-',  
-            'newt','noki','oper','palm','pana','pant','phil','play','port','prox',  
-            'qwap','sage','sams','sany','sch-','sec-','send','seri','sgh-','shar',  
-            'sie-','siem','smal','smar','sony','sph-','symb','t-mo','teli','tim-',  
-            'tosh','tsm-','upg1','upsi','vk-v','voda','wap-','wapa','wapi','wapp',  
-            'wapr','webc','winw','winw','xda ','xda-');  
-
-        if (in_array($mobile_ua,$mobile_agents)) {  
-            return TRUE;  
-        }  
-
-        if (isset($_SERVER['ALL_HTTP']) && strpos(strtolower($_SERVER['ALL_HTTP']),'OperaMini') > 0) {  
-            return TRUE;  
-        }  
-
-        return FALSE;  
-    }  
+        $_helper = $this->helper('catalog/output');        
 ?>
-<div id="home-tea-item-container">
+<div id="page-home-masonry">
     <?php $count = 0; ?>
     <?php foreach ($_productCollection as $key => $_product):    
         $_imgSize = 300;
         $_imgSize2x = 600;
         $categoryIds = $_product->getCategoryIds();
 
-        $color_arr = ["#eebec7", "#abc6ca", "#a1b2ca", "#d9d1c3", "#c7b4e3", "#f0a693", "#beced6", "#fed198", "#c2cb7e", "#f9a960", "#fa91a2", "#bac4b8"];        
+        $color_arr = ["blue", "yellow", "violet", "red", "brown", "green", "orange", "grey"];        
 
         $product_name = $_product->getName();
 
         $product_name = strtolower($product_name);
         $product_name = str_replace(" ", "-", $product_name);
+
+        if($count > 7) $count = 0;
     ?>
-    <div class="home-tea-item" data-id="<?php echo $product_name; ?>">
-        <div class="home-tea-item-bg" style="background-color: <?php echo $color_arr[$count]; ?>;"></div>
-        <div class="home-tea-item-text">
-            <?php if(!empty($_product->getData('product_name_in_color'))): ?>
-            <h2><?php echo $_product->getData('product_name_in_color') ?></h2>
-            <?php else: ?>
-            <h2><?php echo $_product->getName(); ?></h2>
-            <?php endif; ?>
-            <?php 
-            if(count($categoryIds) ){
-                foreach ($categoryIds as $key => $categoryId) {
-                    $_category = Mage::getModel('catalog/category')->load($categoryId);
-                    $parent_category = Mage::getModel('catalog/category')->load($categoryId)->getParentCategory();                                                        
-                    if($parent_category->getId()==5) { ?>
-                        <h5><?php echo $_category->getName(); ?></h5>                        
-            <?php   }
-                }
-            }
-            ?>
-            
-            <p><?php echo $_product->getShortDescription(); ?></p>
-            <div class="cta-container">
+    <div class="page-home-masonry-tile page-home-tea-tile <?php echo $color_arr[$count]; ?>-version manic-hover-item">
+        <div class="tile-content">    
+            <div class="tile-center-container">
+                <div class="tile-center-content">                                        
+                    <h2><?php echo $_product->getName(); ?></h2>
+                    <h3><strong><?php echo $_product->getData('product_name_in_color') ?></h3>
+                    <?php
+                    if(count($categoryIds) ){
+                        foreach ($categoryIds as $key => $categoryId) {
+                            $_category = Mage::getModel('catalog/category')->load($categoryId);
+                            $parent_category = Mage::getModel('catalog/category')->load($categoryId)->getParentCategory();                                                        
+                            if($parent_category->getId()==5) { ?>
+                                <!-- <h3><strong><?php echo $_category->getName(); ?></strong></h3> -->
+                    <?php   }
+                        }
+                    }
+                    ?>
+                    <div class="tile-desc">
+                        <?php echo $_product->getShortDescription(); ?>
+                    </div>
+                    <div class="tile-price">
+                        <?php echo Mage::helper('core')->currency($_product->getPrice(), true, false); ?>
+                    </div>                 
+                </div>                  
+            </div>
+            <div class="tile-cta">                
                 <?php if($groupname!=='Trader-Temp' && $groupname!=='Trader-Regular' && $groupname!=='Trader-Priority' && $groupname!=='Trader-Premium'): ?>
-                <a id="add-to-cart-<?php echo $product_name; ?>" href="<?php echo $this->getAddToCartUrl($_product) ?>" class="home-page-add-to-cart arrow-cta">add to cart</a>
+                <a id="add-to-cart-<?php echo $product_name; ?>" href="<?php echo $this->getAddToCartUrl($_product) ?>" class="home-page-add-to-cart plus-cta white-version">add to cart</a>
                 <?php endif; ?>
-                <a href="#graph/<?php echo $product_name; ?>" class="arrow-cta">see tea layering</a>
             </div>
         </div>
-        <div class="home-tea-item-cover"></div>
     </div>
+
+    <?php if($count == 0): ?>
+        <div class="page-home-masonry-tile page-home-about-tile width-2 height-2">
+            <div class="tile-bg manic-image-container">
+                <img src="" data-image-desktop="<?php echo $this->getSkinUrl('images_cms/home/home-about-tile-bg.jpg'); ?>">
+            </div>
+            <div class="tile-content">
+                <h2>Let us share our story</h2>
+            </div>
+        </div>
+        <div class="page-home-masonry-tile page-home-shop-tile height-2">
+            <div class="tile-bg manic-image-container">
+                <img src="" data-image-desktop="<?php echo $this->getSkinUrl('images_cms/home/home-shop-tile-bg.jpg'); ?>">
+            </div>
+            <div class="tile-content">
+                <div class="tile-center-container">
+                    <div class="tile-center-content">
+                        <h2>The perfect companion for your tea time</h2>
+                        <div class="tile-cta">
+                            <a href="javascript:void(0);" class="arrow-cta">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-home-masonry-tile page-home-our-teas-tile width-2">
+            <div class="tile-bg manic-image-container">
+                <img src="" data-image-desktop="<?php echo $this->getSkinUrl('images_cms/home/home-our-teas-tile-bg.jpg'); ?>">
+            </div>
+            <div class="tile-content">
+                <h2>Origins: Our teas are sourced <br>from various parts of Japan</h2>
+                <div class="tile-cta">
+                    <a href="javascript:void(0);" class="arrow-cta">Read More</a>
+                </div>
+            </div>
+        </div>
+    <?php endif ?>
+
+    <?php if($count == 5): ?>
+        <div class="page-home-masonry-tile page-home-giftcard-tile">
+            <div class="tile-bg manic-image-container">
+                <img src="" data-image-desktop="<?php echo $this->getSkinUrl('images_cms/home/home-giftcard-tile-bg.jpg'); ?>">
+            </div>
+            <div class="tile-content">
+                <div class="tile-center-container">
+                    <div class="tile-center-content">
+                        <h2>Pamper someone</h2>
+                        <div class="tile-cta">
+                            <a href="javascript:void(0);" class="arrow-cta">eGift Card</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <?php if($count == 6): ?>
+        <div class="page-home-masonry-tile page-home-faq-tile">
+            <div class="tile-bg manic-image-container">
+                <img src="" data-image-desktop="<?php echo $this->getSkinUrl('images_cms/home/home-faq-tile-bg.jpg'); ?>">
+            </div>
+            <div class="tile-content">
+                <h2>Frequently asked questions</h2>
+                <div class="tile-cta">
+                    <a href="javascript:void(0);" class="arrow-cta">Visit FAQ</a>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
     <?php $count++; ?>
-    <?php endforeach; ?>        
+    <?php endforeach; ?>
+    <div class="page-home-masonry-tile page-home-social-tile width-2">
+        <div class="tile-content">
+            <div class="tile-column-01">
+                <h2>Share your Roji Tea experience with us</h2>
+                <div class="tile-hashtag">
+                    #RojiChaseiki
+                </div>
+                <div class="tile-social">
+                    <p>Follow us on social media</p>
+                    <ul>
+                        <li>
+                            <a href="javascript:void" class="fa fa-facebook"></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void" class="fa fa-instagram"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- tile-column-01 -->
+            <div class="tile-column-02">
+                <div id="page-home-instagram-slider" data-user-id="332486289" data-access-token="332486289.1677ed0.721d54000fb84f659fb0df01a491fa71">
+                    <div id="page-home-instagram-item-container">
+                    </div>
+                    <!-- page-home-instagram-item-container -->
+                </div>
+                <!-- page-home-instagram-slider -->
+            </div>
+            <!-- tile-column-02 -->
+        </div>
+    </div>        
 </div> <!-- #home-tea-item-container -->
 <?php
 // Provides a block where additional page components may be attached, primarily good for in-page JavaScript
@@ -153,26 +218,26 @@ if ($this->getChild('after')) {
 }
 ?>
 <?php 
-    $subscription_in_the_cart = 0;
-    $allskus = array("SGP-ART-1M", "SGP-ART-3M", "SGP-ART-6M", "SGP-ART-12M", "SGP-GUR-1M", "SGP-GUR-3M", "SGP-GUR-6M", "SGP-GUR-12M","INT-ART-1M", "INT-ART-3M", "INT-ART-6M", "INT-ART-12M", "INT-GUR-1M", "INT-GUR-3M", "INT-GUR-6M", "INT-GUR-12M");
-    $quote = Mage::getSingleton('checkout/session')->getQuote();
-    foreach ($quote->getAllVisibleItems() as $item) {
-        $itemsku = $item->getProduct()->getData('sku');        
-        if(in_array($itemsku, $allskus)) {
-            $subscription_in_the_cart = 1;
-        }
-    }
+    // $subscription_in_the_cart = 0;
+    // $allskus = array("SGP-ART-1M", "SGP-ART-3M", "SGP-ART-6M", "SGP-ART-12M", "SGP-GUR-1M", "SGP-GUR-3M", "SGP-GUR-6M", "SGP-GUR-12M","INT-ART-1M", "INT-ART-3M", "INT-ART-6M", "INT-ART-12M", "INT-GUR-1M", "INT-GUR-3M", "INT-GUR-6M", "INT-GUR-12M");
+    // $quote = Mage::getSingleton('checkout/session')->getQuote();
+    // foreach ($quote->getAllVisibleItems() as $item) {
+    //     $itemsku = $item->getProduct()->getData('sku');        
+    //     if(in_array($itemsku, $allskus)) {
+    //         $subscription_in_the_cart = 1;
+    //     }
+    // }
 
-    $gift_in_the_cart = 0;
-    $giftsku = array("testGiftCard2");
-    foreach ($quote->getAllVisibleItems() as $item) {
-        $itemsku = $item->getProduct()->getData('sku');        
-        if(in_array($itemsku, $giftsku)) {
-            $gift_in_the_cart = 1;
-        }   
-    }
+    // $gift_in_the_cart = 0;
+    // $giftsku = array("testGiftCard2");
+    // foreach ($quote->getAllVisibleItems() as $item) {
+    //     $itemsku = $item->getProduct()->getData('sku');        
+    //     if(in_array($itemsku, $giftsku)) {
+    //         $gift_in_the_cart = 1;
+    //     }   
+    // }
 ?>
-<script>
+<!-- <script>
 $j(document).ready(function($){
     function do_update() {
 
@@ -213,4 +278,4 @@ $j(document).ready(function($){
         }  
     });
 });
-</script>
+</script> -->

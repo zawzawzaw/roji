@@ -36,124 +36,30 @@
 <?php if($_menu): ?>
 		<?php 
 		// TEA
-		$store_category = Mage::getModel('catalog/category')->loadByAttribute('name', 'Store');
+		$store_category = Mage::getModel('catalog/category')->loadByAttribute('name', 'Shop');
 		$type_category = Mage::getModel('catalog/category')->loadByAttribute('name', 'Types');
 
 		/*Returns comma separated ids*/
 		// $subcats = $type_category->getChildren();		
 		$subcategories = $type_category->getChildrenCategories();
 		?>
-    <!-- <nav id="nav-main">
-        <ul class="main-menu hidden-xs hidden-sm">        
-            <?php //echo $_menu; ?>
-			<?php			
+    <nav>
+      <ul>
+        <li><a href="<?php echo $this->getUrl('about'); ?>">About</a></li>
+        <li><a href="<?php echo $store_category->getUrl(); ?>">Shop</a></li>
+        <li><a href="<?php echo $this->getUrl('our-tea'); ?>">Our Teas</a></li>
 
+        <!-- CLASS HAS TO BE ADDED BY THE JAVASCRIPT -->
+        <li class="submenu-version">
+          <a href="<?php echo $this->getUrl('gifts'); ?>">Gifts</a>
+          <ul>
+            <li><a href="<?php echo $this->getUrl('tin'); ?>">Tin</a></li>
+          </ul>
+        </li>
 
-			// echo '<li>
-			// 		<a href="'.$store_category->getUrl().'">TEA <i class="fa fa-chevron-down"></i></a>
-			// 		<ul class="sub-menu">';
-
-			// foreach(explode(',',$subcats) as $subCatid)
-			// {
-			//   	$_category = Mage::getModel('catalog/category')->load($subCatid);
-			//   	if($_category->getIsActive())
-			//   	{
-			//     	$caturl     = $_category->getURL();
-			//     	$catname     = $_category->getName();
-
-			//     	echo '<li><a href="'.$caturl.'">'.$catname.'</a></li>';
-			//     }
-			// }
-
-			// foreach($subcategories as $_category) {
-			// 	if($_category->getIsActive())
-			//   	{
-			//     	$caturl     = $_category->getURL();
-			//     	$catname     = $_category->getName();
-			//     	if(strtolower($catname)!='gifts' && strtolower($catname)!='pantry') 
-			//     		echo '<li><a href="'.$caturl.'">'.$catname.'</a></li>';
-			//     }
-			// }	
-
-			// echo '</ul>
-			// </li>';					
-			?>
-			
-			<?php
-			// PANTRY
-			$pantry_products = Mage::getModel('catalog/category')->loadByAttribute('name', 'Pantry');
-			// 	->getProductCollection()
-			//  	->addAttributeToSelect('*') // add all attributes - optional
-			//  	->addAttributeToFilter('status', 1) // enabled
-			//  	->addAttributeToFilter('visibility', 4) //visibility in catalog,search
-			//  	->setOrder('price', 'ASC');
-			
-			// $pantry_products_data = $pantry_products->getData();
-			if ($pantry_products->getIsActive()):
-			?>
-			<li>
-				<a href="<?php echo $pantry_products->getUrl(); ?>">PANTRY</a>
-			</li>
-			<?php
-			endif;
-			// PANTRY
-			$gifts_products = Mage::getModel('catalog/category')->loadByAttribute('name', 'Gifts')->getProductCollection()
-			 	->addAttributeToSelect('*') // add all attributes - optional
-			 	->addAttributeToFilter('status', 1) // enabled
-			 	->addAttributeToFilter('visibility', 4) //visibility in catalog,search
-			 	->setOrder('price', 'ASC');			
-
-			$gifts_products_data = $gifts_products->getData();
-			?>
-			
-			<li>
-				<?php $gifts_products = Mage::getModel('catalog/category')->loadByAttribute('name', 'gifts');	?>
-				<?php $gifts_products_data = $gifts_products->getData(); ?>
-				<a href="<?php echo $this->getUrl($gifts_products_data['url_path']); ?>">GIFTS</a>
-			</li>
-			<li>
-				<a href="<?php echo $this->getUrl('subscription');?>">SUBSCRIPTION</a>
-			</li>
-			<li>
-				<a href="<?php echo $this->getUrl('collections');?>">COLLECTIONS</a>								
-			</li>
-			<li>
-				<a href="<?php echo $this->getUrl('/');?>blog">BLOG</a>
-			</li>
-			<li>
-				<a href="<?php echo $this->getUrl('trade'); ?>">TRADE</a>
-			</li>
-        </ul> 
-   </nav> -->
-        <ul class="main-nav">
-          <li>
-          	<a href="javascript:void(0);" class="has-submenu">About</a>
-          	<ul class="sub-nav">
-          		<li><a href="<?php echo $this->getUrl('experience'); ?>">Experience Monogram</a></li>
-	            <li><a href="<?php echo $this->getUrl('/'); ?>#graph/cherry-japonais">Layering Suggestions</a></li>
-	            <li><a href="<?php echo $this->getUrl('tea-layering'); ?>">Tea Layering</a></li>	            
-	            <li><a href="<?php echo $this->getUrl('tea-matrix'); ?>">Tea Matrix</a></li>
-	            <!-- <li><a href="<?php echo $this->getUrl('monolog'); ?>">Monolog</a></li> -->
-          	</ul>
-          </li>          
-          <li>
-          	<a href="javascript:void(0);" class="has-submenu">Shop</a>
-          	<ul class="sub-nav">
-          		<li><a href="<?php echo $store_category->getUrl(); ?>">Tea Bar</a></li>
-	            <li><a href="<?php echo $this->getUrl('subscription'); ?>">Subscription</a></li>
-	            <li><a href="<?php echo $this->getUrl('monogram-service'); ?>">Monogram Services</a></li>	
-          	</ul>
-          </li>
-          <li><a href="<?php echo $this->getUrl('monolog');?>">Monolog</a></li>
-          <li>
-          	<a href="javascript:void(0);" class="has-submenu">Support</a>
-          	<ul class="sub-nav">
-          		<li><a href="<?php echo $this->getUrl('faq'); ?>">FAQ</a></li>
-	            <li><a href="<?php echo $this->getUrl('shipping-info'); ?>">Shipping Information</a></li>
-	            <li><a href="http://www.trackntrace.com.sg/">Track Order</a></li>
-          	</ul>
-          </li>          
-          <li><a href="<?php echo $this->getUrl('contact');?>">Contact</a></li>
-        </ul>
-    
+        <li><a href="<?php echo $this->getUrl('blog'); ?>">Blog</a></li>
+        <li><a href="<?php echo $this->getUrl('faq'); ?>">FAQ</a></li>
+        <li><a href="<?php echo $this->getUrl('contact'); ?>">Contact</a></li>
+      </ul>
+    </nav>
 <?php endif ?>

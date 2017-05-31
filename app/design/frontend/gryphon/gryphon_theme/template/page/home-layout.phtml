@@ -81,16 +81,11 @@ $path = $url->getPath();
     <?php echo $this->getChildHtml('before_body_end') ?>
 
     <?php echo $this->getAbsoluteFooter() ?>
-
-    <?php if($path!=="/"): ?>
-        <script type="text/javascript">
-            window.page = new roji.page.Default({});
-        </script>                        
-    <?php else: ?>
-        <script type="text/javascript">
-            window.page = new roji.page.Home({});
-        </script>                        
-    <?php endif; ?>
+    
+    <script type="text/javascript">
+        window.page = new roji.page.Home({});
+    </script>                        
+    
 
     <?php echo $this->getChildHtml('footer_before') ?>
     <?php echo $this->getChildHtml('footer') ?>

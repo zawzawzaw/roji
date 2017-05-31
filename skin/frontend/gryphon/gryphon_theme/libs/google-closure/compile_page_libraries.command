@@ -1,5 +1,6 @@
 java -jar "compiler.jar" \
   --js=../../js/manic-polyfill.js \
+  --js=../jquery-other/jquery-1.9.1.min.js \
   --js=../jquery-other/jquery.mousewheel.min.js \
   --js=../misc-js/mobile-detect.js \
   --js=../misc-js/preloadjs-0.4.0.min.js \
@@ -7,6 +8,9 @@ java -jar "compiler.jar" \
   --js=../gsap/src/minified/jquery.gsap.min.js \
   --js=../gsap/src/minified/easing/EasePack.min.js \
   --js=../gsap/src/minified/plugins/ScrollToPlugin.min.js \
+  --js=../scrollmagic/scrollmagic/minified/ScrollMagic.min.js \
+  --js=../scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js \
+  --js=../scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js \
   --js=../slick-carousel/slick/slick.min.js \
   --compilation_level WHITESPACE_ONLY \
   --js_output_file=../../js/minified/page-libraries.min.js
