@@ -360,25 +360,35 @@ endif;
 
                 // update product count in cart
                 jQuery("#desktop-header-cart-menu").find(".cart-btn-value").text(data.cart_qty);
-                jQuery("#mobile-header-cart-btn-container").find(".count").text(data.cart_qty);
+                // jQuery("#mobile-header-cart-btn-container").find(".count").text(data.cart_qty);
 
                 jQuery("#desktop-header-cart-menu").find(".cart-btn-value").removeClass('animated flipOutX').addClass('animated fadeIn');
 
-                jQuery('.cart-preview-content').html('');
-                jQuery.each(data.cart_items, function(key,value){
+                jQuery('.desktop-header-cart-expand').html('');
 
-                    jQuery('.cart-preview-content').append('<ul class="cart-content"><li><img src="'+value.image+'" alt=""><span>'+value.name+'</span></li><li>'+value.qty+'</li><li>'+value.row_price+'</li></ul>');
+                if(data.cart_qty > 0) {
 
-                    jQuery('.cart-summary').find('.total-items-count').html(data.cart_qty);
-                    jQuery('.cart-summary').find('.sub-total-amount').html(data.cart_total);
+                    jQuery.each(data.cart_items, function(key,value){
 
-                });                            
+                        jQuery('.desktop-header-cart-expand').append('<ul class="desktop-header-cart-expand-content"><li><div class="manic-image-container"><img src="'+value.image+'" alt=""></div></li><li><p>'+value.qty+' x</p><p>'+value.name+'</p><p>'+value.name_in_color+'</p><p>'+value.row_price+'</p></li><li><a href="#" title="<?php echo $this->__('Remove item')?>" data-item-id="'+value.id+'" class="close-btn remove-item"></a></li></ul>');
 
-                jQuery('.cart-header').show();
-                jQuery('.cart-summary').show();
-                jQuery('.cta-btns').show();
-                jQuery('#main-header .cart-preview-select').show();
-                jQuery('#main-header .cart-preview-select').delay(5000).hide(400);
+                    });                    
+
+                } else {
+
+                    jQuery('.desktop-header-cart-expand').append('<ul class="desktop-header-cart-expand-content"><li class="empty-cart"><p>Your cart is empty.</p></li></ul>');
+
+                }       
+
+                jQuery('.desktop-header-cart-expand-summary').find('.sub-total-amount').html(data.cart_total);
+
+                jQuery('#desktop-header-cart-expand-container').slideDown(300);
+                window.header_cart_is_open = true;
+                jQuery('#desktop-header-cart-expand-container').delay(5000).slideUp(300);
+
+                setTimeout(function() {
+                  window.header_cart_is_open = false;
+                }, 5000);
 
                 // var mobile_header = jQuery("#main-mobile-header").data('gryphon_mobile_header');
                 // mobile_header.public_open_cart();
@@ -386,9 +396,9 @@ endif;
                 
 
                 // jQuery('.mobile-cart-button').find('span').html(data.cart_qty);
-                jQuery('.cart-summary-data').find('.price').html(data.cart_total);
-                jQuery('.cart-summary-data').find('.count').html(data.cart_qty);
-                jQuery('.cart-summary-data span').html('<span class="price">'+data.cart_total+'</span> (<span class="count">'+data.cart_qty+'</span>)');                            
+                // jQuery('.cart-summary-data').find('.price').html(data.cart_total);
+                // jQuery('.cart-summary-data').find('.count').html(data.cart_qty);
+                // jQuery('.cart-summary-data span').html('<span class="price">'+data.cart_total+'</span> (<span class="count">'+data.cart_qty+'</span>)');                            
             }
         });                     
     }

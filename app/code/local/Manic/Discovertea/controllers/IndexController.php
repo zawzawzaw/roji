@@ -108,6 +108,25 @@ class Manic_Discovertea_IndexController extends Mage_Core_Controller_Front_Actio
 	    return;
 	}
 
+  public function deletecartitemAction() {
+    $productId = $this->getRequest()->getPost('item_id', array());
+    $cartHelper = Mage::helper('checkout/cart');
+    $items = $cartHelper->getCart()->getItems();    
+
+    foreach ($items as $item) 
+    {
+      $each_item_id = $item->getItemId();
+      $each_product_id = $item->getProduct()->getId();
+
+      if($productId == $each_product_id) {        
+        $cartHelper->getCart()->removeItem($each_item_id)->save();
+        break;
+      }
+    }
+
+    return;
+  }
+
 	public function cartpreviewAction() {
 
     header('Access-Control-Allow-Origin: '.$_SERVER['HTTP_ORIGIN']);
@@ -123,8 +142,10 @@ class Manic_Discovertea_IndexController extends Mage_Core_Controller_Front_Actio
 		
 		if ($cartQty>0):
 			foreach ($cart->getAllItems() as $key => $item):
+          $storeId = Mage::app()->getStore()->getStoreId();
 			    $productId = $item->getProduct()->getId();
-			    $productName = $item->getProduct()->getName();
+          $productName = $item->getProduct()->getName();
+          $productNameInColor = Mage::getResourceModel('catalog/product')->getAttributeRawValue($productId, 'product_name_in_color', $storeId);
 			    $productPrice = Mage::helper('core')->formatPrice($item->getProduct()->getPrice(), true);
 			    $productQty = $item->getQty();
 			    $price = $item->getRowTotal();
@@ -133,7 +154,8 @@ class Manic_Discovertea_IndexController extends Mage_Core_Controller_Front_Actio
 			    $product_data = Mage::getModel('catalog/product')->load($productId);			    
 
 			    $all_items[$productId]['id'] = $productId;
-			    $all_items[$productId]['name'] = $productName;
+          $all_items[$productId]['name'] = $productName;
+			    $all_items[$productId]['name_in_color'] = $productNameInColor;
 			    $all_items[$productId]['price'] = $productPrice;
 			    $all_items[$productId]['qty'] = $productQty;			    
 			    $all_items[$productId]['row_price'] = Mage::helper('core')->formatPrice($price, true);

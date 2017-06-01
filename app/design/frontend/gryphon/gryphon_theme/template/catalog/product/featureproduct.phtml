@@ -96,7 +96,7 @@
             </div>
             <div class="tile-cta">                
                 <?php if($groupname!=='Trader-Temp' && $groupname!=='Trader-Regular' && $groupname!=='Trader-Priority' && $groupname!=='Trader-Premium'): ?>
-                <a id="add-to-cart-<?php echo $product_name; ?>" href="<?php echo $this->getAddToCartUrl($_product) ?>" class="home-page-add-to-cart plus-cta white-version">add to cart</a>
+                <a id="add-to-cart-<?php echo $product_name; ?>" href="<?php echo $this->getAddToCartUrl($_product) ?>" class="add-to-cart-links plus-cta white-version">add to cart</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -237,45 +237,3 @@ if ($this->getChild('after')) {
     //     }   
     // }
 ?>
-<!-- <script>
-$j(document).ready(function($){
-    function do_update() {
-
-        jQuery("#desktop-header-cart").find(".cart-count-update").removeClass('animated fadeIn').addClass('animated flipOutX');
-
-        $.ajax({
-            url: '/discovertea/index/cartpreview',
-            dataType: 'json',
-            type : 'get',
-            success: function(data){
-
-                // update product count in cart
-                $j("#desktop-header-cart").find(".count").text("("+data.cart_qty+")");
-                $j("#mobile-header-cart-btn-container").find(".count").text("("+data.cart_qty+")");
-
-                jQuery("#desktop-header-cart").find(".cart-count-update").removeClass('animated flipOutX').addClass('animated fadeIn');
-          
-            }
-        });                     
-    }
-    $(".home-page-add-to-cart").on("click", function(e){
-        e.preventDefault();
-
-        var add_to_cart_url = $(this).attr("href");
-
-        var subscription_in_the_cart = <?php echo $subscription_in_the_cart; ?>;
-        var gift_in_the_cart = <?php echo $gift_in_the_cart; ?>;
-
-        if(subscription_in_the_cart == 1) {
-            alert("This product cannot be purchased with other items in the cart. Please check out first before making this purchase.")
-        } else if(gift_in_the_cart == 1) {
-            alert("This product cannot be purchased with other items in the cart. Please check out first before making this purchase.")
-        } else {
-            $.get( add_to_cart_url, function( data ) {
-               do_update();
-            });
-            // alert("Added to cart.")
-        }  
-    });
-});
-</script> -->

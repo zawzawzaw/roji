@@ -38,15 +38,73 @@ $quoteData= $quote->getData();
           </div> <!-- desktop-header-currency-menu -->
 
           <div id="desktop-header-cart-menu">
-            
-            <a href="<?php echo $this->getUrl('checkout/cart'); ?>">
-              <div id="desktop-header-cart-btn">
-                <span class="cart-btn-value"><?php echo (!empty($count)) ? $count : 0; ?></span>
-              </div>
-            </a>
+          
+            <div id="desktop-header-cart-btn">
+              <span class="cart-btn-value"><?php echo (!empty($count)) ? $count : 0; ?></span>
+            </div>            
 
-            <div id="desktop-header-cart-expand-container">
+            <div id="desktop-header-cart-expand-container">              
+                <h4 class="desktop-header-cart-expand-title">YOUR CART</h4>
 
+                <?php 
+                  $cart = Mage::getModel('checkout/cart')->getQuote();
+                  $cartQty = $this->helper('checkout/cart')->getSummaryCount();
+                  $cartTotal = Mage::getSingleton('checkout/cart')->getQuote()->getSubtotal();
+                ?>
+
+                <div class="desktop-header-cart-expand">
+                  <?php if ($cartQty>0): ?>                                         
+                      <?php               
+                      foreach ($cart->getAllItems() as $item) {
+                          $storeId = Mage::app()->getStore()->getStoreId();
+                          $productId = $item->getProduct()->getId();
+                          $productName = $item->getProduct()->getName();
+                          $productNameInColor = Mage::getResourceModel('catalog/product')->getAttributeRawValue($productId, 'product_name_in_color', $storeId);
+                          $productPrice = $item->getProduct()->getPrice();
+                          $productQty = $item->getQty();
+                          $price = $item->getRowTotal();
+                          $productImage = Mage::helper('catalog/image')->init($item->getProduct(), 'thumbnail');
+                          
+                      ?>
+                      <ul class="desktop-header-cart-expand-content">             
+                        <li>
+                          <div class="manic-image-container">
+                            <img src="<?php echo $productImage; ?>" alt="">
+                          </div>
+                        </li>
+                        <li>
+                          <p><?php echo $productQty; ?> x</p>
+                          <p><?php echo $productName; ?></p>
+                          <p><?php echo $productNameInColor; ?></p>
+                          <p><?php echo Mage::helper('core')->formatPrice( $productPrice, true ); ?></p>
+                        </li>
+                        <li>                        
+                          <a href="javascript:void(0);" data-item-id="<?php echo $item->getProduct()->getId(); ?>" title="<?php echo $this->__('Remove item')?>" class="close-btn remove-item"></a>
+                        </li>
+                      </ul>
+                      <?php
+                      }
+                      ?>                  
+                  <?php else: ?>                
+                    
+                    <ul class="desktop-header-cart-expand-content">
+                      <li class="empty-cart"><p>Your cart is empty.</p></li>
+                    </ul>
+                    
+                  <?php endif; ?>
+
+                </div>
+
+                <ul class="desktop-header-cart-expand-summary">                                       
+                    <li><h4 class="sub-total">SUB TOTAL:</h4></li>                 
+                    <li><h4 class="sub-total-amount"><?php echo Mage::helper('core')->formatPrice($cartTotal, true); ?></h4></li>             
+                </ul>             
+
+                <div class="desktop-header-cart-expand-cta-btn">                    
+                    <a href="<?php echo $this->getUrl('checkout/cart'); ?>" class="shopping-cart"><button type="button" class="square-cta"><span><span>Go to Cart</span></span></button></a>
+                </div>
+                
+              
             </div>
           </div> <!-- desktop-header-cart-menu -->
 

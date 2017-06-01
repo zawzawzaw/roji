@@ -1,0 +1,28 @@
+#page-about-content-section {
+  padding-bottom: 92px;
+}
+#page-about-sidebar {
+  padding-top: 126px;
+  padding-right: 40px;
+}
+@media only screen and (max-width: 767px) {
+  #page-about-sidebar {
+    padding-top: 0px;
+    padding-right: 0px;
+  }
+}
+#page-about-content {
+  padding-top: 13px;
+}
+#page-about-copy {
+  padding-top: 43px;
+}
+#page-about-copy .cta-container {
+  padding-top: 61px;
+}
+#page-about-video .manic-image-container {
+  height: 520px;
+}
+#page-about-video .manic-video-container {
+  height: 520px;
+}
