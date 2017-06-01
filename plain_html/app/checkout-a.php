@@ -198,7 +198,7 @@
                           <div class="col-md-2 col-sm-8 col-xs-7">
 
 
-                            <div class="page-checkout-cart-table-item-desc-mobile visible-sm visible-xs">
+                            <div class="cart-item-desc-mobile visible-sm visible-xs">
 
                               <div class="cart-item-description">
                                 <h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2>
@@ -209,7 +209,7 @@
 
                               <a href="javascript:void(0);" class="cart-item-close-btn close-btn"></a>
 
-                            </div> <!-- page-checkout-cart-table-item-desc-mobile -->
+                            </div> <!-- cart-item-desc-mobile -->
 
                             <div class="forced-move-left">
                               <div class="cart-item-quantity-container">
@@ -251,9 +251,9 @@
 
                       <div class="page-checkout-cart-table-item">
                         <div class="row">
-                          <div class="col-md-2">
+                          <div class="col-md-2 col-sm-4 col-xs-5">
 
-                            <a href="product-detail.php" title="Momotaro" class="cart-item-image">
+                            <a href="product-detail.php" title="Koku Yuzu Kukicha" class="cart-item-image">
                               <div class="manic-image-container" data-scale-mode="show_all" data-horizontal-align="left">
                                 <img src="" 
                                   data-image-desktop="images_cms/cart/cart-image-02.png"
@@ -263,26 +263,42 @@
                             </a>
 
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-4 hidden-sm hidden-xs">
 
                             <div class="cart-item-description">
-                              <h2><a href="product-detail.php" title="Momotaro">Koku Yuzu Kukicha</a></h2>
+                              <h2><a href="product-detail.php" title="Koku Yuzu Kukicha">Koku Yuzu Kukicha</a></h2>
                               <h3>濃ゆず茎茶</h3>
                               <p>Japanese Twig Tea with Kochi Yuzu</p>
                             </div>
 
                           </div>
-                          <div class="col-md-2">
+                          <div class="col-md-2 hidden-sm hidden-xs">
 
                             <div class="forced-move-left">
                               <div class="cart-item-value">$16.90</div>
                             </div>
 
                           </div>
-                          <div class="col-md-2">
+                          <div class="col-md-2 col-sm-8 col-xs-7">
+
+
+                            <div class="cart-item-desc-mobile visible-sm visible-xs">
+
+                              <div class="cart-item-description">
+                                <h2><a href="product-detail.php" title="Koku Yuzu Kukicha">Koku Yuzu Kukicha</a></h2>
+                                <h3>濃ゆず茎茶</h3>
+                              </div>
+
+                              <div class="cart-item-value">$16.90</div>
+
+                              <a href="javascript:void(0);" class="cart-item-close-btn close-btn"></a>
+
+                            </div> <!-- cart-item-desc-mobile -->
 
                             <div class="forced-move-left">
                               <div class="cart-item-quantity-container">
+
+                                <h4>Quantity:</h4>
 
                                 <div class="form-quantity">
                                   <a href="javascript:void(0);" class="form-quantity-minus-btn"></a>
@@ -294,7 +310,7 @@
                             </div>
 
                           </div>
-                          <div class="col-md-2">
+                          <div class="col-md-2 hidden-sm hidden-xs">
 
                             <div class="forced-move-left">
                               <div class="cart-item-value-and-button">
@@ -304,8 +320,9 @@
                             </div>
 
                           </div>
-                        </div>
-                      </div>
+                          
+                        </div> <!-- row -->
+                      </div> <!-- page-checkout-cart-table-item -->
 
                     </div> <!-- page-checkout-cart-table-content -->
 
@@ -313,77 +330,54 @@
 
                   <div id="page-checkout-cart-middle">
                     <div class="row">
-                      <div class="col-md-6">
-                        <p>This shopping cart is worth S$4 in rebates.</p>
-                      </div>
-                      <div class="col-md-6">
+                      <div class="col-md-6 col-md-push-6 col-sm-4 col-sm-push-8 col-xs-12">
                         <div class="cta-container">
                           <a href="" class="update-cta">Update Your Cart</a>
                         </div>
                       </div>
+                      <div class="col-md-6 col-md-pull-6 col-sm-8 col-sm-pull-4 col-xs-12">
+                        <p>This shopping cart is worth S$4 in rebates.</p>
+                      </div>
                     </div>
                   </div> <!-- page-checkout-cart-middle -->
 
-                  <!--
-                     ____  _   _ ____ _____ ___ _____  _    _
-                    / ___|| | | | __ )_   _/ _ \_   _|/ \  | |
-                    \___ \| | | |  _ \ | || | | || | / _ \ | |
-                     ___) | |_| | |_) || || |_| || |/ ___ \| |___
-                    |____/ \___/|____/ |_| \___/ |_/_/   \_\_____|
-
-                  -->
 
 
-                  <div id="page-checkout-cart-subtotal">
-                    <div class="row">
-                      <div class="col-md-8"></div>
-                      <div class="col-md-4">
-                        <div class="row">
-                          <div class="col-md-6">
+                  <div class="row">
 
-                            <div class="column-01">
-                              <p>Subtotal:</p>
-                            </div>
+                    <div class="col-md-5 col-tablet-landscape-6 col-sm-12 col-xs-12">
 
-                          </div>
-                          <div class="col-md-6">
+                      <!--
+                         ____ ___ ____   ____ ___  _   _ _   _ _____
+                        |  _ \_ _/ ___| / ___/ _ \| | | | \ | |_   _|
+                        | | | | |\___ \| |  | | | | | | |  \| | | |
+                        | |_| | | ___) | |__| |_| | |_| | |\  | | |
+                        |____/___|____/ \____\___/ \___/|_| \_| |_|
 
-                            <div class="column-02">
-                              <p>$50.70</p>
-                            </div>
+                      -->
 
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div> <!-- page-checkout-cart-subtotal -->
-
-                  <!--
-                     ____ ___ ____   ____ ___  _   _ _   _ _____
-                    |  _ \_ _/ ___| / ___/ _ \| | | | \ | |_   _|
-                    | | | | |\___ \| |  | | | | | | |  \| | | |
-                    | |_| | | ___) | |__| |_| | |_| | |\  | | |
-                    |____/___|____/ \____\___/ \___/|_| \_| |_|
-
-                  -->
-
-                  <div id="page-checkout-cart-discount">
-                    <div class="row">
-                      <div class="col-md-5 col-tablet-landscape-6">
+                      <div id="page-checkout-cart-discount">
 
                         <div class="form-group">
                           <div class="row">
                             <div class="col-md-4">
                               <label>Discount code</label>
                             </div>
-                            <div class="col-md-5">
-                              <input type="text" name="" id="">
-                            </div>
-                            <div class="col-md-3">
-                              <div class="cart-discount-cta-container">
-                                <a href="javascript:void(0);" class="square-cta full-width-version">Apply</a>
+                            <div class="col-md-8">
+                              <div class="row">
+
+                                <div class="col-md-8 col-sm-6 col-xs-8">
+                                  <input type="text" name="" id="">
+                                </div>
+                                <div class="col-md-4 col-sm-3 col-xs-4">
+                                  <div class="cart-discount-cta-container">
+                                    <a href="javascript:void(0);" class="square-cta full-width-version">Apply</a>
+                                  </div>
+                                </div>
+                                
                               </div>
                             </div>
+
                           </div>
                         </div>
 
@@ -392,20 +386,69 @@
                             <div class="col-md-4">
                               <label>Gift Certificate</label>
                             </div>
-                            <div class="col-md-5">
-                              <input type="text" name="" id="">
-                            </div>
-                            <div class="col-md-3">
-                              <div class="cart-discount-cta-container">
-                                <a href="javascript:void(0);" class="square-cta full-width-version">Apply</a>
+                            <div class="col-md-8">
+                              <div class="row">
+
+                                <div class="col-md-8 col-sm-6 col-xs-8">
+                                  <input type="text" name="" id="">
+                                </div>
+                                <div class="col-md-4 col-sm-3 col-xs-4">
+                                  <div class="cart-discount-cta-container">
+                                    <a href="javascript:void(0);" class="square-cta full-width-version">Apply</a>
+                                  </div>
+                                </div>
+
                               </div>
                             </div>
+
                           </div>
                         </div>
 
-                      </div>
-                    </div>
-                  </div> <!-- page-checkout-cart-discount -->
+                      </div> <!-- page-checkout-cart-discount -->
+
+
+
+                    </div> <!-- col-md-5 -->
+
+                    <!-- spacer -->
+                    <div class="col-md-3 col-tablet-landscape-2 col-sm-0 col-xs-0"></div>
+
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+
+                      <!--
+                         ____  _   _ ____ _____ ___ _____  _    _
+                        / ___|| | | | __ )_   _/ _ \_   _|/ \  | |
+                        \___ \| | | |  _ \ | || | | || | / _ \ | |
+                         ___) | |_| | |_) || || |_| || |/ ___ \| |___
+                        |____/ \___/|____/ |_| \___/ |_/_/   \_\_____|
+
+                      -->
+
+
+                      <div id="page-checkout-cart-subtotal">
+                        <div class="row">
+                          <div class="col-md-6 col-xs-6">
+
+                            <div class="column-01">
+                              <p>Subtotal:</p>
+                            </div>
+
+                          </div>
+                          <div class="col-md-6 col-xs-6">
+
+                            <div class="column-02">
+                              <p>$50.70</p>
+                            </div>
+
+                          </div>
+                        </div> <!-- row -->
+                      </div> <!-- page-checkout-cart-subtotal -->
+
+                    </div> <!-- col-md-4 -->
+
+                  </div>
+
+
 
 
 
@@ -415,18 +458,22 @@
               
               <div id="page-checkout-content-footer">
                 <div class="row">
-                  <div class="col-md-6">
-                    <div class="cta-container-01">
-                      <a href="shop.php" class="arrow-cta reverse-version">Continue Shopping</a>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
+
+
+                  <div class="col-md-6 col-md-push-6 col-sm-8 col-sm-push-2 col-xs-10 col-xs-push-1">
                     <div class="cta-container-02">
                       <a href="checkout-c.php" class="square-cta">Check-out</a>
                     </div>
                   </div>
+
+                  <div class="col-md-6 col-md-pull-6 col-md-push-0 col-sm-8 col-sm-pull-0 col-sm-push-2 col-xs-10 col-xs-push-1">
+                    <div class="cta-container-01">
+                      <a href="shop.php" class="arrow-cta reverse-version">Continue Shopping</a>
+                    </div>
+                  </div>
+                  
                 </div>
-              </div>
+              </div> <!-- page-checkout-content-footer -->
               
             </div> <!-- page-checkout-content -->
 

@@ -361,7 +361,8 @@
 
   <article id="page-product-detail-expanding-section-mobile" class="visible-sm visible-xs">
 
-    <div class="manic-expand-container" data-group="mobile-product-detail">
+    <div class="manic-expand-container" data-group="product-detail-mobile" data-value="product-detail-expand">
+      <div class="scroll-target" data-value="product-detail-expand"></div>
       <div class="manic-expand-container-title">
         <div class="container-fluid">
           <div class="row">
@@ -404,7 +405,8 @@
       </div>
     </div>
 
-    <div class="manic-expand-container" data-group="mobile-product-detail">
+    <div class="manic-expand-container" data-group="product-detail-mobile" data-value="brewing-instructions-expand">
+      <div class="scroll-target" data-value="brewing-instructions-expand"></div>
       <div class="manic-expand-container-title">
         <div class="container-fluid">
           <div class="row">

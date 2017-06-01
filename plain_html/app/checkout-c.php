@@ -23,9 +23,8 @@
   <article id="page-checkout-title-section">
     <div class="container-fluid has-breakpoint">
       <div class="row">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-9">
+        <div class="col-md-3 col-tablet-landscape-2 col-sm-1 col-xs-0"></div>
+        <div class="col-md-9 col-tablet-landscape-10 col-sm-10 col-xs-12">
           <div id="page-checkout-title">
             <h1>Please check your details before confirming your order.</h1>
           </div>
@@ -43,6 +42,22 @@
 
   -->
 
+  <article id="page-checkout-sidebar-section-mobile" class="visible-sm visible-xs">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-10 col-sm-push-1 col-xs-12">
+
+          <div id="page-checkout-sidebar-mobile">
+            <p>2. Shipping & Billing</p>
+          </div> <!-- page-checkout-sidebar-mobile -->
+
+        </div>
+      </div>
+    </div>
+  </article> <!-- page-checkout-sidebar-section-mobile -->
+
+
+  
   <form class="checkout-form">
 
     <article id="page-checkout-content-section">
@@ -54,7 +69,7 @@
 
       <div class="container-fluid has-breakpoint">
         <div class="row">
-          <div class="col-md-2">
+          <div class="col-md-2 col-tablet-landscape-1 hidden-sm hidden-xs">
 
             <!--
                ____ ___ ____  _____ ____    _    ____
@@ -81,7 +96,9 @@
 
 
           </div> <!-- col-md-2 -->
-          <div class="col-md-10">
+          
+          <div class="col-md-0 col-tablet-landscape-0 col-sm-1 col-xs-0"></div>
+          <div class="col-md-10 col-tablet-landscape-11 col-sm-10 col-xs-12">
 
 
             <!--
@@ -239,7 +256,7 @@
                           <div class="form-group">
                             <div class="row">
                               <div class="col-md-4">
-                                <label>Contact no.*</label>
+                                <label>Contact No.*</label>
                               </div>
                               <div class="col-md-2">
                                 <input type="text" name="" id="">
@@ -387,7 +404,7 @@
                           <div class="form-group">
                             <div class="row">
                               <div class="col-md-4">
-                                <label>Contact no.*</label>
+                                <label>Contact No.*</label>
                               </div>
                               <div class="col-md-2">
                                 <input type="text" name="" id="">
@@ -485,18 +502,22 @@
               
               <div id="page-checkout-content-footer">
                 <div class="row">
-                  <div class="col-md-6">
-                    <div class="cta-container-01">
-                      <a href="shop.php" class="arrow-cta reverse-version">Continue Shopping</a>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
+
+
+                  <div class="col-md-6 col-md-push-6 col-sm-8 col-sm-push-2 col-xs-10 col-xs-push-1">
                     <div class="cta-container-02">
                       <a href="checkout-d.php" class="square-cta">Continue</a>
                     </div>
                   </div>
+
+                  <div class="col-md-6 col-md-pull-6 col-md-push-0 col-sm-8 col-sm-pull-0 col-sm-push-2 col-xs-10 col-xs-push-1">
+                    <div class="cta-container-01">
+                      <a href="shop.php" class="arrow-cta reverse-version">Continue Shopping</a>
+                    </div>
+                  </div>
+                  
                 </div>
-              </div>
+              </div> <!-- page-checkout-content-footer -->
 
               
             </div> <!-- page-checkout-content -->
