@@ -246,6 +246,10 @@
       left: 0;
       width: 100%;
       height: 100%;
+
+      border: none;       // remove border on iOS devices
+      outline: none;
+      background: transparent;  // remove black bg added on select on iOS devices
     }
 
     input[type="checkbox"] + label{
@@ -308,9 +312,16 @@
       }
     }
 
+
+
     // TABLET PORTRAIT
     @media only screen and (max-width: 991px) {
+      display: block;
+      height: auto;
+
       input[type="checkbox"] + label{
+        display: block;
+
         span{
           display: block;
           position: absolute;

@@ -79,7 +79,8 @@ roji.page.Default = function(options, element) {
   this.desktop_footer_element = $('#desktop-footer');
   this.mobile_footer_element = $('#mobile-footer');
   
-
+  this.mobile_header_expanded_element = $('#mobile-header-expanded');
+  
 
 
 
@@ -166,6 +167,21 @@ roji.page.Default.prototype.update_page_layout = function(){
       'min-height': target_height + 'px'
     });
   }
+
+
+
+  // update mobile header menu height
+  if (manic.IS_MOBILE == true) {
+    var target_height = this.window_height - this.mobile_footer_element.outerHeight();
+
+    this.mobile_header_expanded_element.css({
+      'min-height': target_height + 'px'
+    });
+  }
+
+  
+
+  
 
 
 

@@ -724,6 +724,15 @@
     margin-left: -20px;
   }
 
+  @media only screen and (max-width: 1280px) {
+    .form-group{
+      label{
+        font-size: 11px;
+        letter-spacing: 0.05em;
+      }
+    }
+  }
+
 
   @media only screen and (max-width: 991px) {
     padding-top: 28px;
@@ -735,6 +744,9 @@
       margin-bottom: 19px;
 
       label{
+        font-size: 12px;
+        letter-spacing: 0.075em;
+
         margin-right: 0px;
         margin-bottom: 4px;
       }
@@ -834,11 +846,12 @@
   // TABLET PORTRAIT
   @media only screen and (max-width: 991px) {
     padding-top: 11px;
-    padding-bottom: 32px;
+    // padding-bottom: 32px;
+    padding-bottom: 18px;
     border-bottom: 1px solid @border-grey;
 
     margin-bottom: 35px;
-    
+        
   }
 
   // .checkbox input[type=checkbox]+label p
