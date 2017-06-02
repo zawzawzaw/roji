@@ -772,8 +772,8 @@
 
   // TABLET PORTRAIT
   @media only screen and (max-width: 991px) {
-    padding-top: 0px;
-    margin-bottom: 0px;
+    padding-top: 34px;
+    margin-bottom: 44px;
   }
 
 } // #page-checkout-billing-shipping-container
@@ -788,6 +788,16 @@
     padding-left: 52px;
   }
 
+  // TABLET LANDSCAPE
+  @media only screen and (max-width: 1024px) and (min-width: 992px) {
+    .column-01{
+      padding-right: 20px;
+    }
+    .column-02{
+      padding-left: 20px;
+    }
+  }
+
   // TABLET PORTRAIT
   @media only screen and (max-width: 991px) {
     .column-01{
@@ -800,6 +810,8 @@
 } // #page-checkout-billing-shipping
 
 #page-checkout-billing{
+
+  
 
 } // #page-checkout-billing
 
@@ -819,6 +831,16 @@
 #page-checkout-billing-shipping-checkbox-container{
   padding-top: 3px;
 
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    padding-top: 11px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid @border-grey;
+
+    margin-bottom: 35px;
+    
+  }
+
   // .checkbox input[type=checkbox]+label p
 } // #page-checkout-billing-shipping-checkbox
 
@@ -833,6 +855,13 @@
 
 #page-checkout-delivery-container{
   margin-bottom: 50px;
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    margin-bottom: 0px;
+
+    background: @off-white-2;
+  }  
 } // #page-checkout-delivery-container
 
 #page-checkout-delivery{
@@ -848,6 +877,14 @@
     padding-left: 20px;
     padding-right: 20px;
   }
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+    padding-top: 23px;
+    padding-bottom: 46px;
+
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 
 } // #page-checkout-delivery
 
@@ -859,6 +896,17 @@
     font-size: 14px;
     line-height: 20px;
   }
+
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+    margin-bottom: 7px;
+
+    h2{
+      .h4-style;
+      color: @dark-grey-2;
+    }
+  }
+  
 } // #page-checkout-delivery-title
 
 #page-checkout-delivery-rate-container{
@@ -882,21 +930,71 @@
       line-height: 24px;
     }
   }
+
   // TABLET PORTRAIT
   @media only screen and (max-width: 991px) {
 
     .delivery-rate{
+      margin-right: 60px;
+      &:last-child{
+        margin-right: 0px;
+      }
+    }
+
+  }
+
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+
+    margin-bottom: 19px;
+
+    .delivery-rate{
       display: block;
-      margin-bottom: 30px;
+      margin-bottom: 19px;
+
+      &:last-child{
+        margin-bottom: 0px;
+      }
+
+      h4{
+        .body-font-bold;
+        font-size: 13px;
+        line-height: 20px;
+        text-transform: none;
+        letter-spacing: 0em;
+      }
+      p{
+        font-size: 13px;
+        line-height: 20px;
+      }
+
+
     }
   }
 
 } // #page-checkout-delivery-rates
 
+
+
+
 #page-checkout-delivery-copy{
   .default-copy{
 
   }
+
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+    .default-copy{
+      small{
+        font-size: 10px;
+        line-height: 16px;
+      }
+      small + small{
+         padding-top: 16px;
+      }
+    }
+  }
+
 } // #page-checkout-delivery-copy
 
 
@@ -1176,16 +1274,26 @@
 #page-checkout-thankyou-section{
   padding-top: 97px;
   padding-bottom: 92px;
+
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+    padding-top: 34px;
+    padding-bottom: 51px;    
+  }
+
 }
 
 #page-checkout-thankyou{
-  text-align: center;
+  
 
   .title-container{
+    text-align: center;
     margin-bottom: 46px;
   }
 
   .number-container{
+    text-align: center;
+
     display: block;
 
     background: @grey;
@@ -1204,6 +1312,38 @@
     margin-bottom: 59px;
   }
   .cta-container{
+    text-align: center;
+  }
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+
+  }
+
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+    .title-container{
+      text-align: left;
+      margin-bottom: 23px;
+    }
+    .number-container{
+      padding-top: 13px;
+      padding-bottom: 13px;
+
+      margin-bottom: 25px;
+    }
+    .default-copy{
+      margin-bottom: 33px;
+
+      p{
+        font-size: 13px;
+        line-height: 20px;
+      }
+      p + p{
+        padding-top: 20px;
+      }
+    }
+
 
   }
 

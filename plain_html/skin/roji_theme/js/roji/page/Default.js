@@ -64,10 +64,14 @@ roji.page.Default = function(options, element) {
 
 
   // min height variables
-  // 
   this.is_page_min_height = false;
   if( this.body.hasClass('min-height-version') == true ){
     this.is_page_min_height = true;
+  }
+
+  this.is_page_min_height_mobile = false;
+  if( this.body.hasClass('min-height-mobile-version') == true ){
+    this.is_page_min_height_mobile = true;
   }
 
   this.desktop_header_element = $('#desktop-header');
@@ -146,23 +150,24 @@ roji.page.Default.prototype.update_page_layout = function(){
   roji.page.Default.superClass_.update_page_layout.call(this);
 
 
-  if (this.is_page_min_height == true) {
-    if (manic.IS_MOBILE == false) {
+  if (this.is_page_min_height == true && manic.IS_MOBILE == false) {
+    var target_height = this.window_height - this.desktop_header_element.outerHeight() - this.desktop_footer_element.outerHeight();
 
-      var target_height = this.window_height - this.desktop_header_element.outerHeight() - this.desktop_footer_element.outerHeight();
-
-      this.page_wrapper_content.css({
-        'min-height': target_height + 'px'
-      });
-
-    }
+    this.page_wrapper_content.css({
+      'min-height': target_height + 'px'
+    });
   }
 
-  if (manic.IS_MOBILE_HEADER == false) {
 
-  } else {
+  if (this.is_page_min_height_mobile == true && manic.IS_MOBILE == true) {
+    var target_height = this.window_height - this.mobile_footer_element.outerHeight();
 
+    this.page_wrapper_content.css({
+      'min-height': target_height + 'px'
+    });
   }
+
+
 
 };
 

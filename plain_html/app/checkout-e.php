@@ -7,7 +7,7 @@
   <?php include 'head.php'; ?>
 </head>
 
-<body class="min-height-version">
+<body class="min-height-version min-height-mobile-version">
   <?php include "header.php"; ?>
 
 
@@ -24,8 +24,10 @@
 
     <div class="container-fluid has-breakpoint">
       <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
+        
+
+        <div class="col-md-2 col-sm-1"></div>
+        <div class="col-md-8 col-sm-10">
 
           <div id="page-checkout-thankyou">
 
@@ -49,7 +51,7 @@
             </div>
 
             <div class="cta-container">
-              <a href="" class="arrow-cta">Continue shopping</a>
+              <a href="shop.php" class="arrow-cta">Continue shopping</a>
             </div>
 
           </div> <!-- page-checkout-thankyou -->

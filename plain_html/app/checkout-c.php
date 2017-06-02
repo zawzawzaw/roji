@@ -136,10 +136,10 @@
 
                           <div class="form-title">
                             <div class="row">
-                              <div class="col-md-7">
+                              <div class="col-md-7 col-xs-8">
                                 <h2>Billing information</h2>
                               </div>
-                              <div class="col-md-5">
+                              <div class="col-md-5 col-xs-4">
                                 <p><i>*Mandatory</i></p>
                               </div>
                             </div>
@@ -258,11 +258,23 @@
                               <div class="col-md-4">
                                 <label>Contact No.*</label>
                               </div>
-                              <div class="col-md-2">
-                                <input type="text" name="" id="">
-                              </div>
-                              <div class="col-md-6">
-                                <input type="text" name="" id="">
+                              <div class="col-md-8">
+                                <div class="row">
+                                  <div class="col-md-3 col-xs-2">
+
+                                    <div class="form-group-column-01">
+                                      <input type="text" name="" id="">
+                                    </div>
+
+                                  </div>
+                                  <div class="col-md-9 col-xs-10">
+
+                                    <div class="form-group-column-02">
+                                      <input type="text" name="" id="">
+                                    </div>
+
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -270,9 +282,26 @@
                         </div> <!-- page-checkout-billing -->
 
                       </div> <!-- column-01 -->
+
+                      <div id="page-checkout-billing-shipping-checkbox-container">
+
+                        <div class="form-group checkbox-version">
+                          <div class="checkbox">
+                            <input type="checkbox" name="" id="">
+                            <label>
+                              <span></span>
+                              <p>Shipping information is the same as billing information</p>
+                            </label>
+                          </div>
+                        </div>
+
+                      </div> <!-- page-checkout-billing-shipping-checkbox-container -->
+
                     </div> <!-- col-md-6 -->
                     <div class="col-md-6">
                       <div class="column-02">
+
+                        
 
                         <!--
                            ____  _   _ ___ ____  ____ ___ _   _  ____
@@ -406,12 +435,22 @@
                               <div class="col-md-4">
                                 <label>Contact No.*</label>
                               </div>
-                              <div class="col-md-2">
-                                <input type="text" name="" id="">
+
+                              <div class="col-md-8">
+                                <div class="row">
+                                  <div class="col-md-3 col-xs-2">
+                                    <div class="form-group-column-01">
+                                      <input type="text" name="" id="">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-9 col-xs-10">
+                                    <div class="form-group-column-02">
+                                      <input type="text" name="" id="">
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
-                              <div class="col-md-6">
-                                <input type="text" name="" id="">
-                              </div>
+
                             </div>
                           </div>
 
@@ -420,29 +459,6 @@
                       </div> <!-- column-02 -->
                     </div> <!-- col-md-6 -->
                   </div> <!-- row -->
-
-                  <div class="row">
-                    <div class="col-md-6">
-
-                      
-                      <div id="page-checkout-billing-shipping-checkbox-container">
-
-                        <div class="form-group checkbox-version">
-                          <div class="checkbox">
-                            <input type="checkbox" name="" id="">
-                            <label>
-                              <span></span>
-                              <p>Shipping information is the same as billing information</p>
-                            </label>
-                          </div>
-                        </div>
-
-                      </div>
-                      
-
-
-                    </div>
-                  </div>
 
                 </div> <!-- page-checkout-billing-shipping -->
               </div> <!-- page-checkout-billing-shipping-container -->
@@ -457,7 +473,7 @@
 
               -->
 
-              <div id="page-checkout-delivery-container">
+              <div id="page-checkout-delivery-container" class="sans-container-fluid-mobile">
                 <div id="page-checkout-delivery">
 
                   <div id="page-checkout-delivery-title">

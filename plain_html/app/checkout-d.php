@@ -195,8 +195,6 @@
 
                             <div class="cart-item-value">$16.90</div>
 
-                            <a href="javascript:void(0);" class="cart-item-close-btn close-btn"></a>
-
                           </div> <!-- cart-item-desc-mobile -->
 
 
@@ -267,8 +265,6 @@
                             </div>
 
                             <div class="cart-item-value">$16.90</div>
-
-                            <a href="javascript:void(0);" class="cart-item-close-btn close-btn"></a>
 
                           </div> <!-- cart-item-desc-mobile -->
 
