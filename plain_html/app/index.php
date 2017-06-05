@@ -96,7 +96,7 @@
                     <div class="tile-center-content">
                       <h2>The perfect companion for your tea time</h2>
                       <div class="tile-cta">
-                        <a href="javascript:void(0);" class="arrow-cta">Shop Now</a>
+                        <a href="shop.php" class="arrow-cta">Shop Now</a>
                       </div>
                     </div>
                   </div>
@@ -114,7 +114,7 @@
                 <div class="tile-content">
                   <h2>Origins: Our teas are sourced <br>from various parts of Japan</h2>
                   <div class="tile-cta">
-                    <a href="javascript:void(0);" class="arrow-cta">Read More</a>
+                    <a href="our-teas.php" class="arrow-cta">Read More</a>
                   </div>
                 </div>
               </div>
@@ -277,7 +277,7 @@
                 <div class="tile-content">
                   <h2>Frequently asked questions</h2>
                   <div class="tile-cta">
-                    <a href="javascript:void(0);" class="arrow-cta">Visit FAQ</a>
+                    <a href="faq.php" class="arrow-cta">Visit FAQ</a>
                   </div>
                 </div>
               </div>

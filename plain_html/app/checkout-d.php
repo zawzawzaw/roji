@@ -20,12 +20,11 @@
   -->
 
 
-  <article id="page-checkout-title-section" class="visible-md visible-lg">
+  <article id="page-checkout-title-section">
     <div class="container-fluid has-breakpoint">
       <div class="row">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-9">
+        <div class="col-md-3 col-tablet-landscape-2 col-sm-1 col-xs-0"></div>
+        <div class="col-md-9 col-tablet-landscape-10 col-sm-10 col-xs-12">
           <div id="page-checkout-title">
             <h1>Review your order.</h1>
           </div>
@@ -43,16 +42,30 @@
 
   -->
 
-  <article id="page-checkout-content-section" class="visible-md visible-lg">
+  <article id="page-checkout-sidebar-section-mobile" class="visible-sm visible-xs">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-10 col-sm-push-1 col-xs-12">
 
-    <div id="page-checkout-content-section-bg">
+          <div id="page-checkout-sidebar-mobile">
+            <p>3. order confirmation</p>
+          </div> <!-- page-checkout-sidebar-mobile -->
+
+        </div>
+      </div>
+    </div>
+  </article> <!-- page-checkout-sidebar-section-mobile -->
+
+  <article id="page-checkout-content-section">
+
+    <div id="page-checkout-content-section-bg" class="visible-md visible-lg">
       <div class="sidebar-bg"></div>
       <div class="content-bg"></div>
     </div>
 
     <div class="container-fluid has-breakpoint">
       <div class="row">
-        <div class="col-md-2 col-tablet-landscape-1">
+        <div class="col-md-2 col-tablet-landscape-1 hidden-sm hidden-xs">
 
           <!--
              ____ ___ ____  _____ ____    _    ____
@@ -79,7 +92,9 @@
 
 
         </div> <!-- col-md-2 -->
-        <div class="col-md-10 col-tablet-landscape-11">
+          
+        <div class="col-md-0 col-tablet-landscape-0 col-sm-1 col-xs-0"></div>
+        <div class="col-md-10 col-tablet-landscape-11 col-sm-10 col-xs-12">
 
 
           <!--
@@ -109,7 +124,7 @@
 
                 <div id="page-checkout-cart-table">
 
-                  <div id="page-checkout-cart-table-header">
+                  <div id="page-checkout-cart-table-header" class="visible-md visible-lg">
                     <div class="row">
                       <div class="col-md-2">
                         <h4 class="left-aligned">Product</h4>
@@ -140,9 +155,9 @@
 
                     -->
 
-                    <div class="page-checkout-cart-table-item">
+                    <div class="page-checkout-cart-table-item confirmation-version">
                       <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-sm-4 col-xs-5">
 
                           <a href="product-detail.php" title="Momotaro" class="cart-item-image">
                             <div class="manic-image-container" data-scale-mode="show_all" data-horizontal-align="left">
@@ -154,7 +169,7 @@
                           </a>
 
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 hidden-sm hidden-xs">
 
                           <div class="cart-item-description">
                             <h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2>
@@ -163,24 +178,44 @@
                           </div>
 
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 hidden-sm hidden-xs">
 
                           <div class="cart-item-value">$16.90</div>
-
-                        </div>
-                        <div class="col-md-2">
-
-                          <div class="cart-item-value">1</div>
-
-                        </div>
-                        <div class="col-md-2">
-
-                          <div class="cart-item-value">$33.80</div>
                           
                         </div>
+                        <div class="col-md-2 col-sm-8 col-xs-7">
+
+
+                          <div class="cart-item-desc-mobile visible-sm visible-xs">
+
+                            <div class="cart-item-description">
+                              <h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2>
+                              <h3>ももたろう</h3>
+                            </div>
+
+                            <div class="cart-item-value">$16.90</div>
+
+                          </div> <!-- cart-item-desc-mobile -->
+
+
+
+                          <div class="cart-item-quantity-container">
+                            <h4>Quantity:</h4>
+                            <h4>1</h4>
+                          </div>
+
+
+                        </div>
+                        <div class="col-md-2 hidden-sm hidden-xs">
+
+                          <div class="cart-item-value">$33.80</div>
+
+                        </div>
                         
-                      </div>
-                    </div>
+                      </div> <!-- row -->
+                    </div> <!-- page-checkout-cart-table-item -->
+
+
 
                     <!--
                         ___ ____
@@ -191,11 +226,11 @@
 
                     -->
 
-                    <div class="page-checkout-cart-table-item">
+                    <div class="page-checkout-cart-table-item confirmation-version">
                       <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-sm-4 col-xs-5">
 
-                          <a href="product-detail.php" title="Momotaro" class="cart-item-image">
+                          <a href="product-detail.php" title="Koku Yuzu Kukicha" class="cart-item-image">
                             <div class="manic-image-container" data-scale-mode="show_all" data-horizontal-align="left">
                               <img src="" 
                                 data-image-desktop="images_cms/cart/cart-image-02.png"
@@ -205,32 +240,55 @@
                           </a>
 
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 hidden-sm hidden-xs">
 
                           <div class="cart-item-description">
-                            <h2><a href="product-detail.php" title="Momotaro">Koku Yuzu Kukicha</a></h2>
+                            <h2><a href="product-detail.php" title="Koku Yuzu Kukicha">Koku Yuzu Kukicha</a></h2>
                             <h3>濃ゆず茎茶</h3>
-                            <p>Japanese Twig Tea with Kochi Yuzu</p>
+                            <p>Japanese Sencha with White Peach</p>
                           </div>
 
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 hidden-sm hidden-xs">
 
                           <div class="cart-item-value">$16.90</div>
-
-                        </div>
-                        <div class="col-md-2">
-
-                          <div class="cart-item-value">2</div>
-
-                        </div>
-                        <div class="col-md-2">
-
-                          <div class="cart-item-value">$33.80</div>
                           
                         </div>
-                      </div>
-                    </div>
+                        <div class="col-md-2 col-sm-8 col-xs-7">
+
+
+                          <div class="cart-item-desc-mobile visible-sm visible-xs">
+
+                            <div class="cart-item-description">
+                              <h2><a href="product-detail.php" title="Koku Yuzu Kukicha">Koku Yuzu Kukicha</a></h2>
+                              <h3>濃ゆず茎茶</h3>
+                            </div>
+
+                            <div class="cart-item-value">$16.90</div>
+
+                          </div> <!-- cart-item-desc-mobile -->
+
+
+
+                          <div class="cart-item-quantity-container">
+                            <h4>Quantity:</h4>
+                            <h4>1</h4>
+                          </div>
+
+
+                        </div>
+                        <div class="col-md-2 hidden-sm hidden-xs">
+
+                          <div class="cart-item-value">$33.80</div>
+
+                        </div>
+                        
+                      </div> <!-- row -->
+                    </div> <!-- page-checkout-cart-table-item -->
+
+
+
+
 
                   </div> <!-- page-checkout-cart-table-content -->
 
@@ -257,90 +315,17 @@
 
                 <div id="page-confirmation-cart-subtotal">
                   <div class="row">
-                    <div class="col-md-8">
-
-                      <div id="page-confirmation-cart-billing-shipping-info-container">
-                        <div id="page-confirmation-cart-billing-shipping-info">
-                          <div class="row">
-                            <div class="col-md-5">
-
-                              <div id="page-confirmation-cart-billing-info">
-                                <h2>Billing information</h2>
-                                <div class="info-item-container">
-                                  <div class="info-item">
-                                    <h4>Full Name:</h4>
-                                    <p>Benedict Tan</p>
-                                  </div>
-
-                                  <div class="info-item">
-                                    <h4>Email Address:</h4>
-                                    <p>benedict.tan.219@gmail.com</p>
-                                  </div>
-
-                                  <div class="info-item">
-                                    <h4>Address:</h4>
-                                    <p>National University of Singapore 21 Lower Kent Ridge Road Singapore 119077</p>
-                                  </div>
-
-                                  <div class="info-item">
-                                    <h4>Contact no.: </h4>
-                                    <p>+65 912345678</p>
-                                  </div>
-                                </div>
-                              </div> <!-- page-confirmation-cart-billing-info -->
-
-                            </div>
-                            <div class="col-md-2">
-                            </div>
-                            <div class="col-md-5">
-                              
-                              <div id="page-confirmation-cart-shipping-info">
-                                <h2>Shipping information</h2>
-                                <div class="info-item-container">
-                                  <div class="info-item">
-                                    <h4>Full Name:</h4>
-                                    <p>Benedict Tan</p>
-                                  </div>
-
-                                  <div class="info-item">
-                                    <h4>Email Address:</h4>
-                                    <p>benedict.tan.219@gmail.com</p>
-                                  </div>
-
-                                  <div class="info-item">
-                                    <h4>Address:</h4>
-                                    <p>National University of Singapore 21 Lower Kent Ridge Road Singapore 119077</p>
-                                  </div>
-
-                                  <div class="info-item">
-                                    <h4>Contact no.: </h4>
-                                    <p>+65 912345678</p>
-                                  </div>
-                                </div>
-                              </div> <!-- page-confirmation-cart-shipping-info -->
-
-                            </div>
-                          </div>
-                          
-                        </div> <!-- page-confirmation-cart-billing-shipping-info -->
-                      </div> <!-- page-confirmation-cart-billing-shipping-info-container -->
-
-                      
-
-                      
-                      
-
-                    </div>
-                    <div class="col-md-4">
+                    
+                    <div class="col-md-4 col-md-push-8">
 
                       <div id="page-checkout-cart-subtotal">
                         <div class="row">
-                          <div class="col-md-8">
+                          <div class="col-md-8 col-xs-8">
                             <div class="column-01">
                               <p>Subtotal:</p>
                             </div>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-4 col-xs-4">
                             <div class="column-02">
                               <p>$50.70</p>
                             </div>
@@ -348,12 +333,12 @@
                         </div>
 
                         <div class="row">
-                          <div class="col-md-8">
+                          <div class="col-md-8 col-xs-8">
                             <div class="column-01">
                               <p>Shipping & handling:</p>
                             </div>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-4 col-xs-4">
                             <div class="column-02">
                               <p>$6.00</p>
                             </div>
@@ -361,12 +346,12 @@
                         </div>
 
                         <div class="row">
-                          <div class="col-md-8">
+                          <div class="col-md-8 col-xs-8">
                             <div class="column-01">
                               <p>Tax:</p>
                             </div>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-4 col-xs-4">
                             <div class="column-02">
                               <p>$2.24</p>
                             </div>
@@ -376,12 +361,12 @@
                         <hr>
 
                         <div class="row">
-                          <div class="col-md-8">
+                          <div class="col-md-8 col-xs-8">
                             <div class="column-01">
                               <p>Grand total:</p>
                             </div>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-4 col-xs-4">
                             <div class="column-02">
                               <p>$58.94</p>
                             </div>
@@ -390,7 +375,7 @@
                       </div> <!-- page-checkout-cart-subtotal -->
 
 
-                      <div id="page-confirmation-cart-payment">
+                      <div id="page-confirmation-cart-payment" class="visible-md visible-lg">
                         <div class="row">
                           <div class="col-md-4"></div>
                           <div class="col-md-8">
@@ -412,13 +397,119 @@
                           </ul>
                         </div>
 
-                      </div>
+                      </div> <!-- page-confirmation-cart-payment -->
 
 
 
                     </div> <!-- col-md-4 -->
 
+                    <div class="col-md-8 col-md-pull-4">
+
+                      <div id="page-confirmation-cart-billing-shipping-info-container">
+                        <div id="page-confirmation-cart-billing-shipping-info" class="sans-container-fluid-mobile">
+
+                          <div class="row">
+                            <div class="col-md-5 col-sm-6">
+
+                              <div id="page-confirmation-cart-billing-info">
+                                <h2>Billing information</h2>
+                                <div class="info-item-container">
+                                  <div class="info-item">
+                                    <h4>Full Name:</h4>
+                                    <p>Benedict Tan</p>
+                                  </div>
+
+                                  <div class="info-item">
+                                    <h4>Email Address:</h4>
+                                    <p>benedict.tan.219@gmail.com</p>
+                                  </div>
+
+                                  <div class="info-item">
+                                    <h4>Address:</h4>
+                                    <p>National University of Singapore 21 Lower Kent Ridge Road Singapore 119077</p>
+                                  </div>
+
+                                  <div class="info-item">
+                                    <h4>Contact No.: </h4>
+                                    <p>+65 912345678</p>
+                                  </div>
+                                </div>
+                              </div> <!-- page-confirmation-cart-billing-info -->
+
+                            </div>
+                            <div class="col-md-2 col-sm-0">
+                            </div>
+                            <div class="col-md-5 col-sm-6">
+                              
+                              <div id="page-confirmation-cart-shipping-info">
+                                <h2>Shipping information</h2>
+                                <div class="info-item-container">
+                                  <div class="info-item">
+                                    <h4>Full Name:</h4>
+                                    <p>Benedict Tan</p>
+                                  </div>
+
+                                  <div class="info-item">
+                                    <h4>Email Address:</h4>
+                                    <p>benedict.tan.219@gmail.com</p>
+                                  </div>
+
+                                  <div class="info-item">
+                                    <h4>Address:</h4>
+                                    <p>National University of Singapore 21 Lower Kent Ridge Road Singapore 119077</p>
+                                  </div>
+
+                                  <div class="info-item">
+                                    <h4>Contact No.: </h4>
+                                    <p>+65 912345678</p>
+                                  </div>
+                                </div>
+                              </div> <!-- page-confirmation-cart-shipping-info -->
+
+                            </div>
+                          </div>
+                          
+                        </div> <!-- page-confirmation-cart-billing-shipping-info -->
+                      </div> <!-- page-confirmation-cart-billing-shipping-info-container -->
+
+
+
+                      
+
+                      
+                      
+
+                    </div> <!-- col-md-8 -->
+
                   </div>
+
+
+                  <div class="row visible-sm visible-xs">
+                    <div class="col-sm-8 col-sm-push-2 col-xs-10 col-xs-push-1">
+
+
+                      <div id="page-confirmation-cart-payment-mobile">
+                        <div class="cta-container">
+                          <a href="checkout-e.php" class="square-cta full-width-version">Proceed to pay</a>
+                        </div>
+
+                        <div class="cc-container">
+                          <p>Payment via Paypal</p>
+                          <ul>
+                            <li><span class="fa fa-cc-discover"></span></li>
+                            <li><span class="fa fa-cc-visa"></span></li>
+                            <li><span class="fa fa-cc-amex"></span></li>
+                            <li><span class="fa fa-cc-mastercard"></span></li>
+                          </ul>
+                        </div>
+                        
+                      </div> <!-- page-confirmation-cart-payment-mobile -->
+
+                    </div>
+                  </div>
+
+
+
                 </div> <!-- page-confirmation-cart-subtotal -->
                 
 

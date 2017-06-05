@@ -1,4 +1,20 @@
 
+.mobile-menu-font{
+  .h4-style;
+  font-size: 12px;
+  line-height: 24px;
+}
+.mobile-submenu-font{
+
+  .body-font-bold;
+  font-size: 13px;
+  line-height: 24px;
+}
+
+
+
+
+
 
 #mobile-header{
   position: fixed;
@@ -16,13 +32,15 @@
     height: @mobile-header-height;
     background: @off-white-1;
 
+    .transition-in(0.3s);
+
     .box-shadow (1px, 1px, 4px, #e5e5e5);
   }
 
 }
 
 
-#mobile-header-spacer{
+.mobile-header-spacer{
   height: @mobile-header-height;
 }
 
@@ -37,6 +55,23 @@
   width: @mobile-header-height;
   height: @mobile-header-height;
 
+  &:before{
+    content: '';
+    display: block;
+    position: absolute;
+
+    top: 19px;
+    left: 9px;
+
+    .menu-icon-close;
+
+
+    .opacity(0);
+    .scale(1.1);
+    .transform-origin(50%, 50%);
+    .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.02s);
+  }
+
   .line-01,
   .line-02,
   .line-03{
@@ -48,14 +83,19 @@
     background: @dark-grey;
   }
 
+
+
   .line-01{
     top: 23px;
+    .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.05s + 0.05s);
   }
   .line-02{
     top: 29px;
+    .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.07s + 0.05s);
   }
   .line-03{
     top: 35px;
+    .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.09s + 0.05s);
   }
 }
 
@@ -136,3 +176,258 @@
 
   }
 }
+
+
+//    _______  ______   _    _   _ ____  _____ ____
+//   | ____\ \/ /  _ \ / \  | \ | |  _ \| ____|  _ \
+//   |  _|  \  /| |_) / _ \ |  \| | | | |  _| | | | |
+//   | |___ /  \|  __/ ___ \| |\  | |_| | |___| |_| |
+//   |_____/_/\_\_| /_/   \_\_| \_|____/|_____|____/
+//
+
+
+
+
+#mobile-header-expanded{
+  display: none;             // remove to develop
+  
+  .mobile-header-spacer{
+    background: @dark-grey-2;
+  }
+
+
+} // #mobile-header-expanded
+
+
+
+body.mobile-menu-open-version{
+  #mobile-header-expanded{
+    display: block;
+  }
+  #page-wrapper{
+    display: none;
+  }
+
+  #mobile-header .mobile-header-bg{
+    .box-shadow (1px, 1px, 0px, transparent);
+  }
+
+  #mobile-menu-btn{
+
+    &:before{
+      .opacity(1);
+      .scale(1);
+      .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.16s);
+    }
+
+    .line-01{
+      top: 29px;
+      .opacity(0);
+      .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.06s);
+    }
+    .line-02{
+      //top: 29px - 5px;
+      .opacity(0);
+      .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.04s);
+    }
+    .line-03{
+      top: 29px;
+      .opacity(0);
+      .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.02s);
+    }
+
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#mobile-header-account-container{
+  background: @dark-grey-2;
+} // #mobile-header-account-container
+
+#mobile-header-account-single-link{
+  padding-top: 13px;
+  padding-bottom: 13px;
+
+  a{
+    .mobile-menu-font;
+    color: @white !important;
+  }
+}
+
+#mobile-header-account-menu{
+
+}
+
+
+
+
+
+#mobile-header-menu-container{
+
+} // #mobile-header-menu-container
+
+#mobile-header-menu{
+  > nav{
+    > ul{
+      > li{
+        position: relative;
+
+        &:after{
+          content: '';
+          display: block;
+
+          position: absolute;
+          width: auto;
+          height: 0px;
+          left: 0px;
+          right: 0px;
+          bottom: 0px;
+          border-bottom: 1px solid @border-grey;
+        }
+
+        &:last-child{
+          &:after{
+            display: none;
+          }
+        }
+
+        > a{
+          .h4-style;
+          color: @off-black !important;
+
+          display: block;
+          padding-top: 13px;
+          padding-bottom: 12px;
+
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
+
+        &.submenu-version{
+          // pending
+        }
+
+        
+
+      }
+    }
+  }
+} // #mobile-header-menu
+
+// LEVEL 02
+
+#mobile-header-menu > nav > ul > li > ul{
+  
+  display: none;
+
+  > li{
+    > a{
+      display: block;
+    }
+  }
+  
+}
+
+
+
+//     ____ _   _ ____  ____  _____ _   _  ______   __
+//    / ___| | | |  _ \|  _ \| ____| \ | |/ ___\ \ / /
+//   | |   | | | | |_) | |_) |  _| |  \| | |    \ V /
+//   | |___| |_| |  _ <|  _ <| |___| |\  | |___  | |
+//    \____|\___/|_| \_\_| \_\_____|_| \_|\____| |_|
+//
+
+#mobile-header-menu > nav > ul > li.submenu-version{
+
+}
+
+
+
+#mobile-header-currency-menu{
+  position: absolute;
+  top: 8px;
+  right: 0px;
+
+  // input fields reset
+  input, textarea, select {
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  // remove fill color from google autofill 
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px @off-white-2 inset !important;
+  }
+
+
+  .dropdown {
+    display: block;
+    position: relative;
+
+    select{
+      .mobile-menu-font;
+
+      display: block;
+      width: 100%;
+      height: 30px;
+
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 16px;
+      padding-right: 16px + 20px;
+
+      outline: none;
+      border: none;
+      .round(0px);
+
+    }
+
+    &:after{
+      .fa;
+      content: "\f107";
+      font-size: 16px;
+      line-height: 20px;        
+      text-align: center;
+      color: @off-black;
+
+      position: absolute;
+      top: 7px;
+      right: 5px;
+      width: 20px;
+      height: 20px;
+
+      pointer-events: none;
+    }
+
+    // TABLET PORTRAIT
+    @media only screen and (max-width: 991px) {
+      select{
+        .mobile-menu-font;
+        padding-left: 11px;
+        padding-right: 11px + 20px;
+      }
+    }
+
+  } // .dropdown
+
+} // #mobile-header-currency-menu{
+
