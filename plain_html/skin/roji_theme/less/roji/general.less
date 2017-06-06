@@ -89,3 +89,75 @@ button{
   }
 
 }
+
+
+
+
+
+
+
+.roji-slick-slider{
+
+  .slick-prev,
+  .slick-next{
+    z-index: 200;
+    width: 36px;
+    height: 36px;
+    .transition-in(0.3s);
+
+    &:before{
+      content: "";
+
+    }
+    &:after{
+      top: 0;
+      
+      background: transparent !important;
+      text-indent: 0;
+      .fa;
+      font-size: 34px;
+      line-height: 36px;
+      color: @white;
+
+      .transition-in(0.3s);
+    }
+
+    &:focus,
+    &:hover{
+      .opacity(0.7);
+      &:after{
+        
+      }
+    }
+
+    &.slick-disabled{
+      pointer-events: none;
+      .opacity-important(0.5);
+
+      &:after{
+        
+      }
+    }
+  }
+  .slick-prev{
+    left: 18px;
+    right: auto;
+
+    &:after{
+      content: "\f104"; // .fa-angle-left
+      left: 7px;
+    }
+  }
+  .slick-next{
+    left: auto;
+    right: 18px;
+
+    &:after{
+      content: "\f105"; // .fa-angle-right
+      right: 7px;
+
+    }
+  }
+  
+
+}
