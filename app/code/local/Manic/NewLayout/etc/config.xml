@@ -12,6 +12,10 @@
                     <label>New Home Layout</label>
                     <template>page/home-layout.phtml</template>
                 </new_cms_layout> 
+                <new_cms_layout_2 module="page" translate="label">
+                    <label>New Product Detail Layout</label>
+                    <template>page/product-detail-layout.phtml</template>
+                </new_cms_layout_2> 
             </layouts>
         </page>
     </global>

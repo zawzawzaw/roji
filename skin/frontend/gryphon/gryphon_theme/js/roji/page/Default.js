@@ -73,68 +73,10 @@ roji.page.Default = function(options, element) {
   this.desktop_header_element = $j('#desktop-header');
   this.mobile_header_element = $j('#mobile-header');
   this.desktop_footer_element = $j('#desktop-footer');
-  this.mobile_footer_element = $j('#mobile-footer');
-
-
-  var product_price = $j("#page-product-detail-content").find(".regular-price").html();
-  $j("#page-product-detail-form").find('.form-total-value').html(product_price);
-
-  $j('#page-product-detail-form .form-quantity').find(".form-quantity-plus-btn").click(function(e){
-    e.preventDefault();
-    var $qty=$j(this).parent().find('.qty');
-    var currentVal = parseInt($qty.val());
-
-    if (!isNaN(currentVal)) {
-      currentVal = currentVal + 1;
-      $qty.val(currentVal);
-    
-      var product_price = $j("#page-product-detail-content").find(".regular-price").html();
-      var currency_symbol = $j("#page-product-detail-form").find('.form-total-value').data('currency');
-      product_price = product_price.replace( /^\D+/g, '');
-      
-      var total_price = product_price * currentVal;
-
-      $j("#page-product-detail-form").find('.form-total-value').html(currency_symbol + total_price.toFixed(2));
-    }
-  });
-
-  $j('#page-product-detail-form .form-quantity').find(".form-quantity-minus-btn").click(function(e){
-    e.preventDefault();
-    var $qty=$j(this).parent().find('.qty');
-    var currentVal = parseInt($qty.val());
-
-    if (!isNaN(currentVal) && currentVal > 1) {
-      currentVal = currentVal - 1;
-      $qty.val(currentVal);
-  
-      var product_price = $j("#page-product-detail-content").find(".regular-price").html();
-      var currency_symbol = $j("#page-product-detail-form").find('.form-total-value').data('currency');
-      product_price = product_price.replace( /^\D+/g, '');
-      var total_price = product_price * currentVal;
-
-      $j("#page-product-detail-form").find('.form-total-value').html(currency_symbol + total_price.toFixed(2));
-    }
-
-  });
+  this.mobile_footer_element = $j('#mobile-footer');  
 
   $j(".add-to-cart-links").click(this.on_add_to_cart_link_click.bind(this));
-
-  $j("#desktop-header-cart-expand-container").on("click", '.remove-item', function(e){
-      e.preventDefault();
-      var item_id = $j(e.currentTarget).data("item-id");
-
-      var request = $j.ajax({
-          url: "/discovertea/index/deletecartitem",
-          method: "POST",
-          data: { item_id : item_id },
-          dataType: "html"
-      });
-
-      request.done(function() {
-          this.update_header_cart();
-      }.bind(this));
-      
-  }.bind(this));
+  $j("#desktop-header-cart-expand-container").on("click", '.remove-item', this.on_remove_header_cart_item.bind(this));
 
   console.log('roji.page.Default: init');
 };
@@ -319,6 +261,24 @@ roji.page.Default.prototype.on_add_to_cart_link_click = function(event){
     $j.get( add_to_cart_url, function( data ) {
        this.update_header_cart();
     }.bind(this));         
+    
+}
+
+
+roji.page.Default.prototype.on_remove_header_cart_item = function(event){
+    event.preventDefault();
+    var item_id = $j(event.currentTarget).data("item-id");
+
+    var request = $j.ajax({
+        url: "/discovertea/index/deletecartitem",
+        method: "POST",
+        data: { item_id : item_id },
+        dataType: "html"
+    });
+
+    request.done(function() {
+        this.update_header_cart();
+    }.bind(this));
     
 }
 

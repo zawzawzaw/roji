@@ -144,15 +144,15 @@ endif;
                               <div class="detail-item-container">
                                 <div class="detail-item">
                                   <h4>Tea Type</h4>
-                                  <p>Sencha</p>
+                                  <p><?php echo $_product->getData('tea_type'); ?></p>
                                 </div>
                                 <div class="detail-item">
                                   <h4>Origin</h4>
-                                  <p>Kagoshima Prefecture</p>
+                                  <p><?php echo $_product->getData('origin'); ?></p>
                                 </div>
                                 <div class="detail-item">
                                   <h4>harvest period</h4>
-                                  <p>Spring</p>
+                                  <p><?php echo $_product->getData('harvest_period'); ?></p>
                                 </div>
                               </div> <!-- detail-item-container -->
 
@@ -225,7 +225,7 @@ endif;
                               <div class="copy-price red-version">
                                 <ul>
                                   <li><?php echo $this->getPriceHtml($_product); ?></li>
-                                  <li><?php echo $_product->getData('number_of_sachet'); ?> sachets</li>
+                                  <li><?php echo $_product->getData('number_of_sachet'); ?> silken sachets</li>
                                   <li><?php echo number_format($_product->getData('weight'), 1); ?> g</li>
                                 </ul>
                               </div>
@@ -249,7 +249,7 @@ endif;
 
                                     <div class="detail-item">
                                       <h4>Tea Maker’s Note</h4>
-                                      <p>Delicate, floral sweet aroma of white peach brings harmony to a smooth finish.</p>
+                                      <p><?php echo (!empty($_product->getData('tea_makers_note'))) ? $_product->getData('tea_makers_note') : "Delicate, floral sweet aroma of white peach brings harmony to a smooth finish." ; ?></p>
                                     </div>
                                   </div> <!-- detail-item-container -->
 
