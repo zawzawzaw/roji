@@ -1,4 +1,5 @@
 goog.provide('roji.component.OurTeasMap');
+goog.provide('roji.component.OurTeasButton');
 
 goog.require('goog.events.Event');
 goog.require('goog.events.EventTarget');
@@ -35,6 +36,7 @@ roji.component.OurTeasMap = function(options, element) {
   this.create_icons();
   this.create_lines();
   this.create_buttons();
+
 
 
 
@@ -180,6 +182,8 @@ roji.component.OurTeasMap.prototype.create_buttons = function() {
   var item = null;
   var value = '';
 
+  var tea_button = null;
+
   for (var i = 0, l=arr.length; i < l; i++) {
     item = $(arr[i]);
     value = '';
@@ -202,6 +206,14 @@ roji.component.OurTeasMap.prototype.create_buttons = function() {
       }
 
     }.bind(this));
+
+
+    
+    tea_button = new roji.component.OurTeasButton({
+      'icon': this.icon_dictionary[value]
+    }, item);
+
+
 
   }
 
@@ -305,3 +317,119 @@ roji.component.OurTeasMap.prototype.sample_method_calls = function() {
   // sample event
   this.dispatchEvent(new goog.events.Event(roji.component.OurTeasMap.EVENT_01));
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    _   _  _____     _______ ____
+//   | | | |/ _ \ \   / / ____|  _ \
+//   | |_| | | | \ \ / /|  _| | |_) |
+//   |  _  | |_| |\ V / | |___|  _ <
+//   |_| |_|\___/  \_/  |_____|_| \_\
+//
+
+
+
+/**
+ * The HoverItem constructor
+ * @param {object} options The object extendable like jquery plugins
+ * @param {element} element The jQuery element connected to class
+ * @constructor
+ * @extends {goog.events.EventTarget}
+ */
+roji.component.OurTeasButton = function(options, element) {
+
+  goog.events.EventTarget.call(this);
+  this.options = $.extend({}, roji.component.OurTeasButton.DEFAULT, options);
+  this.element = element;
+  this.icon = this.options.icon;
+
+
+  // A VERY ROUNDABOUT MANNER OF ENSURING A SMOOTH HOVER ANIMATION
+
+  this.is_inside = false;
+  this.is_animating = false;
+
+  // the functions needed to be a 'non-prototype' function because 
+  // killDelayedCallsTo was also killing functions from a different scope / instance
+
+  this.on_element_mouseenter = function(event) {
+    this.is_inside = true;
+
+    if (manic.IS_MOBILE == false) {
+      if (this.is_animating == false) {
+        this.is_animating = true;
+        this.icon.addClass('hover-version');
+
+        TweenMax.killDelayedCallsTo(this.on_element_mouseenter_delayed);
+        TweenMax.delayedCall(0.55, this.on_element_mouseenter_delayed, [], this);
+      }
+    }
+
+  }.bind(this);
+
+  this.on_element_mouseenter_delayed = function(event){
+    
+    if (manic.IS_MOBILE == false) {
+      this.is_animating = false;
+
+      if (this.is_inside == false){
+        this.is_animating = true;
+        this.icon.removeClass('hover-version');
+
+        TweenMax.killDelayedCallsTo(this.on_element_mouseleave_delayed);
+        TweenMax.delayedCall(0.55, this.on_element_mouseleave_delayed, [], this);
+      }
+    }
+  }.bind(this);
+
+  this.on_element_mouseleave = function(event) {
+    this.is_inside = false;
+    
+    if (manic.IS_MOBILE == false) {
+      if (this.is_animating == false) {
+        this.is_animating = true;
+        this.icon.removeClass('hover-version');
+
+        TweenMax.killDelayedCallsTo(this.on_element_mouseleave_delayed);
+        TweenMax.delayedCall(0.55, this.on_element_mouseleave_delayed, [], this);
+      }
+    }
+  }.bind(this);
+
+  this.on_element_mouseleave_delayed = function(){
+    
+    if (manic.IS_MOBILE == false) {
+      this.is_animating = false;
+      
+      if (this.is_inside == true){
+        this.is_animating = true;
+        this.icon.addClass('hover-version');
+
+        TweenMax.killDelayedCallsTo(this.on_element_mouseenter_delayed);
+        TweenMax.delayedCall(0.55, this.on_element_mouseenter_delayed, [], this);
+      }
+    }
+  }.bind(this);
+
+
+  this.element.mouseenter(this.on_element_mouseenter);
+  this.element.mouseleave(this.on_element_mouseleave);
+
+  console.log('roji.component.OurTeasButton: init');
+};
+goog.inherits(roji.component.OurTeasButton, goog.events.EventTarget);
+

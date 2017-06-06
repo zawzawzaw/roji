@@ -89,7 +89,7 @@ roji.page.OurTeas.prototype.create_slider = function() {
     'slidesToScroll': 1,
     'pauseOnHover': false,
     'autoplay': true,
-    'autoplaySpeed': 7000
+    'autoplaySpeed': 14000  //7000
   });
 
 };
