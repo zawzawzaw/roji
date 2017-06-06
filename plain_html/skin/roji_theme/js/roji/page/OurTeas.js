@@ -81,7 +81,7 @@ roji.page.OurTeas.prototype.init = function() {
 roji.page.OurTeas.prototype.create_slider = function() {
 
   $('#page-our-teas-slider').slick({
-    'speed': 350,
+    'speed': 900,       // 350
     'dots': true,
     'arrows': true,
     'infinite': false,
@@ -89,7 +89,7 @@ roji.page.OurTeas.prototype.create_slider = function() {
     'slidesToScroll': 1,
     'pauseOnHover': false,
     'autoplay': true,
-    'autoplaySpeed': 4000
+    'autoplaySpeed': 7000
   });
 
 };

@@ -158,6 +158,43 @@ button{
 
     }
   }
-  
 
+
+
+  .slick-dots{
+    bottom: 39px;
+
+    li{
+      margin-left: 6px;
+      margin-right: 6px;
+
+      button{
+        padding: 0;
+        width: 30px;
+        height: 30px;
+
+        &:before{
+
+          content: "\f111"; // .fa-circle:before {
+          .fa;
+          font-size: 15px;
+          line-height: 30px;
+          color: @white;
+
+          .transition-in(0.15s);
+        }
+      }
+
+
+
+      &.slick-active{
+        button{
+          &:before{
+            .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.25s);
+          }
+        }
+      }
+    }
+
+  }
 }

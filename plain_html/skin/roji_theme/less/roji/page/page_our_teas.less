@@ -7,8 +7,9 @@
 //
 
 #page-our-teas-title-section{
-  padding-top: 36px;
-  padding-bottom: 86px;
+  // padding-top: 36px;
+  padding-top: 45px;
+  padding-bottom: 39px;
 }
 #page-our-teas-title{
   text-align: right;
@@ -253,6 +254,10 @@
       left: 367px;
     }
 
+    &.hover-version{
+      .opacity(0.8);
+      .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.0s);
+    }
 
     &.selected{
       .opacity(1);
@@ -514,6 +519,20 @@
 
 } // .page-our-teas-map-sidebar-item
 
+
+// hover state
+.page-our-teas-map-sidebar-item:hover{
+  .sidebar-item-icon{
+    .opacity(1);
+    .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.0s);
+  }
+  h4{
+    .opacity(1);
+    .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.0s);
+  }
+}
+
+// selected state
 .page-our-teas-map-sidebar-item.selected{
   .sidebar-item-icon{
     .opacity(1);

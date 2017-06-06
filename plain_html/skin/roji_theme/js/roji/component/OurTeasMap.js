@@ -38,8 +38,25 @@ roji.component.OurTeasMap = function(options, element) {
 
 
 
+
+  this.sidebar_container = this.element.find('#page-our-teas-map-sidebar-item-container');
+  this.button_container = this.element.find('#page-our-teas-map-content-button-container');
+
   // clickout
   this.element.click(function(event){
+
+    if (this.current_item != 'none') {
+
+      var target = $(event.target);
+
+      if ($.contains(this.sidebar_container[0], target[0]) == false && 
+          $.contains(this.button_container[0], target[0]) == false) {
+
+        this.select_none();
+
+      }
+      
+    }
 
     // get document click functionality from another class
 
@@ -135,6 +152,7 @@ roji.component.OurTeasMap.prototype.create_icons = function() {
     }
 
   }
+
 };
 roji.component.OurTeasMap.prototype.create_lines = function() {
 
@@ -228,7 +246,15 @@ roji.component.OurTeasMap.prototype.select_item = function(str_param) {
     
   }
 };
-roji.component.OurTeasMap.prototype.public_method_02 = function() {};
+roji.component.OurTeasMap.prototype.select_none = function() {
+
+
+  this.current_item = 'none';
+
+  this.sidebar_item_elements.removeClass('selected');
+  this.icon_elements.removeClass('selected');
+  this.line_elements.removeClass('selected');
+};
 roji.component.OurTeasMap.prototype.public_method_03 = function() {};
 roji.component.OurTeasMap.prototype.public_method_04 = function() {};
 roji.component.OurTeasMap.prototype.public_method_05 = function() {};
