@@ -46,12 +46,22 @@
     </div>
 </div>
 <?php else : ?>
-<div class="each-details test">
-    <div style="<?php echo $this->getStyle() ?>" class="a-right label subtotal" colspan="<?php echo $this->getColspan(); ?>">
-        <p><?php echo $this->getTotal()->getTitle() ?></p>
-    </div>
-    <div style="<?php echo $this->getStyle() ?>" class="a-right value subtotal">
-        <p class="sub_total"><?php echo strip_tags($this->helper('checkout')->formatPrice($this->getTotal()->getValue())) ?></p>
-    </div>
-</div>
+
+    <div class="row">
+      <div class="col-md-6 col-xs-6">
+
+        <div class="column-01">
+          <p><?php echo $this->getTotal()->getTitle() ?>:</p>
+        </div>
+
+      </div>
+      <div class="col-md-6 col-xs-6">
+
+        <div class="column-02">
+          <p><?php echo strip_tags($this->helper('checkout')->formatPrice($this->getTotal()->getValue())) ?></p>
+        </div>
+
+      </div>
+    </div> <!-- row -->
+
 <?php endif;?>

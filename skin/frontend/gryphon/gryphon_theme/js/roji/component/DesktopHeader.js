@@ -21,10 +21,17 @@ roji.component.DesktopHeader = function(options, element) {
   //this.options = $j.extend(this.options, roji.component.DesktopHeader.DEFAULT, options);
   
   window.header_cart_is_open = false;
+  window.currency_dropdown_is_open = false;
 
   this.sticky_header_cart();  
 
   this.element.find("#desktop-header-cart-btn").click(this.on_desktop_header_cart_btn_click.bind(this));  
+
+  this.element.find(".desktop-header-current-currency").click(this.on_desktop_header_current_currency_click.bind(this));
+
+  this.element.find(".desktop-header-currency-select li a").click(this.on_currency_select.bind(this));
+
+  $j(document).click(this.on_click_else_where.bind(this));
 
   console.log('roji.component.DesktopHeader: init');
 };
@@ -93,13 +100,21 @@ roji.component.DesktopHeader.prototype.sticky_header_cart = function() {
 roji.component.DesktopHeader.prototype.open_header_cart = function() {
   window.header_cart_is_open = true;
   this.element.find("#desktop-header-cart-expand-container").slideDown(300);
+  this.close_currency_dropdown();
 };
 roji.component.DesktopHeader.prototype.close_header_cart = function() {
   window.header_cart_is_open = false;
   this.element.find("#desktop-header-cart-expand-container").slideUp(300);
 };
-roji.component.DesktopHeader.prototype.public_method_04 = function() {};
-roji.component.DesktopHeader.prototype.public_method_05 = function() {};
+roji.component.DesktopHeader.prototype.open_currency_dropdown = function() {
+  window.currency_dropdown_is_open = true;
+  this.element.find(".desktop-header-currency-dropdown-container").slideDown(300);
+  this.close_header_cart();
+};
+roji.component.DesktopHeader.prototype.close_currency_dropdown = function() {
+  window.currency_dropdown_is_open = false;
+  this.element.find(".desktop-header-currency-dropdown-container").slideUp(300);  
+};
 roji.component.DesktopHeader.prototype.public_method_06 = function() {};
 
 
@@ -124,19 +139,39 @@ roji.component.DesktopHeader.prototype.on_desktop_header_cart_btn_click = functi
 /**
  * @param {object} event
  */
-roji.component.DesktopHeader.prototype.on_event_handler_02 = function(event) {
+roji.component.DesktopHeader.prototype.on_desktop_header_current_currency_click = function(event) {  
+  if(window.currency_dropdown_is_open == false) {
+    this.open_currency_dropdown();    
+  } else {
+    this.close_currency_dropdown();
+  }
 };
 
 /**
  * @param {object} event
  */
-roji.component.DesktopHeader.prototype.on_event_handler_03 = function(event) {
+roji.component.DesktopHeader.prototype.on_currency_select = function(event) {
+  event.preventDefault();            
+  console.log('on currency select')
+  var currencyCode = $j(event.currentTarget).attr('id');
+  
+  this.element.find("#desktop-header-currency-select option:contains(" + currencyCode + ")").attr('selected', 'selected').trigger("change");           
 };
 
 /**
  * @param {object} event
  */
-roji.component.DesktopHeader.prototype.on_event_handler_04 = function(event) {
+roji.component.DesktopHeader.prototype.on_click_else_where = function(event) {
+  if(!$j(event.target).closest('#desktop-header-currency-menu').length) {
+      if(window.currency_dropdown_is_open == true) {
+          this.close_currency_dropdown();
+      }
+  }
+  if(!$j(event.target).closest('#desktop-header-cart-menu').length) {
+      if(window.header_cart_is_open == true) {
+          this.close_header_cart();
+      }
+  }        
 };
 
 

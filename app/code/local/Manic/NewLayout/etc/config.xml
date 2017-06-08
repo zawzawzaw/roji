@@ -16,6 +16,10 @@
                     <label>New Product Detail Layout</label>
                     <template>page/product-detail-layout.phtml</template>
                 </new_cms_layout_2> 
+                <new_cms_layout_3 module="page" translate="label">
+                    <label>New Cart Layout</label>
+                    <template>page/cart-layout.phtml</template>
+                </new_cms_layout_3> 
             </layouts>
         </page>
     </global>

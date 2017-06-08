@@ -63,6 +63,7 @@ roji.page.ProductDetail.prototype.init = function() {
 
   $j('#page-product-detail-form .form-quantity').find(".form-quantity-plus-btn").click(this.on_quantity_plus_btn_click.bind(this));
   $j('#page-product-detail-form .form-quantity').find(".form-quantity-minus-btn").click(this.on_quantity_minus_btn_click.bind(this));
+  $j('#page-product-detail-form .form-quantity').find(".form-quantity-input-txt").on('input', this.on_quantity_input_change.bind(this));
 
 };
 
@@ -136,7 +137,18 @@ roji.page.ProductDetail.prototype.on_quantity_minus_btn_click = function(event) 
     }
 };
 
+/**
+ * @param {object} event
+ */
+roji.page.ProductDetail.prototype.on_quantity_input_change = function(event) {
+  event.preventDefault();
+  var $qty=$j(event.currentTarget);
+  var currentVal = parseInt($qty.val());
 
+  this.total_price = this.product_price_int * currentVal;
+
+  $j("#page-product-detail-form").find('.form-total-value').html(this.currency_symbol + this.total_price.toFixed(2));
+};
 
 //    _        _ __   _____  _   _ _____
 //   | |      / \\ \ / / _ \| | | |_   _|

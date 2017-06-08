@@ -24,17 +24,32 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<form id="discount-coupon-form" action="<?php echo $this->getUrl('checkout/cart/couponPost') ?>" method="post" autocomplete="off">
-    <label for="coupon_code"><?php echo $this->__('Discount Code') ?></label>
+<div class="form-group">
+<form id="discount-coupon-form" class="checkout-form" action="<?php echo $this->getUrl('checkout/cart/couponPost') ?>" method="post" autocomplete="off">
     <input type="hidden" name="remove" id="remove-coupone" value="0" />
-    <div class="input-box">
-        <input type="text" class="input-text" id="coupon_code" name="coupon_code" value="<?php echo $this->escapeHtml($this->getCouponCode()) ?>" />    
-    </div>
-    <?php if(strlen($this->getCouponCode())): ?>
-        <button type="button" title="<?php echo $this->__('Cancel Coupon') ?>" class="button apply cta" onclick="discountForm.submit(true)" value="<?php echo $this->__('Cancel Coupon') ?>"><span><span><?php echo $this->__('Cancel') ?></span></span></button>
-    <?php else: ?>
-        <button type="button" title="<?php echo $this->__('Apply Coupon') ?>" class="button apply cta" onclick="discountForm.submit(false)" value="<?php echo $this->__('Apply Coupon') ?>"><span><span><?php echo $this->__('Apply') ?></span></span></button>
-    <?php endif;?>
+    <div class="row">
+        <div class="col-md-4">
+          <label for="coupon_code"><?php echo $this->__('Discount Code') ?></label>
+        </div>
+        <div class="col-md-8">
+          <div class="row">
+
+            <div class="col-md-8 col-sm-6 col-xs-8">
+              <input type="text" class="input-text" id="coupon_code" name="coupon_code" value="<?php echo $this->escapeHtml($this->getCouponCode()) ?>" />    
+            </div>
+            <div class="col-md-4 col-sm-3 col-xs-4">
+              <div class="cart-discount-cta-container">                
+                <?php if(strlen($this->getCouponCode())): ?>
+                    <button type="button" title="<?php echo $this->__('Cancel Coupon') ?>" class="square-cta full-width-version apply" onclick="discountForm.submit(true)" value="<?php echo $this->__('Cancel Coupon') ?>"><span><span><?php echo $this->__('Cancel') ?></span></span></button>
+                <?php else: ?>
+                    <button type="button" title="<?php echo $this->__('Apply Coupon') ?>" class="square-cta full-width-version apply" onclick="discountForm.submit(false)" value="<?php echo $this->__('Apply Coupon') ?>"><span><span><?php echo $this->__('Apply') ?></span></span></button>
+                <?php endif;?>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+    </div>    
 </form>
 <script type="text/javascript">
 //<![CDATA[
@@ -51,3 +66,4 @@ discountForm.submit = function (isRemove) {
 }
 //]]>
 </script>
+</div>                                

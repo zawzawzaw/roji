@@ -63,302 +63,288 @@ function isMobile()
     return FALSE;  
 }  
 ?>
-<div id="page-shopping-cart-content" class="tab-content">
-    <div id="page-shopping-cart-item-container">    
-         <div id="confirmation" class="confirmation-page">    
-            <?php echo $this->getChildHtml('items_before'); ?> 
-            <?php $billingCountry = Mage::getSingleton('checkout/session')->getQuote()->getBillingAddress()->getCountry(); ?>           
-            <?php $billingAddress = Mage::getSingleton('checkout/session')->getQuote()->getBillingAddress()->getData(); ?> 
+<div id="page-confirmation-cart-container" class="tab-content">
+  <div id="page-confirmation-cart">
 
-            <?php $shippingCountry = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getCountry(); ?>           
-            <?php $shippingAddress = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getData(); ?>               
-            <div class="address-info" style="display: none;">
-                <div class="billing-info">
-                    <h5>Billing Address</h5>
-                    <div class="address-details">
-                        <p class="title">NAME</p>
-                        <p><?php echo $billingAddress['firstname'] . ' ' . $billingAddress['lastname']; ?></p>
-                    </div>
-                    <div class="address-details">
-                        <p class="title">ADDRESS</p>
-                        <p><?php echo $billingAddress['street'] . ' ' . $billingAddress['city'] . ' ' . $billingAddress['postcode'] . ' ' . $billingCountry; ?></p>
-                    </div>
-                    <div class="address-details">
-                        <p class="title">EMAIL</p>
-                        <p><?php echo $billingAddress['email']; ?></p>
-                    </div>
-                    <div class="address-details">
-                        <p class="title">PHONE NUMBER</p>
-                        <p><?php echo $billingAddress['telephone']; ?></p>
-                    </div>
-                </div>
-                <div class="shipping-info">                
-                    <h5>Shipping Address</h5>
-                    <div class="address-details">
-                        <p class="title">NAME</p>
-                        <p><?php echo $shippingAddress['firstname'] . ' ' . $shippingAddress['lastname']; ?></p>
-                    </div>
-                    <div class="address-details">
-                        <p class="title">ADDRESS</p>
-                        <p><?php echo $shippingAddress['street'] . ' ' . $shippingAddress['city'] . ' ' . $shippingAddress['postcode'] . ' ' . $shippingCountry; ?></p>
-                    </div>
-                    <div class="address-details">
-                        <p class="title">EMAIL</p>
-                        <p><?php echo $shippingAddress['email']; ?></p>
-                    </div>
-                    <div class="address-details">
-                        <p class="title">PHONE NUMBER</p>
-                        <p><?php echo $shippingAddress['telephone']; ?></p>
-                    </div>
-                </div>
-            </div>       
-            <div class="table-responsive">
-                <div id="checkout-review-table-wrapper">
-                    <table class="data-table table" id="checkout-review-table">
-                        <?php if ($this->helper('tax')->displayCartBothPrices()): $colspan = $rowspan = 2; else: $colspan = $rowspan = 1; endif; ?>
-                        <col />
-                        <col width="1" />
-                        <col width="1" />
-                        <col width="1" />
-                        <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
-                        <col width="1" />
-                        <col width="1" />
-                        <?php endif; ?>
-                        <thead>
-                            <tr>
-                                <th width="50%" colspan="<?php echo $colspan ?>" rowspan="<?php echo $rowspan ?>"><h2><?php echo $this->__('ITEMS') ?></h2></th>
-                                <th width="10%" colspan="<?php echo $colspan ?>" class="a-center hidden-xs"><h2><?php echo $this->__('Unit Price') ?></h2></th>
-                                <th width="10%" rowspan="<?php echo $rowspan ?>" class="a-center"><h2><?php echo $this->__('Quantity') ?></h2></th>
-                                <th colspan="<?php echo $colspan ?>" class="a-center hidden-xs"><h2><?php echo $this->__('Subtotal') ?></h2></th>
-                                <th rowspan="<?php echo $rowspan ?>" class="a-center hidden-xs" style="width: 1px;">&nbsp;</th>
-                            </tr>
-                            <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
-                                <tr>
-                                    <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
-                                    <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
-                                    <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
-                                    <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
-                                </tr>
-                            <?php endif; ?>
-                        </thead>
-                        <tbody>
-                        <?php foreach($this->getItems() as $_item): ?>
-                            <?php echo $this->getItemHtml($_item)?>
-                        <?php endforeach ?>
-                        </tbody>                    
-                    </table>
-                </div>
-            </div>            
-        </div><!-- #confirmation -->
-    </div><!-- #page-shopping-cart-item-containe -->
-    
-    <div id="page-shopping-cart-in-between-container">
+    <!--
+       _____  _    ____  _     _____
+      |_   _|/ \  | __ )| |   | ____|
+        | | / _ \ |  _ \| |   |  _|
+        | |/ ___ \| |_) | |___| |___
+        |_/_/   \_\____/|_____|_____|
+
+    -->
+
+
+    <div id="page-checkout-cart-table">
+      <?php echo $this->getChildHtml('items_before'); ?> 
+      <?php $billingCountry = Mage::getSingleton('checkout/session')->getQuote()->getBillingAddress()->getCountry(); ?>           
+      <?php $billingAddress = Mage::getSingleton('checkout/session')->getQuote()->getBillingAddress()->getData(); ?> 
+
+      <?php $shippingCountry = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getCountry(); ?>           
+      <?php $shippingAddress = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getData(); ?>         
+
+      <div id="page-checkout-cart-table-header" class="visible-md visible-lg">
         <div class="row">
-          <div class="col-md-6">
-
-            <div class="in-between-reward-points">
-              
-              <?php 
-                  $quote = Mage::getSingleton('checkout/session')->getQuote();
-                  $cartItems = $quote->getAllVisibleItems();
-                  $subscription = false;
-                  $locationskuSGPArray = array("SGP-ART-1M", "SGP-ART-3M", "SGP-ART-6M", "SGP-ART-12M", "SGP-GUR-1M", "SGP-GUR-3M", "SGP-GUR-6M", "SGP-GUR-12M","INT-ART-1M", "INT-ART-3M", "INT-ART-6M", "INT-ART-12M", "INT-GUR-1M", "INT-GUR-3M", "INT-GUR-6M", "INT-GUR-12M");
-                  foreach ($cartItems as $item) {
-                      if(in_array($item->getSku(), $locationskuSGPArray)) {
-                          $subscription = true;
-                      }
-                  }
-
-                $groupId = Mage::getSingleton('customer/session')->getCustomerGroupId(); //Get Customers Group ID
-                $groupname = Mage::getModel('customer/group')->load($groupId)->getCustomerGroupCode();
-                if($groupname !='Trader-Temp' && $groupname!='Trader-Regular' && $groupname!='Trader-Priority' && $groupname!='Trader-Premium' && $subscription == false)
-                {
-              ?>    
-              <p>
-              <?php 
-              $quoteId = Mage::getSingleton('checkout/session')->getQuoteId(); 
-              $quote = Mage::getModel("sales/quote")->load($quoteId);
-
-              $rewardPoints = Mage::helper('rewardpoints/data')->getPointsOnOrder($quote, null, null, true, $quote->getStoreId());
-              echo $this->__("This shopping cart is worth %s in rebates", Mage::helper('core')->currency($rewardPoints, true, false));?>
-              </p>
-              <?php 
-                }
-              ?>
-            </div>
-
+          <div class="col-md-2">
+            <h4 class="left-aligned"><?php echo $this->__('Product'); ?></h4>
           </div>
-          <div class="col-md-6">
-            <div class="each-details-container">
-              <div class="each-details">
-                <div style="" class="a-right label">
-                  <!-- <p>Subtotal</p> -->
+          <div class="col-md-4">
+            <h4 class="center-aligned"><?php echo $this->__('Description'); ?></h4>
+          </div>
+          <div class="col-md-2">
+            <h4 class="center-aligned"><?php echo $this->__('Unit Price'); ?></h4>
+          </div>
+          <div class="col-md-2">
+            <h4 class="center-aligned"><?php echo $this->__('Quantity'); ?></h4>
+          </div>
+          <div class="col-md-2">
+            <h4 class="center-aligned"><?php echo $this->__('Subtotal'); ?></h4>
+          </div>
+        </div>
+      </div> <!-- page-checkout-cart-table-header -->
+
+      <div id="page-checkout-cart-table-content">
+        <?php foreach($this->getItems() as $_item): ?>
+            <?php echo $this->getItemHtml($_item)?>
+        <?php endforeach ?>
+      </div>
+          
+    </div><!-- page-checkout-cart-table -->
+
+    <div id="page-checkout-cart-middle">
+      <div class="row">
+        <div class="col-md-6">
+         <?php 
+              $quote = Mage::getSingleton('checkout/session')->getQuote();
+              $cartItems = $quote->getAllVisibleItems();
+              $subscription = false;
+              $locationskuSGPArray = array("SGP-ART-1M", "SGP-ART-3M", "SGP-ART-6M", "SGP-ART-12M", "SGP-GUR-1M", "SGP-GUR-3M", "SGP-GUR-6M", "SGP-GUR-12M","INT-ART-1M", "INT-ART-3M", "INT-ART-6M", "INT-ART-12M", "INT-GUR-1M", "INT-GUR-3M", "INT-GUR-6M", "INT-GUR-12M");
+              foreach ($cartItems as $item) {
+                  if(in_array($item->getSku(), $locationskuSGPArray)) {
+                      $subscription = true;
+                  }
+              }
+
+            $groupId = Mage::getSingleton('customer/session')->getCustomerGroupId(); //Get Customers Group ID
+            $groupname = Mage::getModel('customer/group')->load($groupId)->getCustomerGroupCode();
+            if($groupname !='Trader-Temp' && $groupname!='Trader-Regular' && $groupname!='Trader-Priority' && $groupname!='Trader-Premium' && $subscription == false)
+            {
+          ?>    
+          <p>
+          <?php 
+          $quoteId = Mage::getSingleton('checkout/session')->getQuoteId(); 
+          $quote = Mage::getModel("sales/quote")->load($quoteId);
+
+          $rewardPoints = Mage::helper('rewardpoints/data')->getPointsOnOrder($quote, null, null, true, $quote->getStoreId());
+          echo $this->__("This shopping cart is worth %s in rebates", Mage::helper('core')->currency($rewardPoints, true, false));?>
+          </p>
+          <?php 
+            }
+          ?>
+        </div>
+
+      </div>
+    </div> <!-- page-checkout-cart-middle -->
+
+    <!--
+       ____  _   _ ____ _____ ___ _____  _    _
+      / ___|| | | | __ )_   _/ _ \_   _|/ \  | |
+      \___ \| | | |  _ \ | || | | || | / _ \ | |
+       ___) | |_| | |_) || || |_| || |/ ___ \| |___
+      |____/ \___/|____/ |_| \___/ |_/_/   \_\_____|
+
+    -->
+
+
+    <div id="page-confirmation-cart-subtotal">
+      <div class="row">
+        
+        <div class="col-md-4 col-md-push-8">
+
+          <div id="page-checkout-cart-subtotal">
+            <?php echo $this->getChildHtml('totals'); ?>
+          </div> <!-- page-checkout-cart-subtotal -->
+
+
+          <div id="page-confirmation-cart-payment" class="visible-md visible-lg">
+            <div class="row">
+              <div class="col-md-4"></div>
+              <div class="col-md-8">
+
+                <div class="cta-container">
+                  <?php echo $this->getChildHtml('button') ?>                  
                 </div>
-                <div style="" class="a-right value">
-                  <!-- <p>$627.90</p> -->
-                </div>
+
               </div>
             </div>
 
-           </div>
-        </div>
-    </div> <!-- #page-shopping-cart-in-between-container -->
-    
-    <div class="cart-collaterals row" id="confirmation">
-        <div class="col-md-6">
-        </div> <!-- col-md-6 -->
-        <div class="col-md-6">
-            <div id="page-shopping-cart-total-container">
-                <?php echo $this->getChildHtml('totals'); ?>
+            <div class="cc-container">
+              <p>Payment via Paypal</p>
+              <ul>
+                <li><span class="fa fa-cc-discover"></span></li>
+                <li><span class="fa fa-cc-visa"></span></li>
+                <li><span class="fa fa-cc-amex"></span></li>
+                <li><span class="fa fa-cc-mastercard"></span></li>
+              </ul>
             </div>
-        </div>
-    </div>
 
-    <div id="copy-page-shopping-cart-sidebar-address"></div>
-
-    <div id="page-shopping-cart-cta-container" class="page-review-cta-container">
-        <div class="action-container">            
-            <div class="we-accept we-are-here hidden-xs">                
-                <ul>
-                    <li><i class="fa fa-cc-discover"></i></li>
-                    <li><i class="fa fa-cc-visa"></i></li>
-                    <li><i class="fa fa-cc-amex"></i></li>
-                    <li><i class="fa fa-cc-mastercard"></i></li>
-                    <li><i class="fa fa-cc-paypal"></i></li>
-                </ul>
-            </div>
-            <?php echo $this->getChildHtml('button') ?>
-            <span class="please-wait" id="review-please-wait" style="display:none;">
-              <img src='<?php echo $this->getSkinUrl('images/icons/spin.svg')?>'/>
-                <!-- <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Submitting order information...') ?>" title="<?php echo $this->__('Submitting order information...') ?>" class="v-middle" /> <?php //echo $this->__('Submitting order information...') ?> -->
-            </span>
-            <div class="we-accept we-are-here visible-xs">                
-                <ul>
-                    <li><i class="fa fa-cc-discover"></i></li>
-                    <li><i class="fa fa-cc-visa"></i></li>
-                    <li><i class="fa fa-cc-amex"></i></li>
-                    <li><i class="fa fa-cc-mastercard"></i></li>
-                    <li><i class="fa fa-cc-paypal"></i></li>
-                </ul>
-            </div>
-        </div>       
-    </div>    
-    <?php echo $this->getChildHtml('items_after'); ?>
-    <script type="text/javascript">
-    //<![CDATA[
-        decorateTable('checkout-review-table');
-        truncateOptions();
-    //]]>
-    </script>
-    <div id="checkout-review-submit">
-        <?php echo $this->getChildHtml('agreements') ?>
-        <div class="buttons-set row action-container" id="review-buttons-container">
-            <div class="back-link col-md-4">
-                <!-- <p class="f-left edit-cart-wrapper"><a class="cta back-btn" href="<?php echo $this->getUrl('checkout/cart') ?>"><i class="fa fa-chevron-left"></i> <?php echo $this->__('did you forget any item?') ?></a></p> -->
-                <!-- <p class="f-left edit-cart-wrapper"><a class="cta back-btn" href="#" onclick="checkout.back(); return false;"><i class="fa fa-chevron-left"></i> <?php echo $this->__('back to billing & shipping') ?></a></p> -->
-                <!-- <a class="cta back-btn" href="#" onclick="checkout.back(); return false;"><small>&laquo; </small><?php echo $this->__('Back') ?></a> -->
-            </div>
-            <div class="col-md-5 col-md-offset-3">
-                
-            </div>
-        </div>
-        <script type="text/javascript">
-        //<![CDATA[
-            review = new Review('<?php echo $this->getUrl('checkout/onepage/saveOrder', array('form_key' => Mage::getSingleton('core/session')->getFormKey())) ?>', '<?php echo $this->getUrl('checkout/onepage/success') ?>', $('checkout-agreements'));
-        //]]>
-
-        $j("#page-shopping-cart-sidebar-address").find(".address-info").html($j(".confirmation-page").find(".address-info").html());
-        </script>
-        <?php if(isMobile()==true): ?>
-        <script type="text/javascript">
-          
-            jQuery(document).ready(function($) {
-
-              // function update_mobile_cart(href){
-              //   var arr = $('#content-wrapper .cart-breadcrumb a[data-toggle="tab"]');
-              //   var element = null;
-              //   var element_href = "";
-              //   var has_passed = false;
-
-              //   arr.addClass('fake-active');
-
-
-              //   for (var i = 0, l = arr.length; i < l; i++) {
-              //     element = $(arr[i]);
-              //     element_href = "" + element.attr('href');
-
-              //     if(has_passed == false){
-              //       if(element_href == href) {
-              //         has_passed = true;
-              //       }
-              //     } else{
-              //       element.removeClass('fake-active');
-              //     }
-
-              //   }
-
-              // }
-
-              // update_mobile_cart('#cart');
-
-              // $('#content-wrapper .cart-breadcrumb a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-              //   var href = $(this).attr('href');
-              //   update_mobile_cart(href);
-              // });
+          </div> <!-- page-confirmation-cart-payment -->
 
 
 
-              ////////////////////////
+        </div> <!-- col-md-4 -->
+
+        <div class="col-md-8 col-md-pull-4">
+
+          <div id="page-confirmation-cart-billing-shipping-info-container">
+            <div id="page-confirmation-cart-billing-shipping-info" class="sans-container-fluid-mobile">
+
+              <div class="row">
+                <div class="col-md-5 col-sm-6">
+
+                  <div id="page-confirmation-cart-billing-info">
+                    <h2>Billing information</h2>
+                    <div class="info-item-container">
+                      <div class="info-item">
+                        <h4>Full Name:</h4>
+                        <p><?php echo $billingAddress['firstname'] . ' ' . $billingAddress['lastname']; ?></p>
+                      </div>
+
+                      <div class="info-item">
+                        <h4>Email Address:</h4>
+                        <p><?php echo $billingAddress['email']; ?></p>
+                      </div>
+
+                      <div class="info-item">
+                        <h4>Address:</h4>
+                        <p><?php echo $billingAddress['street'] . ' ' . $billingAddress['city'] . ' ' . $billingAddress['postcode'] . ' ' . $billingCountry; ?></p>
+                      </div>
+
+                      <div class="info-item">
+                        <h4>Contact No.: </h4>
+                        <p><?php echo $billingAddress['telephone']; ?></p>
+                      </div>
+                    </div>
+                  </div> <!-- page-confirmation-cart-billing-info -->
+
+                </div>
+                <div class="col-md-2 col-sm-0">
+                </div>
+                <div class="col-md-5 col-sm-6">
+                  
+                  <div id="page-confirmation-cart-shipping-info">
+                    <h2>Shipping information</h2>
+                    <div class="info-item-container">
+                      <div class="info-item">
+                        <h4>Full Name:</h4>
+                        <p><?php echo $shippingAddress['firstname'] . ' ' . $shippingAddress['lastname']; ?></p>
+                      </div>
+
+                      <div class="info-item">
+                        <h4>Email Address:</h4>
+                        <p><?php echo $shippingAddress['email']; ?></p>
+                      </div>
+
+                      <div class="info-item">
+                        <h4>Address:</h4>
+                        <p><?php echo $shippingAddress['street'] . ' ' . $shippingAddress['city'] . ' ' . $shippingAddress['postcode'] . ' ' . $shippingCountry; ?></p>
+                      </div>
+
+                      <div class="info-item">
+                        <h4>Contact No.: </h4>
+                        <p><?php echo $shippingAddress['telephone']; ?></p>
+                      </div>
+                    </div>
+                  </div> <!-- page-confirmation-cart-shipping-info -->
+
+                </div>
+              </div>
               
+            </div> <!-- page-confirmation-cart-billing-shipping-info -->
+          </div> <!-- page-confirmation-cart-billing-shipping-info-container -->
 
-              // update shopping cart html
-              // var arr = $('#checkout-review-table-wrapper tbody tr');
-              // var table_row = null;
-              // var col_1 = null;
-              // var col_3 = null;
-              // var new_image_container = null;
-              // for (var i = 0, l = arr.length; i < l; i++) {
-              //   table_row = $(arr[i]);
-              //   col_1 = table_row.find('td:first-child');
-              //   col_3 = table_row.find('td:nth-child(3)');
-              //   new_image_container = $('<div class="image-text-container-2"></div>');            
-              //   new_image_container.append(col_1.find('.img-container').clone());
 
-              //   text_container = $('<div class="text-container"></div>');
-              //   text_container.append(table_row.find('.product-name').clone());
-              //   text_container.append($(table_row.find('.product-price')[0]).clone());
 
-              //   new_image_container.append(text_container);
+          
 
-              //   col_1.prepend(new_image_container);
-              //   col_3.append(table_row.find('.last-image-text-container'));
+          
+          
 
-              //   console.log('row!');
-              // }              
+        </div> <!-- col-md-8 -->
 
-            });
-        </script>
-        <?php endif; ?>
+      </div>
 
-        <script>
-        jQuery(document).ready(function($) {
-          function copybillingandshippingfromsidebarformobile() {
-            var copyHtml = $("#page-shopping-cart-sidebar-address").html();
-            $("#page-shopping-cart-sidebar-address").hide();
-            $( "#copy-page-shopping-cart-sidebar-address" ).html(copyHtml);            
-          }
 
-          $(window).resize(function() {
-             if ($(window).width() <= 991) {
-                copybillingandshippingfromsidebarformobile();
-             }else {
-                $( "#copy-page-shopping-cart-sidebar-address" ).html("");            
-             }
-          });
-          if ($(window).width() <= 991) {
-            copybillingandshippingfromsidebarformobile();
-          }
-        });
-        </script>
-    </div>
-</div><!-- #page-shopping-cart-content -->
+      <div class="row visible-sm visible-xs">
+        <div class="col-sm-8 col-sm-push-2 col-xs-10 col-xs-push-1">
+
+
+          <div id="page-confirmation-cart-payment-mobile">
+            <div class="cta-container">
+              <?php echo $this->getChildHtml('button') ?>                                
+            </div>
+
+            <div class="cc-container">
+              <p>Payment via Paypal</p>
+              <ul>
+                <li><span class="fa fa-cc-discover"></span></li>
+                <li><span class="fa fa-cc-visa"></span></li>
+                <li><span class="fa fa-cc-amex"></span></li>
+                <li><span class="fa fa-cc-mastercard"></span></li>
+              </ul>
+            </div>
+            
+          </div> <!-- page-confirmation-cart-payment-mobile -->
+
+        </div>
+      </div>
+
+      <?php echo $this->getChildHtml('items_after'); ?>
+
+      <script type="text/javascript">
+      //<![CDATA[
+          decorateTable('checkout-review-table');
+          truncateOptions();
+      //]]>
+      </script>
+
+      <div id="checkout-review-submit">
+          <?php echo $this->getChildHtml('agreements') ?>
+          
+          <script type="text/javascript">
+          //<![CDATA[
+              review = new Review('<?php echo $this->getUrl('checkout/onepage/saveOrder', array('form_key' => Mage::getSingleton('core/session')->getFormKey())) ?>', '<?php echo $this->getUrl('checkout/onepage/success') ?>', $('checkout-agreements'));
+          //]]>
+
+          // $j("#page-shopping-cart-sidebar-address").find(".address-info").html($j(".confirmation-page").find(".address-info").html());
+          </script>          
+
+          <script>
+          // jQuery(document).ready(function($) {
+          //   function copybillingandshippingfromsidebarformobile() {
+          //     var copyHtml = $("#page-shopping-cart-sidebar-address").html();
+          //     $("#page-shopping-cart-sidebar-address").hide();
+          //     $( "#copy-page-shopping-cart-sidebar-address" ).html(copyHtml);            
+          //   }
+
+          //   $(window).resize(function() {
+          //      if ($(window).width() <= 991) {
+          //         copybillingandshippingfromsidebarformobile();
+          //      }else {
+          //         $( "#copy-page-shopping-cart-sidebar-address" ).html("");            
+          //      }
+          //   });
+          //   if ($(window).width() <= 991) {
+          //     copybillingandshippingfromsidebarformobile();
+          //   }
+          // });
+          </script>
+      </div> <!-- checkout-review-submit -->
+
+
+
+    </div> <!-- page-confirmation-cart-subtotal -->    
+
+  </div> <!-- page-confirmation-cart -->
+</div> <!-- #page-shopping-cart-content -->

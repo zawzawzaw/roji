@@ -172,6 +172,9 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
          */
         $this->_getSession()->setCartWasUpdated(true);
 
+        session_start();
+        $_SESSION["redirect_url"] = Mage::getUrl('*/*/*', array('_secure' => true));
+
         Varien_Profiler::start(__METHOD__ . 'cart_display');
         $this
             ->loadLayout()

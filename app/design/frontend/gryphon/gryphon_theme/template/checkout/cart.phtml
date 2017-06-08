@@ -71,6 +71,8 @@ function isMobile()
     return FALSE;  
 }
 
+$isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
+
 $groupname = '';    
 $session = Mage::getSingleton('customer/session');                        
 if($session->isLoggedIn()) {
@@ -79,192 +81,208 @@ if($session->isLoggedIn()) {
     $groupname = Mage::getModel('customer/group')->load($customerGroupId)->getCustomerGroupCode();
 }
 ?>
-<article>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
-                <div id="page-shopping-cart-breadcrumb">
-                  <a class="active"><?php echo $this->__('Shopping Cart'); ?></a>
-                  <a href="<?php echo $this->getUrl('checkout/onepage'); ?>"><?php echo $this->__('Billing & Shipping Address'); ?></a>
-                  <a><?php echo $this->__('Order Confirmation'); ?></a>               
-                </div>
-            </div>
-            <div class="col-md-10">
-                <div id="page-shopping-cart-content">
-                    
+<!--
+     _____ ___ _____ _     _____
+    |_   _|_ _|_   _| |   | ____|
+      | |  | |  | | | |   |  _|
+      | |  | |  | | | |___| |___
+      |_| |___| |_| |_____|_____|
+
+  -->
+
+
+<article id="page-checkout-title-section">
+    <div class="container-fluid has-breakpoint">
+      <div class="row">
+        <div class="col-md-3 col-tablet-landscape-2 col-sm-1 col-xs-0"></div>
+        <div class="col-md-9 col-tablet-landscape-10 col-sm-10 col-xs-12">
+          <div id="page-checkout-title">
+            <?php $count = $this->helper('checkout/cart')->getSummaryCount(); ?>
+            <h1>You have <strong><?php echo $count; ?></strong> items in your cart.</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+</article> <!-- page-checkout-title-section -->
+
+<!--
+      ____ ___  _   _ _____ _____ _   _ _____
+     / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+    | |  | | | |  \| | | | |  _| |  \| | | |
+    | |__| |_| | |\  | | | | |___| |\  | | |
+     \____\___/|_| \_| |_| |_____|_| \_| |_|
+
+  -->
+
+<article id="page-checkout-sidebar-section-mobile" class="visible-sm visible-xs">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10 col-sm-push-1 col-xs-12">
+
+      <div id="page-checkout-sidebar-mobile">
+        <p><?php echo $this->__('1. Your Cart'); ?></p>
+      </div> <!-- page-checkout-sidebar-mobile -->
+
+    </div>
+  </div>
+</div>
+</article> <!-- page-checkout-sidebar-section-mobile -->
+
+
+<article id="page-checkout-content-section">
+
+  <div id="page-checkout-content-section-bg" class="visible-md visible-lg">
+    <div class="sidebar-bg"></div>
+    <div class="content-bg"></div>
+  </div>
+
+  <div class="container-fluid has-breakpoint">
+    <div class="row">
+      <div class="col-md-2 col-tablet-landscape-1 hidden-sm hidden-xs">
+
+        <!--
+           ____ ___ ____  _____ ____    _    ____
+          / ___|_ _|  _ \| ____| __ )  / \  |  _ \
+          \___ \| || | | |  _| |  _ \ / _ \ | |_) |
+           ___) | || |_| | |___| |_) / ___ \|  _ <
+          |____/___|____/|_____|____/_/   \_\_| \_\
+
+        -->
+
+        <div id="page-checkout-sidebar-width"></div>
+        <div id="page-checkout-sidebar">
+
+          <nav>
+            <ul>
+              <li class="selected"><?php echo $this->__('1. Your Cart'); ?></li>
+              <li><?php echo $this->__('2. Shipping & Billing'); ?></li>
+              <li><?php echo $this->__('3. Order Confirmation'); ?></li>
+            </ul>
+          </nav>
+
+        </div> <!-- page-checkout-sidebar -->
+
+
+      </div> <!-- col-md-2 -->
+      <div class="col-md-0 col-tablet-landscape-0 col-sm-1 col-xs-0"></div>
+      <div class="col-md-10 col-tablet-landscape-11 col-sm-10 col-xs-12">
+        
+        <!--
+            ____ ___  _   _ _____ _____ _   _ _____
+           / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+          | |  | | | |  \| | | | |  _| |  \| | | |
+          | |__| |_| | |\  | | | | |___| |\  | | |
+           \____\___/|_| \_| |_| |_____|_| \_| |_|
+
+        -->
+
+        <div id="page-checkout-content-width"></div>
+        <div id="page-checkout-content">
+
+            <?php echo $this->getMessagesBlock()->toHtml() ?>
+
+            <div id="page-checkout-cart-container">
+                <div id="page-checkout-cart">
+                    <!--
+                         _____  _    ____  _     _____
+                        |_   _|/ \  | __ )| |   | ____|
+                          | | / _ \ |  _ \| |   |  _|
+                          | |/ ___ \| |_) | |___| |___
+                          |_/_/   \_\____/|_____|_____|
+
+                      -->
+
+                    <?php echo $this->getChildHtml('form_before') ?>
+                    <form class="checkout-form" action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
+                      <?php echo $this->getBlockHtml('formkey'); ?>
+
+                      <div id="page-checkout-cart-table">
+
+                          <div id="page-checkout-cart-table-header" class="visible-md visible-lg">
+                            <div class="row">
+                              <div class="col-md-2">
+                                <h4 class="left-aligned"><?php echo $this->__('Product'); ?></h4>
+                              </div>
+                              <div class="col-md-4">
+                                <h4 class="center-aligned"><?php echo $this->__('Description'); ?></h4>
+                              </div>
+                              <div class="col-md-2">
+                                <div class="forced-move-left">
+                                  <h4 class="center-aligned"><?php echo $this->__('Unit Price'); ?></h4>
+                                </div>
+                              </div>
+                              <div class="col-md-2">
+                                <div class="forced-move-left">
+                                  <h4 class="center-aligned"><?php echo $this->__('Quantity'); ?></h4>
+                                </div>
+                              </div>
+                              <div class="col-md-2">
+                                <div class="forced-move-left">
+                                  <h4 class="center-aligned"><?php echo $this->__('Subtotal'); ?></h4>
+                                </div>
+                              </div>
+                            </div>
+                          </div> <!-- page-checkout-cart-table-header -->
+
+                          <div id="page-checkout-cart-table-content">
+                              <?php foreach($this->getItems() as $_item): ?>
+                                  <?php echo $this->getItemHtml($_item) ?>
+                              <?php endforeach ?>
+                          </div> <!-- page-checkout-cart-table-content -->
+
+
+                      </div> <!-- page-checkout-cart-table -->
+
+                      <div id="page-checkout-cart-middle">
+                          <div class="row">
+                            <div class="col-md-6 col-md-push-6 col-sm-4 col-sm-push-8 col-xs-12">
+
+                              <div class="cta-container">
+                                  <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Your Cart'); ?>" class="update-cta"><?php echo $this->__('Update Your Cart'); ?></button>
+                                <!-- <a href="" class="update-cta">Update Your Cart</a> -->
+                              </div>
+                            </div>
+                            <div class="col-md-6 col-md-pull-6 col-sm-8 col-sm-pull-4 col-xs-12">
+                              <p><?php echo $this->getBlockHtml('coupon_points'); ?></p>
+                            </div>
+                          </div>
+                      </div> <!-- page-checkout-cart-middle -->
+
+                      <script type="text/javascript">decorateTable('shopping-cart-table')</script>
+                    </form>
+
                     <div class="row">
-                        <div class="col-md-12"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
-                    </div>
 
-                    <div id="page-shopping-cart-item-container">
-                        <div class="table-responsive">
-                            <?php echo $this->getChildHtml('form_before') ?>
-                            <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
-                                <?php echo $this->getBlockHtml('formkey'); ?>
-                                <table id="shopping-cart-table" class="data-table cart-table table">
-                                    <col width="1" />
-                                    <col />
-                                    <col width="1" />
-                                    <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
-                                        <col width="1" />
-                                    <?php endif ?>
-                                    <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
-                                        <col width="1" />
-                                    <?php endif; ?>
-                                    <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
-                                        <col width="1" />
-                                    <?php endif; ?>
-                                    <col width="1" />
-                                    <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
-                                        <col width="1" />
-                                    <?php endif; ?>
-                                    <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
-                                        <col width="1" />
-                                    <?php endif; ?>
-                                    <col width="1" />
+                        <div class="col-md-5 col-tablet-landscape-6 col-sm-12 col-xs-12">
 
-                                    <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
-                                    <thead>
-                                    <tr>
-                                        <th colspan="2" rowspan="<?php echo $mergedCells; ?>"><h2><?php echo $this->__('Product') ?></h2></th>
-                                        <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
-                                            <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><h2><?php echo $this->__('Move to Wishlist') ?></h2></th>
-                                        <?php endif ?>
-                                        <th class="a-center hidden-xs" width="10%" colspan="<?php echo $mergedCells; ?>"><h2><?php echo $this->__('Unit Price') ?></h2></th>
-                                        <th width="10%" rowspan="<?php echo $mergedCells; ?>" class="a-center"><h2><?php echo $this->__('Quantity') ?></h2></th>
-                                        <th class="a-center hidden-xs" colspan="<?php echo $mergedCells; ?>"><h2><?php echo $this->__('Subtotal') ?></h2></th>
-                                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center  hidden-xs">&nbsp;</th>
-                                    </tr>
-                                    <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
-                                        <tr>
-                                            <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
-                                            <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
-                                            <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
-                                            <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
-                                        </tr>
-                                    <?php endif; ?>
-                                    </thead>                                    
-                                    <tbody>
-                                    <?php foreach($this->getItems() as $_item): ?>
-                                        <?php echo $this->getItemHtml($_item) ?>
-                                    <?php endforeach ?>
-                                    </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <td class="a-left">
-                                            
-                                        </td>
-                                        <td colspan="50" class="a-right">
-                                            <?php if (false && $this->getContinueShoppingUrl()): ?>
-                                                <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
-                                            <?php endif; ?>
-                                            <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="button btn-update"><span><span><i class="fa fa-refresh"></i> <?php echo $this->__('Update Shopping Cart'); ?></span></span></button>
-                                            <button type="submit" name="update_cart_action" value="empty_cart" title="<?php echo $this->__('Clear Shopping Cart'); ?>" class="button btn-empty" id="empty_cart_button"><span><span><i class="trash"></i> <?php echo $this->__('Clear All Products'); ?></span></span></button>
-                                            <!--[if lt IE 8]>
-                                            <input type="hidden" id="update_cart_action_container" />
-                                            <script type="text/javascript">
-                                            //<![CDATA[
-                                                Event.observe(window, 'load', function()
-                                                {
-                                                    // Internet Explorer (lt 8) does not support value attribute in button elements
-                                                    $emptyCartButton = $('empty_cart_button');
-                                                    $cartActionContainer = $('update_cart_action_container');
-                                                    if ($emptyCartButton && $cartActionContainer) {
-                                                        Event.observe($emptyCartButton, 'click', function()
-                                                        {
-                                                            $emptyCartButton.setAttribute('name', 'update_cart_action_temp');
-                                                            $cartActionContainer.setAttribute('name', 'update_cart_action');
-                                                            $cartActionContainer.setValue('empty_cart');
-                                                        });
-                                                    }
+                          <!--
+                             ____ ___ ____   ____ ___  _   _ _   _ _____
+                            |  _ \_ _/ ___| / ___/ _ \| | | | \ | |_   _|
+                            | | | | |\___ \| |  | | | | | | |  \| | | |
+                            | |_| | | ___) | |__| |_| | |_| | |\  | | |
+                            |____/___|____/ \____\___/ \___/|_| \_| |_|
 
-                                                });
-                                            //]]>
-                                            </script>
-                                            <![endif]-->
-                                        </td>
-                                    </tr>
-                                    </tfoot>
-                                </table>
-                                <script type="text/javascript">decorateTable('shopping-cart-table')</script>
-                            </form>
-                        </div>
+                          -->
 
-                        <div class="row">
-                            <div class="col-md-6">                        
+                          <div id="page-checkout-cart-discount">
+                            
+                            <div class="form-group">
+                                <?php /* Extensions placeholder */ ?>
+                                <?php echo $this->getChildHtml('checkout.cart.extra') ?>
                             </div>
-                            <div class="col-md-6">
-                            </div>
-                        </div>
-                    </div> <!-- #page-shopping-cart-item-container -->
+                            
+                            
+                            <?php echo $this->getChildHtml('coupon') ?>
 
-                    <div id="page-shopping-cart-in-between-container">
-                        <div class="row hidden-xs">
-                            <div class="col-md-6 col-sm-6">
-                                <div class="in-between-reward-points">
-                                    <!-- Update from JS -->
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6">
-                                <div class="each-details-container">
-                                    <div class="each-details">
-                                        <!--  -->
-                                        <a href="javascript:void(0);" id="update-shopping-cart" class="update-shopping-cart button btn-update arrow-cta"><span><i class="fa fa-refresh"></i> <?php echo $this->__('Update Shopping Cart'); ?></span></a>
-                                    </div>
-                                </div>
-                            </div>                            
-                        </div>
-                        <div class="row visible-xs">
-                            <div class="col-md-6 col-sm-6">
-                                <div class="each-details-container">
-                                    <div class="each-details">
-                                        <!--  -->
-                                        <a href="javascript:void(0);" id="update-shopping-cart" class="update-shopping-cart button btn-update arrow-cta"><span><i class="fa fa-refresh"></i> <?php echo $this->__('Update Shopping Cart'); ?></span></a>
-                                    </div>
-                                </div>
-                            </div>                                                        
-                            <div class="col-md-6 col-sm-6">
-                                <div class="in-between-reward-points">
-                                    <!-- Update from JS -->
-                                </div>
-                            </div>                            
-                        </div>
-                    </div> <!-- #page-shopping-cart-in-between-container -->
-                    
-                    <div class="row">
-                        <div class="col-md-6 col-sm-7 col-xs-12">
-                            <div id="page-shopping-cart-discount-code-container">
-                                <div class="each-input">
-                                    <?php /* Extensions placeholder */ ?>
-                                    <?php echo $this->getChildHtml('checkout.cart.extra') ?>
-                                </div>
-                                
-                                <div class="each-input">
-                                    <?php echo $this->getChildHtml('coupon') ?>
-                                </div>
-                                <div class="each-input">
-                                    <?php echo $this->getBlockHtml('coupon_points'); ?>
-                                </div>
-                                <?php if (false && !$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
-                                <?php if(isMobile()==false): ?>
-                                    <?php if(Mage::getSingleton('customer/session')->isLoggedIn()):
-                                        // Get group Id
-                                        $groupId = Mage::getSingleton('customer/session')->getCustomerGroupId();
-                                        //Get customer Group name
-                                        $group = Mage::getModel('customer/group')->load($groupId);
-                                    ?>
-                                        <?php if(strtolower(trim($group->getCode()))=="general"): ?>
-                                            <!-- <div class="each-input gift-service-wrapper">
-                                                <input type="checkbox" name="gift_service" style="opacity:0;">
-                                                <label class="checkbox-label" for="gift_service">
-                                                    <span></span><p class="label-text">gryphon optional gift service - handwritten card</p>
-                                                </label>
-
-                                                <textarea name="special_message" id="special_message" cols="30" rows="10" placeholder="Write a special message for your recipient here, it will be handwritten and delivered together with the product."></textarea>
-                                                <span id="message_characters_remaining">Characters Remaining: 200</span>
-                                            </div> -->
-                                        <?php endif; ?>
-                                    <?php else: ?>
+                            <?php if (false && !$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
+                            <?php if(isMobile()==false): ?>
+                                <?php if(Mage::getSingleton('customer/session')->isLoggedIn()):
+                                    // Get group Id
+                                    $groupId = Mage::getSingleton('customer/session')->getCustomerGroupId();
+                                    //Get customer Group name
+                                    $group = Mage::getModel('customer/group')->load($groupId);
+                                ?>
+                                    <?php if(strtolower(trim($group->getCode()))=="general"): ?>
                                         <!-- <div class="each-input gift-service-wrapper">
                                             <input type="checkbox" name="gift_service" style="opacity:0;">
                                             <label class="checkbox-label" for="gift_service">
@@ -275,50 +293,100 @@ if($session->isLoggedIn()) {
                                             <span id="message_characters_remaining">Characters Remaining: 200</span>
                                         </div> -->
                                     <?php endif; ?>
-                                <?php endif; ?>
-                            </div><!-- #page-shopping-cart-discount-code-container -->
-                        </div>
+                                <?php else: ?>
+                                    <!-- <div class="each-input gift-service-wrapper">
+                                        <input type="checkbox" name="gift_service" style="opacity:0;">
+                                        <label class="checkbox-label" for="gift_service">
+                                            <span></span><p class="label-text">gryphon optional gift service - handwritten card</p>
+                                        </label>
 
-                        <div class="col-md-6 col-sm-5 col-xs-12">
-                            <div id="page-shopping-cart-total-container">
-                                <?php echo $this->getChildHtml('totals'); ?>
-                            </div><!-- #page-shopping-cart-total-container -->
-                        </div>
-                    </div><!-- #row -->
-
-                    <div id="page-shopping-cart-cta-container">
-                        <div class="row action-container">
-                            <div class="col-md-12">
-                                <?php if(!$this->hasError()): ?>
-                                    <ul class="checkout-types">
-                                        <?php foreach ($this->getMethods('methods') as $method): ?>
-                                            <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
-                                                <li><?php echo $methodHtml; ?></li>
-                                            <?php endif; ?>
-                                        <?php endforeach; ?>
-                                    </ul>
+                                        <textarea name="special_message" id="special_message" cols="30" rows="10" placeholder="Write a special message for your recipient here, it will be handwritten and delivered together with the product."></textarea>
+                                        <span id="message_characters_remaining">Characters Remaining: 200</span>
+                                    </div> -->
                                 <?php endif; ?>
-                            </div>
-                        </div>
+                            <?php endif; ?>                          
+
+                          </div> <!-- page-checkout-cart-discount -->
+
+
+
+                        </div> <!-- col-md-5 -->
+
+                        <!-- spacer -->
+                        <div class="col-md-3 col-tablet-landscape-2 col-sm-0 col-xs-0"></div>
+
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+
+                          <!--
+                             ____  _   _ ____ _____ ___ _____  _    _
+                            / ___|| | | | __ )_   _/ _ \_   _|/ \  | |
+                            \___ \| | | |  _ \ | || | | || | / _ \ | |
+                             ___) | |_| | |_) || || |_| || |/ ___ \| |___
+                            |____/ \___/|____/ |_| \___/ |_/_/   \_\_____|
+
+                          -->
+
+                          <?php echo $this->getChildHtml('totals'); ?>                              
+
+                        </div> <!-- col-md-4 -->
+
                     </div>
-                </div><!-- #page-shopping-cart-content -->
-            </div><!-- #col-md-10 -->
-        </div>
-    </div><!-- #container -->
-</article>
-<script>
-    jQuery(document).ready(function($){
-        // console.log($("#rewardFormArea").find(".rewards_point_cart").html())
-        if($(".rewards_point_cart").length > 0) {
-            $("#page-shopping-cart-in-between-container").find(".in-between-reward-points").html('<p>'+$("#rewardFormArea").find(".rewards_point_cart").html()+'</p>');
-        }
 
-        $(".update-shopping-cart").on("click", function(e){
-            e.preventDefault();
-            $(".btn-update").trigger("click");
-        });
-    });
-</script>
+                </div> <!-- page-checkout-cart -->
+
+            </div> <!-- page-checkout-cart-container -->
+
+            <div id="page-checkout-content-footer">
+                <div class="row">
+
+                  <div class="col-md-6 col-md-push-6 col-sm-8 col-sm-push-2 col-xs-10 col-xs-push-1">
+                    <div class="cta-container-02">
+                        <?php if(!$this->hasError()): ?>                                
+                            <?php foreach ($this->getMethods('methods') as $method): ?>
+                                <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+                                    <?php echo $methodHtml; ?>
+                                <?php endif; ?>
+                            <?php endforeach; ?>                            
+                        <?php endif; ?>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 col-md-pull-6 col-md-push-0 col-sm-8 col-sm-pull-0 col-sm-push-2 col-xs-10 col-xs-push-1">
+                    <div class="cta-container-01">
+                      <a href="<?php echo $this->getContinueShoppingUrl() ?>" class="arrow-cta reverse-version">Continue Shopping</a>
+                    </div>
+                  </div>
+                  
+                </div>
+            </div> <!-- page-checkout-content-footer -->
+
+        </div> <!-- page-checkout-content -->
+
+      </div> <!-- col-md-10 -->
+    </div> <!-- row -->
+  </div> <!-- container-fluid -->
+
+</article> <!-- page-checkout-content-section -->
+
+<!--     
+        ____  ____  ____     __  ______
+       / __ \/ __ \/ __ \   / / / / __ \
+      / /_/ / / / / /_/ /  / / / / /_/ /
+     / ____/ /_/ / ____/  / /_/ / ____/
+    /_/    \____/_/       \____/_/
+
+ -->
+
+<div id="question" style="display:none; cursor: default">            
+    <h3>How would you like to check out?</h3>                       
+    <?php if($subscription_in_cart): ?>
+        <a class="square-cta" href="<?php echo Mage::helper('customer')->getRegisterUrl(); ?>" id="yes">Create New Account</a>
+    <?php else: ?>
+        <a id="continue-as-guest" class="square-cta" href="#" id="no">Continue As Guest</a>
+    <?php endif; ?>
+    <a class="square-cta" href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>" id="yes">Sign Into Your Account</a>            
+</div>
+
 <?php if(isMobile()==true): ?>
 <script type="text/javascript">
   

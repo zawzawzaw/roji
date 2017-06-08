@@ -7,6 +7,8 @@
 @import "lib/video.less";
 
 
+
+
 @black: #000000;
 @white: #ffffff;
 
@@ -52,7 +54,11 @@
 
 
 @desktop-header-height: 80px;
-@mobile-header-height: 80px;
+@mobile-header-height: 56px;
+
+@container-fluid-padding: 60px;
+@container-fluid-padding-tablet-landscape: 30px;
+@container-fluid-padding-mobile: 20px;
 
 @import "../libs/slick-carousel/slick/slick.less";
 // @import "../libs/slick-carousel/slick/slick-theme.less";     // included slick fonts, too large to include
@@ -94,6 +100,8 @@
 @import "roji/page/page_checkout.less";       // this is for all checkout pages
 @import "roji/page/page_login.less";
 
+@import "roji/page/page_coming_soon.less";
+
 
 
 //    _____ _____ __  __ ____  _        _  _____ _____
@@ -131,4 +139,9 @@
 // MOBILE
 @media only screen and (max-width: 767px) {
 
+}
+
+
+// TABLET LANDSCAPE
+@media only screen and (max-width: 1024px) and (min-width: 992px) {
 }

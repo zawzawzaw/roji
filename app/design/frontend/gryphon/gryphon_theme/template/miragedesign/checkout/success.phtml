@@ -24,64 +24,84 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<article>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div id="page-shopping-cart-content">
-                    <div class="row">
-                        <div class="col-md-12"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
-                    </div>
-                    <div id="empty-cart" class="row">
-                        <div class="col-md-12">
-                            <h1><?php echo $this->__('Your order has been received successfully.') ?></h1>
-                            <hr class="small" />
-                            <div class="space30"></div>
-                            <!-- <h2 class="sub-title"><?php echo $this->__('Thank you for your purchase!') ?></h2> -->
-                            <p><?php echo $this->__('An order confirmation email will be sent to you and your tracking link will be e-mailed to you once parcel has been posted.') ?></p>
-                            <?php 
-                            $this->setCanPrintOrder(false);
-                            $this->setCanViewOrder(false);
-                            ?>
-                            <?php if ($this->getOrderId()):?>
-                                <?php if ($this->getCanViewOrder()) :?>
-                                    <p class="order_id"><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
-                                <?php  else :?>
-                                    <p class="order_id"><?php echo $this->__('Your order # is: %s.', $this->escapeHtml($this->getOrderId())) ?></p>
-                                <?php endif;?>
-                                
-                                <?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
-                                    <p>
-                                        <?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl()) ?>
-                                        <?php echo $this->getChildHtml() ?>
-                                    </p>
-                                <?php endif;?>
-                                <!-- <p>With an utmost commitment to quality, our master tea blenders lovingly hand-pick the world’s finest tea leaves and herbs, paying homage to the revitalizing qualities of tea. A promise of quality in each cup encompasses the beauty of tea drinking at its finest.</p> -->
-                            <?php endif;?>
+<!--
+ _____ _   _    _    _   _ _  __ __   _____  _   _
+|_   _| | | |  / \  | \ | | |/ / \ \ / / _ \| | | |
+  | | | |_| | / _ \ |  \| | ' /   \ V / | | | | | |
+  | | |  _  |/ ___ \| |\  | . \    | || |_| | |_| |
+  |_| |_| |_/_/   \_\_| \_|_|\_\   |_| \___/ \___/
 
-                            <?php if ($this->getAgreementRefId()): ?>
-                                <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
-                            <?php endif;?>
+-->
 
-                            <?php if ($profiles = $this->getRecurringProfiles()):?>
-                                <p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
-                                <ul class="disc">
-                                <?php foreach($profiles as $profile):?>
-                                <?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
-                                    <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
-                                <?php endforeach;?>
-                                </ul>
-                            <?php endif;?>
-                            <button type="button" class="button continue cta" title="<?php echo $this->__('Go Back to Shopping') ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Go Back to Shopping') ?></span></span></button>
+<article id="page-checkout-thankyou-section">
 
+    <div class="container-fluid has-breakpoint">
+      <div class="row">
+        
 
-                            <div class="space100"></div>
-                            <div class="space100"></div>
-                            <div class="space100"></div>
-                        </div>
-                    </div>
+        <div class="col-md-2 col-sm-1"></div>
+        <div class="col-md-8 col-sm-10">
+            
+            <div id="page-checkout-thankyou">
+
+                <div class="title-container">
+                  <h1><?php echo $this->__('Your order has been successfully received.'); ?></h1>
                 </div>
-            </div>
+
+                <div class="row">
+                  <div class="col-md-3"></div>
+                  <div class="col-md-6">
+                    
+                    <div class="number-container">
+                        <?php 
+                        $this->setCanPrintOrder(false);
+                        $this->setCanViewOrder(false);
+                        ?>
+                        <?php if ($this->getOrderId()):?>
+                            <?php if ($this->getCanViewOrder()) :?>
+                                <h4 class="order_id"><?php echo $this->__('Your order number is %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></h4>
+                            <?php  else :?>
+                                <h4 class="order_id"><?php echo $this->__('Your order number is %s.', $this->escapeHtml($this->getOrderId())) ?></h4>
+                            <?php endif;?>
+                            
+                            <?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
+                                <h4>
+                                    <?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl()) ?>
+                                    <?php echo $this->getChildHtml() ?>
+                                </h4>
+                            <?php endif;?>
+                        <?php endif;?>
+
+                        <?php if ($this->getAgreementRefId()): ?>
+                            <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+                        <?php endif;?>
+
+                        <?php if ($profiles = $this->getRecurringProfiles()):?>
+                            <p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+                            <ul class="disc">
+                            <?php foreach($profiles as $profile):?>
+                            <?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+                                <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+                            <?php endforeach;?>
+                            </ul>
+                        <?php endif;?>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="default-copy">
+                  <p><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress. With an utmost commitment to quality, our master tea blenders lovingly hand-pick the world’s finest tea leaves and herbs, paying homage to the revitalizing qualities of tea. A promise of quality in each cup encompasses the beauty of tea drinking at its finest.'); ?></p>
+                </div>
+
+                <div class="cta-container">
+                    <button type="button" class="button continue arrow-cta" title="<?php echo $this->__('Continue shopping') ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue shopping') ?></span></span></button>
+                </div>
+
+            </div> <!-- page-checkout-thankyou -->
+
         </div>
+      </div>
     </div>
-</article>
+    
+</article> <!-- page-checkout-thankyou-section -->

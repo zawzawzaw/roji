@@ -3,8 +3,17 @@
 #desktop-header{
   padding-top: 80px;
   height: 145px;
+
+  @media only screen and (max-width: 1199px) {
+    padding-top: 80px - 35px;
+    height: 145px - 35px;
+  }
 }
 
+
+.desktop-header-spacer{
+  // not used since desktop header is not fixed.
+}
 
 //    _     ___   ____  ___
 //   | |   / _ \ / ___|/ _ \
@@ -68,6 +77,13 @@
 
 
   }
+
+
+  @media only screen and (max-width: 1199px) {
+    right: 0px;
+    left: auto;
+  }
+
 }
 
 
@@ -180,10 +196,10 @@
   margin-right: 59px;
 
   @media only screen and (max-width: 1299px) {
-    margin-right: 50px;
+    margin-right: 45px;
   }
   @media only screen and (max-width: 1199px) {
-    margin-right: 40px;
+    margin-right: 35px;
   }
 
   &:last-child{
@@ -225,6 +241,8 @@
 
   .display-inline-block;
 
+  position: relative;
+
   padding-top: 22px;
 
   margin-right: 30px;
@@ -235,6 +253,60 @@
 
 
 } // #desktop-header-currency-menu
+
+.desktop-header-current-currency {
+  .h4-style-light;
+  line-height: 20px;
+  color: @dark-grey;
+  position: relative;
+  padding-right: 18px;
+
+  &:after {
+    .fa;
+    content: "\f107"; // .fa-long-arrow-right;
+    font-size: 18px;
+    line-height: 17px;
+    letter-spacing: 0.075em;
+    color: @dark-grey;
+
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    .transition-in-single (right, 0.15s, ease-out, 0.1s);
+  }
+}
+
+.desktop-header-currency-switcher {
+  position: absolute;
+  top: 60px;
+  left: -50px;
+  width: 150px; 
+  z-index: 1;
+  .desktop-header-currency-form {
+    display: none;
+  }
+  .desktop-header-currency-dropdown-container {
+    display: none;
+  }
+  ul {    
+    background-color: @off-white-1;
+    padding: 20px 35px;
+    text-align: left;
+    li {
+      margin-bottom: 5px;
+      a {
+        .h4-style-light;
+        color: @border-grey;
+        text-transform: uppercase;
+        &:hover {
+          color: @dark-grey;
+        }
+      }
+    }
+  }
+}
 
 
 
@@ -253,6 +325,7 @@
   padding-top: 20px;
   // padding-right: 1px;
   margin-right: -10px;
+  position: relative;
 
 } // #desktop-header-cart-menu
 
@@ -329,5 +402,109 @@
 
 
 #desktop-header-cart-expand-container{
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  min-width: 255px;
+  z-index: 10;
+  padding: 20px;
+  .box-shadow (1px, 1px, 4px, #e5e5e5);
+  text-align: left;
+  background: @white;
+  display: none;
+
+  &.stick {
+    position: fixed;
+    top: 20px;
+    right: 60px;
+  }
+
+  .manic-image-container {
+    width: 50px;
+    height: 60px;
+    img {
+      width: 100%;
+    }
+  }
+
+  h4.desktop-header-cart-expand-title {
+    color: @off-black;
+  }
+
+  .desktop-header-cart-expand {
+    max-height: 309px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  ul.desktop-header-cart-expand-content {
+    display: block;
+    padding-bottom: 15px;
+    &:before {
+      content: "";
+      display: block;
+      border-top: 1px solid @border-grey;
+      padding-top: 15px;      
+    }
+    li {
+      display: inline-block;
+      vertical-align: top;
+      font-size: 0px;
+      &:first-child {
+        width: 30%;
+      }
+      &:nth-of-type(2) {
+        width: 56%;
+      }
+      &:nth-of-type(3) {
+        width: 14%;
+      }
+      &.empty-cart {
+        width: 100%;
+      }
+    }
+  }
+
+  p {
+    .raleway-regular;
+    font-size: 11px;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+    color: @dark-grey;
+  }
+
+  h4.desktop-header-cart-expand-title {    
+  }
+
+  h4.sub-total, h4.sub-total-amount {
+    color: @dark-grey;
+  }
+
+  ul.desktop-header-cart-expand-summary {
+    padding-bottom: 20px;
+    &:before {
+      content: "";
+      display: block;
+      border-top: 1px solid @border-grey;
+      padding-top: 15px;      
+    }
+
+    li {
+      display: inline-block;
+      width: 50%;
+      font-size: 0px;
+      &:nth-of-type(2) {
+        text-align: right;
+      }
+    }
+  }
+
+  .desktop-header-cart-expand-cta-btn {
+    a.shopping-cart {
+      button {
+        width: 100%;  
+      }      
+    }
+  }
 
 } // #desktop-header-cart-expand-container

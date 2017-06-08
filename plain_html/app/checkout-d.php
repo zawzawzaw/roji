@@ -198,12 +198,12 @@
                           </div> <!-- cart-item-desc-mobile -->
 
 
-
+                          <div class="cart-item-value visible-md visible-lg">1</div>
                           <div class="cart-item-quantity-container">
                             <h4>Quantity:</h4>
                             <h4>1</h4>
                           </div>
-
+                          
 
                         </div>
                         <div class="col-md-2 hidden-sm hidden-xs">

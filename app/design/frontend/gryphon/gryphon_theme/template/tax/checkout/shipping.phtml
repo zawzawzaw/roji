@@ -55,13 +55,18 @@
     </div>
 </div>
 <?php else:?>
-<div class="each-details">
-    <div style="<?php echo $this->getStyle() ?>" class="a-right label" colspan="<?php echo $this->getColspan(); ?>">
-        <?php //echo $this->escapeHtml($this->getTotal()->getTitle()) ?>
-        <p><?php echo $this->__('Shipping & Handling'); ?></p>
+<div class="row">
+    <div class="col-md-6 col-xs-6">
+
+        <div class="column-01">
+            <p><?php echo $this->__('Shipping:'); ?></p>
+        </div>
     </div>
-    <div style="<?php echo $this->getStyle() ?>" class="a-right value">
-        <p><?php echo strip_tags($this->helper('checkout')->formatPrice($this->getShippingExcludeTax())) ?></p>
-    </div>
+    <div class="col-md-6 col-xs-6">
+
+        <div class="column-02">
+            <p><?php echo strip_tags($this->helper('checkout')->formatPrice($this->getShippingExcludeTax())) ?></p>
+        </div>
+    </div> 
 </div>
 <?php endif;?>

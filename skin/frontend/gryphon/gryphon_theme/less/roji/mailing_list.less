@@ -1,6 +1,12 @@
 @mailing-list-width: 715px;
 @mailing-list-height: 330px;
 
+@mailing-list-width-mobile: 280px;
+@mailing-list-height-mobile: 270px;
+
+
+
+
 #mailing-list-popup-container{
   position: fixed;
   z-index: 200020;
@@ -14,7 +20,7 @@
   
   .opacity(0);              // not immediately visible, modified by js tweenmax
   visibility: hidden;  
-
+  
   .black-bg{
     position: absolute;
     top: 0;
@@ -24,6 +30,14 @@
 
     background: @black;
     background: fade(@black, 50%);
+  }
+
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    top: @mobile-header-height;
+    height: auto;
+    bottom: 0;
   }
 
 } // #mailing-list-popup-container
@@ -57,6 +71,21 @@
 
   // TABLET PORTRAIT
   @media only screen and (max-width: 991px) {
+
+    text-align: center;
+
+    width: @mailing-list-width-mobile;
+    height: @mailing-list-height-mobile;
+
+    margin-left: -1 * @mailing-list-width-mobile / 2;
+    margin-top: -1 * @mailing-list-height-mobile / 2;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+
     .column-01{
       padding-right: 0px;
     }
@@ -79,6 +108,17 @@
 
   padding-top: 37px;
   margin-bottom: 18px;
+
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    .h4-style;
+    color: @off-black;
+
+    // padding-top: 23px;
+    padding-top: 33px;
+  }
+
 } // #mailing-list-title
 
 #mailing-list-copy{
@@ -91,10 +131,15 @@
 
   // TABLET PORTRAIT
   @media only screen and (max-width: 991px) {
-    padding-right: 0px;
-    padding-right: 0px;
+    padding-right: 15px;
+    padding-left: 15px;
+
+    margin-bottom: 35px;
   }
 } // #mailing-list-copy
+
+
+
 
 #mailing-list-form{
   padding-right: 25px;
@@ -102,6 +147,9 @@
   // TABLET PORTRAIT
   @media only screen and (max-width: 991px) {
     padding-right: 0px;
+
+    margin-left: 20px;
+    margin-right: 20px;
   }
 } // #mailing-list-form
 
@@ -119,58 +167,14 @@
   
   cursor: pointer;
 
-  position: absolute;
+  position: absolute !important;
   top: 15px;
   right: 15px;
 
-  width: 23px;
-  height: 23px;
-
-  border: 1px solid @dark-grey;
-  .transition-in-single(border-color, 0.15s);
-
-  .round(15px);
-
-  &:before{
-    .icon-close;
-
-    content: '';
-    display: block;
-    position: absolute;
-    top: -1px;
-    left: -1px;
-
-    .opacity(1);
-    .transition-in(0.15s);
-  }
-  &:after{
-    .icon-close-off-black;
-
-    content: '';
-    display: block;
-    position: absolute;
-    top: -1px;
-    left: -1px;
-
-    .opacity(0);
-    .transition-in(0.15s);
-  }
-
-  &:hover,
-  &:focus{
-
-    border-color: @off-black;
-    .transition-in-single(border-color, 0.2s, cubic-bezier(0.7,0,0.3,1), 0.05s);
     
-    &:before{
-      .opacity(0);
-      .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.05s);
-    }
-    &:after{
-      .opacity(1);
-      .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.05s);
-    }
-
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    display: none;
   }
 
 } // #mailing-list-close-btn
@@ -183,6 +187,7 @@
 //    / ___ \| |\  || || |  | |/ ___ \| |  | | |_| | |\  |
 //   /_/   \_\_| \_|___|_|  |_/_/   \_\_| |___\___/|_| \_|
 //
+
 
 
 // mailing_item_move_up

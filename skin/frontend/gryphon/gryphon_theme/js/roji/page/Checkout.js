@@ -40,8 +40,9 @@ roji.page.Checkout = function(options, element) {
 
     this.has_sidebar = true;
   }
-  
 
+  $j('#page-checkout-cart').find('.form-quantity-plus-btn').click(this.on_qty_plus_btn_click.bind(this));
+  $j('#page-checkout-cart').find('.form-quantity-minus-btn').click(this.on_qty_minus_btn_click.bind(this));
 
   console.log('roji.page.Checkout: init');
 };
@@ -163,7 +164,29 @@ roji.page.Checkout.prototype.update_checkout_bg_height = function(){
 /**
  * @param {object} event
  */
-roji.page.Checkout.prototype.on_event_handler_01 = function(event) {
+roji.page.Checkout.prototype.on_qty_plus_btn_click = function(event) {
+
+  event.preventDefault();
+  var $qty=$j(event.currentTarget).parent().find('.qty');
+  var currentVal = parseInt($qty.val());
+  if (!isNaN(currentVal)) {
+      $qty.val(currentVal + 1);
+  }
+
+};
+
+/**
+ * @param {object} event
+ */
+roji.page.Checkout.prototype.on_qty_minus_btn_click = function(event) {
+
+  event.preventDefault();
+  var $qty=$j(event.currentTarget).parent().find('.qty');
+  var currentVal = parseInt($qty.val());
+  if (!isNaN(currentVal) && currentVal > 1) {
+      $qty.val(currentVal - 1);
+  }
+
 };
 
 
