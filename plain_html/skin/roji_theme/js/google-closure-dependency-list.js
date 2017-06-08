@@ -43,6 +43,7 @@ goog.addDependency('../../../../../js/roji/component/MailingList.js', ['roji.com
 goog.addDependency('../../../../../js/roji/component/MobileHeader.js', ['roji.component.MobileHeader'], ['goog.events.Event', 'goog.events.EventTarget']);
 goog.addDependency('../../../../../js/roji/component/OurTeasMap.js', ['roji.component.OurTeasButton', 'roji.component.OurTeasMap'], ['goog.events.Event', 'goog.events.EventTarget']);
 goog.addDependency('../../../../../js/roji/component/VideoComponent.js', ['roji.component.VideoComponent'], ['goog.events.Event', 'goog.events.EventTarget', 'manic.ui.ImageContainer', 'manic.ui.VideoContainer']);
+goog.addDependency('../../../../../js/roji/page/Account.js', ['roji.page.Account'], ['goog.events.Event', 'goog.events.EventTarget', 'roji.page.Default']);
 goog.addDependency('../../../../../js/roji/page/Checkout.js', ['roji.page.Checkout'], ['goog.events.Event', 'goog.events.EventTarget', 'roji.page.Default']);
 goog.addDependency('../../../../../js/roji/page/Default.js', ['roji.page.Default'], ['goog.events.Event', 'goog.events.EventTarget', 'manic.page.Page', 'roji.component.DesktopHeader', 'roji.component.MailingList', 'roji.component.MobileHeader']);
 goog.addDependency('../../../../../js/roji/page/Faq.js', ['roji.page.Faq'], ['goog.events.Event', 'goog.events.EventTarget', 'roji.page.Default']);
