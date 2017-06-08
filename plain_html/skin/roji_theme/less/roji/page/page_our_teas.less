@@ -1,0 +1,549 @@
+
+//    _____ ___ _____ _     _____
+//   |_   _|_ _|_   _| |   | ____|
+//     | |  | |  | | | |   |  _|
+//     | |  | |  | | | |___| |___
+//     |_| |___| |_| |_____|_____|
+//
+
+#page-our-teas-title-section{
+  // padding-top: 36px;
+  padding-top: 45px;
+  padding-bottom: 39px;
+}
+#page-our-teas-title{
+  text-align: right;
+}
+
+
+// TABLET PORTRAIT
+@media only screen and (max-width: 991px) {
+  #page-our-teas-title-section{
+    padding-top: 34px;
+    padding-bottom: 30px;
+  }
+  #page-our-teas-title{
+    text-align: left;
+    br{
+      display: none;
+    }
+  }
+}
+
+
+
+
+
+//    ____  _     ___ ____  _____ ____
+//   / ___|| |   |_ _|  _ \| ____|  _ \
+//   \___ \| |    | || | | |  _| | |_) |
+//    ___) | |___ | || |_| | |___|  _ <
+//   |____/|_____|___|____/|_____|_| \_\
+//
+
+#page-our-teas-slider-section{
+
+}
+
+@our-teas-slider-height: 730px;
+@our-teas-slider-height-1280: 670px;
+@our-teas-slider-height-1024: 540px;
+
+#page-our-teas-slider{
+  width: 100%;
+  height: @our-teas-slider-height;
+  overflow: hidden;
+}
+
+.page-our-teas-slider-item{
+
+
+  .display-inline-block;
+  position: relative;
+  width: 100%;
+  height: @our-teas-slider-height;
+
+
+  .slider-item-image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    .manic-image-container{
+      position: absolute !important;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .slider-item-copy-container{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+
+    // .transform(translateX(0%) translateY(-50%));
+    .transform(translateY(-50%));
+
+  }
+  .slider-item-copy{
+    color: @white;
+
+    p{
+      .raleway-regular;
+      font-size: 22px;
+      line-height: 34px;
+      letter-spacing: 0.05em;
+    }
+    p + p{
+      padding-top: 34px;
+    }
+  }
+}
+
+
+@media only screen and (max-width: 1280px) {
+  #page-our-teas-slider,
+  .page-our-teas-slider-item{
+    height: @our-teas-slider-height-1280;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  #page-our-teas-slider,
+  .page-our-teas-slider-item{
+    height: @our-teas-slider-height-1024;
+  }
+}
+
+
+
+
+
+
+//    __  __    _    ____
+//   |  \/  |  / \  |  _ \
+//   | |\/| | / _ \ | |_) |
+//   | |  | |/ ___ \|  __/
+//   |_|  |_/_/   \_\_|
+//
+
+#page-our-teas-map-section{
+  background: @off-white-1;
+}
+
+#page-our-teas-map{
+
+  // width: 100%;
+  height: 850px;
+  position: relative;
+  
+  margin-left: auto;
+  margin-right: auto;
+
+  overflow: hidden;
+
+  /*
+  @media only screen and (max-width: 1280px) {
+    width: 1280px;
+    height: 790px;
+  }
+  @media only screen and (max-width: 1024px) {
+    width: 1024px;
+    height: 630px;
+  }
+  */
+ 
+  @media only screen and (max-width: 1280px) {
+    margin-right: -40px;
+  }
+  @media only screen and (max-width: 1024px) and (min-width: 992px) {
+    margin-right: -30px; // padding-right: @container-fluid-padding-tablet-landscape;
+  }
+
+
+      
+
+} // #page-our-teas-map
+
+
+
+#page-our-teas-map-content{
+  position: absolute;
+  width: 850px;
+  height: 620px;
+
+  // top: 100px;
+  top: 96px;
+  right: 0px;
+
+  @media only screen and (max-width: 1024px) {
+    right: -170px;
+  }
+}
+#page-our-teas-map-content-button-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .map-content-btn{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    cursor: pointer;
+
+    background: transparent;
+    // background: #ff0000;     // for checking 
+    // .opacity(0.3);
+
+    .round(100px);
+
+    &[data-value="kagoshima"]{
+      width: 106px;
+      height: 130px;
+      top: 480px;
+      left: 3px;
+    }
+    &[data-value="shizuoka"]{
+      width: 32px;
+      height: 76px;
+      top: 454px;
+      left: 425px;
+    }
+    &[data-value="asahina-shizuoka"]{
+      width: 70px;
+      height: 77px;
+      top: 439px;
+      left: 359px;
+    }
+  }
+} // #page-our-teas-map-content-button-container
+#page-our-teas-map-content-icon-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .map-content-icon{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .opacity(0.4);
+    .transition-in(0.15s);
+
+    &[data-value="kagoshima"]{
+      .our-teas-icon-kagoshima;
+      top: 501px;
+      left: 28px;
+    }
+    &[data-value="shizuoka"]{
+      .our-teas-icon-shizuoka;
+      top: 500px;
+      left: 426px;
+    }
+    &[data-value="asahina-shizuoka"]{
+      .our-teas-icon-asahina-shizuoka;
+      top: 483px;
+      left: 367px;
+    }
+
+    &.hover-version{
+      .opacity(1);
+      .transition-in(0.5s, cubic-bezier(0.7,0,0.3,1), 0.0s);
+    }
+
+    &.selected{
+      .opacity(1);
+      .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.25s);
+    }
+
+  } // .map-content-icon{
+
+
+} // #page-our-teas-map-content-icon-container
+
+#page-our-teas-map-content-line-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .map-content-line{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 0px;
+    height: 0px;
+    background: #ff0000;
+
+    //.opacity(0);
+    //.transition-in(0.3s, cubic-bezier(0.7,0,0.3,1), 0.0s);
+
+    &.selected{
+      //.opacity(1);
+      //.transition-in(0.4s, cubic-bezier(0.7,0,0.3,1), 0.6s);
+      
+      .line-01{
+        .opacity(1);
+        .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.6s);
+      }
+      .line-02{
+        .opacity(1);
+        .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.8s);
+      }
+    }
+
+    .line-01{
+      position: absolute;
+      width: 0px;
+      height: auto;
+
+      border-left: 1px solid @border-grey;
+      // border-left: 1px solid @off-black;
+
+      left: 0px;
+      top: 0px;
+      bottom: 0px;
+
+      .box-shadow (1px, 0px, 2px, fade(@dark-grey-2, 30%));
+      .opacity(0);
+      .transition-in(0.15s, cubic-bezier(0.7,0,0.3,1), 0.15s);
+
+    }
+    .line-02{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      width: auto;
+      height: 0px;
+
+      border-bottom: 1px solid @border-grey;
+      // border-bottom: 1px solid @off-black;
+      // 
+      .box-shadow (1px, 0px, 2px, fade(@dark-grey-2, 30%));
+      .opacity(0);
+      .transition-in(0.15s, cubic-bezier(0.7,0,0.3,1), 0.0s);
+    }
+
+    &[data-value="kagoshima"]{
+      top: 500px;
+      left: 82px;
+
+
+      .line-02{
+        top: -327px;
+      }
+
+      &.selected{
+        .line-01{
+          top: -327px;
+        }
+        .line-02{
+          left: -250px - 150px;
+        }
+      }
+
+    }
+    &[data-value="shizuoka"]{
+      top: 465px;
+      left: 444px;
+
+      .line-02{
+        top: -123px;
+      }
+
+      &.selected{
+        .line-01{
+          top: -123px;
+        }
+        .line-02{
+          left: -628px - 150px;
+        }
+      }
+    }
+    &[data-value="asahina-shizuoka"]{
+      top: 474px;
+      left: 397px;
+
+      .line-02{
+        top: 38px;
+      }
+
+      &.selected{
+        .line-01{
+          top: 0;
+          height: 38px;
+        }
+        .line-02{
+          left: -509px - 150px;
+        }
+      }
+    }
+
+    
+  }
+} // #page-our-teas-map-content-line-container
+
+
+
+#page-our-teas-map-content-image{
+  width: 850px;
+  height: 620px;
+  .our-teas-map;
+  // .our-teas-map-1280;
+  // .our-teas-map-1024;
+}
+
+
+
+//    __  __    _    ____    ____ ___ ____  _____ ____    _    ____
+//   |  \/  |  / \  |  _ \  / ___|_ _|  _ \| ____| __ )  / \  |  _ \
+//   | |\/| | / _ \ | |_) | \___ \| || | | |  _| |  _ \ / _ \ | |_) |
+//   | |  | |/ ___ \|  __/   ___) | || |_| | |___| |_) / ___ \|  _ <
+//   |_|  |_/_/   \_\_|     |____/___|____/|_____|____/_/   \_\_| \_\
+//
+
+
+
+
+
+#page-our-teas-map-sidebar{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 100%;
+}
+
+
+#page-our-teas-map-sidebar-title{
+  padding-top: 93px;
+  margin-bottom: 21px;
+
+  h2{
+    .h1-style;
+    font-size: 22px;
+    line-height: 34px;
+  }
+}
+
+.page-our-teas-map-sidebar-item{
+  position: relative;
+  margin-bottom: 35px;
+
+  &:last-child{
+    margin-bottom: 0px;
+  }
+  
+  .sidebar-item-icon{
+    .opacity(0.3);
+    .transition-in(0.15s);
+
+    position: relative;
+    top: 7px;
+    left: -10px;
+
+    margin-bottom: 10px;
+
+    cursor: pointer;
+
+
+  }
+
+  .sidebar-item-title{
+    .display-inline-block;
+    background: @off-white-1;
+
+    padding-right: 24px;
+
+    cursor: pointer;
+
+    h4{
+      .opacity(0.3);
+      .transition-in(0.15s);
+      color: @off-black;
+    }
+  }
+  
+
+  .sidebar-item-expand-container{
+    overflow: hidden;
+    max-height: 0px;
+    .transition-in-single (max-height, 0.4s, cubic-bezier(0.645, 0.045, 0.355, 1), 0.3s);
+
+    &:before{
+      content: '';
+      display: block;
+      height: 8px;
+    }
+    &:after{
+      content: '';
+      display: block;
+      height: 2px;
+    }
+
+    p{
+     font-size: 12px;
+     line-height: 18px;
+    }
+    p + p{
+      padding-top: 18px;
+    }
+  }
+
+  &[data-value="kagoshima"]{
+    .sidebar-item-icon{
+      .our-teas-line-art-kagoshima;
+    }
+  }
+  &[data-value="shizuoka"]{
+    .sidebar-item-icon{
+      .our-teas-line-art-shizuoka;
+    }
+  }
+  &[data-value="asahina-shizuoka"]{
+    .sidebar-item-icon{
+      .our-teas-line-art-asahina-shizuoka;
+    }
+  }
+
+} // .page-our-teas-map-sidebar-item
+
+
+// hover state
+.page-our-teas-map-sidebar-item:hover{
+  .sidebar-item-icon{
+    .opacity(1);
+    .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.0s);
+  }
+  h4{
+    .opacity(1);
+    .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.0s);
+  }
+}
+
+// selected state
+.page-our-teas-map-sidebar-item.selected{
+  .sidebar-item-icon{
+    .opacity(1);
+    .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.25s);
+  }
+  h4{
+    .opacity(1);
+    .transition-in(0.2s, cubic-bezier(0.7,0,0.3,1), 0.25s);
+  }
+  .sidebar-item-expand-container{
+    max-height: 300px;
+    .transition-in-single (max-height, 0.6s, cubic-bezier(0.645, 0.045, 0.355, 1), 0.1s);
+  }
+}
