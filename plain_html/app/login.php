@@ -107,9 +107,6 @@
                 </div>
               </div>
 
-
-              <!-- Remember me checkbox -->
-
             </form>
           </div> <!-- page-login-content -->
 
@@ -141,11 +138,12 @@
               <h2>Don’t have an Account?</h2>
 
               <div class="default-copy">
-                <small>Registration is free and easy! By creating an account with our store, you will be able to move through the checkout process faster, store multiple addresses, view and track your orders in your account and more!</small>
+                <small>Simply create one to join our Roji family and indulge in a world of exclusive privileges as you earn rewards and privileges every time you shop, connect and share.</small>
               </div>
 
               <div class="cta-container">
                 <a href="javascript:void(0);" class="square-cta">Create an account</a>
+                <a href="javascript:void(0);" class="square-cta">Chaseki Members Program</a>
               </div>
 
             </div> <!-- page-login-register-form -->

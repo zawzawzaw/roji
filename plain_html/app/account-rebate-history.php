@@ -7,7 +7,8 @@
   <?php include 'head.php'; ?>
 </head>
 
-<body class="min-height-version">
+<body class="min-height-version account-rebate-history-page">
+
   <?php include "header.php"; ?>
 
   <!--
@@ -25,7 +26,7 @@
         <div class="col-md-3 col-sm-1 col-xs-0"></div>
         <div class="col-md-9 col-sm-10 col-xs-12">
           <div id="page-account-title">
-            <h1>Welcome to the <strong>ROJI</strong> family.</h1>
+            <h1>My Rebate History.</h1>
           </div> <!-- page-account-title -->
         </div>
       </div>
@@ -40,20 +41,6 @@
      \____\___/|_| \_| |_| |_____|_| \_| |_|
 
   -->
-
-  <article id="page-account-sidebar-section-mobile" class="visible-sm visible-xs">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-10 col-sm-push-1 col-xs-12">
-
-          <div id="page-account-sidebar-mobile">
-            <p>INSERT TITLE HERe</p>
-          </div> <!-- page-account-sidebar-mobile -->
-
-        </div>
-      </div>
-    </div>
-  </article> <!-- page-account-sidebar-section-mobile -->
 
   <article id="page-account-content-section">
     <div id="page-account-content-section-bg" class="visible-md visible-lg">
@@ -80,14 +67,13 @@
 
             <nav>
               <ul>
-                <li class="selected">My account</li>
+                <li><a href="account-info.php">My account</a></li>
                 <li><a href="account-address-book.php">Address book</a></li>
                 <li><a href="account-order-history.php">Order history</a></li>
-                <li><a href="javascript:void(0);">Gift card</a></li>
-                <li><a href="account-rebate-history.php">Rebate history</a></li>
-                <li><a href="javascript:void(0);">Friend referral</a></li>
-                <li><a href="javascript:void(0);">Text to be updated</a></li>
-
+                <li><a href="account-gift-card.php">Gift card</a></li>
+                <li class="selected">Rebate history</li>
+                <li><a href="account-friend-referral.php">Friend referral</a></li>
+                <li><a href="account-roji-bag.php">My Roji Bag</a></li>
               </ul>
             </nav>
 
@@ -109,12 +95,321 @@
           <div id="page-account-content-width"></div>
           <div id="page-account-content">
             
-            <div class="default-copy">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
+            
+
+
+
+            <!--
+               ____  _____ ____    _  _____ _____   _   _ ___ ____ _____ ___  ______   __
+              |  _ \| ____| __ )  / \|_   _| ____| | | | |_ _/ ___|_   _/ _ \|  _ \ \ / /
+              | |_) |  _| |  _ \ / _ \ | | |  _|   | |_| || |\___ \ | || | | | |_) \ V /
+              |  _ <| |___| |_) / ___ \| | | |___  |  _  || | ___) || || |_| |  _ < | |
+              |_| \_\_____|____/_/   \_\_| |_____| |_| |_|___|____/ |_| \___/|_| \_\|_|
+
+            -->
+
+            
+            <div id="page-account-rebate-history-header">
+              <div class="row">
+                <div class="col-md-6">
+
+                  <div class="history-header-title">
+                    <h2>Rebate History</h2>
+                  </div>
+
+                  <div class="history-header-detail">
+                    <h4>Current rebate</h4>
+                    <p>$58.94</p>
+                  </div>
+
+                </div>
+                <div class="col-md-6">
+
+                  <div class="history-header-nav">
+                    <ul>
+                      <li data-value="earned" class="selected"><a href="#earned">Earned</a></li>
+                      <li data-value="redeemed"><a href="#redeemed">Redeemed</a></li>
+                      <li data-value="expired"><a href="#expired">Expired</a></li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+
+            </div> <!-- page-account-rebate-history-header -->
+
+
+
+            <div id="page-account-rebate-history-content">
+
+
+              <!--
+                 _____    _    ____  _   _ _____ ____
+                | ____|  / \  |  _ \| \ | | ____|  _ \
+                |  _|   / _ \ | |_) |  \| |  _| | | | |
+                | |___ / ___ \|  _ <| |\  | |___| |_| |
+                |_____/_/   \_\_| \_\_| \_|_____|____/
+
+              -->
+
+              <div id="page-account-rebate-history-earned-table" class="page-account-table">
+
+                <div class="page-account-table-header">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="table-column-first">
+                        <h4>Description</h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="table-column">
+                        <h4>Status</h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="table-column">
+                        <h4>Rebates earned</h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="table-column-last">
+                        <h4>Expiry date</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div> <!-- page-account-table-header -->
+
+                <div class="page-account-table-item-container">
+
+                  <div class="page-account-table-item">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="table-column-first">
+                          <p>Order: 145003111</p>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="table-column">
+                          <p>Pending Payment</p>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="table-column">
+                          <p>66</p>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="table-column-last">
+                          <h4>13/6/2017</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <!-- repeat -->
+                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
+
+
+                </div> <!-- page-account-table-item-container -->
+
+                <div class="page-account-table-pagination">
+                  <!-- add if there is a back button -->
+                  <!-- <a href="javascript:void(0);" class="arrow-cta arrow-version reverse-version"></a> -->
+                  <ul>
+                    <li class="selected">1</li>
+                    <li><a href="javascript:void(0);">2</a></li>
+                    <li><a href="javascript:void(0);">3</a></li>
+                  </ul>
+                  <a href="javascript:void(0);" class="arrow-cta arrow-version"></a>
+                </div> <!-- page-account-table-pagination -->
+
+              </div> <!-- page-account-rebate-history-earned-table -->
+
+
+              <!--
+                 ____  _____ ____  _____ _____ __  __ _____ ____
+                |  _ \| ____|  _ \| ____| ____|  \/  | ____|  _ \
+                | |_) |  _| | | | |  _| |  _| | |\/| |  _| | | | |
+                |  _ <| |___| |_| | |___| |___| |  | | |___| |_| |
+                |_| \_\_____|____/|_____|_____|_|  |_|_____|____/
+
+              -->
+
+              <div id="page-account-rebate-history-redeemed-table" class="page-account-table">
+
+                <div class="page-account-table-header">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="table-column-first">
+                        <h4>Description</h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="table-column">
+                        <h4>Status</h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="table-column">
+                        <h4>Rebates used</h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="table-column-last">
+                        <h4>Redemption date</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div> <!-- page-account-table-header -->
+
+                <div class="page-account-table-item-container">
+
+                  <div class="page-account-table-item">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="table-column-first">
+                          <p>Order: 145003122</p>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="table-column">
+                          <p>Pending Payment</p>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="table-column">
+                          <p>22</p>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="table-column-last">
+                          <h4>13/6/2017</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <!-- repeat -->
+                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
+
+                </div> <!-- page-account-table-item-container -->
+
+                <div class="page-account-table-pagination">
+                  <!-- add if there is a back button -->
+                  <!-- <a href="javascript:void(0);" class="arrow-cta arrow-version reverse-version"></a> -->
+                  <ul>
+                    <li class="selected">1</li>
+                    <li><a href="javascript:void(0);">2</a></li>
+                    <li><a href="javascript:void(0);">3</a></li>
+                  </ul>
+                  <a href="javascript:void(0);" class="arrow-cta arrow-version"></a>
+                </div> <!-- page-account-table-pagination -->
+
+              </div> <!-- page-account-rebate-history-redeemed-table -->
+
+              <!--
+                 _______  ______ ___ ____  _____ ____
+                | ____\ \/ /  _ \_ _|  _ \| ____|  _ \
+                |  _|  \  /| |_) | || |_) |  _| | | | |
+                | |___ /  \|  __/| ||  _ <| |___| |_| |
+                |_____/_/\_\_|  |___|_| \_\_____|____/
+
+              -->
+
+              <div id="page-account-rebate-history-expired-table" class="page-account-table">
+
+                <div class="page-account-table-header">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="table-column-first">
+                        <h4>Description</h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="table-column">
+                        <h4>Status</h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="table-column">
+                        <h4>Rebates</h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="table-column-last">
+                        <h4>Expired date</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div> <!-- page-account-table-header -->
+
+                <div class="page-account-table-item-container">
+
+                  <div class="page-account-table-item">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="table-column-first">
+                          <p>Order: 145003133</p>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="table-column">
+                          <p>Pending Payment</p>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="table-column">
+                          <p>33</p>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="table-column-last">
+                          <h4>13/6/2017</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <!-- repeat -->
+                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
+                  
+
+                </div> <!-- page-account-table-item-container -->
+
+                <div class="page-account-table-pagination">
+                  <!-- add if there is a back button -->
+                  <!-- <a href="javascript:void(0);" class="arrow-cta arrow-version reverse-version"></a> -->
+                  <ul>
+                    <li class="selected">1</li>
+                    <li><a href="javascript:void(0);">2</a></li>
+                    <li><a href="javascript:void(0);">3</a></li>
+                  </ul>
+                  <a href="javascript:void(0);" class="arrow-cta arrow-version"></a>
+                </div> <!-- page-account-table-pagination -->
+
+              </div> <!-- page-account-rebate-history-expired-table -->
+
+            </div> <!-- page-account-rebate-history-content -->
+
+
+            
+
+
+
 
           </div> <!-- page-account-content -->
 
