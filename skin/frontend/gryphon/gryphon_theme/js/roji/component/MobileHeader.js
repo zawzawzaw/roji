@@ -16,13 +16,27 @@ roji.component.MobileHeader = function(options, element) {
   this.options = $j.extend({}, roji.component.MobileHeader.DEFAULT, options);
   this.element = element;
 
-  // if class has parent
-  //goog.events.EventTarget.call(this, options, element);
-  //this.options = $j.extend(this.options, roji.component.MobileHeader.DEFAULT, options);
-  
+  this.is_open = false;
+
+  this.element.find('#mobile-menu-btn').click(function(event){
+    event.preventDefault();
+
+    if (this.is_open == true) {
+
+      this.close_header();
+
+    } else {
+
+      this.open_header();
+
+    }
+
+  }.bind(this));
 
 
+  this.expand_container = $j('#mobile-header-expanded');
 
+  this.body_element = $j('body');
 
   
 
@@ -80,8 +94,23 @@ roji.component.MobileHeader.prototype.private_method_06 = function() {};
 //
 
 
-roji.component.MobileHeader.prototype.public_method_01 = function() {};
-roji.component.MobileHeader.prototype.public_method_02 = function() {};
+roji.component.MobileHeader.prototype.open_header = function() {
+
+  if (this.is_open == false) {
+    this.is_open = true;
+    this.body_element.addClass('mobile-menu-open-version');
+  }
+
+  
+};
+roji.component.MobileHeader.prototype.close_header = function() {
+
+  if (this.is_open == true) {
+    this.is_open = false;
+    this.body_element.removeClass('mobile-menu-open-version');
+  }
+
+};
 roji.component.MobileHeader.prototype.public_method_03 = function() {};
 roji.component.MobileHeader.prototype.public_method_04 = function() {};
 roji.component.MobileHeader.prototype.public_method_05 = function() {};

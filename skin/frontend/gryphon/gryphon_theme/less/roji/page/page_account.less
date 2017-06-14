@@ -1,0 +1,528 @@
+//     ____ ___  __  __ __  __  ___  _   _
+//    / ___/ _ \|  \/  |  \/  |/ _ \| \ | |
+//   | |  | | | | |\/| | |\/| | | | |  \| |
+//   | |__| |_| | |  | | |  | | |_| | |\  |
+//    \____\___/|_|  |_|_|  |_|\___/|_| \_|
+//
+
+
+
+//    _____ ___ _____ _     _____
+//   |_   _|_ _|_   _| |   | ____|
+//     | |  | |  | | | |   |  _|
+//     | |  | |  | | | |___| |___
+//     |_| |___| |_| |_____|_____|
+//
+
+#page-account-title-section{
+  padding-top: 45px;
+  padding-bottom: 41px;
+}
+
+#page-account-title{
+  text-align: right;
+}
+
+// TABLET PORTRAIT
+@media only screen and (max-width: 991px) {
+  #page-account-title-section{
+    padding-top: 34px;
+    padding-bottom: 34px;
+  }
+  #page-account-title{
+    text-align: left;
+    br{
+      display: none;
+    }
+  }
+}
+
+
+//    ____  _____ _____  _    ___ _
+//   |  _ \| ____|_   _|/ \  |_ _| |
+//   | | | |  _|   | | / _ \  | || |
+//   | |_| | |___  | |/ ___ \ | || |___
+//   |____/|_____| |_/_/   \_\___|_____|
+//
+
+#page-account-content{
+
+  .detail-item{
+    margin-bottom: 28px;
+
+    h4{
+      color: @off-black;
+    }
+    p{
+      .body-font;
+      color: @dark-grey;
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+    h4 + p{
+      padding-top: 2px;
+    }
+
+    p + p{
+      padding-top: 18px;
+    }
+
+    // TABLET PORTRAIT
+    @media only screen and (max-width: 991px) {
+
+      margin-bottom: 20px;
+
+      h4{
+        .body-font-bold;
+        font-size: 13px;
+        line-height: 20px;
+        text-transform: none;
+        letter-spacing: 0em;
+      }
+      p{
+        .body-font;
+        font-size: 13px;
+        line-height: 20px;
+      }
+      h4 + p{
+        padding-top: 0;
+      }
+      p + p{
+        padding-top: 20px;
+      }
+    }
+  }
+
+}
+
+
+//    ____ ___ ____  _____ ____    _    ____
+//   / ___|_ _|  _ \| ____| __ )  / \  |  _ \
+//   \___ \| || | | |  _| |  _ \ / _ \ | |_) |
+//    ___) | || |_| | |___| |_) / ___ \|  _ <
+//   |____/___|____/|_____|____/_/   \_\_| \_\
+//
+
+
+@account-sidebar-offset-x: 40px;
+
+#page-account-sidebar-width,
+#page-account-sidebar{
+  margin-right: -1 * @account-sidebar-offset-x;
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    margin-right: 0;
+  }
+}
+
+#page-account-sidebar{
+  padding-top: 43px;
+
+
+  nav{
+    ul{
+
+      li{
+        margin-bottom: 35px;
+
+        &:last-child{
+          margin-bottom: 0px;
+        }
+
+
+        .h4-style;
+        color: @grey;
+
+        a{
+          .h4-style;
+          color: @dark-grey-2 !important;
+          
+          cursor: pointer;
+
+          .transition-in-single (color, 0.3s, cubic-bezier(0.645, 0.045, 0.355, 1), 0.1s);
+
+          &:hover,
+          &:focus{
+            color: @off-black !important;
+
+            .transition-in-single (color, 0.2s, cubic-bezier(0.645, 0.045, 0.355, 1), 0.2s);
+          }
+
+        } // a 
+
+        &.selected{
+          color: @dark-grey-2 !important;
+
+          /*
+          color: @off-black !important;
+          a{
+            color: @off-black !important;
+            &:hover,
+            &:focus{
+              color: @grey !important;
+            }
+          }
+          */
+        }
+      } // li
+    } // ul
+  } // nav
+
+  @media only screen and (max-width: 1280px) {
+    nav ul li{
+      font-size: 12px;
+      line-height: 16px;
+      padding-top: 4px;
+      padding-bottom: 4px;
+
+      margin-bottom: 25px;
+
+      a{
+        font-size: 12px;
+        line-height: 16px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+      }
+    }
+  }
+
+}
+
+
+
+
+// MOBILE
+
+#page-account-sidebar-section-mobile{
+  background: @off-white-2;
+
+  padding-top: 13px;
+  padding-bottom: 12px;
+}
+
+#page-account-sidebar-mobile{
+  
+  // text-align: center;
+
+  p{
+    .h4-style;
+    color: @dark-grey-2;
+
+  }
+}
+
+
+
+
+//     ____ ___  _   _ _____ _____ _   _ _____
+//    / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+//   | |  | | | |  \| | | | |  _| |  \| | | |
+//   | |__| |_| | |\  | | | | |___| |\  | | |
+//    \____\___/|_| \_| |_| |_____|_| \_| |_|
+//
+
+
+
+#page-account-content-section{
+  padding-bottom: 100px;
+  position: relative;
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    background: @off-white-1;
+
+    padding-bottom: 50px;
+
+  }
+}
+
+
+
+#page-account-content-section-bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+
+  .sidebar-bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 100%;
+    background: @off-white-2;
+  }
+  .content-bg{
+    position: absolute;
+    top: 0;
+    left: 30%;
+    width: 70%;
+    height: 100%;
+    background: @off-white-1;
+  }
+}
+
+
+
+
+
+#page-account-content-width,
+#page-account-content{
+  margin-left: @account-sidebar-offset-x;
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    margin-left: 0;
+  }
+}
+
+
+
+
+#page-account-content{
+  padding-left: 53px;
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    padding-left: 0px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+//     ____ ____  _____    _  _____ _____
+//    / ___|  _ \| ____|  / \|_   _| ____|
+//   | |   | |_) |  _|   / _ \ | | |  _|
+//   | |___|  _ <| |___ / ___ \| | | |___
+//    \____|_| \_\_____/_/   \_\_| |_____|
+//
+
+
+// TITLE
+
+#page-account-create-title-section{
+  padding-top: 45px;
+  padding-bottom: 43px;
+}
+#page-account-create-title{
+  text-align: right;
+}
+
+// TABLET PORTRAIT
+@media only screen and (max-width: 991px) {
+  #page-account-create-title-section{
+    padding-top: 34px;
+    padding-bottom: 30px;
+  }
+  #page-account-create-title{
+    text-align: left;
+    br{
+      display: none;
+    }
+  }
+}
+
+// CONTENT
+
+
+#page-account-create-intro-section{
+  padding-top: 35px;
+  padding-bottom: 50px;
+
+  background: @off-white-1;
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    padding-top: 0px;
+    padding-bottom: 50px;
+  }
+}
+
+
+
+#page-account-create-intro-image{
+  .manic-image-container{
+    height: 580px;
+  }
+}
+#page-account-create-intro-image-mobile{
+  .manic-image-container{
+    height: 480px;
+
+    // MOBILE
+    @media only screen and (max-width: 767px) {
+      height: 200px;
+    }
+  }
+}
+
+
+
+#page-account-create-intro-copy{
+  padding-top: 15px;
+  // margin-bottom: 50px;
+  margin-bottom: 49px;
+
+  .default-copy{
+    h2{
+      text-transform: uppercase;
+      color: @dark-grey-2;
+    }
+  }
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    padding-top: 35px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid @border-grey;
+    margin-bottom: 40px;
+  }
+}
+
+
+
+#page-account-create-form-container{
+  margin-bottom: 50px;
+}
+
+#page-account-create-form{
+
+  &.checkout-form{
+    .form-group{
+      margin-bottom: 20px;
+    }
+  }
+  
+  .cta-container{
+    padding-top: 42px;
+    text-align: right;
+  }
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    &.checkout-form{
+      .form-group{
+        margin-bottom: 18px;
+      }
+    }
+    .cta-container{
+      padding-top: 30px;
+      text-align: center;
+
+      .square-cta{
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}
+
+
+
+
+
+//    ___ _   _ _____ ___
+//   |_ _| \ | |  ___/ _ \
+//    | ||  \| | |_ | | | |
+//    | || |\  |  _|| |_| |
+//   |___|_| \_|_|   \___/
+//
+
+
+
+#page-account-info-header{
+  padding-top: 49px;
+  
+  padding-bottom: 47px;
+
+  border-bottom: 1px solid @border-grey;
+  margin-bottom: 41px;
+
+
+  .info-header-content{
+    h2{
+      font-size: 16px;
+      line-height: 24px;
+      text-transform: uppercase;
+      color: @dark-grey-2;
+    }
+    small{
+
+    }
+    h2 + small{
+      padding-top: 6px;
+    }
+  } // .info-header-content
+
+  .info-header-rebates{
+    text-align: center;
+    padding-top: 5px;
+
+    h4{
+      font-size: 10px;
+      line-height: 18px;
+      color: @off-black;
+    }
+    p{
+      .raleway-semibold;
+      font-size: 17px;
+      line-height: 24px;
+      letter-spacing: 0.075em;
+      color: @off-black;
+    }
+
+    h4 + p{
+      padding-top: 2px;
+    }
+
+  } // .info-header-rebates
+
+} // #page-account-info-header
+
+
+
+#page-account-info-content{
+  padding-bottom: 71px;
+}
+
+#page-account-info-footer{
+  .checkout-form{
+    .form-group{
+      margin-bottom: 0px !important;
+    }
+  }
+
+  small{
+    padding-top: 9px;
+  }
+
+  .cta-container{
+    padding-top: 35px;
+    text-align: right;
+  }
+
+} // #page-account-info-footer
+
+
+
+
+//    _____ ____ ___ _____   ___ _   _ _____ ___
+//   | ____|  _ \_ _|_   _| |_ _| \ | |  ___/ _ \
+//   |  _| | | | | |  | |    | ||  \| | |_ | | | |
+//   | |___| |_| | |  | |    | || |\  |  _|| |_| |
+//   |_____|____/___| |_|   |___|_| \_|_|   \___/
+//
+
+
+

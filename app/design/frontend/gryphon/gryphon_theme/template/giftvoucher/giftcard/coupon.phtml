@@ -147,18 +147,19 @@ if(Mage::getSingleton('customer/session')->isLoggedIn()) {
                                             <?php if ($collection->count()): ?>
                                                 <input type="hidden" title="<?php echo $this->__('Gift Card Code') ?>" class="input-text" value="<?php echo $code; ?>" id="<?php echo $_code ?>_code" name="giftvoucher_code" <?php if (!Mage::helper('giftvoucher')->isAvailableToAddCode()) echo 'disabled="true"' ?> />
                                                 <div class="dropdown">
-                                                    <select name="select_gift_code" id="select_gift_code" style="padding-left: 0px;">
+                                                    <select name="select_gift_code" id="select_gift_code">
                                                     <option value="">Please select</option>
                                                     <?php foreach ($collection as $row): ?>
                                                         <option value="<?php echo $row->getGiftCode(); ?>"><?php echo $row->getGiftCode(); ?></option>
                                                     <?php endforeach; ?>
                                                     </select>
-                                                </div>
+                                                </div>                                                    
                                             <?php else: ?>
                                                 <div class="input-box">
                                                     <input type="text" title="<?php echo $this->__('Gift Card Code') ?>" class="input-text" value="<?php echo $code ?>" id="<?php echo $_code ?>_code" name="giftvoucher_code" <?php if (!Mage::helper('giftvoucher')->isAvailableToAddCode()) echo 'disabled="true"' ?> />
                                                 </div>
                                             <?php endif; ?>
+                                            <div class="validation-advice" id="giftcard_notice" style="display: none;"></div>
                                         </div>
                                         <div class="col-md-4 col-sm-3 col-xs-4">
                                             <div class="cart-discount-cta-container">                
@@ -191,8 +192,7 @@ if(Mage::getSingleton('customer/session')->isLoggedIn()) {
                                     </select>
                                 </div>
                             </div> -->
-                        <?php endif ?>    
-                        <div style="color: #A70101;font-size: 11px;font-weight: bold;line-height: 13px;" id="giftcard_notice"></div>       
+                        <?php endif ?>                            
                         <div style="display:none;">
                             <?php if ($this->checkCustomerIsLoggedIn()): ?>
                                 <?php echo $this->__('To manage your Gift Card, please click <a target="_blank" href="%s">here</a>.', $this->getUrl('giftvoucher/index/index')) ?>
@@ -291,7 +291,8 @@ if(Mage::getSingleton('customer/session')->isLoggedIn()) {
                     if($('giftvoucher_existed_code')==null)
                     {
                         if($('giftvoucher_code'))  $('giftvoucher_code').addClassName("validation-failed");
-                        if($('giftcard_notice'))$('giftcard_notice').innerHTML = "<?php echo $this->__('Please enter your code')?>";
+                        if($('giftcard_notice')) $('giftcard_notice').innerHTML = "<?php echo $this->__('This is a required field.')?>";
+                        jQuery('#giftcard_notice').fadeIn('slow');
                     }
 
                     if($('giftvoucher_existed_code')&& $('giftvoucher_existed_code').value=="")
@@ -299,6 +300,7 @@ if(Mage::getSingleton('customer/session')->isLoggedIn()) {
                         if($('giftvoucher_code'))  $('giftvoucher_code').addClassName("validation-failed");
                         if($('giftvoucher_existed_code'))  $('giftvoucher_existed_code').addClassName("validation-failed");
                         if($('giftcard_notice'))$('giftcard_notice').innerHTML = "<?php echo $this->__('Please enter or chose your code')?>";
+                        jQuery('#giftcard_notice').fadeIn('slow');
                     }
                     if($('giftvoucher_existed_code')&& $('giftvoucher_existed_code').value!="") 
                     {

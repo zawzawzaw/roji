@@ -693,24 +693,30 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
             $codeLength = strlen($couponCode);
             $isCodeLengthValid = $codeLength && $codeLength <= Mage_Checkout_Helper_Cart::COUPON_CODE_MAX_LENGTH;
 
-            $this->_getQuote()->getShippingAddress()->setCollectShippingRates(true);
-            $this->_getQuote()->setCouponCode($isCodeLengthValid ? $couponCode : '')
-                ->collectTotals()
-                ->save();
+            $rebate_points_in_use = (int)Mage::helper('rewardpoints/event')->getCreditPoints($this->_getQuote());
 
-            if ($codeLength) {
-                if ($isCodeLengthValid && $couponCode == $this->_getQuote()->getCouponCode()) {
-                    $this->_getSession()->addSuccess(
-                        $this->__('Coupon code "%s" was applied.', Mage::helper('core')->escapeHtml($couponCode))
-                    );
+            if($rebate_points_in_use > 0) {
+                $this->_getSession()->addSuccess($this->__('You cannot redeem your discount code together with your rebates.'));
+            }else {
+                $this->_getQuote()->getShippingAddress()->setCollectShippingRates(true);
+                $this->_getQuote()->setCouponCode($isCodeLengthValid ? $couponCode : '')
+                    ->collectTotals()
+                    ->save();                
+
+                if ($codeLength) {
+                    if ($isCodeLengthValid && $couponCode == $this->_getQuote()->getCouponCode()) {
+                        $this->_getSession()->addSuccess(
+                            $this->__('Coupon code "%s" was applied.', Mage::helper('core')->escapeHtml($couponCode))
+                        );
+                    } else {
+                        $this->_getSession()->addError(
+                            $this->__('Coupon code "%s" is not valid.', Mage::helper('core')->escapeHtml($couponCode))
+                        );
+                    }
                 } else {
-                    $this->_getSession()->addError(
-                        $this->__('Coupon code "%s" is not valid.', Mage::helper('core')->escapeHtml($couponCode))
-                    );
+                    $this->_getSession()->addSuccess($this->__('Coupon code was canceled.'));
                 }
-            } else {
-                $this->_getSession()->addSuccess($this->__('Coupon code was canceled.'));
-            }
+            }            
 
         } catch (Mage_Core_Exception $e) {
             $this->_getSession()->addError($e->getMessage());

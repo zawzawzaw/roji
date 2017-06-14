@@ -176,6 +176,8 @@ class Rewardpoints_IndexController extends Mage_Core_Controller_Front_Action
 
         if (!Mage::helper('giftvoucher')->getGeneralConfig('use_with_coupon') && ($checkout_session->getUseGiftCreditAmount() > 0 || $checkout_session->getGiftVoucherDiscount() > 0)) {
             $checkout_session->addNotice(Mage::helper('giftvoucher')->__('You cannot redeem your gift card together with your rebates.'));
+        } else if ($checkout_session->getQuote()->getCouponCode() && !Mage::helper('giftvoucher')->getGeneralConfig('use_with_coupon')) {
+            $checkout_session->addNotice(Mage::helper('giftvoucher')->__('You cannot redeem your discount code together with your rebates.'));
         } else {
             if (Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId())){
                 if ((int)Mage::getStoreConfig('rewardpoints/default/max_point_used_order', Mage::app()->getStore()->getId()) < $points_value){

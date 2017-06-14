@@ -105,7 +105,9 @@
     <?php if($count == 0): ?>
         <div class="page-home-masonry-tile page-home-about-tile width-2 height-2">
             <div class="tile-bg manic-image-container">
-                <img src="" data-image-desktop="<?php echo $this->getSkinUrl('images_cms/home/home-about-tile-bg.jpg'); ?>">
+                <img src="" data-image-desktop="<?php echo $this->getSkinUrl('images_cms/home/home-about-tile-bg.jpg'); ?>"
+                    data-image-tablet="<?php echo $this->getSkinUrl('images_cms/home/home-about-tile-bg-tablet.jpg'); ?>"
+                    data-image-mobile="<?php echo $this->getSkinUrl('images_cms/home/home-about-tile-bg-mobile.jpg'); ?>">
             </div>
             <div class="tile-content">
                 <h2>Let us share our story</h2>
@@ -113,14 +115,17 @@
         </div>
         <div class="page-home-masonry-tile page-home-shop-tile height-2">
             <div class="tile-bg manic-image-container">
-                <img src="" data-image-desktop="<?php echo $this->getSkinUrl('images_cms/home/home-shop-tile-bg.jpg'); ?>">
+                <img src="" data-image-desktop="<?php echo $this->getSkinUrl('images_cms/home/home-shop-tile-bg.jpg'); ?>"
+                    data-image-tablet="<?php echo $this->getSkinUrl('images_cms/home/home-shop-tile-bg-tablet.jpg'); ?>"
+                    data-image-mobile="<?php echo $this->getSkinUrl('images_cms/home/home-shop-tile-bg-mobile.jpg'); ?>">
             </div>
             <div class="tile-content">
                 <div class="tile-center-container">
                     <div class="tile-center-content">
                         <h2>The perfect companion for your tea time</h2>
                         <div class="tile-cta">
-                            <a href="javascript:void(0);" class="arrow-cta">Shop Now</a>
+                            <?php $store_category = Mage::getModel('catalog/category')->loadByAttribute('name', 'Shop'); ?>
+                            <a href="<?php echo $store_category->getUrl(); ?>" class="arrow-cta">Shop Now</a>
                         </div>
                     </div>
                 </div>
@@ -128,7 +133,9 @@
         </div>
         <div class="page-home-masonry-tile page-home-our-teas-tile width-2">
             <div class="tile-bg manic-image-container">
-                <img src="" data-image-desktop="<?php echo $this->getSkinUrl('images_cms/home/home-our-teas-tile-bg.jpg'); ?>">
+                <img src="" data-image-desktop="<?php echo $this->getSkinUrl('images_cms/home/home-our-teas-tile-bg.jpg'); ?>"
+                    data-image-tablet="<?php echo $this->getSkinUrl('images_cms/home/home-our-teas-tile-bg-tablet.jpg'); ?>"
+                    data-image-mobile="<?php echo $this->getSkinUrl('images_cms/home/home-our-teas-tile-bg-mobile.jpg'); ?>">
             </div>
             <div class="tile-content">
                 <h2>Origins: Our teas are sourced <br>from various parts of Japan</h2>
@@ -142,14 +149,16 @@
     <?php if($count == 5): ?>
         <div class="page-home-masonry-tile page-home-giftcard-tile">
             <div class="tile-bg manic-image-container">
-                <img src="" data-image-desktop="<?php echo $this->getSkinUrl('images_cms/home/home-giftcard-tile-bg.jpg'); ?>">
+                <img src="" data-image-desktop="<?php echo $this->getSkinUrl('images_cms/home/home-giftcard-tile-bg.jpg'); ?>" 
+                    data-image-tablet="<?php echo $this->getSkinUrl('images_cms/home/home-giftcard-tile-bg-tablet.jpg'); ?>"
+                    data-image-mobile="<?php echo $this->getSkinUrl('images_cms/home/home-giftcard-tile-bg-mobile.jpg'); ?>">
             </div>
             <div class="tile-content">
                 <div class="tile-center-container">
                     <div class="tile-center-content">
                         <h2>Pamper someone</h2>
                         <div class="tile-cta">
-                            <a href="javascript:void(0);" class="arrow-cta">eGift Card</a>
+                            <a href="<?php echo $this->getUrl('shop/gifts/gift-card.html'); ?>" class="arrow-cta">eGift Card</a>
                         </div>
                     </div>
                 </div>
@@ -160,7 +169,9 @@
     <?php if($count == 6): ?>
         <div class="page-home-masonry-tile page-home-faq-tile">
             <div class="tile-bg manic-image-container">
-                <img src="" data-image-desktop="<?php echo $this->getSkinUrl('images_cms/home/home-faq-tile-bg.jpg'); ?>">
+                <img src="" data-image-desktop="<?php echo $this->getSkinUrl('images_cms/home/home-faq-tile-bg.jpg'); ?>"
+                    data-image-tablet="<?php echo $this->getSkinUrl('images_cms/home/home-faq-tile-bg.jpg'); ?>"
+                    data-image-mobile="<?php echo $this->getSkinUrl('images_cms/home/home-faq-tile-bg.jpg'); ?>">
             </div>
             <div class="tile-content">
                 <h2>Frequently asked questions</h2>

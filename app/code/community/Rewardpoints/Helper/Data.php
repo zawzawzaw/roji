@@ -1174,10 +1174,13 @@ class Rewardpoints_Helper_Data extends Mage_Core_Helper_Abstract {
                     $_item->setRewardpointsGatheredFloat($child_points);
                     $_item->setRewardpointsGathered(ceil($child_points));
                     $rewardPoints += $child_points;
+                    // echo 1 .'<br>';
                 } elseif ($group_points){
                     $rewardPoints += $group_points * $item_qty;
+                    // echo 2 .'<br>';
                 } elseif ($_item->getProduct()->getRewardPoints()) {
                     $rewardPoints += $_item->getProduct()->getRewardPoints() * $item_qty;
+                    // echo 3 .'<br>';
                 }
                 continue;
             }
@@ -1216,10 +1219,13 @@ class Rewardpoints_Helper_Data extends Mage_Core_Helper_Abstract {
                     //check catalog points' rules and add/remove value to fixed price bundle products
                     $item_points += $child_points;
                     $rewardPoints += $item_points;
+                    // echo 4 .'<br>';
                 } elseif ($group_points){
                     $rewardPoints += $group_points * $item_qty;
+                    // echo 5 .'<br>';
                 } elseif ($_item->getProduct()->getRewardPoints()) {
                     $rewardPoints += $_item->getProduct()->getRewardPoints() * $item_qty;
+                    // echo 6 .'<br>';
                 }
 
                 $_item->setRewardpointsGatheredFloat($item_points);
@@ -1252,23 +1258,40 @@ class Rewardpoints_Helper_Data extends Mage_Core_Helper_Abstract {
                 if ($_item->getQty() > 0 || $_item->getQtyOrdered() > 0){
                     $item_points += $this->processMathBaseValue($product_points * $item_qty);
                     $rewardPointsAtt += $item_points;
+                    // echo 7 .'<br>';
                 }
             } else if(!$attribute_restriction) {
                 //check if product is option product (bundle product)
                 if (!$_item->getParentItemId()  && $_item->getProduct()->getTypeId() != Mage_Catalog_Model_Product_Type::TYPE_BUNDLE) {
                     $item_points += $this->getItemPoints($_item, $storeId, $money_points, true, $customer_group_id);
-                    $rewardPoints += $item_points;
+
+                    $product_name = strtolower($_product->getData('name'));
+                    $categoryIds = $_product->getCategoryIds();
+
+                    // print_r($categoryIds); exit();
+                    
+                    if (!in_array(102, $categoryIds)) { // if not under gift category
+                        $rewardPoints += $item_points;
+                    } else {
+                        if(strpos($product_name, 'e-gift card')) {
+                            $rewardPoints += $item_points;
+                        }
+                    }
                     
                 } else if ($_item->getParentItem()->getProduct()->getTypeId() == Mage_Catalog_Model_Product_Type::TYPE_BUNDLE){
                     $item_points += $this->getItemPoints($_item, $storeId, $money_points, true, $customer_group_id);
                     $rewardPoints += $item_points;
+                    // echo 9 .'<br>';
                 }
-            }
+            }            
             
             //$_item->setRewardpointsGathered(ceil($item_points+$xtra_points));
             $_item->setRewardpointsGatheredFloat($item_points);
             $_item->setRewardpointsGathered(ceil($item_points));
         }        
+
+        // echo '<br>';
+        // echo $rewardPoints;   
         
         $rewardPoints = $this->processMathBaseValue($this->processMathValue($rewardPoints, $specific_rate) + $rewardPointsAtt);
         
@@ -1278,7 +1301,7 @@ class Rewardpoints_Helper_Data extends Mage_Core_Helper_Abstract {
             }
         }
         // $points = ceil($rewardPoints);
-        $points = $rewardPoints;                
+        $points = $rewardPoints;      
         
         $object_tovalidate = $cartLoaded;
         if ($object_tovalidate === null && $cartQuote != null){
@@ -1306,11 +1329,17 @@ class Rewardpoints_Helper_Data extends Mage_Core_Helper_Abstract {
             $rates = Mage::getModel('directory/currency')->getCurrencyRates($baseCurrencyCode, array_values($allowedCurrencies));
             $giftcard_discount_in_base_cur = $giftcard_discount/$rates[$currentCurrencyCode];
 
+            // echo $points . "<br>";
+            // echo $giftcard_discount . "<br>";
+            // echo $giftcard_discount_in_base_cur . "<br>";
+
+            $points_to_deduct = $giftcard_discount_in_base_cur/10;
+
             // giftcard_discount needed to convert back to sgd bcaz points are always sgd
-            $points = $points - $giftcard_discount_in_base_cur;
+            $points = $points - $points_to_deduct;
         }
         
-        // echo $points . ">>";
+        // echo $points . ">>"; exit();
 
         $points = Mage::getModel('rewardpoints/pointrules')->getAllRulePointsGathered($cartLoaded, $customer_group_id, true, $points, false);
 
@@ -1341,13 +1370,13 @@ class Rewardpoints_Helper_Data extends Mage_Core_Helper_Abstract {
                 $subtotal = $subtotal - $giftcard_discount;
             }
 
-            $min_amount_to_give_discount_1 = Mage::helper('directory')->currencyConvert(200, $baseCurrencyCode, $currentCurrencyCode);
+            // $min_amount_to_give_discount_1 = Mage::helper('directory')->currencyConvert(200, $baseCurrencyCode, $currentCurrencyCode);
 
-            $min_amount_to_give_discount_2 = Mage::helper('directory')->currencyConvert(150, $baseCurrencyCode, $currentCurrencyCode);
+            // $min_amount_to_give_discount_2 = Mage::helper('directory')->currencyConvert(150, $baseCurrencyCode, $currentCurrencyCode);
 
-            $points_to_give_for_discount_1 = 80; // no need to change currency caz points is in base currency & conver will do once on display reward_coupon.phtml
+            // $points_to_give_for_discount_1 = 80; // no need to change currency caz points is in base currency & conver will do once on display reward_coupon.phtml
 
-            $points_to_give_for_discount_2 = 40;
+            // $points_to_give_for_discount_2 = 40;
 
             // echo $min_amount_to_give_discount_1 . " >> ";
             // echo $min_amount_to_give_discount_2 . " >> ";
@@ -1356,16 +1385,16 @@ class Rewardpoints_Helper_Data extends Mage_Core_Helper_Abstract {
             // echo $points_to_give_for_discount_2 . " >> ";
             // echo $points . " >> ";
 
-            if($subtotal > $min_amount_to_give_discount_1) {
-                $points = $points + $points_to_give_for_discount_1;
-            } else if($subtotal > $min_amount_to_give_discount_2) {
-                $points = $points + $points_to_give_for_discount_2;
-            }
+            // if($subtotal > $min_amount_to_give_discount_1) {
+            //     $points = $points + $points_to_give_for_discount_1;
+            // } else if($subtotal > $min_amount_to_give_discount_2) {
+            //     $points = $points + $points_to_give_for_discount_2;
+            // }
 
             // echo $points . " >> ";
         }
         
-        return round($points*0.1); // 10 percent
+        return floor($points);
     }
     
     protected function getDefaultProductPoints($product, $storeId, $money_points = false, $noCeil = true, $check_discount = false, $_item = null, $tierprice_incl_tax = null, $tierprice_excl_tax = null){

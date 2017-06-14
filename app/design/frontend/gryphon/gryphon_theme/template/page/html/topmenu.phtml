@@ -51,7 +51,9 @@
 
         <!-- CLASS HAS TO BE ADDED BY THE JAVASCRIPT -->
         <li class="submenu-version">
-          <a href="<?php echo $this->getUrl('gifts'); ?>">Gifts</a>
+          <?php $gifts_products = Mage::getModel('catalog/category')->loadByAttribute('name', 'gifts'); ?>
+          <?php $gifts_products_data = $gifts_products->getData(); ?>
+          <a href="<?php echo $this->getUrl($gifts_products_data['url_path']); ?>">Gifts</a>
           <ul>
             <li><a href="<?php echo $this->getUrl('tin'); ?>">Tin</a></li>
           </ul>

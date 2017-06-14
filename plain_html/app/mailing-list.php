@@ -14,7 +14,7 @@
     <div id="mailing-list-popup">
 
       <div class="row">
-        <div class="col-md-6 hidden-sm hidden-xs">
+        <div class="col-xs-6">
 
           <div class="column-01">
             <div id="mailing-list-image">
@@ -26,7 +26,7 @@
 
 
         </div>
-        <div class="col-md-6 col-xs-12">
+        <div class="col-xs-6">
 
           <div class="column-02">
 

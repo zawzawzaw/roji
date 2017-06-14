@@ -6,7 +6,7 @@ $quoteData= $quote->getData();
 <div id="page-preloader">
   <div id="page-preloader-bg"></div>
   <div id="page-preloader-center">
-    <?php //require_once($this->getSkinUrl('images/preloader.svg')); ?>
+    <img src="<?php echo $this->getSkinUrl('images/preloader.svg'); ?>" alt="">    
   </div>
 </div>
 
@@ -28,7 +28,12 @@ $quoteData= $quote->getData();
           </div> <!-- desktop-header-menu -->
 
           <div id="desktop-header-login-menu">
-            <a href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>">Join/log in</a>
+            <?php $session = Mage::getSingleton('customer/session'); ?>
+            <?php if($session->isLoggedIn()): ?>
+              <a href="<?php echo Mage::getUrl('customer/account'); ?>">My Account</a>
+            <?php else: ?>
+              <a href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>">Join/log in</a>
+            <?php endif; ?>
           </div> <!-- desktop-header-login-menu -->
           
           <div id="desktop-header-currency-menu">
@@ -116,8 +121,167 @@ $quoteData= $quote->getData();
   </div>
 </header>
 
-<header id="mobile-header" class="visible-sm visible-xs">
-</header>
+<!--
+     __  __  ___  ____ ___ _     _____   _   _ _____    _    ____  _____ ____
+    |  \/  |/ _ \| __ )_ _| |   | ____| | | | | ____|  / \  |  _ \| ____|  _ \
+    | |\/| | | | |  _ \| || |   |  _|   | |_| |  _|   / _ \ | | | |  _| | |_) |
+    | |  | | |_| | |_) | || |___| |___  |  _  | |___ / ___ \| |_| | |___|  _ <
+    |_|  |_|\___/|____/___|_____|_____| |_| |_|_____/_/   \_\____/|_____|_| \_\
+
+  -->
+
+
+  <header id="mobile-header" class="visible-sm visible-xs">
+
+    <div class="mobile-header-bg"></div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-3">
+
+          <div id="mobile-menu-btn-container">
+            <div id="mobile-menu-btn">
+              <span class="line-01"></span>
+              <span class="line-02"></span>
+              <span class="line-03"></span>
+            </div>
+          </div>
+          
+        </div>
+        <div class="col-xs-6">
+
+          <div id="mobile-header-logo-container">
+            <a href="<?php echo $this->getUrl('') ?>" id="mobile-header-logo"></a>
+          </div>
+
+        </div>
+        <div class="col-xs-3">
+
+          <div id="mobile-header-cart-container">
+            <a href="<?php echo $this->getUrl('checkout/cart'); ?>" id="mobile-header-cart-btn">
+              <span class="cart-btn-value"><?php echo (!empty($count)) ? $count : 0; ?></span>
+            </a>
+          </div>
+
+        </div>
+
+      </div> <!-- row -->
+    </div> <!-- container-fluid -->
+  </header> <!-- mobile-header -->
+
+  <!--
+     __  __  ___  ____ ___ _     _____   _   _ _____    _    ____  _____ ____    _______  ______   _    _   _ ____
+    |  \/  |/ _ \| __ )_ _| |   | ____| | | | | ____|  / \  |  _ \| ____|  _ \  | ____\ \/ /  _ \ / \  | \ | |  _ \
+    | |\/| | | | |  _ \| || |   |  _|   | |_| |  _|   / _ \ | | | |  _| | |_) | |  _|  \  /| |_) / _ \ |  \| | | | |
+    | |  | | |_| | |_) | || |___| |___  |  _  | |___ / ___ \| |_| | |___|  _ <  | |___ /  \|  __/ ___ \| |\  | |_| |
+    |_|  |_|\___/|____/___|_____|_____| |_| |_|_____/_/   \_\____/|_____|_| \_\ |_____/_/\_\_| /_/   \_\_| \_|____/
+
+  -->
+
+  <header id="mobile-header-expanded">
+    <div class="mobile-header-spacer"></div>
+    <div id="mobile-header-account-container">
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+
+            <div id="mobile-header-account-single-link">
+              <?php $session = Mage::getSingleton('customer/session'); ?>
+              <?php if($session->isLoggedIn()): ?>
+                <a href="<?php echo Mage::getUrl('customer/account'); ?>">My Account</a>
+              <?php else: ?>
+                <a href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>">Join / log in</a>
+              <?php endif; ?>
+            </div> <!-- mobile-header-account-single-link -->
+
+            <div id="mobile-header-account-menu" style="display: none;">
+              <nav>
+                <ul>
+                  <li><a href="<?php echo $this->getUrl('customer/account'); ?>">My Account</a></li>
+                  <li><a href="<?php echo Mage::getUrl('customer/address/'); ?>">Address Book</a></li>
+                  <li><a href="<?php echo Mage::getUrl('sales/order/history/'); ?>">Order History</a></li>
+                  <li><a href="<?php echo Mage::getUrl('giftvoucher/index/index'); ?>">Gift Card<span class="account-menu-value">$10.00</span></a></li>
+                  <li><a href="<?php echo Mage::getUrl('rewardpoints/index/points/'); ?>">Rebates<span class="account-menu-value">$17.00</span></a></li>
+                  <li><a href="<?php echo Mage::getUrl('rewardpoints/index/referral/'); ?>">Friend Referral</a></li>
+                  <li><a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>">Log out</a></li>
+                </ul>
+              </nav>
+            </div> <!-- mobile-header-account-menu -->
+
+
+          </div>
+        </div>
+      </div>
+      
+    </div> <!-- mobile-header-account-container -->
+
+    <div id="mobile-header-menu-container">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+
+            <div id="mobile-header-menu">
+              <nav>
+                <ul>
+
+                  <li><a href="<?php echo $this->getUrl('about'); ?>">About</a></li>
+
+                  <!-- currency converter functionality pending -->
+                  <li class="currency-version">
+                    <?php 
+                    // TEA
+                    $store_category = Mage::getModel('catalog/category')->loadByAttribute('name', 'Shop');
+                    ?>
+                    <a href="<?php echo $store_category->getUrl(); ?>">Shop</a>
+
+                    <?php echo $this->getChildHtml('currency_top') ?>              
+
+                  </li>
+
+                  <li><a href="<?php echo $this->getUrl('our-teas'); ?>">Our Teas</a></li>
+
+                  <!-- CLASS HAS TO BE ADDED BY THE JAVASCRIPT -->
+                  <li class="submenu-version">
+                    <a href="<?php echo $this->getUrl('gifts'); ?>">Gifts</a>
+                    <ul>
+                      <li><a href="<?php echo $this->getUrl('gifts'); ?>">Tin</a></li>
+                    </ul>
+                  </li>
+
+                  <li><a href="<?php echo $this->getUrl('blog'); ?>">Blog</a></li>
+                  <li><a href="<?php echo $this->getUrl('faq'); ?>">FAQ</a></li>
+                  <li><a href="<?php echo $this->getUrl('contact'); ?>">Contact</a></li>
+
+                </ul>
+              </nav>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+
+    </div> <!-- mobile-header-menu-container -->
+        
+
+
+  </header> <!-- mobile-header-expanded -->
+
+
+  <div id="mobile-header-push-noti">
+    <div id="mobile-header-push-noti-image-container" class="manic-image-container">
+      <img src="" data-image-tablet="<?php echo $this->getSkinUrl('images/logo/logo-desktop-header.svg'); ?>" data-image-mobile="<?php echo $this->getSkinUrl('images/logo/logo-desktop-header.svg'); ?>" alt="">
+    </div>    
+  
+    <div id="mobile-header-push-noti-text-container">
+      <h4 class="title">Success</h4>
+      <p>This item is added to cart.</p>
+    </div>
+    
+    <a href="#" id="mobile-header-push-noti-close-btn" class="close-btn"></a>
+  </div>
 
 <div id="page-wrapper">
   <div id="page-wrapper-content">

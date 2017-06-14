@@ -44,6 +44,8 @@ roji.page.Checkout = function(options, element) {
   $j('#page-checkout-cart').find('.form-quantity-plus-btn').click(this.on_qty_plus_btn_click.bind(this));
   $j('#page-checkout-cart').find('.form-quantity-minus-btn').click(this.on_qty_minus_btn_click.bind(this));
 
+  this.giftvoucher_input();  
+
   console.log('roji.page.Checkout: init');
 };
 goog.inherits(roji.page.Checkout, roji.page.Default);
@@ -93,7 +95,19 @@ roji.page.Checkout.prototype.init = function() {
 
 
 roji.page.Checkout.prototype.private_method_03 = function() {};
-roji.page.Checkout.prototype.private_method_04 = function() {};
+roji.page.Checkout.prototype.giftvoucher_input = function() {
+  // cart gift voucher 
+  $j('input[name=giftvoucher]').attr('checked', true).triggerHandler('click'); 
+  $j('input[name=giftvoucher_credit]').attr('checked', true).triggerHandler('click'); 
+
+  $j('.apply_giftcard').on('click', function(e){
+      $j('#giftcard_shoppingcart_apply').find('button').trigger('click');    
+  });        
+
+  $j('.cancel_giftcard').on('click', function(e){            
+      window.location=$j('#remove_card').attr('href');
+  });        
+};
 
 
 //    ____  _   _ ____  _     ___ ____

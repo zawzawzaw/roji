@@ -299,6 +299,10 @@
         .body-font-small-italic;
         color: @dark-grey;
 
+        strong{
+          .checkout-form-label-font;
+        }
+
         .display-inline-block;
 
         padding-top: 2px;
@@ -340,6 +344,10 @@
 
           display: block;
           padding-left: 39px;
+
+          strong{
+            .checkout-form-label-font-mobile;
+          }
         }
       }
       input[type="checkbox"]:checked + label{
@@ -375,6 +383,18 @@
     margin-right: -4px;
   }
   .form-group-column-02{
+    margin-left: -4px;
+  }
+
+
+  .form-group-column-first{
+    margin-right: -4px;
+  }
+  .form-group-column-between{
+    margin-left: -4px;
+    margin-right: -4px;
+  }
+  .form-group-column-last{
     margin-left: -4px;
   }
 
@@ -417,6 +437,19 @@
       // margin-left: -6px;
       margin-left: -1px;
     }
+
+
+    .form-group-column-first{
+      margin-right: -6px;
+    }
+    .form-group-column-between{
+      margin-left: -6px;
+      margin-right: -6px;
+    }
+    .form-group-column-last{
+      margin-left: -6px;
+    }
+
     .form-title{
       margin-bottom: 22px;
 

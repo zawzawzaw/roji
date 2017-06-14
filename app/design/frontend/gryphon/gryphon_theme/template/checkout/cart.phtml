@@ -243,7 +243,33 @@ if($session->isLoggedIn()) {
                               </div>
                             </div>
                             <div class="col-md-6 col-md-pull-6 col-sm-8 col-sm-pull-4 col-xs-12">
-                              <p><?php echo $this->getBlockHtml('coupon_points'); ?></p>
+                              <?php 
+                                  $quote = Mage::getSingleton('checkout/session')->getQuote();
+                                  $cartItems = $quote->getAllVisibleItems();
+                                  $subscription = false;
+                                  $locationskuSGPArray = array("SGP-ART-1M", "SGP-ART-3M", "SGP-ART-6M", "SGP-ART-12M", "SGP-GUR-1M", "SGP-GUR-3M", "SGP-GUR-6M", "SGP-GUR-12M","INT-ART-1M", "INT-ART-3M", "INT-ART-6M", "INT-ART-12M", "INT-GUR-1M", "INT-GUR-3M", "INT-GUR-6M", "INT-GUR-12M");
+                                  foreach ($cartItems as $item) {
+                                      if(in_array($item->getSku(), $locationskuSGPArray)) {
+                                          $subscription = true;
+                                      }
+                                  }
+
+                                $groupId = Mage::getSingleton('customer/session')->getCustomerGroupId(); //Get Customers Group ID
+                                $groupname = Mage::getModel('customer/group')->load($groupId)->getCustomerGroupCode();
+                                if($groupname !='Trader-Temp' && $groupname!='Trader-Regular' && $groupname!='Trader-Priority' && $groupname!='Trader-Premium' && $subscription == false)
+                                {
+                              ?>    
+                              <p>
+                              <?php 
+                              $quoteId = Mage::getSingleton('checkout/session')->getQuoteId(); 
+                              $quote = Mage::getModel("sales/quote")->load($quoteId);
+
+                              $rewardPoints = Mage::helper('rewardpoints/data')->getPointsOnOrder($quote, null, null, true, $quote->getStoreId());
+                              echo $this->__("This shopping cart is worth %s in rebates", Mage::helper('core')->currency($rewardPoints, true, false));?>
+                              </p>
+                              <?php 
+                                }
+                              ?>
                             </div>
                           </div>
                       </div> <!-- page-checkout-cart-middle -->
@@ -271,6 +297,7 @@ if($session->isLoggedIn()) {
                                 <?php echo $this->getChildHtml('checkout.cart.extra') ?>
                             </div>
                             
+                            <?php echo $this->getBlockHtml('coupon_points'); ?>
                             
                             <?php echo $this->getChildHtml('coupon') ?>
 
@@ -377,14 +404,13 @@ if($session->isLoggedIn()) {
 
  -->
 
-<div id="question" style="display:none; cursor: default">            
-    <h3>How would you like to check out?</h3>                       
-    <?php if($subscription_in_cart): ?>
-        <a class="square-cta" href="<?php echo Mage::helper('customer')->getRegisterUrl(); ?>" id="yes">Create New Account</a>
-    <?php else: ?>
-        <a id="continue-as-guest" class="square-cta" href="#" id="no">Continue As Guest</a>
-    <?php endif; ?>
-    <a class="square-cta" href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>" id="yes">Sign Into Your Account</a>            
+<div id="checkout-login-popup" style="display:none; cursor: default">            
+    <p>Create an account and enjoy a 5 SGD rebate along with other benefits!</p>                           
+    <a class="square-cta" href="<?php echo Mage::helper('customer')->getRegisterUrl(); ?>" id="yes">Sign up</a>
+    <span>Already have an account?</span>    
+    <a class="square-cta" href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>" id="yes">Log in</a>            
+
+    <a id="continue-as-guest" class="arrow-cta" href="#" id="no">Continue As Guest</a>
 </div>
 
 <?php if(isMobile()==true): ?>
