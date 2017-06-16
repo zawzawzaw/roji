@@ -194,6 +194,7 @@ Product view
         <reference name="head">
             <action method="removeItem"><type>skin_js</type><name>js/minified/page-default.min.js</name></action>
             <action method="addItem"><type>skin_js</type><name>js/minified/page-product-detail.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>libs/notify-js/notify.min.js</name></action>
             <action method="addJs"><script>varien/product.js</script></action>
             <action method="addJs"><script>varien/configurable.js</script></action>
             <!-- <action method="addItem"><type>skin_js</type><script>js/lib/elevatezoom/jquery.elevateZoom-3.0.8.min.js</script></action> -->

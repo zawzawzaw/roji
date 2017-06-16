@@ -20,8 +20,8 @@ if(Mage::getSingleton('customer/session')->isLoggedIn()) {
 
 <?php $_code = 'giftvoucher' ?>
 <?php $_giftCards = $this->getExistedGiftCard() ?>
-
-<form id="discount-giftcard-form" action="<?php echo $this->getUrl('giftvoucher/checkout/giftcardPost') ?>" method="post" autocomplete="off">
+<div class="form-group">
+<form id="discount-giftcard-form" class="checkout-form" action="<?php echo $this->getUrl('giftvoucher/checkout/giftcardPost') ?>" method="post" autocomplete="off">
     <div class="discount">
         <!-- <h2><?php echo $this->__('Gift Card') ?></h2> -->
         <div class="discount-form">
@@ -74,7 +74,7 @@ if(Mage::getSingleton('customer/session')->isLoggedIn()) {
                 <input type="checkbox" name="<?php echo $_code ?>" id="<?php echo $_code ?>"<?php if ($this->getUseGiftVoucher()): ?> checked="checked"<?php endif ?> value="1" onclick="showCartGiftCardInput(this)" />
                 <label for="<?php echo $_code ?>" style="font-weight: bold; color: #666;"><?php echo $this->__('Use Gift Card to check out') ?></label>
                 </dt>
-                <dd class="<?php echo $_code ?>"<?php if (!$this->getUseGiftVoucher()): ?> style="display: none;"<?php endif ?>>
+                <dd class="<?php echo $_code ?>" <?php if (!$this->getUseGiftVoucher()): ?> style="display: none;"<?php endif ?>>                
                     <div class="form-list" id="payment_form_<?php echo $_code ?>">
                         <div class="giftvoucher-description">
                             <?php // echo $this->getDescription() ?>
@@ -129,41 +129,56 @@ if(Mage::getSingleton('customer/session')->isLoggedIn()) {
                             <?php endif ?>
                         </div>
                         <div id="giftvoucher-custom-code">
-                            <label for="<?php echo $_code ?>_code"><?php echo $this->__('GIFT CERTIFICATE') ?></label>                     
-                            <?php
-                            $customer_id = Mage::getSingleton('customer/session')->getCustomer()->getId();
-                            $collection = Mage::getModel('giftvoucher/customervoucher')->getCollection()->addFieldToFilter('main_table.customer_id', $customer_id);
-                            $voucherTable = Mage::getModel('core/resource')->getTableName('giftvoucher');
-                            $collection->getSelect()->joinleft(array('voucher_table' => $voucherTable), 'main_table.voucher_id = voucher_table.giftvoucher_id', array('recipient_name', 'gift_code', 'balance', 'currency', 'status', 'expired_at', 'customer_check_id' => 'voucher_table.customer_id', 'recipient_email', 'customer_email'))->where('voucher_table.status <> ?', Magestore_Giftvoucher_Model_Status::STATUS_DELETED);
-                            $this->setCollection($collection);
-                            $this->getCollection();
-                            ?>                                
-                            <?php if ($collection->count()): ?>
-                                <input type="hidden" title="<?php echo $this->__('Gift Card Code') ?>" class="input-text" value="<?php echo $code; ?>" id="<?php echo $_code ?>_code" name="giftvoucher_code" <?php if (!Mage::helper('giftvoucher')->isAvailableToAddCode()) echo 'disabled="true"' ?> />
-                                <div class="dropdown">
-                                    <select name="select_gift_code" id="select_gift_code" style="padding-left: 0px;">
-                                    <option value="">Please select</option>
-                                    <?php foreach ($collection as $row): ?>
-                                        <option value="<?php echo $row->getGiftCode(); ?>"><?php echo $row->getGiftCode(); ?></option>
-                                    <?php endforeach; ?>
-                                    </select>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="<?php echo $_code ?>_code"><?php echo $this->__('GIFT CERTIFICATE') ?></label>                     
                                 </div>
-                            <?php else: ?>
-                                <div class="input-box">
-                                    <input type="text" title="<?php echo $this->__('Gift Card Code') ?>" class="input-text" value="<?php echo $code ?>" id="<?php echo $_code ?>_code" name="giftvoucher_code" <?php if (!Mage::helper('giftvoucher')->isAvailableToAddCode()) echo 'disabled="true"' ?> />
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-8 col-sm-6 col-xs-8">
+                                            <?php
+                                            $customer_id = Mage::getSingleton('customer/session')->getCustomer()->getId();
+                                            $collection = Mage::getModel('giftvoucher/customervoucher')->getCollection()->addFieldToFilter('main_table.customer_id', $customer_id);
+                                            $voucherTable = Mage::getModel('core/resource')->getTableName('giftvoucher');
+                                            $collection->getSelect()->joinleft(array('voucher_table' => $voucherTable), 'main_table.voucher_id = voucher_table.giftvoucher_id', array('recipient_name', 'gift_code', 'balance', 'currency', 'status', 'expired_at', 'customer_check_id' => 'voucher_table.customer_id', 'recipient_email', 'customer_email'))->where('voucher_table.status <> ?', Magestore_Giftvoucher_Model_Status::STATUS_DELETED);
+                                            $this->setCollection($collection);
+                                            $this->getCollection();
+                                            ?>                                
+                                            <?php if ($collection->count()): ?>
+                                                <input type="hidden" title="<?php echo $this->__('Gift Card Code') ?>" class="input-text" value="<?php echo $code; ?>" id="<?php echo $_code ?>_code" name="giftvoucher_code" <?php if (!Mage::helper('giftvoucher')->isAvailableToAddCode()) echo 'disabled="true"' ?> />
+                                                <div class="dropdown">
+                                                    <select name="select_gift_code" id="select_gift_code">
+                                                    <option value="">Please select</option>
+                                                    <?php foreach ($collection as $row): ?>
+                                                        <option value="<?php echo $row->getGiftCode(); ?>"><?php echo $row->getGiftCode(); ?></option>
+                                                    <?php endforeach; ?>
+                                                    </select>
+                                                </div>                                                    
+                                            <?php else: ?>
+                                                <div class="input-box">
+                                                    <input type="text" title="<?php echo $this->__('Gift Card Code') ?>" class="input-text" value="<?php echo $code ?>" id="<?php echo $_code ?>_code" name="giftvoucher_code" <?php if (!Mage::helper('giftvoucher')->isAvailableToAddCode()) echo 'disabled="true"' ?> />
+                                                </div>
+                                            <?php endif; ?>
+                                            <div class="validation-advice" id="giftcard_notice" style="display: none;"></div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-3 col-xs-4">
+                                            <div class="cart-discount-cta-container">                
+                                                <?php $discounts = $this->getGiftVoucherDiscount() ?>
+                                                <?php if (count($discounts)): ?>
+                                                    <button class="form-button-alt button square-cta full-width-version apply cancel_giftcard" type="button">
+                                                        <span><span><?php echo $this->__('Cancel') ?></span></span>
+                                                    </button>           
+                                                <?php else: ?>
+                                                    <button class="form-button-alt button square-cta full-width-version apply apply_giftcard" type="button">
+                                                        <span><span><?php echo $this->__('Apply') ?></span></span>
+                                                    </button>           
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            <?php endif; ?>
-                            
-                            <?php $discounts = $this->getGiftVoucherDiscount() ?>
-                            <?php if (count($discounts)): ?>
-                                <button class="form-button-alt button cta apply cancel_giftcard" type="button">
-                                    <span><span><?php echo $this->__('Cancel') ?></span></span>
-                                </button>           
-                            <?php else: ?>
-                                <button class="form-button-alt button cta apply apply_giftcard" type="button">
-                                    <span><span><?php echo $this->__('Apply') ?></span></span>
-                                </button>           
-                            <?php endif; ?>
+                            </div>                            
+                                                    
                         </div>
                         <?php if (count($_giftCards)): ?>
                             <!-- <div>
@@ -177,8 +192,7 @@ if(Mage::getSingleton('customer/session')->isLoggedIn()) {
                                     </select>
                                 </div>
                             </div> -->
-                        <?php endif ?>    
-                        <div style="color: #A70101;font-size: 11px;font-weight: bold;line-height: 13px;" id="giftcard_notice"></div>       
+                        <?php endif ?>                            
                         <div style="display:none;">
                             <?php if ($this->checkCustomerIsLoggedIn()): ?>
                                 <?php echo $this->__('To manage your Gift Card, please click <a target="_blank" href="%s">here</a>.', $this->getUrl('giftvoucher/index/index')) ?>
@@ -277,7 +291,8 @@ if(Mage::getSingleton('customer/session')->isLoggedIn()) {
                     if($('giftvoucher_existed_code')==null)
                     {
                         if($('giftvoucher_code'))  $('giftvoucher_code').addClassName("validation-failed");
-                        if($('giftcard_notice'))$('giftcard_notice').innerHTML = "<?php echo $this->__('Please enter your code')?>";
+                        if($('giftcard_notice')) $('giftcard_notice').innerHTML = "<?php echo $this->__('This is a required field.')?>";
+                        jQuery('#giftcard_notice').fadeIn('slow');
                     }
 
                     if($('giftvoucher_existed_code')&& $('giftvoucher_existed_code').value=="")
@@ -285,6 +300,7 @@ if(Mage::getSingleton('customer/session')->isLoggedIn()) {
                         if($('giftvoucher_code'))  $('giftvoucher_code').addClassName("validation-failed");
                         if($('giftvoucher_existed_code'))  $('giftvoucher_existed_code').addClassName("validation-failed");
                         if($('giftcard_notice'))$('giftcard_notice').innerHTML = "<?php echo $this->__('Please enter or chose your code')?>";
+                        jQuery('#giftcard_notice').fadeIn('slow');
                     }
                     if($('giftvoucher_existed_code')&& $('giftvoucher_existed_code').value!="") 
                     {
@@ -320,3 +336,4 @@ if(Mage::getSingleton('customer/session')->isLoggedIn()) {
 </script>
 <?php endif; ?>
 <?php endif; ?>
+</div>

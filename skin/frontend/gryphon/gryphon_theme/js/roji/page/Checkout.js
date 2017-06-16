@@ -40,8 +40,11 @@ roji.page.Checkout = function(options, element) {
 
     this.has_sidebar = true;
   }
-  
 
+  $j('#page-checkout-cart').find('.form-quantity-plus-btn').click(this.on_qty_plus_btn_click.bind(this));
+  $j('#page-checkout-cart').find('.form-quantity-minus-btn').click(this.on_qty_minus_btn_click.bind(this));
+
+  this.giftvoucher_input();  
 
   console.log('roji.page.Checkout: init');
 };
@@ -92,7 +95,19 @@ roji.page.Checkout.prototype.init = function() {
 
 
 roji.page.Checkout.prototype.private_method_03 = function() {};
-roji.page.Checkout.prototype.private_method_04 = function() {};
+roji.page.Checkout.prototype.giftvoucher_input = function() {
+  // cart gift voucher 
+  $j('input[name=giftvoucher]').attr('checked', true).triggerHandler('click'); 
+  $j('input[name=giftvoucher_credit]').attr('checked', true).triggerHandler('click'); 
+
+  $j('.apply_giftcard').on('click', function(e){
+      $j('#giftcard_shoppingcart_apply').find('button').trigger('click');    
+  });        
+
+  $j('.cancel_giftcard').on('click', function(e){            
+      window.location=$j('#remove_card').attr('href');
+  });        
+};
 
 
 //    ____  _   _ ____  _     ___ ____
@@ -163,7 +178,29 @@ roji.page.Checkout.prototype.update_checkout_bg_height = function(){
 /**
  * @param {object} event
  */
-roji.page.Checkout.prototype.on_event_handler_01 = function(event) {
+roji.page.Checkout.prototype.on_qty_plus_btn_click = function(event) {
+
+  event.preventDefault();
+  var $qty=$j(event.currentTarget).parent().find('.qty');
+  var currentVal = parseInt($qty.val());
+  if (!isNaN(currentVal)) {
+      $qty.val(currentVal + 1);
+  }
+
+};
+
+/**
+ * @param {object} event
+ */
+roji.page.Checkout.prototype.on_qty_minus_btn_click = function(event) {
+
+  event.preventDefault();
+  var $qty=$j(event.currentTarget).parent().find('.qty');
+  var currentVal = parseInt($qty.val());
+  if (!isNaN(currentVal) && currentVal > 1) {
+      $qty.val(currentVal - 1);
+  }
+
 };
 
 

@@ -69,7 +69,7 @@ if ($_product->getTypeId() == 'giftvoucher'):
                                 // $url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'giftvoucher/template/images/' . $image_url_position . $image;
                                 $no = $count;
                                 $no += 1;
-                                $url = $this->getskinUrl('images/content/design_0'.$no.'.png');                                
+                                $url = $this->getskinUrl('images/giftcard-designs/design_0'.$no.'.png');                                
                                 echo '<div id="div-image-for-' . $template['giftcard_template_id'] . '-' . $count . '" class="design-radio" style="" onclick="changeSelectImages(' . $count . ')">';
                                     echo '<div class="radio-image">';
                                         echo '<img id="image-for-' . $template['giftcard_template_id'] . '-' . $count . '" src="' . $url . '" width=' . $image_type_show_width . ' height=' . $image_type_show_height . ' alt="image giftcard" style="display:inline; border: 1px solid white; margin-top: ' . $image_type_show_padding . '">';
@@ -245,9 +245,9 @@ if ($_product->getTypeId() == 'giftvoucher'):
                         $('div-' + image_old).addClassName('gift-active');
 
                         
-                        var first = "<?php echo $this->getskinUrl('images/content/design_01_ticked.png'); ?>";                        
-                        var second = "<?php echo $this->getskinUrl('images/content/design_02_ticked.png'); ?>";                        
-                        var third = "<?php echo $this->getskinUrl('images/content/design_03_ticked.png'); ?>";                        
+                        var first = "<?php echo $this->getskinUrl('images/giftcard-designs/design_01_ticked.png'); ?>";                        
+                        var second = "<?php echo $this->getskinUrl('images/giftcard-designs/design_02_ticked.png'); ?>";                        
+                        var third = "<?php echo $this->getskinUrl('images/giftcard-designs/design_03_ticked.png'); ?>";                        
 
 
                         $('div-image-for-' + templates[template_id].giftcard_template_id + '-' + image_id).down('.egcSwatch-arrow').show();                        

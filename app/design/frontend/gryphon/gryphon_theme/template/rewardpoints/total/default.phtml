@@ -46,33 +46,18 @@
 
 
     <?php if ($pts = Mage::helper('rewardpoints/event')->getCreditPoints($this->getQuote())):?>
-        <div class="each-details">
-            <tr>
-                <div class="a-right label discount" colspan="1">
-                    <th colspan="<?php echo $this->getColspan(); ?>" style="<?php echo $this->getTotal()->getStyle() ?>" class="a-right totals-rewards">
-                        <p>REBATE
-                        <?php 
-                        // debug // zaw
-                        // $baseCurrencyCode = Mage::app()->getStore()->getBaseCurrencyCode(); 
-                        // $currentCurrencyCode = Mage::app()->getStore()->getCurrentCurrencyCode();
-
-                        // echo $pts . ' ';
-                        // $allowedCurrencies = Mage::getModel('directory/currency')->getConfigAllowCurrencies();
-                        // $rates = Mage::getModel('directory/currency')->getCurrencyRates($baseCurrencyCode, array_values($allowedCurrencies));
-                        // print_r($rates[$currentCurrencyCode]);
-                        ?>
-                        </p>
-
-                        
-                    </th>
+        <div class="row">
+            <div class="col-md-6 col-xs-6">
+                <div class="column-01">
+                    <p>REBATE:</p>
                 </div>
-                <div class="a-right value discount">
-                    <td style="<?php echo $this->getTotal()->getStyle() ?>" class="a-right">
-                        <p class="applied_discount_code minus">-<?php echo $this->helper('checkout')->formatPrice($this->getQuote()->getStore()->convertPrice(Mage::helper('rewardpoints/data')->convertPointsToMoneyEquivalence($pts))); ?></p>
-                    </td>
+            </div>
+            <div class="col-md-6 col-xs-6">
+                <div class="column-02">
+                    <p class="applied_discount_code minus">-<?php echo $this->helper('checkout')->formatPrice($this->getQuote()->getStore()->convertPrice(Mage::helper('rewardpoints/data')->convertPointsToMoneyEquivalence($pts))); ?></p>
                 </div>
-            </tr>
-        </div>
+            </div>
+        </div>       
     <?php endif; ?>
     
 
@@ -93,34 +78,24 @@
         }
     ?>
     <?php if(!empty($current_rule_name)): ?>
-
-    <div class="each-details">
-        <tr>
-            <div class="a-right label discount" colspan="1">
-                <th colspan="<?php echo $this->getColspan(); ?>" style="<?php echo $this->getTotal()->getStyle() ?>" class="a-right totals-rewards">
-                    <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?><strong><?php endif; ?>                        
-                        <!-- <p><?php echo $this->getTotal()->getTitle(); ?></p> -->
-                        <p>DISCOUNT</p>
-                        <!-- <span><?php if(!empty($current_rule_name)): ?>( <?php echo $current_rule_name; ?> )<?php endif; ?></span> -->
-                        <span class="discount_desc"><?php echo $this->getTotal()->getTitle(); ?></span>
-                    <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?></strong><?php endif; ?>
-                </th>
+        <div class="row">
+            <div class="col-md-6 col-xs-6">
+                <div class="column-01">
+                    <p>DISCOUNT:</p>
+                    <span class="discount_desc">(<?php echo $this->getTotal()->getTitle(); ?>)</span>
+                </div>
             </div>
-            <div class="a-right value discount">            
-                <td style="<?php echo $this->getTotal()->getStyle() ?>" class="a-right">
-                    <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?><strong><?php endif; ?>
-                        <?php if($pts > 0): ?>
-                            <?php $pts = $this->getQuote()->getStore()->convertPrice(Mage::helper('rewardpoints/data')->convertPointsToMoneyEquivalence($pts)) ?>
-                            <?php $discount_including_pts = abs($this->getTotal()->getValue()); ?>
-                            <p class="applied_discount_code minus">-<?php echo $this->helper('checkout')->formatPrice($discount_including_pts - $pts) ?></p>
-                        <?php else: ?>
-                            <p class="applied_discount_code minus no-rebate"><?php echo $this->helper('checkout')->formatPrice($this->getTotal()->getValue()) ?></p>
-                        <?php endif; ?>
-                    <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?></strong><?php endif; ?>
-                </td>
+            <div class="col-md-6 col-xs-6">
+                <div class="column-02">
+                    <?php if($pts > 0): ?>
+                        <?php $pts = $this->getQuote()->getStore()->convertPrice(Mage::helper('rewardpoints/data')->convertPointsToMoneyEquivalence($pts)) ?>
+                        <?php $discount_including_pts = abs($this->getTotal()->getValue()); ?>
+                        <p class="applied_discount_code minus">-<?php echo $this->helper('checkout')->formatPrice($discount_including_pts - $pts) ?></p>
+                    <?php else: ?>
+                        <p class="applied_discount_code minus no-rebate"><?php echo $this->helper('checkout')->formatPrice($this->getTotal()->getValue()) ?></p>
+                    <?php endif; ?>
+                </div>
             </div>
-        </tr>
-    </div>
-
+        </div>
     <?php endif; ?>
 <?php endif; ?>

@@ -18,7 +18,7 @@
 
 #mobile-header{
   position: fixed;
-  z-index: 200000;
+  z-index: 200;
   width: 100%;
   height: @mobile-header-height;
 
@@ -244,6 +244,37 @@ body.mobile-menu-open-version{
 
 
 
+//     __  _______  ____  ______    ______   ____  __  _______ __  __   _   ______  __________
+//    /  |/  / __ \/ __ )/  _/ /   / ____/  / __ \/ / / / ___// / / /  / | / / __ \/_  __/  _/
+//   / /|_/ / / / / __  |/ // /   / __/    / /_/ / / / /\__ \/ /_/ /  /  |/ / / / / / /  / /
+//  / /  / / /_/ / /_/ // // /___/ /___   / ____/ /_/ /___/ / __  /  / /|  / /_/ / / / _/ /
+// /_/  /_/\____/_____/___/_____/_____/  /_/    \____//____/_/ /_/  /_/ |_/\____/ /_/ /___/
+//
+
+#mobile-header-push-noti {
+  position: fixed;
+  top: 0px;
+  min-height: 56px;
+  background: @off-white-1;
+  width: 100%;
+  z-index: 99999;
+  padding: 10px;
+  display: none;
+
+  #mobile-header-push-noti-image-container {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+  }
+  #mobile-header-push-noti-text-container {
+    display: inline-block;     
+  }
+  #mobile-header-push-noti-close-btn {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+  }
+}
 
 
 

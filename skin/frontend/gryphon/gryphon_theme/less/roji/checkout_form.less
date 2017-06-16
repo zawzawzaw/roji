@@ -23,6 +23,30 @@
   color: @dark-grey;
 }
 
+
+
+// MOBILE
+
+.checkout-form-label-font-mobile{
+
+  .montserrat-medium;
+  font-size: 11px;
+  line-height: 20px;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+  color: @off-black;
+}
+.checkout-form-input-font-mobile{
+  .open-sans-regular;
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  color: @dark-grey;
+}
+
+
+
+
 @checkout-form-field-height: 30px;
 
 
@@ -66,7 +90,21 @@
     .checkout-form-label-font;
 
     padding-top: 6px;
+
+    // TABLET PORTRAIT
+    @media only screen and (max-width: 991px) {
+      .checkout-form-label-font-mobile;
+      margin-bottom: 3px;
+    }
+
+  } // label
+
+  .validation-advice {
+    .checkout-form-input-font;
+    color: red;
+    position: absolute;
   }
+
 
 
   // input fields reset
@@ -122,6 +160,15 @@
       .opacity(1);
       color: @grey;
     }
+
+
+    // TABLET PORTRAIT
+    @media only screen and (max-width: 991px) {
+      .checkout-form-input-font-mobile;
+      padding-left: 11px;
+      padding-right: 11px;
+    }
+
 
   }
 
@@ -179,6 +226,15 @@
       pointer-events: none;
     }
 
+    // TABLET PORTRAIT
+    @media only screen and (max-width: 991px) {
+      select{
+        .checkout-form-input-font-mobile;
+        padding-left: 11px;
+        padding-right: 11px + 20px;
+      }
+    }
+
   } // .dropdown
 
 
@@ -196,6 +252,10 @@
       left: 0;
       width: 100%;
       height: 100%;
+
+      border: none;       // remove border on iOS devices
+      outline: none;
+      background: transparent;  // remove black bg added on select on iOS devices
     }
 
     input[type="checkbox"] + label{
@@ -239,6 +299,10 @@
         .body-font-small-italic;
         color: @dark-grey;
 
+        strong{
+          .checkout-form-label-font;
+        }
+
         .display-inline-block;
 
         padding-top: 2px;
@@ -257,6 +321,46 @@
         }
       }
     }
+
+
+
+    // TABLET PORTRAIT
+    @media only screen and (max-width: 991px) {
+      display: block;
+      height: auto;
+
+      input[type="checkbox"] + label{
+        display: block;
+
+        span{
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+        p{
+          font-size: 13px;
+          letter-spacing: 0.05em;
+
+          display: block;
+          padding-left: 39px;
+
+          strong{
+            .checkout-form-label-font-mobile;
+          }
+        }
+      }
+      input[type="checkbox"]:checked + label{
+        span{
+
+        }
+        p{
+        }
+      }
+
+    } // // TABLET PORTRAIT
+
+
   }
 
 } // .checkout-form
@@ -273,6 +377,25 @@
 
   .form-group{
     margin-bottom: 30px;
+  }
+
+  .form-group-column-01{
+    margin-right: -4px;
+  }
+  .form-group-column-02{
+    margin-left: -4px;
+  }
+
+
+  .form-group-column-first{
+    margin-right: -4px;
+  }
+  .form-group-column-between{
+    margin-left: -4px;
+    margin-right: -4px;
+  }
+  .form-group-column-last{
+    margin-left: -4px;
   }
 
   .form-title{
@@ -300,5 +423,45 @@
     }
   }
 
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    .form-group{
+      margin-bottom: 18px;
+    }
+    .form-group-column-01{
+      // margin-right: -6px;
+      margin-right: -11px;
+    }
+    .form-group-column-02{
+      // margin-left: -6px;
+      margin-left: -1px;
+    }
+
+
+    .form-group-column-first{
+      margin-right: -6px;
+    }
+    .form-group-column-between{
+      margin-left: -6px;
+      margin-right: -6px;
+    }
+    .form-group-column-last{
+      margin-left: -6px;
+    }
+
+    .form-title{
+      margin-bottom: 22px;
+
+      h2{
+
+      }
+      p{
+        padding-top: 0px;
+
+        margin-top: -2px;
+      }
+    }
+  }
 
 } // .checkout-form

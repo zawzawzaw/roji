@@ -74,18 +74,23 @@
     </div>
     <?php endforeach; ?>
 <?php endif;?>
+<div class="row">
+  <div class="col-md-6 col-xs-6">
 
-<div class="each-details" <?php if ($this->helper('tax')->displayFullSummary() && $_value!=0): ?> class="summary-total each-details" onclick="expandDetails(this, '.summary-details-<?php echo $taxIter;?>')"<?php endif; ?>>
-    <div style="<?php echo $_style ?>" class="a-right label">
-        <p>
-        <?php if ($this->helper('tax')->displayFullSummary()): ?>
-            <?php echo $this->getTotal()->getTitle() ?>
+    <div class="column-01">
+      <p><?php if ($this->helper('tax')->displayFullSummary()): ?>
+            <?php echo $this->getTotal()->getTitle() ?>:
         <?php else: ?>
-            <?php echo $this->getTotal()->getTitle() ?>
-        <?php endif;?>
-        </p>
+            <?php echo $this->getTotal()->getTitle() ?>:
+        <?php endif;?>        
+      </p>
     </div>
-    <div style="<?php echo $_style ?>" class="a-right value">
-        <p class="tax test"><?php echo strip_tags($this->helper('checkout')->formatPrice($_value)) ?></p>
+  </div>
+  <div class="col-md-6 col-xs-6">
+
+    <div class="column-02">
+      <p><?php echo strip_tags($this->helper('checkout')->formatPrice($_value)) ?></p>
     </div>
-</div>
+
+  </div>
+</div> <!-- row -->

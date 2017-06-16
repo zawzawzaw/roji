@@ -63,6 +63,14 @@ roji.page.ProductDetail.prototype.init = function() {
 
   $j('#page-product-detail-form .form-quantity').find(".form-quantity-plus-btn").click(this.on_quantity_plus_btn_click.bind(this));
   $j('#page-product-detail-form .form-quantity').find(".form-quantity-minus-btn").click(this.on_quantity_minus_btn_click.bind(this));
+  $j('#page-product-detail-form .form-quantity').find(".form-quantity-input-txt").on('input', this.on_quantity_input_change.bind(this));
+
+  $j('#page-product-detail-form-mobile .form-quantity').find(".form-quantity-plus-btn").click(this.on_quantity_plus_btn_click.bind(this));
+  $j('#page-product-detail-form-mobile .form-quantity').find(".form-quantity-minus-btn").click(this.on_quantity_minus_btn_click.bind(this));
+  $j('#page-product-detail-form-mobile .form-quantity').find(".form-quantity-input-txt").on('input', this.on_quantity_input_change.bind(this));
+
+
+  this.gift_cart_product_detail_set_send_date();
 
 };
 
@@ -77,8 +85,49 @@ roji.page.ProductDetail.prototype.init = function() {
 roji.page.ProductDetail.prototype.set_default_total_price = function() {
   $j("#page-product-detail-form").find('.form-total-value').html(this.product_price);
 };
-roji.page.ProductDetail.prototype.private_method_05 = function() {};
-roji.page.ProductDetail.prototype.private_method_06 = function() {};
+roji.page.ProductDetail.prototype.gift_cart_product_detail_set_send_date = function() {
+
+  // $('.orange').html($('.j2t-loyalty-points').html());
+
+  // note that month is 0-based, like in the Date object. Adjust if necessary.
+
+  $j('#registration_date_day, #registration_date_year').on('change', function(e){
+      var day = $j('#registration_date_day').val();
+      var month = $j('#registration_date_month').val();
+      var year = $j('#registration_date_year').val();
+
+      $j('#day_to_send').val(month+'/'+day+'/'+year);
+  });
+
+  $j('#registration_date_month').on('change', function(e){
+      var day = $j('#registration_date_day').val();
+      var month = $j(this).val();
+      var year = $j('#registration_date_year').val();
+      var numberOfDays = this.daysInMonth($j(this).val(), year);            
+
+      $j('#registration_date_day').html('');
+      for(i=1; i<=numberOfDays; i++) {                
+          $j('#registration_date_day').append($j('<option />').val(i).html(i));
+      }
+
+      $j('#day_to_send').val(month+'/'+day+'/'+year);
+  });
+
+  var day = $j('#registration_date_day').val();
+  var month = $j('#registration_date_month').val();
+  var year = $j('#registration_date_year').val();
+
+  $j('#day_to_send').val(month+'/'+day+'/'+year);       
+
+  for (i = new Date().getFullYear(); i <= new Date().getFullYear()+50; i++)
+  {
+      $j('#registration_date_year').append($j('<option />').val(i).html(i));
+  }
+};
+
+roji.page.ProductDetail.prototype.daysInMonth = function(month, year) {
+  return new Date(year, month, 0).getDate();
+};
 
 
 //    ____  _   _ ____  _     ___ ____
@@ -136,7 +185,18 @@ roji.page.ProductDetail.prototype.on_quantity_minus_btn_click = function(event) 
     }
 };
 
+/**
+ * @param {object} event
+ */
+roji.page.ProductDetail.prototype.on_quantity_input_change = function(event) {
+  event.preventDefault();
+  var $qty=$j(event.currentTarget);
+  var currentVal = parseInt($qty.val());
 
+  this.total_price = this.product_price_int * currentVal;
+
+  $j("#page-product-detail-form").find('.form-total-value').html(this.currency_symbol + this.total_price.toFixed(2));
+};
 
 //    _        _ __   _____  _   _ _____
 //   | |      / \\ \ / / _ \| | | |_   _|

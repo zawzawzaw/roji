@@ -24,31 +24,35 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<article>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div id="page-shopping-cart-content">
-                    <div class="row">
-                        <div class="col-md-12"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
-                    </div>
-                    <div id="empty-cart" class="row">
-                        <div class="col-md-12">
-                            <h1><?php echo $this->__('Shopping Cart is Empty') ?></h1>
-                            <hr class="small" />
-                            <div class="space30"></div>
-                            <?php echo $this->getChildHtml('checkout_cart_empty_widget'); ?>
-                            <p><?php echo $this->__('You have no items in your shopping cart.') ?></p>
-                            <p><?php echo $this->__('Click <a href="%s">here</a> to continue shopping.', $this->getUrl('store.html')) ?></p> <?php //$this->getContinueShoppingUrl() ?>
-                            <?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
-                            <div class="space100"></div>
-                            <div class="space100"></div>
-                            <div class="space100"></div>
-                        </div>
-                    </div>
-                </div>
+
+<article id="page-checkout-thankyou-section">
+
+    <div class="container-fluid has-breakpoint">
+      <div class="row">
+        
+
+        <div class="col-md-2 col-sm-1"></div>
+        <div class="col-md-8 col-sm-10">
+
+          <div id="page-checkout-thankyou">
+
+            <div class="title-container">
+              <h1><?php echo $this->__('Shopping Cart is Empty'); ?></h1>
             </div>
+
+            <div class="default-copy" style="text-align: center;">
+              <p><?php echo $this->__('You have no items in your shopping cart.'); ?></p>
+            </div>
+
+            <div class="cta-container">
+              <a href="<?php echo $this->getUrl('store.html'); ?>" class="arrow-cta"><?php echo $this->__('Continue shopping'); ?></a>
+            </div>
+
+            <?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
+
+          </div>
         </div>
+      </div>
     </div>
+
 </article>
-<!-- <script type="text/javascript" src="http://gryphontea.com/skin/frontend/gryphon/gryphon_theme/js/no-banner.js"></script> -->

@@ -46,88 +46,85 @@ if($isSubscriptionProduct == false)
 <?php if (!$_shippingRateGroups): ?>
     <p><?php echo $this->__('Sorry, no quotes are available for this order at this time.') ?></p>
 <?php else: ?>
-<div class="row">
-    <div class="col-md-6">
-        <div id="page-shopping-cart-billing-shipping-delivery-information-01">
-            <div class="sp-methods delivery-rates">        
-                <!-- <div class="table-responsive"> -->
+    <div id="page-checkout-delivery">
+
+        <div id="page-checkout-delivery-title">
+            <h2><?php echo $this->__('Shipping & Delivery') ?></h2>
+        </div> <!-- page-checkout-delivery-title -->
+
+        <div id="page-checkout-delivery-rate-container">
+                
             <?php $shippingCodePrice = array(); ?>
-            <?php $_sole = count($_shippingRateGroups) == 1; foreach ($_shippingRateGroups as $code => $_rates): ?>
+            <?php $_sole = count($_shippingRateGroups) == 1; 
+            foreach ($_shippingRateGroups as $code => $_rates): ?>
                 <?php if (in_array($code, $allowedShippingMethods)) : ?>
                     <?php $_sole = $_sole && count($_rates) == 1; foreach ($_rates as $_rate): ?>
                         <?php 
-						//$session = Mage::getSingleton('checkout/session');
-						//$traderselfcollect = $session->getData('traderselfcollect');
-						$curlpath = basename($_SERVER['HTTP_REFERER']);			
-						$parts = parse_url($curlpath);
-						parse_str($parts['query'], $query);	
-						$traderselfcollect = $query['tsc']['tsc'];						
-						if($traderselfcollect == 1 || $traderselfcollect == '1'){
-							$_rate->setPrice(0);
-						}
-						
-						//print_r($_rate->getData()); exit(); ?>
+    					//$session = Mage::getSingleton('checkout/session');
+    					//$traderselfcollect = $session->getData('traderselfcollect');
+    					$curlpath = basename($_SERVER['HTTP_REFERER']);			
+    					$parts = parse_url($curlpath);
+    					parse_str($parts['query'], $query);	
+    					$traderselfcollect = $query['tsc']['tsc'];						
+    					if($traderselfcollect == 1 || $traderselfcollect == '1'){
+    						$_rate->setPrice(0);
+    					}    						
+    					//print_r($_rate->getData()); exit(); ?>
                         <?php
                             $shippingAddress = Mage::getModel('sales/quote_address')->load($_rate->getAddressId());
                             $shippingCountryName = ($shippingAddress) ? Mage::getModel('directory/country')->load($shippingAddress->getCountryId())->getName() : '';
                         ?>
                         <?php $shippingCodePrice[] = "'".$_rate->getCode()."':".(float)$_rate->getPrice(); ?>
-                            <div class="each-input">
-                                <label>COUNTRY</label>
-                                <div class="input-text">
-                                  <p><?php echo $shippingCountryName; ?></p>
-                                </div>
+                            <div class="delivery-rate">
+                              <h4>Country</h4>
+                              <p><?php echo $shippingCountryName; ?></p>
+                            </div>                                
+                            <div class="delivery-rate">
+                                <h4>ESTIMATED DELIVERY TIME</h4>                                    
+                                <?php if($traderselfcollect ==1 || $traderselfcollect == '1'): ?>
+                                  <p>0 working days</p>
+                                <?php else: ?>
+                                  <p><?php echo $_rate->getMethodDescription(); ?></p>
+                                <?php endif; ?>
                             </div>
-                            <div class="each-input estimated">
-                                <label>ESTIMATED DELIVERY TIME</label>
-                                <div class="input-text">
-                                    <?php if($traderselfcollect ==1 || $traderselfcollect == '1'): ?>
-                                      <p>0 working days</p>
+                            <div class="delivery-rate">
+                                <h4>RATE</h4>                                    
+                                <div style="display:none;">
+                                    <?php if ($_rate->getErrorMessage()): ?>
+                                        <ul class="messages"><li class="error-msg"><ul><li><?php echo $this->escapeHtml($_rate->getErrorMessage()) ?></li></ul></li></ul>
                                     <?php else: ?>
-                                      <p><?php echo $_rate->getMethodDescription(); ?></p>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                            <div class="each-input">
-                                <label>RATE</label>
-                                <div class="input-text">
-                                    <div style="display:none;">
-                                        <?php if ($_rate->getErrorMessage()): ?>
-                                            <ul class="messages"><li class="error-msg"><ul><li><?php echo $this->escapeHtml($_rate->getErrorMessage()) ?></li></ul></li></ul>
+                                        <?php if ($_sole) : ?>
+                                            <span class="no-display"><input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>" checked="checked" /></span>
                                         <?php else: ?>
-                                            <?php if ($_sole) : ?>
-                                                <span class="no-display"><input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>" checked="checked" /></span>
-                                            <?php else: ?>
-                                            <input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>"<?php if($_rate->getCode()===$this->getAddressShippingMethod()) echo ' checked="checked"' ?> class="radio"/>
+                                        <input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>"<?php if($_rate->getCode()===$this->getAddressShippingMethod()) echo ' checked="checked"' ?> class="radio"/>
 
-                                            <?php if ($_rate->getCode() === $this->getAddressShippingMethod()): ?>
-                                                <script type="text/javascript">
-                                                    //<![CDATA[
-                                                    lastPrice = <?php echo (float)$_rate->getPrice(); ?>;
-                                                    //]]>
-                                                </script>
-                                            <?php endif; ?>
-
-                                            <?php endif; ?>
-                                            <label for="s_method_<?php echo $_rate->getCode() ?>"><?php echo $this->escapeHtml($_rate->getMethodTitle()) ?>
-                                                <?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
-                                                <?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
-                                                <?php echo $_excl; ?>
-                                                <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
-                                                    (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
-                                                <?php endif; ?>
-                                            </label>
-                                        <?php endif ?>
-                                    </div>                          
-                                    <p class="flat_rate">
-                                        <?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
-                                        <?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
-                                        <?php echo $_excl; ?>
-                                        <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
-                                            (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
+                                        <?php if ($_rate->getCode() === $this->getAddressShippingMethod()): ?>
+                                            <script type="text/javascript">
+                                                //<![CDATA[
+                                                lastPrice = <?php echo (float)$_rate->getPrice(); ?>;
+                                                //]]>
+                                            </script>
                                         <?php endif; ?>
-                                    </p>
-                                </div>
+
+                                        <?php endif; ?>
+                                        <label for="s_method_<?php echo $_rate->getCode() ?>"><?php echo $this->escapeHtml($_rate->getMethodTitle()) ?>
+                                            <?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+                                            <?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
+                                            <?php echo $_excl; ?>
+                                            <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+                                                (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
+                                            <?php endif; ?>
+                                        </label>
+                                    <?php endif ?>
+                                </div>                          
+                                <p class="flat_rate">
+                                    <?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+                                    <?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
+                                    <?php echo $_excl; ?>
+                                    <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+                                        (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
+                                    <?php endif; ?>
+                                </p>                                    
                               </div>                    
                     <?php endforeach; ?>
                 <?php else: ?>
@@ -169,25 +166,28 @@ if($isSubscriptionProduct == false)
                 </div>
                 <?php endif; ?>
             <?php endforeach; ?>
-                <!-- </div> -->            
+                      
+        </div>
+                
+        <?php
+        $curlpath = basename($_SERVER['HTTP_REFERER']);         
+        $parts = parse_url($curlpath);
+        parse_str($parts['query'], $query); 
+        $traderselfcollect = $query['tsc']['tsc'];                          
+        ?>
+
+        <div id="page-checkout-delivery-copy" class="<?php echo $traderselfcollect; ?>">
+            <div class="default-copy">
+                <?php if($traderselfcollect ==1 || $traderselfcollect == '1'): ?>
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('trade-shipping-fee-info')->toHtml(); ?>            
+                <?php else: ?>
+                    <span style="display:none;">this</span>
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('shipping-fee-info')->toHtml(); ?>
+                <?php endif; ?>
             </div>
         </div>
-    </div>
-    <?php 
-    $curlpath = basename($_SERVER['HTTP_REFERER']);         
-    $parts = parse_url($curlpath);
-    parse_str($parts['query'], $query); 
-    $traderselfcollect = $query['tsc']['tsc'];                          
-    ?>
-    <div class="col-md-6 <?php echo $traderselfcollect; ?>">        
-        <?php if($traderselfcollect ==1 || $traderselfcollect == '1'): ?>
-            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('trade-shipping-fee-info')->toHtml(); ?>            
-        <?php else: ?>
-            <span style="display:none;">this</span>
-            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('shipping-fee-info')->toHtml(); ?>
-        <?php endif; ?>
-    </div>
-</div>
+        
+    </div> <!-- page-checkout-delivery -->
 <script type="text/javascript">
 //<![CDATA[
     <?php if (!empty($shippingCodePrice)): ?>

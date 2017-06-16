@@ -188,6 +188,7 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
         $session = $this->_getSession();
 
         if (!$session->getBeforeAuthUrl() || $session->getBeforeAuthUrl() == Mage::getBaseUrl()) {
+
             // Set default URL to redirect customer to
             $session->setBeforeAuthUrl($this->_getHelper('customer')->getAccountUrl());
             // Redirect customer to the last page visited after logging in
@@ -212,18 +213,23 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
             }
         } else if ($session->getBeforeAuthUrl() ==  $this->_getHelper('customer')->getLogoutUrl()) {
             $session->setBeforeAuthUrl( $this->_getHelper('customer')->getDashboardUrl());
-        } else {            
-            if (!$session->getAfterAuthUrl()) {
+        } else {                    
+            if (!$session->getAfterAuthUrl()) {                                
                 $session->setAfterAuthUrl($session->getBeforeAuthUrl());
             }
-            if ($session->isLoggedIn()) {
+            if ($session->isLoggedIn()) {                                
                 $session->setBeforeAuthUrl($session->getAfterAuthUrl(true));
-            }else {
+            }else {                
                 $session->setBeforeAuthUrl( $this->_getHelper('customer')->getLoginUrl());   
             }
-        }
-        // echo $session->getBeforeAuthUrl(true); exit();
-        $this->_redirectUrl($session->getBeforeAuthUrl(true));
+        }        
+
+        if(isset($_SESSION["redirect_url"])) {
+            $this->_redirectUrl($_SESSION["redirect_url"]);
+        } else {
+            $this->_redirectUrl($session->getBeforeAuthUrl(true));
+        }        
+
     }
 
     /**

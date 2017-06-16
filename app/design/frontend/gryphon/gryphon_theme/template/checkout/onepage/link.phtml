@@ -24,9 +24,9 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<?php if ($this->isPossibleOnepageCheckout()):?>
-    <button type="button" title="<?php echo $this->__('Proceed to Checkout') ?>" class="button btn-proceed-checkout btn-checkout proceed cta <?php if ($this->isDisabled()):?> no-checkout<?php endif; ?>"<?php if ($this->isDisabled()):?> disabled="disabled"<?php endif; ?>><span><span><?php echo $this->__('Proceed to Checkout') ?></span></span></button>
-<?php endif?>
+<?php if ($this->isPossibleOnepageCheckout()): ?>
+    <button type="button" title="<?php echo $this->__('Proceed to Checkout') ?>" class="square-cta button btn-proceed-checkout btn-checkout proceed cta <?php if ($this->isDisabled()):?> no-checkout<?php endif; ?>"<?php if ($this->isDisabled()):?> disabled="disabled"<?php endif; ?>><span><span><?php echo $this->__('Check-out') ?></span></span></button>
+<?php endif; ?>
 <script>
 	jQuery(document).ready(function($){
 
@@ -54,6 +54,78 @@
 			}
 		});		
 
+		function beforeCheckoutContinue() {
+			$.fn.center = function () {
+			    this.css("position","fixed");
+			    // this.css("top", ($(window).height() - this.height()) / 2+$(window).scrollTop() + "px");
+			    this.css("left", ( $(window).width() - this.width() ) / 2+$(window).scrollLeft() + "px");
+			    return this;
+			}
+
+			<?php if(!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+
+		    <?php if($isiPad): ?>
+		        $.blockUI({ 
+		            message: $('#checkout-login-popup'),
+		            css: { 
+		                padding:        '28px 20px', 
+		                margin:         0,
+		                width:          '50.02%',		               
+		                textAlign:      'center', 
+		                color:          '#707070', 
+		                border:         '7px',
+		                borderColor:    '#cdc8c1',
+		                borderStyle:    'solid',
+		                backgroundColor:'#fff',
+		                cursor:         'wait',                        
+		            },
+		        });
+		    <?php elseif(isMobile()!==true): ?>
+		        $.blockUI({ 
+		            message: $('#checkout-login-popup'),  
+		            css: { 
+		                padding:        '28px 20px', 
+		                margin:         0, 
+		                width:          '28%',
+		                minWidth:       '354px', 		                 		                
+		                textAlign:      'center', 
+		                color:          '#707070', 
+		                border:         '7px',
+		                borderColor:    '#cdc8c1',
+		                borderStyle:    'solid',
+		                backgroundColor:'#fff',
+		                cursor:         'wait' 
+		            },
+		        });
+		    <?php else: ?>
+		        $.blockUI({ 
+		            message: $('#checkout-login-popup'),             		            								
+		            css: { 
+		                padding:        '28px 20px', 
+		                width:          '90%',           
+		                textAlign:      'center', 
+		                color:          '#707070', 
+		                border:         '7px',
+		                borderColor:    '#cdc8c1',
+		                borderStyle:    'solid',
+		                backgroundColor:'#fff',
+		                cursor:         'wait' 
+		            },
+		        });                    
+		    <?php endif; ?>
+
+		    $('.blockUI.blockMsg').center();
+
+		    $('#no').click(function(e) {
+		        e.preventDefault();
+		        $.unblockUI(); 
+		        return false; 
+		    });
+		  <?php else: ?>
+		  	window.location='<?php echo $this->getCheckoutUrl() ?>';			
+		  <?php endif; ?>
+		}
+
 		$('.btn-checkout').on('click', function(e){
 			e.preventDefault();
 			var specialMessage = $('#special_message').val();
@@ -71,12 +143,19 @@
 				});
 				 
 				request.done(function( msg ) {				
-				  	window.location='<?php echo $this->getCheckoutUrl() ?>';
+				  	// window.location='<?php echo $this->getCheckoutUrl() ?>';
+				  	beforeCheckoutContinue();
 				});		
 			}else {
-				window.location='<?php echo $this->getCheckoutUrl() ?>';			
+				// window.location='<?php echo $this->getCheckoutUrl() ?>';			
+				beforeCheckoutContinue();
 			}
-			
+
 		});
+
+		$('#continue-as-guest').click(function(e){
+			e.preventDefault();
+			window.location='<?php echo $this->getCheckoutUrl() ?>';
+  	});
 	});
 </script>

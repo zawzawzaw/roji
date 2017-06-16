@@ -70,13 +70,22 @@ roji.page.Default = function(options, element) {
     this.is_page_min_height = true;
   }
 
+  this.is_page_min_height_mobile = false;
+  if( this.body.hasClass('min-height-mobile-version') == true ){
+    this.is_page_min_height_mobile = true;
+  }
+
   this.desktop_header_element = $j('#desktop-header');
   this.mobile_header_element = $j('#mobile-header');
   this.desktop_footer_element = $j('#desktop-footer');
   this.mobile_footer_element = $j('#mobile-footer');  
 
+  this.mobile_header_expanded_element = $j('#mobile-header-expanded');
+
   $j(".add-to-cart-links").click(this.on_add_to_cart_link_click.bind(this));
   $j("#desktop-header-cart-expand-container").on("click", '.remove-item', this.on_remove_header_cart_item.bind(this));
+
+  $j("#mobile-header-push-noti-close-btn").click(this.on_mobile_header_push_noti_close_btn_click.bind(this));
 
   console.log('roji.page.Default: init');
 };
@@ -145,22 +154,32 @@ roji.page.Default.prototype.update_page_layout = function(){
   roji.page.Default.superClass_.update_page_layout.call(this);
 
 
-  if (this.is_page_min_height == true) {
-    if (manic.IS_MOBILE == false) {
+  if (this.is_page_min_height == true && manic.IS_MOBILE == false) {
+    var target_height = this.window_height - this.desktop_header_element.outerHeight() - this.desktop_footer_element.outerHeight();
 
-      var target_height = this.window_height - this.desktop_header_element.outerHeight() - this.desktop_footer_element.outerHeight();
-
-      this.page_wrapper_content.css({
-        'min-height': target_height + 'px'
-      });
-
-    }
+    this.page_wrapper_content.css({
+      'min-height': target_height + 'px'
+    });
   }
 
-  if (manic.IS_MOBILE_HEADER == false) {
 
-  } else {
+  if (this.is_page_min_height_mobile == true && manic.IS_MOBILE == true) {
+    var target_height = this.window_height - this.mobile_footer_element.outerHeight();
 
+    this.page_wrapper_content.css({
+      'min-height': target_height + 'px'
+    });
+  }
+
+
+
+  // update mobile header menu height
+  if (manic.IS_MOBILE == true) {
+    var target_height = this.window_height - this.mobile_footer_element.outerHeight();
+
+    this.mobile_header_expanded_element.css({
+      'min-height': target_height + 'px'
+    });
   }
 
 };
@@ -207,7 +226,14 @@ roji.page.Default.prototype.update_header_cart = function() {
       type : 'get',
       success: function(data){
 
-          // update product count in cart
+
+          if(manic.IS_MOBILE == true) {
+            $j("#mobile-header-push-noti").slideDown(300);
+            $j("#mobile-header-push-noti").delay(5000).slideUp(300);  
+          }
+        
+          // update product count in cart          
+          $j("#mobile-header-cart-btn").find(".cart-btn-value").text(data.cart_qty);
           $j("#desktop-header-cart-menu").find(".cart-btn-value").text(data.cart_qty);
           // $j("#mobile-header-cart-btn-container").find(".count").text(data.cart_qty);
 
@@ -280,6 +306,12 @@ roji.page.Default.prototype.on_remove_header_cart_item = function(event){
         this.update_header_cart();
     }.bind(this));
     
+}
+
+roji.page.Default.prototype.on_mobile_header_push_noti_close_btn_click = function(event) {
+    event.preventDefault();
+    // console.log("on_mobile_header_push_noti_close_btn_click");
+    $j("#mobile-header-push-noti").slideUp(300);
 }
 
 

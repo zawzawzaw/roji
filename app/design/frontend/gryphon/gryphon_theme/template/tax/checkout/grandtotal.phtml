@@ -47,12 +47,24 @@
     </div>
 </div>
 <?php else:?>
-<div class="each-details grand-total">
-    <div style="<?php echo $this->getStyle() ?>" class="a-right label grandtotal" colspan="<?php echo $this->getColspan(); ?>">
-        <p><?php //echo $this->getTotal()->getTitle() ?>TOTAL</p>
-    </div>
-    <div style="<?php echo $this->getStyle() ?>" class="a-right value grandtotal">
-        <p><?php echo strip_tags($this->helper('checkout')->formatPrice($this->getTotal()->getValue())) ?></p>
-    </div>
-</div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-md-6 col-xs-6">
+
+        <div class="column-01">
+          <p>Total:</p>
+        </div>
+
+      </div>
+      <div class="col-md-6 col-xs-6">
+
+        <div class="column-02">
+          <p><?php echo strip_tags($this->helper('checkout')->formatPrice($this->getTotal()->getValue())) ?></p>
+        </div>
+
+      </div>
+    </div> <!-- row -->
+
 <?php endif;?>

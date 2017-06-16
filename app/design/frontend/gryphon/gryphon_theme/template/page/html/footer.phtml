@@ -38,6 +38,15 @@
   </footer>
 
   <footer id="mobile-footer" class="visible-sm visible-xs">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12">
+          <div id="mobile-footer-copyright">
+            <p><?php $storeCopyright = Mage::getStoreConfig('design/footer/copyright'); echo $storeCopyright; ?></p>
+          </div>
+        </div>
+      </div>
+    </div>
   </footer>
 
 
@@ -100,7 +109,7 @@
         </div>
       </div>
 
-      <div id="mailing-list-close-btn"></div>
+      <div id="mailing-list-close-btn" class="close-btn"></div>
 
     </div> <!-- mailing-list-popup -->
   </div> <!-- mailing-list-popup-container -->

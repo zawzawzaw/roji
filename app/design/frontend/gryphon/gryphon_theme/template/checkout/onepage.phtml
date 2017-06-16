@@ -28,84 +28,129 @@
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/opcheckout.js') ?>"></script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/miragedesign/checkout.js') ?>"></script>
 <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/miragedesign/regionupdater.js') ?>"></script>
-<article>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
-                <div id="page-shopping-cart-breadcrumb">
-                    <a id="op-shopping-cart" class="fake-active" href="<?php echo $this->getUrl('checkout/cart'); ?>"><?php echo $this->__('Shopping Cart'); ?></a>
-                    <a id="op-billing-shipping" href="<?php echo $this->getUrl('checkout/onepage'); ?>" class="fake-active active"><?php echo $this->__('Billing & Shipping Address'); ?></a>
-                    <a id="op-confirmation"><?php echo $this->__('Order Confirmation'); ?></a>
-                </div>
-                <div id="page-shopping-cart-sidebar-address">      
-                    <?php $billingCountry = Mage::getSingleton('checkout/session')->getQuote()->getBillingAddress()->getCountry(); ?>           
-                    <?php $billingAddress = Mage::getSingleton('checkout/session')->getQuote()->getBillingAddress()->getData(); ?> 
 
-                    <?php $shippingCountry = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getCountry(); ?>           
-                    <?php $shippingAddress = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress()->getData(); ?>               
-                    <div class="address-info">
-                        <div class="billing-info">
-                            <h5>Billing Address</h5>
-                            <div class="address-details">
-                                <p class="title">NAME</p>
-                                <p><?php echo $billingAddress['firstname'] . ' ' . $billingAddress['lastname']; ?></p>
-                            </div>
-                            <div class="address-details">
-                                <p class="title">ADDRESS</p>
-                                <p><?php echo $billingAddress['street'] . ' ' . $billingAddress['city'] . ' ' . $billingAddress['postcode'] . ' ' . $billingCountry; ?></p>
-                            </div>
-                            <div class="address-details">
-                                <p class="title">EMAIL</p>
-                                <p><?php echo $billingAddress['email']; ?></p>
-                            </div>
-                            <div class="address-details">
-                                <p class="title">PHONE NUMBER</p>
-                                <p><?php echo $billingAddress['telephone']; ?></p>
-                            </div>
-                        </div>
-                        <div class="shipping-info">                
-                            <h5>Shipping Address</h5>
-                            <div class="address-details">
-                                <p class="title">NAME</p>
-                                <p><?php echo $shippingAddress['firstname'] . ' ' . $shippingAddress['lastname']; ?></p>
-                            </div>
-                            <div class="address-details">
-                                <p class="title">ADDRESS</p>
-                                <p><?php echo $shippingAddress['street'] . ' ' . $shippingAddress['city'] . ' ' . $shippingAddress['postcode'] . ' ' . $shippingCountry; ?></p>
-                            </div>
-                            <div class="address-details">
-                                <p class="title">EMAIL</p>
-                                <p><?php echo $shippingAddress['email']; ?></p>
-                            </div>
-                            <div class="address-details">
-                                <p class="title">PHONE NUMBER</p>
-                                <p><?php echo $shippingAddress['telephone']; ?></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-10">
-                <?php echo $this->getMessagesBlock()->toHtml() ?>
-                <div class="opc" id="checkoutSteps">
-                    <?php $i=0; foreach($this->getSteps() as $_stepId => $_stepInfo): ?>
-                        <?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; $i++ ?>
-                        <div role="tabpanel" class="tab-pane section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>" id="opc-<?php echo $_stepId ?>" class="section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>">
-                            <div class="step-title" style="display: none;">
-                                <span class="number"><?php echo $i ?></span>
-                                <h2><?php echo $_stepInfo['label'] ?></h2>
-                                <a href="#"><?php echo $this->__('Edit') ?></a>
-                            </div>
-                            <div id="checkout-step-<?php echo $_stepId ?>" class="step a-item" style="display:none;">
-                                <?php echo $this->getChildHtml($_stepId) ?>
-                            </div>
-                        </div>
-                    <?php endforeach ?>
-                </div><!-- #checkoutSteps -->                
-            </div>
-        </div><!-- #row -->
+<!--
+     _____ ___ _____ _     _____
+    |_   _|_ _|_   _| |   | ____|
+      | |  | |  | | | |   |  _|
+      | |  | |  | | | |___| |___
+      |_| |___| |_| |_____|_____|
+
+  -->
+
+
+<article id="page-checkout-title-section">
+<div class="container-fluid has-breakpoint">
+  <div class="row">
+    <div class="col-md-3 col-tablet-landscape-2 col-sm-1 col-xs-0"></div>
+    <div class="col-md-9 col-tablet-landscape-10 col-sm-10 col-xs-12">
+      <div id="page-checkout-title">
+        <h1>Please check your details before confirming your order.</h1>
+      </div>
     </div>
-</article>
+  </div>
+</div>
+</article> <!-- page-checkout-title-section -->
+
+<!--
+      ____ ___  _   _ _____ _____ _   _ _____
+     / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+    | |  | | | |  \| | | | |  _| |  \| | | |
+    | |__| |_| | |\  | | | | |___| |\  | | |
+     \____\___/|_| \_| |_| |_____|_| \_| |_|
+
+  -->
+
+<article id="page-checkout-sidebar-section-mobile" class="visible-sm visible-xs">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-10 col-sm-push-1 col-xs-12">
+
+          <div id="page-checkout-sidebar-mobile">
+            <p>2. Shipping & Billing</p>
+          </div> <!-- page-checkout-sidebar-mobile -->
+
+        </div>
+      </div>
+    </div>
+</article> <!-- page-checkout-sidebar-section-mobile -->
+
+<article id="page-checkout-content-section">
+
+      <div id="page-checkout-content-section-bg" class="visible-md visible-lg">
+        <div class="sidebar-bg"></div>
+        <div class="content-bg"></div>
+      </div>
+
+      <div class="container-fluid has-breakpoint">
+        <div class="row">
+          <div class="col-md-2 col-tablet-landscape-1 hidden-sm hidden-xs">
+
+            <!--
+               ____ ___ ____  _____ ____    _    ____
+              / ___|_ _|  _ \| ____| __ )  / \  |  _ \
+              \___ \| || | | |  _| |  _ \ / _ \ | |_) |
+               ___) | || |_| | |___| |_) / ___ \|  _ <
+              |____/___|____/|_____|____/_/   \_\_| \_\
+
+            -->
+
+            <div id="page-checkout-sidebar-width"></div>
+            <div id="page-checkout-sidebar">
+
+              <nav>
+                <ul>                                        
+                  <li><a id="op-shopping-cart" class="fake-active" href="<?php echo $this->getUrl('checkout/cart'); ?>"><?php echo $this->__('1. Your Cart'); ?></a></li>
+                  <li class="selected"><a id="op-billing-shipping" href="<?php echo $this->getUrl('checkout/onepage'); ?>" class="fake-active active"><?php echo $this->__('2. Shipping & Billing'); ?></a></li>
+                  <li><a id="op-confirmation"><?php echo $this->__('3. Order Confirmation'); ?></a></li>
+                </ul>
+              </nav>
+
+            </div> <!-- page-checkout-sidebar -->
+
+
+
+          </div> <!-- col-md-2 -->
+          
+          <div class="col-md-0 col-tablet-landscape-0 col-sm-1 col-xs-0"></div>
+          <div class="col-md-10 col-tablet-landscape-11 col-sm-10 col-xs-12">
+
+                <!--
+                    ____ ___  _   _ _____ _____ _   _ _____
+                   / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+                  | |  | | | |  \| | | | |  _| |  \| | | |
+                  | |__| |_| | |\  | | | | |___| |\  | | |
+                   \____\___/|_| \_| |_| |_____|_| \_| |_|
+
+                -->
+
+                <div id="page-checkout-content-width"></div>
+                <div id="page-checkout-content">
+            
+                    <?php echo $this->getMessagesBlock()->toHtml() ?>
+                    <div class="opc" id="checkoutSteps">
+                        <?php $i=0; foreach($this->getSteps() as $_stepId => $_stepInfo): ?>
+                            <?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; $i++ ?>
+                            <div role="tabpanel" class="tab-pane section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>" id="opc-<?php echo $_stepId ?>" class="section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>">
+                                <div class="step-title" style="display: none;">
+                                    <span class="number"><?php echo $i ?></span>
+                                    <h2><?php echo $_stepInfo['label'] ?></h2>
+                                    <a href="#"><?php echo $this->__('Edit') ?></a>
+                                </div>
+                                <div id="checkout-step-<?php echo $_stepId ?>" class="step a-item" style="display:none;">
+                                    <?php echo $this->getChildHtml($_stepId) ?>
+                                </div>
+                            </div>
+                        <?php endforeach ?>
+                    </div><!-- #checkoutSteps -->
+
+                </div> <!-- page-checkout-content -->
+
+          </div> <!-- col-md-10 -->
+        </div> <!-- row -->
+    </div> <!-- container-fluid -->
+</article> <!-- page-checkout-content-section -->
+
 <script type="text/javascript">
 //<![CDATA[
     var accordion = new Accordion('checkoutSteps', '.step-title', true);
@@ -119,7 +164,5 @@
         failure: '<?php echo $this->getUrl('checkout/cart') ?>'}
     );
     checkout.setMethod();
-
-    $j("#page-shopping-cart-sidebar-address").hide();
 //]]>
 </script>
