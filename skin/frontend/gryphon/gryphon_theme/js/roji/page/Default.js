@@ -155,7 +155,7 @@ roji.page.Default.prototype.update_page_layout = function(){
 
 
   if (this.is_page_min_height == true && manic.IS_MOBILE == false) {
-    var target_height = this.window_height - this.desktop_header_element.outerHeight() - this.desktop_footer_element.outerHeight();
+    var target_height = this.window_height - this.desktop_header_element.outerHeight() - $j("#desktop-footer").outerHeight();
 
     this.page_wrapper_content.css({
       'min-height': target_height + 'px'
@@ -164,7 +164,7 @@ roji.page.Default.prototype.update_page_layout = function(){
 
 
   if (this.is_page_min_height_mobile == true && manic.IS_MOBILE == true) {
-    var target_height = this.window_height - this.mobile_footer_element.outerHeight();
+    var target_height = this.window_height - $j("#mobile-footer").outerHeight();
 
     this.page_wrapper_content.css({
       'min-height': target_height + 'px'
@@ -310,8 +310,9 @@ roji.page.Default.prototype.on_remove_header_cart_item = function(event){
 
 roji.page.Default.prototype.on_mobile_header_push_noti_close_btn_click = function(event) {
     event.preventDefault();
+    console.log("mobile-header-push-noti-close-click");
     // console.log("on_mobile_header_push_noti_close_btn_click");
-    $j("#mobile-header-push-noti").slideUp(300);
+    $j("#mobile-header-push-noti").hide();
 }
 
 

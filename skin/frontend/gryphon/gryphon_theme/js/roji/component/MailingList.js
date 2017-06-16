@@ -46,15 +46,18 @@ roji.component.MailingList = function(options, element) {
   }.bind(this));
 
   this.send_btn.click(this.on_send_btn_click.bind(this));
-  
-
-  this.cookies.set('rojimailinglist', null, 60);
 
   var cookie_value = this.cookies.get('rojimailinglist');
 
   // if no cookie is available
 
-  if (goog.isDefAndNotNull(cookie_value) == false && $j("body").hasClass("category-shop")) {
+  // console.log(cookie_value);
+  // console.log(goog.isDefAndNotNull(cookie_value));
+  // console.log($j("body").hasClass("category-shop"));
+  // console.log('testingggg');
+
+  
+  if (goog.isDefAndNotNull(cookie_value) == false && $j("body").hasClass("category-shop")) {  
   // if (goog.isDefAndNotNull(cookie_value) == false || true) {      // for testing
 
     var max_seconds = 60 * 60 * 10;   // 10 hr expiry

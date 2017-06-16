@@ -35,12 +35,14 @@
           <div class="row">
 
             <div class="col-md-8 col-sm-6 col-xs-8">
-              <input type="text" class="input-text" id="coupon_code" name="coupon_code" value="<?php echo $this->escapeHtml($this->getCouponCode()) ?>" />    
+              <input type="text" class="input-text" id="coupon_code" name="coupon_code" value="" />    
+              <!-- <?php echo $this->escapeHtml($this->getCouponCode()) ?> -->
             </div>
             <div class="col-md-4 col-sm-3 col-xs-4">
               <div class="cart-discount-cta-container">                
                 <?php if(strlen($this->getCouponCode())): ?>
-                    <button type="button" title="<?php echo $this->__('Cancel Coupon') ?>" class="square-cta full-width-version apply" onclick="discountForm.submit(true)" value="<?php echo $this->__('Cancel Coupon') ?>"><span><span><?php echo $this->__('Cancel') ?></span></span></button>
+                    <button type="button" title="<?php echo $this->__('Cancel Coupon') ?>" class="square-cta full-width-version apply" onclick="discountForm.submit(false)" value="<?php echo $this->__('Cancel Coupon') ?>"><span><span><?php echo $this->__('Apply') ?></span></span></button>
+                    <button type="button" title="<?php echo $this->__('Cancel Coupon') ?>" id="cancel_coupon" class="square-cta full-width-version apply" style="display:none;" onclick="discountForm.submit(true)" value="<?php echo $this->__('Cancel Coupon') ?>"><span><span><?php echo $this->__('Apply') ?></span></span></button>
                 <?php else: ?>
                     <button type="button" title="<?php echo $this->__('Apply Coupon') ?>" class="square-cta full-width-version apply" onclick="discountForm.submit(false)" value="<?php echo $this->__('Apply Coupon') ?>"><span><span><?php echo $this->__('Apply') ?></span></span></button>
                 <?php endif;?>

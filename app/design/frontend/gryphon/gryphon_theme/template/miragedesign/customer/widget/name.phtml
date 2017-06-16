@@ -77,7 +77,7 @@ For checkout/onepage/shipping.phtml:
 </div>
 <?php if ($this->showMiddlename()): ?>
 <?php $isMiddlenameRequired = $this->isMiddlenameRequired(); ?>
-<div class="form-group">
+<!-- <div class="form-group">
     <div class="row">
         <div class="col-md-4">
             <label for="<?php echo $this->getFieldId('middlename')?>"<?php echo $isMiddlenameRequired ? ' class="required"' : '' ?>><?php echo $isMiddlenameRequired ? '<em>*</em>' : '' ?>Middle name</label>
@@ -86,7 +86,7 @@ For checkout/onepage/shipping.phtml:
             <input type="text" id="<?php echo $this->getFieldId('middlename')?>" name="<?php echo $this->getFieldName('middlename')?>" onkeyup="if(document.getElementById('shipping:same_as_billing').checked) shipping.setSameAsBilling(true);" value="<?php echo $this->escapeHtml($this->getObject()->getMiddlename()) ?>" title="<?php echo $this->getStoreLabel('middlename') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('middlename') ?>" <?php echo $this->getFieldParams() ?> />        
         </div>
     </div>
-</div>
+</div> -->
 <?php endif; ?>
 <div class="form-group">
     <div class="row">

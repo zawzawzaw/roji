@@ -60,6 +60,11 @@ $product_type = $_item->getProductType();
               ?>
               <h3><?php echo $this->escapeHtml($custom->getData('product_name_in_color')) ?></h3>
               <p><?php echo $this->escapeHtml($custom->getDescription()) ?></p>
+              <?php 
+              $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($custom);
+              $stock_qty = intval($stock->getQty());
+              ?>
+              <p><?php echo ($stock_qty <= 3) ? "Only " .$stock_qty . " left in stock!" : "" ; ?></p>
             </div>
 
         </div>
@@ -198,7 +203,7 @@ $product_type = $_item->getProductType();
                 </span>
               </div>
 
-              <a href="javascript:void(0);" class="cart-item-close-btn close-btn"></a>
+              <a href="<?php echo $this->getDeleteUrl()?>" class="cart-item-close-btn close-btn"></a>
 
             </div> <!-- cart-item-desc-mobile -->
 

@@ -25,7 +25,7 @@ class Magestore_Giftvoucher_CheckoutController extends Mage_Core_Controller_Fron
         if ($success) {
             $codes = implode(',', $codesArray);
             $session->setGiftCodes($codes);
-            $session->addSuccess($this->__('Gift Card "%s" has been removed successfully!', Mage::helper('giftvoucher')->getHiddenCode($code)));
+            $session->addSuccess($this->__('Gift Card "%s" was removed.', Mage::helper('giftvoucher')->getHiddenCode($code)));
         } else {
             $session->addError($this->__('Gift card "%s" not found!', $code));
         }
@@ -33,13 +33,14 @@ class Magestore_Giftvoucher_CheckoutController extends Mage_Core_Controller_Fron
     }
 
     public function giftcardPostAction() {
+
         $session = Mage::getSingleton('checkout/session');
         $points_currently_used = Mage::helper('rewardpoints/event')->getCreditPoints();
 
         if ($session->getQuote()->getCouponCode() && !Mage::helper('giftvoucher')->getGeneralConfig('use_with_coupon')) {
-            $session->addNotice(Mage::helper('giftvoucher')->__('You cannot redeem your gift card together with the discount code.'));
+            $session->addNotice(Mage::helper('giftvoucher')->__('You cannot use the discount code, gift card or redeem rebates at the same time. '));
         } else if(!empty($points_currently_used) && $points_currently_used > 0) {
-            $session->addNotice(Mage::helper('giftvoucher')->__('You cannot redeem your gift card together with your rebates.'));
+            $session->addNotice(Mage::helper('giftvoucher')->__('You cannot use the discount code, gift card or redeem rebates at the same time. '));
         } else {
             $request = $this->getRequest();
             if ($request->isPost()) {
@@ -68,62 +69,74 @@ class Magestore_Giftvoucher_CheckoutController extends Mage_Core_Controller_Fron
                     if ($request->getParam('giftvoucher_code')) {
                         $addcodes[] = trim($request->getParam('giftvoucher_code'));
                     }
-                    if (count($addcodes)) {
-                        if (Mage::helper('giftvoucher')->isAvailableToAddCode()) {
-                            foreach ($addcodes as $code) {
-                                $giftVoucher = Mage::getModel('giftvoucher/giftvoucher')->loadByCode($code);
-                                $quote = Mage::getSingleton('checkout/session')->getQuote();
-                                if (!$giftVoucher->getId()) {
-                                    $codes = Mage::getSingleton('giftvoucher/session')->getCodes();
-                                    $codes[] = $code;
-                                    Mage::getSingleton('giftvoucher/session')->setCodes(array_unique($codes));
-                                    $session->addError($this->__('Gift card "%s" is invalid.', $code));
-                                    $max = Mage::helper('giftvoucher')->getGeneralConfig('maximum');
-                                    if ($max - count($codes))
-                                        $session->addError($this->__('You have %d time(s) remaining to re-enter your Gift Card code.', $max - count($codes)));
-                                } else if ($giftVoucher->getBaseBalance() > 0 && $giftVoucher->getStatus() == Magestore_Giftvoucher_Model_Status::STATUS_ACTIVE
-                                ) {
-                                    if (Mage::helper('giftvoucher')->canUseCode($giftVoucher)) {
-                                        $flag = false;
-                                        foreach ($quote->getAllItems() as $item) {
-                                            if ($giftVoucher->getActions()->validate($item)) {
-                                                $flag = true;
-                                            }
-                                        }
-                                        $giftVoucher->addToSession($session);
-                                        if ($giftVoucher->getCustomerId() == Mage::getSingleton('customer/session')->getCustomerId() && $giftVoucher->getRecipientName() && $giftVoucher->getRecipientEmail() && $giftVoucher->getCustomerId()
-                                        ) {
-                                            // $session->addNotice($this->__('Please note that gift code "%s" has been sent to your friend. When using, both you and your friend will share the same balance in the gift code.', Mage::helper('giftvoucher')->getHiddenCode($code)));
-                                        }
-                                        if ($flag && $giftVoucher->validate($quote->setQuote($quote))) {
-                                            $isGiftVoucher = true;
+                    $applied_gift_code = $session->getGiftCodes();
+
+                    if(!empty($applied_gift_code)) {
+
+                        $session->addError($this->__('You can only redeem one gift certifificate at a time.', $code));
+                        
+                    } else {
+
+                        if (count($addcodes)) {
+                            if (Mage::helper('giftvoucher')->isAvailableToAddCode()) {
+                                foreach ($addcodes as $code) {
+                                    $giftVoucher = Mage::getModel('giftvoucher/giftvoucher')->loadByCode($code);
+                                    $quote = Mage::getSingleton('checkout/session')->getQuote();
+                                    if (!$giftVoucher->getId()) {
+                                        $codes = Mage::getSingleton('giftvoucher/session')->getCodes();
+                                        $codes[] = $code;
+                                        Mage::getSingleton('giftvoucher/session')->setCodes(array_unique($codes));
+                                        $session->addError($this->__('Gift card "%s" is invalid.', $code));
+                                        $max = Mage::helper('giftvoucher')->getGeneralConfig('maximum');
+                                        if ($max - count($codes))
+                                            $session->addError($this->__('You have %d time(s) remaining to re-enter your Gift Card code.', $max - count($codes)));
+                                    } else if ($giftVoucher->getBaseBalance() > 0 && $giftVoucher->getStatus() == Magestore_Giftvoucher_Model_Status::STATUS_ACTIVE
+                                    ) {
+                                        if (Mage::helper('giftvoucher')->canUseCode($giftVoucher)) {
+                                            $flag = false;
                                             foreach ($quote->getAllItems() as $item) {
-                                                if ($item->getProductType() != 'giftvoucher') {
-                                                    $isGiftVoucher = false;
-                                                    break;
+                                                if ($giftVoucher->getActions()->validate($item)) {
+                                                    $flag = true;
                                                 }
                                             }
-                                            if (!$isGiftVoucher) {
-                                                $session->addSuccess($this->__('Gift code "%s" has been applied successfully.', Mage::helper('giftvoucher')->getHiddenCode($code)));
+                                            $giftVoucher->addToSession($session);
+                                            if ($giftVoucher->getCustomerId() == Mage::getSingleton('customer/session')->getCustomerId() && $giftVoucher->getRecipientName() && $giftVoucher->getRecipientEmail() && $giftVoucher->getCustomerId()
+                                            ) {
+                                                // $session->addNotice($this->__('Please note that gift code "%s" has been sent to your friend. When using, both you and your friend will share the same balance in the gift code.', Mage::helper('giftvoucher')->getHiddenCode($code)));
                                             }
-                                            else
-                                                $session->addNotice($this->__('Please remove your Gift Card information since you cannot use either gift codes or Gift Card credit balance to purchase other Gift Card products.'));
+                                            if ($flag && $giftVoucher->validate($quote->setQuote($quote))) {
+                                                $isGiftVoucher = true;
+                                                foreach ($quote->getAllItems() as $item) {
+                                                    if ($item->getProductType() != 'giftvoucher') {
+                                                        $isGiftVoucher = false;
+                                                        break;
+                                                    }
+                                                }
+                                                if (!$isGiftVoucher) {
+                                                    $session->addSuccess($this->__('Gift card "%s" was applied.', Mage::helper('giftvoucher')->getHiddenCode($code)));
+                                                }
+                                                else
+                                                    $session->addNotice($this->__('Please remove your Gift Card information since you cannot use either gift codes or Gift Card credit balance to purchase other Gift Card products.'));
+                                            } else {
+                                                $session->addError($this->__('You can’t use this gift code since its conditions haven’t been met. <p>Please check these conditions by entering your gift code <a href="' . Mage::getUrl('giftvoucher/index/check') . '">here</a>.'));
+                                            }
                                         } else {
-                                            $session->addError($this->__('You can’t use this gift code since its conditions haven’t been met. <p>Please check these conditions by entering your gift code <a href="' . Mage::getUrl('giftvoucher/index/check') . '">here</a>.'));
+                                            $session->addError($this->__('This gift code limits the number of users', Mage::helper('giftvoucher')->getHiddenCode($code)));
                                         }
                                     } else {
-                                        $session->addError($this->__('This gift code limits the number of users', Mage::helper('giftvoucher')->getHiddenCode($code)));
+                                        $session->addError($this->__('Gift code "%s" is no longer available to use.', $code));
                                     }
-                                } else {
-                                    $session->addError($this->__('Gift code "%s" is no longer available to use.', $code));
                                 }
+                            } else {
+                                $session->addError($this->__('The maximum number of times to enter gift codes is %d!', Mage::helper('giftvoucher')->getGeneralConfig('maximum')));
                             }
                         } else {
-                            $session->addError($this->__('The maximum number of times to enter gift codes is %d!', Mage::helper('giftvoucher')->getGeneralConfig('maximum')));
+                            $session->addSuccess($this->__('Your Gift Card(s) has been applied successfully.'));
                         }
-                    } else {
-                        $session->addSuccess($this->__('Your Gift Card(s) has been applied successfully.'));
+
                     }
+
+                    
                 } elseif ($session->getUseGiftCard()) {
                     $session->setUseGiftCard(null);
                     $session->addSuccess($this->__('Your Gift Card information has been removed successfully.'));

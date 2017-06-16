@@ -20,6 +20,10 @@ roji.component.HomeMasonry = function(options, element) {
 
   
   this.create_isotope();
+
+  if(manic.IS_MOBILE == true) {
+    this.element.find(".tile-center-content").click(this.on_tile_click.bind(this));
+  }
   
   console.log('roji.component.HomeMasonry: init');
 };
@@ -85,6 +89,10 @@ roji.component.HomeMasonry.prototype.create_isotope = function() {
 //   |_|    \___/|____/|_____|___\____|
 //
 
+roji.component.HomeMasonry.prototype.on_tile_click = function(event) {
+    event.preventDefault();    
+    window.location.href = $j(event.currentTarget).find("a").attr('href');
+}
 
 roji.component.HomeMasonry.prototype.public_method_01 = function() {};
 roji.component.HomeMasonry.prototype.public_method_02 = function() {};

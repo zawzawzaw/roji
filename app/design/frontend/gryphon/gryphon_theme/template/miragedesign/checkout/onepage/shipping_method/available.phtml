@@ -80,6 +80,10 @@ if($isSubscriptionProduct == false)
                               <p><?php echo $shippingCountryName; ?></p>
                             </div>                                
                             <div class="delivery-rate">
+                                <h4>Processing Time</h4>                                    
+                                <p>3-5 working days</p>
+                            </div>
+                            <div class="delivery-rate">
                                 <h4>ESTIMATED DELIVERY TIME</h4>                                    
                                 <?php if($traderselfcollect ==1 || $traderselfcollect == '1'): ?>
                                   <p>0 working days</p>
@@ -183,8 +187,9 @@ if($isSubscriptionProduct == false)
                 <?php else: ?>
                     <span style="display:none;">this</span>
                     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('shipping-fee-info')->toHtml(); ?>
-                <?php endif; ?>
+                <?php endif; ?>                
             </div>
+            <a href="javascript:void(0);" class="arrow-cta">Shipping information</a>
         </div>
         
     </div> <!-- page-checkout-delivery -->

@@ -16,6 +16,7 @@
 		    <div class="column-01">
 		    	<p>GIFT CERTIFICATE:</p>
 		    	<span class="discount_desc"><?php echo Mage::helper('giftvoucher')->getHiddenCode($code) ?></span>
+		    	<a href="#" id="cancel_gift_cert" class="cancel-btn"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
 		    </div>
 		  </div>
 		  <div class="col-md-6 col-xs-6">
@@ -25,6 +26,12 @@
 		  </div>
 		</div>
 	<?php endforeach ?>
+	<script>
+		jQuery("#cancel_gift_cert").click(function(e){
+			e.preventDefault();
+			jQuery(".cancel_giftcard").trigger("click");
+		});
+	</script>
 
 <?php else: ?>
 		<div class="each-details">

@@ -212,7 +212,7 @@ if ($giftAmount['price_type'] == 1) {
             $_maximalPriceInclTax += $_weeeTaxAmount;
         ?>
                 <?php if ($_maximalPriceTax > $_minimalPriceTax): ?>
-            <p class="price-to">
+            <p class="price-to no-display">
                 <span class="price-label"><?php echo $this->__('To') ?>:</span>
                         <?php if ($this->displayBothPrices()): ?>
                     <span class="price-excluding-tax">

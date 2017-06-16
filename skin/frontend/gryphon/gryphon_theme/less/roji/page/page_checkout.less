@@ -234,6 +234,13 @@
   @media only screen and (max-width: 991px) {
     padding-left: 0px;
   }
+
+  ul.messages {
+    span {
+      .body-font-small;
+      color: red;
+    }
+  }
 }
 
 
@@ -672,6 +679,10 @@
     .body-font-small-italic;
   }
 
+  a.cancel-btn {
+    font-size: 12px;
+  }
+
   hr{
     margin-top: 22px;
     margin-bottom: 23px;
@@ -739,7 +750,10 @@
     p.used-points-msg {
       .body-font-small-italic;
       margin-left: 5px;
-    }
+    }    
+  }
+  .validation-advice { // as audrey suggested no validation needed
+    display: none!important;
   }
   .cart-discount-cta-container{
     margin-left: -20px;
@@ -951,7 +965,7 @@
   .delivery-rate{
     .display-inline-block;
 
-    margin-right: 97px;
+    margin-right: 65px;
 
     h4{
       color: @off-black;
@@ -962,6 +976,7 @@
       .body-font;
       font-size: 16px;
       line-height: 24px;
+      max-width: 140px;
     }
   }
 
@@ -969,7 +984,7 @@
   @media only screen and (max-width: 991px) {
 
     .delivery-rate{
-      margin-right: 60px;
+      margin-right: 40px;
       &:last-child{
         margin-right: 0px;
       }
@@ -1013,7 +1028,7 @@
 
 #page-checkout-delivery-copy{
   .default-copy{
-
+    padding-bottom: 20px;
   }
 
   // MOBILE

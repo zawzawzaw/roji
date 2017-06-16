@@ -218,7 +218,7 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label for="billing:region_id" class="required"><em>*</em><?php echo $this->__('State/Province') ?></label>
+                                                <label for="billing:region_id" class="required"><?php echo $this->__('State/Province') ?><em>*</em></label>
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="dropdown">
@@ -433,7 +433,7 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label for="shipping:region" class="required"><em>*</em><?php echo $this->__('State/Province') ?></label>
+                                                <label for="shipping:region" class="required"><?php echo $this->__('State/Province') ?><em>*</em></label>
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="dropdown">
@@ -567,7 +567,7 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
                     </div>
                     <div class="delivery-rate">
                       <h4>Estimated delivery Time</h4>
-                      <p>3 – 5 working days</p>
+                      <p>3 – 4 working days</p>
                     </div>
                     <div style="display:none;">
                         <span class="no-display"><input name="shipping_method" type="radio" value="customrate_customrate_free" id="s_method_customrate_customrate_free" checked="checked"></span>
@@ -584,8 +584,8 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
 
                 <div id="page-checkout-delivery-copy">
                     <div class="default-copy">
-                      <small>All local orders are delivered via Singapore Post registered mail or Speedpost depending on size of order.</small>
                       <small>All products are shipped directly from Singapore. Please allow 3 to 5 working days on top of the estimated delivery time for us to process your order.</small>
+                      <small>All local orders are delivered via Singapore Post registered mail or Speedpost depending on size of order.</small>                      
                       <small>Please expect slight delays for orders shipped during peak seasons. — Chinese New Year, Christmas etc.</small>
                     </div>
                 </div> <!-- page-checkout-delivery-copy -->
@@ -666,8 +666,16 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
                     
                     $.each(storedValue, function(key, value){
 
-                        if(key=="billing[country_id]" || key=="shipping[country_id]")
-                            $("select[name='"+key+"']").val(value);     
+                        if(key=="billing[country_id]") {
+                            $("select[name='"+key+"']").val(value);
+                            billingRegionUpdater.update();                            
+                        } else if(key=="shipping[country_id]") {
+                            $("select[name='"+key+"']").val(value);
+                            shippingRegionUpdater.update();
+                        }
+                        else if(key=="billing[region_id]" || key=="shipping[region_id]") {
+                            $("select[name='"+key+"']").val(value);
+                        }
                         else if(key=="shipping[same_as_billing]") {
                             $("input[name='"+key+"']").val(1);
                             if(value==1) {                   
@@ -683,8 +691,7 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
 
             }            
 
-        <?php endif; ?>        
-
+        <?php endif; ?>              
         
         var $billing_telephone = $('input[name="billing[telephone]"]');
         $billing_telephone.intlTelInput({                
@@ -694,6 +701,9 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
             autoPlaceholder: false,
             preferredCountries: []                
         });
+
+        $billing_telephone.intlTelInput("setNumber", "+65 ");
+
 
         var currentCountryCode  = "";
         $(document).keydown(function(e) {
@@ -722,6 +732,7 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
             autoPlaceholder: false,
             preferredCountries: []                
         });
+        $shipping_telephone.intlTelInput("setNumber", "+65 ");
 
         var $billing_fax = $('input[name="billing[fax]"]');
         $billing_fax.intlTelInput({                
@@ -731,6 +742,7 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
             autoPlaceholder: false,
             preferredCountries: []                
         });
+        $billing_fax.intlTelInput("setNumber", "+65 ");
 
         var $shipping_fax = $('input[name="shipping[fax]"]');
         $shipping_fax.intlTelInput({                
@@ -739,7 +751,8 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
             autoHideDialCode: false,
             autoPlaceholder: false,
             preferredCountries: []                
-        });            
+        }); 
+        $shipping_fax.intlTelInput("setNumber", "+65 ");           
 
         $('select[name="billing[country_id]"]').on('change', function(e){
             e.preventDefault();
@@ -807,12 +820,11 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
             }
 
             billing.save();                
+            shipping.save();                
         });
         
     });
-</script>               
 
-<script type="text/javascript">
 //<![CDATA[
     var billing = new Billing('co-billing-form', '<?php echo $this->getUrl('checkout/onepage/getAddress') ?>address/', '<?php echo $this->getUrl('checkout/onepage/saveBilling') ?>');
     var billingForm = new VarienForm('co-billing-form');
@@ -909,9 +921,12 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
     var bcity = getCookie("bcity");
     var bpostcode = getCookie("bpostcode");
     var bcountry_id = getCookie("bcountry_id");
+    var bregion_id = getCookie("bregion_id");
     var bregion = getCookie("bregion");
     var btelephone = getCookie("btelephone");
     var bfax = getCookie("bfax");
+
+    console.log("region_id"+bregion_id);
     
     jQuery("#billing\\:firstname").val(bfirstname);
     jQuery("#billing\\:middlename").val(bmiddlename);
@@ -920,7 +935,8 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
     jQuery("#billing\\:street2").val(bstreet2);
     jQuery("#billing\\:city").val(bcity);
     jQuery("#billing\\:postcode").val(bpostcode);
-    jQuery("#billing\\:country_id").val(bcountry_id);
+    jQuery("#billing\\:country_id").val(bcountry_id).trigger("change");    
+    jQuery("#billing\\:region_id").val(bregion_id).trigger("change");    
     jQuery("#billing\\:region").val(bregion);
     jQuery("#billing\\:telephone").val(btelephone);
     jQuery("#billing\\:fax").val(bfax); 
@@ -933,6 +949,7 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
     var scity = getCookie("scity");
     var spostcode = getCookie("spostcode");
     var scountry_id = getCookie("scountry_id");
+    var sregion_id = getCookie("sregion_id");
     var sregion = getCookie("sregion");
     var stelephone = getCookie("stelephone");
     var sfax = getCookie("sfax");
@@ -944,7 +961,8 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
     jQuery("#shipping\\:street2").val(sstreet2);
     jQuery("#shipping\\:city").val(scity);
     jQuery("#shipping\\:postcode").val(spostcode);
-    jQuery("#shipping\\:country_id").val(scountry_id);
+    jQuery("#shipping\\:country_id").val(scountry_id).trigger('change');
+    jQuery("#shipping\\:region_id").val(sregion_id);
     jQuery("#shipping\\:region").val(sregion);
     jQuery("#shipping\\:telephone").val(stelephone);
     jQuery("#shipping\\:fax").val(sfax);
@@ -1009,6 +1027,7 @@ function traderselfcollectyesno(idd,iddd){
     setCookie("bcity", jQuery("#billing\\:city").val(), 365);
     setCookie("bpostcode", jQuery("#billing\\:postcode").val(), 365);
     setCookie("bcountry_id", jQuery("#billing\\:country_id").val(), 365);
+    setCookie("bregion_id", jQuery("#billing\\:region_id").val(), 365);
     setCookie("bregion", jQuery("#billing\\:region").val(), 365);
     setCookie("btelephone", jQuery("#billing\\:telephone").val(), 365);
     setCookie("bfax", jQuery("#billing\\:fax").val(), 365); 
@@ -1021,6 +1040,7 @@ function traderselfcollectyesno(idd,iddd){
     setCookie("scity", jQuery("#shipping\\:city").val(), 365);
     setCookie("spostcode", jQuery("#shipping\\:postcode").val(), 365);
     setCookie("scountry_id", jQuery("#shipping\\:country_id").val(), 365);
+    setCookie("sregion_id", jQuery("#shipping\\:region_id").val(), 365);
     setCookie("sregion", jQuery("#shipping\\:region").val(), 365);
     setCookie("stelephone", jQuery("#shipping\\:telephone").val(), 365);
     setCookie("sfax", jQuery("#shipping\\:fax").val(), 365);

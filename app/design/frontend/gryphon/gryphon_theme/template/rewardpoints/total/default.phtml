@@ -70,10 +70,14 @@
 
         foreach ($rules as $rule) {
             if ($rule->getIsActive()) {
-                if(!empty($current_rule_name))
+                if(!empty($current_rule_name)) {
                     $current_rule_name .= ', ' . $rule->getName();
-                else
+                    $rule_id = $rule->getId();
+                }
+                else {
                     $current_rule_name = $rule->getName();
+                    $rule_id = $rule->getId();
+                }
             }
         }
     ?>
@@ -82,7 +86,9 @@
             <div class="col-md-6 col-xs-6">
                 <div class="column-01">
                     <p>DISCOUNT:</p>
-                    <span class="discount_desc">(<?php echo $this->getTotal()->getTitle(); ?>)</span>
+                    <?php $oCoupon = Mage::getModel('salesrule/coupon')->load($rule_id, 'rule_id'); ?>
+                    <span class="discount_desc"><?php echo $oCoupon->getData('code'); ?></span>
+                    <a href="#" id="cancel_discount" class="cancel-btn"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
                 </div>
             </div>
             <div class="col-md-6 col-xs-6">
@@ -97,5 +103,11 @@
                 </div>
             </div>
         </div>
+        <script>
+            jQuery("#cancel_discount").click(function(e){
+                e.preventDefault();
+                jQuery("#cancel_coupon").trigger('click');
+            });
+        </script>
     <?php endif; ?>
 <?php endif; ?>

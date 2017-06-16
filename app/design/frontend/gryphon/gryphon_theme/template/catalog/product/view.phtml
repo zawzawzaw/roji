@@ -99,7 +99,7 @@ endif;
   <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
   <input type="hidden" name="related_product" id="related-products-field" value="" />
 
-<article id="page-product-detail-content-section" <?php if (!$isGiftcardType) : ?>class="visible-md visible-lg"<?php endif; ?>>
+<article id="page-product-detail-content-section" <?php if (!$isGiftcardType) : ?>class="visible-md visible-lg"<?php else: ?>class="gift-card-version"<?php endif; ?>>
     <div class="container-fluid has-breakpoint">
         
       <div class="row">
@@ -112,7 +112,7 @@ endif;
                   |____/___|____/|_____|____/_/   \_\_| \_\
 
               -->
-              <div id="page-product-detail-sidebar">
+              <div id="page-product-detail-sidebar" <?php if($isGiftcardType): ?>class="gift-card-version"<?php endif; ?>>
                   
                   <?php if($isGiftcardType): ?>
                     <div class="page-product-detail-giftcard-img gift-card-img">
@@ -381,12 +381,7 @@ endif;
 
           <div id="page-product-social-container">
             <h4>Share</h4>
-            <ul>
-              <li><a href="javascript:void(0);" class="fa fa-facebook"></a></li>
-              <li><a href="javascript:void(0);" class="fa fa-twitter"></a></li>
-              <li><a href="javascript:void(0);" class="fa fa-pinterest"></a></li>
-              <li><a href="javascript:void(0);" class="fa fa-envelope"></a></li>
-            </ul>
+            <?php echo $this->getChildHtml('sharing') ?>            
           </div>
         </div> <!-- page-product-detail-footer -->
 

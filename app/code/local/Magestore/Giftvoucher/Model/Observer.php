@@ -49,7 +49,7 @@ class Magestore_Giftvoucher_Model_Observer {
                 if ($session->getUseGiftCardCredit() && $session->getUseGiftCard()) {
                     $session->addNotice(Mage::helper('giftvoucher')->__('You cannot apply a coupon code with either gift codes or Gift Card credit at once to get discount.'));
                 } elseif ($session->getUseGiftCard()) {
-                    $session->addNotice(Mage::helper('giftvoucher')->__('You cannot redeem your gift card together with the discount code.'));
+                    $session->addNotice(Mage::helper('giftvoucher')->__('You cannot use the discount code, gift card or redeem rebates at the same time.'));
                 } elseif ($session->getUseGiftCardCredit()) {
                     $session->addNotice(Mage::helper('giftvoucher')->__('An amount in your Gift Card credit has been used. You cannot apply a coupon code with Gift Card credit to get discount.'));
                 }
