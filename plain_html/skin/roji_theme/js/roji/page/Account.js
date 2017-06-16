@@ -19,6 +19,20 @@ roji.page.Account = function(options, element) {
   this.options = $.extend(this.options, roji.page.Account.DEFAULT, options);
 
 
+  this.is_account_rebate_history_page = false;
+  this.is_account_gift_card_page = false;
+
+  if (this.body.hasClass('account-rebate-history-page')) {
+    this.is_account_rebate_history_page = true;
+  }
+
+  if (this.body.hasClass('account-gift-card-page')) {
+    this.is_account_gift_card_page = true;
+  }
+
+  
+
+
   // variables for update_account_bg_width
   this.sidebar_bg = $('#page-account-content-section-bg .sidebar-bg');
   this.content_bg = $('#page-account-content-section-bg .content-bg');
@@ -42,6 +56,39 @@ roji.page.Account = function(options, element) {
   }
   
 
+
+
+
+
+
+  // DISPLAY TABLES
+
+  this.account_rebate_history_nav = null;
+  this.account_rebate_history_earned_table = null;
+  this.account_rebate_history_redeemed_table = null;
+  this.account_rebate_history_expired_table = null;
+
+  this.account_rebate_history_table_dictionary = {};
+
+
+  this.account_gift_card_nav = null;
+  this.account_gift_card_stored_table = null;
+  this.account_gift_card_redeemed_table = null;
+  
+  this.account_gift_card_table_dictionary = {};
+
+
+
+
+  // this needs to be before init, cause it's looking for it
+  if (this.is_account_rebate_history_page == true) {
+    this.create_account_rebate_history_nav();
+  }
+
+  // this
+  if (this.is_account_gift_card_page == true) {
+    this.create_account_gift_card_nav();
+  }
 
   console.log('roji.page.Account: init');
 };
@@ -78,6 +125,8 @@ roji.page.Account.EVENT_01 = '';
 roji.page.Account.prototype.init = function() {
   roji.page.Account.superClass_.init.call(this);
 
+  this.create_edit_info_password();
+  this.create_intl_tel_input();
   
 
 };
@@ -91,8 +140,49 @@ roji.page.Account.prototype.init = function() {
 //
 
 
-roji.page.Account.prototype.private_method_03 = function() {};
-roji.page.Account.prototype.private_method_04 = function() {};
+roji.page.Account.prototype.create_edit_info_password = function() {
+
+  
+
+  $('#page-edit-info-password-checkbox').change(function(event){
+
+    var target = $(event.currentTarget);
+    var is_checked = target.is(':checked');
+
+    if (is_checked) {
+      $('#page-edit-info-password-expand-container').slideDown(500);
+    } else {
+      $('#page-edit-info-password-expand-container').slideUp(500);
+    }
+
+    
+
+    
+
+    
+
+  }.bind(this));
+  
+
+};
+roji.page.Account.prototype.create_intl_tel_input = function() {
+
+  var arr = $('.roji-intltelinput');
+  var item = null;
+
+  for (var i = 0, l=arr.length; i < l; i++) {
+    item = $(arr[i]);
+    item.intlTelInput({
+      defaultCountry: 'sg',
+      nationalMode: false,
+      autoHideDialCode: false,
+      autoPlaceholder: false
+    });
+  }
+
+  
+
+};
 
 
 //    ____  _   _ ____  _     ___ ____
@@ -136,9 +226,6 @@ roji.page.Account.prototype.update_account_bg_height = function(){
 
   // only for desktop
   if (manic.IS_MOBILE == false) {
-    
-    
-
 
     var target_height = this.window_height - this.desktop_header_element.outerHeight() - this.desktop_footer_element.outerHeight() - this.desktop_title_section.outerHeight();
     this.section_bg.css({
@@ -147,6 +234,117 @@ roji.page.Account.prototype.update_account_bg_height = function(){
     
   }
 };
+
+
+//    ____  _____ ____    _  _____ _____   _   _ ___ ____ _____ ___  ______   __
+//   |  _ \| ____| __ )  / \|_   _| ____| | | | |_ _/ ___|_   _/ _ \|  _ \ \ / /
+//   | |_) |  _| |  _ \ / _ \ | | |  _|   | |_| || |\___ \ | || | | | |_) \ V /
+//   |  _ <| |___| |_) / ___ \| | | |___  |  _  || | ___) || || |_| |  _ < | |
+//   |_| \_\_____|____/_/   \_\_| |_____| |_| |_|___|____/ |_| \___/|_| \_\|_|
+//
+
+
+roji.page.Account.prototype.create_account_rebate_history_nav = function(){
+
+  this.account_rebate_history_nav = $('#page-account-rebate-history-header .history-header-nav');
+
+  this.account_rebate_history_earned_table = $('#page-account-rebate-history-earned-table');
+  this.account_rebate_history_redeemed_table = $('#page-account-rebate-history-redeemed-table');
+  this.account_rebate_history_expired_table = $('#page-account-rebate-history-expired-table');
+
+  this.account_rebate_history_table_dictionary = {
+    'earned': this.account_rebate_history_earned_table,
+    'redeemed': this.account_rebate_history_redeemed_table,
+    'expired': this.account_rebate_history_expired_table
+  };
+  
+};
+
+
+/**
+ * @param  {[type]} str_param
+ */
+roji.page.Account.prototype.select_account_rebate_history_table = function(str_param){
+
+  var target_table = str_param;
+  
+  if (goog.isDefAndNotNull(str_param) == false || str_param == '') {
+    target_table = 'earned';
+  }
+
+  this.account_rebate_history_nav.find('ul li').removeClass('selected');
+  this.account_rebate_history_nav.find('ul li[data-value="' + target_table + '"]').addClass('selected');
+
+  var item = null;
+
+  for (var i in this.account_rebate_history_table_dictionary) {
+
+    item = this.account_rebate_history_table_dictionary[i];
+
+    if (i == target_table) {
+      item.css({
+        'display': 'block'
+      });
+    } else {
+      item.css({
+        'display': 'none'
+      });
+    }
+  }
+
+};
+
+//     ____ ___ _____ _____    ____    _    ____  ____
+//    / ___|_ _|  ___|_   _|  / ___|  / \  |  _ \|  _ \
+//   | |  _ | || |_    | |   | |     / _ \ | |_) | | | |
+//   | |_| || ||  _|   | |   | |___ / ___ \|  _ <| |_| |
+//    \____|___|_|     |_|    \____/_/   \_\_| \_\____/
+//
+
+
+roji.page.Account.prototype.create_account_gift_card_nav = function() {
+
+  this.account_gift_card_nav = $('#page-account-gift-card-header .gift-card-nav');
+
+  this.account_gift_card_stored_table = $('#page-account-gift-card-stored-table');
+  this.account_gift_card_redeemed_table = $('#page-account-gift-card-redeemed-table');
+
+  this.account_gift_card_table_dictionary = {
+    'stored': this.account_gift_card_stored_table,
+    'redeemed': this.account_gift_card_redeemed_table
+  };
+  
+  
+};
+
+roji.page.Account.prototype.select_account_gift_card_table = function(str_param){
+  var target_table = str_param;
+  
+  if (goog.isDefAndNotNull(str_param) == false || str_param == '') {
+    target_table = 'stored';
+  }
+
+  this.account_gift_card_nav.find('ul li').removeClass('selected');
+  this.account_gift_card_nav.find('ul li[data-value="' + target_table + '"]').addClass('selected');
+
+  var item = null;
+
+  for (var i in this.account_gift_card_table_dictionary) {
+
+    item = this.account_gift_card_table_dictionary[i];
+
+    if (i == target_table) {
+      item.css({
+        'display': 'block'
+      });
+    } else {
+      item.css({
+        'display': 'none'
+      });
+    }
+  }
+};
+
 
 
 
@@ -216,6 +414,15 @@ roji.page.Account.prototype.update_page_layout = function() {
  */
 roji.page.Account.prototype.scroll_to_target = function(str_param, str_param_2, str_param_3) {
   roji.page.Account.superClass_.scroll_to_target.call(this, str_param, str_param_2, str_param_3);
+
+  if (this.is_account_rebate_history_page == true) {
+    this.select_account_rebate_history_table(str_param);
+  }
+
+  if (this.is_account_gift_card_page == true) {
+    this.select_account_gift_card_table(str_param);
+  }
+
 }
 
 /**
@@ -224,5 +431,15 @@ roji.page.Account.prototype.scroll_to_target = function(str_param, str_param_2, 
  */
 roji.page.Account.prototype.on_scroll_to_no_target = function() {
   roji.page.Account.superClass_.on_scroll_to_no_target.call(this);
+
+  if (this.is_account_rebate_history_page == true) {
+    this.select_account_rebate_history_table('');
+  }
+
+  if (this.is_account_gift_card_page == true) {
+    this.select_account_gift_card_table('');
+  }
+
+
 }
 

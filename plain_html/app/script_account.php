@@ -33,6 +33,10 @@
     <script type="text/javascript" src="../skin/roji_theme/libs/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js"></script>
     <script type="text/javascript" src="../skin/roji_theme/libs/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js"></script>
     <script type="text/javascript" src="../skin/roji_theme/libs/slick-carousel/slick/slick.min.js"></script>
+
+    <!-- Intl Tel Input -->
+    <script type="text/javascript" src="../skin/roji_theme/libs/intltelinput/intlTelInput.min.js"></script>
+    
     
     <!-- Google Closure -->
     <script type="text/javascript" src="../skin/roji_theme/libs/google-closure/closure-library/closure/goog/base.js"></script>

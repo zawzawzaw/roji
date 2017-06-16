@@ -41,20 +41,6 @@
 
   -->
 
-  <article id="page-account-sidebar-section-mobile" class="visible-sm visible-xs">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-10 col-sm-push-1 col-xs-12">
-
-          <div id="page-account-sidebar-mobile">
-            <p>My Account Information.</p>
-          </div> <!-- page-account-sidebar-mobile -->
-
-        </div>
-      </div>
-    </div>
-  </article> <!-- page-account-sidebar-section-mobile -->
-
   <article id="page-account-content-section">
     <div id="page-account-content-section-bg" class="visible-md visible-lg">
       <div class="sidebar-bg"></div>
@@ -83,10 +69,10 @@
                 <li class="selected">My account</li>
                 <li><a href="account-address-book.php">Address book</a></li>
                 <li><a href="account-order-history.php">Order history</a></li>
-                <li><a href="javascript:void(0);">Gift card</a></li>
+                <li><a href="account-gift-card.php">Gift card</a></li>
                 <li><a href="account-rebate-history.php">Rebate history</a></li>
-                <li><a href="javascript:void(0);">Friend referral</a></li>
-                <li><a href="javascript:void(0);">Text to be updated</a></li>
+                <li><a href="account-friend-referral.php">Friend referral</a></li>
+                <li><a href="account-roji-bag.php">My Roji Bag</a></li>
 
               </ul>
             </nav>
@@ -109,27 +95,35 @@
           <div id="page-account-content-width"></div>
           <div id="page-account-content">
 
-            <div id="page-account-info-header">
-              <div class="row">
-                <div class="col-md-6">
 
-                  <div class="info-header-content">
-                    <h2>Benedict tan</h2>
-                    <small>Benedict.tan.219@gmail.com</small>
+
+
+
+            <div id="page-account-info-header-container" class="sans-container-fluid-mobile">
+              <div id="page-account-info-header">
+
+                <div class="row">
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+
+                    <div class="info-header-content">
+                      <h2>Benedict tan</h2>
+                      <small>Benedict.tan.219@gmail.com</small>
+                    </div>
+
                   </div>
+                  <div class="col-md-3 col-tablet-landscape-2 col-sm-2 col-xs-12"></div>
+                  <div class="col-md-3 col-tablet-landscape-4 col-sm-4 col-xs-12">
 
-                </div>
-                <div class="col-md-3"></div>
-                <div class="col-md-3">
+                    <div class="info-header-rebates">
+                      <h4>Rebates</h4>
+                      <p>S$37.00</p>
+                    </div>
 
-                  <div class="info-header-rebates">
-                    <h4>rebates</h4>
-                    <p>S$37.00</p>
                   </div>
+                </div> <!-- row -->
 
-                </div>
-              </div>
-            </div> <!-- page-account-info-header -->
+              </div> <!-- page-account-info-header -->
+            </div>
 
             <!--
                ___ _   _ _____ ___
@@ -142,7 +136,7 @@
 
             <div id="page-account-info-content">
               <div class="row">
-                <div class="col-md-3 col-tablet-landscape-4 col-sm-6 col-xs-12">
+                <div class="col-md-3 col-tablet-landscape-4 col-sm-4 col-xs-12">
 
                   <div class="detail-item">
                     <h4>Full Name</h4>
@@ -150,7 +144,7 @@
                   </div>
 
                 </div>
-                <div class="col-md-3 col-tablet-landscape-4 col-sm-6 col-xs-12">
+                <div class="col-md-3 col-tablet-landscape-4 col-sm-4 col-xs-12">
 
                   <div class="detail-item">
                     <h4>Date of birth</h4>
@@ -158,7 +152,7 @@
                   </div>
                   
                 </div>
-                <div class="col-md-4 col-tablet-landscape-4 col-sm-6 col-xs-12">
+                <div class="col-md-4 col-tablet-landscape-4 col-sm-4 col-xs-12">
 
                   <div class="detail-item">
                     <h4>Billing address</h4>
@@ -168,7 +162,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-3 col-tablet-landscape-4 col-sm-6 col-xs-12">
+                <div class="col-md-3 col-tablet-landscape-4 col-sm-4 col-xs-12">
 
                   <div class="detail-item">
                     <h4>Gender</h4>
@@ -176,7 +170,7 @@
                   </div>
 
                 </div>
-                <div class="col-md-3 col-tablet-landscape-4 col-sm-6 col-xs-12">
+                <div class="col-md-3 col-tablet-landscape-4 col-sm-4 col-xs-12">
 
                   <div class="detail-item">
                     <h4>Password</h4>
@@ -184,7 +178,7 @@
                   </div>
                   
                 </div>
-                <div class="col-md-3 col-tablet-landscape-4 col-sm-6 col-xs-12">
+                <div class="col-md-3 col-tablet-landscape-4 col-sm-4 col-xs-12">
                   
                   <div class="detail-item">
                     <h4>Contact no.</h4>
@@ -212,23 +206,24 @@
                   <div class="info-footer">
                     <form class="checkout-form">
 
-                      <div class="form-group">
+                      <div class="form-group checkbox-version">
 
                         <div class="checkbox">
                           <input type="checkbox" name="" id="">
                           <label>
                             <span></span>
-                            <p><strong>Roji newsletters</strong></p>
+                            <p><strong>Roji mailing list</strong></p>
                           </label>
                         </div>
                       </div> <!-- form-group -->
-
-                      <small>Join our Gryphon Tea Family and be the first to learn about our latest news, and enjoy exclusive deals and invites to events.</small>
+                      
+                      <small>Subscribe to our mailing list and be the first to learn about our latest news, and enjoy exclusive deals and receive invites to events.</small>
 
                     </form> <!-- checkout-form -->
                   </div>
                 </div>
-                <div class="col-md-7">
+
+                <div class="col-md-7 col-md-push-0 col-sm-8 col-sm-push-2 col-xs-10 col-xs-push-1">
 
                   <div class="cta-container">
                     <a href="account-edit-info.php" class="square-cta">edit account</a>
@@ -239,6 +234,8 @@
 
               
             </div> <!-- page-account-info-footer -->
+
+
 
 
 

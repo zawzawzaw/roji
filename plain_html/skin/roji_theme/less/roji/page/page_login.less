@@ -48,6 +48,15 @@
   padding-top: 30px;
   padding-bottom: 100px;
 
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+
+    padding-top: 34px;
+    padding-bottom: 60px;
+
+  }
+
+
 } // #page-login-content-section
 
 
@@ -61,6 +70,11 @@
 
 
   .checkout-form{
+    .form-title{
+      p{
+        text-align: left;   // why is this right ???
+      }
+    }
     .form-group{
       margin-bottom: 20px;      // override
     }
@@ -72,10 +86,11 @@
 
   .cta-container{
     text-align: right;
-  }
-  .square-cta{
-    padding-left: 17px + 23px;
-    padding-right: 17px + 23px;
+
+    .square-cta{
+      padding-left: 17px + 23px;
+      padding-right: 17px + 23px;
+    }
   }
 
 
@@ -84,6 +99,16 @@
     padding-top: 0px;
     padding-left: 0px;
     padding-right: 0px;
+
+    .cta-container{
+      padding-top: 41px;
+
+      .square-cta{
+        width: 100%;
+        display: block;
+        text-align: center;
+      }
+    }
   }
 } // #page-login-content
 
@@ -111,6 +136,11 @@
 
   }
 
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    margin-bottom: 17px;
+  }
+
 } // #page-login-form-forgot-password-container
 
 
@@ -122,6 +152,17 @@
 } // #page-login-intro-image
 
 
+#page-login-intro-image-mobile{
+  .manic-image-container{
+    height: 480px;
+
+    // MOBILE
+    @media only screen and (max-width: 767px) {
+      height: 200px;
+    }
+  }
+}
+
 
 
 
@@ -129,6 +170,12 @@
 
 .page-login-seperator-hr{
   margin-top: 49px;
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    margin-top: 39px;
+    margin-bottom: 35px;
+  }
 }
 
 
@@ -159,12 +206,40 @@
   }
 
   .cta-container{
-
+    font-size: 0px;
   }
 
   .square-cta{
     padding-left: 17px + 23px;
     padding-right: 17px + 23px;
+
+    margin-right: 15px;
+    &:last-child{
+      margin-right: 0px;
+    }
+  }
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+
+    h2{
+      margin-bottom: 24px;
+    }
+    .default-copy{
+      margin-bottom: 25px;
+    }
+
+
+    .square-cta{
+      text-align: center;
+      display: block;
+      width: 100%;
+
+      margin-right: 0px !important;
+    }
+    .square-cta + .square-cta{
+      margin-top: 10px;
+    }
   }
 
 } // #page-login-register-form

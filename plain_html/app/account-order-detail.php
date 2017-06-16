@@ -25,7 +25,7 @@
         <div class="col-md-3 col-sm-1 col-xs-0"></div>
         <div class="col-md-9 col-sm-10 col-xs-12">
           <div id="page-account-title">
-            <h1>Welcome to the <strong>ROJI</strong> family.</h1>
+            <h1>My Order Details.</h1>
           </div> <!-- page-account-title -->
         </div>
       </div>
@@ -40,20 +40,6 @@
      \____\___/|_| \_| |_| |_____|_| \_| |_|
 
   -->
-
-  <article id="page-account-sidebar-section-mobile" class="visible-sm visible-xs">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-10 col-sm-push-1 col-xs-12">
-
-          <div id="page-account-sidebar-mobile">
-            <p>INSERT TITLE HERe</p>
-          </div> <!-- page-account-sidebar-mobile -->
-
-        </div>
-      </div>
-    </div>
-  </article> <!-- page-account-sidebar-section-mobile -->
 
   <article id="page-account-content-section">
     <div id="page-account-content-section-bg" class="visible-md visible-lg">
@@ -80,13 +66,13 @@
 
             <nav>
               <ul>
-                <li class="selected">My account</li>
+                <li><a href="account-info.php">My account</a></li>
                 <li><a href="account-address-book.php">Address book</a></li>
-                <li><a href="account-order-history.php">Order history</a></li>
-                <li><a href="javascript:void(0);">Gift card</a></li>
+                <li class="selected">Order history</li>
+                <li><a href="account-gift-card.php">Gift card</a></li>
                 <li><a href="account-rebate-history.php">Rebate history</a></li>
-                <li><a href="javascript:void(0);">Friend referral</a></li>
-                <li><a href="javascript:void(0);">Text to be updated</a></li>
+                <li><a href="account-friend-referral.php">Friend referral</a></li>
+                <li><a href="account-roji-bag.php">My Roji Bag</a></li>
 
               </ul>
             </nav>
@@ -108,13 +94,322 @@
 
           <div id="page-account-content-width"></div>
           <div id="page-account-content">
+
+            <!--
+                ___  ____  ____  _____ ____    ____  _____ _____  _    ___ _
+               / _ \|  _ \|  _ \| ____|  _ \  |  _ \| ____|_   _|/ \  |_ _| |
+              | | | | |_) | | | |  _| | |_) | | | | |  _|   | | / _ \  | || |
+              | |_| |  _ <| |_| | |___|  _ <  | |_| | |___  | |/ ___ \ | || |___
+               \___/|_| \_\____/|_____|_| \_\ |____/|_____| |_/_/   \_\___|_____|
+
+            -->
+
             
-            <div class="default-copy">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
+            <div id="page-account-order-detail-title">
+              <h2>Order no. 145003178</h2>
+            </div> <!-- page-account-order-detail-title -->
+
+            <div id="page-account-order-detail-header">
+
+              <div class="detail-header-bg"></div>
+
+              <div class="row">
+                <div class="col-md-6">
+
+                  <div class="detail-header-column-01">
+
+
+                    <!--
+                       ____ ___ _     _     ___ _   _  ____
+                      | __ )_ _| |   | |   |_ _| \ | |/ ___|
+                      |  _ \| || |   | |    | ||  \| | |  _
+                      | |_) | || |___| |___ | || |\  | |_| |
+                      |____/___|_____|_____|___|_| \_|\____|
+
+                    -->
+
+                    <div id="page-account-order-detail-billing-info">
+
+                      <h2>Billing information</h2>
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="detail-item">
+                            <h4>Full Name</h4>
+                            <p>Benedict Marquez Tan</p>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="detail-item">
+                            <h4>Email address</h4>
+                            <p>benedict.tan.219@gmail.com</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="detail-item">
+                            <h4>Billing address</h4>
+                            <p>National University of Singapore 21 Lower Kent Ridge Road Singapore 119077</p>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="detail-item">
+                            <h4>Contact no.</h4>
+                            <p>+65 912345678</p>
+                          </div>
+                        </div>
+                      </div> <!-- row -->
+                    </div> <!-- page-account-order-detail-billing-info -->
+                    
+                  </div> <!-- detail-header-column-01 -->
+
+                </div>  <!-- col-md-6 -->
+                <div class="col-md-6">
+
+                  <div class="detail-header-column-02">
+
+                    <div id="page-account-order-detail-shipping-info">
+
+                      <h2>Shipping information</h2>
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="detail-item">
+                            <h4>Full Name</h4>
+                            <p>Benedict Marquez Tan</p>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="detail-item">
+                            <h4>Email address</h4>
+                            <p>benedict.tan.219@gmail.com</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="detail-item">
+                            <h4>Shipping address</h4>
+                            <p>National University of Singapore 21 Lower Kent Ridge Road Singapore 119077</p>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="detail-item">
+                            <h4>Contact no.</h4>
+                            <p>+65 912345678</p>
+                          </div>
+                        </div>
+                      </div> <!-- row -->
+
+                    </div> <!-- page-account-order-detail-shipping-info -->
+
+                  </div> <!-- detail-header-column-02 -->
+
+                </div> <!-- col-md-6 -->
+              </div> <!-- row -->
+            </div> <!-- page-account-order-detail-header -->
+
+            <div id="page-account-order-detail-table" class="page-account-order-table">
+
+              <div class="page-account-order-table-header">
+                <div class="row">
+                  <div class="col-md-6">
+                    <h4 class="left-aligned">Product</h4>
+                  </div>
+                  <div class="col-md-2">
+                    <h4 class="center-aligned">Unit Price</h4>
+                  </div>
+                  <div class="col-md-2">
+                    <h4 class="center-aligned">Quantity</h4>
+                  </div>
+                  <div class="col-md-2">
+                    <h4 class="center-aligned">Subtotal</h4>
+                  </div>
+                </div>
+              </div> <!-- page-account-order-table-header -->
+
+              <div class="page-account-order-table-content">
+
+                <div class="page-account-order-table-item">
+
+                  <div class="row">
+                    <div class="col-md-6 hidden-sm hidden-xs">
+
+                      <div class="item-description">
+                        <h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2>
+                        <h3>ももたろう</h3>
+                        <p>Japanese Sencha with White Peach</p>
+                      </div>
+
+                    </div>
+                    <div class="col-md-2 hidden-sm hidden-xs">
+
+                      <div class="item-value">$16.90</div>
+                      
+                    </div>
+                    <div class="col-md-2 col-sm-8 col-xs-7">
+
+                      <div class="item-value">1</div>
+
+                      <div class="item-desc-mobile visible-sm visible-xs">
+
+                        <div class="item-description">
+                          <h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2>
+                          <h3>ももたろう</h3>
+                        </div>
+
+                        <div class="item-value">$16.90</div>
+
+                        <div class="item-quantity">
+                          <h4>Quantity: <br>1</h4>
+                        </div>
+
+                      </div> <!-- item-desc-mobile -->
+
+                    </div>
+                    <div class="col-md-2 hidden-sm hidden-xs">
+
+                      <div class="item-value">$33.80</div>
+
+                    </div>
+                    
+                  </div> <!-- row -->
+
+                </div> <!-- page-account-order-table-item -->
+
+                <div class="page-account-order-table-item">
+
+                  <div class="row">
+                    <div class="col-md-6 hidden-sm hidden-xs">
+
+                      <div class="item-description">
+                        <h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2>
+                        <h3>ももたろう</h3>
+                        <p>Japanese Sencha with White Peach</p>
+                      </div>
+
+                    </div>
+                    <div class="col-md-2 hidden-sm hidden-xs">
+
+                      <div class="item-value">$16.90</div>
+                      
+                    </div>
+                    <div class="col-md-2 col-sm-8 col-xs-7">
+
+                      <div class="item-value">1</div>
+
+                      <div class="item-desc-mobile visible-sm visible-xs">
+
+                        <div class="item-description">
+                          <h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2>
+                          <h3>ももたろう</h3>
+                        </div>
+
+                        <div class="item-value">$16.90</div>
+
+                        <div class="item-quantity">
+                          <h4>Quantity: <br>1</h4>
+                        </div>
+
+                      </div> <!-- item-desc-mobile -->
+
+                    </div>
+                    <div class="col-md-2 hidden-sm hidden-xs">
+
+                      <div class="item-value">$33.80</div>
+
+                    </div>
+                    
+                  </div> <!-- row -->
+
+                </div> <!-- page-account-order-table-item -->
+
+              </div> <!-- page-account-order-table-content -->
+
+            </div> <!-- page-account-order-detail-table -->
+
+
+
+
+            <div id="page-account-order-detail-subtotal-container">
+              <div class="row">
+                
+                <div class="col-md-4 col-md-push-8">
+
+                  <div id="page-account-order-detail-subtotal">
+                    <div class="row">
+                      <div class="col-md-8 col-xs-8">
+                        <div class="column-01">
+                          <p>Subtotal:</p>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-xs-4">
+                        <div class="column-02">
+                          <p>$50.70</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-8 col-xs-8">
+                        <div class="column-01">
+                          <p>Shipping & handling:</p>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-xs-4">
+                        <div class="column-02">
+                          <p>$6.00</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-8 col-xs-8">
+                        <div class="column-01">
+                          <p>Tax:</p>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-xs-4">
+                        <div class="column-02">
+                          <p>$2.24</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row">
+                      <div class="col-md-8 col-xs-8">
+                        <div class="column-01">
+                          <p>Grand total:</p>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-xs-4">
+                        <div class="column-02">
+                          <p>$58.94</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div> <!-- page-account-order-detail-subtotal -->
+
+                </div> <!-- col-md-4 -->
+
+              </div> <!-- row -->
+
+            </div> <!-- page-account-order-detail-subtotal -->
+
+
+
+
+
+
+
+            <div id="page-account-order-detail-footer">
+              <div class="cta-container">
+                <a href="account-order-history.php" class="arrow-cta reverse-version">Continue order history</a>
+              </div>
+            </div> <!-- page-account-order-detail-footer -->
 
           </div> <!-- page-account-content -->
 

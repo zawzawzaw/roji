@@ -71,7 +71,7 @@
           <div id="page-account-create-intro-copy">
             <div class="default-copy">
               <h2>Create an account</h2>
-              <small>By creating an account with Roji, you will be able to move through the checkout process faster as well as track and view your order statuses. Furthermore, you will be able to earn up to S$2 worth of rebates upon sign-up. Join us today!</small>
+              <small>Join our Roji Family today and indulge in a world of exclusive privileges.</small>
             </div>
           </div>
 
@@ -85,17 +85,6 @@
                     <label>First name*</label>
                   </div>
                   <div class="col-md-8">
-                    <input type="text" name="" id="" class="required">
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-md-4">
-                    <label>Middle name</label>
-                  </div>
-                  <div class="col-md-8">
                     <input type="text" name="" id="">
                   </div>
                 </div>
@@ -107,12 +96,12 @@
                     <label>Last name*</label>
                   </div>
                   <div class="col-md-8">
-                    <input type="text" name="" id="" class="required">
+                    <input type="text" name="" id="">
                   </div>
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group dropdown-version">
                 <div class="row">
                   <div class="col-md-4">
                     <label>Date of birth</label>
@@ -168,18 +157,18 @@
                           <div class="dropdown">
                             <select name="" id="">
                               <option value="">Month</option>
-                              <option value="1">January</option>
-                              <option value="2">February</option>
-                              <option value="3">March</option>
-                              <option value="4">April</option>
+                              <option value="1">Jan</option>
+                              <option value="2">Feb</option>
+                              <option value="3">Mar</option>
+                              <option value="4">Apr</option>
                               <option value="5">May</option>
-                              <option value="6">June</option>
-                              <option value="7">July</option>
-                              <option value="8">August</option>
-                              <option value="9">September</option>
-                              <option value="10">October</option>
-                              <option value="11">November</option>
-                              <option value="12">December</option>
+                              <option value="6">Jun</option>
+                              <option value="7">Jul</option>
+                              <option value="8">Aug</option>
+                              <option value="9">Sep</option>
+                              <option value="10">Oct</option>
+                              <option value="11">Nov</option>
+                              <option value="12">Dec</option>
                             </select>
                           </div>
                         </div> <!-- form-group-column-between -->
@@ -227,7 +216,7 @@
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group checkbox-version">
                 <div class="row">
                   <div class="col-md-4">
                     <label>Gender</label>
@@ -274,7 +263,7 @@
                     <label>Email address*</label>
                   </div>
                   <div class="col-md-8">
-                    <input type="text" name="" id="" class="required only-email">
+                    <input type="text" name="" id="">
                   </div>
                 </div>
               </div>
@@ -285,7 +274,7 @@
                     <label>Password*</label>
                   </div>
                   <div class="col-md-8">
-                    <input type="password" name="" id="" class="required">
+                    <input type="password" name="" id="">
                   </div>
                 </div>
               </div>
@@ -296,31 +285,40 @@
                     <label>Confirm Password*</label>
                   </div>
                   <div class="col-md-8">
-                    <input type="password" name="" id="" class="required">
+                    <input type="password" name="" id="">
                   </div>
                 </div>
               </div>
 
 
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-md-4"></div>
-                  <div class="col-md-8">
+              <div id="page-account-create-chaseki-checkbox-container">
+                
+                <div class="form-group checkbox-version">
+                  <div class="row">
+                    <div class="col-md-12">
 
-                    <div class="checkbox">
-                      <input type="checkbox" name="" id="">
-                      <label>
-                        <span></span>
-                        <p><strong>Subscribe to Roji newsletter</strong></p>
-                      </label>
+                      <div class="checkbox">
+                        <input type="checkbox" name="" id="">
+                        <label>
+                          <span></span>
+                          <p class="regular-version">Join our complimentary Chaseki Members Program and you will automatically receive exclusive Chaseki Members’ offers via email.</p>
+                        </label>
+                      </div>
+
                     </div>
-
                   </div>
                 </div>
-              </div>
+              </div> <!-- page-account-create-chaseki-checkbox-container -->
 
-              <div class="cta-container">
-                <input type="submit" class="square-cta" value="Create account">
+
+
+
+              <div class="row">
+                <div class="col-md-12 col-md-push-0 col-sm-8 col-sm-push-2 col-xs-10 col-xs-push-1">
+                  <div class="cta-container">
+                    <input type="submit" class="square-cta" value="Create account">
+                  </div>
+                </div>
               </div>
 
             </form> <!-- page-account-create-form -->

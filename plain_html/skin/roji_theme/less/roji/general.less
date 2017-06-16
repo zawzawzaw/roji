@@ -95,9 +95,12 @@ button{
 }
 
 
-
-
-
+//    ____  _     ___ ____ _  __
+//   / ___|| |   |_ _/ ___| |/ /
+//   \___ \| |    | | |   | ' /
+//    ___) | |___ | | |___| . \
+//   |____/|_____|___\____|_|\_\
+//
 
 .roji-slick-slider{
 
@@ -200,4 +203,93 @@ button{
     }
 
   }
+}
+
+
+
+//    ___ _   _ _____ _       _____ _____ _       ___ _   _ ____  _   _ _____
+//   |_ _| \ | |_   _| |     |_   _| ____| |     |_ _| \ | |  _ \| | | |_   _|
+//    | ||  \| | | | | |       | | |  _| | |      | ||  \| | |_) | | | | | |
+//    | || |\  | | | | |___    | | | |___| |___   | || |\  |  __/| |_| | | |
+//   |___|_| \_| |_| |_____|   |_| |_____|_____| |___|_| \_|_|    \___/  |_|
+//
+
+
+.roji-intltelinput-container{
+  
+
+  .intl-tel-input{
+    width: 100%;
+    display: block;
+
+    &.allow-dropdown input,
+    &.allow-dropdown input[type=tel],
+    &.allow-dropdown input[type=text],
+    &.separate-dial-code input,
+    &.separate-dial-code input[type=tel],
+    &.separate-dial-code input[type=text]{
+      padding-left: 78px + 16px;
+
+      // TABLET LANDSCAPE
+      @media only screen and (max-width: 1024px) and (min-width: 992px) {
+        padding-left: 78px + 13px;
+      }
+      // TABLET PORTRAIT
+      @media only screen and (max-width: 991px) {
+        padding-left: 78px + 11px;
+      }
+    }
+
+    .flag-container{
+      border-right: 12px solid @off-white-1;
+      z-index: 300;
+    }
+    .selected-flag{
+      margin-right: 9px;
+      padding-left: 16px;
+      width: 55px;
+      outline: none;
+
+      // TABLET LANDSCAPE
+      @media only screen and (max-width: 1024px) and (min-width: 992px) {
+        padding-left: 13px;
+      }
+      // TABLET PORTRAIT
+      @media only screen and (max-width: 991px) {
+        padding-left: 11px;
+      }
+    }
+    .selected-flag .iti-arrow{
+      border: none;
+
+      position: absolute;
+      top: 5px;
+      right: 0;
+      width: 10px;
+      height: 20px;
+      margin-top: -3px;   // dunno why
+
+      &:after{
+        .fa;
+        content: "\f107";
+        font-size: 16px;
+        line-height: 20px;        
+        text-align: center;
+        color: @off-black;
+
+        /*
+        
+        */
+
+        pointer-events: none;
+      }
+
+    }
+  }
+}
+
+
+// MOBILE
+.iti-mobile .intl-tel-input.iti-container{
+  z-index: 300000;
 }
