@@ -111,7 +111,7 @@
                   </div>
                   <div class="col-md-8">
                     <div class="detail-item">
-                      <h4>Address</h4>
+                      <h4>Shipping address</h4>
                       <p>National University of Singapore  21 Lower Kent Ridge Road Singapore 119077</p>
                     </div>
                   </div>

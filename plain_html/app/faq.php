@@ -64,6 +64,7 @@
                 <li data-value="brewing-and-preserving"><a href="#brewing-and-preserving">Brewing & Preserving</a></li>
                 <li data-value="shipping-and-account"><a href="#shipping-and-account">Shipping & Account</a></li>
                 <li data-value="trade"><a href="#trade ">Trade</a></li>
+                <li data-value="chaseki-members-program"><a href="#chaseki-members-program ">Chaseki Members Program</a></li>
               </ul>
             </nav>
           </div>
@@ -335,6 +336,83 @@
 
               </div>
             </div>
+
+            <!--
+                ____ _   _    _    ____  _____ _  _____
+               / ___| | | |  / \  / ___|| ____| |/ /_ _|
+              | |   | |_| | / _ \ \___ \|  _| | ' / | |
+              | |___|  _  |/ ___ \ ___) | |___| . \ | |
+               \____|_| |_/_/   \_\____/|_____|_|\_\___|
+
+            -->
+
+            <div class="page-faq-content-item" data-value="chaseki-members-program">
+              <div class="page-faq-item-container">
+
+                <div class="page-faq-item">
+                  <div class="default-copy">
+                    <h4>What are the terms and conditions for the "1st time Sign-Up Rebates Reward"</h4>
+                    <ul>
+                      <li>Rebates not applicable to use for products under the Gifting Section.</li>
+                      <li>Rebates not applicable on shipping fees & prevailing taxes.</li>
+                      <li>Valid for 30 days from date of Sign-Up.</li>
+                      <li>Not to be used in conjunction with any other promotions & Gift Certificates.</li>
+                      <li>When promo codes are used, rebates will not be rewarded or earned.</li>
+                      <li>Valid for both local & international orders.</li>
+                      <li>Roji Cha by Gryphon Tea Company reserves the right to change the terms & conditions without any prior notice.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="page-faq-item">
+                  <div class="default-copy">
+                    <h4>What are the terms and conditions for the "Rebates Earning Mechanics"</h4>
+                    <ul>
+                      <li>Rebates not applicable to use for products under the Gifting Section.</li>
+                      <li>Rebates not applicable on shipping fees & prevailing taxes.</li>
+                      <li>Valid for 30days from date of issuance.</li>
+                      <li>Not to be used in conjunction with any other promotions & Gift Certificates.</li>
+                      <li>When promo codes are used, rebates will not be rewarded or earned.</li>
+                      <li>Valid for both local & international orders.</li>
+                      <li>Roji Cha by Gryphon Tea Company reserves the right to change the terms & conditions without any prior notice.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="page-faq-item">
+                  <div class="default-copy">
+                    <h4>What are the terms and conditions for the "Birthday Month Members Perks"</h4>
+                    <ul>
+                      <li>Rebates issued 1 day after date of birth.</li>
+                      <li>Rebates issued not applicable to use for products under the Gifting Section.</li>
+                      <li>Rebates not applicable on shipping fees & prevailing taxes.</li>
+                      <li>Valid for 30days from date of issuance.</li>
+                      <li>Not to be used in conjunction with any other promotions & Gift Certificates.</li>
+                      <li>Valid for both local & international orders.</li>
+                      <li>Roji Cha by Gryphon Tea Company reserves the right to change the terms & conditions without any prior notice.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="page-faq-item last-version">
+                  <div class="default-copy">
+                    <h4>What are the terms and conditions for the "Friend Referral Rebates Earning Mechanics"</h4>
+                    <ul>
+                      <li>Rebates not applicable to use for products under the Gifting Section.</li>
+                      <li>Rebates not applicable on shipping fees & prevailing taxes.</li>
+                      <li>Valid for 30 days from date of issuance.</li>
+                      <li>Not to be used in conjunction with any other promotions & Gift Certificates.</li>
+                      <li>When promo codes are used, rebates will not be rewarded or earned.</li>
+                      <li>Valid for both local & international orders.</li>
+                      <li>Roji Cha by Gryphon Tea Company reserves the right to change the terms & conditions without any prior notice.</li>
+                    </ul>
+                  </div>
+                </div>
+                
+
+
+                
+              </div>
+            </div>
+
+
 
           </div> <!-- page-faq-content -->
 

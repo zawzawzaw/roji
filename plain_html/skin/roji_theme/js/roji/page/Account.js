@@ -20,10 +20,17 @@ roji.page.Account = function(options, element) {
 
 
   this.is_account_rebate_history_page = false;
+  this.is_account_gift_card_page = false;
 
   if (this.body.hasClass('account-rebate-history-page')) {
     this.is_account_rebate_history_page = true;
   }
+
+  if (this.body.hasClass('account-gift-card-page')) {
+    this.is_account_gift_card_page = true;
+  }
+
+  
 
 
   // variables for update_account_bg_width
@@ -52,6 +59,10 @@ roji.page.Account = function(options, element) {
 
 
 
+
+
+  // DISPLAY TABLES
+
   this.account_rebate_history_nav = null;
   this.account_rebate_history_earned_table = null;
   this.account_rebate_history_redeemed_table = null;
@@ -59,9 +70,24 @@ roji.page.Account = function(options, element) {
 
   this.account_rebate_history_table_dictionary = {};
 
+
+  this.account_gift_card_nav = null;
+  this.account_gift_card_stored_table = null;
+  this.account_gift_card_redeemed_table = null;
+  
+  this.account_gift_card_table_dictionary = {};
+
+
+
+
   // this needs to be before init, cause it's looking for it
-  if (this.is_account_rebate_history_page == true){
+  if (this.is_account_rebate_history_page == true) {
     this.create_account_rebate_history_nav();
+  }
+
+  // this
+  if (this.is_account_gift_card_page == true) {
+    this.create_account_gift_card_nav();
   }
 
   console.log('roji.page.Account: init');
@@ -235,7 +261,6 @@ roji.page.Account.prototype.create_account_rebate_history_nav = function(){
 };
 
 
-
 /**
  * @param  {[type]} str_param
  */
@@ -267,6 +292,57 @@ roji.page.Account.prototype.select_account_rebate_history_table = function(str_p
     }
   }
 
+};
+
+//     ____ ___ _____ _____    ____    _    ____  ____
+//    / ___|_ _|  ___|_   _|  / ___|  / \  |  _ \|  _ \
+//   | |  _ | || |_    | |   | |     / _ \ | |_) | | | |
+//   | |_| || ||  _|   | |   | |___ / ___ \|  _ <| |_| |
+//    \____|___|_|     |_|    \____/_/   \_\_| \_\____/
+//
+
+
+roji.page.Account.prototype.create_account_gift_card_nav = function() {
+
+  this.account_gift_card_nav = $('#page-account-gift-card-header .gift-card-nav');
+
+  this.account_gift_card_stored_table = $('#page-account-gift-card-stored-table');
+  this.account_gift_card_redeemed_table = $('#page-account-gift-card-redeemed-table');
+
+  this.account_gift_card_table_dictionary = {
+    'stored': this.account_gift_card_stored_table,
+    'redeemed': this.account_gift_card_redeemed_table
+  };
+  
+  
+};
+
+roji.page.Account.prototype.select_account_gift_card_table = function(str_param){
+  var target_table = str_param;
+  
+  if (goog.isDefAndNotNull(str_param) == false || str_param == '') {
+    target_table = 'stored';
+  }
+
+  this.account_gift_card_nav.find('ul li').removeClass('selected');
+  this.account_gift_card_nav.find('ul li[data-value="' + target_table + '"]').addClass('selected');
+
+  var item = null;
+
+  for (var i in this.account_gift_card_table_dictionary) {
+
+    item = this.account_gift_card_table_dictionary[i];
+
+    if (i == target_table) {
+      item.css({
+        'display': 'block'
+      });
+    } else {
+      item.css({
+        'display': 'none'
+      });
+    }
+  }
 };
 
 
@@ -342,6 +418,11 @@ roji.page.Account.prototype.scroll_to_target = function(str_param, str_param_2, 
   if (this.is_account_rebate_history_page == true) {
     this.select_account_rebate_history_table(str_param);
   }
+
+  if (this.is_account_gift_card_page == true) {
+    this.select_account_gift_card_table(str_param);
+  }
+
 }
 
 /**
@@ -354,5 +435,11 @@ roji.page.Account.prototype.on_scroll_to_no_target = function() {
   if (this.is_account_rebate_history_page == true) {
     this.select_account_rebate_history_table('');
   }
+
+  if (this.is_account_gift_card_page == true) {
+    this.select_account_gift_card_table('');
+  }
+
+
 }
 

@@ -178,12 +178,8 @@ roji.page.Faq.prototype.show_faq_content_item = function(str_param) {
 
       }
       
-    } else {
-
-
-      this.show_faq_content_item('tea');    // recursive
-
     }
+    
 
   }
   

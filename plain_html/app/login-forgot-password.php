@@ -64,7 +64,8 @@
             <form class="checkout-form"> 
 
               <div class="form-title">
-                <h2>Login to your account</h2>
+                <h2>Forgot your password?</h2>
+                <p>Please enter your email address below. You will receive a link to reset your password.</p>
               </div>
 
               <div class="form-group">
@@ -78,33 +79,10 @@
                 </div>
               </div>
 
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-md-4">
-                    <label>Password*</label>
-                  </div>
-                  <div class="col-md-8">
-                    <input type="password">
-                  </div>
-                </div>
-              </div>
-
-              <div id="page-login-form-forgot-password-container">
-                <a href="javascript:void(0);">Forgot password?</a>
-              </div>
-
               <div class="row">
                 <div class="col-md-7">
 
-                  <div class="form-group checkbox-version">
-                    <div class="checkbox">
-                      <input type="checkbox" name="" id="">
-                      <label>
-                        <span></span>
-                        <p>Remember me</p>
-                      </label>
-                    </div>
-                  </div>
+
 
                 </div>
                 <div class="col-md-5 col-md-push-0 col-sm-8 col-sm-push-2 col-xs-10 col-xs-push-1">
@@ -128,44 +106,6 @@
               <img src="" data-image-desktop="images_cms/others/login-intro.jpg">
             </div>
           </div>
-
-        </div>
-      </div> <!-- row -->
-
-      <div class="row">
-        <div class="col-md-12">
-          <hr class="page-login-seperator-hr">
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-1 col-tablet-landscape-0 col-sm-0"></div>
-
-        <div class="col-md-8 col-tablet-landscape-9 col-sm-12">
-
-          <div id="page-login-register-form-container">
-            <div id="page-login-register-form">
-              <h2>Don’t have an Account?</h2>
-
-              <div class="default-copy">
-                <small>Simply create one to join our Roji family and indulge in a world of exclusive privileges as you earn rewards and privileges every time you shop, connect and share.</small>
-              </div>
-
-              <div class="row">
-
-
-                <div class="col-md-12 col-md-push-0 col-sm-8 col-sm-push-2 col-xs-10 col-xs-push-1">
-
-                  <div class="cta-container">
-                    <a href="javascript:void(0);" class="square-cta">Create an account</a>
-                    <a href="javascript:void(0);" class="square-cta">Chaseki Members Program</a>
-                  </div>
-                  
-                </div>
-              </div>
-
-            </div> <!-- page-login-register-form -->
-          </div> <!-- page-login-register-form-container -->
 
         </div>
       </div> <!-- row -->

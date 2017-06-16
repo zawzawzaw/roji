@@ -71,7 +71,7 @@
           <div id="page-account-create-intro-copy">
             <div class="default-copy">
               <h2>Create an account</h2>
-              <small>By creating an account with Roji, you will be able to move through the checkout process faster as well as track and view your order statuses. Furthermore, you will be able to earn up to S$2 worth of rebates upon sign-up. Join us today!</small>
+              <small>Join our Roji Family today and indulge in a world of exclusive privileges.</small>
             </div>
           </div>
 
@@ -83,17 +83,6 @@
                 <div class="row">
                   <div class="col-md-4">
                     <label>First name*</label>
-                  </div>
-                  <div class="col-md-8">
-                    <input type="text" name="" id="">
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-md-4">
-                    <label>Middle name</label>
                   </div>
                   <div class="col-md-8">
                     <input type="text" name="" id="">
@@ -302,22 +291,25 @@
               </div>
 
 
-              <div class="form-group checkbox-version">
-                <div class="row">
-                  <div class="col-md-4"></div>
-                  <div class="col-md-8">
+              <div id="page-account-create-chaseki-checkbox-container">
+                
+                <div class="form-group checkbox-version">
+                  <div class="row">
+                    <div class="col-md-12">
 
-                    <div class="checkbox">
-                      <input type="checkbox" name="" id="">
-                      <label>
-                        <span></span>
-                        <p>Join our complimentary Chaseki Members Program and you will automatically receive exclusive Chaseki Members’ offers via email.</p>
-                      </label>
+                      <div class="checkbox">
+                        <input type="checkbox" name="" id="">
+                        <label>
+                          <span></span>
+                          <p class="regular-version">Join our complimentary Chaseki Members Program and you will automatically receive exclusive Chaseki Members’ offers via email.</p>
+                        </label>
+                      </div>
+
                     </div>
-
                   </div>
                 </div>
-              </div>
+              </div> <!-- page-account-create-chaseki-checkbox-container -->
+
 
 
 

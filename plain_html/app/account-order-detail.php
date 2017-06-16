@@ -149,7 +149,7 @@
                       <div class="row">
                         <div class="col-md-6">
                           <div class="detail-item">
-                            <h4>Address</h4>
+                            <h4>Billing address</h4>
                             <p>National University of Singapore 21 Lower Kent Ridge Road Singapore 119077</p>
                           </div>
                         </div>
@@ -190,7 +190,7 @@
                       <div class="row">
                         <div class="col-md-6">
                           <div class="detail-item">
-                            <h4>Address</h4>
+                            <h4>Shipping address</h4>
                             <p>National University of Singapore 21 Lower Kent Ridge Road Singapore 119077</p>
                           </div>
                         </div>
@@ -210,9 +210,9 @@
               </div> <!-- row -->
             </div> <!-- page-account-order-detail-header -->
 
-            <div id="page-account-order-detail-table">
+            <div id="page-account-order-detail-table" class="page-account-order-table">
 
-              <div class="order-detail-table-header">
+              <div class="page-account-order-table-header">
                 <div class="row">
                   <div class="col-md-6">
                     <h4 class="left-aligned">Product</h4>
@@ -227,16 +227,16 @@
                     <h4 class="center-aligned">Subtotal</h4>
                   </div>
                 </div>
-              </div> <!-- order-detail-table-header -->
+              </div> <!-- page-account-order-table-header -->
 
-              <div class="order-detail-table-content">
+              <div class="page-account-order-table-content">
 
-                <div class="order-detail-table-item">
+                <div class="page-account-order-table-item">
 
                   <div class="row">
                     <div class="col-md-6 hidden-sm hidden-xs">
 
-                      <div class="detail-table-item-description">
+                      <div class="item-description">
                         <h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2>
                         <h3>ももたろう</h3>
                         <p>Japanese Sencha with White Peach</p>
@@ -245,45 +245,45 @@
                     </div>
                     <div class="col-md-2 hidden-sm hidden-xs">
 
-                      <div class="detail-table-item-value">$16.90</div>
+                      <div class="item-value">$16.90</div>
                       
                     </div>
                     <div class="col-md-2 col-sm-8 col-xs-7">
 
-                      <div class="detail-table-item-value">1</div>
+                      <div class="item-value">1</div>
 
-                      <div class="detail-table-item-desc-mobile visible-sm visible-xs">
+                      <div class="item-desc-mobile visible-sm visible-xs">
 
-                        <div class="detail-table-item-description">
+                        <div class="item-description">
                           <h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2>
                           <h3>ももたろう</h3>
                         </div>
 
-                        <div class="detail-table-item-value">$16.90</div>
+                        <div class="item-value">$16.90</div>
 
-                        <div class="detail-table-item-quantity">
+                        <div class="item-quantity">
                           <h4>Quantity: <br>1</h4>
                         </div>
 
-                      </div> <!-- detail-table-item-desc-mobile -->
+                      </div> <!-- item-desc-mobile -->
 
                     </div>
                     <div class="col-md-2 hidden-sm hidden-xs">
 
-                      <div class="detail-table-item-value">$33.80</div>
+                      <div class="item-value">$33.80</div>
 
                     </div>
                     
                   </div> <!-- row -->
 
-                </div> <!-- order-detail-table-item -->
+                </div> <!-- page-account-order-table-item -->
 
-                <div class="order-detail-table-item">
+                <div class="page-account-order-table-item">
 
                   <div class="row">
                     <div class="col-md-6 hidden-sm hidden-xs">
 
-                      <div class="detail-table-item-description">
+                      <div class="item-description">
                         <h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2>
                         <h3>ももたろう</h3>
                         <p>Japanese Sencha with White Peach</p>
@@ -292,40 +292,40 @@
                     </div>
                     <div class="col-md-2 hidden-sm hidden-xs">
 
-                      <div class="detail-table-item-value">$16.90</div>
+                      <div class="item-value">$16.90</div>
                       
                     </div>
                     <div class="col-md-2 col-sm-8 col-xs-7">
 
-                      <div class="detail-table-item-value">1</div>
+                      <div class="item-value">1</div>
 
-                      <div class="detail-table-item-desc-mobile visible-sm visible-xs">
+                      <div class="item-desc-mobile visible-sm visible-xs">
 
-                        <div class="detail-table-item-description">
+                        <div class="item-description">
                           <h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2>
                           <h3>ももたろう</h3>
                         </div>
 
-                        <div class="detail-table-item-value">$16.90</div>
+                        <div class="item-value">$16.90</div>
 
-                        <div class="detail-table-item-quantity">
+                        <div class="item-quantity">
                           <h4>Quantity: <br>1</h4>
                         </div>
 
-                      </div> <!-- detail-table-item-desc-mobile -->
+                      </div> <!-- item-desc-mobile -->
 
                     </div>
                     <div class="col-md-2 hidden-sm hidden-xs">
 
-                      <div class="detail-table-item-value">$33.80</div>
+                      <div class="item-value">$33.80</div>
 
                     </div>
                     
                   </div> <!-- row -->
 
-                </div> <!-- order-detail-table-item -->
+                </div> <!-- page-account-order-table-item -->
 
-              </div> <!-- order-detail-table-content -->
+              </div> <!-- page-account-order-table-content -->
 
             </div> <!-- page-account-order-detail-table -->
 

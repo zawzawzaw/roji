@@ -212,12 +212,12 @@
                           <input type="checkbox" name="" id="">
                           <label>
                             <span></span>
-                            <p><strong>Roji newsletters</strong></p>
+                            <p><strong>Roji mailing list</strong></p>
                           </label>
                         </div>
                       </div> <!-- form-group -->
-
-                      <small>Join our Gryphon Tea Family and be the first to learn about our latest news, and enjoy exclusive deals and invites to events.</small>
+                      
+                      <small>Subscribe to our mailing list and be the first to learn about our latest news, and enjoy exclusive deals and receive invites to events.</small>
 
                     </form> <!-- checkout-form -->
                   </div>

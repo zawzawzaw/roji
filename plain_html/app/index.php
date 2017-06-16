@@ -314,8 +314,8 @@
                     <div class="tile-social">
                       <p>Follow us on social media</p>
                       <ul>
-                        <li><a href="javascript:void" class="fa fa-facebook"></a></li>
-                        <li><a href="javascript:void" class="fa fa-instagram"></a></li>
+                        <li><a href="javascript:void(0);" class="fa fa-facebook"></a></li>
+                        <li><a href="javascript:void(0);" class="fa fa-instagram"></a></li>
                       </ul>
                     </div>
                   </div> <!-- tile-column-01 -->

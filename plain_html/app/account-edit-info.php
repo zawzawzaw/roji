@@ -256,7 +256,7 @@
                       <div class="form-group">
                         <div class="row">
                           <div class="col-md-4">
-                            <label>Address*</label>
+                            <label>Billing address*</label>
                           </div>
                           <div class="col-md-8">
                             <input type="text" name="" id="" value="National University of Singapore">
