@@ -22,8 +22,8 @@
   <article id="page-others-title-section">
     <div class="container-fluid has-breakpoint">
       <div class="row">
-        <div class="col-md-3 col-sm-1 col-xs-0"></div>
-        <div class="col-md-9 col-sm-10 col-xs-12">
+        <div class="col-md-3 col-sm-0 col-xs-0"></div>
+        <div class="col-md-9 col-sm-12 col-xs-12">
 
           <div id="page-others-title">
             <h1>Privacy Policy.</h1>
@@ -46,14 +46,14 @@
 
 
   <article id="page-others-main-content-section">
-    <div id="page-others-main-content-section-bg">
+    <div id="page-others-main-content-section-bg" class="visible-sm visible-md visible-lg">
       <div class="sidebar-bg"></div>
       <div class="content-bg"></div>
     </div>
 
     <div class="container-fluid has-breakpoint">
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-2 col-tablet-landscape-1 col-sm-2 hidden-xs">
           <div id="page-others-main-sidebar-width"></div>
           <div id="page-others-main-sidebar">
             <nav>
@@ -70,8 +70,9 @@
             </nav>
           </div>
 
-        </div>
-        <div class="col-md-10">
+        </div> <!-- col-md-2 -->
+        <div class="col-md-0 col-tablet-landscape-0 col-sm-0 col-xs-0"></div>
+        <div class="col-md-10 col-tablet-landscape-11 col-sm-10 col-xs-12">
 
           <div id="page-others-main-content-width"></div>
           <div id="page-others-main-content">

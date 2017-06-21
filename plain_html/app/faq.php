@@ -7,7 +7,7 @@
   <?php include 'head.php'; ?>
 </head>
 
-<body class="min-height-version">
+<body class="min-height-version min-height-mobile-version">
   <?php include "header.php"; ?>
 
   <!--
@@ -19,7 +19,7 @@
 
   -->
 
-  <article id="page-faq-title-section" class="visible-md visible-lg">
+  <article id="page-faq-title-section">
     <div class="container-fluid has-breakpoint">
       <div class="row">
         <div class="col-md-3"></div>
@@ -64,7 +64,7 @@
                 <li data-value="brewing-and-preserving"><a href="#brewing-and-preserving">Brewing & Preserving</a></li>
                 <li data-value="shipping-and-account"><a href="#shipping-and-account">Shipping & Account</a></li>
                 <li data-value="trade"><a href="#trade ">Trade</a></li>
-                <li data-value="chaseki-members-program"><a href="#chaseki-members-program ">Chaseki Members Program</a></li>
+                <li data-value="chaseki-members-program"><a href="#chaseki-members-program">Chaseki Members Program</a></li>
               </ul>
             </nav>
           </div>
@@ -420,6 +420,383 @@
       </div>
     </div>
   </article>
+
+  <!--
+     __  __  ___  ____ ___ _     _____    ____ ___  _   _ _____ _____ _   _ _____
+    |  \/  |/ _ \| __ )_ _| |   | ____|  / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+    | |\/| | | | |  _ \| || |   |  _|   | |  | | | |  \| | | | |  _| |  \| | | |
+    | |  | | |_| | |_) | || |___| |___  | |__| |_| | |\  | | | | |___| |\  | | |
+    |_|  |_|\___/|____/___|_____|_____|  \____\___/|_| \_| |_| |_____|_| \_| |_|
+
+  -->
+
+  <article id="page-faq-content-section-mobile" class="visible-sm visible-xs">
+
+    <div class="manic-expand-container" data-group="faq-mobile" data-value="tea-mobile">
+      <div class="scroll-target" data-value="tea-mobile"></div>
+      <div class="manic-expand-container-title">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-0 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">
+              <h4>Tea</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="manic-expand-container-btn"></div>
+      <div class="manic-expand-container-content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-0 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">
+
+              <div class="detail-item-container">
+                <div class="detail-item">
+                  <h4>What is green tea?</h4>
+                  <p>Green tea is made from Camellia Sinensis leaves that have not undergone the same withering and oxidation process used to make oolong and black tea. </p>
+                </div>
+                <div class="detail-item">
+                  <h4>What is the difference between Japanese and Chinese green tea?</h4>
+                  <p>Chinese harvesters pan fry the leaves in a large wok while Japanese green teas are steamed, dried naturally, and then rolled into various shapes until they are completely dry. </p>
+                </div>
+                <div class="detail-item">
+                  <h4>Why is the tea ceremony important?</h4>
+                  <p>The traditional tea ceremony is a symbol of peace, harmony and happiness. It demonstrates respect through etiquette and grace.</p>
+                </div>
+                <div class="detail-item">
+                  <h4>How long is the expiry date for Japanese tea?</h4>
+                  <p>We recommend consuming our teas within the stated ‘Best Before’ date indicated on your Roji box.</p>
+                </div>
+                <div class="detail-item">
+                  <h4>I am new to Japanese tea. Which kind of Japanese tea do you recommend?</h4>
+                  <p>We suggest that you start with Sencha, the most produced and consumed tea in Japan. </p>
+                </div>
+                <div class="detail-item">
+                  <h4>Where are your teas sourced from?</h4>
+                  <p>They are sourced from Shizuoka Prefecture, Asahina in Shizuoka Prefecture and Kagoshima Prefecture. </p>
+                </div>
+                <div class="detail-item">
+                  <h4>Does Japanese tea represent any risk of radioactivity?</h4>
+                  <p>No, there is no radioactivity present. We take the necessary precautions to ensure that the tea is safe for consumption.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="manic-expand-container" data-group="faq-mobile" data-value="well-being-mobile">
+      <div class="scroll-target" data-value="well-being-mobile"></div>
+      <div class="manic-expand-container-title">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-0 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">
+              <h4>Well-being</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="manic-expand-container-btn"></div>
+      <div class="manic-expand-container-content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-0 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">
+
+              <div class="detail-item-container">
+                <div class="detail-item">
+                  <h4>What makes Japanese tea so healthy?</h4>
+                  <p>Japanese tea is good to prevent physical deterioration, high blood pressure, obesity, diabetes, and cancer. It also protects you from catching colds, viral infections, cavities and allergies and keeps your skin glowing and beautiful.</p>
+                </div>
+                <div class="detail-item">
+                  <h4>Does drinking Japanese tea help to lose weight?</h4>
+                  <p>Drinking Japanese green tea regularly can increase your metabolism and help burn fat safely and naturally.</p>
+                </div>
+                <div class="detail-item">
+                  <h4>Do Japanese teas contain caffeine?</h4>
+                  <p>A bowl of matcha has about 35mg of caffeine whereas a cup of espresso coffee provides 60mg.</p>
+                </div>
+                <div class="detail-item">
+                  <h4>How many cups of green tea should be consumed per day in order to gain the maximum health benefits?</h4>
+                  <p>It varies from person to person but research recommends 2 to 5 cups per day.</p>
+                </div>
+                <div class="detail-item">
+                  <h4>Which specific tea contains healthy nutrients?</h4>
+                  <p>Catechin contained in Japanese tea helps to remove free radicals (activated oxygen) and improves our immune system and general health condition.</p>
+                  <p>All Japanese green tea contains Catechin and Sencha contains the highest levels of Catechin.</p>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="manic-expand-container" data-group="faq-mobile" data-value="matcha-mobile">
+      <div class="scroll-target" data-value="matcha-mobile"></div>
+      <div class="manic-expand-container-title">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-0 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">
+              <h4>Matcha</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="manic-expand-container-btn"></div>
+      <div class="manic-expand-container-content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-0 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">
+
+              <div class="detail-item-container">
+                <div class="detail-item">
+                  <h4>What does matcha mean?</h4>
+                  <p>Matcha literally means "powdered tea." The actual leaves have been finely powdered and made into a solution, traditionally by mixing about a teaspoon of matcha powder with a third cup of hot water and whisked with a bamboo brush until it froths.</p>
+                </div>
+                <div class="detail-item">
+                  <h4>What are the grades of matcha available?</h4>
+                  <p>Ceremonial grade matcha is the highest quality green tea powder available. This premium grade is vibrant green in color, with a delicate taste and extremely fine texture.</p>
+                </div>
+                <div class="detail-item">
+                  <h4>What is the difference between matcha and sencha?</h4>
+                  <p>Matcha and sencha both undergo a different process. Sencha is grown in in the full sun, while matcha is grown in the shade.</p>
+                </div>
+                <div class="detail-item">
+                  <h4>How do I clean my matcha bowl?</h4>
+                  <p>You can simply wash with the dish soap and rinse it thoroughly with purified water.</p>
+                </div>
+                <div class="detail-item">
+                  <h4>How do I maintain my bamboo whisk?</h4>
+                  <p>Fill a bowl half-full of clean water, rotate the whisk and then rinse it gently with clean water. If you use the whisk twice everyday, your whisk should last 2 to 3 months.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="manic-expand-container" data-group="faq-mobile" data-value="brewing-and-preserving">
+      <div class="scroll-target" data-value="brewing-and-preserving"></div>
+      <div class="manic-expand-container-title">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-0 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">
+              <h4>Brewing & Preserving</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="manic-expand-container-btn"></div>
+      <div class="manic-expand-container-content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-0 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">
+
+              <div class="detail-item-container">
+                <div class="detail-item">
+                  <h4>How do I brew the perfect cup of Japanese tea?</h4>
+                  <p>Good water, the correct amount of tea, an accurate steeping time, and a proper teapot are important.</p>
+                </div>
+                <div class="detail-item">
+                  <h4>Is water quality important when brewing tea?</h4>
+                  <p>We recommend soft water with fewer minerals e.g. bottled spring water.</p>
+                </div>
+                <div class="detail-item">
+                  <h4>What is the best way to store green tea? How do I keep it fresh?</h4>
+                  <p>It is best to store your loose tea in an air-tight container, kept away from direct sunlight in a cool and dry environment.</p>
+                </div>
+                <div class="detail-item">
+                  <h4>How many times can I infuse the same tea leaves?</h4>
+                  <p>The tea ingredients decreases gradually from the 1st to the 3rd. The 3rd infusion has almost nothing of the ingredients.</p>
+                </div>
+                <div class="detail-item">
+                  <h4>How many hours does the infused tea last?</h4>
+                  <p>Normally, it lasts about 12 hours when refrigerated.</p>
+                </div>
+                
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="manic-expand-container" data-group="faq-mobile" data-value="shipping-and-account">
+      <div class="scroll-target" data-value="shipping-and-account"></div>
+      <div class="manic-expand-container-title">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-0 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">
+              <h4>Shipping & Account</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="manic-expand-container-btn"></div>
+      <div class="manic-expand-container-content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-0 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">
+
+              <div class="detail-item-container">
+                <div class="detail-item">
+                  <h4>Can I make a purchase without signing up for an account?</h4>
+                  <p>Yes you can. When you purchase as a guest, your details will only be used for the purpose of the sales transaction. </p>
+                </div>
+                <div class="detail-item">
+                  <h4>Why should I sign-up for an account?</h4>
+                  <p>When you sign-up for an account with us, you are automatically enrolled into the Roji Rewards Program which allow you to enjoy special privileges for future purchases.</p>
+                </div>
+                <div class="detail-item">
+                  <h4>I can’t log in to my Roji account! What do I do?</h4>
+                  <p>Make sure you have entered the right email address and password.</p>
+                  <p>Try not to copy and paste the email and password – this sometimes adds an extra spacing into your password that you’re not able to see.</p>
+                  <p>If you’ve forgotten your password or it’s just not working, use the ‘Forgot Password’ link on the log in page to have it reset and sent to you via your registered email with us.</p>
+                  <p>If you still can’t log in, please contact us.</p>
+                </div>
+                
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="manic-expand-container" data-group="faq-mobile" data-value="trade">
+      <div class="scroll-target" data-value="trade"></div>
+      <div class="manic-expand-container-title">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-0 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">
+              <h4>Trade</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="manic-expand-container-btn"></div>
+      <div class="manic-expand-container-content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-0 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">
+
+              <div class="detail-item-container">
+                <div class="detail-item">
+                  <h4>Can I sell Roji at my establishment?</h4>
+                  <p>Absolutely! To be eligible for a trade account with Roji, please contact us.</p>
+                </div>
+                <div class="detail-item">
+                  <h4>Why should I sign up for an online trade account?</h4>
+                  <p>With a trade account, you can easily make purchases at any time of the day, have access to all wholesale prices and track past purchases.</p>
+                </div>
+                
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="manic-expand-container" data-group="faq-mobile" data-value="chaseki-members-program">
+      <div class="scroll-target" data-value="chaseki-members-program"></div>
+      <div class="manic-expand-container-title">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-0 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">
+              <h4>Chaseki Members Program</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="manic-expand-container-btn"></div>
+      <div class="manic-expand-container-content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-0 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">
+
+              <div class="detail-item-container">
+                <div class="detail-item">
+                  <h4>What are the terms and conditions for the "1st time Sign-Up Rebates Reward"</h4>
+                  <ul>
+                    <li>Rebates not applicable to use for products under the Gifting Section.</li>
+                    <li>Rebates not applicable on shipping fees & prevailing taxes.</li>
+                    <li>Valid for 30 days from date of Sign-Up.</li>
+                    <li>Not to be used in conjunction with any other promotions & Gift Certificates.</li>
+                    <li>When promo codes are used, rebates will not be rewarded or earned.</li>
+                    <li>Valid for both local & international orders.</li>
+                    <li>Roji Cha by Gryphon Tea Company reserves the right to change the terms & conditions without any prior notice.</li>
+                  </ul>
+                </div>
+                <div class="detail-item">
+                  <h4>What are the terms and conditions for the "Rebates Earning Mechanics"</h4>
+                  <ul>
+                    <li>Rebates not applicable to use for products under the Gifting Section.</li>
+                    <li>Rebates not applicable on shipping fees & prevailing taxes.</li>
+                    <li>Valid for 30days from date of issuance.</li>
+                    <li>Not to be used in conjunction with any other promotions & Gift Certificates.</li>
+                    <li>When promo codes are used, rebates will not be rewarded or earned.</li>
+                    <li>Valid for both local & international orders.</li>
+                    <li>Roji Cha by Gryphon Tea Company reserves the right to change the terms & conditions without any prior notice.</li>
+                  </ul>
+                </div>
+                <div class="detail-item">
+                  <h4>What are the terms and conditions for the "Birthday Month Members Perks"</h4>
+                  <ul>
+                    <li>Rebates issued 1 day after date of birth.</li>
+                    <li>Rebates issued not applicable to use for products under the Gifting Section.</li>
+                    <li>Rebates not applicable on shipping fees & prevailing taxes.</li>
+                    <li>Valid for 30days from date of issuance.</li>
+                    <li>Not to be used in conjunction with any other promotions & Gift Certificates.</li>
+                    <li>Valid for both local & international orders.</li>
+                    <li>Roji Cha by Gryphon Tea Company reserves the right to change the terms & conditions without any prior notice.</li>
+                  </ul>
+                </div>
+                <div class="detail-item">
+                  <h4>What are the terms and conditions for the "Friend Referral Rebates Earning Mechanics"</h4>
+                  <ul>
+                    <li>Rebates not applicable to use for products under the Gifting Section.</li>
+                    <li>Rebates not applicable on shipping fees & prevailing taxes.</li>
+                    <li>Valid for 30 days from date of issuance.</li>
+                    <li>Not to be used in conjunction with any other promotions & Gift Certificates.</li>
+                    <li>When promo codes are used, rebates will not be rewarded or earned.</li>
+                    <li>Valid for both local & international orders.</li>
+                    <li>Roji Cha by Gryphon Tea Company reserves the right to change the terms & conditions without any prior notice.</li>
+                  </ul>
+                </div>
+                
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+  </article> <!-- page-faq-content-section-mobile -->
+
   
 
   <?php include "footer.php"; ?>

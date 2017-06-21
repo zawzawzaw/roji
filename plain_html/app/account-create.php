@@ -54,7 +54,7 @@
 
     <div class="container-fluid has-breakpoint">
       <div class="row">
-        <div class="col-md-5 visible-md visible-lg">
+        <div class="col-md-5 col-tablet-landscape-6 col-sm-12 col-xs-12 visible-md visible-lg">
 
           <div id="page-account-create-intro-image">
             <div class="manic-image-container">
@@ -64,8 +64,8 @@
 
         </div>
 
-        <div class="col-md-1"></div>
-        <div class="col-md-5">
+        <div class="col-md-1 col-tablet-landscape-0 col-sm-0 col-xs-0"></div>
+        <div class="col-md-5 col-tablet-landscape-6 col-sm-12 col-xs-12">
 
 
           <div id="page-account-create-intro-copy">

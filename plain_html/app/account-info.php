@@ -7,7 +7,7 @@
   <?php include 'head.php'; ?>
 </head>
 
-<body class="min-height-version">
+<body class="min-height-version min-height-mobile-version">
   <?php include "header.php"; ?>
 
   <!--

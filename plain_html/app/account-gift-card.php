@@ -41,6 +41,15 @@
 
   -->
 
+  <article id="page-account-gift-card-header-nav-mobile-section" class="visible-xs">
+    <div id="page-account-gift-card-header-nav-mobile">
+      <ul>
+        <li data-value="stored" class="selected"><a href="#stored">Stored</a></li>
+        <li data-value="redeemed"><a href="#redeemed">Redeemed</a></li>
+      </ul>
+    </div>
+  </article>
+
   <article id="page-account-content-section">
     <div id="page-account-content-section-bg" class="visible-md visible-lg">
       <div class="sidebar-bg"></div>
@@ -107,16 +116,16 @@
 
             <div id="page-account-gift-card-header">
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-sm-6">
 
                   <div class="gift-card-title">
                     <h2>Gift cards</h2>
                   </div>
 
                 </div>
-                <div class="col-md-6">
+                <div class="col-sm-6">
 
-                  <div class="gift-card-nav">
+                  <div class="gift-card-nav hidden-xs">
                     <ul>
                       <li data-value="stored" class="selected"><a href="#stored">Stored</a></li>
                       <li data-value="redeemed"><a href="#redeemed">Redeemed</a></li>
@@ -143,22 +152,22 @@
 
               <div id="page-account-gift-card-stored-table" class="page-account-table">
 
-                <div class="page-account-table-header">
+                <div class="page-account-table-header hidden-xs">
                   <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-sm-4">
                       <div class="table-column-first">
                         <h4>Gift card code</h4>
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-sm-4">
                       <div class="table-column">
                         <h4>Amount</h4>
                       </div>
                     </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 col-sm-0"></div>
+                    <div class="col-md-2 col-sm-4">
                       <div class="table-column-last">
-                        <h4>expiry date</h4>
+                        <h4>Expiry date</h4>
                       </div>
                     </div>
                   </div>
@@ -169,36 +178,38 @@
 
                   <div class="page-account-table-item">
                     <div class="row">
-                      <div class="col-md-4">
-                        <div class="table-column-first">
+                      <div class="col-md-4 col-sm-4 col-xs-6">
+                        <div class="table-column-first" data-column="Gift card code: ">
                           <p>434NR254536N</p>
                         </div>
                       </div>
-                      <div class="col-md-4">
-                        <div class="table-column">
+                      <div class="col-md-4 col-sm-4 col-xs-6">
+                        <div class="table-column" data-column="Amount: ">
                           <p>S$25.00</p>
                         </div>
                       </div>
-                      <div class="col-md-2"></div>
-                      <div class="col-md-2">
-                        <div class="table-column-last">
+                      <div class="col-md-2 col-sm-0 col-xs-0"></div>
+                      <div class="col-md-2 col-sm-4 col-xs-12">
+                        <div class="table-column-last mobile-last-version" data-column="Expiry date: ">
                           <p>13/6/2017</p>
                         </div>
                       </div>
                     </div>
                   </div> <!-- page-account-table-item -->
 
+
+
+                  
                   
 
 
-
-
                   <!-- repeat -->
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-4"><div class="table-column-first"><p>434NR254536N</p></div></div><div class="col-md-4"><div class="table-column"><p>S$25.00</p></div></div><div class="col-md-2"></div><div class="col-md-2"><div class="table-column-last"><p>13/6/2017</p></div></div></div></div> <!-- page-account-table-item -->
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-4"><div class="table-column-first"><p>434NR254536N</p></div></div><div class="col-md-4"><div class="table-column"><p>S$25.00</p></div></div><div class="col-md-2"></div><div class="col-md-2"><div class="table-column-last"><p>13/6/2017</p></div></div></div></div> <!-- page-account-table-item -->
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-4"><div class="table-column-first"><p>434NR254536N</p></div></div><div class="col-md-4"><div class="table-column"><p>S$25.00</p></div></div><div class="col-md-2"></div><div class="col-md-2"><div class="table-column-last"><p>13/6/2017</p></div></div></div></div> <!-- page-account-table-item -->
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-4"><div class="table-column-first"><p>434NR254536N</p></div></div><div class="col-md-4"><div class="table-column"><p>S$25.00</p></div></div><div class="col-md-2"></div><div class="col-md-2"><div class="table-column-last"><p>13/6/2017</p></div></div></div></div> <!-- page-account-table-item -->
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-4"><div class="table-column-first"><p>434NR254536N</p></div></div><div class="col-md-4"><div class="table-column"><p>S$25.00</p></div></div><div class="col-md-2"></div><div class="col-md-2"><div class="table-column-last"><p>13/6/2017</p></div></div></div></div> <!-- page-account-table-item -->
+                  <div class="page-account-table-item"><div class="row"><div class="col-md-4 col-sm-4 col-xs-6"><div class="table-column-first" data-column="Gift card code: "><p>434NR254536N</p></div></div><div class="col-md-4 col-sm-4 col-xs-6"><div class="table-column" data-column="Amount: "><p>S$25.00</p></div></div><div class="col-md-2 col-sm-0 col-xs-0"></div><div class="col-md-2 col-sm-4 col-xs-12"><div class="table-column-last mobile-last-version" data-column="Expiry date: "><p>13/6/2017</p></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-md-4 col-sm-4 col-xs-6"><div class="table-column-first" data-column="Gift card code: "><p>434NR254536N</p></div></div><div class="col-md-4 col-sm-4 col-xs-6"><div class="table-column" data-column="Amount: "><p>S$25.00</p></div></div><div class="col-md-2 col-sm-0 col-xs-0"></div><div class="col-md-2 col-sm-4 col-xs-12"><div class="table-column-last mobile-last-version" data-column="Expiry date: "><p>13/6/2017</p></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-md-4 col-sm-4 col-xs-6"><div class="table-column-first" data-column="Gift card code: "><p>434NR254536N</p></div></div><div class="col-md-4 col-sm-4 col-xs-6"><div class="table-column" data-column="Amount: "><p>S$25.00</p></div></div><div class="col-md-2 col-sm-0 col-xs-0"></div><div class="col-md-2 col-sm-4 col-xs-12"><div class="table-column-last mobile-last-version" data-column="Expiry date: "><p>13/6/2017</p></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-md-4 col-sm-4 col-xs-6"><div class="table-column-first" data-column="Gift card code: "><p>434NR254536N</p></div></div><div class="col-md-4 col-sm-4 col-xs-6"><div class="table-column" data-column="Amount: "><p>S$25.00</p></div></div><div class="col-md-2 col-sm-0 col-xs-0"></div><div class="col-md-2 col-sm-4 col-xs-12"><div class="table-column-last mobile-last-version" data-column="Expiry date: "><p>13/6/2017</p></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-md-4 col-sm-4 col-xs-6"><div class="table-column-first" data-column="Gift card code: "><p>434NR254536N</p></div></div><div class="col-md-4 col-sm-4 col-xs-6"><div class="table-column" data-column="Amount: "><p>S$25.00</p></div></div><div class="col-md-2 col-sm-0 col-xs-0"></div><div class="col-md-2 col-sm-4 col-xs-12"><div class="table-column-last mobile-last-version" data-column="Expiry date: "><p>13/6/2017</p></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-md-4 col-sm-4 col-xs-6"><div class="table-column-first" data-column="Gift card code: "><p>434NR254536N</p></div></div><div class="col-md-4 col-sm-4 col-xs-6"><div class="table-column" data-column="Amount: "><p>S$25.00</p></div></div><div class="col-md-2 col-sm-0 col-xs-0"></div><div class="col-md-2 col-sm-4 col-xs-12"><div class="table-column-last mobile-last-version" data-column="Expiry date: "><p>13/6/2017</p></div></div></div></div>
 
 
 
@@ -229,26 +240,26 @@
               -->
 
               <div id="page-account-gift-card-redeemed-table" class="page-account-table">
-                <div class="page-account-table-header">
+                <div class="page-account-table-header hidden-xs">
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                       <div class="table-column-first">
                         <h4>Gift card code</h4>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                       <div class="table-column">
                         <h4>Amount</h4>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                       <div class="table-column">
                         <h4>Order no.</h4>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                       <div class="table-column-last">
-                        <h4>Redemption date</h4>
+                        <h4>Redemption Date</h4>
                       </div>
                     </div>
                   </div>
@@ -258,23 +269,23 @@
 
                   <div class="page-account-table-item">
                     <div class="row">
-                      <div class="col-md-3">
-                        <div class="table-column-first">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-first" data-column="Gift card code:">
                           <p>434NR254536N</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column" data-column="Amount:">
                           <p>S$15.00</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column mobile-last-version" data-column="Order no:">
                           <p>145003178</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column-last">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-last mobile-last-version" data-column="Redemption Date:">
                           <p>13/6/2017</p>
                         </div>
                       </div>
@@ -282,13 +293,20 @@
                   </div> <!-- page-account-table-item -->
 
 
+
+                  
+                  
+
+
                   <!-- repeat -->
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>434NR254536N</p></div></div><div class="col-md-3"><div class="table-column"><p>S$15.00</p></div></div><div class="col-md-3"><div class="table-column"><p>145003178</p></div></div><div class="col-md-3"><div class="table-column-last"><p>13/6/2017</p></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>434NR254536N</p></div></div><div class="col-md-3"><div class="table-column"><p>S$15.00</p></div></div><div class="col-md-3"><div class="table-column"><p>145003178</p></div></div><div class="col-md-3"><div class="table-column-last"><p>13/6/2017</p></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>434NR254536N</p></div></div><div class="col-md-3"><div class="table-column"><p>S$15.00</p></div></div><div class="col-md-3"><div class="table-column"><p>145003178</p></div></div><div class="col-md-3"><div class="table-column-last"><p>13/6/2017</p></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>434NR254536N</p></div></div><div class="col-md-3"><div class="table-column"><p>S$15.00</p></div></div><div class="col-md-3"><div class="table-column"><p>145003178</p></div></div><div class="col-md-3"><div class="table-column-last"><p>13/6/2017</p></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>434NR254536N</p></div></div><div class="col-md-3"><div class="table-column"><p>S$15.00</p></div></div><div class="col-md-3"><div class="table-column"><p>145003178</p></div></div><div class="col-md-3"><div class="table-column-last"><p>13/6/2017</p></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>434NR254536N</p></div></div><div class="col-md-3"><div class="table-column"><p>S$15.00</p></div></div><div class="col-md-3"><div class="table-column"><p>145003178</p></div></div><div class="col-md-3"><div class="table-column-last"><p>13/6/2017</p></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Gift card code:"><p>434NR254536N</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Amount:"><p>S$15.00</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column mobile-last-version" data-column="Order no:"><p>145003178</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last mobile-last-version" data-column="Redemption Date:"><p>13/6/2017</p></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Gift card code:"><p>434NR254536N</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Amount:"><p>S$15.00</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column mobile-last-version" data-column="Order no:"><p>145003178</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last mobile-last-version" data-column="Redemption Date:"><p>13/6/2017</p></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Gift card code:"><p>434NR254536N</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Amount:"><p>S$15.00</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column mobile-last-version" data-column="Order no:"><p>145003178</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last mobile-last-version" data-column="Redemption Date:"><p>13/6/2017</p></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Gift card code:"><p>434NR254536N</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Amount:"><p>S$15.00</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column mobile-last-version" data-column="Order no:"><p>145003178</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last mobile-last-version" data-column="Redemption Date:"><p>13/6/2017</p></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Gift card code:"><p>434NR254536N</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Amount:"><p>S$15.00</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column mobile-last-version" data-column="Order no:"><p>145003178</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last mobile-last-version" data-column="Redemption Date:"><p>13/6/2017</p></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Gift card code:"><p>434NR254536N</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Amount:"><p>S$15.00</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column mobile-last-version" data-column="Order no:"><p>145003178</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last mobile-last-version" data-column="Redemption Date:"><p>13/6/2017</p></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Gift card code:"><p>434NR254536N</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Amount:"><p>S$15.00</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column mobile-last-version" data-column="Order no:"><p>145003178</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last mobile-last-version" data-column="Redemption Date:"><p>13/6/2017</p></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Gift card code:"><p>434NR254536N</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Amount:"><p>S$15.00</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column mobile-last-version" data-column="Order no:"><p>145003178</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last mobile-last-version" data-column="Redemption Date:"><p>13/6/2017</p></div></div></div></div>
 
 
                 </div> <!-- page-account-table-item-container -->

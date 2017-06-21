@@ -193,9 +193,14 @@
                   </div>
                 </div>
 
+                <div class="row">
+                  <div class="col-md-12 col-md-push-0 col-sm-10 col-sm-push-1 col-xs-10 col-xs-push-1">
 
-                <div class="cta-container">
-                  <input type="submit" class="square-cta" value="Send message">
+                    <div class="cta-container">
+                      <input type="submit" class="square-cta" value="Send message">
+                    </div>
+
+                  </div>
                 </div>
               </form> <!-- page-contact-form -->
             </div> <!-- page-contact-form-container -->

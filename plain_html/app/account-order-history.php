@@ -116,24 +116,24 @@
 
               <div class="page-account-table">
 
-                <div class="page-account-table-header">
+                <div class="page-account-table-header hidden-xs">
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                       <div class="table-column-first">
                         <h4>Date</h4>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                       <div class="table-column">
                         <h4>Order</h4>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                       <div class="table-column">
                         <h4>Status</h4>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                       <div class="table-column-last">
                         <h4>Total</h4>
                       </div>
@@ -144,23 +144,23 @@
                 <div class="page-account-table-item-container">
                   <div class="page-account-table-item">
                     <div class="row">
-                      <div class="col-md-3">
-                        <div class="table-column-first">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-first" data-column="Date:">
                           <p>5/6/2017</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column" data-column="Order:">
                           <h4><a href="account-order-detail.php">145003178</a></h4>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column mobile-last-version" data-column="Status:">
                           <p>Pending Payment</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column-last">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-last mobile-last-version" data-column="Total:">
                           <h4>$58.94</h4>
                         </div>
                       </div>
@@ -168,23 +168,23 @@
                   </div>
                   <div class="page-account-table-item">
                     <div class="row">
-                      <div class="col-md-3">
-                        <div class="table-column-first">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-first" data-column="Date:">
                           <p>5/6/2017</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column" data-column="Order:">
                           <h4><a href="account-order-detail.php">145003178</a></h4>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column mobile-last-version" data-column="Status:">
                           <p>Pending Payment</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column-last">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-last mobile-last-version" data-column="Total:">
                           <h4>$58.94</h4>
                         </div>
                       </div>
@@ -192,23 +192,23 @@
                   </div>
                   <div class="page-account-table-item">
                     <div class="row">
-                      <div class="col-md-3">
-                        <div class="table-column-first">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-first" data-column="Date:">
                           <p>5/6/2017</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column" data-column="Order:">
                           <h4><a href="account-order-detail.php">145003178</a></h4>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column mobile-last-version" data-column="Status:">
                           <p>Pending Payment</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column-last">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-last mobile-last-version" data-column="Total:">
                           <h4>$58.94</h4>
                         </div>
                       </div>
@@ -216,23 +216,23 @@
                   </div>
                   <div class="page-account-table-item">
                     <div class="row">
-                      <div class="col-md-3">
-                        <div class="table-column-first">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-first" data-column="Date:">
                           <p>5/6/2017</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column" data-column="Order:">
                           <h4><a href="account-order-detail.php">145003178</a></h4>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column mobile-last-version" data-column="Status:">
                           <p>Pending Payment</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column-last">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-last mobile-last-version" data-column="Total:">
                           <h4>$58.94</h4>
                         </div>
                       </div>
@@ -240,23 +240,23 @@
                   </div>
                   <div class="page-account-table-item">
                     <div class="row">
-                      <div class="col-md-3">
-                        <div class="table-column-first">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-first" data-column="Date:">
                           <p>5/6/2017</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column" data-column="Order:">
                           <h4><a href="account-order-detail.php">145003178</a></h4>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column mobile-last-version" data-column="Status:">
                           <p>Pending Payment</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column-last">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-last mobile-last-version" data-column="Total:">
                           <h4>$58.94</h4>
                         </div>
                       </div>
@@ -264,23 +264,23 @@
                   </div>
                   <div class="page-account-table-item">
                     <div class="row">
-                      <div class="col-md-3">
-                        <div class="table-column-first">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-first" data-column="Date:">
                           <p>5/6/2017</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column" data-column="Order:">
                           <h4><a href="account-order-detail.php">145003178</a></h4>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column mobile-last-version" data-column="Status:">
                           <p>Pending Payment</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column-last">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-last mobile-last-version" data-column="Total:">
                           <h4>$58.94</h4>
                         </div>
                       </div>
@@ -288,23 +288,23 @@
                   </div>
                   <div class="page-account-table-item">
                     <div class="row">
-                      <div class="col-md-3">
-                        <div class="table-column-first">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-first" data-column="Date:">
                           <p>5/6/2017</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column" data-column="Order:">
                           <h4><a href="account-order-detail.php">145003178</a></h4>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column mobile-last-version" data-column="Status:">
                           <p>Pending Payment</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column-last">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-last mobile-last-version" data-column="Total:">
                           <h4>$58.94</h4>
                         </div>
                       </div>

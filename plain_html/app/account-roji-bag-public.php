@@ -60,7 +60,7 @@
 
             -->
 
-            <div id="page-account-roji-bag-title">
+            <div id="page-account-roji-bag-title" class="sans-container-fluid-mobile">
               <h2>How to use My roji bag</h2>
             </div> <!-- page-account-roji-bag-title -->
 
@@ -125,7 +125,7 @@
 
             <div id="page-account-roji-bag-table" class="page-account-order-table">
 
-              <div class="page-account-order-table-header">
+              <div class="page-account-order-table-header visible-md visible-lg">
                 <div class="row">
                   <div class="col-md-2">
                     <h4 class="left-aligned">Product</h4>
@@ -145,7 +145,7 @@
 
                   <div class="row">
 
-                    <div class="col-md-2">
+                    <div class="col-md-2 col-sm-4 col-xs-5">
 
                       <a href="product-detail.php" title="Momotaro" class="item-image">
                         <div class="manic-image-container" data-scale-mode="show_all" data-horizontal-align="left">
@@ -157,7 +157,7 @@
                       </a>
 
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 hidden-sm hidden-xs">
 
                       <div class="item-description">
                         <h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2>
@@ -166,23 +166,31 @@
                       </div>
 
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 hidden-sm hidden-xs">
 
                       <div class="item-value">$16.90</div>
                       
                     </div>
                     <div class="col-md-3">
 
-                      <div class="item-square-btn-container">
+                      <div class="item-square-btn-container visible-md visible-lg">
                         <a href="javascript:void(0);" class="square-cta">Add to cart</a>
                       </div>
 
-                    </div>
-                    <div class="col-md-1">
+                      <div class="item-desc-mobile visible-sm visible-xs">
+                        <div class="item-description">
+                          <h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2>
+                          <h3>ももたろう</h3>
+                          <p>Japanese Sencha with White Peach</p>
+                        </div>
 
-                      <div class="item-close-btn-container">
-                        <a href="javascript:void(0);" class="item-close-btn close-btn"></a>
-                      </div>
+                        <div class="item-value">$16.90</div>
+
+                        <div class="item-square-btn-container">
+                          <a href="javascript:void(0);" class="square-cta">Add to cart</a>
+                        </div>
+
+                      </div> <!-- item-desc-mobile -->
 
                     </div>
                     
@@ -190,14 +198,18 @@
 
                 </div> <!-- page-account-order-table-item -->
 
+                
+
+                
 
 
                 <!-- just repeat -->
-                <div class="page-account-order-table-item"><div class="row"><div class="col-md-2"><a href="product-detail.php" title="Momotaro" class="item-image"><div class="manic-image-container" data-scale-mode="show_all" data-horizontal-align="left"><img src="" data-image-desktop="images_cms/cart/cart-image-01.png"data-image-tablet="images_cms/cart/cart-image-01.png"data-image-mobile="images_cms/cart/cart-image-01.png"></div></a></div><div class="col-md-4"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div></div><div class="col-md-2"><div class="item-value">$16.90</div></div><div class="col-md-3"><div class="item-square-btn-container"><a href="javascript:void(0);" class="square-cta">Add to cart</a></div></div><div class="col-md-1"><div class="item-close-btn-container"><a href="javascript:void(0);" class="item-close-btn close-btn"></a></div></div></div> <!-- row --></div> <!-- page-account-order-table-item -->
-                <div class="page-account-order-table-item"><div class="row"><div class="col-md-2"><a href="product-detail.php" title="Momotaro" class="item-image"><div class="manic-image-container" data-scale-mode="show_all" data-horizontal-align="left"><img src="" data-image-desktop="images_cms/cart/cart-image-01.png"data-image-tablet="images_cms/cart/cart-image-01.png"data-image-mobile="images_cms/cart/cart-image-01.png"></div></a></div><div class="col-md-4"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div></div><div class="col-md-2"><div class="item-value">$16.90</div></div><div class="col-md-3"><div class="item-square-btn-container"><a href="javascript:void(0);" class="square-cta">Add to cart</a></div></div><div class="col-md-1"><div class="item-close-btn-container"><a href="javascript:void(0);" class="item-close-btn close-btn"></a></div></div></div> <!-- row --></div> <!-- page-account-order-table-item -->
-                <div class="page-account-order-table-item"><div class="row"><div class="col-md-2"><a href="product-detail.php" title="Momotaro" class="item-image"><div class="manic-image-container" data-scale-mode="show_all" data-horizontal-align="left"><img src="" data-image-desktop="images_cms/cart/cart-image-01.png"data-image-tablet="images_cms/cart/cart-image-01.png"data-image-mobile="images_cms/cart/cart-image-01.png"></div></a></div><div class="col-md-4"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div></div><div class="col-md-2"><div class="item-value">$16.90</div></div><div class="col-md-3"><div class="item-square-btn-container"><a href="javascript:void(0);" class="square-cta">Add to cart</a></div></div><div class="col-md-1"><div class="item-close-btn-container"><a href="javascript:void(0);" class="item-close-btn close-btn"></a></div></div></div> <!-- row --></div> <!-- page-account-order-table-item -->
-                <div class="page-account-order-table-item"><div class="row"><div class="col-md-2"><a href="product-detail.php" title="Momotaro" class="item-image"><div class="manic-image-container" data-scale-mode="show_all" data-horizontal-align="left"><img src="" data-image-desktop="images_cms/cart/cart-image-01.png"data-image-tablet="images_cms/cart/cart-image-01.png"data-image-mobile="images_cms/cart/cart-image-01.png"></div></a></div><div class="col-md-4"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div></div><div class="col-md-2"><div class="item-value">$16.90</div></div><div class="col-md-3"><div class="item-square-btn-container"><a href="javascript:void(0);" class="square-cta">Add to cart</a></div></div><div class="col-md-1"><div class="item-close-btn-container"><a href="javascript:void(0);" class="item-close-btn close-btn"></a></div></div></div> <!-- row --></div> <!-- page-account-order-table-item -->
-                <div class="page-account-order-table-item"><div class="row"><div class="col-md-2"><a href="product-detail.php" title="Momotaro" class="item-image"><div class="manic-image-container" data-scale-mode="show_all" data-horizontal-align="left"><img src="" data-image-desktop="images_cms/cart/cart-image-01.png"data-image-tablet="images_cms/cart/cart-image-01.png"data-image-mobile="images_cms/cart/cart-image-01.png"></div></a></div><div class="col-md-4"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div></div><div class="col-md-2"><div class="item-value">$16.90</div></div><div class="col-md-3"><div class="item-square-btn-container"><a href="javascript:void(0);" class="square-cta">Add to cart</a></div></div><div class="col-md-1"><div class="item-close-btn-container"><a href="javascript:void(0);" class="item-close-btn close-btn"></a></div></div></div> <!-- row --></div> <!-- page-account-order-table-item -->
+                <div class="page-account-order-table-item"><div class="row"><div class="col-md-2 col-sm-4 col-xs-5"><a href="product-detail.php" title="Momotaro" class="item-image"><div class="manic-image-container" data-scale-mode="show_all" data-horizontal-align="left"><img src="" data-image-desktop="images_cms/cart/cart-image-01.png" data-image-tablet="images_cms/cart/cart-image-01.png" data-image-mobile="images_cms/cart/cart-image-01.png"></div></a></div><div class="col-md-4 hidden-sm hidden-xs"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div></div><div class="col-md-2 hidden-sm hidden-xs"><div class="item-value">$16.90</div></div><div class="col-md-3"><div class="item-square-btn-container visible-md visible-lg"><a href="javascript:void(0);" class="square-cta">Add to cart</a></div><div class="item-desc-mobile visible-sm visible-xs"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div><div class="item-value">$16.90</div><div class="item-square-btn-container"><a href="javascript:void(0);" class="square-cta">Add to cart</a></div></div></div></div></div>
+                <div class="page-account-order-table-item"><div class="row"><div class="col-md-2 col-sm-4 col-xs-5"><a href="product-detail.php" title="Momotaro" class="item-image"><div class="manic-image-container" data-scale-mode="show_all" data-horizontal-align="left"><img src="" data-image-desktop="images_cms/cart/cart-image-01.png" data-image-tablet="images_cms/cart/cart-image-01.png" data-image-mobile="images_cms/cart/cart-image-01.png"></div></a></div><div class="col-md-4 hidden-sm hidden-xs"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div></div><div class="col-md-2 hidden-sm hidden-xs"><div class="item-value">$16.90</div></div><div class="col-md-3"><div class="item-square-btn-container visible-md visible-lg"><a href="javascript:void(0);" class="square-cta">Add to cart</a></div><div class="item-desc-mobile visible-sm visible-xs"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div><div class="item-value">$16.90</div><div class="item-square-btn-container"><a href="javascript:void(0);" class="square-cta">Add to cart</a></div></div></div></div></div>
+                <div class="page-account-order-table-item"><div class="row"><div class="col-md-2 col-sm-4 col-xs-5"><a href="product-detail.php" title="Momotaro" class="item-image"><div class="manic-image-container" data-scale-mode="show_all" data-horizontal-align="left"><img src="" data-image-desktop="images_cms/cart/cart-image-01.png" data-image-tablet="images_cms/cart/cart-image-01.png" data-image-mobile="images_cms/cart/cart-image-01.png"></div></a></div><div class="col-md-4 hidden-sm hidden-xs"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div></div><div class="col-md-2 hidden-sm hidden-xs"><div class="item-value">$16.90</div></div><div class="col-md-3"><div class="item-square-btn-container visible-md visible-lg"><a href="javascript:void(0);" class="square-cta">Add to cart</a></div><div class="item-desc-mobile visible-sm visible-xs"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div><div class="item-value">$16.90</div><div class="item-square-btn-container"><a href="javascript:void(0);" class="square-cta">Add to cart</a></div></div></div></div></div>
+                <div class="page-account-order-table-item"><div class="row"><div class="col-md-2 col-sm-4 col-xs-5"><a href="product-detail.php" title="Momotaro" class="item-image"><div class="manic-image-container" data-scale-mode="show_all" data-horizontal-align="left"><img src="" data-image-desktop="images_cms/cart/cart-image-01.png" data-image-tablet="images_cms/cart/cart-image-01.png" data-image-mobile="images_cms/cart/cart-image-01.png"></div></a></div><div class="col-md-4 hidden-sm hidden-xs"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div></div><div class="col-md-2 hidden-sm hidden-xs"><div class="item-value">$16.90</div></div><div class="col-md-3"><div class="item-square-btn-container visible-md visible-lg"><a href="javascript:void(0);" class="square-cta">Add to cart</a></div><div class="item-desc-mobile visible-sm visible-xs"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div><div class="item-value">$16.90</div><div class="item-square-btn-container"><a href="javascript:void(0);" class="square-cta">Add to cart</a></div></div></div></div></div>
+                <div class="page-account-order-table-item"><div class="row"><div class="col-md-2 col-sm-4 col-xs-5"><a href="product-detail.php" title="Momotaro" class="item-image"><div class="manic-image-container" data-scale-mode="show_all" data-horizontal-align="left"><img src="" data-image-desktop="images_cms/cart/cart-image-01.png" data-image-tablet="images_cms/cart/cart-image-01.png" data-image-mobile="images_cms/cart/cart-image-01.png"></div></a></div><div class="col-md-4 hidden-sm hidden-xs"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div></div><div class="col-md-2 hidden-sm hidden-xs"><div class="item-value">$16.90</div></div><div class="col-md-3"><div class="item-square-btn-container visible-md visible-lg"><a href="javascript:void(0);" class="square-cta">Add to cart</a></div><div class="item-desc-mobile visible-sm visible-xs"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div><div class="item-value">$16.90</div><div class="item-square-btn-container"><a href="javascript:void(0);" class="square-cta">Add to cart</a></div></div></div></div></div>
+                <div class="page-account-order-table-item"><div class="row"><div class="col-md-2 col-sm-4 col-xs-5"><a href="product-detail.php" title="Momotaro" class="item-image"><div class="manic-image-container" data-scale-mode="show_all" data-horizontal-align="left"><img src="" data-image-desktop="images_cms/cart/cart-image-01.png" data-image-tablet="images_cms/cart/cart-image-01.png" data-image-mobile="images_cms/cart/cart-image-01.png"></div></a></div><div class="col-md-4 hidden-sm hidden-xs"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div></div><div class="col-md-2 hidden-sm hidden-xs"><div class="item-value">$16.90</div></div><div class="col-md-3"><div class="item-square-btn-container visible-md visible-lg"><a href="javascript:void(0);" class="square-cta">Add to cart</a></div><div class="item-desc-mobile visible-sm visible-xs"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div><div class="item-value">$16.90</div><div class="item-square-btn-container"><a href="javascript:void(0);" class="square-cta">Add to cart</a></div></div></div></div></div>
 
 
 

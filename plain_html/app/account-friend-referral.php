@@ -7,7 +7,7 @@
   <?php include 'head.php'; ?>
 </head>
 
-<body class="min-height-version">
+<body class="min-height-version account-friend-referral-page">
   <?php include "header.php"; ?>
 
   <!--
@@ -108,7 +108,7 @@
             -->
 
               
-            <div id="page-account-friend-referral-title">
+            <div id="page-account-friend-referral-title" class="hidden-xs">
               <h2>Friend referral</h2>
             </div> <!-- page-account-friend-referral-title -->
 
@@ -158,18 +158,18 @@
             </div> <!-- page-account-friend-referral-header-container -->
 
 
-            <div id="page-account-friend-referral-form-container">
+            <div id="page-account-friend-referral-form-container" class="sans-container-fluid-mobile">
 
               <form id="page-account-friend-referral-form" class="checkout-form" action="">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-6 col-sm-8">
 
                     <div class="form-group">
                       <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-sm-4">
                           <label>Friend’s name</label>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-sm-8">
                           <input type="text" name="" id="">
                         </div>
                       </div>
@@ -177,17 +177,17 @@
 
                     <div class="form-group">
                       <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-sm-4">
                           <label>Friend’s email</label>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-sm-8">
                           <input type="text" name="" id="">
                         </div>
                       </div>
                     </div> <!-- form-group -->
 
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-6 col-sm-4 col-sm-push-0 col-xs-10 col-xs-push-1">
 
                     <div class="cta-container">
                       <input type="submit" class="square-cta" value="Send referral">
@@ -199,7 +199,7 @@
             </div>
 
 
-            <div id="page-account-friend-referral-table-container">
+            <div id="page-account-friend-referral-table-container" class="sans-container-fluid-mobile">
 
               <div id="page-account-friend-referral-table-title">
                 <h2>Friend referral history</h2>
@@ -207,19 +207,19 @@
 
               <div id="page-account-friend-referral-table" class="page-account-table">
 
-                <div class="page-account-table-header">
+                <div class="page-account-table-header hidden-xs">
                   <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-sm-4">
                       <div class="table-column-first">
                         <h4>Full name</h4>
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-sm-4">
                       <div class="table-column">
                         <h4>Email address</h4>
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-sm-4">
                       <div class="table-column-last">
                         <h4>$5 Rebates</h4>
                       </div>
@@ -232,32 +232,36 @@
 
                   <div class="page-account-table-item">
                     <div class="row">
-                      <div class="col-md-4">
-                        <div class="table-column-first">
+                      <div class="col-sm-4 col-xs-6">
+                        <div class="table-column-first" data-column="Full name:">
                           <p>Nikolaj Hansson</p>
                         </div>
                       </div>
-                      <div class="col-md-4">
-                        <div class="table-column">
-                          <p>nikolaj_hansson@gmail.com</p>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="table-column-last">
+                      <div class="col-sm-4 col-sm-push-4 col-xs-6 col-xs-push-0">
+                        <div class="table-column-last" data-column="$5 Rebates:">
                           <p>Earned</p>
                         </div>
                       </div>
+                      <div class="col-sm-4 col-sm-pull-4 col-xs-12 col-xs-pull-0">
+                        <div class="table-column mobile-last-version" data-column="Email address:">
+                          <p>nikolaj_hansson@gmail.com</p>
+                        </div>
+                      </div>
+                      
                     </div>
                   </div>
 
 
+                  
+
+
                   <!-- REPEAT -->
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-4"><div class="table-column-first"><p>Nikolaj Hansson</p></div></div><div class="col-md-4"><div class="table-column"><p>nikolaj_hansson@gmail.com</p></div></div><div class="col-md-4"><div class="table-column-last"><p>Earned</p></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-4"><div class="table-column-first"><p>Nikolaj Hansson</p></div></div><div class="col-md-4"><div class="table-column"><p>nikolaj_hansson@gmail.com</p></div></div><div class="col-md-4"><div class="table-column-last"><p>Earned</p></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-4"><div class="table-column-first"><p>Nikolaj Hansson</p></div></div><div class="col-md-4"><div class="table-column"><p>nikolaj_hansson@gmail.com</p></div></div><div class="col-md-4"><div class="table-column-last"><p>Earned</p></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-4"><div class="table-column-first"><p>Nikolaj Hansson</p></div></div><div class="col-md-4"><div class="table-column"><p>nikolaj_hansson@gmail.com</p></div></div><div class="col-md-4"><div class="table-column-last"><p>Earned</p></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-4"><div class="table-column-first"><p>Nikolaj Hansson</p></div></div><div class="col-md-4"><div class="table-column"><p>nikolaj_hansson@gmail.com</p></div></div><div class="col-md-4"><div class="table-column-last"><p>Earned</p></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-4"><div class="table-column-first"><p>Nikolaj Hansson</p></div></div><div class="col-md-4"><div class="table-column"><p>nikolaj_hansson@gmail.com</p></div></div><div class="col-md-4"><div class="table-column-last"><p>Earned</p></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-4 col-xs-6"><div class="table-column-first" data-column="Full name:"><p>Nikolaj Hansson</p></div></div><div class="col-sm-4 col-sm-push-4 col-xs-6 col-xs-push-0"><div class="table-column-last" data-column="$5 Rebates:"><p>Earned</p></div></div><div class="col-sm-4 col-sm-pull-4 col-xs-12 col-xs-pull-0"><div class="table-column mobile-last-version" data-column="Email address:"><p>nikolaj_hansson@gmail.com</p></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-4 col-xs-6"><div class="table-column-first" data-column="Full name:"><p>Nikolaj Hansson</p></div></div><div class="col-sm-4 col-sm-push-4 col-xs-6 col-xs-push-0"><div class="table-column-last" data-column="$5 Rebates:"><p>Earned</p></div></div><div class="col-sm-4 col-sm-pull-4 col-xs-12 col-xs-pull-0"><div class="table-column mobile-last-version" data-column="Email address:"><p>nikolaj_hansson@gmail.com</p></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-4 col-xs-6"><div class="table-column-first" data-column="Full name:"><p>Nikolaj Hansson</p></div></div><div class="col-sm-4 col-sm-push-4 col-xs-6 col-xs-push-0"><div class="table-column-last" data-column="$5 Rebates:"><p>Earned</p></div></div><div class="col-sm-4 col-sm-pull-4 col-xs-12 col-xs-pull-0"><div class="table-column mobile-last-version" data-column="Email address:"><p>nikolaj_hansson@gmail.com</p></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-4 col-xs-6"><div class="table-column-first" data-column="Full name:"><p>Nikolaj Hansson</p></div></div><div class="col-sm-4 col-sm-push-4 col-xs-6 col-xs-push-0"><div class="table-column-last" data-column="$5 Rebates:"><p>Earned</p></div></div><div class="col-sm-4 col-sm-pull-4 col-xs-12 col-xs-pull-0"><div class="table-column mobile-last-version" data-column="Email address:"><p>nikolaj_hansson@gmail.com</p></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-4 col-xs-6"><div class="table-column-first" data-column="Full name:"><p>Nikolaj Hansson</p></div></div><div class="col-sm-4 col-sm-push-4 col-xs-6 col-xs-push-0"><div class="table-column-last" data-column="$5 Rebates:"><p>Earned</p></div></div><div class="col-sm-4 col-sm-pull-4 col-xs-12 col-xs-pull-0"><div class="table-column mobile-last-version" data-column="Email address:"><p>nikolaj_hansson@gmail.com</p></div></div></div></div>
+
 
                   <div class="page-account-table-pagination">
                     <!-- add if there is a back button -->
