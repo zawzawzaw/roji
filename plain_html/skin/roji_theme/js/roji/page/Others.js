@@ -148,6 +148,44 @@ roji.page.Others.prototype.update_others_bg_width = function() {
       });
     }
     
+  } else {
+
+
+
+
+
+
+
+    var container_width = this.window_width >= 1380 ? 1380 : this.window_width;
+    var container_margin = (this.window_width - container_width) / 2;
+    var midpoint = Math.round(container_margin + this.sidebar_width.width() + 10 + 20);                      // 20/2 = gutter space, 20 = padding left
+    var midpoint_percent = Math.round( midpoint / this.window_width * 10000 ) / 100;
+
+    console.log('this.window_width: ' + this.window_width);
+    console.log('midpoint: ' + midpoint);
+    this.sidebar_bg.css({
+      'width': midpoint_percent + '%'
+    });
+
+    this.content_bg.css({
+      'left': midpoint_percent + '%',
+      'width': (100 - midpoint_percent) + '%'
+    });
+
+
+    if (this.is_terms_of_use_page && this.content2_bg.length != 0){
+        
+      var target_hh = this.content2_bg_target.outerHeight();
+
+      this.content2_bg.css({
+        'left': midpoint_percent + '%',
+        'width': (100 - midpoint_percent) + '%',
+        'height': target_hh + 'px'
+      });
+    }
+
+
+
   }
 
 
@@ -156,7 +194,7 @@ roji.page.Others.prototype.update_others_bg_width = function() {
 roji.page.Others.prototype.update_others_bg_height = function(){
 
   // only for desktop
-  if (manic.IS_MOBILE == false) {
+  // if (manic.IS_MOBILE == false) {
     
     
 
@@ -166,7 +204,7 @@ roji.page.Others.prototype.update_others_bg_height = function(){
       'min-height': target_height + 'px'
     });
     
-  }
+  // }
 };
 
 

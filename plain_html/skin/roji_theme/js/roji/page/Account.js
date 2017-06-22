@@ -64,6 +64,7 @@ roji.page.Account = function(options, element) {
   // DISPLAY TABLES
 
   this.account_rebate_history_nav = null;
+  this.account_rebate_history_nav_mobile = null;
   this.account_rebate_history_earned_table = null;
   this.account_rebate_history_redeemed_table = null;
   this.account_rebate_history_expired_table = null;
@@ -72,6 +73,7 @@ roji.page.Account = function(options, element) {
 
 
   this.account_gift_card_nav = null;
+  this.account_gift_card_nav_mobile = null;
   this.account_gift_card_stored_table = null;
   this.account_gift_card_redeemed_table = null;
   
@@ -247,6 +249,7 @@ roji.page.Account.prototype.update_account_bg_height = function(){
 roji.page.Account.prototype.create_account_rebate_history_nav = function(){
 
   this.account_rebate_history_nav = $('#page-account-rebate-history-header .history-header-nav');
+  this.account_rebate_history_nav_mobile = $('#page-account-rebate-history-header-nav-mobile');
 
   this.account_rebate_history_earned_table = $('#page-account-rebate-history-earned-table');
   this.account_rebate_history_redeemed_table = $('#page-account-rebate-history-redeemed-table');
@@ -274,6 +277,9 @@ roji.page.Account.prototype.select_account_rebate_history_table = function(str_p
 
   this.account_rebate_history_nav.find('ul li').removeClass('selected');
   this.account_rebate_history_nav.find('ul li[data-value="' + target_table + '"]').addClass('selected');
+
+  this.account_rebate_history_nav_mobile.find('ul li').removeClass('selected');
+  this.account_rebate_history_nav_mobile.find('ul li[data-value="' + target_table + '"]').addClass('selected');
 
   var item = null;
 
@@ -305,6 +311,7 @@ roji.page.Account.prototype.select_account_rebate_history_table = function(str_p
 roji.page.Account.prototype.create_account_gift_card_nav = function() {
 
   this.account_gift_card_nav = $('#page-account-gift-card-header .gift-card-nav');
+  this.account_gift_card_nav_mobile = $('#page-account-gift-card-header-nav-mobile');
 
   this.account_gift_card_stored_table = $('#page-account-gift-card-stored-table');
   this.account_gift_card_redeemed_table = $('#page-account-gift-card-redeemed-table');
@@ -326,6 +333,9 @@ roji.page.Account.prototype.select_account_gift_card_table = function(str_param)
 
   this.account_gift_card_nav.find('ul li').removeClass('selected');
   this.account_gift_card_nav.find('ul li[data-value="' + target_table + '"]').addClass('selected');
+
+  this.account_gift_card_nav_mobile.find('ul li').removeClass('selected');
+  this.account_gift_card_nav_mobile.find('ul li[data-value="' + target_table + '"]').addClass('selected');
 
   var item = null;
 

@@ -47,8 +47,9 @@
   <article id="page-login-content-section">
     <div class="container-fluid has-breakpoint">
       <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-5">
+
+        <div class="col-md-1 col-tablet-landscape-0 col-sm-2 col-xs-0"></div>
+        <div class="col-md-5 col-tablet-landscape-6 col-sm-8 col-xs-12">
 
           <div id="page-login-content">
 

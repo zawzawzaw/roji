@@ -7,7 +7,7 @@
   <?php include 'head.php'; ?>
 </head>
 
-<body class="min-height-version account-rebate-history-page">
+<body class="min-height-version min-height-mobile-version account-rebate-history-page">
 
   <?php include "header.php"; ?>
 
@@ -41,6 +41,16 @@
      \____\___/|_| \_| |_| |_____|_| \_| |_|
 
   -->
+
+  <article id="page-account-rebate-history-header-nav-mobile-section" class="visible-xs">
+    <div id="page-account-rebate-history-header-nav-mobile">
+      <ul>
+        <li data-value="earned" class="selected"><a href="#earned">Earned</a></li>
+        <li data-value="redeemed"><a href="#redeemed">Redeemed</a></li>
+        <li data-value="expired"><a href="#expired">Expired</a></li>
+      </ul>
+    </div>
+  </article>
 
   <article id="page-account-content-section">
     <div id="page-account-content-section-bg" class="visible-md visible-lg">
@@ -111,9 +121,9 @@
             
             <div id="page-account-rebate-history-header">
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-sm-6">
 
-                  <div class="history-header-title">
+                  <div class="history-header-title hidden-xs">
                     <h2>Rebate History</h2>
                   </div>
 
@@ -123,7 +133,7 @@
                   </div>
 
                 </div>
-                <div class="col-md-6">
+                <div class="col-sm-6 hidden-xs">
 
                   <div class="history-header-nav">
                     <ul>
@@ -154,24 +164,24 @@
 
               <div id="page-account-rebate-history-earned-table" class="page-account-table">
 
-                <div class="page-account-table-header">
+                <div class="page-account-table-header hidden-xs">
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                       <div class="table-column-first">
                         <h4>Description</h4>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                       <div class="table-column">
                         <h4>Status</h4>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                       <div class="table-column">
                         <h4>Rebates earned</h4>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                       <div class="table-column-last">
                         <h4>Expiry date</h4>
                       </div>
@@ -183,23 +193,23 @@
 
                   <div class="page-account-table-item">
                     <div class="row">
-                      <div class="col-md-3">
-                        <div class="table-column-first">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-first" data-column="Description">
                           <p>Order: 145003111</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column" data-column="Status">
                           <p>Pending Payment</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column mobile-last-version" data-column="Rebates earned">
                           <p>66</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column-last">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-last mobile-last-version" data-column="Expiry date">
                           <h4>13/6/2017</h4>
                         </div>
                       </div>
@@ -208,14 +218,17 @@
 
 
                   <!-- repeat -->
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Description:"><p>Order: 145003111</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Status:"><p>Pending Payment</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column mobile-last-version" data-column="Rebates earned:"><p>66</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last mobile-last-version" data-column="Expiry date:"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Description:"><p>Order: 145003111</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Status:"><p>Pending Payment</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column mobile-last-version" data-column="Rebates earned:"><p>66</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last mobile-last-version" data-column="Expiry date:"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Description:"><p>Order: 145003111</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Status:"><p>Pending Payment</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column mobile-last-version" data-column="Rebates earned:"><p>66</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last mobile-last-version" data-column="Expiry date:"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Description:"><p>Order: 145003111</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Status:"><p>Pending Payment</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column mobile-last-version" data-column="Rebates earned:"><p>66</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last mobile-last-version" data-column="Expiry date:"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Description:"><p>Order: 145003111</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Status:"><p>Pending Payment</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column mobile-last-version" data-column="Rebates earned:"><p>66</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last mobile-last-version" data-column="Expiry date:"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Description:"><p>Order: 145003111</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Status:"><p>Pending Payment</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column mobile-last-version" data-column="Rebates earned:"><p>66</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last mobile-last-version" data-column="Expiry date:"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Description:"><p>Order: 145003111</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Status:"><p>Pending Payment</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column mobile-last-version" data-column="Rebates earned:"><p>66</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last mobile-last-version" data-column="Expiry date:"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Description:"><p>Order: 145003111</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Status:"><p>Pending Payment</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column mobile-last-version" data-column="Rebates earned:"><p>66</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last mobile-last-version" data-column="Expiry date:"><h4>13/6/2017</h4></div></div></div></div>
+
+
+
 
 
                 </div> <!-- page-account-table-item-container -->
@@ -245,24 +258,24 @@
 
               <div id="page-account-rebate-history-redeemed-table" class="page-account-table">
 
-                <div class="page-account-table-header">
+                <div class="page-account-table-header hidden-xs">
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                       <div class="table-column-first">
                         <h4>Description</h4>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                       <div class="table-column">
                         <h4>Status</h4>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                       <div class="table-column">
                         <h4>Rebates used</h4>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                       <div class="table-column-last">
                         <h4>Redemption date</h4>
                       </div>
@@ -274,23 +287,23 @@
 
                   <div class="page-account-table-item">
                     <div class="row">
-                      <div class="col-md-3">
-                        <div class="table-column-first">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-first" data-column="Description:">
                           <p>Order: 145003122</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column" data-column="Status:">
                           <p>Pending Payment</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column mobile-last-version" data-column="Rebates used:">
                           <p>22</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column-last">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-last mobile-last-version" data-column="Redemption date:">
                           <h4>13/6/2017</h4>
                         </div>
                       </div>
@@ -299,8 +312,10 @@
 
 
                   <!-- repeat -->
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Description:"><p>Order: 145003122</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Status:"><p>Pending Payment</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column mobile-last-version" data-column="Rebates used:"><p>22</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last mobile-last-version" data-column="Redemption date:"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Description:"><p>Order: 145003122</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Status:"><p>Pending Payment</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column mobile-last-version" data-column="Rebates used:"><p>22</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last mobile-last-version" data-column="Redemption date:"><h4>13/6/2017</h4></div></div></div></div>
+
+
 
                 </div> <!-- page-account-table-item-container -->
 
@@ -328,24 +343,24 @@
 
               <div id="page-account-rebate-history-expired-table" class="page-account-table">
 
-                <div class="page-account-table-header">
+                <div class="page-account-table-header hidden-xs">
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                       <div class="table-column-first">
                         <h4>Description</h4>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                       <div class="table-column">
                         <h4>Status</h4>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                       <div class="table-column">
                         <h4>Rebates</h4>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-sm-3">
                       <div class="table-column-last">
                         <h4>Expired date</h4>
                       </div>
@@ -357,23 +372,23 @@
 
                   <div class="page-account-table-item">
                     <div class="row">
-                      <div class="col-md-3">
-                        <div class="table-column-first">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-first" data-column="Description:">
                           <p>Order: 145003133</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column" data-column="Status:">
                           <p>Pending Payment</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column" data-column="Rebates:">
                           <p>33</p>
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="table-column-last">
+                      <div class="col-sm-3 col-xs-6">
+                        <div class="table-column-last" data-column="Expired date:">
                           <h4>13/6/2017</h4>
                         </div>
                       </div>
@@ -382,10 +397,11 @@
 
 
                   <!-- repeat -->
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
-                  <div class="page-account-table-item"><div class="row"><div class="col-md-3"><div class="table-column-first"><p>Order: 145003178</p></div></div><div class="col-md-3"><div class="table-column"><p>Pending Payment</p></div></div><div class="col-md-3"><div class="table-column"><p>66</p></div></div><div class="col-md-3"><div class="table-column-last"><h4>13/6/2017</h4></div></div></div></div>
+                  
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Description:"><p>Order: 145003133</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Status:"><p>Pending Payment</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Rebates:"><p>33</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last" data-column="Expired date:"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Description:"><p>Order: 145003133</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Status:"><p>Pending Payment</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Rebates:"><p>33</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last" data-column="Expired date:"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Description:"><p>Order: 145003133</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Status:"><p>Pending Payment</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Rebates:"><p>33</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last" data-column="Expired date:"><h4>13/6/2017</h4></div></div></div></div>
+                  <div class="page-account-table-item"><div class="row"><div class="col-sm-3 col-xs-6"><div class="table-column-first" data-column="Description:"><p>Order: 145003133</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Status:"><p>Pending Payment</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column" data-column="Rebates:"><p>33</p></div></div><div class="col-sm-3 col-xs-6"><div class="table-column-last" data-column="Expired date:"><h4>13/6/2017</h4></div></div></div></div>
                   
 
                 </div> <!-- page-account-table-item-container -->

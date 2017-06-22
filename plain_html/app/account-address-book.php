@@ -160,57 +160,52 @@
 
                 <div class="book-other-item">
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-sm-3 col-xs-8">
                       <h4><a href="account-edit-address-book.php">Address 1</a></h4>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-sm-2 col-sm-push-7 col-xs-4">
+                      <div class="cta-container">
+                        <a href="account-edit-address-book.php" class="edit-btn">Edit</a>
+                        <a href="javascript:void(0);" class="close-btn plain-version"></a>
+                      </div>
+                    </div>
+                    <div class="col-sm-7 col-sm-pull-2 col-xs-8">
                       <small>1114 test Array singapore Singapore Singapore 32323</small>
                     </div>
-                    <div class="col-md-2">
-
-                      <div class="cta-container">
-                        <a href="account-edit-address-book.php" class="edit-btn">Edit</a>
-                        <a href="javascript:void(0);" class="close-btn plain-version"></a>
-                      </div>
-
-                    </div>
+                    
                   </div>
                 </div> <!-- book-other-item -->
 
                 <div class="book-other-item">
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-sm-3 col-xs-8">
                       <h4><a href="account-edit-address-book.php">Address 2</a></h4>
                     </div>
-                    <div class="col-md-7">
-                      <small>350 Orchard Road, 5th/6th Floor, Shaw House, 238868</small>
-                    </div>
-                    <div class="col-md-2">
-
+                    <div class="col-sm-2 col-sm-push-7 col-xs-4">
                       <div class="cta-container">
                         <a href="account-edit-address-book.php" class="edit-btn">Edit</a>
                         <a href="javascript:void(0);" class="close-btn plain-version"></a>
                       </div>
-
+                    </div>
+                    <div class="col-sm-7 col-sm-pull-2 col-xs-8">
+                      <small>350 Orchard Road, 5th/6th Floor, Shaw House, 238868</small>
                     </div>
                   </div>
                 </div> <!-- book-other-item -->
 
                 <div class="book-other-item">
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-sm-3 col-xs-8">
                       <h4><a href="account-edit-address-book.php">Address 3</a></h4>
                     </div>
-                    <div class="col-md-7">
-                      <small>251 Pandan Loop, Singapore 128431</small>
-                    </div>
-                    <div class="col-md-2">
-
+                    <div class="col-sm-2 col-sm-push-7 col-xs-4">
                       <div class="cta-container">
                         <a href="account-edit-address-book.php" class="edit-btn">Edit</a>
                         <a href="javascript:void(0);" class="close-btn plain-version"></a>
                       </div>
-
+                    </div>
+                    <div class="col-sm-7 col-sm-pull-2 col-xs-8">
+                      <small>251 Pandan Loop, Singapore 128431</small>
                     </div>
                   </div>
                 </div> <!-- book-other-item -->

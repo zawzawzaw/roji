@@ -25,7 +25,10 @@
         <div class="col-md-3 col-sm-1 col-xs-0"></div>
         <div class="col-md-9 col-sm-10 col-xs-12">
           <div id="page-account-title">
-            <h1>My Order Details.</h1>
+            <h1>
+              <span class="hidden-xs">My Order Details.</span>
+              <span class="visible-xs">Order no. 145003178</span>
+            </h1>
           </div> <!-- page-account-title -->
         </div>
       </div>
@@ -105,11 +108,11 @@
             -->
 
             
-            <div id="page-account-order-detail-title">
+            <div id="page-account-order-detail-title" class="hidden-xs">
               <h2>Order no. 145003178</h2>
             </div> <!-- page-account-order-detail-title -->
 
-            <div id="page-account-order-detail-header">
+            <div id="page-account-order-detail-header" class="sans-container-fluid-mobile">
 
               <div class="detail-header-bg"></div>
 
@@ -212,18 +215,18 @@
 
             <div id="page-account-order-detail-table" class="page-account-order-table">
 
-              <div class="page-account-order-table-header">
+              <div class="page-account-order-table-header hidden-xs">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-sm-6">
                     <h4 class="left-aligned">Product</h4>
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-sm-2">
                     <h4 class="center-aligned">Unit Price</h4>
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-sm-2">
                     <h4 class="center-aligned">Quantity</h4>
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-sm-2">
                     <h4 class="center-aligned">Subtotal</h4>
                   </div>
                 </div>
@@ -234,7 +237,7 @@
                 <div class="page-account-order-table-item">
 
                   <div class="row">
-                    <div class="col-md-6 hidden-sm hidden-xs">
+                    <div class="col-sm-6 hidden-xs">
 
                       <div class="item-description">
                         <h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2>
@@ -243,87 +246,52 @@
                       </div>
 
                     </div>
-                    <div class="col-md-2 hidden-sm hidden-xs">
+                    <div class="col-sm-2 hidden-xs">
 
                       <div class="item-value">$16.90</div>
                       
                     </div>
-                    <div class="col-md-2 col-sm-8 col-xs-7">
-
+                    <div class="col-sm-2 hidden-xs">
                       <div class="item-value">1</div>
+                    </div>
+                    <div class="col-sm-2 hidden-xs">
+                      <div class="item-value">$33.80</div>
+                    </div>
 
-                      <div class="item-desc-mobile visible-sm visible-xs">
+                    <div class="col-xs-12 visible-xs">
+                      <div class="item-desc-mobile">
 
                         <div class="item-description">
                           <h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2>
                           <h3>ももたろう</h3>
                         </div>
-
-                        <div class="item-value">$16.90</div>
-
-                        <div class="item-quantity">
-                          <h4>Quantity: <br>1</h4>
+                        <div class="row">
+                          <div class="col-xs-6">
+                            <div class="item-value">$16.90 x 1</div>    
+                          </div>
+                          <div class="col-xs-6">
+                            <div class="item-quantity">
+                              <h4>$33.80</h4>
+                            </div>
+                          </div>
                         </div>
-
+                        
                       </div> <!-- item-desc-mobile -->
-
                     </div>
-                    <div class="col-md-2 hidden-sm hidden-xs">
-
-                      <div class="item-value">$33.80</div>
-
-                    </div>
+                    
                     
                   </div> <!-- row -->
 
                 </div> <!-- page-account-order-table-item -->
 
-                <div class="page-account-order-table-item">
 
-                  <div class="row">
-                    <div class="col-md-6 hidden-sm hidden-xs">
-
-                      <div class="item-description">
-                        <h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2>
-                        <h3>ももたろう</h3>
-                        <p>Japanese Sencha with White Peach</p>
-                      </div>
-
-                    </div>
-                    <div class="col-md-2 hidden-sm hidden-xs">
-
-                      <div class="item-value">$16.90</div>
-                      
-                    </div>
-                    <div class="col-md-2 col-sm-8 col-xs-7">
-
-                      <div class="item-value">1</div>
-
-                      <div class="item-desc-mobile visible-sm visible-xs">
-
-                        <div class="item-description">
-                          <h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2>
-                          <h3>ももたろう</h3>
-                        </div>
-
-                        <div class="item-value">$16.90</div>
-
-                        <div class="item-quantity">
-                          <h4>Quantity: <br>1</h4>
-                        </div>
-
-                      </div> <!-- item-desc-mobile -->
-
-                    </div>
-                    <div class="col-md-2 hidden-sm hidden-xs">
-
-                      <div class="item-value">$33.80</div>
-
-                    </div>
-                    
-                  </div> <!-- row -->
-
-                </div> <!-- page-account-order-table-item -->
+                <!-- repeat -->
+                <div class="page-account-order-table-item"><div class="row"><div class="col-sm-6 hidden-xs"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div></div><div class="col-sm-2 hidden-xs"><div class="item-value">$16.90</div></div><div class="col-sm-2 hidden-xs"><div class="item-value">1</div></div><div class="col-sm-2 hidden-xs"><div class="item-value">$33.80</div></div><div class="col-xs-12 visible-xs"><div class="item-desc-mobile"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3></div><div class="row"><div class="col-xs-6"><div class="item-value">$16.90 x 1</div>    </div><div class="col-xs-6"><div class="item-quantity"><h4>$33.80</h4></div></div></div></div></div></div></div>
+                <div class="page-account-order-table-item"><div class="row"><div class="col-sm-6 hidden-xs"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div></div><div class="col-sm-2 hidden-xs"><div class="item-value">$16.90</div></div><div class="col-sm-2 hidden-xs"><div class="item-value">1</div></div><div class="col-sm-2 hidden-xs"><div class="item-value">$33.80</div></div><div class="col-xs-12 visible-xs"><div class="item-desc-mobile"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3></div><div class="row"><div class="col-xs-6"><div class="item-value">$16.90 x 1</div>    </div><div class="col-xs-6"><div class="item-quantity"><h4>$33.80</h4></div></div></div></div></div></div></div>
+                <div class="page-account-order-table-item"><div class="row"><div class="col-sm-6 hidden-xs"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div></div><div class="col-sm-2 hidden-xs"><div class="item-value">$16.90</div></div><div class="col-sm-2 hidden-xs"><div class="item-value">1</div></div><div class="col-sm-2 hidden-xs"><div class="item-value">$33.80</div></div><div class="col-xs-12 visible-xs"><div class="item-desc-mobile"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3></div><div class="row"><div class="col-xs-6"><div class="item-value">$16.90 x 1</div>    </div><div class="col-xs-6"><div class="item-quantity"><h4>$33.80</h4></div></div></div></div></div></div></div>
+                <div class="page-account-order-table-item"><div class="row"><div class="col-sm-6 hidden-xs"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div></div><div class="col-sm-2 hidden-xs"><div class="item-value">$16.90</div></div><div class="col-sm-2 hidden-xs"><div class="item-value">1</div></div><div class="col-sm-2 hidden-xs"><div class="item-value">$33.80</div></div><div class="col-xs-12 visible-xs"><div class="item-desc-mobile"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3></div><div class="row"><div class="col-xs-6"><div class="item-value">$16.90 x 1</div>    </div><div class="col-xs-6"><div class="item-quantity"><h4>$33.80</h4></div></div></div></div></div></div></div>
+                <div class="page-account-order-table-item"><div class="row"><div class="col-sm-6 hidden-xs"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3><p>Japanese Sencha with White Peach</p></div></div><div class="col-sm-2 hidden-xs"><div class="item-value">$16.90</div></div><div class="col-sm-2 hidden-xs"><div class="item-value">1</div></div><div class="col-sm-2 hidden-xs"><div class="item-value">$33.80</div></div><div class="col-xs-12 visible-xs"><div class="item-desc-mobile"><div class="item-description"><h2><a href="product-detail.php" title="Momotaro">Momotaro</a></h2><h3>ももたろう</h3></div><div class="row"><div class="col-xs-6"><div class="item-value">$16.90 x 1</div>    </div><div class="col-xs-6"><div class="item-quantity"><h4>$33.80</h4></div></div></div></div></div></div></div>
+                
 
               </div> <!-- page-account-order-table-content -->
 

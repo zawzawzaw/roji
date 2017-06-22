@@ -20,7 +20,7 @@
 
   -->
 
-  <article id="page-chaseki-title-section" class="visible-md visible-lg">
+  <article id="page-chaseki-title-section">
     <div class="container-fluid has-breakpoint">
       <div class="row">
         <div class="col-md-3 col-sm-1 col-xs-0"></div>
@@ -50,12 +50,17 @@
       <div class="row">
 
         <div class="col-md-3">
-
-          <div id="page-chaseki-sidebar">
+          <div id="page-chaseki-sidebar" class="sans-container-fluid-mobile sans-container-fluid-tablet">
             <div id="page-chaseki-sidebar-copy">
-              <p>Join our complimentary Chaseki Members Program and earn rewards and privileges every time you shop, connect and share.</p>
-              <div class="cta-container">
-                <a href="" class="arrow-cta">Find out more</a>
+
+              <div class="row">
+                <div class="col-md-0 col-sm-1 col-xs-0"></div>
+                <div class="col-md-12 col-sm-10 col-xs-12">
+                  <p>Join our complimentary Chaseki Members Program and earn rewards and privileges every time you shop, connect and share.</p>
+                  <div class="cta-container">
+                    <a href="" class="arrow-cta">Find out more</a>
+                  </div>
+                </div>
               </div>
             </div> <!-- page-chaseki-sidebar-copy -->
           </div> <!-- page-chaseki-sidebar -->
