@@ -33,318 +33,203 @@
 
 
 
-<div id="monogram-page-account-mobile-header" class="visible-sm visible-xs">
-  <h4>Basic Information</h4>
-  <h2>Address Book</h2>
-</div>
+<!--
+   _____ ___ _____ _     _____
+  |_   _|_ _|_   _| |   | ____|
+    | |  | |  | | | |   |  _|
+    | |  | |  | | | |___| |___
+    |_| |___| |_| |_____|_____|
 
-<div id="monogram-page-account-details-address-header">
-  <div class="billing-and-shipping">
-      <div class="image-text-content">
-          <?php //echo $this->getMessagesBlock()->toHtml() ?>
+-->
 
-          <!-- <div class="page-title title-buttons">
-              <h1><?php echo $this->__('Address Book') ?></h1>
-              <hr class="small" />
-          </div> -->
+<article id="page-account-title-section">
+  <div class="container-fluid has-breakpoint">
+    <div class="row">
+      <div class="col-md-3 col-sm-1 col-xs-0"></div>
+      <div class="col-md-9 col-sm-10 col-xs-12">
+        <div id="page-account-title">
+          <h1>My Address Book.</h1>
+        </div> <!-- page-account-title -->
+      </div>
+    </div>
+  </div>
+</article> <!-- page-account-title-section -->
 
+  <!--
+      ____ ___  _   _ _____ _____ _   _ _____
+     / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+    | |  | | | |  \| | | | |  _| |  \| | | |
+    | |__| |_| | |\  | | | | |___| |\  | | |
+     \____\___/|_| \_| |_| |_____|_| \_| |_|
 
+  -->
+
+  <article id="page-account-content-section">
+    <div id="page-account-content-section-bg" class="visible-md visible-lg">
+      <div class="sidebar-bg"></div>
+      <div class="content-bg"></div>
+    </div>
+
+    <div class="container-fluid has-breakpoint">
+      <div class="row">
+
+        <div class="col-md-2 col-tablet-landscape-1 hidden-sm hidden-xs">
+
+          <!--
+             ____ ___ ____  _____ ____    _    ____
+            / ___|_ _|  _ \| ____| __ )  / \  |  _ \
+            \___ \| || | | |  _| |  _ \ / _ \ | |_) |
+             ___) | || |_| | |___| |_) / ___ \|  _ <
+            |____/___|____/|_____|____/_/   \_\_| \_\
+
+          -->
+
+          <div id="page-account-sidebar-width"></div>
+          <div id="page-account-sidebar">
+            
+            <?php echo $this->getChildHtml('navigation') ?>
+
+          </div> <!-- page-account-sidebar -->
+
+        </div> <!-- col-md-2 -->
+        <div class="col-md-0 col-tablet-landscape-0 col-sm-1 col-xs-0"></div>
+        <div class="col-md-10 col-tablet-landscape-11 col-sm-10 col-xs-12">
           
+          <!--
+              ____ ___  _   _ _____ _____ _   _ _____
+             / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+            | |  | | | |  \| | | | |  _| |  \| | | |
+            | |__| |_| | |\  | | | | |___| |\  | | |
+             \____\___/|_| \_| |_| |_____|_| \_| |_|
 
-          <div class="row">
-              <div class="col-md-6 billing-address">
+          -->
 
-                  <?php 
-                    // added
-                    $_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling();
-                  ?>
-                  <h1><?php echo $this->__('billing Address'); ?></h1>
-                  <div class="billing-address-details">
+          <div id="page-account-content-width"></div>
+          <div id="page-account-content">
 
-                    <?php if($_pAddsses): ?>
-                        <?php $billingAddress = Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses) ?>
-                        <?php $billingCountryName = Mage::getModel('directory/country')->load($billingAddress->getCountryId())->getName(); ?>
-                        
-                        <div class="each-billing-detail">
-                            <h2><?php echo $this->__('NAME'); ?></h2>
-                            <p><?php echo implode(' ', array($billingAddress->getFirstname(), $billingAddress->getLastname())); ?></p>
-                        </div>
-                        <div class="each-billing-detail">
-                            <h2><?php echo $this->__('TELEPHONE'); ?></h2>
-                            <p><?php echo $billingAddress->getTelephone(); ?></p>
-                        </div>
-                    
-                        <div class="each-billing-detail">
-                            <h2><?php echo $this->__('ADDRESS'); ?></h2>
-                            <p><?php echo implode(' ', array(implode(' ', $billingAddress->getStreet()), $billingAddress->getCity(), $billingCountryName, $billingAddress->getPostcode())); ?></p>
-                        </div>
-                        <div class="each-billing-detail">
-                            <h2><?php echo $this->__('EMAIL'); ?></h2>
-                            <p><a href="mailto:<?php echo $this->getCustomer()->getEmail(); ?>"><?php echo $this->getCustomer()->getEmail(); ?></a></p>
-                        </div>
-                        
-                    <?php else : ?>
-                        
-                      <div class="each-billing-detail">
-                          <p><?php echo $this->__('You have no default billing address in your address book.') ?></p>
+
+            <div id="page-account-address-book-header-container" class="sans-container-fluid-mobile">
+              <div id="page-account-address-book-header">
+                
+                <div class="book-header-title">
+                  <h2><?php echo $this->__('Shipping address') ?></h2>
+                </div>
+
+                <?php 
+                  // added
+                  $_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultShipping();
+                ?>
+                
+                <?php if ($_pAddsses) :?>
+                <?php $shippingAddress = Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses); ?>
+                <?php $shippingCountryName = Mage::getModel('directory/country')->load($shippingAddress->getCountryId())->getName(); ?>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="detail-item">
+                        <h4>Full name</h4>
+                        <p><?php echo implode(' ', array($shippingAddress->getFirstname(), $shippingAddress->getLastname())); ?></p>
                       </div>
-                        
-                    <?php endif; ?>
-                  </div> <!-- .billing-address-details -->
+                    </div>
+                    <div class="col-md-8">
+                      <div class="detail-item">
+                        <h4>Shipping address</h4>
+                        <p><?php echo implode(' ', array(implode(' ', $shippingAddress->getStreet()), $shippingAddress->getCity(), $shippingCountryName, $shippingAddress->getPostcode())); ?></p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="detail-item">
+                        <h4>Contact no.</h4>
+                        <p><?php echo $shippingAddress->getTelephone(); ?></p>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="detail-item">
+                        <h4>Email</h4>
+                        <p><a href="mailto:<?php echo $this->getCustomer()->getEmail(); ?>"><?php echo $this->getCustomer()->getEmail(); ?></a></p>
+                      </div>
+                    </div>
+                  </div>
+                <?php endif; ?>
+
+              </div> <!-- page-account-address-book-header -->
+            </div> <!-- page-account-address-book-header-container -->
+
+            <div id="page-account-address-book-cta-container">
+
+              <div class="row">
+                <div class="col-md-12 col-md-push-0 col-sm-8 col-sm-push-2 col-xs-10 col-xs-push-1">
 
                   <div class="cta-container">
                     <?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling()): ?>
-                      <a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>?address=billing" class="edit square-cta"><?php echo $this->__('Edit Billing Address') ?></a>
+                      <a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>?address=shipping" class="edit square-cta"><?php echo $this->__('Edit') ?></a>
                     <?php endif; ?>
-                    <?php if(!$_pAddsses): ?>
-                    <a href="<?php echo Mage::getUrl('customer/address/new'); ?>?address=billing" class="add_address square-cta">Add Address</a>
-                    <?php endif; ?>
+                    <a href="<?php echo Mage::getUrl('customer/address/new'); ?>?address=shipping" class="add_address square-cta">Add New Address</a>                    
                   </div>
-
-
-
-                  <!-- 
-                  <div class="row">
-                      <div class="col-md-5 col-sm-5 col-xs-8">
-                          <h1><?php echo $this->__('billing Address'); ?></h1>
-                          <hr class="small" />
-                      </div>
-                      <div class="col-md-5 col-md-offset-2 col-sm-5 col-sm-offset-2 col-xs-4">
-                          <ul>
-                              <?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling()): ?>
-                                  <li><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>" class="edit"><i class="fa fa-cog"></i> <span><?php echo $this->__('Edit') ?></span></a></li>
-                              <?php endif; ?>
-                              <li class="hidden-xs"><a href="<?php echo Mage::getUrl('customer/address/new'); ?>" class="add_address"><i class="fa fa-plus"></i> <span>Add Address</span></a></li>
-                          </ul>
-                      </div>
-                  </div>
-                  <div class="billing-address-details">
-                      <div class="row">
-                          <div class="col-md-12">
-                              <h2 class="title"><?php echo $this->__('Default Billing Address') ?></h2>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <?php if($_pAddsses): ?>
-                              <?php $billingAddress = Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses) ?>
-                              <?php $billingCountryName = Mage::getModel('directory/country')->load($billingAddress->getCountryId())->getName(); ?>
-                              <div class="col-md-6">
-                                  <div class="each-billing-detail">
-                                      <h2><?php echo $this->__('NAME'); ?></h2>
-                                      <p><?php echo implode(' ', array($billingAddress->getFirstname(), $billingAddress->getLastname())); ?></p>
-                                  </div>
-                                  <div class="each-billing-detail">
-                                      <h2><?php echo $this->__('TELEPHONE'); ?></h2>
-                                      <p><?php echo $billingAddress->getTelephone(); ?></p>
-                                  </div>
-                              </div>
-                              <div class="col-md-6">
-                                  <div class="each-billing-detail">
-                                      <h2><?php echo $this->__('ADDRESS'); ?></h2>
-                                      <p><?php echo implode(' ', array(implode(' ', $billingAddress->getStreet()), $billingAddress->getCity(), $billingCountryName, $billingAddress->getPostcode())); ?></p>
-                                  </div>
-                                  <div class="each-billing-detail">
-                                      <h2><?php echo $this->__('EMAIL'); ?></h2>
-                                      <p><a href="mailto:<?php echo $this->getCustomer()->getEmail(); ?>"><?php echo $this->getCustomer()->getEmail(); ?></a></p>
-                                  </div>
-                              </div>
-                          <?php else : ?>
-                              <div class="col-md-12">
-                                  <div class="each-billing-detail">
-                                      <p><?php echo $this->__('You have no default billing address in your address book.') ?></p>
-                                  </div>
-                              </div>
-                          <?php endif; ?>
-                      </div>
-                  </div>
-                  <div class="visible-xs-block">
-                      <div class="account-address-button-container">
-                          <a href="<?php echo Mage::getUrl('customer/address/new'); ?>" class="account-address-button-cta">Add Address</a>
-                      </div>
-                  </div>
-                  <?php if($_pAddsses = $this->getAdditionalAddresses()): ?>
-                      <div class="row">
-                          <div class="col-md-12">
-                              <div class="table-responsive">
-                                  <table class="gift-cards-tbl">
-                                      <tbody>
-                                      <?php $i = 1; foreach($_pAddsses as $_address): ?>
-                                          <?php $billingCountryName = Mage::getModel('directory/country')->load($_address->getCountryId())->getName(); ?>
-                                          <tr>
-                                              <td><p class="billing_address_no"><?php echo $this->__('BILLING ADDRESS %s', $i); ?></p></td>
-                                              <td>
-                                                  <p class="billing_address">
-                                                      <?php echo implode(' ', array(implode(' ', $_address->getStreet()), $_address->getCity(), $billingCountryName, $_address->getPostcode())); ?>
-                                                  </p>
-                                              </td>
-                                              <td><a href="<?php echo $this->getAddressEditUrl($_address) ?>" class="set_as_default_billing"><?php echo $this->__('Edit'); ?></a></td>
-                                          </tr>
-                                          <?php $i++; endforeach; ?>
-                                      </tbody>
-                                  </table>
-                              </div>
-                          </div>
-                      </div>
-                  <?php endif ?>
-
                   
-                  -->
-
+                </div>
               </div>
 
+            </div> <!-- page-account-address-book-cta-container -->
+            
+            <?php if($_pAddsses = $this->getAdditionalAddresses()): ?>
+            <div id="page-account-address-book-other-container">
 
+              <div class="book-other-title">
+                <h2>Other shipping addresses</h2>
+              </div>
+              
+              <div class="book-other-item-container">
+                
+                <?php $i = 1; foreach($_pAddsses as $_address): ?>
+                <?php $shippingCountryName = Mage::getModel('directory/country')->load($_address->getCountryId())->getName(); ?>              
 
-
-
-
-
-              <div class="col-md-6 shipping-address" style="margin-top:70px;">
-
-                  <?php 
-                    // added
-                    $_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultShipping();
-                  ?>
-                  <h1><?php echo $this->__('Shipping Address'); ?></h1>
-                  <div class="shipping-address-details">
-
-                    <?php if ($_pAddsses) :?>
-                      <?php $shippingAddress = Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses); ?>
-                      <?php $shippingCountryName = Mage::getModel('directory/country')->load($shippingAddress->getCountryId())->getName(); ?>
-                      
-                      <div class="each-shipping-detail">
-                          <h2><?php echo $this->__('NAME'); ?></h2>
-                          <p><?php echo implode(' ', array($shippingAddress->getFirstname(), $shippingAddress->getLastname())); ?></p>
-                      </div>
-                      <div class="each-shipping-detail">
-                          <h2><?php echo $this->__('TELEPHONE'); ?></h2>
-                          <p><?php echo $shippingAddress->getTelephone(); ?></p>
-                      </div>
-                      <div class="each-shipping-detail">
-                          <h2><?php echo $this->__('ADDRESS'); ?></h2>
-                          <p><?php echo implode(' ', array(implode(' ', $shippingAddress->getStreet()), $shippingAddress->getCity(), $shippingCountryName, $shippingAddress->getPostcode())); ?></p>
-                      </div>
-                      <div class="each-shipping-detail">
-                          <h2><?php echo $this->__('EMAIL'); ?></h2>
-                          <p><a href="mailto:<?php echo $this->getCustomer()->getEmail(); ?>"><?php echo $this->getCustomer()->getEmail(); ?></a></p>
-                      </div>
-                    <?php else :?>
-                      <div class="each-shipping-detail">
-                          <p><?php echo $this->__('You have no default shipping address in your address book.') ?></p>
-                      </div>
-                    <?php endif; ?>
-
-                  </div>
-
-
-                  <div class="cta-container">
-                    <?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultShipping()): ?>
-                      <a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>?address=shipping" class="edit square-cta">Edit Shipping Address</a>   <br class="visible-sm visible-xs">
-                    <?php endif; ?>
-                    <a href="<?php echo Mage::getUrl('customer/address/new'); ?>?address=shipping" class="add_address square-cta">Add New Address</a>
-                  </div>
-
-
-
-
-                  <!-- 
+                <div class="book-other-item">
                   <div class="row">
-                      <div class="col-md-5 col-sm-5 col-xs-8">
-                          <h1><?php echo $this->__('Shipping Address'); ?></h1>
-                          <hr class="small" />
+                    <div class="col-md-3">
+                      <h4><a href="account-edit-address-book.php"><?php echo $this->__('Address %s', $i); ?></a></h4>
+                    </div>
+                    <div class="col-md-7">
+                      <small><?php echo implode(' ', array(implode(' ', $_address->getStreet()), $_address->getCity(), $shippingCountryName, $_address->getPostcode())); ?></small>
+                    </div>
+                    <div class="col-md-2">
+
+                      <div class="cta-container">
+                        <a href="<?php echo $this->getAddressEditUrl($_address) ?>?address=shipping&index=<?php echo $i; ?>" class="set_as_default_billing edit-btn"><?php echo $this->__('Edit'); ?></a>                        
+                        <a href="<?php echo $this->getDeleteUrl() ?>id/<?php echo $_address->getId() ?>" class="set_as_default_billing remove-address close-btn plain-version"></a>
                       </div>
-                      <div class="col-md-5 col-md-offset-2 col-sm-5 col-sm-offset-2 col-xs-4">
-                          <ul>
-                              <?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultShipping()): ?>
-                                  <li><a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>" class="edit"><i class="fa fa-cog"></i><span>Edit</span></a></li>
-                              <?php endif; ?>
-                              <li class="hidden-xs"><a href="<?php echo Mage::getUrl('customer/address/new'); ?>" class="add_address"><i class="fa fa-plus"></i><span>Add Address</span></a></li>
-                          </ul>
-                      </div>
+
+                    </div>
                   </div>
-                  <div class="shipping-address-details">
-                      <div class="row">
-                          <div class="col-md-12">
-                              <h2 class="title"><?php echo $this->__('Default Shipping Address') ?></h2>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <?php if ($_pAddsses) :?>
-                              <?php $shippingAddress = Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses); ?>
-                              <?php $shippingCountryName = Mage::getModel('directory/country')->load($shippingAddress->getCountryId())->getName(); ?>
-                              <div class="col-md-6">
-                                  <div class="each-shipping-detail">
-                                      <h2><?php echo $this->__('NAME'); ?></h2>
-                                      <p><?php echo implode(' ', array($shippingAddress->getFirstname(), $shippingAddress->getLastname())); ?></p>
-                                  </div>
-                                  <div class="each-shipping-detail">
-                                      <h2><?php echo $this->__('TELEPHONE'); ?></h2>
-                                      <p><?php echo $shippingAddress->getTelephone(); ?></p>
-                                  </div>
-                              </div>
-                              <div class="col-md-6">
-                                  <div class="each-shipping-detail">
-                                      <h2><?php echo $this->__('ADDRESS'); ?></h2>
-                                      <p><?php echo implode(' ', array(implode(' ', $shippingAddress->getStreet()), $shippingAddress->getCity(), $shippingCountryName, $shippingAddress->getPostcode())); ?></p>
-                                  </div>
-                                  <div class="each-shipping-detail">
-                                      <h2><?php echo $this->__('EMAIL'); ?></h2>
-                                      <p><a href="mailto:<?php echo $this->getCustomer()->getEmail(); ?>"><?php echo $this->getCustomer()->getEmail(); ?></a></p>
-                                  </div>
-                              </div>
-                          <?php else :?>
-                              <div class="col-md-12">
-                                  <div class="each-shipping-detail">
-                                      <p><?php echo $this->__('You have no default shipping address in your address book.') ?></p>
-                                  </div>
-                              </div>
-                          <?php endif; ?>
-                      </div>
-                  </div>
-                  <?php if($_pAddsses = $this->getAdditionalAddresses()): ?>
-                      <div class="row">
-                          <div class="col-md-12">
-                              <div class="table-responsive">
-                                  <table class="gift-cards-tbl">
-                                      <tbody>
-                                      <?php $i = 1; foreach($_pAddsses as $_address): ?>
-                                          <?php $shippingCountryName = Mage::getModel('directory/country')->load($_address->getCountryId())->getName(); ?>
-                                          <tr>
-                                              <td><p class="billing_address_no"><?php echo $this->__('SHIPPING ADDRESS %s', $i); ?></p></td>
-                                              <td>
-                                                  <p class="billing_address">
-                                                      <?php echo implode(' ', array(implode(' ', $_address->getStreet()), $_address->getCity(), $shippingCountryName, $_address->getPostcode())); ?>
-                                                  </p>
-                                              </td>
-                                              <td><a href="<?php echo $this->getAddressEditUrl($_address) ?>" class="set_as_default_billing"><?php echo $this->__('Edit'); ?></a></td>
-                                          </tr>
-                                          <?php $i++; endforeach; ?>
-                                      </tbody>
-                                  </table>
-                              </div>
-                          </div>
-                      </div>
-                  <?php endif ?>
-                  -->
+                </div> <!-- book-other-item -->
+
+                <?php $i++; endforeach; ?>
+
+              </div> <!-- book-other-item-container -->
+
+            </div>  <!-- page-account-address-book-other-container -->
+
+            <script>
+            $j(".remove-address").on('click', function(e){
+              e.preventDefault();
+              if (window.confirm("Do you wish to delete your shipping address?")) {
+                location.href = this.href;
+              }
+            });
+            </script>
+            <?php endif; ?>
+
+        </div> <!-- col-md-10 -->
 
 
-              </div>
-          </div>
 
-          <!-- 
-          <div class="visible-xs-block">
-              <div class="account-address-button-container">
-                  <a href="<?php echo Mage::getUrl('customer/address/new'); ?>" class="account-address-button-cta">Add Address</a>
-              </div>
-          </div>
-          -->
+      </div> <!-- row -->
+    </div> <!-- container-fluid -->
 
-          <div class="buttons-set row">
-              <!-- <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p> -->
-          </div>
+  </article> <!-- page-account-content-section -->
 
-      </div>
-  </div>
-</div>
 <script type="text/javascript">
 //<![CDATA[
     function deleteAddress(addressId) {
@@ -355,48 +240,3 @@
     }
 //]]>
 </script>
-
-
-
-
-
-
-<?php if($_pAddsses = $this->getAdditionalAddresses()): ?>
-
-  <div id="monogram-page-account-details-other-shipping-address-container">
-
-    <h2>other shipping addresses</h2>
-        
-    <div class="table-responsive">
-        <table class="gift-cards-tbl">
-            <tbody>
-            <?php $i = 1; foreach($_pAddsses as $_address): ?>
-                <?php $shippingCountryName = Mage::getModel('directory/country')->load($_address->getCountryId())->getName(); ?>
-                <tr>
-                    <td><p class="billing_address_no"><?php echo $this->__('ADDRESS %s', $i); ?></p></td>
-                    <td>
-                        <p class="billing_address">
-                            <?php echo implode(' ', array(implode(' ', $_address->getStreet()), $_address->getCity(), $shippingCountryName, $_address->getPostcode())); ?>
-                        </p>
-                    </td>
-                    <td style="text-align: right;"><a href="<?php echo $this->getAddressEditUrl($_address) ?>?address=shipping" class="set_as_default_billing"><?php echo $this->__('Edit'); ?></a>
-                    </td>
-                    <td style="width: 10%;"><a href="<?php echo $this->getDeleteUrl() ?>id/<?php echo $_address->getId() ?>" class="set_as_default_billing remove-address"><?php echo $this->__('Remove'); ?></a></td>
-                </tr>
-                <?php $i++; endforeach; ?>
-            </tbody>
-        </table>
-    </div>
-          
-
-
-  </div>
-  <script>
-    $j(".remove-address").on('click', function(e){
-      e.preventDefault();
-      if (window.confirm("Do you wish to delete your shipping address?")) {
-        location.href = this.href;
-      }
-    });
-  </script>
-<?php endif ?>

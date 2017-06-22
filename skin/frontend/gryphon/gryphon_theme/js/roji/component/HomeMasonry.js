@@ -21,7 +21,7 @@ roji.component.HomeMasonry = function(options, element) {
   
   this.create_isotope();
 
-  if(manic.IS_MOBILE == true) {
+  if(manic.IS_MOBILE == true || manic.IS_TABLET_PORTRAIT == true) {
     this.element.find(".tile-center-content").click(this.on_tile_click.bind(this));
   }
   

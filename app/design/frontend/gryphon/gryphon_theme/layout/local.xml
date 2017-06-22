@@ -98,14 +98,16 @@ One page checkout main layout
 
     <customer_account>
         <reference name="head">            
-            <action method="addItem"><type>skin_js</type><name>js/no-banner.js</name></action>
-            <action method="addItem"><type>skin_css</type><name>css/intlTelInput.css</name></action>
-            <action method="addItem"><type>skin_js</type><name>js/plugins/intlTelInput.min.js</name></action>
-            <action method="addItem"><type>skin_js</type><name>js/plugins/lib/libphonenumber/build/utils.js</name></action>
+            <!-- <action method="addItem"><type>skin_js</type><name>js/no-banner.js</name></action> -->
+            <!-- <action method="addItem"><type>skin_css</type><name>css/intlTelInput.css</name></action> -->
+            <!-- <action method="addItem"><type>skin_js</type><name>js/plugins/intlTelInput.min.js</name></action> -->
+            <!-- <action method="addItem"><type>skin_js</type><name>js/plugins/lib/libphonenumber/build/utils.js</name></action> -->
+            <action method="removeItem"><type>skin_js</type><name>js/minified/page-default.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/minified/page-account.min.js</name></action>   
         </reference>
 
         <reference name="root">
-            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+            <action method="setTemplate"><template>page/account-layout.phtml</template></action>
         </reference>
 
         <reference name="right">
@@ -148,7 +150,7 @@ One page checkout main layout
             <action method="setForcedTitle"><title>My Account - Roji Cha</title></action>            
         </reference>
         <reference name="root">
-            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+            <action method="setTemplate"><template>page/account-layout.phtml</template></action>
         </reference>
         <reference name="my.account.wrapper">
             <action method="unsetChildren"></action>
@@ -158,6 +160,31 @@ One page checkout main layout
                 <block type="customer/account_dashboard_info" name="customer_account_dashboard_info" as="info" template="miragedesign/customer/account/dashboard/info.phtml"/>
                 <block type="customer/account_dashboard_newsletter" name="customer_account_dashboard_newsletter" as="newsletter" template="miragedesign/customer/account/dashboard/newsletter.phtml"/>
                 <block type="customer/account_dashboard_address" name="customer_account_dashboard_address" as="address" template="miragedesign/customer/account/dashboard/address.phtml"/>
+
+                <block type="customer/account_navigation" name="customer_account_navigation" as="navigation" template="miragedesign/customer/account/navigation.phtml">
+                    <action method="addLink" translate="label" module="customer"><name>account</name><path>customer/account/</path><label>Account Dashboard</label></action>
+                    <!-- <action method="addLink" translate="label" module="customer"><name>account_edit</name><path>customer/account/edit/</path><label>Account Information</label></action> -->
+                    <action method="addLink" translate="label" module="customer"><name>address_book</name><path>customer/address/</path><label>Address Book</label></action>
+                    <action method="addLink" translate="label" module="sales"><name>orders</name><path>sales/order/history/</path><label>Order History</label></action>
+                    <action method="addLink" ifconfig="giftvoucher/general/active" translate="label" module="giftvoucher">
+                        <name>giftvoucher</name>
+                        <path>giftvoucher/index/index</path>
+                        <label>Gift Card</label>
+                    </action>
+                    <action method="addLink" translate="label" module="rewardpoints"><name>rewardpoints</name><path>rewardpoints/index/points/</path><label>Rebate History</label></action>
+                    
+                    <action method="addLink" translate="label" module="rewardpoints" ifconfig="rewardpoints/registration/referral_show"><name>referral</name><path>rewardpoints/index/referral/</path><label>Friend Referral</label></action>      
+                    
+                    <!-- <action method="addLink" translate="label" module="savelayering">
+                        <name>viewsavelayering</name>
+                        <path>savelayering/customer/view</path>
+                        <label>Saved Layering</label>
+                    </action> -->
+                    
+                    <!--<action method="addLink" translate="label" module="newsletter"><name>newsletter</name><path>newsletter/manage/</path><label>Newsletter Subscriptions</label></action>
+                    <action method="addLink" translate="label" module="review"><name>reviews</name><path>review/customer</path><label>My Product Reviews</label></action>
+                    <action method="addLink" translate="label" module="wishlist" ifconfig="wishlist/general/active"><name>wishlist</name><path>wishlist/</path><label>My Wishlist</label></action>-->
+                </block>
             </block>
         </reference>
     </customer_account_index>
@@ -219,9 +246,9 @@ One page checkout main layout
 
     <customer_account_edit>
         <reference name="head">
-            <action method="addItem"><type>skin_css</type><name>css/intlTelInput.css</name></action>
-            <action method="addItem"><type>skin_js</type><name>js/plugins/intlTelInput.min.js</name></action>
-            <action method="addItem"><type>skin_js</type><name>js/plugins/lib/libphonenumber/build/utils.js</name></action>
+            <!-- <action method="addItem"><type>skin_css</type><name>css/intlTelInput.css</name></action> -->
+            <!-- <action method="addItem"><type>skin_js</type><name>js/plugins/intlTelInput.min.js</name></action> -->
+            <!-- <action method="addItem"><type>skin_js</type><name>js/plugins/lib/libphonenumber/build/utils.js</name></action> -->
             <action method="addItem"><type>skin_js</type><name>js/miragedesign/regionupdater.js</name></action>            
             <action method="setForcedTitle"><title>My Account - Roji Cha</title></action>            
         </reference>
@@ -229,6 +256,29 @@ One page checkout main layout
             <action method="unsetChildren"></action>
             <block type="customer/form_edit" name="customer_edit" template="miragedesign/customer/form/edit.phtml">
                 <block type="core/template" name="customer_account_dashboard_top" as="top" />
+                <block type="customer/account_navigation" name="customer_account_navigation" as="navigation" template="miragedesign/customer/account/navigation.phtml">
+                    <action method="addLink" translate="label" module="customer"><name>account</name><path>customer/account/</path><label>Account Dashboard</label></action>                    
+                    <action method="addLink" translate="label" module="customer"><name>address_book</name><path>customer/address/</path><label>Address Book</label></action>
+                    <action method="addLink" translate="label" module="sales"><name>orders</name><path>sales/order/history/</path><label>Order History</label></action>
+                    <action method="addLink" ifconfig="giftvoucher/general/active" translate="label" module="giftvoucher">
+                        <name>giftvoucher</name>
+                        <path>giftvoucher/index/index</path>
+                        <label>Gift Card</label>
+                    </action>
+                    <action method="addLink" translate="label" module="rewardpoints"><name>rewardpoints</name><path>rewardpoints/index/points/</path><label>Rebate History</label></action>
+                    
+                    <action method="addLink" translate="label" module="rewardpoints" ifconfig="rewardpoints/registration/referral_show"><name>referral</name><path>rewardpoints/index/referral/</path><label>Friend Referral</label></action>      
+                    
+                    <!-- <action method="addLink" translate="label" module="savelayering">
+                        <name>viewsavelayering</name>
+                        <path>savelayering/customer/view</path>
+                        <label>Saved Layering</label>
+                    </action> -->
+                    
+                    <!--<action method="addLink" translate="label" module="newsletter"><name>newsletter</name><path>newsletter/manage/</path><label>Newsletter Subscriptions</label></action>
+                    <action method="addLink" translate="label" module="review"><name>reviews</name><path>review/customer</path><label>My Product Reviews</label></action>
+                    <action method="addLink" translate="label" module="wishlist" ifconfig="wishlist/general/active"><name>wishlist</name><path>wishlist/</path><label>My Wishlist</label></action>-->
+                </block>
             </block>
         </reference>
     </customer_account_edit>
@@ -240,6 +290,30 @@ One page checkout main layout
         </reference>
         <reference name="customer_address_edit">
             <action method="setTemplate"><template>miragedesign/customer/address/edit.phtml</template></action>
+            <block type="customer/account_navigation" name="customer_account_navigation" as="navigation" template="miragedesign/customer/account/navigation.phtml">
+                    <action method="addLink" translate="label" module="customer"><name>account</name><path>customer/account/</path><label>Account Dashboard</label></action>
+                    <!-- <action method="addLink" translate="label" module="customer"><name>account_edit</name><path>customer/account/edit/</path><label>Account Information</label></action> -->
+                    <action method="addLink" translate="label" module="customer"><name>address_book</name><path>customer/address/</path><label>Address Book</label></action>
+                    <action method="addLink" translate="label" module="sales"><name>orders</name><path>sales/order/history/</path><label>Order History</label></action>
+                    <action method="addLink" ifconfig="giftvoucher/general/active" translate="label" module="giftvoucher">
+                        <name>giftvoucher</name>
+                        <path>giftvoucher/index/index</path>
+                        <label>Gift Card</label>
+                    </action>
+                    <action method="addLink" translate="label" module="rewardpoints"><name>rewardpoints</name><path>rewardpoints/index/points/</path><label>Rebate History</label></action>
+                    
+                    <action method="addLink" translate="label" module="rewardpoints" ifconfig="rewardpoints/registration/referral_show"><name>referral</name><path>rewardpoints/index/referral/</path><label>Friend Referral</label></action>      
+                    
+                    <!-- <action method="addLink" translate="label" module="savelayering">
+                        <name>viewsavelayering</name>
+                        <path>savelayering/customer/view</path>
+                        <label>Saved Layering</label>
+                    </action> -->
+                    
+                    <!--<action method="addLink" translate="label" module="newsletter"><name>newsletter</name><path>newsletter/manage/</path><label>Newsletter Subscriptions</label></action>
+                    <action method="addLink" translate="label" module="review"><name>reviews</name><path>review/customer</path><label>My Product Reviews</label></action>
+                    <action method="addLink" translate="label" module="wishlist" ifconfig="wishlist/general/active"><name>wishlist</name><path>wishlist/</path><label>My Wishlist</label></action>-->
+                </block>
         </reference>
     </customer_address_form>
 
@@ -258,12 +332,67 @@ One page checkout main layout
     <sales_order_history>
         <reference name="head">
             <action method="setForcedTitle"><title>Order History - Roji Cha</title></action>            
-            <action method="addItem"><type>skin_js</type><name>js/plugins/gryphon/jquery.gryphon-mobile-account-order-history.js</name></action>            
+            <!-- <action method="addItem"><type>skin_js</type><name>js/plugins/gryphon/jquery.gryphon-mobile-account-order-history.js</name></action>             -->
+        </reference>
+        <reference name="sales.order.history">            
+            <block type="customer/account_navigation" name="customer_account_navigation" as="navigation" template="miragedesign/customer/account/navigation.phtml">
+                <action method="addLink" translate="label" module="customer"><name>account</name><path>customer/account/</path><label>Account Dashboard</label></action>
+                <!-- <action method="addLink" translate="label" module="customer"><name>account_edit</name><path>customer/account/edit/</path><label>Account Information</label></action> -->
+                <action method="addLink" translate="label" module="customer"><name>address_book</name><path>customer/address/</path><label>Address Book</label></action>
+                <action method="addLink" translate="label" module="sales"><name>orders</name><path>sales/order/history/</path><label>Order History</label></action>
+                <action method="addLink" ifconfig="giftvoucher/general/active" translate="label" module="giftvoucher">
+                    <name>giftvoucher</name>
+                    <path>giftvoucher/index/index</path>
+                    <label>Gift Card</label>
+                </action>
+                <action method="addLink" translate="label" module="rewardpoints"><name>rewardpoints</name><path>rewardpoints/index/points/</path><label>Rebate History</label></action>
+                
+                <action method="addLink" translate="label" module="rewardpoints" ifconfig="rewardpoints/registration/referral_show"><name>referral</name><path>rewardpoints/index/referral/</path><label>Friend Referral</label></action>      
+                
+                <!-- <action method="addLink" translate="label" module="savelayering">
+                    <name>viewsavelayering</name>
+                    <path>savelayering/customer/view</path>
+                    <label>Saved Layering</label>
+                </action> -->
+                
+                <!--<action method="addLink" translate="label" module="newsletter"><name>newsletter</name><path>newsletter/manage/</path><label>Newsletter Subscriptions</label></action>
+                <action method="addLink" translate="label" module="review"><name>reviews</name><path>review/customer</path><label>My Product Reviews</label></action>
+                <action method="addLink" translate="label" module="wishlist" ifconfig="wishlist/general/active"><name>wishlist</name><path>wishlist/</path><label>My Wishlist</label></action>-->
+            </block>
         </reference>
         <reference name="customer.account.link.back">
-            <action method="setTemplate"><template>miragedesign/customer/account/link/back.phtml</template></action>
+            <action method="setTemplate"><template>miragedesign/customer/account/link/back.phtml</template></action>        
         </reference>
     </sales_order_history>
+
+    <sales_order_view>
+        <reference name="sales.order.info">
+            <block type="customer/account_navigation" name="customer_account_navigation" as="navigation" template="miragedesign/customer/account/navigation.phtml">
+                <action method="addLink" translate="label" module="customer"><name>account</name><path>customer/account/</path><label>Account Dashboard</label></action>
+                <!-- <action method="addLink" translate="label" module="customer"><name>account_edit</name><path>customer/account/edit/</path><label>Account Information</label></action> -->
+                <action method="addLink" translate="label" module="customer"><name>address_book</name><path>customer/address/</path><label>Address Book</label></action>
+                <action method="addLink" translate="label" module="sales"><name>orders</name><path>sales/order/history/</path><label>Order History</label></action>
+                <action method="addLink" ifconfig="giftvoucher/general/active" translate="label" module="giftvoucher">
+                    <name>giftvoucher</name>
+                    <path>giftvoucher/index/index</path>
+                    <label>Gift Card</label>
+                </action>
+                <action method="addLink" translate="label" module="rewardpoints"><name>rewardpoints</name><path>rewardpoints/index/points/</path><label>Rebate History</label></action>
+                
+                <action method="addLink" translate="label" module="rewardpoints" ifconfig="rewardpoints/registration/referral_show"><name>referral</name><path>rewardpoints/index/referral/</path><label>Friend Referral</label></action>      
+                
+                <!-- <action method="addLink" translate="label" module="savelayering">
+                    <name>viewsavelayering</name>
+                    <path>savelayering/customer/view</path>
+                    <label>Saved Layering</label>
+                </action> -->
+                
+                <!--<action method="addLink" translate="label" module="newsletter"><name>newsletter</name><path>newsletter/manage/</path><label>Newsletter Subscriptions</label></action>
+                <action method="addLink" translate="label" module="review"><name>reviews</name><path>review/customer</path><label>My Product Reviews</label></action>
+                <action method="addLink" translate="label" module="wishlist" ifconfig="wishlist/general/active"><name>wishlist</name><path>wishlist/</path><label>My Wishlist</label></action>-->
+            </block>
+        </reference>
+    </sales_order_view>
 
     <customer_address_index>
         <reference name="head">   
@@ -271,6 +400,30 @@ One page checkout main layout
         </reference>
         <reference name="address_book">
             <action method="setTemplate"><template>miragedesign/customer/address/book.phtml</template></action>
+            <block type="customer/account_navigation" name="customer_account_navigation" as="navigation" template="miragedesign/customer/account/navigation.phtml">
+                    <action method="addLink" translate="label" module="customer"><name>account</name><path>customer/account/</path><label>Account Dashboard</label></action>
+                    <!-- <action method="addLink" translate="label" module="customer"><name>account_edit</name><path>customer/account/edit/</path><label>Account Information</label></action> -->
+                    <action method="addLink" translate="label" module="customer"><name>address_book</name><path>customer/address/</path><label>Address Book</label></action>
+                    <action method="addLink" translate="label" module="sales"><name>orders</name><path>sales/order/history/</path><label>Order History</label></action>
+                    <action method="addLink" ifconfig="giftvoucher/general/active" translate="label" module="giftvoucher">
+                        <name>giftvoucher</name>
+                        <path>giftvoucher/index/index</path>
+                        <label>Gift Card</label>
+                    </action>
+                    <action method="addLink" translate="label" module="rewardpoints"><name>rewardpoints</name><path>rewardpoints/index/points/</path><label>Rebate History</label></action>
+                    
+                    <action method="addLink" translate="label" module="rewardpoints" ifconfig="rewardpoints/registration/referral_show"><name>referral</name><path>rewardpoints/index/referral/</path><label>Friend Referral</label></action>      
+                    
+                    <!-- <action method="addLink" translate="label" module="savelayering">
+                        <name>viewsavelayering</name>
+                        <path>savelayering/customer/view</path>
+                        <label>Saved Layering</label>
+                    </action> -->
+                    
+                    <!--<action method="addLink" translate="label" module="newsletter"><name>newsletter</name><path>newsletter/manage/</path><label>Newsletter Subscriptions</label></action>
+                    <action method="addLink" translate="label" module="review"><name>reviews</name><path>review/customer</path><label>My Product Reviews</label></action>
+                    <action method="addLink" translate="label" module="wishlist" ifconfig="wishlist/general/active"><name>wishlist</name><path>wishlist/</path><label>My Wishlist</label></action>-->
+                </block>
         </reference>
     </customer_address_index>
 

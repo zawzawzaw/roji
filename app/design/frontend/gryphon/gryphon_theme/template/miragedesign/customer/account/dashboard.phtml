@@ -25,190 +25,135 @@
  */
 ?>
 
+  <!--
+     _____ ___ _____ _     _____
+    |_   _|_ _|_   _| |   | ____|
+      | |  | |  | | | |   |  _|
+      | |  | |  | | | |___| |___
+      |_| |___| |_| |_____|_____|
 
+  -->
 
-<div id="monogram-page-account-mobile-header" class="visible-sm visible-xs">
-  <h4>Basic Information</h4>
-  <h2>My Account</h2>
-</div>
-
-
-<div id="monogram-page-account-mobile-page-title" class="visible-sm visible-xs">
-  <h1><?php echo $this->escapeHtml($this->getCustomer()->getName()) ?></h1>
-  <p><a href="mailto:<?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?>" class="email"><?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?></a></p>
-
-  <div class="cta-container">
-    <?php if (Mage::helper('customer')->isLoggedIn() ): ?>
-      <a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>" class="square-cta">Log Out</a>
-      <a href="<?php echo $this->getUrl('customer/account/edit') ?>" class="edit square-cta">Edit</a>
-    <?php endif; ?>
-  </div>
-
-
-</div>
-
-
-
-<div id="monogram-page-account-details-dashboard-header-mobile" class="visible-sm visible-xs">
-  <div class="row">
-    <div class="col-md-6 hidden-xs hidden-sm"></div>
-    <div class="col-xs-6 col-sm-6 col-md-6">
-
-      <div class="monogram-page-account-details-dashboard-header-item">
-	  <?php			
-			$groupname = '';
-			if(Mage::getSingleton('customer/session')->isLoggedIn()) {
-				$customerData = Mage::getSingleton('customer/session')->getCustomer();
-				$customerGroupId = $customerData->getGroupId();
-				$groupname = Mage::getModel('customer/group')->load($customerGroupId)->getCustomerGroupCode();  
-			} 	
-			if(($groupname!='Trader-Temp' && $groupname!='Trader-Regular' && $groupname!='Trader-Priority' && $groupname!='Trader-Premium')):
-	  ?>
-        <div class="monogram-page-account-details-dashboard-header-icon rebates-version"></div>
-        <h4>rebates</h4>
-        <?php 
-        $store = Mage::app()->getStore();
-        $currency = Mage::app()->getStore()->getCurrentCurrency();
-
-        $store_id = Mage::app()->getStore()->getId();
-        $customerId = Mage::getModel('customer/session')->getCustomerId();
-        if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
-            $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
-            $current_point = $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
-        } else {
-          $reward_model = Mage::getModel('rewardpoints/stats');
-          $current_point = $reward_model->getPointsCurrent($customerId, $store_id)+0;
-        }                
-        ?>
-        <p class="value"><?php echo $currency->format($store->convertPrice($current_point)); ?></p>
-        <a href="<?php echo $this->getUrl('rewardpoints/index/points') ?>" class="arrow-cta">see valid date</a>
-		<?php endif; ?>
-      </div> <!-- .monogram-page-account-details-dashboard-header-item -->
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-<div id="monogram-page-account-details-dashboard-header" class="visible-md visible-lg">
-  <div class="row">
-    <div class="col-md-8">
-      <div class="monogram-page-account-details-dashboard-header-item first-version">
-        <h1><?php echo $this->escapeHtml($this->getCustomer()->getName()) ?></h1>
-        <p><a href="mailto:<?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?>" class="email"><?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?></a></p>
-        
-        <div class="cta-container">
-          <?php if (Mage::helper('customer')->isLoggedIn() ): ?>
-            <a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>" class="square-cta">Log Out</a>
-            <a href="<?php echo $this->getUrl('customer/account/edit') ?>" class="edit square-cta">Edit</a>
-          <?php endif; ?>
+  <article id="page-account-title-section">
+    <div class="container-fluid has-breakpoint">
+      <div class="row">
+        <div class="col-md-3 col-sm-1 col-xs-0"></div>
+        <div class="col-md-9 col-sm-10 col-xs-12">
+          <div id="page-account-title">
+            <h1>My Account Information.</h1>
+          </div> <!-- page-account-title -->
         </div>
       </div>
     </div>
-    <!-- <div class="col-md-4">
-      <div class="monogram-page-account-details-dashboard-header-item" data-value="reward-points">
-        <div class="monogram-page-account-details-dashboard-header-icon store-version"></div>
-        <h4>store credit</h4>
-        <?php 
-        $store = Mage::app()->getStore();
-        $creadit = Mage::getModel('giftvoucher/credit')->getCreditAccountLogin();
-        $currency = Mage::app()->getStore()->getCurrentCurrency();        
-        ?>
-        <p class="value"><?php echo $currency->format($store->convertPrice($creadit->getBalance())); ?></p>
-        <a href="<?php echo $this->getUrl('giftvoucher/index/index') ?>" class="arrow-cta">see history</a>
-      </div>
-    </div> -->
-    <div class="col-md-4">
-      <?php     
-        $groupname = '';
-        if(Mage::getSingleton('customer/session')->isLoggedIn()) {
-          $customerData = Mage::getSingleton('customer/session')->getCustomer();
-          $customerGroupId = $customerData->getGroupId();
-          $groupname = Mage::getModel('customer/group')->load($customerGroupId)->getCustomerGroupCode();  
-        }   
-        // echo $groupname;
-        if($groupname!='Trader-Temp' && $groupname!='Trader-Regular' && $groupname!='Trader-Priority' && $groupname!='Trader-Premium'):
-      ?>
-      <div class="monogram-page-account-details-dashboard-header-item" data-value="rebates">	  
-        <div class="monogram-page-account-details-dashboard-header-icon rebates-version"></div>
-        <h4>rebates</h4>
-        <?php 
-        $store = Mage::app()->getStore();
-        $currency = Mage::app()->getStore()->getCurrentCurrency();
+  </article> <!-- page-account-title-section -->
 
-        $store_id = Mage::app()->getStore()->getId();
-        $customerId = Mage::getModel('customer/session')->getCustomerId();
-        if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
-            $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
-            $current_point = $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
-        } else {
-          $reward_model = Mage::getModel('rewardpoints/stats');
-          $current_point = $reward_model->getPointsCurrent($customerId, $store_id)+0;
-        }                
-        ?>
-        <p class="value"><?php echo $currency->format($store->convertPrice($current_point)); ?></p>
-        <a href="<?php echo $this->getUrl('rewardpoints/index/points') ?>" class="arrow-cta">see valid date</a>		  
-      </div>
-      <?php endif; ?>
+  <!--
+      ____ ___  _   _ _____ _____ _   _ _____
+     / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+    | |  | | | |  \| | | | |  _| |  \| | | |
+    | |__| |_| | |\  | | | | |___| |\  | | |
+     \____\___/|_| \_| |_| |_____|_| \_| |_|
+
+  -->
+
+  <article id="page-account-content-section">
+
+    <div id="page-account-content-section-bg" class="visible-md visible-lg">
+      <div class="sidebar-bg"></div>
+      <div class="content-bg"></div>
     </div>
-    <!--<div class="col-md-3">
-      <div class="monogram-page-account-details-dashboard-header-item" data-value="gift-card">
-        <div class="monogram-page-account-details-dashboard-header-icon giftcard-version"></div>
-        <h4>gift card</h4>
-        <?php //print_r(Mage::getModel('giftvoucher/giftvoucher')->getCollection()->getAvailable()); ?>
-        <p class="value">$ 888.88</p>
-        <a href="<?php echo $this->getUrl('giftvoucher/index/addredeem') ?>" class="arrow-cta">add gift card</a>
-      </div>
-    </div>-->
-  </div>
-</div> <!-- #monogram-page-account-details-dashboard-header -->
+
+    <div class="container-fluid has-breakpoint">
+      <div class="row">
+
+        <div class="col-md-2 col-tablet-landscape-1 hidden-sm hidden-xs">
+
+          <!--
+             ____ ___ ____  _____ ____    _    ____
+            / ___|_ _|  _ \| ____| __ )  / \  |  _ \
+            \___ \| || | | |  _| |  _ \ / _ \ | |_) |
+             ___) | || |_| | |___| |_) / ___ \|  _ <
+            |____/___|____/|_____|____/_/   \_\_| \_\
+
+          -->
+
+          <div id="page-account-sidebar-width"></div>
+          <div id="page-account-sidebar">            
+
+            <?php echo $this->getChildHtml('navigation') ?>
+
+          </div> <!-- page-account-sidebar -->
+
+        </div> <!-- col-md-2 -->
+        <div class="col-md-0 col-tablet-landscape-0 col-sm-1 col-xs-0"></div>
+        <div class="col-md-10 col-tablet-landscape-11 col-sm-10 col-xs-12">
+          
+          <!--
+              ____ ___  _   _ _____ _____ _   _ _____
+             / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+            | |  | | | |  \| | | | |  _| |  \| | | |
+            | |__| |_| | |\  | | | | |___| |\  | | |
+             \____\___/|_| \_| |_| |_____|_| \_| |_|
+
+          -->
+
+          <div id="page-account-content-width"></div>
+          <div id="page-account-content">
+            
+            <div id="page-account-info-header-container" class="sans-container-fluid-mobile">
+
+              <div id="page-account-info-header">
+
+                <div class="row">
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+
+                    <div class="info-header-content">
+                      <h2><?php echo $this->escapeHtml($this->getCustomer()->getName()) ?></h2>
+                      <small><a href="mailto:<?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?>" class="email"><?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?></a></small>                      
+                    </div>
+
+                  </div>
+                  <div class="col-md-3 col-tablet-landscape-2 col-sm-2 col-xs-12"></div>
+                  <div class="col-md-3 col-tablet-landscape-4 col-sm-4 col-xs-12">
+
+                    <div class="info-header-rebates">
+                      <h4>Rebates</h4>
+                      <?php 
+                      $store = Mage::app()->getStore();
+                      $currency = Mage::app()->getStore()->getCurrentCurrency();
+
+                      $store_id = Mage::app()->getStore()->getId();
+                      $customerId = Mage::getModel('customer/session')->getCustomerId();
+                      if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+                          $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+                          $current_point = $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
+                      } else {
+                        $reward_model = Mage::getModel('rewardpoints/stats');
+                        $current_point = $reward_model->getPointsCurrent($customerId, $store_id)+0;
+                      }                
+                      ?>
+                      <p class="value"><?php echo $currency->format($store->convertPrice($current_point)); ?></p>
+                    </div>
+
+                  </div>
+                </div> <!-- row -->
+
+              </div> <!-- page-account-info-header -->
 
 
+              <?php echo $this->getChildHtml('customer.account.dashboard.extra') ?>
+              <?php echo $this->getChildHtml('info') ?>
+              <?php //echo $this->getChildHtml('top') ?>
+              
 
-<div class="dashboard first-content">
-    <div class="account-details-saved">
-        <div class="visible-xs-block visible-sm-block" id="custom-mobile-account-messages">
-            <?php //echo $this->getMessagesBlock()->toHtml() ?>
-        </div>
-        <div class="image-text-content">
-            <div class="visible-md-block visible-lg-block">
-                <?php //echo $this->getMessagesBlock()->toHtml() ?>
             </div>
-            <?php // echo $this->getChildHtml('hello') ?>            
-            <?php echo $this->getChildHtml('customer.account.dashboard.extra') ?>
-            <?php echo $this->getChildHtml('info') ?>
-            <?php echo $this->getChildHtml('top') ?>
-        </div>
-    </div>
-</div>
 
-<script type="text/javascript">
-  jQuery(document).ready(function($) {
-    $('body').addClass('account-page-version');
+          </div> <!-- page-account-content -->
 
+        </div> <!-- col-md-10 -->
 
+      </div> <!-- row -->
+    </div> <!-- container-fluid -->
 
-    // by jairus
-    
-    // var reward_points = '$ 888.88';
-    // var rebates = '<?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?> ' + $("#my-rewardpoints-table .loyalty-point").html();
-    // var giftcard = '$ 888.88';
+  </article> <!-- page-account-content-section -->
 
-    // $("#monogram-page-account-details-dashboard-header .monogram-page-account-details-dashboard-header-item[data-value=reward-points] .value").html(reward_points);
-    // $("#monogram-page-account-details-dashboard-header .monogram-page-account-details-dashboard-header-item[data-value=rebates] .value").html(rebates);
-    // $("#monogram-page-account-details-dashboard-header .monogram-page-account-details-dashboard-header-item[data-value=gift-card] .value").html(giftcard);
-
-  });
-</script>
-
-<style type="text/css">
-  #my-rewardpoints-table{
-    display: none;
-  }
-</style>
-
-<?php //echo $this->getChildHtml('address') ?>

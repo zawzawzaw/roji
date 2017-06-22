@@ -10,7 +10,7 @@
 <?php endif ?>
 
 <?php if($this->getShowAmounts()): ?>
-<p class="amount">
+<p class="amount" style="display: none;">
     <?php if($this->getLastPageNum()>1): ?>
         <?php echo $this->__('Items %s to %s of %s total', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
     <?php else: ?>
@@ -20,7 +20,7 @@
 <?php endif ?>
 
 <?php if($this->getShowPerPage()): ?>
-<div class="limiter">
+<div class="limiter" style="display: none;">
     <div class="dropdown">
         <select onchange="setLocation(this.value)">
         <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
@@ -35,16 +35,16 @@
 <?php endif ?>
 
 <?php if($this->getLastPageNum()>1): ?>
-<div class="pages">
-    <ol>
+<div class="pages page-account-table-pagination">
+    <ul>
     <?php if (!$this->isFirstPage()): ?>
         <li>
-            <a class="previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $this->getPreviousPageUrl() ?>" title="<?php echo $this->__('Previous') ?>">
+            <a class="arrow-cta arrow-version reverse-version previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $this->getPreviousPageUrl() ?>" title="<?php echo $this->__('Previous') ?>">
                 <?php if(!$this->getAnchorTextForPrevious()): ?>
                     
-                    <i class="fa fa-arrow-left"></i>
+                    <!-- <i class="fa fa-arrow-left"></i> -->
                 <?php else: ?>
-                    <?php echo $this->getAnchorTextForPrevious() ?>
+                    <?php //echo $this->getAnchorTextForPrevious() ?>
                 <?php endif;?>
             </a>
         </li>
@@ -77,17 +77,17 @@
 
     <?php if (!$this->isLastPage()): ?>
         <li>
-            <a class="next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="<?php echo $this->getNextPageUrl() ?>" title="<?php echo $this->__('Next') ?>">
+            <a class="arrow-cta arrow-version next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="<?php echo $this->getNextPageUrl() ?>" title="<?php echo $this->__('Next') ?>">
                 <?php if(!$this->getAnchorTextForNext()): ?>
                     
-                    <i class="fa fa-arrow-right"></i>
+                    <!-- <i class="fa fa-arrow-right"></i> -->
                 <?php else: ?>
-                    <?php echo $this->getAnchorTextForNext() ?>
+                    <?php //echo $this->getAnchorTextForNext() ?>
                 <?php endif;?>
             </a>
         </li>
     <?php endif;?>
-    </ol>
+    </ul>
 
 </div>
 <?php endif; ?>

@@ -9,42 +9,36 @@
 <?php $timezone = Mage::app()->getStore()->getConfig('general/locale/timezone'); ?>
 
   <!--
-     ____ _____ ___  ____  _____ ____
-    / ___|_   _/ _ \|  _ \| ____|  _ \
-    \___ \ | || | | | |_) |  _| | | | |
-     ___) || || |_| |  _ <| |___| |_| |
-    |____/ |_| \___/|_| \_\_____|____/
+     ____  _____ ____  _____ _____ __  __ _____ ____
+    |  _ \| ____|  _ \| ____| ____|  \/  | ____|  _ \
+    | |_) |  _| | | | |  _| |  _| | |\/| |  _| | | | |
+    |  _ <| |___| |_| | |___| |___| |  | | |___| |_| |
+    |_| \_\_____|____/|_____|_____|_|  |_|_____|____/
 
   -->
 
-
-  <div id="page-account-gift-card-stored-table" class="page-account-table">
-
+  <div id="page-account-gift-card-redeemed-table" class="page-account-table">
     <div class="page-account-table-header">
-      <div class="row">
         <?php 
         $column_counter = 0; 
         $column_counter_max = count($columns); 
         ?>
-        <?php foreach ($columns as $id => $column): ?>
-            <?php $column_counter++; ?>
-            
-            <?php if($column_counter==$column_counter_max): ?>
-            <div class="col-md-2"></div>
-            <div class="col-md-2">
-            <?php else: ?>
-            <div class="col-md-4">
-            <?php endif; ?>
-              <div class="<?php if($column_counter==1): ?>table-column-first<?php elseif($column_counter==$column_counter_max): ?>table-column-last<?php else: ?>table-column<?php endif; ?>">
-                <h4><?php echo $column['header'] ?></h4>
-              </div>
-            </div>            
-        <?php endforeach; ?>
-      </div>
-    </div> <!-- page-account-table-header -->
+        <div class="row">
+            <?php foreach ($columns as $id => $column): ?>
+                <?php $column_counter++; ?>
+                
+                <div class="col-md-3">
+                  <div class="<?php if($column_counter==1): ?>table-column-first<?php elseif($column_counter==$column_counter_max): ?>table-column-last<?php else: ?>table-column<?php endif; ?>">
+                    <h4><?php echo $column['header'] ?></h4>
+                  </div>
+                </div>            
+            <?php endforeach; ?>
+        </div>   
+    </div>   
 
     <div class="page-account-table-item-container">
-    <?php if ($collection->count()): ?>
+
+      <?php if ($collection->count()): ?>
         <?php foreach ($collection as $row): ?>
             <?php if ($row->getIsContinueNextRow()) continue; ?>
               <div class="page-account-table-item">
@@ -56,12 +50,7 @@
                     <?php foreach ($columns as $id => $column): ?>
                       <?php $column_counter++; ?>
 
-                      <?php if($column_counter==$column_counter_max): ?>
-                        <div class="col-md-2"></div>
-                        <div class="col-md-2">
-                      <?php else: ?>
-                        <div class="col-md-4">
-                      <?php endif; ?>
+                        <div class="col-md-3">
                             <div class="<?php if($column_counter==1): ?>table-column-first<?php elseif($column_counter==$column_counter_max): ?>table-column-last<?php else: ?>table-column<?php endif; ?>">
                                 
                                     <!--end by Sally-->
@@ -125,7 +114,7 @@
                 </div>
               </div> <!-- page-account-table-item -->
         <?php endforeach; ?>
-    <?php else: ?>
+      <?php else: ?>
         <div class="page-account-table-item">
             <div class="row">
                 <div class="col-md-12">
@@ -133,10 +122,10 @@
                 </div>
             </div>
         </div>
-    <?php endif; ?>
+      <?php endif; ?>
 
     </div> <!-- page-account-table-item-container -->
 
     <?php echo $this->getPagerHtml() ?>    
 
-  </div> <!-- page-account-gift-card-stored-table -->
+  </div> <!-- page-account-gift-card-redeemed-table -->

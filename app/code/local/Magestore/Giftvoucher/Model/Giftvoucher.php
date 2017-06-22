@@ -168,6 +168,27 @@ class Magestore_Giftvoucher_Model_Giftvoucher extends Mage_Rule_Model_Rule {
                 );
             }
 
+            // auto adding the gift code to recipient account when sending gift card
+            if ($this->getRecipientEmail()) {
+
+                $recipient_email = $this->getRecipientEmail(); 
+                $customer = Mage::getModel("customer/customer"); 
+                $customer->setWebsiteId(Mage::app()->getStore()->getWebsiteId());
+                $customer->loadByEmail($recipient_email);
+                
+                if(isset($customer)) {
+                    $customer_id = $customer->getId();
+                    $voucher_id = $this->getId();
+
+                    $model = Mage::getModel('giftvoucher/customervoucher')
+                                ->setCustomerId($customer_id)
+                                ->setVoucherId($voucher_id)
+                                ->setAddedDate(now())
+                                ->save();    
+                }
+                
+            }
+
             $mailTemplate->sendTransactional(
                     Mage::helper('giftvoucher')->getEmailConfig('self', $store->getStoreId()), Mage::helper('giftvoucher')->getEmailConfig('sender', $store->getStoreId()), $this->getCustomerEmail(), $this->getCustomerName(), array(
                 'store' => $store,
@@ -180,7 +201,7 @@ class Magestore_Giftvoucher_Model_Giftvoucher extends Mage_Rule_Model_Rule {
                 'expiredat' => $this->getExpiredAt() ? Mage::getModel('core/date')->date('M d, Y', $this->getExpiredAt()) : '',
                 'message' => $this->getFormatedMessage(),
                 'note' => $this->getEmailNotes(),
-                'description' => $this->getDescription(),
+                'description' => $recipient_id . ' - ' . $voucher_id,//$this->getDescription(),
                 'logo' => $this->getPrintLogo(),
                 'url' => $this->getPrintTemplate(),
                 'secure_key' => base64_encode($this->getGiftCode() . '$' . $this->getId()),
@@ -193,6 +214,7 @@ class Magestore_Giftvoucher_Model_Giftvoucher extends Mage_Rule_Model_Rule {
         if ($this->getRecipientEmail()) {
             $mailSent += $this->sendEmailToRecipient();
         }
+        
         if ($this->getRecipientEmail() || $this->getCustomerEmail()) {
             try {
                 if ($this->getData('recipient_address')) {

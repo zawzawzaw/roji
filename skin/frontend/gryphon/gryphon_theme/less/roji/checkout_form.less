@@ -105,7 +105,19 @@
     position: absolute;
   }
 
-
+  .messages {
+    margin-bottom: 20px;
+    // .error-msg {
+      span {
+        .checkout-form-input-font;
+        color: red;     
+        a {
+          color: red;
+          text-decoration: underline;
+        }
+      }
+    // }
+  }
 
   // input fields reset
   input, textarea, select {
@@ -162,6 +174,12 @@
     }
 
 
+    // TABLET LANDSCAPE
+    @media only screen and (max-width: 1024px) and (min-width: 992px) {
+      padding-left: 13px;
+      padding-right: 13px;
+    }
+
     // TABLET PORTRAIT
     @media only screen and (max-width: 991px) {
       .checkout-form-input-font-mobile;
@@ -172,8 +190,12 @@
 
   }
 
+  input[type=text] + input[type=text]{
+    margin-top: 12px;
+  }
+
   textarea{
-    height: 190px;
+    height: 150px;
     resize: none;
   }
 
@@ -201,7 +223,8 @@
       padding-top: 5px;
       padding-bottom: 5px;
       padding-left: 16px;
-      padding-right: 16px + 20px;
+      // padding-right: 16px + 20px;    // cuts off some text
+      padding-right: 21px;
 
       outline: none;
       border: none;
@@ -225,13 +248,21 @@
 
       pointer-events: none;
     }
+    // TABLET LANDSCAPE
+    @media only screen and (max-width: 1024px) and (min-width: 992px) {
+      select{
+        padding-left: 13px;
+        padding-right: 13px + 5px;
+      }
+    }
 
     // TABLET PORTRAIT
     @media only screen and (max-width: 991px) {
       select{
         .checkout-form-input-font-mobile;
         padding-left: 11px;
-        padding-right: 11px + 20px;
+        // padding-right: 11px + 20px;
+        padding-right: 11px + 5px;
       }
     }
 
@@ -270,6 +301,8 @@
       padding-top: 0;
       letter-spacing: 0.05em;
 
+      white-space: nowrap;  // avoid the p going to the next line
+
       span{
 
         .display-inline-block;
@@ -299,9 +332,17 @@
         .body-font-small-italic;
         color: @dark-grey;
 
+        white-space: normal;
+
+        &.regular-version{
+          .body-font-small;
+          letter-spacing: 0.05em;
+        }
+
         strong{
           .checkout-form-label-font;
         }
+
 
         .display-inline-block;
 

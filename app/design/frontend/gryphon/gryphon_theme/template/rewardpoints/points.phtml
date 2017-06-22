@@ -17,101 +17,397 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
  ?>
-<div id="monogram-page-account-mobile-header" class="visible-sm visible-xs">
-  <h4>membership services</h4>
-  <h2>Rebate History</h2>
-</div>
 
-<div id="monogram-page-account-reward-points-container">
+ <script>
+   $j("body").addClass("account-rebate-history-page");
+ </script>
 
-  <div class="my-account reward-page">
-      <div class="page-title">
-          <h1><?php echo $this->__('Rebate History') ?></h1>
-          <hr class="small">
+<!--
+   _____ ___ _____ _     _____
+  |_   _|_ _|_   _| |   | ____|
+    | |  | |  | | | |   |  _|
+    | |  | |  | | | |___| |___
+    |_| |___| |_| |_____|_____|
+
+-->
+
+<article id="page-account-title-section">
+  <div class="container-fluid has-breakpoint">
+    <div class="row">
+      <div class="col-md-3 col-sm-1 col-xs-0"></div>
+      <div class="col-md-9 col-sm-10 col-xs-12">
+        <div id="page-account-title">
+          <h1><?php echo $this->__('My Rebate History.') ?></h1>
+        </div> <!-- page-account-title -->
       </div>
+    </div>
+  </div>
+</article> <!-- page-account-title-section -->
 
-      <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-      <?php echo $this->getChildHtml('points') ?>
-      
-      <!--
-      <div class="page-title">
-          <h1><?php echo $this->__('History') ?></h1>
-          <hr class="small">
-      </div>
-      -->
+<!--
+    ____ ___  _   _ _____ _____ _   _ _____
+   / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+  | |  | | | |  \| | | | |  _| |  \| | | |
+  | |__| |_| | |\  | | | | |___| |\  | | |
+   \____\___/|_| \_| |_| |_____|_| \_| |_|
 
-      <?php $_points = $this->getPoints();?>
-      <?php if($_points->getSize()): ?>
-          <?php //echo $this->getPagerHtml() ?>
+-->
 
-          <div class="visible-md-block visible-lg-block">
-              <div class="table-responsive">
-                  <table cellspacing="0" class="data-table linearize-table" id="reward-points-table">
-                      <thead>
-                          <tr>
-                              <?php ?><th><?php echo $this->__('Description') ?></th><?php ?>
-                              <th><?php echo $this->__('Rebates added') ?></th>
-                              <th><?php echo $this->__('Rebates used') ?></th>
-                              <th><?php echo $this->__('Added Date') ?></th>
-                              <th><?php echo $this->__('Valid until') ?></th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <?php $_odd = ''; ?>
-                          <?php foreach ($_points as $_point): ?>
-                              <?php $pointData = $_point->getData(); ?>
-                              <tr class="<?php print_r($pointData); ?>">
-                                  <td data-theme-label="<?php echo $this->__('Type of point') ?>">
-                                      <?php echo $this->getTypeOfPoint($_point);?>
-                                  </td>
-                                  <td data-theme-label="<?php echo $this->__('Rebates added') ?>"><?php echo $_point->getPoints_current() ?></td>
-                                  <?php /*?><?php echo $_point->getPoints_spent() ? $this->__('yes') : $this->__('no') ?><?php */?>
-                                  <td data-theme-label="<?php echo $this->__('Rebates used') ?>"><?php echo $_point->getPoints_spent() ?></td>
-                                  <?php /*?><td><?php if ($_point->getDate_start() != ""): echo $this->formatDate($_point->getDate_start(), 'short'); endif; ?></td>
-                                  <td><?php if ($_point->getDate_end() != ""): echo $this->formatDate($_point->getDate_end(), 'short'); endif; ?></td>
-                                  <?php */?>
-                                      
-                                  <td data-theme-label="<?php echo $this->__('Allocation date') ?>"><?php if ($_point->getDate_start() != ""): echo $this->formatDate($_point->getDate_start(), 'short'); else: echo $this->formatDate($_point->getDate_insertion(), 'short'); endif; ?></td>
-                                  <td data-theme-label="<?php echo $this->__('Valid until') ?>"><?php if ($_point->getDate_end() != ""): echo $this->formatDate($_point->getDate_end(), 'short'); endif; ?></td>
-                              </tr>
-                          <?php endforeach; ?>
-                      </tbody>
-                  </table>
-              </div>
-              
-          </div>
-          <div class="visible-xs-block visible-sm-block">
-              <div class="table-responsive">
-                  <table cellspacing="0" class="data-table linearize-table" id="reward-points-table">
-                      <thead>
-                          <tr>
-                              <?php ?><th><?php echo $this->__('Description') ?></th><?php ?>
-                              <th><?php echo $this->__('Rebates added') ?></th>
-                              <th><?php echo $this->__('Valid Until') ?></th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <?php $_odd = ''; ?>
-                          <?php foreach ($_points as $_point): ?>
-                              <?php $pointData = $_point->getData(); ?>
-                              <tr>
-                                  <td data-theme-label="<?php echo $this->__('Type of point') ?>">
-                                      <?php echo $this->getTypeOfPoint($_point);?>
-                                  </td>
-                                  <td data-theme-label="<?php echo $this->__('Rebate added') ?>"><?php echo $_point->getPoints_current() ?></td>
-                                  <td data-theme-label="<?php echo $this->__('Valid until') ?>"><?php if ($_point->getDate_end() != ""): echo $this->formatDate($_point->getDate_end(), 'short'); endif; ?></td>
-                              </tr>
-                          <?php endforeach; ?>
-                      </tbody>
-                  </table>
-              </div>
-          </div>
-          <?php echo $this->getPagerHtml() ?>
-      <?php else: ?>
-          <p><?php echo $this->__('You don\'t have any recorded points.'); ?></p>
-      <?php endif ?>
+<article id="page-account-content-section">
+  <div id="page-account-content-section-bg" class="visible-md visible-lg">
+    <div class="sidebar-bg"></div>
+    <div class="content-bg"></div>
   </div>
 
+  <div class="container-fluid has-breakpoint">
+    <div class="row">
+
+      <div class="col-md-2 col-tablet-landscape-1 hidden-sm hidden-xs">
+
+        <!--
+           ____ ___ ____  _____ ____    _    ____
+          / ___|_ _|  _ \| ____| __ )  / \  |  _ \
+          \___ \| || | | |  _| |  _ \ / _ \ | |_) |
+           ___) | || |_| | |___| |_) / ___ \|  _ <
+          |____/___|____/|_____|____/_/   \_\_| \_\
+
+        -->
+
+        <div id="page-account-sidebar-width"></div>
+        <div id="page-account-sidebar">
+          
+          <?php echo $this->getChildHtml('navigation') ?>
+
+        </div> <!-- page-account-sidebar -->
+
+      </div> <!-- col-md-2 -->
+      <div class="col-md-0 col-tablet-landscape-0 col-sm-1 col-xs-0"></div>
+      <div class="col-md-10 col-tablet-landscape-11 col-sm-10 col-xs-12">
+
+        <!--
+            ____ ___  _   _ _____ _____ _   _ _____
+           / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+          | |  | | | |  \| | | | |  _| |  \| | | |
+          | |__| |_| | |\  | | | | |___| |\  | | |
+           \____\___/|_| \_| |_| |_____|_| \_| |_|
+
+        -->
+
+        <div id="page-account-content-width"></div>
+        <div id="page-account-content">
+
+          <!--
+             ____  _____ ____    _  _____ _____   _   _ ___ ____ _____ ___  ______   __
+            |  _ \| ____| __ )  / \|_   _| ____| | | | |_ _/ ___|_   _/ _ \|  _ \ \ / /
+            | |_) |  _| |  _ \ / _ \ | | |  _|   | |_| || |\___ \ | || | | | |_) \ V /
+            |  _ <| |___| |_) / ___ \| | | |___  |  _  || | ___) || || |_| |  _ < | |
+            |_| \_\_____|____/_/   \_\_| |_____| |_| |_|___|____/ |_| \___/|_| \_\|_|
+
+          -->
+
+          
+          <div id="page-account-rebate-history-header">
+            <div class="row">
+              <div class="col-md-6">
+
+                <div class="history-header-title">
+                  <h2><?php echo $this->__('Rebate History') ?></h2>
+                </div>
+
+                <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+                <?php echo $this->getChildHtml('points') ?>
+
+              </div>
+              <div class="col-md-6">
+
+                <div class="history-header-nav">
+                  <ul>
+                    <li data-value="earned" class="selected"><a href="#earned"><?php echo $this->__('Earned') ?></a></li>
+                    <li data-value="redeemed"><a href="#redeemed"><?php echo $this->__('Redeemed') ?></a></li>
+                    <li data-value="expired"><a href="#expired"><?php echo $this->__('Expired') ?></a></li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+
+          </div> <!-- page-account-rebate-history-header -->
+
+          <div id="page-account-rebate-history-content">            
+
+            <?php $_earnedPoints = $this->getEarnedPoints(); ?>
+            <?php $_points = $this->getPoints(); ?>
+            
+
+              <!--
+                 _____    _    ____  _   _ _____ ____
+                | ____|  / \  |  _ \| \ | | ____|  _ \
+                |  _|   / _ \ | |_) |  \| |  _| | | | |
+                | |___ / ___ \|  _ <| |\  | |___| |_| |
+                |_____/_/   \_\_| \_\_| \_|_____|____/
+
+              -->
+
+              <div id="page-account-rebate-history-earned-table" class="page-account-table">
+
+                <div class="page-account-table-header">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="table-column-first">
+                        <h4><?php echo $this->__('Description') ?></h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="table-column">
+                        <h4><?php echo $this->__('Status') ?></h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="table-column">
+                        <h4><?php echo $this->__('Rebates earned') ?></h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="table-column-last">
+                        <h4><?php echo $this->__('Expiry date') ?></h4>
+                      </div>
+                    </div>
+                  </div>
+                </div> <!-- page-account-table-header -->
+                
+                <div class="page-account-table-item-container">
+                  <?php if($_points->getSize()): ?>
+                    <?php foreach ($_earnedPoints as $_point): ?>
+                      <div class="page-account-table-item">
+                        <div class="row">
+                          <div class="col-md-3">
+                            <div class="table-column-first">
+                              <?php echo $this->getTypeOfPoint($_point);?>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="table-column">
+                              <?php 
+                              $status_field = Mage::getStoreConfig('rewardpoints/default/status_used', Mage::app()->getStore()->getId());
+                              $order_id = $_point->getOrderId();
+                              $order = Mage::getModel('sales/order')->loadByIncrementId($order_id);
+                              $order_status = $order->getData($status_field);
+                              ?>
+                              
+                              <p><?php echo (!empty($order_status)) ? $order_status : "-" ?></p>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="table-column">
+                              <p><?php echo $_point->getPoints_current() ?></p>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="table-column-last">
+                              <h4><?php if ($_point->getDate_end() != ""): echo $this->formatDate($_point->getDate_end(), 'short'); endif; ?></h4>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <?php endforeach; ?>
+                  <?php else: ?>
+                    <div class="page-account-table-item">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="table-column-first">
+                              <p><?php echo $this->__('You don\'t have any recorded rebates.'); ?></p>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  <?php endif; ?>                 
+
+                </div> <!-- page-account-table-item-container -->
+
+                <?php echo $this->getEarnedPagerHtml() ?>
+
+              </div>
+
+              <!--
+                 ____  _____ ____  _____ _____ __  __ _____ ____
+                |  _ \| ____|  _ \| ____| ____|  \/  | ____|  _ \
+                | |_) |  _| | | | |  _| |  _| | |\/| |  _| | | | |
+                |  _ <| |___| |_| | |___| |___| |  | | |___| |_| |
+                |_| \_\_____|____/|_____|_____|_|  |_|_____|____/
+
+              -->
+
+              <div id="page-account-rebate-history-redeemed-table" class="page-account-table">
+
+                <div class="page-account-table-header">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="table-column-first">
+                        <h4><?php echo $this->__('Description') ?></h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="table-column">
+                        <h4><?php echo $this->__('Status') ?></h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="table-column">
+                        <h4><?php echo $this->__('Rebates used') ?></h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="table-column-last">
+                        <h4><?php echo $this->__('Redemption date') ?></h4>
+                      </div>
+                    </div>
+                  </div>
+                </div> <!-- page-account-table-header -->
+
+                <div class="page-account-table-item-container">
+                  
+                  <?php $_spentPoints = $this->getSpentPoints(); ?>
+                  <?php if($_spentPoints->getSize()): ?>
+                    <?php foreach ($_spentPoints as $_point): ?>
+                      <div class="page-account-table-item">
+                        <div class="row">
+                          <div class="col-md-3">
+                            <div class="table-column-first">
+                              <?php echo $this->getTypeOfPoint($_point);?>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="table-column">
+                              <?php 
+                              $status_field = Mage::getStoreConfig('rewardpoints/default/status_used', Mage::app()->getStore()->getId());
+                              $order_id = $_point->getOrderId();
+                              $order = Mage::getModel('sales/order')->loadByIncrementId($order_id);
+                              $order_status = $order->getData($status_field);
+                              ?>
+                              
+                              <p><?php echo (!empty($order_status)) ? $order_status : "-" ?></p>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="table-column">
+                              <p><?php echo $_point->getPoints_spent() ?></p>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="table-column-last">
+                              <h4><?php if ($_point->getDate_start() != ""): echo $this->formatDate($_point->getDate_start(), 'short'); else: echo $this->formatDate($_point->getDate_insertion(), 'short'); endif; ?></h4>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <?php endforeach; ?>
+                  <?php else: ?>
+                    <div class="page-account-table-item">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="table-column-first">
+                              <p><?php echo $this->__('You don\'t have any recorded rebates.'); ?></p>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  <?php endif; ?>      
+
+                </div> <!-- page-account-table-item-container -->
+
+                <?php echo $this->getSpentPagerHtml() ?>
+
+              </div>
+
+              <!--
+                 _______  ______ ___ ____  _____ ____
+                | ____\ \/ /  _ \_ _|  _ \| ____|  _ \
+                |  _|  \  /| |_) | || |_) |  _| | | | |
+                | |___ /  \|  __/| ||  _ <| |___| |_| |
+                |_____/_/\_\_|  |___|_| \_\_____|____/
+
+              -->
+
+              <div id="page-account-rebate-history-expired-table" class="page-account-table">
+
+                <div class="page-account-table-header">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="table-column-first">
+                        <h4><?php echo $this->__('Description') ?></h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="table-column">
+                        <h4><?php echo $this->__('Status') ?></h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="table-column">
+                        <h4><?php echo $this->__('Rebates') ?></h4>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="table-column-last">
+                        <h4><?php echo $this->__('Expired date') ?></h4>
+                      </div>
+                    </div>
+                  </div>
+                </div> <!-- page-account-table-header -->
+
+                <div class="page-account-table-item-container">
+                  
+                  <?php $_expiredPoints = $this->getExpiredPoints(); ?>
+                  <?php foreach ($_expiredPoints as $_point): ?>
+                    <div class="page-account-table-item">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <div class="table-column-first">
+                            <?php echo $this->getTypeOfPoint($_point);?>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="table-column">
+                            <?php 
+                            $status_field = Mage::getStoreConfig('rewardpoints/default/status_used', Mage::app()->getStore()->getId());
+                            $order_id = $_point->getOrderId();
+                            $order = Mage::getModel('sales/order')->loadByIncrementId($order_id);
+                            $order_status = $order->getData($status_field);
+                            ?>
+                            
+                            <p><?php echo (!empty($order_status)) ? $order_status : "-" ?></p>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="table-column">
+                            <p><?php echo $_point->getPoints_current() ?></p>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="table-column-last">
+                            <h4><?php if ($_point->getDate_end() != ""): echo $this->formatDate($_point->getDate_end(), 'short'); endif; ?></h4>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <?php endforeach; ?>  
+
+                </div> <!-- page-account-table-item-container -->
+
+                <?php echo $this->getExpiredPagerHtml() ?>
+
+              </div> <!-- page-account-rebate-history-expired-table -->            
+
+          </div> <!-- page-account-rebate-history-content -->
+
+        </div> <!-- page-account-content -->
 
 
-</div> <!-- #monogram-page-account-reward-points-container -->
+      </div> <!-- col-md-10 -->
+
+
+
+    </div> <!-- row -->
+  </div> <!-- container-fluid -->
+
+</article> <!-- page-account-content-section -->

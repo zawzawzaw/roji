@@ -290,7 +290,7 @@
                                 <div class="row">
                                     <!-- <h2><?php echo $this->__('Reward points'); ?></h2> -->
                                     <?php echo $this->getIllustrationImage()?>
-                                    <div class="rewards_point_cart point3">
+                                    <div class="rewards_point_cart point3 no-display">
                                         <?php if (!$this->isCouponPointsRemoved()): ?>
                                             <?php                                     
                                             $pts = round(Mage::helper('directory')->currencyConvert($pts, $baseCurrencyCode, $currentCurrencyCode));
@@ -336,7 +336,9 @@
                                                         </div>                                  
                                                     </div>  
                                                     <div class="col-md-4 col-sm-3 col-xs-4">
-                                                        <button class="form-button-alt button cta apply" type="button" onclick="discountFormPoints2.submit(false)" value="<?php echo $this->__('Remove') ?>"><span><span><?php echo $this->__('Cancel') ?></span></span></button>
+                                                        <div class="cart-discount-cta-container">
+                                                            <button class="form-button-alt button cta apply square-cta full-width-version" type="button" onclick="discountFormPoints2.submit(false)" value="<?php echo $this->__('Remove') ?>"><span><span><?php echo $this->__('Cancel') ?></span></span></button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

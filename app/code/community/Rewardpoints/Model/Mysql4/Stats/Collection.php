@@ -125,7 +125,6 @@ class Rewardpoints_Model_Mysql4_Stats_Collection extends Mage_Core_Model_Mysql4_
         $this->getSelect()->where('customer_id = ?', $id);
         return $this;
     }
-
     
     public function groupByCustomer()
     {

@@ -442,17 +442,20 @@ Varien.DateElement.prototype = {
             day   = parseInt(this.day.value, 10)   || 0,
             month = parseInt(this.month.value, 10) || 0,
             year  = parseInt(this.year.value, 10)  || 0;
-            console.log(day)
-            console.log(month)
-            console.log(year)
+            // console.log(day)
+            // console.log(month)
+            // console.log(year)
+            // console.log(this.day.value.strip().empty)
+            // console.log(this.month.value.strip().empty)
+            // console.log(this.year.value.strip().empty)
         if (this.day.value.strip().empty()
             && this.month.value.strip().empty()
             && this.year.value.strip().empty()
         ) {
             if (this.required) {
-                error = 'This date is a required value.';
+                error = 'This is a required field.';                
             } else {
-                this.full.value = '';
+                this.full.value = '';                
             }
         } else if (!day || !month || !year) {
             error = 'Please enter a valid full date.';
