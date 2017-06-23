@@ -107,22 +107,24 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
                             <ul class="form-list">
                                 <?php if ($this->customerHasAddresses()): ?>
                                 <li class="wide each-input dropdown-address">
-                                    <label for="billing-address-select"><?php echo $this->__('Select your billing address') ?></label>
-                                    <div class="input-box dropdown">
-                                        <?php //echo $this->getAddressesHtmlSelect('billing') ?>                            
-                                        <div id="custAddress">
-                                        <?php $customerId = Mage::getSingleton('customer/session')->getCustomer();?>    
-                                        <?php $customer = Mage::getModel('customer/customer')->load($customerId->getId()); ?>
-                                        <?php $data = array();?>
-                                            <select name="billing_address_id" id="billing-address-select" class="address-select" title="">                                
-                                                <option value="">New Address</option>                                                                                       
-                                                <?php $i=0; foreach ($customer->getAddresses() as $address):?>                                
-                                                    <?php $data = $address->toArray();?>
-                                                    <?php $country_name = Mage::app()->getLocale()->getCountryTranslation($data['country_id']);?>                                    
-                                                    <option <?php if($i==0): ?>selected="selected"<?php endif; ?> value="<?php echo $data['entity_id']; ?>"><?php echo $data['firstname'] . ' ' . $data['firstname'] . ', ' . $data['street'] . ', ' . $data['city'] . ', ' . $data['postcode']. ', ' . $country_name;  ?></option>
-                                                <?php $i++; endforeach; ?>  
-                                            </select>
-                                         </div>                        
+                                    <div class="form-group">
+                                        <label for="billing-address-select"><?php echo $this->__('Select your billing address') ?></label>
+                                        <div class="input-box dropdown">
+                                            <?php //echo $this->getAddressesHtmlSelect('billing') ?>                            
+                                            <div id="custAddress">
+                                            <?php $customerId = Mage::getSingleton('customer/session')->getCustomer();?>    
+                                            <?php $customer = Mage::getModel('customer/customer')->load($customerId->getId()); ?>
+                                            <?php $data = array();?>
+                                                <select name="billing_address_id" id="billing-address-select" class="address-select" title="">                                
+                                                    <option value="">New Address</option>                                                                                       
+                                                    <?php $i=0; foreach ($customer->getAddresses() as $address):?>                                
+                                                        <?php $data = $address->toArray();?>
+                                                        <?php $country_name = Mage::app()->getLocale()->getCountryTranslation($data['country_id']);?>                                    
+                                                        <option <?php if($i==0): ?>selected="selected"<?php endif; ?> value="<?php echo $data['entity_id']; ?>"><?php echo $data['firstname'] . ' ' . $data['firstname'] . ', ' . $data['street'] . ', ' . $data['city'] . ', ' . $data['postcode']. ', ' . $country_name;  ?></option>
+                                                    <?php $i++; endforeach; ?>  
+                                                </select>
+                                             </div>                        
+                                        </div>
                                     </div>
                                 </li>
                                 <?php endif; ?>
@@ -321,23 +323,25 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
                           <ul class="form-list">
                             <?php if ($this->customerHasAddresses()): ?>
                                 <li class="wide each-input dropdown-address">
-                                   <label for="shipping-address-select"><?php echo $this->__('Select your shipping address') ?></label>
-                                   <div class="input-box dropdown">
-                                       <?php //echo $this->getAddressesHtmlSelect('shipping') ?>
-                                       <div id="custAddress">
-                                        <?php $customerId = Mage::getSingleton('customer/session')->getCustomer();?>    
-                                        <?php $customer = Mage::getModel('customer/customer')->load($customerId->getId()); ?>
-                                        <?php $data = array();?>
-                                            <select name="shipping_address_id" id="shipping-address-select" class="address-select" title="">                                
-                                                <option value="">New Address</option>                                                                                       
-                                                <?php $i=0; foreach ($customer->getAddresses() as $address):?>                                
-                                                    <?php $data = $address->toArray();?>
-                                                    <?php $country_name = Mage::app()->getLocale()->getCountryTranslation($data['country_id']);?>                                    
-                                                    <option <?php if($i==0): ?>selected="selected"<?php endif; ?> value="<?php echo $data['entity_id']; ?>"><?php echo $data['firstname'] . ' ' . $data['firstname'] . ', ' . $data['street'] . ', ' . $data['city'] . ', ' . $data['postcode']. ', ' . $country_name;  ?></option>
-                                                <?php $i++; endforeach; ?>  
-                                            </select>
-                                         </div>  
-                                   </div>
+                                    <div class="form-group">
+                                       <label for="shipping-address-select"><?php echo $this->__('Select your shipping address') ?></label>
+                                       <div class="input-box dropdown">
+                                           <?php //echo $this->getAddressesHtmlSelect('shipping') ?>
+                                           <div id="custAddress">
+                                            <?php $customerId = Mage::getSingleton('customer/session')->getCustomer();?>    
+                                            <?php $customer = Mage::getModel('customer/customer')->load($customerId->getId()); ?>
+                                            <?php $data = array();?>
+                                                <select name="shipping_address_id" id="shipping-address-select" class="address-select" title="">                                
+                                                    <option value="">New Address</option>                                                                                       
+                                                    <?php $i=0; foreach ($customer->getAddresses() as $address):?>                                
+                                                        <?php $data = $address->toArray();?>
+                                                        <?php $country_name = Mage::app()->getLocale()->getCountryTranslation($data['country_id']);?>                                    
+                                                        <option <?php if($i==0): ?>selected="selected"<?php endif; ?> value="<?php echo $data['entity_id']; ?>"><?php echo $data['firstname'] . ' ' . $data['firstname'] . ', ' . $data['street'] . ', ' . $data['city'] . ', ' . $data['postcode']. ', ' . $country_name;  ?></option>
+                                                    <?php $i++; endforeach; ?>  
+                                                </select>
+                                             </div>  
+                                       </div>
+                                    </div>
                                 </li> <!-- li -->
                             <?php endif ?>   
                                 <li id="shipping-new-address-form"<?php if ($this->customerHasAddresses()): ?> style="display:none;"<?php endif ?>>

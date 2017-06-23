@@ -303,10 +303,35 @@
     <giftvoucher_index_index>
         <update handle="customer_account" />
         <reference name="head">
-            <action method="setForcedTitle"><title>Gift Card - Monogram Tea</title></action>                        
+            <action method="setForcedTitle"><title>Gift Card - Rojicha</title></action>                        
         </reference>
         <reference name="content">
-            <block type="giftvoucher/giftvoucherlist" name="giftvoucherlist" template="giftvoucher/giftvoucher.phtml" />
+            <block type="giftvoucher/giftvoucherlist" name="giftvoucherlist" template="giftvoucher/giftvoucher.phtml">
+                <block type="customer/account_navigation" name="customer_account_navigation" as="navigation" template="miragedesign/customer/account/navigation.phtml">
+                    <action method="addLink" translate="label" module="customer"><name>account</name><path>customer/account/</path><label>Account Dashboard</label></action>
+                    <!-- <action method="addLink" translate="label" module="customer"><name>account_edit</name><path>customer/account/edit/</path><label>Account Information</label></action> -->
+                    <action method="addLink" translate="label" module="customer"><name>address_book</name><path>customer/address/</path><label>Address Book</label></action>
+                    <action method="addLink" translate="label" module="sales"><name>orders</name><path>sales/order/history/</path><label>Order History</label></action>
+                    <action method="addLink" ifconfig="giftvoucher/general/active" translate="label" module="giftvoucher">
+                        <name>giftvoucher</name>
+                        <path>giftvoucher/index/index</path>
+                        <label>Gift Card</label>
+                    </action>
+                    <action method="addLink" translate="label" module="rewardpoints"><name>rewardpoints</name><path>rewardpoints/index/points/</path><label>Rebate History</label></action>
+                    
+                    <action method="addLink" translate="label" module="rewardpoints" ifconfig="rewardpoints/registration/referral_show"><name>referral</name><path>rewardpoints/index/referral/</path><label>Friend Referral</label></action>      
+                    
+                    <!-- <action method="addLink" translate="label" module="savelayering">
+                        <name>viewsavelayering</name>
+                        <path>savelayering/customer/view</path>
+                        <label>Saved Layering</label>
+                    </action> -->
+                    
+                    <!--<action method="addLink" translate="label" module="newsletter"><name>newsletter</name><path>newsletter/manage/</path><label>Newsletter Subscriptions</label></action>
+                    <action method="addLink" translate="label" module="review"><name>reviews</name><path>review/customer</path><label>My Product Reviews</label></action>
+                    <action method="addLink" translate="label" module="wishlist" ifconfig="wishlist/general/active"><name>wishlist</name><path>wishlist/</path><label>My Wishlist</label></action>-->
+                </block>
+            </block>
         </reference>
     </giftvoucher_index_index>
     <giftvoucher_index_history>
@@ -318,7 +343,7 @@
     <giftvoucher_index_addredeem>
         <update handle="customer_account" />
         <reference name="head">
-            <action method="setForcedTitle"><title>Monogram Tea - Redeem Gift Card</title></action>                        
+            <action method="setForcedTitle"><title>Redeem Gift Card - Rojicha</title></action>                        
         </reference>
         <reference name="content">
             <block type="giftvoucher/addorredeem" name="add-redeem-giftvoucherlist" template="giftvoucher/addorredeem.phtml" />
@@ -485,7 +510,7 @@
     <giftvoucher_index_view>
         <update handle="customer_account" />
         <reference name="head">
-            <action method="setForcedTitle"><title>Monogram Tea - Gift Card Details</title></action>                        
+            <action method="setForcedTitle"><title>Gift Card Details - Rojicha</title></action>                        
         </reference>
         <reference name="content">
             <block type="giftvoucher/view" name="giftvoucher.email" template="giftvoucher/giftcard/view.phtml">

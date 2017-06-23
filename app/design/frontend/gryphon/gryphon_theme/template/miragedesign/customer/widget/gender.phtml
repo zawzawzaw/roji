@@ -24,22 +24,38 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<div class="each-input">
-	<?php $value = $this->getGender(); ?> 
-	<label <?php if ($this->isRequired()) echo ' class="required"' ?>><?php if ($this->isRequired()) echo '<em>*</em>' ?><?php echo $this->__('Gender') ?></label>	
-	<div class="gender-input">
-		<div class="gender-input-01">
-			<input class="gender" type="checkbox" name="gender" <?php if ($value==2) echo ' checked="checked"'; ?> value="Female">
-			<label class="checkbox-label gender" for="gender">
-				<span></span><p class="label-text">Female</p>
-			</label>
-		</div>
-		<div class="gender-input-02">
-			<input class="gender" type="checkbox" name="gender" <?php if ($value==1) echo ' checked="checked"'; ?> value="Male">
-			<label class="checkbox-label gender" for="gender">
-				<span></span><p class="label-text">Male</p>
-			</label>
-		</div>
+<div class="form-group checkbox-version">
+	<div class="row">
+    <div class="col-md-4">
+    	<?php $value = $this->getGender(); ?> 
+      <label <?php if ($this->isRequired()) echo ' class="required"' ?>><?php if ($this->isRequired()) echo '<em>*</em>' ?><?php echo $this->__('Gender') ?></label>	
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-6 col-sm-4 col-xs-6">
+        	<div class="form-group-column-first">
+            <div class="checkbox">
+              <input class="gender" type="checkbox" name="gender" <?php if ($value==2) echo ' checked="checked"'; ?> value="Female">
+              <label>
+                <span></span>
+                <p><strong><?php echo $this->__('Female') ?></strong></p>
+              </label>
+            </div>
+          </div> <!-- form-group-column-first -->
+        </div>
+        <div class="col-md-6 col-sm-4 col-xs-6">
+        	<div class="form-group-column-last">
+            <div class="checkbox">
+              <input class="gender" type="checkbox" name="gender" <?php if ($value==1) echo ' checked="checked"'; ?> value="Male">
+              <label>
+                <span></span>
+                <p><strong><?php echo $this->__('Male') ?></strong></p>
+              </label>
+            </div>
+          </div> <!-- form-group-column-last -->
+        </div>
+      </div>
+    </div>
 	</div>
 	
 	<div class="dropdown" style="display:none;">
@@ -55,15 +71,16 @@
 	jQuery(document).ready(function(){
 		var gender = jQuery('.gender');
 		gender.change(function() {
-	        if(jQuery(this).is(":checked")) {
-	        	if(jQuery(this).val()=='Male')
-	       			jQuery("#gender").val(1);
-	       		else
-	       			jQuery("#gender").val(2);
-	        }
-	    });
+      if(jQuery(this).is(":checked")) {
+        console.log(jQuery(this).val());
+      	if(jQuery(this).val()=='Male')
+     			jQuery("#gender").val(1);
+     		else
+     			jQuery("#gender").val(2);
+      }
+    });
 
-	    gender.click(function() {
+    gender.click(function() {
 		    gender.filter(':checked').not(this).removeAttr('checked');
 		});
 	});	

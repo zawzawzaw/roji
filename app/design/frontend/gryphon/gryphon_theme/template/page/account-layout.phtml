@@ -44,37 +44,33 @@ $path = $url->getPath();
 <head>
 <?php echo $this->getChildHtml('head') ?>
 </head>
-<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<body<?php echo $this->getBodyClass()?' class="1column min-height-version '.$this->getBodyClass().'"':'' ?>>    
 
-  <?php echo $this->getChildHtml('after_body_start') ?>
+    <?php echo $this->getChildHtml('after_body_start') ?>
 
-  <div class="wrapper" id="page-wrapper">
-      <?php echo $this->getChildHtml('global_notices') ?>
-      <?php echo $this->getChildHtml('header') ?>
-      <div class="main-container col2-right-layout" id="content-wrapper">
-          <div class="main account container">
-              <?php echo $this->getChildHtml('breadcrumbs') ?>
-              <div class="row">
-                  <div class="col-md-2 col-sm-12 col-xs-12 col-right sidebar">
-                      <?php echo $this->getChildHtml('right') ?>
-                  </div>
-                  <div class="col-md-10 col-sm-12 col-xs-12 col-main">
-                      <?php echo $this->getChildHtml('global_messages') ?>
-                      <?php echo $this->getChildHtml('content') ?>    
-                  </div>
-              </div>                                        
-          </div>
-      </div>
-      <script type="text/javascript">
-          window.page = new roji.page.Default({});
-      </script>
-      
-      <?php echo $this->getChildHtml('footer_before') ?>
-      <?php echo $this->getChildHtml('footer') ?>
-      <?php echo $this->getChildHtml('global_cookie_notice') ?>
-      <?php echo $this->getChildHtml('before_body_end') ?>
-  </div>
-  
-  <?php //echo $this->getAbsoluteFooter() ?>
+    <?php echo $this->getChildHtml('header') ?>
+
+    <?php echo $this->getChildHtml('global_notices') ?>    
+            
+    <?php if($path!=="/"): ?>
+      <?php echo $this->getChildHtml('global_messages') ?>
+    <?php endif; ?>
+    
+    <?php echo $this->getChildHtml('content') ?>    
+
+    <?php echo $this->getChildHtml('global_cookie_notice') ?>
+    
+    <?php echo $this->getChildHtml('before_body_end') ?>
+
+    <?php echo $this->getAbsoluteFooter() ?>
+    
+    <script type="text/javascript">
+        window.page = new roji.page.Account({});
+    </script>                        
+
+    <?php echo $this->getChildHtml('footer_before') ?>
+    <?php echo $this->getChildHtml('footer') ?>
+
 </body>
 </html>
+

@@ -33,82 +33,41 @@
 	}
 	
 ?>
-<div class="block block-account visible-md visible-lg">
-    <div class="block-content">
-
-        <h4>basic information</h4>
-        <?php $_links = $this->getLinks(); $i = 0; ?>
-        <ul>
-            <?php foreach ($_links as $_link): ?>
-                <?php if($i<2): ?>
-                    <?php if($_link->getLabel()=='Account Dashboard'): ?>
-
-                        <?php if ($this->isActive($_link)): ?>
-                            <li data-name="<?php echo $lbl; ?>" class="current<?php echo ($_last ? ' last' : '') ?>"><strong>My Account</strong></li>
-                        <?php else: ?>
-                            <li data-name="<?php echo $lbl; ?>" <?php echo ($_last ? ' class="last"' : '') ?>><a href="<?php echo $_link->getUrl() ?>">My Account</a></li>
-                        <?php endif; ?>
-                    <?php else: ?>
-
-                        <?php if ($this->isActive($_link)): ?>
-                            <li data-name="<?php echo $lbl; ?>" data-print="<?php print_r($_link); ?>"  class="current<?php echo ($_last ? ' last' : '') ?>"><strong><?php echo $_link->getLabel() ?></strong></li>
-                        <?php else: ?>
-                            <li data-name="<?php echo $lbl; ?>" data-print="<?php print_r($_link); ?>" <?php echo ($_last ? ' class="last"' : '') ?>><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></li>
-                        <?php endif; ?>
-
-                    <?php endif; ?>
-                                        
-                    <?php $i++; ?>
-                <?php else: ?>
-                    <?php break; ?>
-                <?php endif; ?>
-            <?php endforeach ?>
-        </ul>
-
-
-        <!-- 
-        <h1>My Account</h1>
-        <hr class="small">
-        -->
-
-        <hr class="small">
-        <h4>membership services</h4>
-
-        <ul class="membership-service">
-            <?php $_links = $this->getLinks(); ?>
-            <?php $_index = 1; ?>
-            <?php $_count = count($_links); ?>
-            <?php foreach ($_links as $_link): ?>
-            <?php
-            $lbl = $_link->getName();
-            if(($groupname=='Trader-Temp' || $groupname=='Trader-Regular' || $groupname=='Trader-Priority' || $groupname=='Trader-Premium') && ($lbl == 'rewardpoints' || $lbl =='referral'|| $lbl =='giftvoucher'))
-            {
-                continue;
-            }
-            ?>
-                <?php $_last = ($_index++ >= $_count); ?>
+<nav>
+  <!-- <ul>
+    <li class="selected">My account</li>
+    <li><a href="account-address-book.php">Address book</a></li>
+    <li><a href="account-order-history.php">Order history</a></li>
+    <li><a href="account-gift-card.php">Gift card</a></li>
+    <li><a href="account-rebate-history.php">Rebate history</a></li>
+    <li><a href="account-friend-referral.php">Friend referral</a></li>
+    <li><a href="account-roji-bag.php">My Roji Bag</a></li>
+  </ul> -->
+  <?php $_links = $this->getLinks(); $i = 0; ?>
+    <ul>
+        <?php foreach ($_links as $_link): ?>
+            
                 <?php if($_link->getLabel()=='Account Dashboard'): ?>
 
                     <?php if ($this->isActive($_link)): ?>
-                        <li data-name="<?php echo $lbl; ?>" class="current<?php echo ($_last ? ' last' : '') ?>"><strong>Account Information</strong></li>
+                        <li data-name="<?php echo $lbl; ?>" class="selected<?php echo ($_last ? ' last' : '') ?>"><strong>My Account</strong></li>
                     <?php else: ?>
-                        <li data-name="<?php echo $lbl; ?>" <?php echo ($_last ? ' class="last"' : '') ?>><a href="<?php echo $_link->getUrl() ?>">Account Information</a></li>
+                        <li data-name="<?php echo $lbl; ?>" <?php echo ($_last ? ' class="last"' : '') ?>><a href="<?php echo $_link->getUrl() ?>">My Account</a></li>
                     <?php endif; ?>
-                <?php elseif($_link->getLabel()=='Account Information'): ?>
-                    
                 <?php else: ?>
 
                     <?php if ($this->isActive($_link)): ?>
-                        <li data-name="<?php echo $lbl; ?>" data-print="<?php print_r($_link); ?>"  class="current<?php echo ($_last ? ' last' : '') ?>"><strong><?php echo $_link->getLabel() ?></strong></li>
+                        <li data-name="<?php echo $lbl; ?>" class="selected<?php echo ($_last ? ' last' : '') ?>"><strong><?php echo $_link->getLabel() ?></strong></li>
                     <?php else: ?>
-                        <li data-name="<?php echo $lbl; ?>" data-print="<?php print_r($_link); ?>" <?php echo ($_last ? ' class="last"' : '') ?>><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></li>
+                        <li data-name="<?php echo $lbl; ?>" <?php echo ($_last ? ' class="last"' : '') ?>><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></li>
                     <?php endif; ?>
 
-                <?php endif; ?>                
-            <?php endforeach; ?>
-        </ul>
-    </div>
-</div>
+                <?php endif; ?>
+                                    
+                <?php $i++; ?>                
+        <?php endforeach ?>
+    </ul>
+</nav>
 
 
 <script type="text/javascript">

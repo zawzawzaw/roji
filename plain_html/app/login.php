@@ -7,7 +7,7 @@
   <?php include 'head.php'; ?>
 </head>
 
-<body class="min-height-version min-height-mobile-version">
+<body class="min-height-version">
   <?php include "header.php"; ?>
 
 
@@ -44,18 +44,10 @@
 
   -->
 
-  <div id="page-login-intro-image-mobile" class="visible-sm visible-xs">
-    <div class="manic-image-container">
-      <img src="" 
-        data-image-tablet="images_cms/others/login-intro-tablet.jpg"
-        data-image-mobile="images_cms/others/login-intro-mobile.jpg">
-    </div>
-  </div>
-  
   <article id="page-login-content-section">
-
     <div class="container-fluid has-breakpoint">
       <div class="row">
+
         <div class="col-md-1 col-tablet-landscape-0 col-sm-2 col-xs-0"></div>
         <div class="col-md-5 col-tablet-landscape-6 col-sm-8 col-xs-12">
 
@@ -94,7 +86,7 @@
               </div>
 
               <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-8">
 
                   <div class="form-group checkbox-version">
                     <div class="checkbox">
@@ -107,7 +99,7 @@
                   </div>
 
                 </div>
-                <div class="col-md-5 col-md-push-0 col-sm-8 col-sm-push-2 col-xs-10 col-xs-push-1">
+                <div class="col-md-4">
 
                   <div class="cta-container">
                     <input type="submit" value="Log In" class="square-cta">
@@ -116,12 +108,15 @@
                 </div>
               </div>
 
+
+              <!-- Remember me checkbox -->
+
             </form>
           </div> <!-- page-login-content -->
 
           
         </div> <!-- col-md-5 -->
-        <div class="col-md-4 col-tablet-landscape-5 visible-md visible-lg">
+        <div class="col-md-4">
 
           <div id="page-login-intro-image">
             <div class="manic-image-container">
@@ -139,29 +134,19 @@
       </div>
 
       <div class="row">
-        <div class="col-md-1 col-tablet-landscape-0 col-sm-0"></div>
-
-        <div class="col-md-8 col-tablet-landscape-9 col-sm-12">
+        <div class="col-md-1"></div>
+        <div class="col-md-8">
 
           <div id="page-login-register-form-container">
             <div id="page-login-register-form">
               <h2>Don’t have an Account?</h2>
 
               <div class="default-copy">
-                <small>Simply create one to join our Roji family and indulge in a world of exclusive privileges as you earn rewards and privileges every time you shop, connect and share.</small>
+                <small>Registration is free and easy! By creating an account with our store, you will be able to move through the checkout process faster, store multiple addresses, view and track your orders in your account and more!</small>
               </div>
 
-              <div class="row">
-
-
-                <div class="col-md-12 col-md-push-0 col-sm-8 col-sm-push-2 col-xs-10 col-xs-push-1">
-
-                  <div class="cta-container">
-                    <a href="javascript:void(0);" class="square-cta">Create an account</a>
-                    <a href="javascript:void(0);" class="square-cta">Chaseki Members Program</a>
-                  </div>
-                  
-                </div>
+              <div class="cta-container">
+                <a href="javascript:void(0);" class="square-cta">Create an account</a>
               </div>
 
             </div> <!-- page-login-register-form -->

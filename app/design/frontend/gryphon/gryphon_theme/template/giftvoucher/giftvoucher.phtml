@@ -5,64 +5,133 @@
 ?>
 
 
-<div id="monogram-page-account-mobile-header" class="visible-sm visible-xs">
-  <h4>membership services</h4>
-  <h2>gift card</h2>
-</div>
+<script>
+$j("body").addClass("account-gift-card-page");
+</script>
 
-<div id="monogram-page-account-mobile-page-title" class="visible-sm visible-xs">
-  <h1>gift card</h1>
-    <div class="cta-container">
-        <a href="javascript:void(0);" onclick="setLocation('<?php echo $this->getUrl('giftvoucher/index/addredeem') ?>')" class="square-cta">Add Gift Card</a>
+<!--
+     _____ ___ _____ _     _____
+    |_   _|_ _|_   _| |   | ____|
+      | |  | |  | | | |   |  _|
+      | |  | |  | | | |___| |___
+      |_| |___| |_| |_____|_____|
+
+  -->
+
+  <article id="page-account-title-section">
+    <div class="container-fluid has-breakpoint">
+      <div class="row">
+        <div class="col-md-3 col-sm-1 col-xs-0"></div>
+        <div class="col-md-9 col-sm-10 col-xs-12">
+          <div id="page-account-title">
+            <h1><?php echo $this->__('My Gift Cards.') ?></h1>
+            <!-- <a href="javascript:void(0);" onclick="setLocation('<?php echo $this->getUrl('giftvoucher/index/addredeem') ?>')" class="square-cta">Add Gift Card</a> -->
+          </div> <!-- page-account-title -->
+        </div>
+      </div>
     </div>
-</div>
+  </article> <!-- page-account-title-section -->
 
+  <!--
+      ____ ___  _   _ _____ _____ _   _ _____
+     / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+    | |  | | | |  \| | | | |  _| |  \| | | |
+    | |__| |_| | |\  | | | | |___| |\  | | |
+     \____\___/|_| \_| |_| |_____|_| \_| |_|
 
+  -->
 
-<div id="monogram-page-account-giftcard-container">
-
-
-
-    <div class="customer-account-giftcard gift-cards">
-        <div class="page-title visible-md visible-lg">
-            <h1><?php echo $this->__('Gift cards') ?></h1>
-            <hr class="small">
-
-            <!-- added -->
-            <a href="javascript:void(0);" class="form-button button" onclick="setLocation('<?php echo $this->getUrl('giftvoucher/index/addredeem') ?>')"><i class="fa fa-plus"></i> Add Gift Card</a>
-        </div>
-        <div class="balance">
-            <div class="amount">
-                <?php if (Mage::helper('giftvoucher')->getGeneralConfig('enablecredit')) { ?>
-                    <!-- <p><?php echo $this->__('My credit balance: ') ?></p> -->
-                    <!-- <span class="regular-price"><span><?php echo $this->getBalanceAccount() ?></span></span> -->
-                <?php } ?>
-                <!-- <button type="button" class="cta form-button button addredeem" onclick="setLocation('<?php echo $this->getUrl('giftvoucher/index/addredeem') ?>')">
-                    <?php if (Mage::helper('giftvoucher')->getGeneralConfig('enablecredit')) { ?>
-                        <span><span><?php echo $this->__('Add / Redeem a Gift Card') ?></span></span>
-                    <?php } else { ?>
-                        <span><span><?php echo $this->__('Add a Gift Card') ?></span></span>
-                    <?php } ?>
-                </button> -->
-            </div>
-
-            <div class="history">
-                <div class="page-title">
-                    <h1><?php echo $this->__('History') ?></h1>
-                    <hr class="small">
-                </div>
-                <div class="title-action">
-
-                    <!-- <a href="javascript:void(0);" class="form-button button" onclick="setLocation('<?php echo $this->getUrl('giftvoucher/index/addredeem') ?>')"><i class="fa fa-plus"></i> Add Gift Card</a> -->
-                </div>
-                <?php if (Mage::helper('giftvoucher')->getGeneralConfig('enablecredit')) { ?>
-                <!-- <div class="button view-detail">
-                    <a class="left" href="<?php echo $this->getUrl('giftvoucher/index/history') ?>"><?php echo $this->__('View detail') ?></a>
-                </div> -->
-                <?php } ?>
-            </div>
-        </div>
-        <?php echo $this->getGridHtml() ?>
+  <article id="page-account-content-section">
+    <div id="page-account-content-section-bg" class="visible-md visible-lg">
+      <div class="sidebar-bg"></div>
+      <div class="content-bg"></div>
     </div>
 
-</div> <!-- #monogram-page-account-giftcard-container -->
+    <div class="container-fluid has-breakpoint">
+      <div class="row">
+
+        <div class="col-md-2 col-tablet-landscape-1 hidden-sm hidden-xs">
+
+          <!--
+             ____ ___ ____  _____ ____    _    ____
+            / ___|_ _|  _ \| ____| __ )  / \  |  _ \
+            \___ \| || | | |  _| |  _ \ / _ \ | |_) |
+             ___) | || |_| | |___| |_) / ___ \|  _ <
+            |____/___|____/|_____|____/_/   \_\_| \_\
+
+          -->
+
+          <div id="page-account-sidebar-width"></div>
+          <div id="page-account-sidebar">
+            
+            <?php echo $this->getChildHtml('navigation') ?>
+
+          </div> <!-- page-account-sidebar -->
+
+        </div> <!-- col-md-2 -->
+        <div class="col-md-0 col-tablet-landscape-0 col-sm-1 col-xs-0"></div>
+        <div class="col-md-10 col-tablet-landscape-11 col-sm-10 col-xs-12">
+
+          <!--
+              ____ ___  _   _ _____ _____ _   _ _____
+             / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+            | |  | | | |  \| | | | |  _| |  \| | | |
+            | |__| |_| | |\  | | | | |___| |\  | | |
+             \____\___/|_| \_| |_| |_____|_| \_| |_|
+
+          -->
+
+          <div id="page-account-content-width"></div>
+          <div id="page-account-content">
+
+
+            <!--
+                ____ ___ _____ _____    ____    _    ____  ____
+               / ___|_ _|  ___|_   _|  / ___|  / \  |  _ \|  _ \
+              | |  _ | || |_    | |   | |     / _ \ | |_) | | | |
+              | |_| || ||  _|   | |   | |___ / ___ \|  _ <| |_| |
+               \____|___|_|     |_|    \____/_/   \_\_| \_\____/
+
+            -->
+
+            <div id="page-account-gift-card-header">
+              <div class="row">
+                <div class="col-md-6">
+
+                  <div class="gift-card-title">
+                    <h2><?php echo $this->__('Gift cards') ?></h2>
+                  </div>
+
+                </div>
+                <div class="col-md-6">
+
+                  <div class="gift-card-nav">
+                    <ul>
+                      <li data-value="stored" class="selected"><a href="#stored">Stored</a></li>
+                      <li data-value="redeemed"><a href="#redeemed">Redeemed</a></li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+            </div> <!-- page-account-gift-card-header -->
+
+            <div id="page-account-gift-card-content">
+
+                <?php echo $this->getGridStoredHtml() ?>
+
+                <?php echo $this->getGridRedeemHtml() ?>
+
+            </div> <!-- page-account-gift-card-content -->
+
+           </div> <!-- page-account-content -->
+
+
+        </div> <!-- col-md-10 -->
+
+
+
+      </div> <!-- row -->
+    </div> <!-- container-fluid -->
+
+  </article> <!-- page-account-content-section -->

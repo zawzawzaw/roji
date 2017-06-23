@@ -20,6 +20,10 @@
                     <label>New Cart Layout</label>
                     <template>page/cart-layout.phtml</template>
                 </new_cms_layout_3> 
+                <new_cms_layout_4 module="page" translate="label">
+                    <label>Account Layout</label>
+                    <template>page/account-layout.phtml</template>
+                </new_cms_layout_4> 
             </layouts>
         </page>
     </global>

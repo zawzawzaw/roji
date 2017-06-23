@@ -53,183 +53,196 @@
     $_order = $this->getOrder();
 ?>
 
-<div id="monogram-page-account-mobile-page-title" class="visible-sm visible-xs">
-  <h1><?php echo $this->__('Order #%s - %s', $_order->getRealOrderId(), $_order->getStatusLabel()) ?></h1>
+<!--
+ _____ ___ _____ _     _____
+|_   _|_ _|_   _| |   | ____|
+  | |  | |  | | | |   |  _|
+  | |  | |  | | | |___| |___
+  |_| |___| |_| |_____|_____|
+
+-->
+
+<article id="page-account-title-section">
+<div class="container-fluid has-breakpoint">
+  <div class="row">
+    <div class="col-md-3 col-sm-1 col-xs-0"></div>
+    <div class="col-md-9 col-sm-10 col-xs-12">
+      <div id="page-account-title">
+        <h1><?php echo $this->__('My Order Details.') ?></h1>
+      </div> <!-- page-account-title -->
+    </div>
+  </div>
+</div>
+</article> <!-- page-account-title-section -->
+
+<!--
+  ____ ___  _   _ _____ _____ _   _ _____
+ / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+| |  | | | |  \| | | | |  _| |  \| | | |
+| |__| |_| | |\  | | | | |___| |\  | | |
+ \____\___/|_| \_| |_| |_____|_| \_| |_|
+
+-->
+
+<article id="page-account-content-section">
+<div id="page-account-content-section-bg" class="visible-md visible-lg">
+  <div class="sidebar-bg"></div>
+  <div class="content-bg"></div>
 </div>
 
+<div class="container-fluid has-breakpoint">
+  <div class="row">
 
-<div id="monogram-page-account-details-order-history">
+    <div class="col-md-2 col-tablet-landscape-1 hidden-sm hidden-xs">
 
-<?php /** @var $this Mage_Sales_Block_Order_Info */ ?>
-    <?php
-    $_order = $this->getOrder();
-    $billingAddress = $_order->getBillingAddress();
-    $billingCountryName = ($billingAddress) ? Mage::getModel('directory/country')->load($billingAddress->getCountryId())->getName() : '';
-    $shippingAddress = $_order->getShippingAddress();
-    $shippingCountryName = ($shippingAddress) ? Mage::getModel('directory/country')->load($shippingAddress->getCountryId())->getName() : '';
-    ?>
-    <div class="billing-and-shipping order-history">
-        <div class="image-text-content">
-            <?php echo $this->getMessagesBlock()->toHtml() ?>
-            <div class="row order-history-heading">
-                <div class="page-title col-md-12">
-                    <h1><?php echo $this->__('Order #%s - %s', $_order->getRealOrderId(), $_order->getStatusLabel()) ?></h1>                    
-                    <div class="space10"></div>
-                    <div class="cta-container">                        
-                        <a href="<?php echo $this->helper('checkoutcustomiser')->getReorderUrl($_order) ?>" class="square-cta reorder"><?php echo $this->__('Reorder All'); ?></a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 hidden-xs hidden-sm">
-                    <?php echo $this->getStatusHistoryRssUrl($_order) ?>
-                    <!-- <div class="order-info">
-                        <h2><?php echo $this->__('About This Order:') ?></h2>
-                        <div>
-                            <?php $_links = $this->getLinks(); ?>
-                            <div id="order-info-tabs">
-                            <?php foreach ($_links as $_link): ?>
-                                <?php if($_link->getUrl()): ?>
-                                    <p><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></p>
-                                <?php else: ?>
-                                    <p class="current"><?php echo $_link->getLabel() ?></p>
-                                <?php endif; ?>
-                            <?php endforeach; ?>
-                            </div>
-                            <script type="text/javascript">decorateGeneric($('order-info-tabs').select('LI'),['first','last']);</script>
+      <!--
+         ____ ___ ____  _____ ____    _    ____
+        / ___|_ _|  _ \| ____| __ )  / \  |  _ \
+        \___ \| || | | |  _| |  _ \ / _ \ | |_) |
+         ___) | || |_| | |___| |_) / ___ \|  _ <
+        |____/___|____/|_____|____/_/   \_\_| \_\
+
+      -->
+
+      <div id="page-account-sidebar-width"></div>
+      <div id="page-account-sidebar">
+
+        <?php echo $this->getChildHtml('navigation') ?>
+
+      </div> <!-- page-account-sidebar -->
+
+        </div> <!-- col-md-2 -->
+        <div class="col-md-0 col-tablet-landscape-0 col-sm-1 col-xs-0"></div>
+        <div class="col-md-10 col-tablet-landscape-11 col-sm-10 col-xs-12">
+
+          <!--
+              ____ ___  _   _ _____ _____ _   _ _____
+             / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+            | |  | | | |  \| | | | |  _| |  \| | | |
+            | |__| |_| | |\  | | | | |___| |\  | | |
+             \____\___/|_| \_| |_| |_____|_| \_| |_|
+
+          -->
+
+          <div id="page-account-content-width"></div>
+          <div id="page-account-content">
+
+            <!--
+                ___  ____  ____  _____ ____    ____  _____ _____  _    ___ _
+               / _ \|  _ \|  _ \| ____|  _ \  |  _ \| ____|_   _|/ \  |_ _| |
+              | | | | |_) | | | |  _| | |_) | | | | |  _|   | | / _ \  | || |
+              | |_| |  _ <| |_| | |___|  _ <  | |_| | |___  | |/ ___ \ | || |___
+               \___/|_| \_\____/|_____|_| \_\ |____/|_____| |_/_/   \_\___|_____|
+
+            -->
+            <?php
+                $_order = $this->getOrder();
+                $billingAddress = $_order->getBillingAddress();
+                $billingCountryName = ($billingAddress) ? Mage::getModel('directory/country')->load($billingAddress->getCountryId())->getName() : '';
+                $shippingAddress = $_order->getShippingAddress();
+                $shippingCountryName = ($shippingAddress) ? Mage::getModel('directory/country')->load($shippingAddress->getCountryId())->getName() : '';
+            ?>
+            <div id="page-account-order-detail-title">
+              <h2><?php echo $this->__('Order no. #%s', $_order->getRealOrderId()) ?></h2>              
+            </div> <!-- page-account-order-detail-title -->
+
+            <div id="page-account-order-detail-header">
+
+              <div class="detail-header-bg"></div>
+
+              <div class="row">
+                <div class="col-md-6">
+
+                  <div class="detail-header-column-01">
+
+
+                    <!--
+                       ____ ___ _     _     ___ _   _  ____
+                      | __ )_ _| |   | |   |_ _| \ | |/ ___|
+                      |  _ \| || |   | |    | ||  \| | |  _
+                      | |_) | || |___| |___ | || |\  | |_| |
+                      |____/___|_____|_____|___|_| \_|\____|
+
+                    -->
+
+                    <div id="page-account-order-detail-billing-info">
+
+                      <h2>Billing information</h2>
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="detail-item">
+                            <h4>Full Name</h4>
+                            <p><?php echo implode(' ', array($billingAddress->getLastname(), $billingAddress->getFirstname())); ?></p>
+                          </div>
                         </div>
-                    </div> -->                    
+                        <div class="col-md-6">
+                          <div class="detail-item">
+                            <h4>Email address</h4>
+                            <p><a href="mailto:<?php echo $_order->getCustomerEmail(); ?>"><?php echo $_order->getCustomerEmail(); ?></a></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="detail-item">
+                            <h4>Billing address</h4>
+                            <p><?php echo implode(' ', array(implode(' ', $billingAddress->getStreet()), $billingAddress->getCity(), $billingCountryName, $billingAddress->getPostcode())); ?></p>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="detail-item">
+                            <h4>Contact no.</h4>
+                            <p><?php echo $billingAddress->getTelephone(); ?></p>
+                          </div>
+                        </div>
+                      </div> <!-- row -->
+                    </div> <!-- page-account-order-detail-billing-info -->
                     
+                  </div> <!-- detail-header-column-01 -->
 
-                    <!-- <div class="row custom-custom-custom-row">
+                </div>  <!-- col-md-6 -->
+                <div class="col-md-6">
+
+                  <div class="detail-header-column-02">
+
+                    <div id="page-account-order-detail-shipping-info">
+
+                      <h2>Shipping information</h2>
+
+                      <div class="row">
                         <div class="col-md-6">
-
-                            <div class="billing-address">
-                                <div class="billing-address-details">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h2 class="title"><?php echo $this->__('Billing Address') ?></h2>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="each-billing-detail">
-                                                <h2><?php echo $this->__('NAME'); ?></h2>
-                                                <p><?php echo implode(' ', array($billingAddress->getLastname(), $billingAddress->getFirstname())); ?></p>
-                                            </div>
-                                            <div class="each-billing-detail">
-                                                <h2><?php echo $this->__('phone no.'); ?></h2>
-                                                <p><?php echo $billingAddress->getTelephone(); ?></p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="each-billing-detail">
-                                                <h2><?php echo $this->__('ADDRESS'); ?></h2>
-                                                <p><?php echo implode(' ', array(implode(' ', $billingAddress->getStreet()), $billingAddress->getCity(), $billingCountryName, $billingAddress->getPostcode())); ?></p>
-                                            </div>
-                                            <div class="each-billing-detail">
-                                                <h2><?php echo $this->__('EMAIL'); ?></h2>
-                                                <p><a href="mailto:<?php echo $_order->getCustomerEmail(); ?>"><?php echo $_order->getCustomerEmail(); ?></a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="each-shipping-detail">
-                                                <h2 class="title"><?php echo $this->__('Payment Method') ?></h2>
-                                                <p><?php echo strip_tags($this->getPaymentInfoHtml()); ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-
+                          <div class="detail-item">
+                            <h4>Full Name</h4>
+                            <p><?php echo implode(' ', array($shippingAddress->getLastname(), $shippingAddress->getFirstname())); ?></p>
+                          </div>
                         </div>
                         <div class="col-md-6">
-
-                            <div class="shipping-address">
-                                <div class="shipping-address-details">
-                                    <?php if (!$_order->getIsVirtual()): ?>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <h2 class="title"><?php echo $this->__('Shipping Address') ?></h2>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="each-shipping-detail">
-                                                    <h2><?php echo $this->__('NAME'); ?></h2>
-                                                    <p><?php echo implode(' ', array($shippingAddress->getLastname(), $shippingAddress->getFirstname())); ?></p>
-                                                </div>
-                                                <div class="each-shipping-detail">
-                                                    <h2><?php echo $this->__('phone no.'); ?></h2>
-                                                    <p><?php echo $shippingAddress->getTelephone(); ?></p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="each-shipping-detail">
-                                                    <h2><?php echo $this->__('ADDRESS'); ?></h2>
-                                                    <p><?php echo implode(' ', array(implode(' ', $shippingAddress->getStreet()), $shippingAddress->getCity(), $shippingCountryName, $shippingAddress->getPostcode())); ?></p>
-                                                </div>
-                                                <div class="each-shipping-detail">
-                                                    <h2><?php echo $this->__('EMAIL'); ?></h2>
-                                                    <p><a href="mailto:<?php echo $_order->getEmail(); ?>"><?php echo $_order->getEmail(); ?></a></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="each-shipping-detail">
-                                                    <h2 class="title"><?php echo $this->__('Shipping Method') ?></h2>
-                                                    <?php if ($_order->getShippingDescription()): ?>
-                                                        <p><?php echo strip_tags(($_order->getShippingDescription())) ?></p>
-                                                    <?php else: ?>
-                                                        <p><?php echo $this->helper('sales')->__('No shipping information available'); ?></p>
-                                                    <?php endif; ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php endif; ?>
-
-                                </div>
-                            </div>
-                            
-
+                          <div class="detail-item">
+                            <h4>Email address</h4>
+                            <p><a href="mailto:<?php echo $shippingAddress->getEmail(); ?>"><?php echo $shippingAddress->getEmail(); ?></a></p>
+                          </div>
                         </div>
-                    </div> -->
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="detail-item">
+                            <h4>Shipping address</h4>
+                            <p><?php echo implode(' ', array(implode(' ', $shippingAddress->getStreet()), $shippingAddress->getCity(), $shippingCountryName, $shippingAddress->getPostcode())); ?></p>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="detail-item">
+                            <h4>Contact no.</h4>
+                            <p><?php echo $shippingAddress->getTelephone(); ?></p>
+                          </div>
+                        </div>
+                      </div> <!-- row -->
 
+                    </div> <!-- page-account-order-detail-shipping-info -->
 
+                  </div> <!-- detail-header-column-02 -->
 
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-</div> <!-- #monogram-page-account-details-order-history -->
-<script>
-    $j('.reorder').on("click", function(e){
-        e.preventDefault();
-
-        var subscription_in_the_cart = <?php echo $subscription_in_the_cart; ?>;
-        var gift_in_the_cart = <?php echo $gift_in_the_cart; ?>;
-        var cart_count = <?php echo Mage::helper('checkout/cart')->getItemsCount(); ?>
-
-        if(subscription_in_the_cart==1) {                                
-            alert('This product cannot be purchased with other items in the cart. Please check out first before making this purchase.');
-        } else if(gift_in_the_cart==1) {
-            alert('This product cannot be purchased with other items in the cart. Please check out first before making this purchase.');
-        } else {
-            window.location.href = $j(this).attr('href');
-        }
-    });
-</script>
+                </div> <!-- col-md-6 -->
+              </div> <!-- row -->
+            </div> <!-- page-account-order-detail-header -->

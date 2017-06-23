@@ -29,54 +29,23 @@
 <?php
 if($groupname!='Trader-Temp' && $groupname!='Trader-Regular' && $groupname!='Trader-Priority' && $groupname!='Trader-Premium')
 {
- ?>
- <style>
-     .back-link {
-        display: none;
-     }
- </style>
- <div id="my-rewardpoints-table">
-     <div class="each-input">
-        <h2><?php echo $this->__('Rebate Balance'); ?></h2>
-        <?php
-        $store_id = Mage::app()->getStore()->getId();
-        $customerId = Mage::getModel('customer/session')->getCustomerId();
-        if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
-            $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
-            return $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
-        }        
-        
-        $reward_model = Mage::getModel('rewardpoints/stats');
-        $current_point = $reward_model->getPointsCurrent($customerId, $store_id)+0; 
+?>
+<div class="history-header-detail">
+    <h4><?php echo $this->__('Current rebate') ?></h4>
+    <?php
+    $store_id = Mage::app()->getStore()->getId();
+    $customerId = Mage::getModel('customer/session')->getCustomerId();
+    if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+        $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+        return $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
+    }        
 
-        $store = Mage::app()->getStore();  
-        $currency = Mage::app()->getStore()->getCurrentCurrency();      
-        ?>        
-        <!-- <p class="loyalty-point"><?php //echo $this->getPointsCurrent(); ?></p> -->
-        <p class="loyalty-point"><?php echo $currency->format($store->convertPrice($current_point)); ?></p>
-    </div>
-</div>
-<!-- <div id="my-rewardpoints-table" class="row">
-    <div class="col-md-2 col-sm-6 col-xs-6">        
-        <div class="each-input">
-            <h2><?php echo $this->__('Total Accumulated Points'); ?></h2>
-            <p><?php echo $this->getPointsReceived(); ?></p>
-            <?php if ($points_lost = $this->getPointsLost()):?>
-                <span class="j2t-point-lost"><?php echo $this->__("You also have %s expired points.", $points_lost);?></span>
-            <?php endif;?>
-        </div>
-    </div>
-    <div class="col-md-2 col-sm-6 col-xs-6">
-        <div class="each-input">
-            <h2><?php echo $this->__('Total Points Spent'); ?></h2>
-            <p><?php echo $this->getPointsSpent(); ?></p>
-        </div>
-        <div class="each-input">
-            <h2><?php echo $this->__('Points waiting for validation'); ?></h2>
-            <p><?php echo $this->getPointsWaitingValidation(); ?></p>
-        </div>
-    </div>
-</div>
-<script type="text/javascript">decorateTable('my-rewardpoints-table')</script> -->
+    $reward_model = Mage::getModel('rewardpoints/stats');
+    $current_point = $reward_model->getPointsCurrent($customerId, $store_id)+0; 
 
+    $store = Mage::app()->getStore();  
+    $currency = Mage::app()->getStore()->getCurrentCurrency();      
+    ?>            
+    <p class="loyalty-point"><?php echo $currency->format($store->convertPrice($current_point)); ?></p>
+</div>
 <?php } ?>

@@ -32,183 +32,444 @@
  */
 /** @var $this Mage_Customer_Block_Form_Login */
 ?>
-<article id="account-login-section-1">
-    <!-- <div class="desktop-header-spacer" style="height: 70px;"></div> -->
-    
-    <div class="container-fluid">
-        <div class="row account-login-content-container">
-            <div id="account-login-col-1" class="col-md-6 v-align hidden-xs hidden-sm">
-            <div id="account-login-img-content"></div>
-        </div><!--
-        --><div id="account-login-col-2" class="col-md-6 col-sm-12 col-xs-12 v-align">
-                <?php echo $this->getMessagesBlock()->toHtml() ?>
+<!--
+     _____ ___ _____ _     _____
+    |_   _|_ _|_   _| |   | ____|
+      | |  | |  | | | |   |  _|
+      | |  | |  | | | |___| |___
+      |_| |___| |_| |_____|_____|
 
-                <h1>Account Login</h1>
+-->
 
-                <p>Please login to your Monogram account here.</p>             
+  <article id="page-login-title-section">
+    <div class="container-fluid has-breakpoint">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div id="page-login-title">
+            <h1><?php echo $this->__('Welcome to the <strong>ROJI</strong> family.') ?></h1>
+          </div> <!-- page-login-title -->
+        </div>
+      </div>
+    </div>
+  </article> <!-- page-login-title-section -->
 
-                <div class="account-login<?php if (!$this->helper('customer')->isRegistrationAllowed()) echo ' login-only' ?>">
-                    <form action="<?php echo $this->getUrl("trader/customer_account/") ?>loginpost/" method="post" id="login-form" class="scaffold-form login-form">
-                        <?php echo $this->getBlockHtml('formkey'); ?>                        
+ <!--
+      ____ ___  _   _ _____ _____ _   _ _____
+     / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+    | |  | | | |  \| | | | |  _| |  \| | | |
+    | |__| |_| | |\  | | | | |___| |\  | | |
+     \____\___/|_| \_| |_| |_____|_| \_| |_|
+
+  -->
+
+  <div id="page-login-intro-image-mobile" class="visible-sm visible-xs">
+    <div class="manic-image-container">
+      <img src="" 
+        data-image-tablet="<?php echo $this->getSkinUrl('images_cms/others/login-intro-tablet.jpg') ?>"
+        data-image-mobile="<?php echo $this->getSkinUrl('images_cms/others/login-intro-mobile.jpg') ?>">
+    </div>
+  </div>
+  
+  <article id="page-login-content-section">
+
+    <div class="container-fluid has-breakpoint">
+      <div class="row">
+        <div class="col-md-1 col-tablet-landscape-0 col-sm-0"></div>
+        <div class="col-md-5 col-tablet-landscape-6 col-sm-12 col-xs-12">
+
+            <div id="page-login-content" class="account-login<?php if (!$this->helper('customer')->isRegistrationAllowed()) echo ' login-only' ?>">                
+                
+                <form action="<?php echo $this->getUrl("trader/customer_account/") ?>loginpost/" method="post" id="login-form" class="scaffold-form login-form checkout-form">
+                    <?php echo $this->getBlockHtml('formkey'); ?>                        
+                    
+                    <div class="form-title">
+                        <h2><?php echo $this->__('Login to your account') ?></h2>
+                    </div>
+
+                    <?php echo $this->getMessagesBlock()->toHtml() ?>
+                    
+                    <div class="form-group">
                         <div class="row">
-                            <div class="col-md-12">          
-                              <div class="inputs">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-12 col-xs-12 v-align">
-                                        <label for="email" class="for-input required"><?php echo $this->__('Email Address') ?></label>
-                                    </div><!--
-                                      --><div class="col-md-9 col-sm-12 col-xs-12 v-align">
-                                        <input type="text" autocapitalize="off" autocorrect="off" spellcheck="false" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="email" class="username-input input-class required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col-md-3 col-sm-12 col-xs-12 v-align">
-                                    <label for="pass" class="for-input required"><?php echo $this->__('Password') ?></label>
-                                  </div><!--
-                                  --><div class="col-md-9 col-sm-12 col-xs-12 v-align">
-                                    <input type="password" name="login[password]" class="password-input input-class required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
-                                    <button type="submit" class="hidden-xs hidden-sm button sign-in-btn square-cta" title="<?php echo $this->__('Login') ?>" name="send" id="send2"><span><span><?php echo $this->__('Sign In') ?></span></span></button>
-                                  </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col-lg-3 col-lg-offset-3 col-md-4 col-md-offset-3 v-align">
-                                    <?php echo $this->getChildHtml('persistent.remember.me'); ?>
-                                  </div><!--
-                                    --><div class="col-lg-5 col-md-5 v-align">
-                                      <a href="<?php echo $this->getForgotPasswordUrl() ?>" class="f-left forgot-password forget-password for-input"><?php echo $this->__('Forgot Your Password?') ?></a>
-                                    </div>
-                                </div>
-                                <div class="row visible-xs visible-sm">
-                                    <div class="col-md-9 col-sm-12 col-xs-12 v-align">
-                                        <button type="submit" class="button sign-in-btn square-cta" title="<?php echo $this->__('Login') ?>" name="send" id="send2"><span><span><?php echo $this->__('Sign In') ?></span></span></button>
-                                    </div>
-                                </div>
-                              </div>
+                            <div class="col-md-4">
+                                <label for="email" class="for-input required"><?php echo $this->__('Email address*') ?></label>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" autocapitalize="off" autocorrect="off" spellcheck="false" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="email" class="username-input input-class required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
                             </div>
                         </div>
+                    </div>
+
+                    <div class="form-group">
                         <div class="row">
-                            <div class="col-md-12">
-                              <div class="login-button-container">
-                                <a class="sign-in-facebook square-cta"><i class="fa fa-facebook"></i> Sign In with Facebook</a>
-                              </div>
-                              <span class="login-button-seperator">Or</span>
-                              <div class="login-button-container">
-                                <a title="<?php echo $this->__('Create A Monogram Account') ?>" class=" sign-up-btn square-cta" href="<?php echo Mage::helper('persistent')->getCreateAccountUrl($this->getCreateAccountUrl()) ?>"><span><span><?php echo $this->__('Create A Monogram Account') ?></span></span></a>
-                              </div>                              
+                          <div class="col-md-4">
+                            <label for="pass" class="for-input required"><?php echo $this->__('Password*') ?></label>
+                          </div><!--
+                          --><div class="col-md-8">
+                            <input type="password" name="login[password]" class="password-input input-class required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />                            
+                          </div>
+                        </div>
+                    </div>
+
+                    <div id="page-login-form-forgot-password-container">
+                        <a href="<?php echo $this->getForgotPasswordUrl() ?>">Forgot password?</a>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-7">
+
+                          <?php echo $this->getChildHtml('persistent.remember.me'); ?>
+
+                        </div>
+                        <div class="col-md-5 col-md-push-0 col-sm-8 col-sm-push-2 col-xs-10 col-xs-push-1">
+
+                          <div class="cta-container">                            
+                            <button type="submit" class="button sign-in-btn square-cta" title="<?php echo $this->__('Log In') ?>" name="send" id="send2"><?php echo $this->__('Log In') ?></button>
+                          </div>
+
+                        </div>
+                    </div>
+
+                    <div id="page-login-social-media-container">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <small>Login in with social media account: </small>
+                            </div>
+                            <div class="col-md-5">
+                                <ul>
+                                    <li><a href="#" id="sign-in-facebook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#" id="sign-in-twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#" id="sign-in-pinterest"><i class="fa fa-pinterest"></i></a></li>
+                                    <li>
+                                      <a href="#" id="sign-in-google"><i class="fa fa-google-plus"></i></a>
+                                      <div class="g-signin2" style="display: none;" data-onsuccess="logGoogleUserIn"><i class="fa fa-google-plus" aria-hidden="true"></i></div>
+                                    </li>                                    
+                                </ul>
                             </div>
                         </div>
-						<!-- <div class="row">
-                            <div class="col-md-10">                              						
-                              <div class="login-button-container" style="text-align: center;">
-                                <a title="<?php echo $this->__('Create a Trader Account') ?>" class=" sign-up-btn square-cta" href="<?php echo $this->getUrl('trader') ?>"><span><span><?php echo $this->__('Create a Trader Account') ?></span></span></a>
-                              </div>
-                            </div>
-                        </div> -->
-                        <?php if (Mage::helper('checkout')->isContextCheckout()): ?>
-                            <input name="context" type="hidden" value="checkout" />
-                        <?php endif; ?>
-                    </form>
-                    <script type="text/javascript">
-                        //<![CDATA[
+                    </div>
+
+                    <?php if (Mage::helper('checkout')->isContextCheckout()): ?>
+                        <input name="context" type="hidden" value="checkout" />
+                    <?php endif; ?>
+                </form>              
+                <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>  
+                <script>
+                    //<![CDATA[
                         var dataForm = new VarienForm('login-form', true);
-                        //]]>
-                    </script>
-                    <script>
-                        jQuery(document).ready(function($){
-                            // This is called with the results from from FB.getLoginStatus().
-                            function statusChangeCallback(response) {
-                                console.log('statusChangeCallback');
-                                console.log(response);
-                                // The response object is returned with a status field that lets the
-                                // app know the current login status of the person.
-                                // Full docs on the response object can be found in the documentation
-                                // for FB.getLoginStatus().
-                                if (response.status === 'connected') {
-                                  // Logged into your app and Facebook.
-                                  logFacebookUserIn(response.authResponse.accessToken);
-                                } else if (response.status === 'not_authorized') {
-                                  // The person is logged into Facebook, but not your app.
-                                  document.getElementById('status').innerHTML = 'Please log ' +
-                                    'into this app.';
-                                } else {
-                                  // The person is not logged into Facebook, so we're not sure if
-                                  // they are logged into this app or not.
-                                  document.getElementById('status').innerHTML = 'Please log ' +
-                                    'into Facebook.';
-                                }
+                    //]]>
+                    jQuery(document).ready(function($){
+
+                        //     _________   ________________  ____  ____  __ __
+                        //    / ____/   | / ____/ ____/ __ )/ __ \/ __ \/ //_/
+                        //   / /_  / /| |/ /   / __/ / __  / / / / / / / ,<
+                        //  / __/ / ___ / /___/ /___/ /_/ / /_/ / /_/ / /| |
+                        // /_/   /_/  |_\____/_____/_____/\____/\____/_/ |_|
+                        //
+
+
+                        // This is called with the results from from FB.getLoginStatus().
+                        function statusChangeCallback(response) {
+                            console.log('statusChangeCallback');
+                            console.log(response);
+                            // The response object is returned with a status field that lets the
+                            // app know the current login status of the person.
+                            // Full docs on the response object can be found in the documentation
+                            // for FB.getLoginStatus().
+                            if (response.status === 'connected') {
+                              // Logged into your app and Facebook.
+                              logFacebookUserIn(response.authResponse.accessToken);
+                            } else if (response.status === 'not_authorized') {
+                              // The person is logged into Facebook, but not your app.
+                              document.getElementById('status').innerHTML = 'Please log ' +
+                                'into this app.';
+                            } else {
+                              // The person is not logged into Facebook, so we're not sure if
+                              // they are logged into this app or not.
+                              document.getElementById('status').innerHTML = 'Please log ' +
+                                'into Facebook.';
                             }
+                        }
 
-                            $('.sign-in-facebook').on('click', function(e){
-                                e.preventDefault();
+                        $('#sign-in-facebook').on('click', function(e){
+                            e.preventDefault();
 
-                                $('#ajax_loader_fb_signin').show();
+                            // $('#ajax_loader_fb_signin').show();
 
-                                FB.login(function(response) {
-                                  statusChangeCallback(response);
-                                }, {scope: 'public_profile, email, user_location, user_birthday'});
-                            });
+                            FB.login(function(response) {
+                              statusChangeCallback(response);
+                            }, {scope: 'public_profile, email, user_location, user_birthday'});
+                        });                                            
 
-                             window.fbAsyncInit = function() {
-                                FB.init({
-                                  appId      : '1157337617690727',
-                                  xfbml      : true,
-                                  version    : 'v2.6'
-                                });
-                            };
+                        // Here we run a very simple test of the Graph API after login is
+                        // successful.  See statusChangeCallback() for when this call is made.
+                        var request;
+                        function logFacebookUserIn() {
+                            console.log('Welcome!  Fetching your information.... ');
+                            FB.api('/me?fields=email,id,name,location,first_name,last_name,gender,birthday', function(response) {                              
+                                console.log('Successful login for: ' + response.name);
 
-                            (function(d, s, id){
-                            var js, fjs = d.getElementsByTagName(s)[0];
-                            if (d.getElementById(id)) {return;}
-                            js = d.createElement(s); js.id = id;
-                            js.src = "//connect.facebook.net/en_US/sdk.js";
-                            fjs.parentNode.insertBefore(js, fjs);
-                            }(document, 'script', 'facebook-jssdk'));                        
+                                if(response && response.email != '') {
+                                    if (request) {
+                                        request.abort();
+                                    }
 
-                            // Here we run a very simple test of the Graph API after login is
-                            // successful.  See statusChangeCallback() for when this call is made.
-                            var request;
-                            function logFacebookUserIn(token) {
-                                console.log('Welcome!  Fetching your information.... ');
-                                FB.api('/me?fields=email,id,name,location,first_name,last_name,gender,birthday', function(response) {                              
-                                    console.log('Successful login for: ' + response.name);
+                                    request = $.ajax({
+                                        url: "/discovertea/index/loginCustomer",
+                                        method: "POST",
+                                        data: { id: response.id, first_name : response.first_name, last_name : response.last_name, email : response.email, gender : response.gender, dob : response.birthday, _token : response.token },                                    
+                                        success: function(data){
+                                            var objData = $.parseJSON(data);
 
-                                    if(response && response.email != '') {
-                                        if (request) {
-                                            request.abort();
-                                        }
+                                            // console.log(data);
+                                            // console.log(objData);
 
-                                        request = $.ajax({
-                                            url: "//www.monogramtea.com/discovertea/index/loginCustomer",
-                                            method: "POST",
-                                            data: { id: response.id, first_name : response.first_name, last_name : response.last_name, email : response.email, gender : response.gender, dob : response.birthday, _token : token },                                    
-                                            success: function(data){
-                                                var objData = $.parseJSON(data);
-
-                                                // console.log(data);
-                                                // console.log(objData);
-
-                                                if(objData.success==true) {
-                                                    location.reload();
+                                            if(objData.success==true) {
+                                                location.reload();
+                                            }else {
+                                                if(objData.error_messages) {
+                                                    alert(objData.error_messages);
                                                 }else {
-                                                    if(objData.error_messages) {
-                                                        alert(objData.error_messages);
-                                                    }else {
-                                                        alert('Something went wrong please try again.');
-                                                    }
+                                                    alert('Something went wrong please try again.');
                                                 }
                                             }
-                                        });
-                                    }else {
-                                        alert('Couldn\'t fetch the infomation we need from Facebook. Please try signin/sign up normally.')
-                                    }
+                                        }
+                                    });
+                                }else {
+                                    alert('Couldn\'t fetch the infomation we need from Facebook. Please try signin/sign up normally.')
+                                }
+                                
+                            });
+                        }
+
+
+
+
+                        //     ____  _____   __________________  _________________
+                        //    / __ \/  _/ | / /_  __/ ____/ __ \/ ____/ ___/_  __/
+                        //   / /_/ // //  |/ / / / / __/ / /_/ / __/  \__ \ / /
+                        //  / ____// // /|  / / / / /___/ _, _/ /___ ___/ // /
+                        // /_/   /___/_/ |_/ /_/ /_____/_/ |_/_____//____//_/
+                        //
+
+                          window.pAsyncInit = function() {
+                              PDK.init({
+                                  appId: "4906549692587848727", // Change this
+                                  cookie: true
+                              });
+
+
+                              $("#sign-in-pinterest").click(function(e){
+                                //login
+                                PDK.login({ scope : 'read_public' }, function(response){
                                     
+                                    if (!response || response.error) {
+                                      console.log('Pinterest Login error');
+                                    } else {
+                                       console.log(JSON.stringify(response));
+                                    }
+
+                                    //get board info
+                                    var pins = [];
+                                    PDK.request('/v1/me/', function (response) {
+                                      if (!response || response.error) {
+                                        //alert('Error occurred');
+                                      } else {
+                                        console.log(JSON.stringify(response));
+                                        //  alert('success');
+                                        console.log(PDK.getSession().accessToken);
+
+                                        var yahoo = $( "#result" ).load( "https://api.pinterest.com/v1/me/?access_token="+PDK.getSession().accessToken+"&fields=counts" );
+                                        console.log(yahoo);
+                                        // PDK.logout();
+                                      }
+                                    });
+
+                                //end get board info
                                 });
-                            }
-                        });
+                                //end login
+                              });
+
+                          };
+
+                          (function(d, s, id){
+                              var js, pjs = d.getElementsByTagName(s)[0];
+                              if (d.getElementById(id)) {return;}
+                              js = d.createElement(s); js.id = id;
+                              js.src = "//assets.pinterest.com/sdk/sdk.js";
+                              pjs.parentNode.insertBefore(js, pjs);
+                          }(document, 'script', 'pinterest-jssdk'));
+
+                    });
+
+                    //    __________  ____  ________    ______
+                    //   / ____/ __ \/ __ \/ ____/ /   / ____/
+                    //  / / __/ / / / / / / / __/ /   / __/
+                    // / /_/ / /_/ / /_/ / /_/ / /___/ /___
+                    // \____/\____/\____/\____/_____/_____/
+                    //
+
+                    jQuery("#sign-in-google").click(function(e){
+                      e.preventDefault();
+                      console.log(jQuery(".g-signin2"));
+                      jQuery(".abcRioButton").trigger("click");
+                    });
+
+                    function logGoogleUserIn(googleUser) {
+                      var profile = googleUser.getBasicProfile();
+                      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                      console.log('Name: ' + profile.getName());
+                      console.log('Image URL: ' + profile.getImageUrl());
+                      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+                      request = jQuery.ajax({
+                          url: "/discovertea/index/loginCustomer",
+                          method: "POST",
+                          data: { id:  profile.getId(), first_name : profile.getGivenName(), last_name : profile.getFamilyName(), email : profile.getEmail(), gender : "", dob : "", _token : "" },                                    
+                          success: function(data){
+                              var objData = jQuery.parseJSON(data);
+
+                              // console.log(data);
+                              // console.log(objData);
+
+                              if(objData.success==true) {
+                                  location.reload();
+                              }else {
+                                  if(objData.error_messages) {
+                                      alert(objData.error_messages);
+                                  }else {
+                                      alert('Something went wrong please try again.');
+                                  }
+                              }
+                          }
+                      });
+                    }
+
+                    //   _______       ____________________________
+                    //  /_  __/ |     / /  _/_  __/_  __/ ____/ __ \
+                    //   / /  | | /| / // /  / /   / / / __/ / /_/ /
+                    //  / /   | |/ |/ // /  / /   / / / /___/ _, _/
+                    // /_/    |__/|__/___/ /_/   /_/ /_____/_/ |_|
+                    //
+
+                    var config = {
+                      apiKey: "AIzaSyDZiclzNzZzqqK3VYJIcuuLEqVHn-8ucyI",
+                      authDomain: "rojicha-a8250.firebaseapp.com",
+                      databaseURL: "https://rojicha-a8250.firebaseio.com",
+                      projectId: "rojicha-a8250",
+                      storageBucket: "",
+                      messagingSenderId: "980365959993"
+                    };
+                    firebase.initializeApp(config);
+
+                    jQuery("#sign-in-twitter").click(function(e){
+                      e.preventDefault();
                       
-                    </script>
-                </div>
+                      // Initialize Firebase                      
+                      var provider = new firebase.auth.TwitterAuthProvider();
+
+                      firebase.auth().signInWithPopup(provider).then(function(result) {
+                        // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
+                        // You can use these server side with your app's credentials to access the Twitter API.
+                        var token = result.credential.accessToken;
+                        var secret = result.credential.secret;
+                        // The signed-in user info.
+                        var user = result.user;
+                        // console.log(user);
+                        console.log(user.providerData[0].displayName);
+                        console.log(user.providerData[0].email);
+                        console.log(user.providerData[0].uid);
+
+                        request = jQuery.ajax({
+                          url: "/discovertea/index/loginCustomer",
+                          method: "POST",
+                          data: { id:  user.providerData[0].uid, first_name : user.providerData[0].displayName, last_name : user.providerData[0].displayName, email : user.providerData[0].email, gender : "", dob : "", _token : "" },                                    
+                          success: function(data){
+                              var objData = jQuery.parseJSON(data);
+
+                              // console.log(data);
+                              // console.log(objData);
+
+                              if(objData.success==true) {
+                                  location.reload();
+                              }else {
+                                  if(objData.error_messages) {
+                                      alert(objData.error_messages);
+                                  }else {
+                                      alert('Something went wrong please try again.');
+                                  }
+                              }
+                          }
+                        });
+
+                      }).catch(function(error) {
+                        // Handle Errors here.
+                        var errorCode = error.code;
+                        var errorMessage = error.message;
+                        // The email of the user's account used.
+                        var email = error.email;
+                        // The firebase.auth.AuthCredential type that was used.
+                        var credential = error.credential;
+                        
+                        console.log(error);
+
+                      });
+                    });
+                </script>
+
             </div>
+    
         </div>
+        <div class="col-md-4 col-tablet-landscape-5 visible-md visible-lg">
+
+          <div id="page-login-intro-image">
+            <div class="manic-image-container">
+              <img src="" data-image-desktop="<?php echo $this->getSkinUrl('images_cms/others/login-intro.jpg') ?>">
+            </div>
+          </div>
+
+        </div>
+      </div><!-- row -->
+      
+      <div class="row">
+        <div class="col-md-12">
+          <hr class="page-login-seperator-hr">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-1 col-tablet-landscape-0 col-sm-0"></div>
+
+        <div class="col-md-8 col-tablet-landscape-9 col-sm-12">
+
+          <div id="page-login-register-form-container">
+            <div id="page-login-register-form">
+              <h2><?php echo $this->__('Don’t have an Account?') ?></h2>
+
+              <div class="default-copy">
+                <small><?php echo $this->__('Simply create one to join our Roji family and indulge in a world of exclusive privileges as you earn rewards and privileges every time you shop, connect and share.') ?></small>
+              </div>
+
+              <div class="row">
+
+
+                <div class="col-md-12 col-md-push-0 col-sm-8 col-sm-push-2 col-xs-10 col-xs-push-1">
+
+                  <div class="cta-container">
+                    <a href="<?php echo Mage::helper('persistent')->getCreateAccountUrl($this->getCreateAccountUrl()) ?>" class="square-cta"><?php echo $this->__('Create an account') ?></a>
+                    <a href="javascript:void(0);" class="square-cta"><?php echo $this->__('Chaseki Members Program') ?></a>
+                  </div>
+                  
+                </div>
+              </div>
+
+            </div> <!-- page-login-register-form -->
+          </div> <!-- page-login-register-form-container -->
+
+        </div>
+      </div> <!-- row -->
+
     </div>
-</article>
+   </article>  
+  <script src="https://apis.google.com/js/platform.js" async defer></script>

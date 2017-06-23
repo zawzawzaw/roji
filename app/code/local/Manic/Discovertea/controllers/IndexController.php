@@ -329,11 +329,11 @@ class Manic_Discovertea_IndexController extends Mage_Core_Controller_Front_Actio
             
             $dob=date('m/j/Y', strtotime($dob));
 
-            if(empty($first_name) || empty($last_name) || empty($email) || empty($_token) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+            if(empty($first_name) || empty($last_name) || empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
 
             	$result['success']  = false;
-        		$result['error']    = true;
-        		$result['error_messages']    = 'One or more of the required field(s) to sign in is missing or invalid.';
+        		  $result['error']    = true;
+        		  $result['error_messages']    = 'One or more of the required field(s) to sign in is missing or invalid.';
 
             }else {
 
@@ -341,88 +341,96 @@ class Manic_Discovertea_IndexController extends Mage_Core_Controller_Front_Actio
             	//// Check on fb access token to see if user acutally logged in to facebook
             	////
 
-	            $graph_url= "https://graph.facebook.com/me";
-				$param = "?access_token=" .$_token;
+              if(!empty($_token)) {
+  	            $graph_url= "https://graph.facebook.com/me";
+        				$param = "?access_token=" .$_token;
 
-			    $ch = curl_init($graph_url.$param);
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-				curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-				$response = curl_exec($ch);
-				$response = json_decode($response, true);
+        			    $ch = curl_init($graph_url.$param);
+        				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        				curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        				$response = curl_exec($ch);
+        				$response = json_decode($response, true);
 
-				if($response['id']!==$id) {
+        				if($response['id']!==$id) {
 
-				 	$result['success']  = false;
-	        		$result['error']    = true;
-	        		$result['error_messages']    = 'Invalid access token';
+        				 	$result['success']  = false;
+    	        		$result['error']    = true;
+    	        		$result['error_messages']    = 'Invalid access token';
 
-				}else {
+                  $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
 
-					$customer = Mage::getModel('customer/customer');
-				    $customer->setWebsiteId($website_id);
-				    $customer->loadByEmail($email);
-				    $session = Mage::getSingleton('customer/session');
+                  return;
 
-				    if ($customer->getId()) {
+        				}
 
-				    	//// try log customer in if email address is already exist
+              }
+              // else {
 
-				        $session->setCustomerAsLoggedIn($customer);
+      					  $customer = Mage::getModel('customer/customer');
+      				    $customer->setWebsiteId($website_id);
+      				    $customer->loadByEmail($email);
+      				    $session = Mage::getSingleton('customer/session');
 
-				        $result['success']  = true;
-			        	$result['error']    = false;
+      				    if ($customer->getId()) {
 
-				    }else {
+      				    	//// try log customer in if email address is already exist
 
-				    	//// if email address is new sign up first
-						 
-						$customer = Mage::getModel("customer/customer");
-						$customer   ->setWebsiteId($website_id)
-						            ->setStore($store)
-						            ->setFirstname($first_name)
-						            ->setLastname($last_name)
-						            ->setEmail($email)
-						            ->setGender(
-						            	Mage::getResourceModel('customer/customer')
-							            ->getAttribute('gender')
-							            ->getSource()
-							            ->getOptionId($gender)
-							        )
-							        ->setDob($dob)
-						            ->setPassword('facebook_login')
-						            ->setIsActive(1)
-		    						->setConfirmation(null);
-						 
-						try{
-						    $customer->save();
+      				        $session->setCustomerAsLoggedIn($customer);
 
-						    //// once signed up log the user in
+      				        $result['success']  = true;
+      			        	$result['error']    = false;
 
-						    if($customer->getId()) {
-						    	$session->setCustomerAsLoggedIn($customer);
-						    }
+      				    }else {
 
-						    $result['success']  = true;
-			        		$result['error']    = false;
-			        		$result['customer_id']    = $customer->getId();
-			        		
-						}
-						catch (Exception $e) {
-						    $result['success']  = false;
-			        		$result['error']    = true;
-			        		$result['error_messages']    = $e->getMessage();
-						}
+      				    	//// if email address is new sign up first
+      						 
+      						$customer = Mage::getModel("customer/customer");
+      						$customer   ->setWebsiteId($website_id)
+      						            ->setStore($store)
+      						            ->setFirstname($first_name)
+      						            ->setLastname($last_name)
+      						            ->setEmail($email)
+      						            ->setGender(
+      						            	Mage::getResourceModel('customer/customer')
+      							            ->getAttribute('gender')
+      							            ->getSource()
+      							            ->getOptionId($gender)
+      							        )
+      							        ->setDob($dob)
+      						            ->setPassword('facebook_login')
+      						            ->setIsActive(1)
+      		    						->setConfirmation(null);
+      						 
+      						try{
+      						    $customer->save();
 
-				    }
+      						    //// once signed up log the user in
 
-				}		
+      						    if($customer->getId()) {
+      						    	$session->setCustomerAsLoggedIn($customer);
+      						    }
+
+      						    $result['success']  = true;
+      			        		$result['error']    = false;
+      			        		$result['customer_id']    = $customer->getId();
+      			        		
+      						}
+      						catch (Exception $e) {
+      						    $result['success']  = false;
+      			        		$result['error']    = true;
+      			        		$result['error_messages']    = $e->getMessage();
+      						}
+
+      				    }
+
+      				// }		
 
             }   
 		    
 		}else {
 			$result['success']  = false;
-	        $result['error']    = true;
+      $result['error']    = true;
 		}
 
 		$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
