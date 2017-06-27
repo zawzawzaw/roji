@@ -46,7 +46,7 @@
   <article id="page-contact-content-section">
     <div class="container-fluid has-breakpoint">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 col-tablet-landscape-4 col-sm-12 col-xs-12">
 
           <div id="page-contact-sidebar">
 
@@ -90,12 +90,12 @@
 
 
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 col-tablet-landscape-1 col-sm-12 col-xs-12">
 
           <div id="page-contact-seperator"></div>
 
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 col-tablet-landscape-7 col-sm-12 col-xs-12">
 
 
           <div id="page-contact-content">
