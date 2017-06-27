@@ -56,6 +56,7 @@ roji.page.ProductDetail.prototype.init = function() {
 
   this.product_price = $j("#page-product-detail-content").find(".regular-price").html();  
   this.product_price_int = this.product_price.replace( /^\D+/g, '');
+  this.product_price_int = this.product_price_int.replace(/,/g , '');
   this.currency_symbol = $j("#page-product-detail-form").find('.form-total-value').data('currency');  
   this.total_price = 0;
   

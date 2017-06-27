@@ -244,7 +244,7 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
                                             </div>
                                             <div class="col-md-8">            
                                                 <div class="roji-intltelinput-container">
-                                                    <input type="text" name="billing[telephone]" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) . " " ?>" title="<?php echo $this->__('Telephone') ?>" class="roji-intltelinput remove-input-selection input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="billing:telephone" onkeyup="if(document.getElementById('shipping:same_as_billing').checked) shipping.setSameAsBilling(true);" />
+                                                    <input type="text" name="billing[telephone]" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) . " " ?>" title="<?php echo $this->__('Telephone') ?>" class="validate-intl-tel-input roji-intltelinput remove-input-selection input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="billing:telephone" onkeyup="if(document.getElementById('shipping:same_as_billing').checked) shipping.setSameAsBilling(true);" />
                                                 </div>
                                             </div>
                                         </div>
@@ -466,7 +466,7 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
                                             </div>
                                             <div class="col-md-8"> 
                                                 <div class="roji-intltelinput-container">                                           
-                                                    <input type="text" name="shipping[telephone]" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) . " " ?>" title="<?php echo $this->__('Telephone') ?>" class="roji-intltelinput remove-input-selection input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="shipping:telephone" onchange="shipping.setSameAsBilling(false);" />
+                                                    <input type="text" name="shipping[telephone]" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) . " " ?>" title="<?php echo $this->__('Telephone') ?>" class="validate-intl-tel-input roji-intltelinput remove-input-selection input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="shipping:telephone" onchange="shipping.setSameAsBilling(false);" />
                                                 </div>
                                             </div>
                                         </div>
@@ -627,7 +627,7 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
 
           <div class="col-md-6 col-md-pull-6 col-md-push-0 col-sm-8 col-sm-pull-0 col-sm-push-2 col-xs-10 col-xs-push-1">
             <div class="cta-container-01">                
-              <a href="<?php echo $this->getUrl('store.html'); ?>" class="arrow-cta reverse-version">Continue Shopping</a>
+              <a href="<?php echo $this->getUrl('shop.html'); ?>" class="arrow-cta reverse-version">Continue Shopping</a>
             </div>
           </div>
           

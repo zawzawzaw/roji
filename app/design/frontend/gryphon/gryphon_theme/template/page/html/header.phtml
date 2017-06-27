@@ -98,9 +98,9 @@ $quoteData= $quote->getData();
                           </div>
                         </li>
                         <li>
-                          <p><?php echo $productQty; ?> x</p>
-                          <p><?php echo $productName; ?></p>
-                          <p><?php echo $productNameInColor; ?></p>
+                          <p><?php echo ($productQty) ? $productQty : ""; ?> x</p>
+                          <p><?php echo ($productName) ? $productName : ""; ?></p>
+                          <p><?php echo (!empty($productNameInColor)) ? $productNameInColor : ""; ?></p>
                           <p><?php echo Mage::helper('core')->currency($productPrice, true, false); ?></p>
                         </li>
                         <li>                        
