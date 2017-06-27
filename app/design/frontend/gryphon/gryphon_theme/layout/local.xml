@@ -99,9 +99,9 @@ One page checkout main layout
     <customer_account>
         <reference name="head">            
             <!-- <action method="addItem"><type>skin_js</type><name>js/no-banner.js</name></action> -->
-            <!-- <action method="addItem"><type>skin_css</type><name>css/intlTelInput.css</name></action> -->
-            <!-- <action method="addItem"><type>skin_js</type><name>js/plugins/intlTelInput.min.js</name></action> -->
-            <!-- <action method="addItem"><type>skin_js</type><name>js/plugins/lib/libphonenumber/build/utils.js</name></action> -->
+            <action method="addItem"><type>skin_css</type><name>libs/intlTelInput/intlTelInput.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>libs/intlTelInput/intlTelInput.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>libs/intlTelInput/utils.js</name></action>
             <action method="removeItem"><type>skin_js</type><name>js/minified/page-default.min.js</name></action>
             <action method="addItem"><type>skin_js</type><name>js/minified/page-account.min.js</name></action>   
         </reference>
@@ -246,9 +246,9 @@ One page checkout main layout
 
     <customer_account_edit>
         <reference name="head">
-            <!-- <action method="addItem"><type>skin_css</type><name>css/intlTelInput.css</name></action> -->
-            <!-- <action method="addItem"><type>skin_js</type><name>js/plugins/intlTelInput.min.js</name></action> -->
-            <!-- <action method="addItem"><type>skin_js</type><name>js/plugins/lib/libphonenumber/build/utils.js</name></action> -->
+            <action method="addItem"><type>skin_css</type><name>libs/intlTelInput/intlTelInput.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>libs/intlTelInput/intlTelInput.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>libs/intlTelInput/utils.js</name></action>
             <action method="addItem"><type>skin_js</type><name>js/miragedesign/regionupdater.js</name></action>            
             <action method="setForcedTitle"><title>My Account - Roji Cha</title></action>            
         </reference>

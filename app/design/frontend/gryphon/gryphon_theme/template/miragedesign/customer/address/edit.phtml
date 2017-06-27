@@ -141,7 +141,9 @@ if(empty($creating_or_editing_address_type)) $creating_or_editing_address_type =
                             <label>Contact No.</label>
                           </div>
                           <div class="col-md-8">
-                            <input type="text" name="telephone" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) . " " ?>" title="<?php echo $this->__('Telephone') ?>" class="remove-input-selection input-text  <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="telephone" />
+                            <div class="roji-intltelinput-container"> 
+                              <input type="text" name="telephone" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) . " " ?>" title="<?php echo $this->__('Telephone') ?>" class="roji-intltelinput remove-input-selection input-text  <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="telephone" />
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -317,23 +319,23 @@ if(empty($creating_or_editing_address_type)) $creating_or_editing_address_type =
         new CustomRegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
     //]]>
 
-    $telephone_input = $j('#telephone');
-    $telephone_input.intlTelInput({
-        initialCountry: 'sg',
-        nationalMode: false,
-        autoHideDialCode: false,
-        autoPlaceholder: false,  
-        preferredCountries: []
-    });
+    // $telephone_input = $j('#telephone');
+    // $telephone_input.intlTelInput({
+    //     initialCountry: 'sg',
+    //     nationalMode: false,
+    //     autoHideDialCode: false,
+    //     autoPlaceholder: false,  
+    //     preferredCountries: []
+    // });
 
-    $fax_input = $j('#fax');
-    $fax_input.intlTelInput({
-        initialCountry: 'sg',
-        nationalMode: false,
-        autoHideDialCode: false,
-        autoPlaceholder: false,  
-        preferredCountries: []
-    });
+    // $fax_input = $j('#fax');
+    // $fax_input.intlTelInput({
+    //     initialCountry: 'sg',
+    //     nationalMode: false,
+    //     autoHideDialCode: false,
+    //     autoPlaceholder: false,  
+    //     preferredCountries: []
+    // });
 
     var currentCountryCode  = "";
     $j(document).keydown(function(e) {

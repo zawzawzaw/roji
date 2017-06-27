@@ -355,7 +355,10 @@
 
 
   // TABLET PORTRAIT
-  @media only screen and (max-width: 991px) {
+  // @media only screen and (max-width: 991px) {
+  
+  // MOBILE
+  @media only screen and (max-width: 767px) {
     .table-column{
       text-align: left;
     }
@@ -414,11 +417,58 @@
 
   } // page-account-table-item
 
-  // TABLET PORTRAIT
-  @media only screen and (max-width: 991px) {
+  // MOBILE
+  @media only screen and (max-width: 767px) {
     .page-account-table-item{
       padding-top: 10px;
       padding-bottom: 10px;
+
+      h4{
+        .body-font;
+        font-size: 13px;
+        line-height: 20px;
+
+        a{
+          .body-font;
+          font-size: 13px;
+          line-height: 20px;
+        }
+      }
+
+      p{
+        .body-font;
+        font-size: 13px;
+        line-height: 20px;
+
+        word-break: break-all;  // for long email addresses that won't fit
+      }
+
+      .table-column-first,
+      .table-column-last,
+      .table-column{
+
+        margin-bottom: 10px;
+
+        &.mobile-last-version{
+          margin-bottom: 0px;
+        }
+
+        &:before{
+
+          
+          .body-font-bold;
+          font-size: 13px;
+          line-height: 20px;
+          text-transform: none;
+          letter-spacing: 0em;
+
+          display: block;
+          content: attr(data-column);
+
+        }
+      }
+
+
     }
   }
 
@@ -637,7 +687,22 @@
   .manic-image-container{
     height: 580px;
   }
+
+  // TABLET LANDSCAPE
+  @media only screen and (max-width: 1024px) and (min-width: 992px) {
+    margin-right: 40px;
+    .manic-image-container{
+      height: 500px;
+    }
+  }
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+    margin-right: 0px;
+  }
+
+
 }
+
 #page-account-create-intro-image-mobile{
   .manic-image-container{
     height: 480px;
@@ -878,6 +943,7 @@
         text-align: center;
         width: 100%;
         display: block;
+        margin-bottom: 10px;
       }
 
     }
@@ -1223,13 +1289,28 @@
 
   }
 
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+    margin-bottom: 0px;
+  }
+
 } // #page-account-order-detail-header
 
 
 
 #page-account-order-detail-billing-info{
   // do nothing :D
+  
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+    padding-right: 0;
+    padding-bottom: 6px;
+
+    border-bottom: 1px solid @border-grey;
+    margin-bottom: 21px + 20px;
+  }
 }
+
 #page-account-order-detail-shipping-info{
   // do nothing :D
 }
@@ -1280,7 +1361,10 @@
 } // #page-account-order-table-header
 
 .page-account-order-table-content{
-  
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+    // border-top: 1px solid @border-grey;
+  }
 }
 
 
@@ -1416,8 +1500,8 @@
   }
 
 
-  // TABLET PORTRAIT
-  @media only screen and (max-width: 991px) {
+  // MOBILE
+  @media only screen and (max-width: 767px) {
 
     padding-top: 27px;
     padding-bottom: 29px;
@@ -1427,8 +1511,10 @@
     }
 
     .item-quantity{
-      text-align: left;
-      padding-top: 17px;
+      // text-align: left;
+      text-align: right;
+      padding-top: 4px;
+      min-width: 0px;
 
       h4{
         font-size: 11px;
@@ -1470,8 +1556,13 @@
       padding-top: 4px;
     }
 
+    .item-square-btn-container{
+      text-align: left;
+    }
+
     .item-desc-mobile{
-      padding-right: 30px;
+      // padding-right: 30px;
+      padding-right: 0px;
 
       .item-description{
 
@@ -1501,10 +1592,10 @@
     }
 
     .item-desc-mobile{
-      padding-left: 8px;
+      padding-left: 0px;
     }
     .item-quantity{
-      padding-left: 8px;
+      padding-left: 0px;
     }
     
   } // MOBILE
@@ -1695,6 +1786,51 @@
 
 
 
+// MOBILE
+
+
+#page-account-rebate-history-header-nav-mobile{
+
+  background: @dark-grey;
+
+  ul{
+    font-size: 0;
+
+    li{
+      width: 33.33%;
+
+      .display-inline-block;
+
+      a{
+        .h4-style-mobile;
+        text-align: center;
+        display: block;
+
+        background: @dark-grey;
+        color: @white !important;
+
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+        border-right: 1px solid @off-white-1;
+      }
+      &:last-child{
+        a{
+          border-right: none;
+        }
+      }
+
+      &.selected{
+        a{
+          background: @off-white-2 !important;
+          color: @off-black !important;
+        }
+      }
+    }
+  }
+}
+
+
 //     ____ ___ _____ _____    ____    _    ____  ____
 //    / ___|_ _|  ___|_   _|  / ___|  / \  |  _ \|  _ \
 //   | |  _ | || |_    | |   | |     / _ \ | |_) | | | |
@@ -1791,6 +1927,52 @@
 
 
 
+// MOBILE
+
+#page-account-gift-card-header-nav-mobile{
+
+  background: @dark-grey;
+
+  ul{
+    font-size: 0;
+
+    li{
+      // width: 33.33%;
+      width: 50%;
+
+      .display-inline-block;
+
+      a{
+        .h4-style-mobile;
+        text-align: center;
+        display: block;
+
+        background: @dark-grey;
+        color: @white !important;
+
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+        border-right: 1px solid @off-white-1;
+      }
+      &:last-child{
+        a{
+          border-right: none;
+        }
+      }
+
+      &.selected{
+        a{
+          background: @off-white-2 !important;
+          color: @off-black !important;
+        }
+      }
+    }
+  }
+}
+
+
+
 //    _____ ____  ___ _____ _   _ ____    ____  _____ _____ _____ ____  ____      _    _
 //   |  ___|  _ \|_ _| ____| \ | |  _ \  |  _ \| ____|  ___| ____|  _ \|  _ \    / \  | |
 //   | |_  | |_) || ||  _| |  \| | | | | | |_) |  _| | |_  |  _| | |_) | |_) |  / _ \ | |
@@ -1799,6 +1981,15 @@
 //
 
 
+body.account-friend-referral-page{
+  #page-account-content-section{
+    // MOBILE
+    @media only screen and (max-width: 767px) {
+
+      background: @off-white-2;
+    }
+  }
+}
 
 #page-account-friend-referral-title{
   padding-top: 49px;
@@ -1864,9 +2055,21 @@
 
   // TABLET PORTRAIT
   @media only screen and (max-width: 991px) {
+    padding-left: 17px + 10px;
+    padding-right: 17px + 5px;
+
     .referral-header-item{
-      padding-left: 0px;
-      padding-right: 0px;
+      padding-left: 10px;
+      padding-right: 10px;
+
+      &.first-version{
+        padding-left: 0px;
+        padding-right: 10px;
+      }
+      &.last-version{
+        padding-left: 10px;
+        padding-right: 0px;
+      }
 
       .detail-item{
         h4{
@@ -1886,6 +2089,11 @@
 
     padding-left: 0px;
     padding-right: 0px;
+
+    .referral-header-item{
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+    }
   }
 } // #page-account-friend-referral-header
 
@@ -1894,6 +2102,20 @@
 
 #page-account-friend-referral-form-container{
   margin-bottom: 22px;
+
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+    background: @off-white-1;
+
+
+
+    padding-top: 30px;
+    padding-bottom: 40px;
+
+    margin-bottom: 0px;
+
+    
+  }
 } // #page-account-friend-referral-form-container
 
 
@@ -1902,6 +2124,13 @@
   .cta-container{
     padding-top: 60px;
     padding-left: 23px;
+  }
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    .cta-container{
+      padding-top: 48px;
+    }
   }
   // MOBILE
   @media only screen and (max-width: 767px) {
@@ -1923,7 +2152,11 @@
 
 
 #page-account-friend-referral-table-container{
-
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+    padding-top: 30px;
+    background: @off-white-2;
+  }
 } // #page-account-friend-referral-table-container
 
 #page-account-friend-referral-table-title{
@@ -1971,6 +2204,14 @@ body.page-account-roji-bag-public{
   h2{
     color: @dark-grey-2;
     text-transform: uppercase;
+  }
+
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+    background: @off-white-2;
+    text-align: center;
+    margin-bottom: 0px;
+    padding-bottom: 20px;
   }
 }
 
@@ -2040,6 +2281,27 @@ body.page-account-roji-bag-public{
 
   } // .roji-bag-header-item
 
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    padding-left: 17px;
+    padding-right: 17px;
+
+    .roji-bag-header-item{
+      padding-left: 10px;
+      padding-right: 10px;
+
+      &.first-version{
+        padding-left: 0px;
+        padding-right: 10px;
+      }
+      &.last-version{
+        padding-left: 10px;
+        padding-right: 0px;
+      }
+
+    }
+  }
+
   // MOBILE
   @media only screen and (max-width: 767px) {
     margin-top: 0;
@@ -2052,8 +2314,13 @@ body.page-account-roji-bag-public{
     padding-right: 0px;
 
     .roji-bag-header-item{
-      padding-left: 0px;
-      padding-right: 0px;
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+
+      margin-bottom: 30px;
+      &.last-version{
+        margin-bottom: 0px;
+      }
 
       // text-align: left;
     }
@@ -2090,6 +2357,19 @@ body.page-account-roji-bag-public{
     padding-top: 4px;
   }
   .default-social-container{
+
+  }
+
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    .cta-container{
+      padding-top: 4px;
+      text-align: center;
+    }
+    .default-social-container{
+      text-align: center;
+    }
 
   }
 

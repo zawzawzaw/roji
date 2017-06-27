@@ -117,7 +117,7 @@
               <?php if($_orders->getSize()): ?>
                 <div class="page-account-table">
                 
-                  <div class="page-account-table-header">
+                  <div class="page-account-table-header hidden-xs">
                     <div class="row">
                       <div class="col-md-3">
                         <div class="table-column-first">
@@ -147,23 +147,23 @@
                     <?php foreach ($_orders as $_order): ?>
                     <div class="page-account-table-item">
                       <div class="row">
-                        <div class="col-md-3">
-                          <div class="table-column-first">
+                        <div class="col-sm-3 col-xs-6">
+                          <div class="table-column-first" data-column="Date:">
                             <p><?php echo $this->formatDate($_order->getCreatedAtStoreDate()) ?></p>
                           </div>
                         </div>
-                        <div class="col-md-3">
-                          <div class="table-column">
+                        <div class="col-sm-3 col-xs-6">
+                          <div class="table-column" data-column="Order:">
                             <h4><a href="<?php echo $this->getViewUrl($_order); ?>"><?php echo $_order->getRealOrderId() ?></a></h4>
                           </div>
                         </div>
-                        <div class="col-md-3">
-                          <div class="table-column">
+                        <div class="col-sm-3 col-xs-6">
+                          <div class="table-column mobile-last-version" data-column="Status:">
                             <p><?php echo $_order->getStatusLabel(); ?></p>
                           </div>
                         </div>
-                        <div class="col-md-3">
-                          <div class="table-column-last">
+                        <div class="col-sm-3 col-xs-6">
+                          <div class="table-column-last mobile-last-version" data-column="Total:">
                             <h4><?php echo $_order->formatPrice($_order->getSubtotal()) ?></h4>
                           </div>
                         </div>

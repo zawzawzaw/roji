@@ -207,23 +207,38 @@ $quoteData= $quote->getData();
           <div class="col-xs-12">
 
             <div id="mobile-header-account-single-link">
-              <?php $session = Mage::getSingleton('customer/session'); ?>
+              <?php $session = Mage::getSingleton('customer/session'); $customer = $session->getCustomer(); ?>
               <?php if($session->isLoggedIn()): ?>
-                <a href="<?php echo Mage::getUrl('customer/account'); ?>">My Account</a>
+                <a href="javascript:void(0);">Welcome, <?php echo $customer->getFirstname(); ?></a>
               <?php else: ?>
                 <?php //echo Mage::helper('customer')->getLoginUrl(); ?>
                 <a href="javascript:void(0);">Join / log in</a>
               <?php endif; ?>
             </div> <!-- mobile-header-account-single-link -->
 
+
             <div id="mobile-header-account-menu" style="display: none;">
+              <?php
+              $store_id = Mage::app()->getStore()->getId();
+              $customerId = Mage::getModel('customer/session')->getCustomerId();
+              if (Mage::getStoreConfig('rewardpoints/default/flatstats', $store_id)){
+                  $reward_flat_model = Mage::getModel('rewardpoints/flatstats');
+                  return $reward_flat_model->collectPointsCurrent($customerId, $store_id)+0;
+              }        
+
+              $reward_model = Mage::getModel('rewardpoints/stats');
+              $current_point = $reward_model->getPointsCurrent($customerId, $store_id)+0; 
+
+              $store = Mage::app()->getStore();  
+              $currency = Mage::app()->getStore()->getCurrentCurrency();      
+              ?>            
               <nav>
                 <ul>
                   <li><a href="<?php echo $this->getUrl('customer/account'); ?>">My Account</a></li>
                   <li><a href="<?php echo Mage::getUrl('customer/address/'); ?>">Address Book</a></li>
                   <li><a href="<?php echo Mage::getUrl('sales/order/history/'); ?>">Order History</a></li>
-                  <li><a href="<?php echo Mage::getUrl('giftvoucher/index/index'); ?>">Gift Card<span class="account-menu-value">$10.00</span></a></li>
-                  <li><a href="<?php echo Mage::getUrl('rewardpoints/index/points/'); ?>">Rebates<span class="account-menu-value">$17.00</span></a></li>
+                  <li><a href="<?php echo Mage::getUrl('giftvoucher/index/index'); ?>">Gift Card</a><!-- <span class="account-menu-value">$10.00</span> --></li>
+                  <li><a href="<?php echo Mage::getUrl('rewardpoints/index/points/'); ?>">Rebates</a><span class="account-menu-value"><?php echo $currency->format($store->convertPrice($current_point)); ?></span></li>
                   <li><a href="<?php echo Mage::getUrl('rewardpoints/index/referral/'); ?>">Friend Referral</a></li>
                   <li><a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>">Log out</a></li>
                 </ul>

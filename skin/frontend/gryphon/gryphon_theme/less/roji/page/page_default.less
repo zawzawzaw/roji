@@ -15,15 +15,46 @@
     line-height: 20px;
   }
 
+  ul{
+
+    li{
+      position: relative;
+      padding-left: 11px;
+
+      .body-font-italic;
+      color: @dark-grey;
+      font-size: 14px;
+      line-height: 20px;
+
+
+      &:before{
+        .fa;
+        font-size: 3px;
+        line-height: 20px;
+        content: "\f111";
+
+        .display-inline-block;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+    }
+  }
   
   
   h4 + p{
+    padding-top: 1px;
+  }
+  h4 + ul{
     padding-top: 1px;
   }
 
   p + p{
     padding-top: 20px;
   }
+
+  
+
 
   // TABLET PORTRAIT
   @media only screen and (max-width: 991px) {
@@ -42,9 +73,31 @@
       font-size: 13px;
       line-height: 20px;
     }
+
+    ul{
+
+      li{
+
+        .body-font;
+        font-size: 13px;
+        line-height: 20px;
+
+        margin-bottom: 10px;
+
+        &:before{
+          left: 2px;
+        }
+      }
+    }
+
+
     h4 + p{
       padding-top: 0;
     }
+    h4 + ul{
+      padding-top: 10px;
+    }
+
   }
 }
 

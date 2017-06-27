@@ -27,6 +27,8 @@ class Rewardpoints_Block_Points extends Mage_Core_Block_Template
             ->addClientFilter(Mage::getSingleton('customer/session')->getCustomer()->getId());
         $points->getSelect()->order('rewardpoints_account_id DESC');
 
+        // echo Mage::getSingleton('customer/session')->getCustomer()->getId();
+
         $earned_points = Mage::getModel('rewardpoints/stats')->getCollection()
             ->addClientFilter(Mage::getSingleton('customer/session')->getCustomer()->getId());
         $earned_points->getSelect()->where('points_spent = ?', 0);

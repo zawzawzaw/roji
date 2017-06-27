@@ -14,8 +14,9 @@
   text-align: right;
 }
 
-// TABLET PORTRAIT
-@media only screen and (max-width: 991px) {
+// MOBILE
+@media only screen and (max-width: 767px) {
+  
   #page-others-title-section{
     padding-top: 34px;
     padding-bottom: 30px;
@@ -38,6 +39,7 @@
 //
 
 @others-main-sidebar-offset-x: 40px;
+@others-main-sidebar-offset-x-tablet: 20px;
 
 #page-others-main-sidebar-width,
 #page-others-main-sidebar{
@@ -45,6 +47,11 @@
 
   // TABLET PORTRAIT
   @media only screen and (max-width: 991px) {
+    margin-right: -1 * @others-main-sidebar-offset-x-tablet;
+  }
+
+  // MOBILE
+  @media only screen and (max-width: 767px) {
     margin-right: 0;
   }
 }
@@ -78,6 +85,17 @@
 
           padding-right: @others-main-sidebar-offset-x + 20px;
 
+          // TABLET LANDSCAPE
+          @media only screen and (max-width: 1024px) and (min-width: 992px) {
+            padding-right: 30px;
+          }
+
+          // TABLET PORTRAIT
+          @media only screen and (max-width: 991px) {
+            padding-right: 20px;
+          }
+
+
 
           .transition-in-single (color, 0.3s, cubic-bezier(0.645, 0.045, 0.355, 1), 0.1s);
 
@@ -104,6 +122,11 @@
 
 #page-others-main-content-section{
   position: relative;
+
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+    background: @off-white-1;
+  }
 }
 
 
@@ -150,6 +173,11 @@
 
   // TABLET PORTRAIT
   @media only screen and (max-width: 991px) {
+    margin-left: @others-main-sidebar-offset-x-tablet;
+  }
+
+  // MOBILE
+  @media only screen and (max-width: 767px) {
     margin-left: 0;
   }
 }
@@ -168,8 +196,6 @@
 #page-others-content-section{
   padding-top: 43px;
   padding-bottom: 94px;
-  // background: @off-white-1;
-  // 
   
 
   padding-left: 53px;
@@ -178,13 +204,40 @@
   &.has-section-2-version{
     padding-bottom: 40px;
   }
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    padding-left: 23px;
+  }
+
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+
+    background: @off-white-1;
+    padding-top: 35px;
+    padding-left: 0px;
+  }
 }
 #page-others-content-2-section{
   padding-top: 43px;
   padding-bottom: 94px;
-  // background: @off-white-2;
   
   padding-left: 53px;
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    padding-left: 23px;
+  }
+
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+
+    background: @off-white-2;
+
+    padding-top: 35px;
+    padding-left: 0px;
+  }
+
 }
 
 .page-others-intro{
@@ -193,6 +246,14 @@
   .default-copy{
     padding-left: 17px;
     padding-right: 17px + 40px;
+  }
+
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+    .default-copy{
+      padding-left: 0px;
+      padding-right: 0px;
+    }
   }
 }
 
@@ -218,8 +279,8 @@
     }
   }
 
-  // TABLET PORTRAIT
-  @media only screen and (max-width: 991px) {
+  // MOBILE
+  @media only screen and (max-width: 767px) {
     padding-left: 0px;
     padding-right: 0px;
 
@@ -266,18 +327,51 @@
   }
 
 
-  // TABLET PORTRAIT
-  @media only screen and (max-width: 991px) {
+  // MOBILE
+  @media only screen and (max-width: 767px) {
     .default-copy{
       padding-left: 0px;
       padding-right: 0px;
 
+      h4{
+        .body-font-bold;
+        font-size: 13px;
+        line-height: 20px;
+        text-transform: none;
+        letter-spacing: 0em;
+      }
+      p{
+        .body-font;
+        font-size: 13px;
+        line-height: 20px;
+        strong{
+          .body-font-bold;
+          font-size: 13px;
+          line-height: 20px;
+        }
+      }
+
+      p + p{
+        padding-top: 20px;
+      }
 
       ul{
         padding-left: 0px;
+
+        li{
+          .body-font;
+          font-size: 13px;
+          line-height: 20px;
+        }
       }
       ol{
         padding-left: 0px;
+
+        li{
+          .body-font;
+          font-size: 13px;
+          line-height: 20px;
+        }
       }
     }
   }
@@ -309,6 +403,17 @@
 }
 
 
+.page-others-table-seperator{
+  height: 100px;
+
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+
+  }
+
+}
+
+
 .page-others-table{
 
   .table-column{
@@ -323,8 +428,8 @@
   }
 
 
-  // TABLET PORTRAIT
-  @media only screen and (max-width: 991px) {
+  // MOBILE
+  @media only screen and (max-width: 767px) {
     .table-column{
       text-align: left;
     }
@@ -407,8 +512,8 @@
 
   } // page-others-table-item
 
-  // TABLET PORTRAIT
-  @media only screen and (max-width: 991px) {
+  // MOBILE
+  @media only screen and (max-width: 767px) {
     .page-others-table-item{
       padding-top: 10px;
       padding-bottom: 10px;

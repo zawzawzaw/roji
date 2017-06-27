@@ -18,7 +18,7 @@
   -->
 
   <div id="page-account-gift-card-redeemed-table" class="page-account-table">
-    <div class="page-account-table-header">
+    <div class="page-account-table-header hidden-xs">
         <?php 
         $column_counter = 0; 
         $column_counter_max = count($columns); 
@@ -27,7 +27,7 @@
             <?php foreach ($columns as $id => $column): ?>
                 <?php $column_counter++; ?>
                 
-                <div class="col-md-3">
+                <div class="col-sm-3">
                   <div class="<?php if($column_counter==1): ?>table-column-first<?php elseif($column_counter==$column_counter_max): ?>table-column-last<?php else: ?>table-column<?php endif; ?>">
                     <h4><?php echo $column['header'] ?></h4>
                   </div>
@@ -50,8 +50,8 @@
                     <?php foreach ($columns as $id => $column): ?>
                       <?php $column_counter++; ?>
 
-                        <div class="col-md-3">
-                            <div class="<?php if($column_counter==1): ?>table-column-first<?php elseif($column_counter==$column_counter_max): ?>table-column-last<?php else: ?>table-column<?php endif; ?>">
+                        <div class="col-sm-3 col-xs-6">
+                            <div <?php if($column_counter==1): ?>class="table-column-first" data-column="Gift card code:"<?php elseif($column_counter==2): ?>class="table-column" data-column="Amount:"<?php elseif($column_counter==3): ?>class="table-column" data-column="Order no:"<?php elseif($column_counter==$column_counter_max): ?>class="table-column-last" data-column="Redemption Date:"<?php else: ?>class="table-column"<?php endif; ?>">
                                 
                                     <!--end by Sally-->
                                     <?php if (isset($column['render']) && $column['render']): ?>

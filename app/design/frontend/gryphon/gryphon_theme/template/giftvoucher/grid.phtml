@@ -20,7 +20,7 @@
 
   <div id="page-account-gift-card-stored-table" class="page-account-table">
 
-    <div class="page-account-table-header">
+    <div class="page-account-table-header hidden-xs">
       <div class="row">
         <?php 
         $column_counter = 0; 
@@ -57,12 +57,12 @@
                       <?php $column_counter++; ?>
 
                       <?php if($column_counter==$column_counter_max): ?>
-                        <div class="col-md-2"></div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-sm-0 col-xs-0"></div>
+                        <div class="col-md-2 col-sm-4 col-xs-12">
                       <?php else: ?>
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-4 col-xs-6">
                       <?php endif; ?>
-                            <div class="<?php if($column_counter==1): ?>table-column-first<?php elseif($column_counter==$column_counter_max): ?>table-column-last<?php else: ?>table-column<?php endif; ?>">
+                            <div <?php if($column_counter==1): ?>class="table-column-first" data-column="Gift card code: "<?php elseif($column_counter==$column_counter_max): ?>class="table-column-last" data-column="Expiry date: "<?php else: ?>class="table-column" data-column="Amount: "<?php endif; ?>">
                                 
                                     <!--end by Sally-->
                                     <?php if (isset($column['render']) && $column['render']): ?>

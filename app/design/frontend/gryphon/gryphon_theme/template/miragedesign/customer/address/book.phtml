@@ -188,19 +188,19 @@
 
                 <div class="book-other-item">
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-sm-3 col-xs-8">
                       <h4><a href="account-edit-address-book.php"><?php echo $this->__('Address %s', $i); ?></a></h4>
-                    </div>
-                    <div class="col-md-7">
-                      <small><?php echo implode(' ', array(implode(' ', $_address->getStreet()), $_address->getCity(), $shippingCountryName, $_address->getPostcode())); ?></small>
-                    </div>
-                    <div class="col-md-2">
+                    </div>                    
+                    <div class="col-sm-2 col-sm-push-7 col-xs-4">
 
                       <div class="cta-container">
                         <a href="<?php echo $this->getAddressEditUrl($_address) ?>?address=shipping&index=<?php echo $i; ?>" class="set_as_default_billing edit-btn"><?php echo $this->__('Edit'); ?></a>                        
                         <a href="<?php echo $this->getDeleteUrl() ?>id/<?php echo $_address->getId() ?>" class="set_as_default_billing remove-address close-btn plain-version"></a>
                       </div>
 
+                    </div>
+                    <div class="col-sm-7 col-sm-pull-2 col-xs-8">
+                      <small><?php echo implode(' ', array(implode(' ', $_address->getStreet()), $_address->getCity(), $shippingCountryName, $_address->getPostcode())); ?></small>
                     </div>
                   </div>
                 </div> <!-- book-other-item -->
