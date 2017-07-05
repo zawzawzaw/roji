@@ -2186,14 +2186,14 @@ class Rewardpoints_Model_Observer extends Mage_Core_Model_Abstract {
                         if ($rewardPoints > 0){
                             $reward_model = Mage::getModel('rewardpoints/stats');
                             $post = array('order_id' => $order->getIncrementId(), 'customer_id' => $referralModel->getData('rewardpoints_referral_parent_id'),
-                                'store_id' => $order->getStoreId(), 'points_current' => $rewardPoints, 'rewardpoints_referral_id' => $referralModel->getData('rewardpoints_referral_id'));
+                                'store_id' => $order->getStoreId(), 'points_current' => $rewardPoints, 'rewardpoints_referral_id' => $referralModel->getData('rewardpoints_referral_id'), 'date_start' => $date_start, 'date_end' => $date_end);
                             $reward_model->setData($post);
                             $reward_model->save();
                         }
                         if ($rewardPointsChild > 0){
                             $reward_model = Mage::getModel('rewardpoints/stats');
                             $post = array('order_id' => $order->getIncrementId(), 'customer_id' => $referralModel->getData('rewardpoints_referral_child_id'),
-                                'store_id' => $order->getStoreId(), 'points_current' => $rewardPointsChild, 'rewardpoints_referral_id' => $referralModel->getData('rewardpoints_referral_id'));
+                                'store_id' => $order->getStoreId(), 'points_current' => $rewardPointsChild, 'rewardpoints_referral_id' => $referralModel->getData('rewardpoints_referral_id'), 'date_start' => $date_start, 'date_end' => $date_end);
                             $reward_model->setData($post);
                             $reward_model->save();
 

@@ -286,7 +286,7 @@
                         </div>
                     <?php else: ?>
                         <div class="form-group">
-                            <form action="<?php echo $this->getUrl('rewardpoints/index/removequotation/') ?>" method="post" name="discountFormPoints2" class="checkout-form" id="discountFormPoints2">
+                            <form action="<?php echo $this->getUrl('rewardpoints/index/removequotation/') ?>" method="post" name="discountFormPoints2" class="checkout-form remove-point-form" id="discountFormPoints2">
                                 <div class="row">
                                     <!-- <h2><?php echo $this->__('Reward points'); ?></h2> -->
                                     <?php echo $this->getIllustrationImage()?>
@@ -331,13 +331,16 @@
                                                 <div class="row">
                                                     <div class="col-md-8 col-sm-6 col-xs-8">
                                                         <div class="input-box test">
-                                                            <input <?php if($point_details['full_use']):?>type="text"<?php else:?>type="text"<?php endif;?> value="<?php echo $points_currently_used; ?>"  name="points_to_be_used" class="input-text" />
+                                                            <input <?php if($point_details['full_use']):?>type="text"<?php else:?>type="text"<?php endif;?> value="<?php //echo $points_currently_used; ?>"  name="points_to_be_used" id="points_to_be_used" class="input-text" />
                                                             <p class="used-points-msg">Rebate balance: <?php echo $balance; ?></p>                                        
                                                         </div>                                  
                                                     </div>  
                                                     <div class="col-md-4 col-sm-3 col-xs-4">
                                                         <div class="cart-discount-cta-container">
-                                                            <button class="form-button-alt button cta apply square-cta full-width-version" type="button" onclick="discountFormPoints2.submit(false)" value="<?php echo $this->__('Remove') ?>"><span><span><?php echo $this->__('Cancel') ?></span></span></button>
+                                                            <button class="form-button-alt button cta apply square-cta full-width-version" value="<?php echo $this->__('Apply Points') ?>" onclick="applyrebate()" type="button">
+                                                                        <span><span><?php echo $this->__('Apply') ?></span></span>
+                                                            </button>
+                                                            <button id="cancel-rebate-btn" style="display: none;"> class="form-button-alt button cta apply square-cta full-width-version" type="button" onclick="discountFormPoints2.submit(false)" value="<?php echo $this->__('Remove') ?>"><span><span><?php echo $this->__('Cancel') ?></span></span></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -417,6 +420,13 @@
             $('link_j2t_rewards').innerHTML = reward_link_cart;
         }*/
     });
+
+    function applyrebate(){
+        if($j("#points_to_be_used").val() != "") {
+            $j("#discountFormPoints2").attr("action", "<?php echo $this->getUrl('rewardpoints/index/quotation/') ?>");
+            $j("#discountFormPoints2").submit();
+        }
+    }
     
 </script>
 <?php //endif;?>

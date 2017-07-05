@@ -94,6 +94,15 @@ endif;
     }
 
     $_images = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+
+    $is_gift_product = false;
+    $cats = $_product->getCategoryIds();
+    foreach ($cats as $category_id) {
+        $_cat = Mage::getModel('catalog/category')->load($category_id);        
+        if($_cat->getName() == 'Gift') {
+          $is_gift_product = true;
+        }
+    } 
 ?>
 <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
   <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
@@ -147,37 +156,55 @@ endif;
                       <div class="col-md-6">
 
                         <div id="page-product-detail-instructions">
-
-                          <h2>Tea Origins & Brewing Instructions</h2>
-
-                          <div class="detail-item-container">
-                            <div class="detail-item">
-                              <h4>Tea Type</h4>
-                              <p><?php echo $_product->getData('tea_type'); ?></p>
-                            </div>
-                            <div class="detail-item">
-                              <h4>Origin</h4>
-                              <p><?php echo $_product->getData('origin'); ?></p>
-                            </div>
-                            <div class="detail-item">
-                              <h4>harvest period</h4>
-                              <p><?php echo $_product->getData('harvest_period'); ?></p>
-                            </div>
-                          </div> <!-- detail-item-container -->
-
-
-
-                          <div class="detail-icon-container">
-                            <div class="detail-icon">
-                              <div class="detail-icon-image icon-teapot"></div>
-                              <p><?php echo $_product->getTemperature(); ?></p>
-                            </div>
-                            <div class="detail-icon">
-                              <div class="detail-icon-image icon-clock"></div>
-                              <p><?php echo $_product->getTime(); ?></p>
-                            </div>
-                          </div>
                           
+                          <?php if($is_gift_product): ?>
+                            <h2>Product Specification</h2>
+
+                            <div class="detail-item-container">
+                              <div class="detail-item">
+                                <h4>Country</h4>
+                                <p><?php echo $_product->getData('country'); ?></p>
+                              </div>
+                              <div class="detail-item">
+                                <h4>Diameter</h4>
+                                <p><?php echo $_product->getData('diameter'); ?></p>
+                              </div>
+                              <div class="detail-item">
+                                <h4>Height</h4>
+                                <p><?php echo $_product->getData('height'); ?></p>
+                              </div>
+                            </div> <!-- detail-item-container -->                            
+                          <?php else: ?>
+                            <h2>Tea Origins & Brewing Instructions</h2>
+
+                            <div class="detail-item-container">
+                              <div class="detail-item">
+                                <h4>Tea Type</h4>
+                                <p><?php echo $_product->getData('tea_type'); ?></p>
+                              </div>
+                              <div class="detail-item">
+                                <h4>Origin</h4>
+                                <p><?php echo $_product->getData('origin'); ?></p>
+                              </div>
+                              <div class="detail-item">
+                                <h4>harvest period</h4>
+                                <p><?php echo $_product->getData('harvest_period'); ?></p>
+                              </div>
+                            </div> <!-- detail-item-container -->
+
+
+
+                            <div class="detail-icon-container">
+                              <div class="detail-icon">
+                                <div class="detail-icon-image icon-teapot"></div>
+                                <p><?php echo $_product->getTemperature(); ?></p>
+                              </div>
+                              <div class="detail-icon">
+                                <div class="detail-icon-image icon-clock"></div>
+                                <p><?php echo $_product->getTime(); ?></p>
+                              </div>
+                            </div>
+                          <?php endif; ?>
                           
                           
                           
@@ -255,10 +282,12 @@ endif;
                             <div class="col-md-8">
 
                               <div class="detail-item-container">
+                                <?php if(!$is_gift_product): ?>
                                 <div class="detail-item">
                                   <h4>Ingredients</h4>
                                   <p><?php echo $_product->getIngredients(); ?></p>
                                 </div>
+                                <?php endif; ?>
 
                                 <div class="detail-item">
                                   <h4>Tea Maker’s Note</h4>

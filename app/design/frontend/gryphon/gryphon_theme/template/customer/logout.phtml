@@ -24,33 +24,47 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<article>
-    <div class="desktop-header-spacer visible-sm visible-xs" style="height: 50px;"></div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div id="page-shopping-cart-content">
-                    <div class="row">
-                        <div class="col-md-12"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
-                    </div>
-                    <div id="empty-cart" class="row">
-                        <div class="col-md-12">
-                            <h1><?php echo Mage::helper('customer')->__('You are now logged out') ?></h1>
-                            <hr class="small" />
-                            <div class="space30"></div>                            
-                            <p><?php echo Mage::helper('customer')->__('You have logged out and will be redirected to our homepage in 5 seconds.') ?></p>                            
-                            <div class="space100"></div>
-                            <div class="space100"></div>
-                            <div class="space100"></div>
-                        </div>
-                    </div>
-                </div>
+<article id="page-checkout-thankyou-section">
+
+    <div class="container-fluid has-breakpoint">
+      <div class="row">
+        
+
+        <div class="col-md-2 col-sm-1"></div>
+        <div class="col-md-8 col-sm-10">
+
+          <div id="page-checkout-thankyou">
+
+            <?php echo $this->getMessagesBlock()->toHtml() ?>
+
+            <div class="title-container">
+              <h1><?php echo $this->__('You have logged out and will be redirected to our homepage in 5 seconds.') ?></h1>
             </div>
+
+            <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-6">
+                
+                <div class="number-container">
+                  <h4><?php echo $this->__('You are now logged out') ?></h4>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="cta-container">
+              <a href="<?php echo $this->getUrl() ?>" class="arrow-cta"><?php echo Mage::helper('customer')->__('Continue to home page') ?></a>
+            </div>
+
+          </div> <!-- page-checkout-thankyou -->
+
         </div>
+      </div>
     </div>
-</article>
+    
+</article> <!-- page-checkout-thankyou-section -->
 <script type="text/javascript">
-//<![CDATA[
-    setTimeout(function(){ location.href = '<?php echo $this->getUrl() ?>'}, 1000);
-//]]>
+    //<![CDATA[
+        setTimeout(function(){ location.href = '<?php echo $this->getUrl() ?>'}, 5000);
+    //]]>
 </script>

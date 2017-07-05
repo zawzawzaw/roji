@@ -64,7 +64,9 @@ $product_type = $_item->getProductType();
               $stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($custom);
               $stock_qty = intval($stock->getQty());
               ?>
-              <p><?php echo ($stock_qty <= 3) ? "Only " .$stock_qty . " left in stock!" : "" ; ?></p>
+              <?php if($product_type!=="giftvoucher"): ?>
+                <p><?php echo ($stock_qty <= 3) ? "Only " .$stock_qty . " left in stock!" . $product_type : "" ; ?></p>
+              <?php endif; ?>
             </div>
 
         </div>

@@ -241,14 +241,17 @@ button{
     }
 
     .flag-container{
-      border-right: 12px solid @off-white-1;
-      z-index: 300;
+      // border-right: 12px solid @off-white-1;
+      // z-index: 300;
+      padding: 0px;
     }
     .selected-flag{
-      margin-right: 9px;
+      padding-right: 40px;
       padding-left: 16px;
-      width: 55px;
+      width: 55px!important;
       outline: none;
+      background: none!important;
+      border-right: 12px solid @off-white-1;
 
       // TABLET LANDSCAPE
       @media only screen and (max-width: 1024px) and (min-width: 992px) {
@@ -259,15 +262,21 @@ button{
         padding-left: 11px;
       }
     }
+    .country-list {
+      z-index: 400;
+    }
+    .selected-flag .iti-flag {
+      left: 10px;
+    }
     .selected-flag .iti-arrow{
       border: none;
 
       position: absolute;
       top: 5px;
-      right: 0;
+      right: 8px;
       width: 10px;
       height: 20px;
-      margin-top: -3px;   // dunno why
+      margin-top: -3px;   // dunno why // lol no idea also
 
       &:after{
         .fa;

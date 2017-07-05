@@ -17,6 +17,7 @@ roji.component.MobileHeader = function(options, element) {
   this.element = element;
 
   this.is_open = false;
+  this.is_account_menu_open = false;
 
   this.element.find('#mobile-menu-btn').click(function(event){
     event.preventDefault();
@@ -37,6 +38,24 @@ roji.component.MobileHeader = function(options, element) {
   this.expand_container = $j('#mobile-header-expanded');
 
   this.body_element = $j('body');
+
+  $j("#mobile-header-account-single-link").click(function(event){
+
+    event.preventDefault();
+
+    console.log("here");
+
+    if (this.is_account_menu_open == true) {
+
+      this.close_account_menu();
+
+    } else {
+
+      this.open_account_menu();
+
+    }
+
+  }.bind(this));
 
   
 
@@ -108,6 +127,25 @@ roji.component.MobileHeader.prototype.close_header = function() {
   if (this.is_open == true) {
     this.is_open = false;
     this.body_element.removeClass('mobile-menu-open-version');
+  }
+
+};
+roji.component.MobileHeader.prototype.open_account_menu = function() {
+
+  if (this.is_account_menu_open == false) {
+    this.is_account_menu_open = true;
+    $j("#mobile-header-account-single-link").addClass("open-state");
+    $j("#mobile-header-account-menu").slideDown(300);
+  }
+
+  
+};
+roji.component.MobileHeader.prototype.close_account_menu = function() {
+
+  if (this.is_account_menu_open == true) {
+    this.is_account_menu_open = false;
+    $j("#mobile-header-account-single-link").removeClass("open-state");
+    $j("#mobile-header-account-menu").slideUp(300);
   }
 
 };

@@ -289,6 +289,34 @@ body.mobile-menu-open-version{
 #mobile-header-account-single-link{
   padding-top: 13px;
   padding-bottom: 13px;
+  position: relative;
+
+  &:after {
+    .fa;
+    content: "\f107"; // .fa-refresh
+
+    font-size: 17px;
+    line-height: 25px;
+
+    display: block;
+    position: absolute;
+    top: 13px;
+    right: 0;
+    color: @white;
+
+    .transition-in (0.15s, ease-out, 0.1s);
+    .transform-origin(50%, 50%);
+  }  
+
+  &.open-state {
+
+    &:after{
+
+      .transition-in (0.2s, cubic-bezier(0.645, 0.045, 0.355, 1), 0.0s);
+      .rotation(180deg);
+      
+    }
+  }
 
   a{
     .mobile-menu-font;
@@ -297,7 +325,37 @@ body.mobile-menu-open-version{
 }
 
 #mobile-header-account-menu{
-
+  padding-bottom: 13px;
+  &:before {
+    content: "";
+    display: block;
+    border-top: 1px solid @white;
+    margin-left: -5px;
+    margin-right: -5px;
+    padding-top: 13px;
+  }
+  ul {
+    li {
+      a {
+        color: @white;
+        .body-font-small-bold;
+        font-size: 13px;
+        line-height: 30px;
+        text-transform: none;
+        width: 50%;
+        display: inline-block;
+      }
+      span {
+        .body-font-small-bold;
+        font-size: 13px;
+        line-height: 30px;
+        color: @white;
+        width: 50%;
+        display: inline-block;
+        text-align: right;
+      }
+    }
+  }
 }
 
 

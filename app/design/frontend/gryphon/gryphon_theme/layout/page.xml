@@ -63,7 +63,7 @@
 
                 <action method="addJs"><script>lib/jquery/noconflict.min.js</script></action>
                 <action method="addJs"><script>lib/ccard.min.js</script></action>
-                <action method="addJs"><script>prototype/validation.min.js</script></action>
+                <action method="addJs"><script>prototype/validation.js</script></action>
                 <action method="addJs"><script>scriptaculous/builder.min.js</script></action>
                 <action method="addJs"><script>scriptaculous/effects.min.js</script></action>
                 <action method="addJs"><script>scriptaculous/dragdrop.min.js</script></action>

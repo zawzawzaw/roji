@@ -50,6 +50,8 @@
             <div class="col-md-6 col-xs-6">
                 <div class="column-01">
                     <p>REBATE:</p>
+                    <span class="discount_desc"><?php echo $this->helper('checkout')->formatPrice($this->getQuote()->getStore()->convertPrice(Mage::helper('rewardpoints/data')->convertPointsToMoneyEquivalence($pts))); ?> <?php if($pts>1): ?>Rebates<?php else: ?>Rebate<?php endif; ?></span>
+                    <a href="#" id="cancel_rebate" class="cancel-btn"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
                 </div>
             </div>
             <div class="col-md-6 col-xs-6">
@@ -57,7 +59,13 @@
                     <p class="applied_discount_code minus">-<?php echo $this->helper('checkout')->formatPrice($this->getQuote()->getStore()->convertPrice(Mage::helper('rewardpoints/data')->convertPointsToMoneyEquivalence($pts))); ?></p>
                 </div>
             </div>
-        </div>       
+        </div>     
+        <script>
+            jQuery("#cancel_rebate").click(function(e){
+                e.preventDefault();
+                jQuery("#cancel-rebate-btn").trigger('click');
+            });
+        </script>  
     <?php endif; ?>
     
 

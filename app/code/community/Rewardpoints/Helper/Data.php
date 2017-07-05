@@ -104,10 +104,13 @@ class Rewardpoints_Helper_Data extends Mage_Core_Helper_Abstract {
                 $child    = Mage::getModel('customer/customer')->load($referralModel->getData('rewardpoints_referral_child_id'));
 
                 try {
-                    if ($rewardPoints > 0){                            
+                    if ($rewardPoints > 0){      
+                        $date_start = date('Y-m-d');
+                        $date_end = date('Y-m-d', strtotime("+30 days"));
+
                         $reward_model = Mage::getModel('rewardpoints/stats');
                         $post = array('order_id' => $order->getIncrementId(), 'customer_id' => $referralModel->getData('rewardpoints_referral_parent_id'),
-                            'store_id' => $order->getStoreId(), 'points_current' => $rewardPoints, 'rewardpoints_referral_id' => $referralModel->getData('rewardpoints_referral_id'));
+                            'store_id' => $order->getStoreId(), 'points_current' => $rewardPoints, 'rewardpoints_referral_id' => $referralModel->getData('rewardpoints_referral_id'), 'date_start' => $date_start, 'date_end' => $date_end);
                         $reward_model->setData($post);
                         $reward_model->save();
                     }
@@ -115,7 +118,7 @@ class Rewardpoints_Helper_Data extends Mage_Core_Helper_Abstract {
                     if ($rewardPointsChild > 0){                            
                         $reward_model = Mage::getModel('rewardpoints/stats');
                         $post = array('order_id' => $order->getIncrementId(), 'customer_id' => $referralModel->getData('rewardpoints_referral_child_id'),
-                            'store_id' => $order->getStoreId(), 'points_current' => $rewardPointsChild, 'rewardpoints_referral_id' => $referralModel->getData('rewardpoints_referral_id'));
+                            'store_id' => $order->getStoreId(), 'points_current' => $rewardPointsChild, 'rewardpoints_referral_id' => $referralModel->getData('rewardpoints_referral_id'), 'date_start' => $date_start, 'date_end' => $date_end);
                         $reward_model->setData($post);
                         $reward_model->save();
                     }
