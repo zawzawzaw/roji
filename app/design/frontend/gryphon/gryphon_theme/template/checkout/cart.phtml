@@ -291,6 +291,12 @@ if($session->isLoggedIn()) {
                           <div id="page-checkout-cart-discount">
 
                             <?php echo $this->getMessagesBlock()->toHtml() ?>
+
+                            <script>
+                              if($j(".messages").find(".error-msg").length !== 0) {
+                                $j(".messages").find(".success-msg").hide();
+                              }
+                            </script>
                             
                             <div class="form-group">
                                 <?php /* Extensions placeholder */ ?>

@@ -73,7 +73,7 @@
     <div class="container-fluid has-breakpoint">
       <div class="row">
 
-        <div class="col-md-2 col-tablet-landscape-1 hidden-sm hidden-xs">
+        <div class="col-md-2 col-tablet-landscape-2 hidden-sm hidden-xs">
 
           <!--
              ____ ___ ____  _____ ____    _    ____
@@ -93,7 +93,7 @@
 
         </div> <!-- col-md-2 -->
         <div class="col-md-0 col-tablet-landscape-0 col-sm-1 col-xs-0"></div>
-        <div class="col-md-10 col-tablet-landscape-11 col-sm-10 col-xs-12">
+        <div class="col-md-10 col-tablet-landscape-10 col-sm-10 col-xs-12">
           
           <!--
               ____ ___  _   _ _____ _____ _   _ _____
@@ -163,7 +163,7 @@
                 <div class="col-md-12 col-md-push-0 col-sm-8 col-sm-push-2 col-xs-10 col-xs-push-1">
 
                   <div class="cta-container">
-                    <?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling()): ?>
+                    <?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultShipping()): ?>
                       <a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>?address=shipping" class="edit square-cta"><?php echo $this->__('Edit') ?></a>
                     <?php endif; ?>
                     <a href="<?php echo Mage::getUrl('customer/address/new'); ?>?address=shipping" class="add_address square-cta">Add New Address</a>                    

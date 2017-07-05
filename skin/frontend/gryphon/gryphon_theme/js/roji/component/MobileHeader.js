@@ -43,15 +43,23 @@ roji.component.MobileHeader = function(options, element) {
 
     event.preventDefault();
 
-    console.log("here");
+    var $cur_el = $j(event.currentTarget);
 
-    if (this.is_account_menu_open == true) {
+    if($cur_el.hasClass("logged-in")) {
 
-      this.close_account_menu();
+      if (this.is_account_menu_open == true) {
+
+        this.close_account_menu();
+
+      } else {
+
+        this.open_account_menu();
+
+      }
 
     } else {
 
-      this.open_account_menu();
+      window.location.href = $cur_el.find("a").attr("href");
 
     }
 

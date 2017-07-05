@@ -72,7 +72,7 @@
   <div class="container-fluid has-breakpoint">
     <div class="row">
 
-      <div class="col-md-2 col-tablet-landscape-1 hidden-sm hidden-xs">
+      <div class="col-md-2 col-tablet-landscape-2 hidden-sm hidden-xs">
 
         <!--
            ____ ___ ____  _____ ____    _    ____
@@ -92,7 +92,7 @@
 
       </div> <!-- col-md-2 -->
       <div class="col-md-0 col-tablet-landscape-0 col-sm-1 col-xs-0"></div>
-      <div class="col-md-10 col-tablet-landscape-11 col-sm-10 col-xs-12">
+      <div class="col-md-10 col-tablet-landscape-10 col-sm-10 col-xs-12">
 
         <!--
             ____ ___  _   _ _____ _____ _   _ _____
@@ -162,22 +162,22 @@
 
                 <div class="page-account-table-header hidden-xs">
                   <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                       <div class="table-column-first">
                         <h4><?php echo $this->__('Description') ?></h4>
                       </div>
                     </div>
-                    <div class="col-sm-3">
+                    <!-- <div class="col-sm-3">
                       <div class="table-column">
                         <h4><?php echo $this->__('Status') ?></h4>
                       </div>
-                    </div>
-                    <div class="col-sm-3">
+                    </div> -->
+                    <div class="col-sm-4">
                       <div class="table-column">
                         <h4><?php echo $this->__('Rebates earned') ?></h4>
                       </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                       <div class="table-column-last">
                         <h4><?php echo $this->__('Expiry date') ?></h4>
                       </div>
@@ -190,12 +190,12 @@
                     <?php foreach ($_earnedPoints as $_point): ?>
                       <div class="page-account-table-item">
                         <div class="row">
-                          <div class="col-sm-3 col-xs-6">
+                          <div class="col-sm-4 col-xs-6">
                             <div class="table-column-first" data-column="Description">
                               <?php echo $this->getTypeOfPoint($_point);?>
                             </div>
                           </div>
-                          <div class="col-sm-3 col-xs-6">
+                          <!-- <div class="col-sm-3 col-xs-6">
                             <div class="table-column" data-column="Status">
                               <?php 
                               $status_field = Mage::getStoreConfig('rewardpoints/default/status_used', Mage::app()->getStore()->getId());
@@ -206,13 +206,13 @@
                               
                               <p><?php echo (!empty($order_status)) ? $order_status : "-" ?></p>
                             </div>
-                          </div>
-                          <div class="col-sm-3 col-xs-6">
+                          </div> -->
+                          <div class="col-sm-4 col-xs-6">
                             <div class="table-column mobile-last-version" data-column="Rebates earned">
                               <p><?php echo $_point->getPoints_current() ?></p>
                             </div>
                           </div>
-                          <div class="col-sm-3 col-xs-6">
+                          <div class="col-sm-4 col-xs-6">
                             <div class="table-column-last mobile-last-version" data-column="Expiry date">
                               <h4><?php if ($_point->getDate_end() != ""): echo $this->formatDate($_point->getDate_end(), 'short'); endif; ?></h4>
                             </div>
@@ -251,22 +251,22 @@
 
                 <div class="page-account-table-header hidden-xs">
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-sm-4">
                       <div class="table-column-first">
                         <h4><?php echo $this->__('Description') ?></h4>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <!-- <div class="col-sm-3">
                       <div class="table-column">
                         <h4><?php echo $this->__('Status') ?></h4>
                       </div>
-                    </div>
-                    <div class="col-md-3">
+                    </div> -->
+                    <div class="col-sm-4">
                       <div class="table-column">
                         <h4><?php echo $this->__('Rebates used') ?></h4>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-sm-4">
                       <div class="table-column-last">
                         <h4><?php echo $this->__('Redemption date') ?></h4>
                       </div>
@@ -281,12 +281,12 @@
                     <?php foreach ($_spentPoints as $_point): ?>
                       <div class="page-account-table-item">
                         <div class="row">
-                          <div class="col-sm-3 col-xs-6">
+                          <div class="col-sm-4 col-xs-6">
                             <div class="table-column-first" data-column="Description:">
                               <?php echo $this->getTypeOfPoint($_point);?>
                             </div>
                           </div>
-                          <div class="col-sm-3 col-xs-6">
+                          <!-- <div class="col-sm-3 col-xs-6">
                             <div class="table-column" data-column="Status:">
                               <?php 
                               $status_field = Mage::getStoreConfig('rewardpoints/default/status_used', Mage::app()->getStore()->getId());
@@ -297,13 +297,13 @@
                               
                               <p><?php echo (!empty($order_status)) ? $order_status : "-" ?></p>
                             </div>
-                          </div>
-                          <div class="col-sm-3 col-xs-6">
+                          </div> -->
+                          <div class="col-sm-4 col-xs-6">
                             <div class="table-column mobile-last-version" data-column="Rebates used:">
                               <p><?php echo $_point->getPoints_spent() ?></p>
                             </div>
                           </div>
-                          <div class="col-sm-3 col-xs-6">
+                          <div class="col-sm-4 col-xs-6">
                             <div class="table-column-last mobile-last-version" data-column="Redemption date:">
                               <h4><?php if ($_point->getDate_start() != ""): echo $this->formatDate($_point->getDate_start(), 'short'); else: echo $this->formatDate($_point->getDate_insertion(), 'short'); endif; ?></h4>
                             </div>
@@ -342,22 +342,22 @@
 
                 <div class="page-account-table-header hidden-xs">
                   <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                       <div class="table-column-first">
                         <h4><?php echo $this->__('Description') ?></h4>
                       </div>
                     </div>
-                    <div class="col-sm-3">
+                    <!-- <div class="col-sm-3">
                       <div class="table-column">
                         <h4><?php echo $this->__('Status') ?></h4>
                       </div>
-                    </div>
-                    <div class="col-sm-3">
+                    </div> -->
+                    <div class="col-sm-4">
                       <div class="table-column">
                         <h4><?php echo $this->__('Rebates') ?></h4>
                       </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                       <div class="table-column-last">
                         <h4><?php echo $this->__('Expired date') ?></h4>
                       </div>
@@ -368,39 +368,51 @@
                 <div class="page-account-table-item-container">
                   
                   <?php $_expiredPoints = $this->getExpiredPoints(); ?>
-                  <?php foreach ($_expiredPoints as $_point): ?>
-                    <div class="page-account-table-item">
-                      <div class="row">
-                        <div class="col-sm-3 col-xs-6">
-                          <div class="table-column-first" data-column="Description:">
-                            <?php echo $this->getTypeOfPoint($_point);?>
+                  <?php if($_expiredPoints->getSize()): ?>
+                    <?php foreach ($_expiredPoints as $_point): ?>
+                      <div class="page-account-table-item">
+                        <div class="row">
+                          <div class="col-sm-4 col-xs-6">
+                            <div class="table-column-first" data-column="Description:">
+                              <?php echo $this->getTypeOfPoint($_point);?>
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-sm-3 col-xs-6">
-                          <div class="table-column" data-column="Status:">
-                            <?php 
-                            $status_field = Mage::getStoreConfig('rewardpoints/default/status_used', Mage::app()->getStore()->getId());
-                            $order_id = $_point->getOrderId();
-                            $order = Mage::getModel('sales/order')->loadByIncrementId($order_id);
-                            $order_status = $order->getData($status_field);
-                            ?>
-                            
-                            <p><?php echo (!empty($order_status)) ? $order_status : "-" ?></p>
+                          <!-- <div class="col-sm-3 col-xs-6">
+                            <div class="table-column" data-column="Status:">
+                              <?php 
+                              $status_field = Mage::getStoreConfig('rewardpoints/default/status_used', Mage::app()->getStore()->getId());
+                              $order_id = $_point->getOrderId();
+                              $order = Mage::getModel('sales/order')->loadByIncrementId($order_id);
+                              $order_status = $order->getData($status_field);
+                              ?>
+                              
+                              <p><?php echo (!empty($order_status)) ? $order_status : "-" ?></p>
+                            </div>
+                          </div> -->
+                          <div class="col-sm-4 col-xs-6">
+                            <div class="table-column" data-column="Rebates:">
+                              <p><?php echo $_point->getPoints_current() ?></p>
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-sm-3 col-xs-6">
-                          <div class="table-column" data-column="Rebates:">
-                            <p><?php echo $_point->getPoints_current() ?></p>
-                          </div>
-                        </div>
-                        <div class="col-sm-3 col-xs-6">
-                          <div class="table-column-last" data-column="Expired date:">
-                            <h4><?php if ($_point->getDate_end() != ""): echo $this->formatDate($_point->getDate_end(), 'short'); endif; ?></h4>
+                          <div class="col-sm-4 col-xs-6">
+                            <div class="table-column-last" data-column="Expired date:">
+                              <h4><?php if ($_point->getDate_end() != ""): echo $this->formatDate($_point->getDate_end(), 'short'); endif; ?></h4>
+                            </div>
                           </div>
                         </div>
                       </div>
+                    <?php endforeach; ?>  
+                  <?php else: ?>
+                    <div class="page-account-table-item">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="table-column-first">
+                              <p><?php echo $this->__('You don\'t have any recorded rebates.'); ?></p>
+                            </div>
+                          </div>
+                        </div>
                     </div>
-                  <?php endforeach; ?>  
+                  <?php endif; ?>
 
                 </div> <!-- page-account-table-item-container -->
 

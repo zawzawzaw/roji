@@ -1,0 +1,552 @@
+<!--@subject Email - Header @-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta property="og:title" content="<?php echo $this->getSubject() ?>">
+    <title><?php echo $this->getSubject() ?></title> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    {{var non_inline_styles}}
+
+    <style>
+      @font-face {
+        font-family: 'FontAwesome';
+        src: url('http://www.rojicha.com/skin/frontend/gryphon/gryphon_theme/fonts/font-awesome/fontawesome-webfont.eot?v=4.4.0');
+        src: url('http://www.rojicha.com/skin/frontend/gryphon/gryphon_theme/fonts/font-awesome/fontawesome-webfont.eot?#iefix&v=4.4.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.4.0') format('woff2'), url('http://www.rojicha.com/skin/frontend/gryphon/gryphon_theme/fonts/font-awesome/fontawesome-webfont.woff?v=4.4.0') format('woff'), url('http://www.rojicha.com/skin/frontend/gryphon/gryphon_theme/fonts/font-awesome/fontawesome-webfont.ttf?v=4.4.0') format('truetype'), url('http://www.rojicha.com/skin/frontend/gryphon/gryphon_theme/fonts/font-awesome/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular') format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }   
+      .fa {
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .fa-twitter:before {
+        content: "\f099";
+      }      
+      .fa-facebook:before {
+        content: "\f09a";
+      } 
+      .fa-pinterest:before {
+        content: "\f0d2";
+      } 
+      /* vietnamese */
+      @font-face {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v10/SKK6Nusyv8QPNMtI4j9J2wsYbbCjybiHxArTLjt7FRU.woff2) format('woff2');
+        unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+      }
+      /* latin-ext */
+      @font-face {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v10/gFXtEMCp1m_YzxsBpKl68gsYbbCjybiHxArTLjt7FRU.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+      }
+      /* latin */
+      @font-face {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v10/zhcz-_WihjSQC0oHJ9TCYAzyDMXhdD8sAj6OAJTFsBI.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+      }
+      /* vietnamese */
+      @font-face {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        src: local('Montserrat Medium'), local('Montserrat-Medium'), url(https://fonts.gstatic.com/s/montserrat/v10/BYPM-GE291ZjIXBWrtCweiyNCiQPWMSUbZmR9GEZ2io.woff2) format('woff2');
+        unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+      }
+      /* latin-ext */
+      @font-face {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        src: local('Montserrat Medium'), local('Montserrat-Medium'), url(https://fonts.gstatic.com/s/montserrat/v10/BYPM-GE291ZjIXBWrtCwevfgCb1svrO3-Ym-Rpjvnho.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+      }
+      /* latin */
+      @font-face {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        src: local('Montserrat Medium'), local('Montserrat-Medium'), url(https://fonts.gstatic.com/s/montserrat/v10/BYPM-GE291ZjIXBWrtCweteM9fzAXBk846EtUMhet0E.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+      }
+      /* cyrillic-ext */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTQ7aC6SjiAOpAWOKfJDfVRY.woff2) format('woff2');
+        unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+      }
+      /* cyrillic */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTRdwxCXfZpKo5kWAx_74bHs.woff2) format('woff2');
+        unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+      }
+      /* greek-ext */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTZ6vnaPZw6nYDxM4SVEMFKg.woff2) format('woff2');
+        unicode-range: U+1F00-1FFF;
+      }
+      /* greek */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTfy1_HTwRwgtl1cPga3Fy3Y.woff2) format('woff2');
+        unicode-range: U+0370-03FF;
+      }
+      /* vietnamese */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTfgrLsWo7Jk1KvZser0olKY.woff2) format('woff2');
+        unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+      }
+      /* latin-ext */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTYjoYw3YTyktCCer_ilOlhE.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+      }
+      /* latin */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTRampu5_7CjHW5spxoeN3Vs.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+      }
+      /* cyrillic-ext */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/K88pR3goAWT7BTt32Z01m4X0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+        unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+      }
+      /* cyrillic */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/RjgO7rYTmqiVp7vzi-Q5UYX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+        unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+      }
+      /* greek-ext */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/LWCjsQkB6EMdfHrEVqA1KYX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+        unicode-range: U+1F00-1FFF;
+      }
+      /* greek */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/xozscpT2726on7jbcb_pAoX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+        unicode-range: U+0370-03FF;
+      }
+      /* vietnamese */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/59ZRklaO5bWGqF5A9baEEYX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+        unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+      }
+      /* latin-ext */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/u-WUoqrET9fUeobQW7jkRYX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+      }
+      /* latin */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3ZBw1xU1rKptJj_0jans920.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+      }
+      /* latin-ext */
+      @font-face {
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Raleway Light'), local('Raleway-Light'), url(https://fonts.gstatic.com/s/raleway/v11/ZKwULyCG95tk6mOqHQfRBAsYbbCjybiHxArTLjt7FRU.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+      }
+      /* latin */
+      @font-face {
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Raleway Light'), local('Raleway-Light'), url(https://fonts.gstatic.com/s/raleway/v11/-_Ctzj9b56b8RgXW8FAriQzyDMXhdD8sAj6OAJTFsBI.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+      }   
+
+      /* CLIENT-SPECIFIC STYLES */
+      *{
+        -webkit-font-smoothing : antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      #outlook a{padding:0;} /* Force Outlook to provide a "view in browser" message */
+      .ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotmail to display emails at full width */
+      .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;} /* Force Hotmail to display normal line spacing */
+      body, table, td, a{-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;} /* Prevent WebKit and Windows mobile changing default text sizes */
+      table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;} /* Remove spacing between tables in Outlook 2007 and up */
+      img{-ms-interpolation-mode:bicubic;} /* Allow smoother rendering of resized image in Internet Explorer */
+
+      /* RESET STYLES */
+      body{margin:0; padding:0;}
+      img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
+      table{border-collapse:collapse !important;}
+      body{height:100% !important; margin:0; padding:0; width:100% !important;}
+
+      /* iOS BLUE LINKS */
+      .appleBody a {color:#68440a; text-decoration: none;}
+      .appleFooter a {color:#999999; text-decoration: none;}
+
+      /* MOBILE STYLES */
+      @media screen and (max-width: 525px) {
+
+          /* ALLOWS FOR FLUID TABLES */
+          table[class="wrapper"]{
+            width:100% !important;
+          }
+
+          /* ADJUSTS LAYOUT OF LOGO IMAGE */
+          td[class="logo"]{
+            text-align: left;
+            padding: 20px 0 20px 0 !important;
+          }
+
+          td[class="logo"] img{
+            margin:0 auto!important;
+          }
+
+          /* USE THESE CLASSES TO HIDE CONTENT ON MOBILE */
+          td[class="mobile-hide"]{
+            display:none;}
+
+          img[class="mobile-hide"]{
+            display: none !important;
+          }
+
+          img[class="img-max"]{
+            max-width: 100% !important;
+            width: 100% !important;
+            height:auto !important;
+          }
+
+          /* FULL-WIDTH TABLES */
+          table[class="responsive-table"]{
+            width:100%!important;
+          }
+
+          /* UTILITY CLASSES FOR ADJUSTING PADDING ON MOBILE */
+          td[class="padding"]{
+            padding: 10px 5% 15px 5% !important;
+          }
+
+          td[class="padding-copy"]{
+            padding: 10px 5% 10px 5% !important;
+            text-align: center;
+          }
+
+          td[class="padding-meta"]{
+            padding: 30px 5% 0px 5% !important;
+            text-align: center;
+          }
+
+          td[class="no-pad"]{
+            padding: 0 0 20px 0 !important;
+          }
+
+          td[class="no-padding"]{
+            padding: 0 !important;
+          }
+
+          td[class="section-padding"]{
+            /*padding: 50px 15px 50px 15px !important;*/
+            padding: 10px 15px 50px 15px !important;
+          }
+
+          td[class="section-padding-bottom-image"]{
+            padding: 50px 15px 0 15px !important;
+          }
+
+          /* ADJUST BUTTONS ON MOBILE */
+          td[class="mobile-wrapper"]{
+              padding: 10px 5% 15px 5% !important;
+          }
+
+          table[class="mobile-button-container"]{
+              margin:0 auto;
+              width:100% !important;
+          }
+
+          a[class="mobile-button"]{
+              /*width:80% !important;
+              padding: 15px !important;
+              border: 0 !important;
+              font-size: 16px !important;*/
+              padding: 10px!important;
+          }
+
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+        <td>
+          <div align="center">
+            <table border="0" cellpadding="0" cellspacing="0" width="600" class="wrapper">
+              <!-- LOGO/PREHEADER TEXT -->
+              <tr>
+                <td style="padding: 20px 0px 27px 0px;" class="logo">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                      <td align="center">
+                        <a href="{{store url=''}}" target="_blank">
+                            <div class="email-header-monogram-logo" style="display: block;width: 58px;height: 80px;background: url(http://www.rojicha.com/skin/frontend/gryphon/gryphon_theme/images/logo/logo-desktop-header.svg) center center no-repeat;background-size: 58px 80px;-webkit-background-size: 58px 80px;"></div>
+                        </a>
+                      </td>
+                    </tr>                                
+                  </table>
+                </td>
+              </tr>              
+            </table>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div align="center">
+            <table border="0" cellpadding="0" cellspacing="0" width="600" class="wrapper">
+              <tr>
+                <td style="padding: 0px;" class="menu mobile-hide">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                      <td align="center" class="mobile-hide">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                          <tr style="font-family: 'Montserrat','Arial Black',Gadget,sans-serif;font-style: normal;font-weight: 400;font-size: 12px;line-height: 25px;letter-spacing: .075em;text-transform: uppercase;">
+                            <td align="center" style="padding: 10px 15px;"><a href="{{store direct_url='shop.html'}}" style="display:inline-block; color: #707071; text-decoration: none;">SHOP</a></td>
+                            <td align="center" style="padding: 10px 15px;"><a href="{{store direct_url='our-teas'}}" style="display:inline-block; color: #707071; text-decoration: none;">OUR TEAS</a></td>                            
+                            <td align="center" style="padding: 10px 15px;"><a href="{{store direct_url='blog'}}" style="display:inline-block; color: #707071; text-decoration: none;">BLOG</a></td>        
+                            <td align="center" style="padding: 10px 15px;"><a href="{{store direct_url='shipping-info'}}" style="display:inline-block; color: #707071; text-decoration: none;">SHIPPING INFO</a></td>                                                
+                            <td align="center" style="padding: 10px 15px;"><a href="{{store direct_url='contact'}}" style="display:inline-block; color: #707071; text-decoration: none;">CONTACT</a></td>                            
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+
+    <!-- ONE COLUMN SECTION -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+          <td align="center" style="padding: 70px 15px 70px 15px;" class="section-padding">
+              <table border="0" cellpadding="0" cellspacing="0" width="600" class="responsive-table">
+                  <tr>
+                      <td>
+                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              
+                              <tr>
+                                  <td align="center" style="font-family: 'Raleway',Arial Black,Gadget,sans-serif;font-style: normal;font-weight: 300;font-size: 22px;line-height: 34px;letter-spacing: .075em; color: #707071;" class="padding-copy">
+                                      Hello {{htmlescape var=$customer.name}}
+                                  </td>
+                              </tr>
+                              
+                              <tr>
+                                  <td align="center" style="padding: 0px 20px 0 20px;">
+                                      <!-- COPY -->
+                                                      
+                                    <p style="padding-bottom: 20px;font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071;">We have received a password change request for your Monogram account. Please <a href='{{store url="customer/account/resetpassword/" _query_id=$customer.id _query_token=$customer.rp_token}}' style="color: #efeeed; text-decoration: none;">click on</a> the button below to reset your password.</p>
+
+                                    <a href="{{store url="customer/account/resetpassword/" _query_id=$customer.id _query_token=$customer.rp_token}}" target="_blank" style="font-family: 'Montserrat',Arial,Helvetica,sans-serif; font-style: normal; font-weight: 500; line-height: 24px; text-transform: uppercase; font-size: 12px; line-height: 20px; letter-spacing: .075em; color: #fff !important; display: inline-block; vertical-align: top; zoom: 1; height: 20px; padding-top: 5px; padding-bottom: 5px; padding-left: 17px; padding-right: 17px; background-color: #333; outline: none; border: none;-webkit-appearance: none; -moz-appearance: none; appearance: none; text-decoration: none;" class="mobile-button">Reset Password</a>
+
+
+                                    <tr>
+                                      <td align="center" style="padding: 20px 0px 0 10px; font-family: 'Raleway',Arial Black,Gadget,sans-serif;font-style: normal;font-weight: 300;font-size: 22px;line-height: 34px;letter-spacing: .075em; color: #707071;">Not You?</td>
+                                    </tr>
+                                    </tr>
+                                      <td align="left" style="padding: 20px 0px 0 10px; font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071; text-align: center;" class="padding-copy">If you did not make this request, kindly ignore this email.
+                                      </td>
+                                    </tr>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td align="center">
+                                      <!-- BULLETPROOF BUTTON -->
+                                      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
+                                          <tr>
+                                            <td align="center" style="padding: 25px 0 0 0;" class="padding-copy">
+                                              <table border="0" cellspacing="0" cellpadding="0" class="responsive-table">
+                                                <tr>
+                                                  <td align="center"><a href="{{store url='store.html'}}" target="_blank" style="font-family: 'Montserrat',Arial,Helvetica,sans-serif; font-style: normal; font-weight: 500; line-height: 24px; text-transform: uppercase; font-size: 12px; line-height: 20px; letter-spacing: .075em; color: #fff !important; display: inline-block; vertical-align: top; zoom: 1; height: 20px; padding-top: 5px; padding-bottom: 5px; padding-left: 17px; padding-right: 17px; background-color: #333; outline: none; border: none;-webkit-appearance: none; -moz-appearance: none; appearance: none; text-decoration: none;" class="mobile-button">Visit Tea Store</a></td>
+                                                </tr>
+                                              </table>
+                                            </td>
+                                          </tr>
+                                        </table>                                      
+                                  </td>
+                              </tr>
+                              
+                          </table>
+                      </td>
+                  </tr>
+              </table>
+          </td>
+      </tr>
+    </table>
+
+
+
+    <!--@subject Email - Footer @-->
+
+    <!-- TWO COLUMN SECTION -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+        <td bgcolor="#f4f2ef" align="center" style="padding: 30px 0px;" class="section-padding">
+            <table border="0" cellpadding="0" cellspacing="0" width="600" class="responsive-table">
+                <tr>
+                    <td>
+                        <!-- TWO COLUMNS -->
+                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td valign="top" style="padding: 0;" class="mobile-wrapper">
+                                    <!-- LEFT COLUMN -->
+                                    <table cellpadding="0" cellspacing="0" border="0" align="left" class="responsive-table" style="width: 50%; padding: 0 20px;">
+                                        <tr>
+                                            <td style="padding: 0px 0 20px 0;">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">                                                    
+                                                    <tr>
+                                                        <td align="center" style="padding: 15px 0 0 0; font-family: 'Montserrat',Arial Black,Gadget,sans-serif;font-style: normal;font-weight: 400;font-size: 12px; letter-spacing: 0.075em; color: #8d837c;">FOLLOW US</td>
+                                                    </tr>                                               
+                                                    <tr>
+                                                        <td align="center" style="padding: 5px 0 0 0;">                                                            
+                                                            <a href="https://instagram.com/gryphontea/" style="font-size: 12px;padding: 0px 3px;color: #747475; text-decoration: none;"><i class="fa fa-facebook"></i></a>            
+                                                            <a href="https://www.facebook.com/gryphonteacompany" style="font-size: 12px;padding: 0px 3px;color: #747475; text-decoration: none;"><i class="fa fa-instagram"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>                                      
+                                    </table> 
+                                    <table cellpadding="0" cellspacing="0" border="0" align="left" class="responsive-table" style="width: 50%; padding: 0 20px;">
+                                      <tr>
+                                          <td style="padding: 0px 0 20px 0;">
+                                              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                  
+                                                  <tr>
+                                                      <td align="center" style="padding: 15px 0 0 0; font-family: 'Montserrat',Arial Black,Gadget,sans-serif;font-style: normal;font-weight: 400;font-size: 12px; letter-spacing: 0.075em; color: #8d837c;">CONTACT US</td>
+                                                  </tr>                                               
+                                                  <tr>
+                                                      <td align="center" style="padding: 5px 0 0 0;"><a href="mailto:ganbatte@rojicha.com" style="font-size: 12px;line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400;color: #747475; text-decoration: none;">ganbatte@rojicha.com<br><span class="appleBody" style="font-size: 12px;line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400;display:block;color: #747475;text-decoration:none;">+65 6779 2948</span></a></td>
+                                                  </tr>                                                    
+                                              </table>
+                                          </td>
+                                      </tr>
+                                    </table>
+                                    <!-- <table cellpadding="0" cellspacing="0" border="0" align="left" class="responsive-table" style="margin: 0 20px;">
+                                        <tr>
+                                            <td style="padding: 0px 0 20px 0;">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                    
+                                                    <tr>
+                                                        <td align="left" style="padding: 15px 0 0 0; font-family: 'Montserrat',Arial Black,Gadget,sans-serif;font-style: normal;font-weight: 400;font-size: 12px; letter-spacing: 0.075em; color: #8d837c;">EMAIL SETTINGS</td>
+                                                    </tr>                                               
+                                                    <tr>
+                                                        <td align="left" style="padding: 5px 0 0 0; font-size: 12px;line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400;color: #747475;"><span class="appleBody">To unsubscribe from Roji Cha's <br> mailing list, <a href="http://www.rojicha.com/discovertea/index/unsubscribe?unsubscribe_email={{var customer.email}}" style="color: #747475; text-decoration: none;">click here.</a></span></td>
+                                                    </tr>                                                    
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table> -->                                
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>                
+            </table>
+        </td>
+      </tr>
+    </table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td align="center" bgcolor="#8c837d">
+            <!-- UNSUBSCRIBE COPY -->
+            <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" class="responsive-table">
+              <tr>
+                <td>
+                  <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                    <tr>
+                      <td valign="top" style="padding: 0;" class="mobile-wrapper">
+                        <!-- LEFT COLUMN -->
+                        <table cellpadding="0" cellspacing="0" border="0" width="50%" align="left" class="responsive-table">
+                          <tr>
+                            <td style="">
+                              <a href="http://www.rojicha.com/" style="text-decoration: none;">
+                                <h5 id="email-monogram-name" style="font-family: Montserrat,Arial Black,Gadget,sans-serif;font-style: normal;font-weight: 400;font-size: 10px;line-height: 13px;letter-spacing: .075em;display: inline-block;vertical-align: middle;color: #fff;text-transform: uppercase;">roji by gryphon tea company &copy; 2017</h5>
+                              </a>
+                            </td>
+                          </tr>                      
+                        </table>                                    
+                        <!-- RIGHT COLUMN -->
+                        <table cellpadding="0" cellspacing="0" border="0" width="50%" align="right" class="responsive-table">
+                          <tr>
+                            <td style="">
+                              <ul style="text-align:right;margin:0;">
+                                <li style="display: inline-block;vertical-align: middle;margin-left: 15px;"><a style="border-right: 1px solid #fff; padding-right: 15px;font-family: Montserrat,Arial Black,Gadget,sans-serif;font-style: normal;font-weight: 400;font-size: 10px;line-height: 47px;letter-spacing: .075em; color: #fff; text-decoration: none;text-transform: uppercase;" href="{{store direct_url='privacy-policy'}}">Privacy Policy</a></li>
+                                <li style="display: inline-block;vertical-align: middle;margin-left: 15px;"><a style="font-family: Montserrat,Arial Black,Gadget,sans-serif;font-style: normal;font-weight: 400;font-size: 10px;line-height: 47px;letter-spacing: .075em; color: #fff; text-decoration: none;text-transform: uppercase;" href="{{store direct_url='terms-and-conditions'}}">Terms of use</a></li>
+                              </ul>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>   
+                </td>           
+              </tr>
+            </table>
+          </td>
+        </tr>
+    </table>
+  </body>
+</html>

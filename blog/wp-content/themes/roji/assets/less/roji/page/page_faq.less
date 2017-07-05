@@ -1,0 +1,231 @@
+//    _____ ___ _____ _     _____
+//   |_   _|_ _|_   _| |   | ____|
+//     | |  | |  | | | |   |  _|
+//     | |  | |  | | | |___| |___
+//     |_| |___| |_| |_____|_____|
+//
+
+#page-faq-title-section{
+  padding-top: 45px;
+  padding-bottom: 41px;
+}
+
+#page-faq-title{
+  text-align: right;
+}
+
+// TABLET PORTRAIT
+@media only screen and (max-width: 991px) {
+  #page-faq-title-section{
+    padding-top: 34px;
+    padding-bottom: 30px;
+  }
+  #page-faq-title{
+    text-align: left;
+    br{
+      display: none;
+    }
+  }
+}
+
+
+
+//    ____ ___ ____  _____ ____    _    ____
+//   / ___|_ _|  _ \| ____| __ )  / \  |  _ \
+//   \___ \| || | | |  _| |  _ \ / _ \ | |_) |
+//    ___) | || |_| | |___| |_) / ___ \|  _ <
+//   |____/___|____/|_____|____/_/   \_\_| \_\
+//
+
+
+@faq-sidebar-offset-x: 40px;
+
+#page-faq-sidebar-width,
+#page-faq-sidebar{
+  margin-right: -1 * @faq-sidebar-offset-x;
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    margin-right: 0;
+  }
+}
+
+
+
+
+#page-faq-sidebar{
+  padding-top: 41px;
+
+  nav{
+    ul{
+
+      li{
+        margin-bottom: 32px;
+        &:last-child{
+          margin-bottom: 0px;
+        }
+
+        a{
+          .h4-style;
+          color: @grey !important;
+          cursor: pointer;
+
+          .transition-in-single (color, 0.3s, cubic-bezier(0.645, 0.045, 0.355, 1), 0.1s);
+
+          &:hover,
+          &:focus{
+            color: @dark-grey-2 !important;
+
+            .transition-in-single (color, 0.2s, cubic-bezier(0.645, 0.045, 0.355, 1), 0.2s);
+          }
+
+        } // a 
+
+        &.selected{
+          a{
+            color: @dark-grey-2 !important;
+            cursor: default;
+            .transition-in-single (color, 0.2s, cubic-bezier(0.645, 0.045, 0.355, 1), 0.2s);
+          }
+        }
+      } // li
+    } // ul
+  } // nav
+}
+
+//     ____ ___  _   _ _____ _____ _   _ _____
+//    / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+//   | |  | | | |  \| | | | |  _| |  \| | | |
+//   | |__| |_| | |\  | | | | |___| |\  | | |
+//    \____\___/|_| \_| |_| |_____|_| \_| |_|
+//
+
+
+
+#page-faq-content-section{
+  padding-bottom: 94px;
+  position: relative;
+}
+
+#page-faq-content-section-bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+
+  .sidebar-bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 100%;
+    background: @off-white-2;
+  }
+  .content-bg{
+    position: absolute;
+    top: 0;
+    left: 30%;
+    width: 70%;
+    height: 100%;
+    background: @off-white-1;
+  }
+}
+
+
+
+
+
+
+
+
+#page-faq-content-width,
+#page-faq-content{
+  margin-left: @faq-sidebar-offset-x;
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    margin-left: 0;
+  }
+}
+
+
+
+#page-faq-content{
+  padding-top: 43px;
+}
+
+.page-faq-content-item{
+  display: none;
+}
+
+
+
+// ANIMATION
+
+.page-faq-content-item.open-version{
+  display: block;
+}
+
+
+
+
+
+
+.page-faq-item-container{
+  padding-left: 53px;
+  @media only screen and (max-width: 991px) {
+    padding-left: 0px;
+  }
+}
+
+.page-faq-item{
+  border-bottom: 1px solid @border-grey;
+
+  padding-bottom: 24px;
+  margin-bottom: 22px;
+
+  &.last-version{
+    border-bottom: none;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+  }
+
+  .default-copy{
+    padding-left: 17px;
+    padding-right: 105px;
+
+    h4{
+      color: @off-black;
+    }
+
+    h4 + p{
+      padding-top: 15px;
+    }
+
+  }
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    .default-copy{
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+  }
+
+}
+
+
+//    __  __  ___  ____ ___ _     _____
+//   |  \/  |/ _ \| __ )_ _| |   | ____|
+//   | |\/| | | | |  _ \| || |   |  _|
+//   | |  | | |_| | |_) | || |___| |___
+//   |_|  |_|\___/|____/___|_____|_____|
+//
+
+#page-faq-content-section-mobile{
+  background: @off-white-1;
+  padding-left: 20px;
+  padding-right: 20px;
+}

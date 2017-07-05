@@ -1,0 +1,269 @@
+//    _____ ___ _____ _     _____
+//   |_   _|_ _|_   _| |   | ____|
+//     | |  | |  | | | |   |  _|
+//     | |  | |  | | | |___| |___
+//     |_| |___| |_| |_____|_____|
+//
+
+#page-contact-title-section{
+  padding-top: 45px;
+  padding-bottom: 38px;
+}
+
+#page-contact-title{
+  text-align: right;
+}
+
+// TABLET PORTRAIT
+@media only screen and (max-width: 991px) {
+  #page-contact-title-section{
+    padding-top: 34px;
+    padding-bottom: 30px;
+  }
+  #page-contact-title{
+    text-align: left;
+    br{
+      display: none;
+    }
+  }
+}
+
+
+
+
+
+#page-contact-content-section{
+  background: @off-white-1;
+
+  padding-top: 55px;
+  padding-bottom: 100px;
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    padding-top: 33px;
+    padding-bottom: 50px;
+  }
+
+}
+#page-contact-content{
+  // TABLET LANDSCAPE
+  @media only screen and (max-width: 1024px) and (min-width: 992px) {
+    padding-right: 20px;
+  }
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    padding-right: 0px;
+  }
+
+}
+
+
+#page-contact-seperator{
+  position: relative;
+
+  &:after{
+    content: "";
+    display: block;
+
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    width: 0;
+    height: 620px;
+
+    border-left: 1px solid @border-grey;
+  }
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+
+    margin-top: 35px;
+    margin-bottom: 35px;
+    border-bottom: 1px solid @border-grey;
+
+    &:after{
+      display: none;
+    }
+  }
+}
+
+
+//    ____ ___ ____  _____ ____    _    ____
+//   / ___|_ _|  _ \| ____| __ )  / \  |  _ \
+//   \___ \| || | | |  _| |  _ \ / _ \ | |_) |
+//    ___) | || |_| | |___| |_) / ___ \|  _ <
+//   |____/___|____/|_____|____/_/   \_\_| \_\
+//
+
+
+#page-contact-sidebar{
+  // TABLET LANDSCAPE
+  @media only screen and (max-width: 1024px) and (min-width: 992px) {
+    padding-left: 20px;
+  }
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    padding-left: 0px;
+  }
+}
+
+.contact-sidebar-address{
+  margin-bottom: 49px;
+
+  .detail-item{
+    margin-bottom: 19px;
+
+    h4{
+      color: @dark-grey-2;
+    }
+
+    p{
+      .body-font;
+      color: @dark-grey;
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+    h4 + p{
+      padding-top: 0px;
+    }
+
+    p + p{
+      padding-top: 18px;
+    }
+
+    &.first-version{
+      h4{
+        color: @off-black;
+      }
+    }
+
+  }
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    margin-bottom: 0px;
+
+    .detail-item{
+      margin-bottom: 20px;
+
+      h4{
+        .body-font-bold;
+        font-size: 13px;
+        line-height: 20px;
+        text-transform: none;
+        letter-spacing: 0em;
+      }
+      p{
+        .body-font;
+        font-size: 13px;
+        line-height: 20px;
+      }
+      h4 + p{
+        padding-top: 0;
+      }
+      p + p{
+        padding-top: 20px;
+      }
+    }
+
+  } // TABLET PORTRAIT
+
+} // .contact-sidebar-address
+
+
+
+//    _____ ___  ____  __  __
+//   |  ___/ _ \|  _ \|  \/  |
+//   | |_ | | | | |_) | |\/| |
+//   |  _|| |_| |  _ <| |  | |
+//   |_|   \___/|_| \_\_|  |_|
+//
+
+#page-contact-form-container{
+
+}
+
+#page-contact-form-title{
+  margin-bottom: 37px;
+
+  h2{
+    text-transform: uppercase;
+    color: @dark-grey-2;
+  }
+  p{
+    .body-font-small;
+  }
+
+  h2 + p{
+    padding-top: 8px;
+  }
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    margin-bottom: 22px;
+
+    h2{
+      .h4-style;
+    }
+
+    p{
+      font-size: 13px;
+      line-height: 20px;
+    }
+    h2 + p{
+      padding-top: 19px;
+    }
+
+  }
+
+}
+
+
+
+
+
+#page-contact-form{
+
+  &.checkout-form{
+    .form-group{
+      margin-bottom: 20px;
+    }
+  }
+
+  .cta-container{
+    padding-top: 10px;
+    text-align: right;
+    .square-cta{
+      padding-left: 22px;
+      padding-right: 22px;
+    }
+  }
+
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    &.checkout-form{
+      .form-group{
+        margin-bottom: 18px;
+      }
+    }
+
+    .cta-container{
+      padding-top: 12px;
+
+      .square-cta{
+        width: 100%;
+        display: block;
+        text-align: center;
+      }
+    }
+
+  } // // TABLET PORTRAIT
+
+} // #page-contact-form
+
+
+
+
+  

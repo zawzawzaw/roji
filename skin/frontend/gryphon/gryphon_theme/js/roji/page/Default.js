@@ -77,7 +77,7 @@ roji.page.Default = function(options, element) {
 
   this.desktop_header_element = $j('#desktop-header');
   this.mobile_header_element = $j('#mobile-header');
-  this.desktop_footer_element = $j('#desktop-footer');
+  this.desktop_footer_element = $j("#desktop-footer");
   this.mobile_footer_element = $j('#mobile-footer');  
 
   this.mobile_header_expanded_element = $j('#mobile-header-expanded');

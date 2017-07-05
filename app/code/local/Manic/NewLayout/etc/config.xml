@@ -24,6 +24,22 @@
                     <label>Account Layout</label>
                     <template>page/account-layout.phtml</template>
                 </new_cms_layout_4> 
+                <new_cms_layout_5 module="page" translate="label">
+                    <label>Inside Page Layout</label>
+                    <template>page/inside-page-layout.phtml</template>
+                </new_cms_layout_5> 
+                <new_cms_layout_6 module="page" translate="label">
+                    <label>Our Teas Page Layout</label>
+                    <template>page/our-teas-layout.phtml</template>
+                </new_cms_layout_6> 
+                <new_cms_layout_7 module="page" translate="label">
+                    <label>FAQ Page Layout</label>
+                    <template>page/faq-layout.phtml</template>
+                </new_cms_layout_7> 
+                <new_cms_layout_8 module="page" translate="label">
+                    <label>Other Inside Page Layout</label>
+                    <template>page/other-inside-page-layout.phtml</template>
+                </new_cms_layout_8> 
             </layouts>
         </page>
     </global>

@@ -13,15 +13,18 @@ class Magestore_Giftvoucher_Block_Giftvoucherlist extends Mage_Core_Block_Templa
         $customer_email = Mage::getSingleton('customer/session')->getCustomer()->getEmail();
 
         $timezone = ((Mage::app()->getLocale()->date()->get(Zend_Date::TIMEZONE_SECS)) / 3600);        
-        $collection = Mage::getModel('giftvoucher/customervoucher')->getCollection()
-                ->addFieldToFilter('main_table.customer_id', $customer_id);
+        $collection = Mage::getModel('giftvoucher/customervoucher')->getCollection();
+                // ->addFieldToFilter('main_table.customer_id', $customer_id);
         $voucherTable = Mage::getModel('core/resource')->getTableName('giftvoucher');
         $voucherHistoryTable = Mage::getModel('core/resource')->getTableName('giftvoucher_history');
         $collection->getSelect()
                 ->joinleft(array('voucher_table' => $voucherTable), 'main_table.voucher_id = voucher_table.giftvoucher_id', array('recipient_name', 'gift_code', 'balance', 'currency', 'status', 'expired_at', 'customer_check_id' => 'voucher_table.customer_id', 'recipient_email', 'customer_email'))
+                ->joinleft(array('voucher_history_table' => $voucherHistoryTable), 'main_table.voucher_id = voucher_history_table.giftvoucher_id', array('customer_id', 'order_increment_id'))
                 ->where('voucher_table.status <> ?', Magestore_Giftvoucher_Model_Status::STATUS_DELETED)
                 ->where('voucher_table.status <> ?', Magestore_Giftvoucher_Model_Status::STATUS_USED)
-                ->where('voucher_table.recipient_email = ?', $customer_email);
+                ->where('voucher_table.status <> ?', Magestore_Giftvoucher_Model_Status::STATUS_PENDING)
+                ->where('voucher_table.recipient_email = ?', $customer_email)
+                ->where('voucher_history_table.status = ?', Magestore_Giftvoucher_Model_Status::STATUS_PENDING);
         // $collection->getSelect()
                 // ->columns(array(
                     // 'added_date' => new Zend_Db_Expr("SUBDATE(added_date,INTERVAL " . $timezone . " HOUR)"),
@@ -32,6 +35,8 @@ class Magestore_Giftvoucher_Block_Giftvoucherlist extends Mage_Core_Block_Templa
         // ));
         $collection->setOrder('customer_voucher_id', 'DESC');
         $this->setCollection($collection);
+
+        // print_r($collection->getData());
 
         $redeem_collection = Mage::getModel('giftvoucher/customervoucher')->getCollection()
                 ->addFieldToFilter('main_table.customer_id', $customer_id);
@@ -73,7 +78,7 @@ class Magestore_Giftvoucher_Block_Giftvoucherlist extends Mage_Core_Block_Templa
             'width' => '80px',
             'render' => 'getCodeTxt',
             'searchable' => true,
-        ));
+        ));        
 
         $grid->addColumn('balance', array(
             'header' => $this->__('Amount'),
@@ -81,6 +86,15 @@ class Magestore_Giftvoucher_Block_Giftvoucherlist extends Mage_Core_Block_Templa
             'type' => 'price',
             'index' => 'balance',
             'render' => 'getBalanceFormat',
+            'searchable' => true,
+        ));
+
+        $grid->addColumn('order_increment_id', array(
+            'header' => $this->__('Order No.'),
+            'index' => 'order_increment_id',
+            'type' => 'order_no',
+            'format' => 'medium',
+            'align' => 'left',                        
             'searchable' => true,
         ));
 

@@ -28,18 +28,18 @@
 
 <div id="page-account-order-detail-table" class="page-account-order-table">
             
-    <div class="page-account-order-table-header">
+    <div class="page-account-order-table-header hidden-xs">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-sm-6">
             <h4 class="left-aligned"><?php echo $this->__('Product') ?></h4>
           </div>
-          <div class="col-md-2">
+          <div class="col-sm-2">
             <h4 class="center-aligned"><?php echo $this->__('Unit Price') ?></h4>
           </div>
-          <div class="col-md-2">
+          <div class="col-sm-2">
             <h4 class="center-aligned"><?php echo $this->__('Quantity') ?></h4>
           </div>
-          <div class="col-md-2">
+          <div class="col-sm-2">
             <h4 class="center-aligned"><?php echo $this->__('Subtotal') ?></h4>
           </div>
         </div>
@@ -58,7 +58,7 @@
             <div class="page-account-order-table-item">
 
               <div class="row">
-                <div class="col-md-6 hidden-sm hidden-xs">
+                <div class="col-sm-6 hidden-xs">
 
                   <div class="item-description">
                     <h2><a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_item->getName()) ?>"><?php echo $this->escapeHtml($_item->getName()) ?></a></h2>
@@ -66,35 +66,42 @@
                     <p><?php echo $this->escapeHtml($order_product->getDescription()) ?></p>
                   </div>
                 </div>
-                <div class="col-md-2 hidden-sm hidden-xs">
+                <div class="col-sm-2 hidden-xs">
 
                   <div class="item-value"><?php echo $_order->formatPrice($_item->getPrice()*1) ?></div>
                   
                 </div>
-                <div class="col-md-2 col-sm-8 col-xs-7">
+                <div class="col-sm-2 hidden-xs">
 
-                  <div class="item-value"><?php echo $_item->getQtyOrdered()*1 ?></div>
-
-                  <div class="item-desc-mobile visible-sm visible-xs">
-
-                    <div class="item-description">
-                      <h2><a href="product-detail.php" title="<?php echo $this->escapeHtml($_item->getName()) ?>"><?php echo $this->escapeHtml($_item->getName()) ?></a></h2>
-                      <h3><?php echo $this->escapeHtml($_item->getData('product_name_in_color')) ?></h3>
-                    </div>
-
-                    <div class="item-value"><?php echo $_order->formatPrice($_item->getPrice()*1) ?></div>
-
-                    <div class="item-quantity">
-                      <h4>Quantity: <br><?php echo $_item->getQtyOrdered()*1 ?></h4>
-                    </div>
-
-                  </div> <!-- item-desc-mobile -->
+                  <div class="item-value"><?php echo $_item->getQtyOrdered()*1 ?></div>                  
 
                 </div>
-                <div class="col-md-2 hidden-sm hidden-xs">
+                <div class="col-sm-2 hidden-xs">
 
                   <div class="item-value"><?php echo $_order->formatPrice($_item->getRowTotal()*1) ?></div>
 
+                </div>
+
+                <div class="col-xs-12 visible-xs">
+                    <div class="item-desc-mobile">
+
+                      <div class="item-description">
+                        <h2><a href="product-detail.php" title="<?php echo $this->escapeHtml($_item->getName()) ?>"><?php echo $this->escapeHtml($_item->getName()) ?></a></h2>
+                        <h3><?php echo $this->escapeHtml($_item->getData('product_name_in_color')) ?></h3>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-xs-6">
+                          <div class="item-value"><?php echo $_order->formatPrice($_item->getPrice()*1) ?> x <?php echo $_item->getQtyOrdered()*1 ?></div>  
+                        </div>
+                        <div class="col-xs-6">
+                          <div class="item-quantity">
+                            <h4><?php echo $_order->formatPrice($_item->getRowTotal()*1) ?></h4>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div> <!-- item-desc-mobile -->
                 </div>
                 
               </div> <!-- row -->

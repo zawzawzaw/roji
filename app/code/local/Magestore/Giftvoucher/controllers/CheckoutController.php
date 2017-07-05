@@ -73,7 +73,7 @@ class Magestore_Giftvoucher_CheckoutController extends Mage_Core_Controller_Fron
 
                     if(!empty($applied_gift_code)) {
 
-                        $session->addError($this->__('You can only redeem one gift certifificate at a time.', $code));
+                        $session->addError($this->__('You can only redeem one gift certificate at a time.', $code));
                         
                     } else {
 

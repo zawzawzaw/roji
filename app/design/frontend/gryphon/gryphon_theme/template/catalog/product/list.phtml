@@ -97,9 +97,10 @@
                 <div class="product-item-price">
                   <?php echo $this->getPriceHtml($_product, true) ?>
                 </div>
-                <div class="product-item-cta">
-                <?php if($_productNameStripped=='Gift Card'): ?> 
-                  <a href="<?php echo $_product->getProductUrl() ?>" class="add-to-cart-links plus-cta">Add to cart</a>  
+                <div class="product-item-cta <?php echo $_productNameStripped; ?>">
+
+                <?php if($_productNameStripped=='Roji E-Gift Card'): ?> 
+                  <a href="<?php echo $_product->getProductUrl() ?>" class="plus-cta">View product</a>  
                 <?php else: ?>
                   <a href="<?php echo $this->getAddToCartUrl($_product) ?>" class="add-to-cart-links plus-cta">Add to cart</a>
                 <?php endif; ?>
