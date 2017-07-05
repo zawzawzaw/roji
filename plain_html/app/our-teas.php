@@ -141,6 +141,24 @@
 
   </article> <!-- page-our-teas-slider-section -->
 
+  <article id="page-our-teas-slider-copy-section-mobile" class="visible-sm visible-xs">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-1 col-xs-0"></div>
+        <div class="col-sm-10 col-xs-12">
+          <div class="default-copy">
+
+            <p>Tea was first discovered in China where their people were the first drinkers of tea. In the sixth century, Buddhist monks introduced the ritual drinking of tea into Japan from China. During that time, tea was extremely valuable and only drunk by imperial court nobles and Buddhist monks.</p>
+            <p>As the cultivation of tea spread throughout the country, the practice of drinking tea became increasingly popular amongst the samurai and common people.</p>
+            <p>Dedicated rooms were established for drinking tea. In time, these places gradually took on a formal beauty and the drinking of tea became ritualized, It was elevated to an art form with the creation of the Japanese tea ceremony (chanoyu), a ritual for the preparation, serving, and drinking of tea.</p>
+            <p>In the Edo period (1603-1868), with the development of many innovative technologies and distribution systems, Japanese tea became a valuable export commodity. Tea is exported all across the world, enabling people to experience the appreciation for the subtle flavours and unique health benefits of Japanese tea.</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
 
   <!--
      __  __    _    ____
@@ -160,7 +178,7 @@
 
           <div id="page-our-teas-map">
 
-            <div id="page-our-teas-map-content">
+            <div id="page-our-teas-map-content" class="visible-md visible-lg">
 
               <div id="page-our-teas-map-content-image">
               </div> <!-- page-our-teas-map-content-image -->
