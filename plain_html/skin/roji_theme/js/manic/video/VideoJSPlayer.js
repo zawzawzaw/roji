@@ -121,8 +121,20 @@ manic.video.VideoJSPlayer.ON_VIDEO_END_02 = 'on_video_end_02';
  */
 manic.video.VideoJSPlayer.prototype.delayed_video_init = function() {
   console.log('this.id_str: ' + this.id_str);        // this fails often
+  console.log('test');
+  
   this.player = videojs(this.id_str);
   this.player.ready(this.on_video_ready.bind(this));
+
+  console.log('test');
+  this.player.on('error', function(event) {
+    if (this.player.error().code === 4) {
+      this.player.error(null); // clear out the old error
+      // sources.shift(); // drop the highest precedence source
+      // player.src(sources); // retry
+      return;
+    }
+  }.bind(this));
   this.player.on('ended', this.on_video_end.bind(this));
   this.player.on('play', this.on_video_play.bind(this));
   this.player.ready(this.on_video_ready.bind(this));

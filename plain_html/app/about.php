@@ -51,7 +51,7 @@
 
                   <!-- non-autoplay version -->
                   <div class="manic-video-container auto-replay" data-video="videos_cms/sample-video.mp4">
-                    <video class="video-js vjs-default-skin" poster="images_cms/about/roji-about.jpg" preload="auto" data-setup="{controls: false}">
+                    <video class="video-js vjs-default-skin" poster="images_cms/about/roji-about.jpg" preload="auto" data-setup='{"controls": false}'>
                       <source src=""  type="video/mp4" />
                     </video>
                   </div>
@@ -69,8 +69,8 @@
                   <div class="col-md-12 col-sm-8 col-xs-10">
 
                     <div class="cta-container">
-                      <a href="javascript:void(0);" class="square-cta full-width-version visible-sm visible-xs">Learn more about our teas</a>
-                      <a href="javascript:void(0);" class="arrow-cta visible-md visible-lg">Learn more about our teas</a>
+                      <a href="javascript:void(0);" class="square-cta full-width-version visible-sm visible-xs">Learn more</a>
+                      <a href="javascript:void(0);" class="arrow-cta visible-md-inline-block visible-lg-inline-block">Learn more about our teas</a>
                     </div>
                     
                   </div>

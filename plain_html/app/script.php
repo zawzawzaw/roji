@@ -23,6 +23,7 @@
     <script type="text/javascript" src="../skin/roji_theme/js/manic-polyfill.js"></script>
     <script type="text/javascript" src="../skin/roji_theme/libs/jquery-other/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="../skin/roji_theme/libs/jquery-other/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="../skin/roji_theme/libs/jquery-other/jquery.tap.min.js"></script>
     <script type="text/javascript" src="../skin/roji_theme/libs/misc-js/mobile-detect.js"></script>
     <script type="text/javascript" src="../skin/roji_theme/libs/misc-js/preloadjs-0.4.0.min.js"></script>
     <script type="text/javascript" src="../skin/roji_theme/libs/gsap/src/minified/TweenMax.min.js"></script>
