@@ -50,14 +50,14 @@
                 <?php if($_link->getLabel()=='Account Dashboard'): ?>
 
                     <?php if ($this->isActive($_link)): ?>
-                        <li data-name="<?php echo $lbl; ?>" class="selected<?php echo ($_last ? ' last' : '') ?>"><strong>My Account</strong></li>
+                        <li data-name="<?php echo $lbl; ?>" class="selected<?php echo ($_last ? ' last' : '') ?>"><a href="<?php echo $_link->getUrl() ?>">My Account</a></li>
                     <?php else: ?>
                         <li data-name="<?php echo $lbl; ?>" <?php echo ($_last ? ' class="last"' : '') ?>><a href="<?php echo $_link->getUrl() ?>">My Account</a></li>
                     <?php endif; ?>
                 <?php else: ?>
 
                     <?php if ($this->isActive($_link)): ?>
-                        <li data-name="<?php echo $lbl; ?>" class="selected<?php echo ($_last ? ' last' : '') ?>"><strong><?php echo $_link->getLabel() ?></strong></li>
+                        <li data-name="<?php echo $lbl; ?>" class="selected<?php echo ($_last ? ' last' : '') ?>"><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></li>
                     <?php else: ?>
                         <li data-name="<?php echo $lbl; ?>" <?php echo ($_last ? ' class="last"' : '') ?>><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></li>
                     <?php endif; ?>

@@ -228,7 +228,7 @@ roji.page.Account.prototype.update_account_bg_width = function() {
 roji.page.Account.prototype.update_account_bg_height = function(){
 
   // only for desktop
-  if (manic.IS_MOBILE == false) {
+  // if (manic.IS_MOBILE == false) {
 
     this.desktop_footer_element = $j("#desktop-footer"); // no idea why desktop_footer_element height is always null...
 
@@ -238,7 +238,7 @@ roji.page.Account.prototype.update_account_bg_height = function(){
       'min-height': target_height + 'px'
     });
     
-  }
+  // }
 };
 
 
@@ -405,9 +405,9 @@ roji.page.Account.prototype.update_page_layout = function() {
   roji.page.Account.superClass_.update_page_layout.call(this);
 
   if (this.has_sidebar == true) {
-    this.update_account_bg_width();
-    this.update_account_bg_height();
+    this.update_account_bg_width();    
   }
+  this.update_account_bg_height();
 
 }
 

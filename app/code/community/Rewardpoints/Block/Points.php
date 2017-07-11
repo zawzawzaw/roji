@@ -185,7 +185,7 @@ class Rewardpoints_Block_Points extends Mage_Core_Block_Template
             if (isset($points_name[$order_id])){
                 $toHtml .= '<div class="j2t-in-title"><p>'.$points_name[$order_id].'</p></div>';
             } else {
-                $toHtml .= '<div class="j2t-in-title"><p>'.$this->__('Birthday rebates').'</p></div>';
+                $toHtml .= '<div class="j2t-in-title"><p>'.$this->__('Birthday Month').'</p></div>';
             }
         }
         elseif ($order_id < 0){

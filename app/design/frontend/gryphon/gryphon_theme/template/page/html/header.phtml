@@ -260,8 +260,7 @@ $quoteData= $quote->getData();
               <nav>
                 <ul>
 
-                  <!-- <li><a href="<?php echo $this->getUrl('about'); ?>">About</a></li> -->
-                  <li><a href="javascript:void(0);">About</a></li>
+                  <li><a href="<?php echo $this->getUrl('about'); ?>">About</a></li>
 
                   <!-- currency converter functionality pending -->
                   <li class="currency-version">
@@ -275,7 +274,7 @@ $quoteData= $quote->getData();
 
                   </li>
 
-                  <li><a href="javascript:void(0);">Our Teas</a></li>
+                  <li><a href="<?php echo $this->getUrl('our-teas'); ?>">Our Teas</a></li>
 
                   <!-- CLASS HAS TO BE ADDED BY THE JAVASCRIPT -->
                   <li class="submenu-version">
@@ -289,9 +288,10 @@ $quoteData= $quote->getData();
                     </ul>
                   </li>
 
-                  <li><a href="javascript:void(0);">Blog</a></li>
-                  <li><a href="javascript:void(0);">FAQ</a></li>
-                  <li><a href="javascript:void(0);">Contact</a></li>
+                  <li><a href="<?php echo $this->getUrl('blog'); ?>">Blog</a></li>
+                  <li><a href="<?php echo $this->getUrl('faq'); ?>">FAQ</a></li>
+                  <li><a href="<?php echo $this->getUrl('chaseki-members-program'); ?>">Chaseki Members Program</a></li>
+                  <li><a href="<?php echo $this->getUrl('contact'); ?>">Contact</a></li>
 
                 </ul>
               </nav>

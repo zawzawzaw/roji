@@ -157,24 +157,7 @@ endif;
 
                         <div id="page-product-detail-instructions">
                           
-                          <?php if($is_gift_product): ?>
-                            <h2>Product Specification</h2>
-
-                            <div class="detail-item-container">
-                              <div class="detail-item">
-                                <h4>Country</h4>
-                                <p><?php echo $_product->getData('country'); ?></p>
-                              </div>
-                              <div class="detail-item">
-                                <h4>Diameter</h4>
-                                <p><?php echo $_product->getData('diameter'); ?></p>
-                              </div>
-                              <div class="detail-item">
-                                <h4>Height</h4>
-                                <p><?php echo $_product->getData('height'); ?></p>
-                              </div>
-                            </div> <!-- detail-item-container -->                            
-                          <?php else: ?>
+                          <?php if(!$is_gift_product): ?>
                             <h2>Tea Origins & Brewing Instructions</h2>
 
                             <div class="detail-item-container">
@@ -204,10 +187,7 @@ endif;
                                 <p><?php echo $_product->getTime(); ?></p>
                               </div>
                             </div>
-                          <?php endif; ?>
-                          
-                          
-                          
+                          <?php endif; ?>                    
 
                         </div> <!-- page-product-detail-instructions -->
                       </div>
@@ -257,16 +237,32 @@ endif;
                         <div class="copy-title">                            
                           <h1><?php echo $_product->getName(); ?></h1>
                           <h3><strong><?php echo $_product->getData('product_name_in_color'); ?></strong></h3>
+                          <?php if ($isGiftcardType) :?>
+                            <ul class="gift-card-values">
+                            <?php 
+                            $gift_value = Mage::helper('giftvoucher/giftproduct')->getGiftValue($_product); 
+                            foreach ($gift_value['prices'] as $key => $price) {
+                              echo "<li>" . Mage::helper('core')->currency($price, true, false) . "</li>";
+                            }
+                            ?>
+                            </ul>                            
+                          <?php endif; ?>
                         </div>
                         
                         <?php if ($isGiftcardType) :?>
-                          <?php echo $this->getChildHtml('product_type_data') ?>
+                          <div class="row gift-card-copy">
+                            <div class="col-md-4"><p class="gift-card-copy-title">How to use</p ></div>
+                            <div class="col-md-8"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div>
+                          </div>
+                          <?php echo $this->getChildHtml('product_type_data') ?>                          
                         <?php else : ?>  
                           <div class="copy-price red-version">
                             <ul>
                               <li><?php echo $this->getPriceHtml($_product); ?></li>
-                              <li><?php echo $_product->getData('number_of_sachet'); ?> silken sachets</li>
-                              <li><?php echo number_format($_product->getData('weight'), 1); ?> g</li>
+                              <?php if(!$is_gift_product): ?>
+                                <li><?php echo $_product->getData('number_of_sachet'); ?> silken sachets</li>
+                              <?php endif; ?>
+                              <li><?php echo number_format($_product->getData('weight'), 0); ?> g</li>
                             </ul>
                           </div>
 
@@ -274,7 +270,13 @@ endif;
                             <div class="col-md-3">
                               
                               <div class="copy-desc red-version">
-                                <?php echo $shortDescription; ?>
+                                <?php if($is_gift_product): ?>
+                                  Diameter: <?php echo $_product->getData('diameter'); ?> <br>
+                                  Height: <?php echo $_product->getData('height'); ?> <br>
+                                  Made in <?php echo $_product->getData('country'); ?>
+                                <?php else: ?>
+                                  <?php echo $shortDescription; ?>  
+                                <?php endif; ?>                                
                               </div> <!-- copy-desc -->
 
                             </div>
@@ -290,7 +292,11 @@ endif;
                                 <?php endif; ?>
 
                                 <div class="detail-item">
-                                  <h4>Tea Maker’s Note</h4>
+                                  <?php if($is_gift_product): ?>
+                                    <h4>Product Description</h4>
+                                  <?php else: ?>
+                                    <h4>Tea Maker’s Note</h4>
+                                  <?php endif; ?>
                                   <p><?php echo (!empty($_product->getData('tea_makers_note'))) ? $_product->getData('tea_makers_note') : "" ; ?></p>
                                 </div>
                               </div> <!-- detail-item-container -->
@@ -333,7 +339,7 @@ endif;
                     </div> <!-- row -->
                   </div> <!-- page-product-detail-form-container -->
                   
-                  <?php if (!$isGiftcardType) : ?>
+                  <?php if (!$isGiftcardType && !$is_gift_product) : ?>
                     <div id="page-product-detail-content-image-container">
                       <div class="row">
                         <div class="col-md-1"></div>
@@ -387,7 +393,83 @@ endif;
               </div> <!-- page-product-detail-content -->
           </div>
       </div>
-        
+      <?php if ($isGiftcardType) : ?>
+      <div id="gift-card-social-media-share-container" class="row">
+          <div class="col-lg-offset-10 col-lg-2 col-md-offset-9 col-md-3">
+            <?php $_helper = $this->helper('catalog/output'); ?>
+            <?php $_productName = urlencode(trim($_helper->productAttribute($_product, $_product->getName(), 'name')))?>
+            <?php $_productImageUrl = urlencode(trim($this->helper('catalog/image')->init($_product, 'image')))?>
+            <?php $_productUrl = urlencode(trim($_product->getProductUrl()))?>
+            
+            <div class="form-group social-media-share">
+              <div class="row">
+                <div class="col-md-5"><h4>Share</h4></div>
+                <div class="col-md-7">
+                  <ul class="social-sharing">
+                      <?php //if ($this->canEmailToFriend()): ?>
+                          <!-- <li><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>" class="link-email-friend" title="<?php echo $this->__('Email to a Friend') ?>"><?php echo $this->__('Email to a Friend') ?></a></li> -->
+                      <?php //endif; ?>
+
+                      <?php $_helper = $this->helper('catalog/output'); ?>
+                      <?php $_productName = urlencode(trim($_helper->productAttribute($_product, $_product->getName(), 'name')))?>
+                      <?php $_productImageUrl = urlencode(trim($this->helper('catalog/image')->init($_product, 'image')))?>
+                      <?php $_productUrl = urlencode(trim($_product->getProductUrl()))?>
+                      <!-- <li><a href="#" class="instagram"></a></li> -->
+                      <li>
+                          <?php $_u = 'p[url]=' . $_productUrl . '&p[images][0]=' . $_productImageUrl . '&p[title]=' . $_productName . '&p[summary]=' . urlencode(trim($_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description'))); ?>        
+                          <a href="<?php echo Mage::helper('core/url')->getCurrentUrl(); ?>" target="_blank" title="<?php echo $this->__('Share on Facebook') ?>" class="fa fa-facebook">
+                          </a>
+                      </li>    
+                      <li>        
+                          <a href="<?php echo 'https://twitter.com/share?url=' . $_productUrl . '&text=' . $_productName; ?>" target="_blank" title="<?php echo $this->__('Share on Twitter') ?>" class="fa fa-twitter" target="_blank"></a>
+                      </li>
+                      <li>
+                          <!-- <a href="http://pinterest.com/pin/create/button/?url=<?php echo $_productUrl; ?>&media=<?php echo $_productImageUrl; ?>&description=<?php echo $_productName; ?>" class="pintrest" target="_blank"></a> -->
+                          <a href="http://pinterest.com/pin/create/button/?url=<?php echo $_productUrl; ?>&media=<?php echo $_productImageUrl; ?>&description=<?php echo $_productName; ?>" class="fa fa-pinterest" target="_blank"></a>
+                      </li>
+                  </ul>
+                </div>
+              </div>
+              <?php         
+              $_productImageUrl_Raw = $this->helper('catalog/image')->init($_product, 'image')->resize(158);
+              ?>
+              <script>
+                  jQuery('.fa-facebook').on('click', function(e){
+                      e.preventDefault();
+                      var share_url = jQuery(this).attr('href');
+                      FB.ui({
+                          display: 'popup',
+                          method: 'share',
+                          title: 'Monogram E-Gift Card - Monogram Tea',
+                          href: share_url,
+                          picture: '<?php echo $_productImageUrl_Raw; ?>'
+                      }, function(response){});
+                  });
+
+                  function PopupCenter(pageURL, title,w,h) {
+                      var left = (screen.width/2)-(w/2);
+                      var top = (screen.height/2)-(h/2);
+                      var targetWin = window.open (pageURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+                      return targetWin;
+                  } 
+
+                  jQuery(document).ready(function($){
+                      $('.fa-twitter').on('click', function(e){
+                          e.preventDefault();
+                          var share_url = $(this).attr('href');
+                          PopupCenter(share_url,'', 500, 500);
+                      });
+                      $('.fa-pintrest').on('click', function(e){
+                          e.preventDefault();
+                          var share_url = $(this).attr('href');
+                          PopupCenter(share_url,'', 500, 500);
+                      });
+                  });    
+                </script>
+            </div>
+          </div>
+      </div>
+      <?php endif; ?>
     </div>
 </article> <!-- page-product-detail-content-section -->
 
@@ -481,7 +563,9 @@ endif;
             <div class="copy-price red-version">
               <ul>
                 <li><?php echo $this->getPriceHtml($_product); ?></li>
-                <li><?php echo $_product->getData('number_of_sachet'); ?> silken sachets</li>
+                <?php if(!$is_gift_product): ?>
+                  <li><?php echo $_product->getData('number_of_sachet'); ?> silken sachets</li>
+                <?php endif; ?>
                 <li><?php echo number_format($_product->getData('weight'), 1); ?> g</li>
               </ul>
             </div>

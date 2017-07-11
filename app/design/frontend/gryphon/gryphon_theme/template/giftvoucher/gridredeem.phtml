@@ -102,6 +102,11 @@
                                                 </p>
                                                 <?php
                                                 break;
+                                            case 'order_no':
+                                                ?>
+                                                <p><?php echo (!empty($row->getData($column['index']))) ? $row->getData($column['index']) : '-' ?></p>
+                                                <?php
+                                                break;
                                             default:
                                                 ?>
                                                 <p><?php echo $row->getData($column['index']) ?></p>

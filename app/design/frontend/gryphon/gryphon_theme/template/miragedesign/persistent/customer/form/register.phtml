@@ -212,7 +212,7 @@
                             <div class="col-md-8">
                                 <div class="dropdown">
                                     <select id="region_id" name="region_id" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;">
-                                        <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                                        <option value=""><?php echo $this->__('Select') ?></option>
                                     </select>
                                 </div>
                                 <script type="text/javascript">
@@ -316,3 +316,8 @@
 
     </div>
   </article>
+  <script>
+    if($j(".messages").length) {
+      $j("#page-account-create-intro-copy").addClass("message-open");
+    }
+  </script>

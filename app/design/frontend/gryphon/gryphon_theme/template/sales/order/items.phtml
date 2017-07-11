@@ -149,7 +149,7 @@
         <?php endif; ?>
 
         <?php if ($_order->getCouponCode()) : ?>
-        <div class="row">
+        <div class="row" style="display: flex;align-items: flex-end;">
           <div class="col-md-8 col-xs-8">
             <div class="column-01">
               <p><?php echo $this->__('Applied Discount Code —'); ?><?php echo $_order->getCouponCode(); ?>:</p>
@@ -162,6 +162,36 @@
           </div>
         </div>
         <?php endif; ?>
+
+        <?php if ($_order->getRewardpointsQuantity()) : ?>
+        <div class="row" style="display: flex;align-items: flex-end;">
+          <div class="col-md-8 col-xs-8">
+            <div class="column-01">
+              <p><?php echo $this->__('Rebate'); ?>:</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-xs-4">
+            <div class="column-02">
+              <p>- <?php echo $_order->formatPrice($_order->getRewardpointsQuantity()); ?></p>
+            </div>
+          </div>
+        </div>
+        <?php endif; ?>
+
+        <?php //if ($_order->getRewardpointsQuantity()) : ?>
+        <div class="row" style="display: flex;align-items: flex-end;">
+          <div class="col-md-8 col-xs-8">
+            <div class="column-01">
+              <p><?php echo $this->__('GIFT CERTIFICATE —'); ?><br><?php echo $_order->getGiftCodes(); ?>:</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-xs-4">
+            <div class="column-02">
+              <p>- <?php echo $_order->formatPrice($_order->getGiftVoucherDiscount()); ?></p>
+            </div>
+          </div>
+        </div>
+        <?php //endif; ?>
 
         <?php if ($_order->getTaxAmount()): ?>
         <div class="row">

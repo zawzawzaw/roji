@@ -46,104 +46,116 @@ endif;
 //]]>
 </script>
 <div class="page-product-detail-giftcard-content giftvoucher-product-info inputs checkout-form">
-    <?php if ($_giftAmount['type'] == 'range'): ?>
-        <div class="form-group">
-            <?php
-            $includeTax = ( Mage::getStoreConfig('tax/display/type') != 1 );
-            $rateTax = Mage::helper('tax')->getPrice($_product, 100, $includeTax) / 100;
-            ?>
-            <label for="amount_range"><?php echo $this->__('Enter value:') ?></label>
-            <input id="amount_range" name="amount" class="input-text required-entry validate-greater-than-zero" onchange="validateInputRange(this);" value="<?php echo $_formData->getAmount() ?>" />
-            (<span class="price test 1"><?php echo $_giftAmount['from_txt'] ?></span> -  <span class="price test"><?php echo $_giftAmount['to_txt'] ?></span>)
-            <script type="text/javascript">
-                //<![CDATA[
-                var rateTax = <?php echo $rateTax ?>;
-                var result = [];
-                priceFormat = '<?php echo $store->getCurrentCurrency()->format(1000, array(), false); ?>';
-                price = priceFormat.match('1.000.00')[0];
-                result['decimalSymbol'] = price.charAt(5);
-                result['groupSymbol'] = price.charAt(1);
+    <div class="form-group gift-card-form-group">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <?php if ($_giftAmount['type'] == 'range'): ?>                    
+                    <?php
+                    $includeTax = ( Mage::getStoreConfig('tax/display/type') != 1 );
+                    $rateTax = Mage::helper('tax')->getPrice($_product, 100, $includeTax) / 100;
+                    ?>
+                    <label for="amount_range"><?php echo $this->__('Enter value:') ?></label>
+                    <input id="amount_range" name="amount" class="input-text required-entry validate-greater-than-zero" onchange="validateInputRange(this);" value="<?php echo $_formData->getAmount() ?>" />
+                    (<span class="price test 1"><?php echo $_giftAmount['from_txt'] ?></span> -  <span class="price test"><?php echo $_giftAmount['to_txt'] ?></span>)
+                    <script type="text/javascript">
+                        //<![CDATA[
+                        var rateTax = <?php echo $rateTax ?>;
+                        var result = [];
+                        priceFormat = '<?php echo $store->getCurrentCurrency()->format(1000, array(), false); ?>';
+                        price = priceFormat.match('1.000.00')[0];
+                        result['decimalSymbol'] = price.charAt(5);
+                        result['groupSymbol'] = price.charAt(1);
 
-                if (!$('amount_range').value)
-                    $('amount_range').value = <?php echo $_giftAmount['from'] ?>;
-                function validateInputRange(el) {
-                    var gift_amount_min = <?php echo $_giftAmount['from'] ?>;
-                    var gift_amount_max = <?php echo $_giftAmount['to'] ?>;
+                        if (!$('amount_range').value)
+                            $('amount_range').value = <?php echo $_giftAmount['from'] ?>;
+                        function validateInputRange(el) {
+                            var gift_amount_min = <?php echo $_giftAmount['from'] ?>;
+                            var gift_amount_max = <?php echo $_giftAmount['to'] ?>;
 
-                    validateValue = el.value.replace(/\s/g, '');
-                    if (validateValue.search(result.groupSymbol) != -1)
-                        validateValue = validateValue.replace(result.groupSymbol, '');
-                    el.value = validateValue.replace(result.decimalSymbol, '.');
-                    $('amount_range').value = el.value;
+                            validateValue = el.value.replace(/\s/g, '');
+                            if (validateValue.search(result.groupSymbol) != -1)
+                                validateValue = validateValue.replace(result.groupSymbol, '');
+                            el.value = validateValue.replace(result.decimalSymbol, '.');
+                            $('amount_range').value = el.value;
 
-                    if (el.value < gift_amount_min)
-                        el.value = gift_amount_min;
-                    if (el.value > gift_amount_max)
-                        el.value = gift_amount_max;
+                            if (el.value < gift_amount_min)
+                                el.value = gift_amount_min;
+                            if (el.value > gift_amount_max)
+                                el.value = gift_amount_max;
 
-                    changePriceByInput(el.value);
-                }
-                changePriceByInput($('amount_range').value);
-                function changePriceByInput(value) {
-                    if (giftAmountChange.gift_price_type == 'percent') {
-                        $('giftcard-product-price').innerHTML = formatCurrency(value * giftAmountChange.gift_price_options / 100 * rateTax, giftCardPriceFomat);
-                        $('price_amount').value = value * giftAmountChange.gift_price_options / 100 * rateTax;
-                    } else {
-                        $('giftcard-product-price').innerHTML = formatCurrency(value * rateTax, giftCardPriceFomat);
-                        $('price_amount').value = value * rateTax;
-                    }
-                    $('giftcard-product-amount-media').innerHTML = formatCurrency(value, giftCardPriceFomat);
-                    changePriceMediaGiftcard($('giftcard-product-amount-media').innerHTML);
-                }
+                            changePriceByInput(el.value);
+                        }
+                        changePriceByInput($('amount_range').value);
+                        function changePriceByInput(value) {
+                            if (giftAmountChange.gift_price_type == 'percent') {
+                                $('giftcard-product-price').innerHTML = formatCurrency(value * giftAmountChange.gift_price_options / 100 * rateTax, giftCardPriceFomat);
+                                $('price_amount').value = value * giftAmountChange.gift_price_options / 100 * rateTax;
+                            } else {
+                                $('giftcard-product-price').innerHTML = formatCurrency(value * rateTax, giftCardPriceFomat);
+                                $('price_amount').value = value * rateTax;
+                            }
+                            $('giftcard-product-amount-media').innerHTML = formatCurrency(value, giftCardPriceFomat);
+                            changePriceMediaGiftcard($('giftcard-product-amount-media').innerHTML);
+                        }
 
-                //]]>
-            </script>
-        </div>
-    <?php elseif ($_giftAmount['type'] == 'dropdown'): ?>
-        <div class="form-group">
-            <label for="amount_dropdown"><?php echo $this->__('Gift Card Value*') ?></label>
-            <div class="dropdown">
-                <select id="amount_dropdown" name="amount" class="required-entry select" onchange="changePriceByInputDropdown(this)">
-                    <?php $options = array_combine($_giftAmount['options'], $_giftAmount['options_txt']) ?>
-                    <?php foreach ($options as $value => $label): ?>
-                        <option value="<?php echo $value ?>" <?php if ($value == $_formData->getAmount()) echo 'selected' ?> ><?php echo $label ?></option>
-                    <?php endforeach ?>
-                </select>
+                        //]]>
+                    </script>                    
+                <?php elseif ($_giftAmount['type'] == 'dropdown'): ?>        
+                    <div class="row vertical-align">
+                        <div class="col-lg-3 col-md-3 col-xs-4">
+                            <h4 for="amount_dropdown"><?php echo $this->__('Value*') ?></h4>
+                        </div>
+                        <div class="col-lg-6 col-md-9 col-xs-8">
+                            <div class="dropdown">
+                                <select id="amount_dropdown" name="amount" class="required-entry select" onchange="changePriceByInputDropdown(this)">
+                                    <?php $options = array_combine($_giftAmount['options'], $_giftAmount['options_txt']) ?>
+                                    <?php foreach ($options as $value => $label): ?>
+                                        <option value="<?php echo $value ?>" <?php if ($value == $_formData->getAmount()) echo 'selected' ?> ><?php echo $label ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                            </div>  
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        //<![CDATA[
+                        function changePriceByInputDropdown(el) {
+                            $('giftcard-product-price').innerHTML = formatCurrency(giftAmountChange.prices[el.value], giftCardPriceFomat);
+                            $('price_amount').value = giftAmountChange.prices[el.value];
+                            $('giftcard-product-amount-media').innerHTML = el.options[el.selectedIndex].text;
+                            changePriceMediaGiftcard($('giftcard-product-amount-media').innerHTML);
+                        }
+                        changePriceByInputDropdown($('amount_dropdown'));
+                        //]]>
+                    </script>
+                <?php elseif ($_giftAmount['type'] == 'static'): ?>
+                    <?php echo $this->__('Gift Card value: <span class="regular-price">%s</span>', $_giftAmount['value_txt']) ?>
+                    <input type="hidden" name="amount" value="<?php echo $_giftAmount['value'] ?>" />
+                    <script type="text/javascript">
+                        //<![CDATA[
+                        $('price_amount').value = giftAmountChange.price;
+                        $('giftcard-product-price').innerHTML = formatCurrency(giftAmountChange.price, giftCardPriceFomat);
+                        $('giftcard-product-amount-media').innerHTML = '<?php echo $_giftAmount['value_txt'] ?>';
+                        //]]>
+                    </script>
+                <?php endif ?>
             </div>
-            <script type="text/javascript">
-                //<![CDATA[
-                function changePriceByInputDropdown(el) {
-                    $('giftcard-product-price').innerHTML = formatCurrency(giftAmountChange.prices[el.value], giftCardPriceFomat);
-                    $('price_amount').value = giftAmountChange.prices[el.value];
-                    $('giftcard-product-amount-media').innerHTML = el.options[el.selectedIndex].text;
-                    changePriceMediaGiftcard($('giftcard-product-amount-media').innerHTML);
-                }
-                changePriceByInputDropdown($('amount_dropdown'));
-                //]]>
-            </script>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="form-quantity-container">
+                    <div class="row vertical-align">
+                        <div class="col-lg-4 col-md-3 col-xs-4">
+                            <h4 for="gift_quantity"><?php echo $this->__('QUANTITY*') ?></h4>
+                        </div>
+                        <div class="col-lg-8 col-md-9 col-xs-8">
+                            <div class="quantity-container form-quantity" id="gift_quantity_container">
+                                <a href="#" class="form-quantity-minus-btn minus"></a>                
+                                <input type="text" pattern="\d*" name="qty" id="qty" maxlength="12" class="short qty input-text form-quantity-input-txt" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" />
+                                <a href="#" class="form-quantity-plus-btn plus"></a>
+                            </div>          
+                        </div>
+                    </div>            
+                </div>
+            </div>
         </div>
-    <?php elseif ($_giftAmount['type'] == 'static'): ?>
-        <div class="form-group">
-            <?php echo $this->__('Gift Card value: <span class="regular-price">%s</span>', $_giftAmount['value_txt']) ?>
-            <input type="hidden" name="amount" value="<?php echo $_giftAmount['value'] ?>" />
-            <script type="text/javascript">
-                //<![CDATA[
-                $('price_amount').value = giftAmountChange.price;
-                $('giftcard-product-price').innerHTML = formatCurrency(giftAmountChange.price, giftCardPriceFomat);
-                $('giftcard-product-amount-media').innerHTML = '<?php echo $_giftAmount['value_txt'] ?>';
-                //]]>
-            </script>
-        </div>
-    <?php endif ?>
-
-    <div class="form-group">
-        <label for="gift_quantity"><?php echo $this->__('QUANTITY*') ?></label>
-
-        <div class="quantity-container" id="gift_quantity_container">
-            <div class="minus-button minus"></div><!--
-            --><input type="text" pattern="\d*" name="qty" id="qty" maxlength="12" class="short qty" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" /><!--            
-            --><div class="plus-button plus"></div>
-        </div>        
     </div>
 
     <?php echo $this->getChildHtml('giftcard.product.selecttemplate') ?>
@@ -227,17 +239,33 @@ endif;
     </script>
 </p>
 <div class="giftvoucher-receiver" id="giftvoucher-receiver" style="<?php if (!$_formData->getSendFriend()) echo 'display:none;' ?>">    
-    <div class="form-group">
-        <label for="recipient_name"><?php echo $this->__('Recipient name') ?>*</label>
-        <input type="text" class="input-text required-entry" name="recipient_name" value="<?php echo $_formData->getRecipientName() ?>"  onchange="changeReceiverName(this);" onkeyup="changeReceiverName(this);" maxlength="30"/>
+    <div class="form-group gift-card-form-group">
+        <div class="row vertical-align">
+            <div class="col-md-3">
+                <h4 for="recipient_name"><?php echo $this->__('Recipient name') ?>*</h4>        
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="input-text required-entry" name="recipient_name" value="<?php echo $_formData->getRecipientName() ?>"  onchange="changeReceiverName(this);" onkeyup="changeReceiverName(this);" maxlength="30"/>  
+            </div>
+        </div>        
     </div>
-    <div class="form-group">
-        <label class = "recipient_email" for="recipient_email"><?php echo $this->__('Recipient email') ?>*</label>
-        <input type="text" class="input-text required-entry validate-email validate-same-email" name="recipient_email" id="recipient_email" value="<?php echo $_formData->getRecipientEmail() ?>" />
+    <div class="form-group gift-card-form-group">
+        <div class="row vertical-align">
+            <div class="col-md-3">
+                <h4 class = "recipient_email" for="recipient_email"><?php echo $this->__('Recipient email') ?>*</h4>        
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="input-text required-entry validate-email validate-same-email" name="recipient_email" id="recipient_email" value="<?php echo $_formData->getRecipientEmail() ?>" />
+            </div>
+        </div>        
     </div>
-    <div class="form-group">
-        <label for="customer_name"><?php echo $this->__('Sender name') ?>*</label>
-        <input type="text" class="input-text required-entry" name="customer_name" value="<?php echo $_formData->getCustomerName() ?>" onchange="changeSenderName(this);" onkeyup="changeSenderName(this);" maxlength="30"/>
+    <div class="form-group gift-card-form-group">
+        <div class="row vertical-align">
+            <div class="col-md-3"><h4 for="customer_name"><?php echo $this->__('Sender name') ?>*</h4></div>
+            <div class="col-md-9">
+                <input type="text" class="input-text required-entry" name="customer_name" value="<?php echo $_formData->getCustomerName() ?>" onchange="changeSenderName(this);" onkeyup="changeSenderName(this);" maxlength="30"/>
+            </div>
+        </div>        
     </div>
     <?php //if ($this->enableCustomMessage()):   ?>
     <p id="recipient_ship_desc" style = "display: none; margin-top: 5px; float: left;clear: both;">
@@ -248,46 +276,52 @@ endif;
             echo $this->__("You need to fill in your friend's address as the shipping address on checkout page. We will send this Gift Card to that address.");
         ?>
     </p>
-    <div class="form-group">
-        <label class = "message" for="message"><?php echo $this->__('Message') ?></label>
-        <textarea maxlength="<?php echo $this->messageMaxLen(); ?>" name="message" id="message" class="" onchange="changeRemaining(this);" onkeyup="changeRemaining(this);"><?php echo $_formData->getMessage() ?></textarea>
-        <span class="char_remaining"><?php echo $this->__('Characters Remaining: ') ?><span id="giftvoucher_char_remaining"><?php echo $this->messageMaxLen() ?></span></span>
-        <script type="text/javascript">
-            //<![CDATA[
-            var remaining_max = <?php echo $this->messageMaxLen() ?>;
-            function changeRemaining(el) {
-                if (el.value.length > remaining_max) {
-                    el.value = el.value.substring(0, remaining_max);
-                }
-                $('giftvoucher_char_remaining').innerHTML = remaining_max - el.value.length;
-                for (i = 0; i < 3; i++)
-                    if ($(giftmedia[i]))
-                        $(giftmedia[i]).down('.giftcard-custom-message').innerHTML = el.value;
-            }
-            function changeSenderName(el) {
-                for (i = 0; i < 3; i++)
-                    if ($(giftmedia[i]))
-                        if (el.value)
-                            $(giftmedia[i]).down('.giftcard-send-from').innerHTML = el.value;
-                        else
-                            $(giftmedia[i]).down('.giftcard-send-from').innerHTML = '<?php echo Mage::helper('customer')->isLoggedIn() ? Mage::helper('customer')->getCustomerName() : ''; ?>';
-            }
-            function changeReceiverName(el) {
-                for (i = 0; i < 3; i++)
-                    if ($(giftmedia[i]))
-                        $(giftmedia[i]).down('.giftcard-send-to').innerHTML = el.value;
-            }
+    <div class="form-group gift-card-form-group">
+        <div class="row">
+            <div class="col-md-3">
+                <h4 class = "message" for="message"><?php echo $this->__('Message') ?></h4>
+            </div>
+            <div class="col-md-9">
+                <textarea maxlength="<?php echo $this->messageMaxLen(); ?>" name="message" id="message" class="" onchange="changeRemaining(this);" onkeyup="changeRemaining(this);"><?php echo $_formData->getMessage() ?></textarea>
+                <span class="char_remaining"><?php echo $this->__('Characters Remaining: ') ?><span id="giftvoucher_char_remaining"><?php echo $this->messageMaxLen() ?></span></span>
+                <script type="text/javascript">
+                    //<![CDATA[
+                    var remaining_max = <?php echo $this->messageMaxLen() ?>;
+                    function changeRemaining(el) {
+                        if (el.value.length > remaining_max) {
+                            el.value = el.value.substring(0, remaining_max);
+                        }
+                        $('giftvoucher_char_remaining').innerHTML = remaining_max - el.value.length;
+                        for (i = 0; i < 3; i++)
+                            if ($(giftmedia[i]))
+                                $(giftmedia[i]).down('.giftcard-custom-message').innerHTML = el.value;
+                    }
+                    function changeSenderName(el) {
+                        for (i = 0; i < 3; i++)
+                            if ($(giftmedia[i]))
+                                if (el.value)
+                                    $(giftmedia[i]).down('.giftcard-send-from').innerHTML = el.value;
+                                else
+                                    $(giftmedia[i]).down('.giftcard-send-from').innerHTML = '<?php echo Mage::helper('customer')->isLoggedIn() ? Mage::helper('customer')->getCustomerName() : ''; ?>';
+                    }
+                    function changeReceiverName(el) {
+                        for (i = 0; i < 3; i++)
+                            if ($(giftmedia[i]))
+                                $(giftmedia[i]).down('.giftcard-send-to').innerHTML = el.value;
+                    }
 
-            // same_email = '<?php echo $this->__('You can not send giftcard for yourselve.') ?>';
-            // Validation.add('validate-same-email', same_email, function(v) {
-            //     if (Validation.get('validate-email').test(v)) {
-            //         if (v === '<?php echo Mage::getSingleton('customer/session')->getCustomer()->getEmail() ?>')
-            //             return false;
-            //     }
-            //     return true;
-            // });
-            //]]>
-        </script>
+                    // same_email = '<?php echo $this->__('You can not send giftcard for yourselve.') ?>';
+                    // Validation.add('validate-same-email', same_email, function(v) {
+                    //     if (Validation.get('validate-email').test(v)) {
+                    //         if (v === '<?php echo Mage::getSingleton('customer/session')->getCustomer()->getEmail() ?>')
+                    //             return false;
+                    //     }
+                    //     return true;
+                    // });
+                    //]]>
+                </script>
+            </div>
+        </div>        
     </div>
     <?php //endif  ?>
     <div class="form-group" style="display:none;">
@@ -305,105 +339,115 @@ endif;
     </div>
     <?php if ($this->enableScheduleSend()): ?>
         <?php echo $this->getLayout()->createBlock('core/html_calendar')->setTemplate('page/js/calendar.phtml')->toHtml() ?>
-        <div class="form-group giftcard-date-box">
-            <label for="day_to_send"><?php echo $this->__('Day to send') ?>*</label>            
-            <div class="dropdown-container">
-                <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <div class="dropdown date-dropdown">
-                            <select name="registration_date_day" id="registration_date_day">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                                <option value="13">13</option>
-                                <option value="14">14</option>
-                                <option value="15">15</option>
-                                <option value="16">16</option>
-                                <option value="17">17</option>
-                                <option value="18">18</option>
-                                <option value="19">19</option>
-                                <option value="20">20</option>
-                                <option value="21">21</option>
-                                <option value="22">22</option>
-                                <option value="23">23</option>
-                                <option value="24">24</option>
-                                <option value="25">25</option>
-                                <option value="26">26</option>
-                                <option value="27">27</option>
-                                <option value="28">28</option>
-                                <option value="29">29</option>
-                                <option value="30">30</option>
-                                <option value="31">31</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <div class="dropdown date-dropdown">
-                            <select name="registration_date_month" id="registration_date_month">
-                                <option value="01">Jan</option>
-                                <option value="02">Feb</option>
-                                <option value="03">Mar</option>
-                                <option value="04">Apr</option>
-                                <option value="05">May</option>
-                                <option value="06">Jun</option>
-                                <option value="07">Jul</option>
-                                <option value="08">Aug</option>
-                                <option value="09">Sep</option>
-                                <option value="10">Oct</option>
-                                <option value="11">Nov</option>
-                                <option value="12">Dec</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <div class="dropdown date-dropdown">
-                            <select name="registration_date_year" id="registration_date_year">
-                                <!-- <option value="2016">2016</option> -->
-                                <option value="2017">2017</option>
-                                <option value="2018">2018</option>
-                                <option value="2019">2019</option>
-                                <option value="2020">2020</option>
-                                <option value="2021">2021</option>
-                                <option value="2023">2023</option>
-                                <option value="2024">2024</option>
-                                <option value="2025">2025</option>
-                                <option value="2026">2026</option>
-                                <option value="2027">2027</option>
-                                <option value="2028">2028</option>
-                                <option value="2029">2029</option>
-                                <option value="2030">2030</option>                                
-                            </select>
-                        </div>
-                    </div>
+        <div class="form-group gift-card-form-group giftcard-date-box">
+            <div class="row vertical-align">
+                <div class="col-md-3">
+                    <h4 for="day_to_send"><?php echo $this->__('Day to send') ?>*</h4>            
+                </div>
+                <div class="col-md-9">
+                    <div class="dropdown-container">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="dropdown date-dropdown">
+                                    <select name="registration_date_day" id="registration_date_day">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                        <option value="29">29</option>
+                                        <option value="30">30</option>
+                                        <option value="31">31</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="dropdown date-dropdown">
+                                    <select name="registration_date_month" id="registration_date_month">
+                                        <option value="01">Jan</option>
+                                        <option value="02">Feb</option>
+                                        <option value="03">Mar</option>
+                                        <option value="04">Apr</option>
+                                        <option value="05">May</option>
+                                        <option value="06">Jun</option>
+                                        <option value="07">Jul</option>
+                                        <option value="08">Aug</option>
+                                        <option value="09">Sep</option>
+                                        <option value="10">Oct</option>
+                                        <option value="11">Nov</option>
+                                        <option value="12">Dec</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="dropdown date-dropdown">
+                                    <select name="registration_date_year" id="registration_date_year">
+                                        <!-- <option value="2016">2016</option> -->
+                                        <option value="2017">2017</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2025">2025</option>
+                                        <option value="2026">2026</option>
+                                        <option value="2027">2027</option>
+                                        <option value="2028">2028</option>
+                                        <option value="2029">2029</option>
+                                        <option value="2030">2030</option>                                
+                                    </select>
+                                </div>
+                            </div>
 
+                        </div>
+                    </div>
+                    <input type="hidden" class="input-text required-entry validate-date validate-date-giftcard" name="day_to_send" id="day_to_send" value="<?php echo $_formData->getDayToSend() ?>" style="float:none;"/>
+                    <img src="<?php echo Mage::getBaseUrl('skin') ?>/adminhtml/default/default/images/grid-cal.gif" alt="<?php echo $this->__('Select Date') ?>" class="v-middle" id="calendar-day_to_send" />
                 </div>
             </div>
-            <input type="hidden" class="input-text required-entry validate-date validate-date-giftcard" name="day_to_send" id="day_to_send" value="<?php echo $_formData->getDayToSend() ?>" style="float:none;"/>
-            <img src="<?php echo Mage::getBaseUrl('skin') ?>/adminhtml/default/default/images/grid-cal.gif" alt="<?php echo $this->__('Select Date') ?>" class="v-middle" id="calendar-day_to_send" />
         </div>
 
         <!--        time zone-->
-        <div class="form-group" style="">
-            <label for="timezone_to_send"><?php echo $this->__('Time zone') ?></label>      
-            <div class="dropdown">                            
-                <select class="required-entry" name = "timezone_to_send" id = "timezone_to_send">
-                    <?php
-                    foreach ($timezones as $timezone) {
-                        ?>
-                        <option value="<?php echo $timezone['value']; ?>" <?php if (Mage::app()->getStore()->getConfig('general/locale/timezone') == $timezone['value']) echo 'selected' ?> ><?php echo $timezone['label']; ?></option>
-                        <?php
-                    }
-                    ?>
-                </select>
+        <div class="form-group gift-card-form-group" style="">
+            <div class="row vertical-align">
+                <div class="col-md-3"><h4 for="timezone_to_send"><?php echo $this->__('Time zone') ?></h4></div>
+                <div class="col-md-9">
+                    <div class="dropdown">                            
+                        <select class="required-entry" name = "timezone_to_send" id = "timezone_to_send">
+                            <?php
+                            foreach ($timezones as $timezone) {
+                                ?>
+                                <option value="<?php echo $timezone['value']; ?>" <?php if (Mage::app()->getStore()->getConfig('general/locale/timezone') == $timezone['value']) echo 'selected' ?> ><?php echo $timezone['label']; ?></option>
+                                <?php
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -461,75 +505,6 @@ endif;
         <button type="button" title="Preview template" id="giftcard-preview-button-add" class="button btn-cart" onclick="getPreview()" style="display:none; float: right"><span style="background-image: url(<?php echo $this->getSkinUrl() . 'images/giftvoucher/preview-icon.png' ?>); background-repeat: no-repeat;background-size: contain; padding-left: 20px;"><span><?php echo $this->__('Preview Gift Card') ?></span></span></button>
     <?php endif; ?>
     <div style="clear: both"></div>
-
-
-    <?php $_helper = $this->helper('catalog/output'); ?>
-    <?php $_productName = urlencode(trim($_helper->productAttribute($_product, $_product->getName(), 'name')))?>
-    <?php $_productImageUrl = urlencode(trim($this->helper('catalog/image')->init($_product, 'image')))?>
-    <?php $_productUrl = urlencode(trim($_product->getProductUrl()))?>
-
-    <div class="form-group social-media-share">
-        <label>Share</label>   
-        <ul class="social-sharing">
-            <?php //if ($this->canEmailToFriend()): ?>
-                <!-- <li><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>" class="link-email-friend" title="<?php echo $this->__('Email to a Friend') ?>"><?php echo $this->__('Email to a Friend') ?></a></li> -->
-            <?php //endif; ?>
-
-            <?php $_helper = $this->helper('catalog/output'); ?>
-            <?php $_productName = urlencode(trim($_helper->productAttribute($_product, $_product->getName(), 'name')))?>
-            <?php $_productImageUrl = urlencode(trim($this->helper('catalog/image')->init($_product, 'image')))?>
-            <?php $_productUrl = urlencode(trim($_product->getProductUrl()))?>
-            <!-- <li><a href="#" class="instagram"></a></li> -->
-            <li>
-                <!-- <a href="http://pinterest.com/pin/create/button/?url=<?php echo $_productUrl; ?>&media=<?php echo $_productImageUrl; ?>&description=<?php echo $_productName; ?>" class="pintrest" target="_blank"></a> -->
-                <a href="http://pinterest.com/pin/create/button/?url=<?php echo $_productUrl; ?>&media=<?php echo $_productImageUrl; ?>&description=<?php echo $_productName; ?>" class="fa fa-pinterest" target="_blank"></a>
-            </li>
-            <li>        
-                <a href="<?php echo 'https://twitter.com/share?url=' . $_productUrl . '&text=' . $_productName; ?>" target="_blank" title="<?php echo $this->__('Share on Twitter') ?>" class="fa fa-twitter" target="_blank"></a>
-            </li>
-            <li>
-                <?php $_u = 'p[url]=' . $_productUrl . '&p[images][0]=' . $_productImageUrl . '&p[title]=' . $_productName . '&p[summary]=' . urlencode(trim($_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description'))); ?>        
-                <a href="<?php echo Mage::helper('core/url')->getCurrentUrl(); ?>" target="_blank" title="<?php echo $this->__('Share on Facebook') ?>" class="fa fa-facebook">
-                </a>
-            </li>    
-        </ul>
-        <?php         
-        $_productImageUrl_Raw = $this->helper('catalog/image')->init($_product, 'image')->resize(158);
-        ?>
-        <script>
-            jQuery('.fa-facebook').on('click', function(e){
-                e.preventDefault();
-                var share_url = jQuery(this).attr('href');
-                FB.ui({
-                    display: 'popup',
-                    method: 'share',
-                    title: 'Monogram E-Gift Card - Monogram Tea',
-                    href: share_url,
-                    picture: '<?php echo $_productImageUrl_Raw; ?>'
-                }, function(response){});
-            });
-
-            function PopupCenter(pageURL, title,w,h) {
-                var left = (screen.width/2)-(w/2);
-                var top = (screen.height/2)-(h/2);
-                var targetWin = window.open (pageURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
-                return targetWin;
-            } 
-
-            jQuery(document).ready(function($){
-                $('.fa-twitter').on('click', function(e){
-                    e.preventDefault();
-                    var share_url = $(this).attr('href');
-                    PopupCenter(share_url,'', 500, 500);
-                });
-                $('.fa-pintrest').on('click', function(e){
-                    e.preventDefault();
-                    var share_url = $(this).attr('href');
-                    PopupCenter(share_url,'', 500, 500);
-                });
-            });    
-        </script>
-    </div>
 
 </div>
 <p></p>

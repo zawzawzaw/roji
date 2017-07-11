@@ -99,7 +99,7 @@ class Magestore_Giftvoucher_Block_Giftvoucherlist extends Mage_Core_Block_Templa
         ));
 
         $grid->addColumn('expired_at', array(
-            'header' => $this->__('Expired Date'),
+            'header' => $this->__('Expiry Date'),
             'index' => 'expired_at',
             'type' => 'date',
             'format' => 'medium',

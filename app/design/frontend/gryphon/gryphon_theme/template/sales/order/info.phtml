@@ -84,8 +84,8 @@
 -->
 
 <article id="page-account-content-section">
-<div id="page-account-content-section-bg" class="visible-md visible-lg">
-  <div class="sidebar-bg"></div>
+<div id="page-account-content-section-bg" class="">
+  <div class="sidebar-bg visible-md visible-lg"></div>
   <div class="content-bg"></div>
 </div>
 
@@ -169,13 +169,13 @@
                       <h2>Billing information</h2>
 
                       <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-xs-6">
                           <div class="detail-item">
                             <h4>Full Name</h4>
                             <p><?php echo implode(' ', array($billingAddress->getLastname(), $billingAddress->getFirstname())); ?></p>
                           </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-xs-6">
                           <div class="detail-item">
                             <h4>Email address</h4>
                             <p><a href="mailto:<?php echo $_order->getCustomerEmail(); ?>"><?php echo $_order->getCustomerEmail(); ?></a></p>
@@ -183,13 +183,13 @@
                         </div>
                       </div>
                       <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-xs-6">
                           <div class="detail-item">
                             <h4>Billing address</h4>
                             <p><?php echo implode(' ', array(implode(' ', $billingAddress->getStreet()), $billingAddress->getCity(), $billingCountryName, $billingAddress->getPostcode())); ?></p>
                           </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-xs-6">
                           <div class="detail-item">
                             <h4>Contact no.</h4>
                             <p><?php echo $billingAddress->getTelephone(); ?></p>
@@ -211,13 +211,13 @@
                         <h2>Shipping information</h2>
                         <?php if(isset($shippingAddress) && !empty($shippingAddress)): ?>
                         <div class="row">
-                          <div class="col-md-6">
+                          <div class="col-md-6 col-xs-6">
                             <div class="detail-item">
                               <h4>Full Name</h4>
                               <p><?php echo implode(' ', array($shippingAddress->getLastname(), $shippingAddress->getFirstname())); ?></p>
                             </div>
                           </div>
-                          <div class="col-md-6">
+                          <div class="col-md-6 col-xs-6">
                             <div class="detail-item">
                               <h4>Email address</h4>
                               <p><a href="mailto:<?php echo $shippingAddress->getEmail(); ?>"><?php echo $shippingAddress->getEmail(); ?></a></p>
@@ -225,13 +225,13 @@
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col-md-6">
+                          <div class="col-md-6 col-xs-6">
                             <div class="detail-item">
                               <h4>Shipping address</h4>
                               <p><?php echo implode(' ', array(implode(' ', $shippingAddress->getStreet()), $shippingAddress->getCity(), $shippingCountryName, $shippingAddress->getPostcode())); ?></p>
                             </div>
                           </div>
-                          <div class="col-md-6">
+                          <div class="col-md-6 col-xs-6">
                             <div class="detail-item">
                               <h4>Contact no.</h4>
                               <p><?php echo $shippingAddress->getTelephone(); ?></p>
@@ -240,13 +240,13 @@
                         </div> <!-- row -->
                         <?php else: ?>
                           <div class="row">
-                          <div class="col-md-6">
+                          <div class="col-md-6 col-xs-6">
                             <div class="detail-item">
                               <h4>Full Name</h4>
                               <p><?php echo implode(' ', array($billingAddress->getLastname(), $billingAddress->getFirstname())); ?></p>
                             </div>
                           </div>
-                          <div class="col-md-6">
+                          <div class="col-md-6 col-xs-6">
                             <div class="detail-item">
                               <h4>Email address</h4>
                               <p><a href="mailto:<?php echo $billingAddress->getEmail(); ?>"><?php echo $billingAddress->getEmail(); ?></a></p>
@@ -254,13 +254,13 @@
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col-md-6">
+                          <div class="col-md-6 col-xs-6">
                             <div class="detail-item">
                               <h4>Shipping address</h4>
                               <p>-</p>
                             </div>
                           </div>
-                          <div class="col-md-6">
+                          <div class="col-md-6 col-xs-6">
                             <div class="detail-item">
                               <h4>Contact no.</h4>
                               <p>-</p>

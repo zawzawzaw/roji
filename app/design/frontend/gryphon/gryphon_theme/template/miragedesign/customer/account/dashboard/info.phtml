@@ -74,7 +74,7 @@ if(Mage::getSingleton('customer/session')->isLoggedIn()) {
       <div class="col-md-4 col-tablet-landscape-4 col-sm-4 col-xs-12">
 
         <div class="detail-item">
-          <h4>Billing address</h4>
+          <h4>Default Billing Address</h4>
 
           <p>
             <?php if ($billingAddress) :?>
@@ -145,7 +145,7 @@ if(Mage::getSingleton('customer/session')->isLoggedIn()) {
               <input type="checkbox" name="is_subscribed" id="subscription" value="1" title="<?php echo $this->__('Sign up for our newsletter') ?>" class="input-text" <?php if($this->helper('customercustomiser')->getIsSubscribed()): ?> checked="checked"<?php endif; ?> />
               <label>
                 <span></span>
-                <p><strong><?php echo $this->__('Roji mailing list') ?></strong></p>
+                <p><strong><?php echo $this->__('Roji Cha mailing list') ?></strong></p>
               </label>
             </div>
           </div> <!-- form-group -->
@@ -153,7 +153,7 @@ if(Mage::getSingleton('customer/session')->isLoggedIn()) {
           <?php if( $this->helper('customercustomiser')->getIsSubscribed() ): ?>
             <small class="subscribe-msg"><?php echo $this->__("You are currently subscribed to our newsletter.") ?></small>
           <?php else: ?>
-            <small class="subscribe-msg"><?php echo $this->__('Subscribe to our mailing list and be the first to learn about our latest news, and enjoy exclusive deals and receive invites to events.') ?></small>
+            <small class="subscribe-msg"><?php echo $this->__('Subscribe to our mailing list and be the first to learn about our latest news, enjoy exclusive deals and receive invites to events.') ?></small>
           <?php endif; ?>
 
         </form> <!-- checkout-form -->

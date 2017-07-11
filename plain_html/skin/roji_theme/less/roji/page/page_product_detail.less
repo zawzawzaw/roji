@@ -24,6 +24,7 @@
   &.gift-card-version {
     @media all and (max-width: 991px) {
       padding-top: 30px;
+      // margin-bottom: 20px;
     }
     @media all and (max-width: 480px) {
       padding-top: 0px;
@@ -153,19 +154,66 @@
       text-transform: uppercase;
 
       margin-bottom: -1px;
+      @media all and (max-width: 991px) {
+        text-align: center;
+        font-size: 17px;
+        line-height: 17px;
+      }
     }
 
     h3{
       font-size: 24px;
       line-height: 36px;
       letter-spacing: 0.075em;
+
       strong{
         font-size: 24px;
         line-height: 36px;
         letter-spacing: 0.075em;
       }
+      @media all and (max-width: 991px) {
+        text-align: center;
+        font-size: 12px;
+        line-height: 21px;
+      }
     }
 
+    position: relative;
+    .gift-card-values {
+      position: absolute;
+      right: 0;
+      bottom: 0px;
+      @media all and (max-width: 991px) {
+        position: static;
+        text-align: center;
+        margin-top: 15px;
+        margin-bottom: 40px;
+      }
+
+      li {
+        display: inline-block;
+        .body-font-italic;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0.01em;
+        color: @p4-dark-red;
+        margin-right: 19px;
+        position: relative;
+        &:after {
+          content: "";
+          border-right: 1px solid @p4-dark-red;
+          position: absolute;
+          right: -10px;
+          height: 13px;
+          top: 4px;
+        }
+        &:last-child {
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }    
   }
 
   .copy-price{
@@ -221,6 +269,24 @@
       letter-spacing: 0.01em;
     }
   } // .copy-desc
+
+  .gift-card-copy {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    p {
+      .body-font-italic;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0.01em;
+      color: @dark-grey;
+      &.gift-card-copy-title {
+        color: @p4-dark-red;  
+      }
+    }
+    @media all and (max-width: 991px) {
+      display: none;
+    }
+  }
 
 } // #page-product-detail-copy
 
@@ -567,7 +633,7 @@
     display: none;
   }
 
-  .form-quantity-container{
+  .form-quantity-container{    
 
     .add-clearfix();
     margin-bottom: 30px;
@@ -578,9 +644,6 @@
   }
 
   // MOBILE
-  @media only screen and (max-width: 767px) {
-
-  }
 }
 
 
@@ -931,21 +994,21 @@
     margin-bottom: 10px;
   }
 
-  ul.social-sharing {  
-    display: inline-block;      
-    @media all and (max-width: 480px) {
-      display: block;
+  .gift-card-form-group {
+    margin-bottom: 40px;
+    @media all and (max-width: 991px) {
+      margin-bottom: 20px;
     }
-    li {
-      display: inline-block;
-      margin-right: 5px;
-      a {
-        font-size: 15px;
-        color: @off-black;
-        &:hover {
-          color: @grey;
-        }
-      }
+
+    h4 {
+      color: @off-black;
+      line-height: 17px;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .form-quantity-container{  
+      margin-top: 20px;      
     }
   }
 
@@ -1001,11 +1064,27 @@
   .design-radio{
     display: inline-block;
     vertical-align: top;
-    width: 60px;
-    height: 60px;
-    position: relative;            
+    width: 30%;
+    height: 120px;
+    position: relative;   
 
-    margin-right: 15px;
+    @media all and (max-width: 1024px) {
+      height: 90px;
+    }
+
+    @media all and (max-width: 991px) {
+      height: 170px;
+    }
+
+    @media all and (max-width: 480px) {
+      height: 110px;
+    }
+
+    margin-right: 5%;
+
+    &:last-child {
+      margin-right: 0px;
+    }
 
     &.gift-active {
       border: none!important;
@@ -1034,8 +1113,8 @@
     }
 
     .radio-image, img{
-      width: 60px;
-      height: 60px;
+      width: 100%;
+      height: 100%;
       position: absolute;
       top: 0;
       left: 0;
@@ -1058,5 +1137,45 @@
 
   .char_remaining {
     .body-font-small;
+  }
+}
+
+#gift-card-social-media-share-container {
+  position: relative;
+  padding-bottom: 100px;
+
+  @media all and (max-width: 991px) {
+    display: none;
+  }
+
+  &:before {
+    content: "";
+    border-top: 1px solid #ccc;
+    width: 97%;
+    position: absolute;
+    margin-left: 30px;
+    margin-top: -20px;
+  }
+
+  .social-media-share {
+    text-align: right;
+  }
+
+  ul.social-sharing {  
+    display: inline-block;      
+    @media all and (max-width: 480px) {
+      display: block;
+    }
+    li {
+      display: inline-block;
+      margin-right: 15px;
+      a {
+        font-size: 15px;
+        color: @off-black;
+        &:hover {
+          color: @grey;
+        }
+      }
+    }
   }
 }

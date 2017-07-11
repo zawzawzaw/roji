@@ -126,6 +126,15 @@ roji.page.Checkout.prototype.billing_shipping_input = function() {
         }
     });
   }  
+
+  $j("input[name='custom_shipping_address_select']").on('change', function(e){
+      if($j(this).val()=="") {
+        $j("#address-form-container").show();  
+      }else {
+        $j("#address-form-container").hide();
+      }      
+      $j('#shipping-address-select').val($j(this).val()).trigger('change');
+  });
 };
 
 roji.page.Checkout.prototype.giftvoucher_input = function() {

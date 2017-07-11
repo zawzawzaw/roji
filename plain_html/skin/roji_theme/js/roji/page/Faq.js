@@ -135,7 +135,7 @@ roji.page.Faq.prototype.update_faq_bg_width = function() {
 roji.page.Faq.prototype.update_faq_bg_height = function(){
 
   // only for desktop
-  if (manic.IS_MOBILE == false) {
+  // if (manic.IS_MOBILE == false) {
     
     
 
@@ -145,7 +145,7 @@ roji.page.Faq.prototype.update_faq_bg_height = function(){
       'min-height': target_height + 'px'
     });
     
-  }
+  // }
 };
 
 
@@ -230,9 +230,9 @@ roji.page.Faq.prototype.update_page_layout = function() {
   roji.page.Faq.superClass_.update_page_layout.call(this);
 
   if (this.has_sidebar == true) {
-    this.update_faq_bg_width();
-    this.update_faq_bg_height();
+    this.update_faq_bg_width();    
   }
+  this.update_faq_bg_height();
   
 }
 

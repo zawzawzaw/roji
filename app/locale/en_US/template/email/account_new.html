@@ -4,7 +4,7 @@
 "var logo_url":"Email Logo Image Url",
 "htmlescape var=$customer.name":"Customer Name",
 "store url=\"customer/account/\"":"Customer Account Url",
-"var customer.email":"Customer Email",
+"htmlescape var=$customer.email":"Customer Email",
 "htmlescape var=$customer.password":"Customer Password",
 "var subscriber.getUnsubscriptionLink()":"Subscriber Unsubscribe Url",
 "var subscriber.getConfirmationLink()":"Subscriber Confirmation Url"
@@ -27,22 +27,33 @@
                           
                           <tr>
                               <td align="center" style="font-family: 'Raleway',Arial Black,Gadget,sans-serif;font-style: normal;font-weight: 300;font-size: 22px;line-height: 34px;letter-spacing: .075em; color: #707071;" class="padding-copy">
-                                  Hi, {{htmlescape var=$customer.name}}
+                                  Welcome to Roji
                               </td>
                           </tr>
                           
                           <tr>
                               <td align="center" style="padding: 0px 20px 0 20px;">
                                 <!-- COPY -->
-                                <p align="center" style="padding: 20px 45px 0 45px; font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071;" class="padding-copy">Thank you for joining as at Monogram! Having an account with us will mean that you can save your addresses, keep track of your orders and even earn rebates which can be used to offset your future purchases.</p>
-                                <p align="center" style="padding: 20px 45px 0 45px; font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071;" class="padding-copy">Take a look at how easy it is to earn rebates:</p>
+                                <p align="center" style="padding: 20px 45px 0 45px; font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071;" class="padding-copy">You have successfully registered an account with us! You had earned $5 Rebates to use for your 1st purchase!</p>
+
                                 <ul style="padding: 20px 45px 0 45px; font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071; list-style: none; ">
+                                    <li>Email: {{htmlescape var=$customer.email}}</li>                                        
+                                    <li>Password: {{htmlescape var=$customer.password}}</li>                                    
+                                </ul>
+
+                                <a href="{{store url='customer/account/login'}}" target="_blank" class="link" style="font-family: 'Montserrat',Arial,Helvetica,sans-serif; font-style: normal; font-weight: 500; line-height: 24px; text-transform: uppercase; font-size: 12px; line-height: 20px; letter-spacing: .075em; color: #fff !important; display: inline-block; vertical-align: top; zoom: 1; height: 20px; padding-top: 5px; padding-bottom: 5px; padding-left: 17px; padding-right: 17px; background-color: #333; outline: none; border: none;-webkit-appearance: none; -moz-appearance: none; appearance: none; text-decoration: none;">Log-In</a>
+
+                                <!-- <p align="center" style="padding: 20px 45px 0 45px; font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071;" class="padding-copy">Thank you for joining as at Monogram! Having an account with us will mean that you can save your addresses, keep track of your orders and even earn rebates which can be used to offset your future purchases.</p> -->
+
+                                <!-- <p align="center" style="padding: 20px 45px 0 45px; font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071;" class="padding-copy">Take a look at how easy it is to earn rebates:</p> -->
+
+                                <!-- <ul style="padding: 20px 45px 0 45px; font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071; list-style: none; ">
                                     <li>$5 Rebates dollars upon 1st sign up</li>                                        
                                     <li>$8 Rebates dollars birthday month promotion</li>
                                     <li>$1 Rebates dollar earned for every $10 spent</li>                                        
                                     <li>$5 Rebates dollars for successful friend referral</li>
                                 </ul>
-                                <p align="center" style="padding: 20px 45px 0 45px; padding: 20px 45px 0 45px; font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071;" class="padding-copy"><a href="{{store url='customer/account/login'}}" class="link" style="color: #707071; text-decoration: none;">Login to your account</a> to check your rebate balance and start shopping to earn even more! </p>
+                                <p align="center" style="padding: 20px 45px 0 45px; padding: 20px 45px 0 45px; font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071;" class="padding-copy"><a href="{{store url='customer/account/login'}}" class="link" style="color: #707071; text-decoration: none;">Login to your account</a> to check your rebate balance and start shopping to earn even more! </p> -->
                               </td>
                           </tr>
                           <tr>
@@ -50,12 +61,14 @@
                                   <!-- BULLETPROOF BUTTON -->
                                   <table width="100%" border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
                                       <tr>
-                                        <td align="center" style="padding: 65px 0 0 0;" class="padding-copy">
-                                          <table border="0" cellspacing="0" cellpadding="0" class="responsive-table">
+                                        <td align="center" style="padding: 65px 0 0 0;"><p style="font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071;">Need help? Simply contact us at</p></td>
+                                      </tr>
+                                      <tr>
+                                        <td align="center" class="padding-copy">
+                                          <table width="50%" style="padding-top: 20px;" border="0" cellspacing="0" cellpadding="0" class="responsive-table">                                            
                                             <tr>
-                                              <td align="center"><a href="{{store direct_url='customer/account/login'}}" target="_blank" style="font-family: 'Montserrat',Arial,Helvetica,sans-serif; font-style: normal; font-weight: 500; line-height: 24px; text-transform: uppercase; font-size: 12px; line-height: 20px; letter-spacing: .075em; color: #fff !important; display: inline-block; vertical-align: top; zoom: 1; height: 20px; padding-top: 5px; padding-bottom: 5px; padding-left: 17px; padding-right: 17px; background-color: #333; outline: none; border: none;-webkit-appearance: none; -moz-appearance: none; appearance: none; text-decoration: none;" class="mobile-button">Account Login</a></td>
-                                              <td align="center" width="24"></td>
-                                              <td align="center"><a href="{{store url='store.html'}}" target="_blank" style="font-family: 'Montserrat',Arial,Helvetica,sans-serif; font-style: normal; font-weight: 500; line-height: 24px; text-transform: uppercase; font-size: 12px; line-height: 20px; letter-spacing: .075em; color: #fff !important; display: inline-block; vertical-align: top; zoom: 1; height: 20px; padding-top: 5px; padding-bottom: 5px; padding-left: 17px; padding-right: 17px; background-color: #333; outline: none; border: none;-webkit-appearance: none; -moz-appearance: none; appearance: none; text-decoration: none;" class="mobile-button">Tea Bar</a></td>
+                                              <td align="center" width="50%"><a href="mailto:ganbatte@rojicha.com" target="_blank" style="text-decoration: none;"><i class="fa fa-envelope-o" style="font-size: 18px; color: #707071;"></i><p style="font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071;">Email</p></a></td>
+                                              <td align="center" width="50%"><i class="fa fa-clock-o" style="font-size: 18px;"></i><p style="font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071;"">Operating Hours</p><p style="font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071;"">9am to 5pm</p></td>
                                             </tr>
                                           </table>
                                         </td>

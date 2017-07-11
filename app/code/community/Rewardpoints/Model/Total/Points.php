@@ -217,7 +217,7 @@ class Rewardpoints_Model_Total_Points extends Rewardpoints_Model_Total_Points_Ab
             //J2T end process shipping address
            
             if (sizeof($no_discount) && Mage::app()->getRequest()->getRouteName() == 'checkout'){
-                Mage::getSingleton('checkout/session')->addNotice(Mage::helper('rewardpoints')->__('Points are not usable on the following product(s): %s.', implode(", ", $no_discount)));
+                Mage::getSingleton('checkout/session')->addNotice(Mage::helper('rewardpoints')->__('Rebates cannot be redeemed for the following product(s): %s.', implode(", ", $no_discount)));
             }
             if ($pts = Mage::helper('rewardpoints/event')->getCreditPoints($address->getQuote())){
                 $address->getQuote()

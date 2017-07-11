@@ -426,7 +426,7 @@
       h4{
         .body-font;
         font-size: 13px;
-        line-height: 20px;
+        line-height: 20px;        
 
         a{
           .body-font;
@@ -465,6 +465,15 @@
           display: block;
           content: attr(data-column);
 
+        }
+
+        &.one-line-version {
+          &:before{
+            position: absolute;
+          }          
+        }
+        &.right-align-version {
+          text-align: right;
         }
       }
 
@@ -555,8 +564,6 @@
 //    \____\___/|_| \_| |_| |_____|_| \_| |_|
 //
 
-
-
 #page-account-content-section{
   padding-bottom: 100px;
   position: relative;
@@ -570,7 +577,13 @@
   }
 }
 
-
+@media only screen and (max-width: 991px) {
+  .account-friend-referral-page {
+    #page-account-content-section{
+      padding-bottom: 0px;
+    }
+  }
+}
 
 #page-account-content-section-bg{
   position: absolute;
@@ -595,6 +608,11 @@
     width: 70%;
     height: 100%;
     background: @off-white-1;
+
+    @media all and (max-width: 991px) {
+      width: 100%;
+      left: 0px;
+    }
   }
 }
 
@@ -721,6 +739,10 @@
   // margin-bottom: 50px;
   margin-bottom: 49px;
 
+  &.message-open {
+    margin-bottom: 69px;
+  }
+
   .default-copy{
     h2{
       text-transform: uppercase;
@@ -764,6 +786,11 @@
     .form-group{
       margin-bottom: 20px;
     }
+  }
+
+  .messages {
+    position: absolute;
+    top: 73px;
   }
   
   .cta-container{
@@ -847,6 +874,9 @@
   .info-header-rebates{
     text-align: center;
     padding-top: 5px;
+    @media all and (max-width: 480px) {
+      padding-top: 0px
+    }
 
     h4{
       font-size: 10px;
@@ -904,8 +934,16 @@
       }
     } 
   }
+  
+  @media only screen and (max-width: 480px) {
+    .info-header-content{
+      margin-bottom: 0px;
+    }
+  }
 
 } // #page-account-info-header
+
+
 
 
 
@@ -1279,6 +1317,11 @@
 
     .detail-item{
       padding-right: 0px;
+
+      h4 {
+        font-size: 13px;
+        line-height: 20px;
+      }
     }
     .detail-header-column-01{
       padding-right: 0px;
@@ -1644,6 +1687,7 @@
       line-height: 16px;
       padding-top: 4px;
       padding-bottom: 4px;
+      font-size: 11px;
     }
 
     hr{
@@ -1995,6 +2039,10 @@ body.account-friend-referral-page{
   padding-top: 49px;
   margin-bottom: 37px;
 
+  @media all and (max-width: 991px) {
+    margin-bottom: 0px;
+  }
+
   h2{
     color: @dark-grey-2;
     text-transform: uppercase;
@@ -2007,7 +2055,7 @@ body.account-friend-referral-page{
   @media only screen and (max-width: 767px) {
 
     background: @off-white-2;
-    margin-bottom: 40px;
+    margin-bottom: 0px;
 
   }
 }
@@ -2155,6 +2203,7 @@ body.account-friend-referral-page{
   // MOBILE
   @media only screen and (max-width: 767px) {
     padding-top: 30px;
+    padding-bottom: 50px;
     background: @off-white-2;
   }
 } // #page-account-friend-referral-table-container

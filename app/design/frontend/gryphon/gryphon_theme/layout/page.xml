@@ -69,7 +69,7 @@
                 <action method="addJs"><script>scriptaculous/dragdrop.min.js</script></action>
                 <action method="addJs"><script>scriptaculous/controls.min.js</script></action>
                 <action method="addJs"><script>scriptaculous/slider.min.js</script></action>
-                <action method="addJs"><script>varien/js.min.js</script></action>
+                <action method="addJs"><script>varien/js.js</script></action>
                 <action method="addJs"><script>varien/form.min.js</script></action>
                 <action method="addJs"><script>mage/translate.js</script></action>
                 <action method="addJs"><script>mage/cookies.min.js</script></action>                

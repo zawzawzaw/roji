@@ -87,6 +87,11 @@ roji.page.Default = function(options, element) {
 
   $j("#mobile-header-push-noti-close-btn").click(this.on_mobile_header_push_noti_close_btn_click.bind(this));
 
+  if($j('.page-default-content-section-bg').length > 0) {
+    this.section_bg = $j('.page-default-content-section-bg');
+    this.update_default_bg_height();
+  }
+
   console.log('roji.page.Default: init');
 };
 goog.inherits(roji.page.Default, manic.page.Page);
@@ -316,3 +321,28 @@ roji.page.Default.prototype.on_mobile_header_push_noti_close_btn_click = functio
 }
 
 
+roji.page.Default.prototype.update_default_bg_height = function(){
+
+  // only for desktop
+  if (manic.IS_MOBILE == false) {
+    
+    
+    this.desktop_title_section = $j(".page-default-title-section");
+    this.desktop_footer_element = $j("#desktop-footer"); // no idea why desktop_footer_element height is always null...
+    var footer_height = this.desktop_footer_element.outerHeight();
+
+    if(footer_height==null) {
+      footer_height = 60;
+    }
+
+    var target_height = this.window_height - this.desktop_header_element.outerHeight() - footer_height - this.desktop_title_section.outerHeight();
+
+    console.log($j("#desktop-footer"));
+    console.log($j("#desktop-footer"));
+
+    this.section_bg.css({
+      'min-height': target_height + 'px'
+    });
+    
+  }
+};

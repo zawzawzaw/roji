@@ -112,9 +112,9 @@
         <div class="tile-content">    
             <div class="tile-center-container">
                 <div class="tile-center-content">  
-                    <?php if(isMobile()===true): ?>
+                    <?php //if(isMobile()===true): ?>
                         <a href="<?php echo $_product->getProductUrl() ?>">
-                    <?php endif; ?>                                        
+                    <?php //endif; ?>                                        
                             <h2><?php echo $_product->getName(); ?></h2>
                             <h3><strong><?php echo $_product->getData('product_name_in_color') ?></h3>
                             <?php
@@ -134,9 +134,9 @@
                             <div class="tile-price">
                                 <?php echo Mage::helper('core')->currency($_product->getPrice(), true, false); ?>
                             </div>   
-                    <?php if(isMobile()===true): ?>    
+                    <?php //if(isMobile()===true): ?>    
                         </a>
-                    <?php endif; ?>
+                    <?php //endif; ?>
                 </div>                  
             </div>
             <div class="tile-cta">                
