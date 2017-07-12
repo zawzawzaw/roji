@@ -7,22 +7,44 @@
 
 #page-about-content-section{
   padding-bottom: 92px;
+
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    background: @off-white-1;
+    padding-bottom: 50px;
+  }
+}
+
+
+#page-about-sidebar-container{
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    padding-top: 34px;
+    padding-bottom: 30px;
+    background: @white;
+  }
 }
 
 #page-about-sidebar{
   padding-top: 126px;
   padding-right: 40px;
 
-  // MOBILE
-  @media only screen and (max-width: 767px) {
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
     padding-top: 0px;
     padding-right: 0px;
   }
+
 }
 
 #page-about-content{
   padding-top: 13px;
 
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    padding-top: 0px;
+  }
 }
 
 #page-about-copy{
@@ -30,7 +52,18 @@
 
   .cta-container{
     padding-top: 61px;
+
   }
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    padding-top: 30px;
+
+    .cta-container{
+      padding-top: 42px;
+      text-align: center;
+    }
+  }
+
 }
 
 
@@ -51,6 +84,28 @@
   .manic-video-container{
     height: 520px;
   }
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    .manic-image-container{
+      height: 480px;
+    }
+    .manic-video-container{
+      height: 480px;
+    }
+  }
+
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+    .manic-image-container{
+      height: 200px;
+    }
+    .manic-video-container{
+      height: 200px;
+    }
+    
+  }
+
 }
 
 

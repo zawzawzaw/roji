@@ -377,63 +377,49 @@
     </table>
 
 
-    <!-- ONE COLUMN SECTION -->
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
-      <tr>
-          <td align="center" style="padding: 70px 15px 70px 15px;" class="section-padding">
-              <table border="0" cellpadding="0" cellspacing="0" width="600" class="responsive-table">
-                  <tr>
-                      <td>
-                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                              
-                              <tr>
-                                  <td align="center" style="font-family: 'Raleway',Arial Black,Gadget,sans-serif;font-style: normal;font-weight: 300;font-size: 22px;line-height: 34px;letter-spacing: .075em; color: #707071;" class="padding-copy">
-                                      Hello {{htmlescape var=$customer.name}}
-                                  </td>
-                              </tr>
-                              
-                              <tr>
-                                  <td align="center" style="padding: 0px 20px 0 20px;">
-                                      <!-- COPY -->
-                                                      
-                                    <p style="padding-bottom: 20px;font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071;">We have received a password change request for your Monogram account. Please <a href='{{store url="customer/account/resetpassword/" _query_id=$customer.id _query_token=$customer.rp_token}}' style="color: #efeeed; text-decoration: none;">click on</a> the button below to reset your password.</p>
-
-                                    <a href="{{store url="customer/account/resetpassword/" _query_id=$customer.id _query_token=$customer.rp_token}}" target="_blank" style="font-family: 'Montserrat',Arial,Helvetica,sans-serif; font-style: normal; font-weight: 500; line-height: 24px; text-transform: uppercase; font-size: 12px; line-height: 20px; letter-spacing: .075em; color: #fff !important; display: inline-block; vertical-align: top; zoom: 1; height: 20px; padding-top: 5px; padding-bottom: 5px; padding-left: 17px; padding-right: 17px; background-color: #333; outline: none; border: none;-webkit-appearance: none; -moz-appearance: none; appearance: none; text-decoration: none;" class="mobile-button">Reset Password</a>
-
-
-                                    <tr>
-                                      <td align="center" style="padding: 20px 0px 0 10px; font-family: 'Raleway',Arial Black,Gadget,sans-serif;font-style: normal;font-weight: 300;font-size: 22px;line-height: 34px;letter-spacing: .075em; color: #707071;">Not You?</td>
-                                    </tr>
-                                    </tr>
-                                      <td align="left" style="padding: 20px 0px 0 10px; font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071; text-align: center;" class="padding-copy">If you did not make this request, kindly ignore this email.
-                                      </td>
-                                    </tr>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td align="center">
-                                      <!-- BULLETPROOF BUTTON -->
-                                      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
-                                          <tr>
-                                            <td align="center" style="padding: 25px 0 0 0;" class="padding-copy">
-                                              <table border="0" cellspacing="0" cellpadding="0" class="responsive-table">
-                                                <tr>
-                                                  <td align="center"><a href="{{store url='store.html'}}" target="_blank" style="font-family: 'Montserrat',Arial,Helvetica,sans-serif; font-style: normal; font-weight: 500; line-height: 24px; text-transform: uppercase; font-size: 12px; line-height: 20px; letter-spacing: .075em; color: #fff !important; display: inline-block; vertical-align: top; zoom: 1; height: 20px; padding-top: 5px; padding-bottom: 5px; padding-left: 17px; padding-right: 17px; background-color: #333; outline: none; border: none;-webkit-appearance: none; -moz-appearance: none; appearance: none; text-decoration: none;" class="mobile-button">Visit Tea Store</a></td>
-                                                </tr>
-                                              </table>
-                                            </td>
-                                          </tr>
-                                        </table>                                      
-                                  </td>
-                              </tr>
-                              
-                          </table>
-                      </td>
-                  </tr>
-              </table>
-          </td>
-      </tr>
-    </table>
+   <!-- ONE COLUMN SECTION -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td align="center" style="padding: 70px 15px 70px 15px;" class="section-padding">
+            <table border="0" cellpadding="0" cellspacing="0" width="600" class="responsive-table">
+                <tr>
+                    <td>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="center" style="text-transform:uppercase; font-family: 'Raleway',Arial Black,Gadget,sans-serif;font-style: normal;font-weight: 300;font-size: 22px;line-height: 34px;letter-spacing: .075em; color: #707071;" class="padding-copy">
+                                    <!-- Dear {{htmlescape var=$name}} -->
+                                    You have sent out the e-gift card
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" style="padding: 0px 20px 0 20px;">
+                                    <!-- COPY -->
+                                    <p align="center" style="padding: 20px 45px 0 45px; font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071;" class="padding-copy">Your friend has received the e-gift card you sent. <br> You may continue shopping.</p>                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <!-- BULLETPROOF BUTTON -->
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
+                                      <tr>
+                                        <td align="center" style="padding: 0px 0 0 0;" class="padding-copy">
+                                          <table border="0" cellspacing="0" cellpadding="0" class="responsive-table">
+                                            <tr>
+                                              <td align="center"><a href="{{store url='shop.html'}}" target="_blank" style="margin-top: 30px; font-family: 'Montserrat',Arial,Helvetica,sans-serif; font-style: normal; font-weight: 500; font-size: 12px; line-height: 20px; line-height: 24px; text-transform: uppercase; letter-spacing: .075em; color: #fff !important; border: 1px solid #fff;padding-left: 9px;padding-right: 9px;-webkit-transition: all .3s cubic-bezier(.645,.045,.355,1) 0s;-moz-transition: all .3s cubic-bezier(.645,.045,.355,1) 0s;-o-transition: all .3s cubic-bezier(.645,.045,.355,1) 0s;transition: all .3s cubic-bezier(.645,.045,.355,1) 0s;height: auto;line-height: 30px;background: #333;display: inline-block;vertical-align: top;zoom: 1;text-decoration: none;width: 168px;height: 30px;vertical-align: middle;" class="mobile-button">SHOP</a></td>
+                                            </tr>
+                                          </table>
+                                        </td>
+                                      </tr>
+                                    </table>                                       
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
 
 
 
@@ -477,7 +463,7 @@
                                                       <td align="center" style="padding: 15px 0 0 0; font-family: 'Montserrat',Arial Black,Gadget,sans-serif;font-style: normal;font-weight: 400;font-size: 12px; letter-spacing: 0.075em; color: #8d837c;">CONTACT US</td>
                                                   </tr>                                               
                                                   <tr>
-                                                      <td align="center" style="padding: 5px 0 0 0;"><a href="mailto:ganbatte@rojicha.com" style="font-size: 12px;line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400;color: #747475; text-decoration: none;">ganbatte@rojicha.com<br><span class="appleBody" style="font-size: 12px;line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400;display:block;color: #747475;text-decoration:none;">+65 6779 2948</span></a></td>
+                                                      <td align="center" style="padding: 5px 0 0 0;"><a href="mailto:ganbatte@rojicha.com" style="font-size: 12px;line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400;color: #747475; text-decoration: none;">ganbatte@rojicha.com<br><span class="appleBody" style="font-size: 12px;line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400;display:block;color: #747475;text-decoration:none;">(9am - 5pm)</span></a></td>
                                                   </tr>                                                    
                                               </table>
                                           </td>

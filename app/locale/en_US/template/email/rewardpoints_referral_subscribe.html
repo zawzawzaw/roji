@@ -1,4 +1,4 @@
-<!--@subject Referral program subscription ({{var parent.name}} invites you to visit {{var store_name}}) @-->
+<!--@subject ({{var parent.name}} invited you to join Roji Cha {{var store_name}}) @-->
 <!--@styles
 body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
 @-->
@@ -15,8 +15,8 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
                           
                           <tr>
-                              <td align="center" style="font-family: 'Raleway',Arial Black,Gadget,sans-serif;font-style: normal;font-weight: 300;font-size: 22px;line-height: 34px;letter-spacing: .075em; color: #707071;" class="padding-copy">
-                                  Referral Program
+                              <td align="center" style="text-transform: uppercase; font-family: 'Raleway',Arial Black,Gadget,sans-serif;font-style: normal;font-weight: 300;font-size: 22px;line-height: 34px;letter-spacing: .075em; color: #707071;" class="padding-copy">
+                                  Roji Cha Friend Referral Program
                               </td>
                           </tr>
                           
@@ -24,8 +24,8 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
                               <td align="center" style="padding: 0px 20px 0 20px;">
                                     <!-- COPY -->     
                                     <h2 style="padding: 20px 0px 20px 10px; font-family: 'Montserrat',Arial Black,Gadget,sans-serif;font-style: normal;font-weight: 400;font-size: 12px; letter-spacing: 0.075em; color: #8d837c;">Dear {{var referral.rewardpoints_referral_name}},</h2>
-                                    <p style="padding: 20px 45px 0 45px; font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071;">{{var parent.name}} ({{var parent.email}}) invites you to visit: <a style="color: #707071; text-decoration: none;" href="{{var referral_url}}">Roji By Gryphon Tea Company</a></p>
-                                    <p style="padding: 20px 45px 0 45px; font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071;">If you register and order on <a style="color: #707071; text-decoration: none;" href="{{var referral_url}}">{{var store_name}}</a> with this email address: {{var referral.rewardpoints_referral_email}}, you will allow your friend, {{var parent.name}} ({{var parent.email}}), to earn some reward points.</p>
+                                    <p style="padding: 0px 45px 0 45px; font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071;">{{var parent.name}} ({{var parent.email}}) invites you to visit <a style="color: #707071; text-decoration: none;" href="{{var referral_url}}">Roji Cha.</a></p>
+                                    <p style="padding: 20px 45px 0 45px; font-size: 12px; line-height: 18px; letter-spacing: 0.05em; font-family: Open Sans,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #707071;">If you register and order on <a style="color: #707071; text-decoration: none;" href="{{var referral_url}}">{{var store_name}}</a> with this email address: {{var referral.rewardpoints_referral_email}}, both you and your friend {{var parent.name}} ({{var parent.email}}), will earn $5 rebate dollars. Join us today!</p>
                               </td>
                           </tr>
                         
@@ -37,7 +37,7 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
                                     <td align="center" style="padding: 25px 0 0 0;" class="padding-copy">
                                       <table border="0" cellspacing="0" cellpadding="0" class="responsive-table">
                                         <tr>
-                                          <td align="center"><a href="{{store url=''}}" target="_blank" style="font-family: 'Montserrat',Arial,Helvetica,sans-serif; font-style: normal; font-weight: 500; line-height: 24px; text-transform: uppercase; font-size: 12px; line-height: 20px; letter-spacing: .075em; color: #fff !important; display: inline-block; vertical-align: top; zoom: 1; height: 20px; padding-top: 5px; padding-bottom: 5px; padding-left: 17px; padding-right: 17px; background-color: #333; outline: none; border: none;-webkit-appearance: none; -moz-appearance: none; appearance: none; text-decoration: none;" class="mobile-button">Roji Website</a></td>
+                                          <td align="center"><a href="{{store url='customer/account/create'}}" target="_blank" style="font-family: 'Montserrat',Arial,Helvetica,sans-serif; font-style: normal; font-weight: 500; font-size: 12px; line-height: 20px; line-height: 24px; text-transform: uppercase; letter-spacing: .075em; color: #fff !important; border: 1px solid #fff;padding-left: 9px;padding-right: 9px;-webkit-transition: all .3s cubic-bezier(.645,.045,.355,1) 0s;-moz-transition: all .3s cubic-bezier(.645,.045,.355,1) 0s;-o-transition: all .3s cubic-bezier(.645,.045,.355,1) 0s;transition: all .3s cubic-bezier(.645,.045,.355,1) 0s;height: auto;line-height: 30px;background: #333;display: inline-block;vertical-align: top;zoom: 1;text-decoration: none;width: 168px;height: 30px;vertical-align: middle;" class="mobile-button">Create Account</a></td>
                                         </tr>
                                       </table>
                                     </td>

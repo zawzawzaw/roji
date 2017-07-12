@@ -80,6 +80,14 @@
       position: relative;
       .manic-image-container {
         height: 270px;
+        /* Landscape */
+        @media only screen 
+          and (min-device-width: 768px) 
+          and (max-device-width: 1024px) 
+          and (orientation: landscape) 
+          and (-webkit-min-device-pixel-ratio: 1) {
+          height: 200px;
+        }
       }
       .category-image-tag {
         position: absolute;
@@ -198,6 +206,8 @@
     }
     img {
       padding-bottom: 20px;
+      width: 100%;
+      height: auto;
       @media all and (max-width: 991px) {
         width: 100%;
         height: auto;
@@ -266,6 +276,15 @@
   }
   #related-stories {
     padding-top: 80px;
+    position: relative;
+
+    &:before {
+      content: "";
+      border-top: 1px solid @border-grey;
+      width: 100%;
+      position: absolute;
+      top: 40px;
+    }
 
     h2 {
       .h4-style-light;
@@ -391,7 +410,7 @@
   &.sticky-version{
     //margin-top: 125px;
     // margin-top: 45px;
-    margin-top: 70px;
+    margin-top: 45px;
 
     #mobile-blog-button-container{
       position: fixed;

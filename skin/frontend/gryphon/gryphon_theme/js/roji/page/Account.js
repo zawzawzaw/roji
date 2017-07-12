@@ -181,6 +181,8 @@ roji.page.Account.prototype.create_intl_tel_input = function() {
       autoPlaceholder: false,
       preferredCountries: []  
     });
+
+    item.intlTelInput("setNumber", "+65");
   }
 
   

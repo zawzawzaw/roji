@@ -182,7 +182,9 @@
   }
 }
 
-
+#page-others-main-content {
+  min-height: 788px;
+}
 
 
 //     ____ ___  _   _ _____ _____ _   _ _____
@@ -192,6 +194,16 @@
 //    \____\___/|_| \_| |_| |_____|_| \_| |_|
 //
 
+// added to make show/hide one content at a time
+.page-others-content-item {
+  display: none;
+  @media all and (max-width: 991px) {
+    display: block;
+  }
+  &.open-version {
+    display: block;
+  }
+}
 
 #page-others-content-section{
   padding-top: 43px;
@@ -202,11 +214,16 @@
 
 
   &.has-section-2-version{
-    padding-bottom: 40px;
+    // padding-bottom: 40px;
+    padding-bottom: 0px;
+    @media all and (max-width: 991px) {
+      padding-bottom: 40px;
+    }
   }
 
   // TABLET PORTRAIT
   @media only screen and (max-width: 991px) {
+    padding-bottom: 40px;
     padding-left: 23px;
   }
 
@@ -240,13 +257,15 @@
 
 }
 #page-others-content-2-section{
-  padding-top: 43px;
+  // padding-top: 43px;
+  padding-top: 0px;
   padding-bottom: 94px;
   
   padding-left: 53px;
 
   // TABLET PORTRAIT
   @media only screen and (max-width: 991px) {
+    padding-top: 43px;
     padding-left: 23px;
   }
 
@@ -316,10 +335,20 @@
   padding-bottom: 24px;
   margin-bottom: 22px;
 
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+  }
+
   &.last-version{
     border-bottom: none;
     padding-bottom: 0px;
     margin-bottom: 0px;
+    @media all and (max-width: 991px) {
+      padding-bottom: 24px;
+      margin-bottom: 22px;
+    }
   }
 
   .default-copy{
