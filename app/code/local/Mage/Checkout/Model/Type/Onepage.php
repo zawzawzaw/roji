@@ -261,7 +261,7 @@ class Mage_Checkout_Model_Type_Onepage
     {
         if (empty($data)) {
             return array('error' => -1, 'message' => Mage::helper('checkout')->__('Invalid data.'));
-        }
+        }        
 
         $address = $this->getQuote()->getBillingAddress();
         /* @var $addressForm Mage_Customer_Model_Form */
@@ -279,9 +279,27 @@ class Mage_Checkout_Model_Type_Onepage
                     );
                 }
 
+                // update current address book
+                $customerAddress->setCustomerId($customerAddress->getCustomer()->getId());
+                foreach($data as $addressCode => $addressValue) {
+                    if (isset($data[$addressCode])) {
+                        $customerAddress->setData($addressCode, $addressValue);                        
+                    }
+                }
+                try {
+                    $customerAddress->setId($customerAddressId);
+                    $customerAddress->save();
+                } catch (Mage_Core_Exception $e) {
+                    echo $e->getMessage();
+                }
+
                 $address->importCustomerAddress($customerAddress)->setSaveInAddressBook(0);
                 $addressForm->setEntity($address);
-                $addressErrors  = $addressForm->validateData($address->getData());
+                $addressData    = $addressForm->extractData($addressForm->prepareRequest($data)); // zaw
+                $addressErrors  = $addressForm->validateData($addressData); // zaw
+                $addressForm->compactData($addressData); // zaw
+                // $addressErrors  = $addressForm->validateData($address->getData());
+
                 if ($addressErrors !== true) {
                     return array('error' => 1, 'message' => $addressErrors);
                 }
@@ -291,6 +309,7 @@ class Mage_Checkout_Model_Type_Onepage
             // emulate request object
             $addressData    = $addressForm->extractData($addressForm->prepareRequest($data));
             $addressErrors  = $addressForm->validateData($addressData);
+
             if ($addressErrors !== true) {
                 return array('error' => 1, 'message' => array_values($addressErrors));
             }
@@ -310,6 +329,8 @@ class Mage_Checkout_Model_Type_Onepage
         if (!$address->getEmail() && $this->getQuote()->getCustomerEmail()) {
             $address->setEmail($this->getQuote()->getCustomerEmail());
         }
+
+        // echo 'im hereee  '; print_r($addressErrors); exit();
 
         // validate billing address
         if (($validateRes = $address->validate()) !== true) {
@@ -541,6 +562,8 @@ class Mage_Checkout_Model_Type_Onepage
         }
         $address = $this->getQuote()->getShippingAddress();
 
+        // print_r($data); exit();
+
         /* @var $addressForm Mage_Customer_Model_Form */
         $addressForm    = Mage::getModel('customer/form');
         $addressForm->setFormCode('customer_address_edit')
@@ -549,6 +572,7 @@ class Mage_Checkout_Model_Type_Onepage
 
         if (!empty($customerAddressId)) {
             $customerAddress = Mage::getModel('customer/address')->load($customerAddressId);
+
             if ($customerAddress->getId()) {
                 if ($customerAddress->getCustomerId() != $this->getQuote()->getCustomerId()) {
                     return array('error' => 1,
@@ -556,9 +580,28 @@ class Mage_Checkout_Model_Type_Onepage
                     );
                 }
 
+                // update current address book
+                $customerAddress->setCustomerId($customerAddress->getCustomer()->getId());
+                foreach($data as $addressCode => $addressValue) {
+                    if (isset($data[$addressCode])) {
+                        $customerAddress->setData($addressCode, $addressValue);                        
+                    }
+                }
+                try {
+                    $customerAddress->setId($customerAddressId);
+                    $customerAddress->save();
+                } catch (Mage_Core_Exception $e) {
+                    echo $e->getMessage();
+                }
+
                 $address->importCustomerAddress($customerAddress)->setSaveInAddressBook(0);
                 $addressForm->setEntity($address);
-                $addressErrors  = $addressForm->validateData($address->getData());
+
+                $addressData    = $addressForm->extractData($addressForm->prepareRequest($data)); // zaw
+                $addressErrors  = $addressForm->validateData($addressData); // zaw
+                $addressForm->compactData($addressData); // zaw
+                
+                //org // $addressErrors  = $addressForm->validateData($address->getData());
                 if ($addressErrors !== true) {
                     return array('error' => 1, 'message' => $addressErrors);
                 }

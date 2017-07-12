@@ -62,7 +62,7 @@
     <div class="container-fluid has-breakpoint">
       <div class="row">
 
-        <div class="col-md-2 col-tablet-landscape-1 hidden-sm hidden-xs">
+        <div class="col-md-2 col-tablet-landscape-2 hidden-sm hidden-xs">
 
           <!--
              ____ ___ ____  _____ ____    _    ____
@@ -82,7 +82,7 @@
 
       </div> <!-- col-md-2 -->
       <div class="col-md-0 col-tablet-landscape-0 col-sm-1 col-xs-0"></div>
-      <div class="col-md-10 col-tablet-landscape-11 col-sm-10 col-xs-12">
+      <div class="col-md-10 col-tablet-landscape-10 col-sm-10 col-xs-12">
 
         <!--
             ____ ___  _   _ _____ _____ _   _ _____
@@ -461,8 +461,14 @@
       }).done(function( msg ) {
 
           var messages = $j('.messages', $j.parseHTML(msg));
+
+          var messages_message = $(messages).find('span').html();          
           
-          $j('span.ajax_msg_referral').html('<p>'+$(messages).find('span').html()+'</p>').show().delay(5000).fadeOut();
+          $j('span.ajax_msg_referral').html('<p>'+$(messages).find('span').html()+'</p>').show();
+
+          if(messages_message.includes("successfully invited")) {
+            location.reload();
+          }
           // $j('#ajax_loader_referral').hide();
       });
     }

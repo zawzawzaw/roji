@@ -12,3 +12,7 @@ chmod u+x compile_page_account.command
 ./compile_page_account.command
 chmod u+x compile_page_our_teas.command
 ./compile_page_our_teas.command
+chmod u+x compile_page_faq.command
+./compile_page_faq.command
+chmod u+x compile_page_others.command
+./compile_page_others.command

@@ -299,6 +299,8 @@ Billing.prototype = {
         this.onAddressLoad = this.fillForm.bindAsEventListener(this);
         this.onSave = this.nextStep.bindAsEventListener(this);
         this.onComplete = this.resetLoadWaiting.bindAsEventListener(this);
+
+        console.log('billing class');
     },
 
     setAddress: function(addressId){
@@ -459,6 +461,8 @@ Shipping.prototype = {
         this.onComplete = this.resetLoadWaiting.bindAsEventListener(this);
 
         this.changePageTitle();
+
+        console.log('shipping class');
     },
 
     changePageTitle: function() {
@@ -468,6 +472,7 @@ Shipping.prototype = {
 
     setAddress: function(addressId){
         if (addressId) {
+            console.log(addressId);
             request = new Ajax.Request(
                 this.addressUrl+addressId,
                 {method:'get', onSuccess: this.onAddressLoad, onFailure: checkout.ajaxFailure.bind(checkout)}
@@ -481,7 +486,7 @@ Shipping.prototype = {
     newAddress: function(isNew){
         if (isNew) {
             this.resetSelectedAddress();
-            console.log('new shipping');
+            // console.log('new shipping');
             Element.show('shipping-new-address-form');
         } else {
             Element.show('shipping-new-address-form');
@@ -490,7 +495,7 @@ Shipping.prototype = {
     },
 
     resetSelectedAddress: function(){
-        console.log('reset shipping')
+        // console.log('reset shipping')
         var selectElement = $('shipping-address-select')
         if (selectElement) {
             selectElement.value='';
@@ -511,18 +516,29 @@ Shipping.prototype = {
             this.resetSelectedAddress();
         }
         arrElements = Form.getElements(this.form);  
-        console.log(arrElements);
+
+        // for phone no and fax inputs        
+        $j("input[name='shipping[telephone]']").intlTelInput("setNumber", elementValues['telephone']);        
+
         for (var elemIndex in arrElements) {
-            console.log(arrElements[elemIndex]);
+            // console.log(arrElements[elemIndex]);
             if (arrElements[elemIndex].id) {
                 var fieldName = arrElements[elemIndex].id.replace(/^shipping:/, '');
                 if(fieldName.indexOf("billing") == -1) {                    
                     if(fieldName != "shipping-address-select") {
-                        arrElements[elemIndex].value = elementValues[fieldName] ? elementValues[fieldName] : '';
+                        arrElements[elemIndex].value = elementValues[fieldName] ? elementValues[fieldName] : '';                    
+
                         if (fieldName == 'country_id' && shippingForm){
-                            shippingForm.elementChildLoad(arrElements[elemIndex]);
+                            // console.log(elementValues[fieldName]);
+
+                            shippingRegionUpdater.update(); // for state/province field to be updated        
+
+                            $j("input[name='shipping[telephone]']").intlTelInput("setCountry", elementValues[fieldName]);                           
+                            $j("input[name='shipping[fax]']").intlTelInput("setCountry", elementValues[fieldName]);                           
+                            
+                            shippingForm.elementChildLoad(arrElements[elemIndex]);                            
                         }
-                        // console.log(fieldName);
+                        
                         // if (fieldName == 'telephone') {
                         //     console.log(jQuery(arrElements[elemIndex]));
                         //     jQuery(arrElements[elemIndex]).intlTelInput("setNumber", elementValues[fieldName]);
@@ -531,6 +547,10 @@ Shipping.prototype = {
                 }
             }
         }
+
+        // console.log("hereerer");
+        // console.log($j("select[name='shipping[country_id]']"));
+        // $j("select[name='shipping[country_id]']").trigger("change"); // to set phone country code
     },
 
     setSameAsBilling: function(flag) {

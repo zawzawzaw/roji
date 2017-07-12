@@ -998,7 +998,7 @@ class Rewardpoints_Helper_Data extends Mage_Core_Helper_Abstract {
         }
         
         if ($current < $points_to_be_used) {
-            Mage::getSingleton('checkout/session')->addError(Mage::helper('rewardpoints')->__('Not enough rebates available.'));
+            Mage::getSingleton('checkout/session')->addError(Mage::helper('rewardpoints')->__('You do not have enough rebates for redemption.'));
             Mage::helper('rewardpoints/event')->setCreditPoints(0);
             $quote
                 ->setRewardpointsQuantity(NULL)

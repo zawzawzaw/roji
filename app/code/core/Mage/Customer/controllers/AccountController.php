@@ -931,6 +931,26 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
                              */
                             $customer->setPassword($newPass);
                             $customer->setPasswordConfirmation($confPass);
+
+                            $templateId = 12;
+                            $sendername = Mage::getStoreConfig('trans_email/ident_general/name');
+                            $senderemail = Mage::getStoreConfig('trans_email/ident_general/email');
+                            $sender = Array(
+                                'name' => $sendername,
+                                'email' => $senderemail
+                            );
+                            //recepient
+
+                            $email = $customerData['address'];
+                            $emailName = $customerData['firstname'] . " " . $customerData['lastname'];
+                            $vars = Array();
+                            $storeId = Mage::app()->getStore()->getId();
+                            $translate = Mage::getSingleton('core/translate');
+                            
+                            Mage::getModel('core/email_template')->sendTransactional($templateId, $sender, $email, $emailName, $vars, $storeId);
+                            $translate->setTranslateInline(true);
+
+
                         } else {
                             $errors[] = $this->__('New password field cannot be empty.');
                         }

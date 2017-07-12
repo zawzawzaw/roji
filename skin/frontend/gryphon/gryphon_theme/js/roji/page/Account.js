@@ -175,10 +175,11 @@ roji.page.Account.prototype.create_intl_tel_input = function() {
   for (var i = 0, l=arr.length; i < l; i++) {
     item = $j(arr[i]);
     item.intlTelInput({
-      defaultCountry: 'sg',
+      initialCountry: 'sg',
       nationalMode: false,
       autoHideDialCode: false,
-      autoPlaceholder: false
+      autoPlaceholder: false,
+      preferredCountries: []  
     });
   }
 
@@ -229,7 +230,10 @@ roji.page.Account.prototype.update_account_bg_height = function(){
   // only for desktop
   if (manic.IS_MOBILE == false) {
 
-    var target_height = this.window_height - this.desktop_header_element.outerHeight() - this.desktop_footer_element.outerHeight() - this.desktop_title_section.outerHeight();
+    this.desktop_footer_element = $j("#desktop-footer"); // no idea why desktop_footer_element height is always null...
+
+    var target_height = this.window_height - this.desktop_header_element.outerHeight() - this.desktop_footer_element.outerHeight() - this.desktop_title_section.outerHeight();    
+
     this.section_bg.css({
       'min-height': target_height + 'px'
     });

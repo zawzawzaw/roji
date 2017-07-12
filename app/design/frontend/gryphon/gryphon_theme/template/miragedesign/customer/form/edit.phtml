@@ -114,7 +114,7 @@ $telephone = ($hasAddress) ? $this->helper('customercustomiser')->getAddress()->
     <div class="container-fluid has-breakpoint">
       <div class="row">
 
-        <div class="col-md-2 col-tablet-landscape-1 hidden-sm hidden-xs">
+        <div class="col-md-2 col-tablet-landscape-2 hidden-sm hidden-xs">
 
           <!--
              ____ ___ ____  _____ ____    _    ____
@@ -134,7 +134,7 @@ $telephone = ($hasAddress) ? $this->helper('customercustomiser')->getAddress()->
 
         </div> <!-- col-md-2 -->
         <div class="col-md-0 col-tablet-landscape-0 col-sm-1 col-xs-0"></div>
-        <div class="col-md-10 col-tablet-landscape-11 col-sm-10 col-xs-12">
+        <div class="col-md-10 col-tablet-landscape-10 col-sm-10 col-xs-12">
 
           <!--
               ____ ___  _   _ _____ _____ _   _ _____
@@ -340,7 +340,7 @@ $telephone = ($hasAddress) ? $this->helper('customercustomiser')->getAddress()->
                       <div class="page-account-form-column-01">
                         <div class="form-group checkbox-version">
                           <div class="checkbox">                            
-                            <input type="checkbox" <?php if($this->getCustomer()->getChangePassword()==1): ?> checked="checked"<?php endif; ?> name="page-edit-info-password-checkbox" id="page-edit-info-password-checkbox">
+                            <input type="checkbox" <?php if($this->getCustomer()->getChangePassword()==1): ?> checked="checked"<?php endif; ?> name="change_password" id="page-edit-info-password-checkbox">
 
                             <label>
                               <span></span>
@@ -476,13 +476,13 @@ $telephone = ($hasAddress) ? $this->helper('customercustomiser')->getAddress()->
     });
     function setPasswordForm(arg){
         if(arg){
-            $('current_password').up(4).show();
+            $j('#page-edit-info-password-expand-container').slideDown();
             $('current_password').addClassName('required-entry');
             $('password').addClassName('required-entry');
             $('confirmation').addClassName('required-entry');
 
         }else{
-            $('current_password').up(4).hide();
+            $j('#page-edit-info-password-expand-container').slideUp();
             $('current_password').removeClassName('required-entry');
             $('password').removeClassName('required-entry');
             $('confirmation').removeClassName('required-entry');
@@ -491,7 +491,7 @@ $telephone = ($hasAddress) ? $this->helper('customercustomiser')->getAddress()->
 
     // setPasswordForm(true);
 
-    <?php if($this->getCustomer()->getChangePassword()): ?>
+    <?php if($this->getCustomer()->getChangePassword()==1): ?>
         setPasswordForm(true);
     <?php endif; ?>
 

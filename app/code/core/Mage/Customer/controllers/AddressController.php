@@ -105,6 +105,27 @@ class Mage_Customer_AddressController extends Mage_Core_Controller_Front_Action
         // Save data
         if ($this->getRequest()->isPost()) {
             $customer = $this->_getSession()->getCustomer();
+
+            $existing_address_count = 0;
+            foreach($customer->getAddresses() as $customer_address) {
+                $existing_address_count++;
+            }            
+
+            // if(!$customer->getPrimaryBillingAddress()) {
+            //     /* @var $address Mage_Customer_Model_Address */
+            //     $address  = Mage::getModel('customer/address');
+            //     /* @var $addressForm Mage_Customer_Model_Form */
+            //     $addressForm = Mage::getModel('customer/form');
+            //     $addressForm->setFormCode('customer_address_edit')
+            //         ->setEntity($address);
+            //     $addressData    = $addressForm->extractData($this->getRequest());
+            //     $addressForm->compactData($addressData);
+            //     $address->setCustomerId($customer->getId())
+            //         ->setIsDefaultBilling(true)
+            //         ->setIsDefaultShipping(false);
+            //     $address->save();                
+            // }
+
             /* @var $address Mage_Customer_Model_Address */
             $address  = Mage::getModel('customer/address');
             $addressId = $this->getRequest()->getParam('id');
@@ -112,6 +133,11 @@ class Mage_Customer_AddressController extends Mage_Core_Controller_Front_Action
                 $existsAddress = $customer->getAddressById($addressId);
                 if ($existsAddress->getId() && $existsAddress->getCustomerId() == $customer->getId()) {
                     $address->setId($existsAddress->getId());
+                }
+            }else {
+                $existing_address_count = $existing_address_count - 1; // minus billing
+                if($existing_address_count >= 3) {                    
+                    return $this->_redirectError(Mage::getUrl('*/*/edit', array('id' => $address->getId())));
                 }
             }
 
@@ -122,6 +148,8 @@ class Mage_Customer_AddressController extends Mage_Core_Controller_Front_Action
             $addressForm->setFormCode('customer_address_edit')
                 ->setEntity($address);
             $addressData    = $addressForm->extractData($this->getRequest());
+            // print_r($addressData); exit();
+
             $addressErrors  = $addressForm->validateData($addressData);
             if ($addressErrors !== true) {
                 $errors = $addressErrors;

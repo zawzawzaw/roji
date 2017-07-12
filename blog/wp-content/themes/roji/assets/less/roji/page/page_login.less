@@ -1,0 +1,282 @@
+//    _____ ___ _____ _     _____
+//   |_   _|_ _|_   _| |   | ____|
+//     | |  | |  | | | |   |  _|
+//     | |  | |  | | | |___| |___
+//     |_| |___| |_| |_____|_____|
+//
+
+#page-login-title-section{
+  padding-top: 36px + 9px;
+  padding-bottom: 41px;
+} // #page-login-title-section
+
+#page-login-title{
+  text-align: right;
+
+} // #page-login-title
+
+
+// TABLET PORTRAIT
+@media only screen and (max-width: 991px) {
+  #page-login-title-section{
+    padding-top: 34px;
+    padding-bottom: 30px;
+  }
+  #page-login-title{
+    text-align: left;
+    br{
+      display: none;
+    }
+  }
+}
+
+
+
+//     ____ ___  _   _ _____ _____ _   _ _____
+//    / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+//   | |  | | | |  \| | | | |  _| |  \| | | |
+//   | |__| |_| | |\  | | | | |___| |\  | | |
+//    \____\___/|_| \_| |_| |_____|_| \_| |_|
+//
+
+
+
+
+#page-login-content-section{
+  background: @off-white-1;
+  
+  padding-top: 30px;
+  padding-bottom: 100px;
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+
+    padding-top: 34px;
+    padding-bottom: 60px;
+
+  }
+
+
+} // #page-login-content-section
+
+
+
+
+#page-login-content{
+
+  padding-top: 35px;
+  padding-left: 53px;     // same as register form
+  padding-right: 63px;
+
+
+  .checkout-form{
+    .form-title{
+      p{
+        text-align: left;   // why is this right ???
+      }
+    }
+    .form-group{
+      margin-bottom: 20px;      // override
+    }
+    .form-group.checkbox-version{
+      margin-bottom: 0;
+      padding-top: 7px;
+    }
+  }
+
+  .cta-container{
+    text-align: right;
+
+    .square-cta{
+      padding-left: 17px + 23px;
+      padding-right: 17px + 23px;
+    }
+  }
+
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+
+    .checkout-form {
+      .form-title {
+        p {
+          padding-top: 23px;
+        }
+      }
+    }
+
+    .cta-container{
+      padding-top: 41px;
+
+      .square-cta{
+        width: 100%;
+        display: block;
+        text-align: center;
+      }
+    }
+  }
+} // #page-login-content
+
+
+
+
+
+
+#page-login-form-forgot-password-container{
+  text-align: right;
+  margin-top: -19px;
+  margin-bottom: 23px;
+
+  a{
+    .body-font-small-italic;
+    color: @dark-grey !important;
+    .transition-in-single (color, 0.3s, cubic-bezier(0.645, 0.045, 0.355, 1), 0.0s);
+
+    &:hover,
+    &:focus{
+
+      color: @grey !important;
+      .transition-in-single (color, 0.2s, cubic-bezier(0.645, 0.045, 0.355, 1), 0.0s);
+    }
+
+  }
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    margin-bottom: 17px;
+  }
+
+} // #page-login-form-forgot-password-container
+
+
+
+#page-login-intro-image{
+  .manic-image-container{
+    height: 290px;
+  }
+} // #page-login-intro-image
+
+
+#page-login-intro-image-mobile{
+  .manic-image-container{
+    height: 480px;
+
+    // MOBILE
+    @media only screen and (max-width: 767px) {
+      height: 200px;
+    }
+  }
+}
+
+
+
+
+
+
+.page-login-seperator-hr{
+  margin-top: 49px;
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    margin-top: 39px;
+    margin-bottom: 35px;
+  }
+}
+
+
+#page-login-register-form-container{
+  padding-top: 25px;
+  padding-left: 53px;     // same as register form
+  padding-right: 63px;
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+} // #page-login-register-form-container
+
+#page-login-social-media-container {
+  margin-top: 23px;
+  small {
+    @media only screen and (max-width: 991px) {
+      text-align: center;
+    }
+  }
+  ul {
+    margin-top: -5px;
+    text-align: center;
+
+    @media only screen and (max-width: 991px) {
+      margin-top: 0px;
+    }
+
+    li {
+      display: inline-block;
+      margin-right: 14px;
+      &:last-child {
+        margin-right: 0px;
+      }
+      a {
+        font-size: 14px;
+        line-height: 14px;        
+      }
+    }
+  }
+}
+
+#page-login-register-form{
+
+  h2{
+    color: @dark-grey-2;
+    text-transform: uppercase;
+
+    margin-bottom: 19px;
+  }
+
+  .default-copy{
+    margin-bottom: 45px;
+  }
+
+  .cta-container{
+    font-size: 0px;
+  }
+
+  .square-cta{
+    padding-left: 17px + 23px;
+    padding-right: 17px + 23px;
+
+    margin-right: 15px;
+    &:last-child{
+      margin-right: 0px;
+    }
+  }
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+
+    h2{
+      margin-bottom: 24px;
+    }
+    .default-copy{
+      margin-bottom: 25px;
+    }
+
+
+    .square-cta{
+      text-align: center;
+      display: block;
+      width: 100%;
+
+      margin-right: 0px !important;
+    }
+    .square-cta + .square-cta{
+      margin-top: 10px;
+    }
+  }
+
+} // #page-login-register-form

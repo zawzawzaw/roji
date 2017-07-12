@@ -243,7 +243,17 @@ function isMobile()
 
                       <div class="info-item">
                         <h4>Email Address:</h4>
-                        <p><?php echo $shippingAddress['email']; ?></p>
+                        <p>
+                          <?php 
+                          if(!empty($shippingAddress['email']))
+                            echo $shippingAddress['email']; 
+                          else if(!empty($shippingAddress['company']))
+                            echo $shippingAddress['company'];
+                          else
+                            echo $billingAddress['email'];
+                          ?>
+                        </p>
+                        <!-- using company as email filed since there is no email in address book -->
                       </div>
 
                       <div class="info-item">

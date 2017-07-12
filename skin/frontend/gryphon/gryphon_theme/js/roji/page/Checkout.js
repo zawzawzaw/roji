@@ -46,6 +46,8 @@ roji.page.Checkout = function(options, element) {
 
   this.giftvoucher_input();  
 
+  this.billing_shipping_input();
+
   console.log('roji.page.Checkout: init');
 };
 goog.inherits(roji.page.Checkout, roji.page.Default);
@@ -94,7 +96,38 @@ roji.page.Checkout.prototype.init = function() {
 //
 
 
-roji.page.Checkout.prototype.private_method_03 = function() {};
+roji.page.Checkout.prototype.billing_shipping_input = function() {
+  // cart billing/shipping dropdown
+  if ( $j( "#billing-address-select" ).length ) {
+    $j('#billing-address-select').on('change', function(e){            
+        if($j(this).val()!=""){
+            billing.setAddress($j(this).val());
+        }else {
+            // billing.fillForm(false);
+            $j('#billing-new-address-form').find('input[type=text]').val('');            
+        }
+    });
+  }
+
+  if ( $j('#shipping-address-select').length ) {
+    $j('#shipping-address-select').on('change', function(e){           
+        // console.log("changed"+$j(this).val());         
+        if($j(this).val()!=""){
+            shipping.setAddress($j(this).val());
+            
+            // console.log($j("select[name='shipping[country_id]']"));
+            // console.log($j("#shipping:country_id"));
+
+            $j("select[name='shipping[country_id]']").trigger("change");
+        } else {
+            $j('#shipping-new-address-form').find('input[type=text]').val('');
+            $j('#shipping-new-address-form').find('select').val('SG');
+            $j('#shipping-new-address-form').find('input.roji-intltelinput').intlTelInput("setNumber", "+65 ");
+        }
+    });
+  }  
+};
+
 roji.page.Checkout.prototype.giftvoucher_input = function() {
   // cart gift voucher 
   $j('input[name=giftvoucher]').attr('checked', true).triggerHandler('click'); 
@@ -153,7 +186,7 @@ roji.page.Checkout.prototype.update_checkout_bg_height = function(){
   if (manic.IS_MOBILE == false) {
     
     
-
+    this.desktop_footer_element = $j("#desktop-footer"); // no idea why desktop_footer_element height is always null...
 
     var target_height = this.window_height - this.desktop_header_element.outerHeight() - this.desktop_footer_element.outerHeight() - this.desktop_title_section.outerHeight();
     this.section_bg.css({

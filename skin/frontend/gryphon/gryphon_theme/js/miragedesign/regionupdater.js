@@ -1,6 +1,8 @@
 var CustomRegionUpdater = Class.create(RegionUpdater, {
     update: function()
     {
+        console.log('update');
+        console.log(this.countryEl.value);
         if (this.regions[this.countryEl.value]) {
             var i, option, region, def;
 

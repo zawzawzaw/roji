@@ -75,8 +75,10 @@ if(Mage::getSingleton('customer/session')->isLoggedIn()) {
 
         <div class="detail-item">
           <h4>Billing address</h4>
+
           <p>
             <?php if ($billingAddress) :?>
+                <?php $billingCountryName = Mage::app()->getLocale()->getCountryTranslation($billingAddress->getCountry()); ?>
                 <?php echo implode(' ', array(implode(' ', $billingAddress->getStreet()), $billingAddress->getCity(), $billingCountryName, $billingAddress->getPostcode())); ?>
             <?php else : ?>
                 <?php echo $this->__('None'); ?>

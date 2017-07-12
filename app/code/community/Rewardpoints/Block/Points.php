@@ -128,7 +128,7 @@ class Rewardpoints_Block_Points extends Mage_Core_Block_Template
             
             $order = Mage::getModel('sales/order')->loadByIncrementId($order_id);
             //$toHtml .=  '<div class="j2t-in-txt"><p>'.$this->__('Referral order state: %s',$this->__($order->getData($status_field))).'</p></div>';
-            $toHtml .=  '<div class="j2t-in-txt"><p>'.$this->__('Referral order (#%s) state: %s', $order_id, $this->__($order->getData($status_field))).'</p></div>';
+            //$toHtml .=  '<div class="j2t-in-txt"><p>'.$this->__('Referral order (#%s) state: %s', $order_id, $this->__($order->getData($status_field))).'</p></div>';
         } elseif ($order_id == Rewardpoints_Model_Stats::TYPE_POINTS_REVIEW){
             $toHtml .= '<div class="j2t-in-title"><p>'.$this->__('Review rebates').'</p></div>';
         } elseif ($order_id == Rewardpoints_Model_Stats::TYPE_POINTS_DYN) {

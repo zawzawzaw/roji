@@ -1,0 +1,234 @@
+@mailing-list-width: 715px;
+@mailing-list-height: 330px;
+
+@mailing-list-width-mobile: 280px;
+@mailing-list-height-mobile: 270px;
+
+
+
+
+#mailing-list-popup-container{
+  position: fixed;
+  z-index: 200020;
+
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  
+  .opacity(0);              // not immediately visible, modified by js tweenmax
+  visibility: hidden;  
+  
+  .black-bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: @black;
+    background: fade(@black, 50%);
+  }
+
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    top: @mobile-header-height;
+    height: auto;
+    bottom: 0;
+  }
+
+} // #mailing-list-popup-container
+
+#mailing-list-popup{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: @mailing-list-width;
+  height: @mailing-list-height;
+
+  margin-left: -1 * @mailing-list-width / 2;
+  margin-top: -1 * @mailing-list-height / 2;
+
+  background: @white;
+  border: 8px solid @grey;
+
+  padding-top: 25px;
+  padding-bottom: 26px;
+  padding-left: 20px + 10px;          // + 10px for row
+  padding-right: 20px + 10px;
+
+
+  .column-01{
+    padding-right: 5px;
+  }
+  .column-02{
+    padding-left: 14px;
+  }
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+
+    text-align: center;
+
+    width: @mailing-list-width-mobile;
+    height: @mailing-list-height-mobile;
+
+    margin-left: -1 * @mailing-list-width-mobile / 2;
+    margin-top: -1 * @mailing-list-height-mobile / 2;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+
+    .column-01{
+      padding-right: 0px;
+    }
+    .column-02{
+      padding-left: 0px;
+    }
+  }
+
+} // #mailing-list-popup
+
+#mailing-list-image{
+  .manic-image-container{
+    height: 263px;
+  }
+} // #mailing-list-image
+
+
+#mailing-list-title{
+  .h1-style;
+
+  padding-top: 37px;
+  margin-bottom: 18px;
+
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    .h4-style;
+    color: @off-black;
+
+    // padding-top: 23px;
+    padding-top: 33px;
+  }
+
+} // #mailing-list-title
+
+#mailing-list-copy{
+  padding-right: 10px;
+  margin-bottom: 45px;
+
+  .default-copy{
+
+  }
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    padding-right: 15px;
+    padding-left: 15px;
+
+    margin-bottom: 35px;
+  }
+} // #mailing-list-copy
+
+
+
+
+#mailing-list-form{
+  padding-right: 25px;
+
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    padding-right: 0px;
+
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+} // #mailing-list-form
+
+
+
+
+
+
+
+
+
+#mailing-list-close-btn{
+  
+  outline: none;      // button reset
+  
+  cursor: pointer;
+
+  position: absolute !important;
+  top: 15px;
+  right: 15px;
+
+    
+  // TABLET PORTRAIT
+  @media only screen and (max-width: 991px) {
+    display: none;
+  }
+
+} // #mailing-list-close-btn
+
+
+
+//       _    _   _ ___ __  __    _  _____ ___ ___  _   _
+//      / \  | \ | |_ _|  \/  |  / \|_   _|_ _/ _ \| \ | |
+//     / _ \ |  \| || || |\/| | / _ \ | |  | | | | |  \| |
+//    / ___ \| |\  || || |  | |/ ___ \| |  | | |_| | |\  |
+//   /_/   \_\_| \_|___|_|  |_/_/   \_\_| |___\___/|_| \_|
+//
+
+
+
+// mailing_item_move_up
+
+#mailing-list-popup-container{
+  
+  #mailing-list-image{
+    .opacity(0);
+  }
+  #mailing-list-title{
+    .opacity(0);
+  }
+  #mailing-list-popup{
+    small{
+      .opacity(0);
+    }
+
+    .mailing-form{
+      .opacity(0);
+    }
+  }
+}
+
+#mailing-list-popup-container.open-version{
+  #mailing-list-image{
+    .right-fade-in;
+    .dd3;
+  }
+  #mailing-list-title{
+    .text-fade-in;
+    .dd5;
+  }
+  #mailing-list-popup{
+    small{
+      .text-fade-in;
+      .dd6;
+    }
+    .mailing-form{
+      .text-fade-in;
+      .dd8;
+    }
+
+  }
+}

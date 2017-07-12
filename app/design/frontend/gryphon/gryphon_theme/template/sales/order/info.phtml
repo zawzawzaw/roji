@@ -25,11 +25,6 @@
  */
 ?>
 
-<div id="monogram-page-account-mobile-header" class="visible-sm visible-xs">
-  <h4>membership services</h4>
-  <h2>order history</h2>
-</div>
-
 <?php 
     $subscription_in_the_cart = 0;
     $allskus = array("SGP-ART-1M", "SGP-ART-3M", "SGP-ART-6M", "SGP-ART-12M", "SGP-GUR-1M", "SGP-GUR-3M", "SGP-GUR-6M", "SGP-GUR-12M","INT-ART-1M", "INT-ART-3M", "INT-ART-6M", "INT-ART-12M", "INT-GUR-1M", "INT-GUR-3M", "INT-GUR-6M", "INT-GUR-12M");
@@ -68,7 +63,11 @@
     <div class="col-md-3 col-sm-1 col-xs-0"></div>
     <div class="col-md-9 col-sm-10 col-xs-12">
       <div id="page-account-title">
-        <h1><?php echo $this->__('My Order Details.') ?></h1>
+        <h1></h1>
+        <h1>
+          <span class="hidden-xs"><?php echo $this->__('My Order Details.') ?></span>
+          <span class="visible-xs"><?php echo $this->__('Order no. %s', $_order->getRealOrderId()) ?></span>
+        </h1>
       </div> <!-- page-account-title -->
     </div>
   </div>
@@ -93,7 +92,7 @@
 <div class="container-fluid has-breakpoint">
   <div class="row">
 
-    <div class="col-md-2 col-tablet-landscape-1 hidden-sm hidden-xs">
+    <div class="col-md-2 col-tablet-landscape-2 hidden-sm hidden-xs">
 
       <!--
          ____ ___ ____  _____ ____    _    ____
@@ -113,7 +112,7 @@
 
         </div> <!-- col-md-2 -->
         <div class="col-md-0 col-tablet-landscape-0 col-sm-1 col-xs-0"></div>
-        <div class="col-md-10 col-tablet-landscape-11 col-sm-10 col-xs-12">
+        <div class="col-md-10 col-tablet-landscape-10 col-sm-10 col-xs-12">
 
           <!--
               ____ ___  _   _ _____ _____ _   _ _____
@@ -142,11 +141,11 @@
                 $shippingAddress = $_order->getShippingAddress();
                 $shippingCountryName = ($shippingAddress) ? Mage::getModel('directory/country')->load($shippingAddress->getCountryId())->getName() : '';
             ?>
-            <div id="page-account-order-detail-title">
+            <div id="page-account-order-detail-title" class="hidden-xs">
               <h2><?php echo $this->__('Order no. #%s', $_order->getRealOrderId()) ?></h2>              
             </div> <!-- page-account-order-detail-title -->
 
-            <div id="page-account-order-detail-header">
+            <div id="page-account-order-detail-header" class="sans-container-fluid-mobile">
 
               <div class="detail-header-bg"></div>
 
@@ -206,40 +205,72 @@
 
                   <div class="detail-header-column-02">
 
-                    <div id="page-account-order-detail-shipping-info">
+                    
+                      <div id="page-account-order-detail-shipping-info">
 
-                      <h2>Shipping information</h2>
+                        <h2>Shipping information</h2>
+                        <?php if(isset($shippingAddress) && !empty($shippingAddress)): ?>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="detail-item">
+                              <h4>Full Name</h4>
+                              <p><?php echo implode(' ', array($shippingAddress->getLastname(), $shippingAddress->getFirstname())); ?></p>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="detail-item">
+                              <h4>Email address</h4>
+                              <p><a href="mailto:<?php echo $shippingAddress->getEmail(); ?>"><?php echo $shippingAddress->getEmail(); ?></a></p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="detail-item">
+                              <h4>Shipping address</h4>
+                              <p><?php echo implode(' ', array(implode(' ', $shippingAddress->getStreet()), $shippingAddress->getCity(), $shippingCountryName, $shippingAddress->getPostcode())); ?></p>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="detail-item">
+                              <h4>Contact no.</h4>
+                              <p><?php echo $shippingAddress->getTelephone(); ?></p>
+                            </div>
+                          </div>
+                        </div> <!-- row -->
+                        <?php else: ?>
+                          <div class="row">
+                          <div class="col-md-6">
+                            <div class="detail-item">
+                              <h4>Full Name</h4>
+                              <p><?php echo implode(' ', array($billingAddress->getLastname(), $billingAddress->getFirstname())); ?></p>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="detail-item">
+                              <h4>Email address</h4>
+                              <p><a href="mailto:<?php echo $billingAddress->getEmail(); ?>"><?php echo $billingAddress->getEmail(); ?></a></p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="detail-item">
+                              <h4>Shipping address</h4>
+                              <p>-</p>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="detail-item">
+                              <h4>Contact no.</h4>
+                              <p>-</p>
+                            </div>
+                          </div>
+                        </div> <!-- row -->
+                        <?php endif; ?>
 
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="detail-item">
-                            <h4>Full Name</h4>
-                            <p><?php echo implode(' ', array($shippingAddress->getLastname(), $shippingAddress->getFirstname())); ?></p>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="detail-item">
-                            <h4>Email address</h4>
-                            <p><a href="mailto:<?php echo $shippingAddress->getEmail(); ?>"><?php echo $shippingAddress->getEmail(); ?></a></p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="detail-item">
-                            <h4>Shipping address</h4>
-                            <p><?php echo implode(' ', array(implode(' ', $shippingAddress->getStreet()), $shippingAddress->getCity(), $shippingCountryName, $shippingAddress->getPostcode())); ?></p>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="detail-item">
-                            <h4>Contact no.</h4>
-                            <p><?php echo $shippingAddress->getTelephone(); ?></p>
-                          </div>
-                        </div>
-                      </div> <!-- row -->
-
-                    </div> <!-- page-account-order-detail-shipping-info -->
+                      </div> <!-- page-account-order-detail-shipping-info -->
+                    
 
                   </div> <!-- detail-header-column-02 -->
 

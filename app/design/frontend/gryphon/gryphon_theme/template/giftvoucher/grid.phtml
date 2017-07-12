@@ -29,12 +29,13 @@
         <?php foreach ($columns as $id => $column): ?>
             <?php $column_counter++; ?>
             
-            <?php if($column_counter==$column_counter_max): ?>
-            <div class="col-md-2"></div>
-            <div class="col-md-2">
-            <?php else: ?>
-            <div class="col-md-4">
-            <?php endif; ?>
+            <?php //if($column_counter==$column_counter_max): ?>
+            <!-- <div class="col-md-2"></div>
+            <div class="col-md-2"> -->
+            <?php //else: ?>
+            <!-- <div class="col-md-4"> -->
+            <?php //endif; ?>
+            <div class="col-sm-3">
               <div class="<?php if($column_counter==1): ?>table-column-first<?php elseif($column_counter==$column_counter_max): ?>table-column-last<?php else: ?>table-column<?php endif; ?>">
                 <h4><?php echo $column['header'] ?></h4>
               </div>
@@ -56,12 +57,13 @@
                     <?php foreach ($columns as $id => $column): ?>
                       <?php $column_counter++; ?>
 
-                      <?php if($column_counter==$column_counter_max): ?>
-                        <div class="col-md-2 col-sm-0 col-xs-0"></div>
-                        <div class="col-md-2 col-sm-4 col-xs-12">
-                      <?php else: ?>
-                        <div class="col-md-4 col-sm-4 col-xs-6">
-                      <?php endif; ?>
+                      <?php //if($column_counter==$column_counter_max): ?>
+                        <!-- <div class="col-md-2 col-sm-0 col-xs-0"></div>
+                        <div class="col-md-2 col-sm-4 col-xs-12"> -->
+                      <?php //else: ?>
+                        <!-- <div class="col-md-4 col-sm-4 col-xs-6"> -->
+                      <?php //endif; ?>
+                        <div class="col-sm-3 col-xs-6">
                             <div <?php if($column_counter==1): ?>class="table-column-first" data-column="Gift card code: "<?php elseif($column_counter==$column_counter_max): ?>class="table-column-last" data-column="Expiry date: "<?php else: ?>class="table-column" data-column="Amount: "<?php endif; ?>">
                                 
                                     <!--end by Sally-->
