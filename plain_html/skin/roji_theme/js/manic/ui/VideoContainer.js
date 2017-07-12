@@ -72,6 +72,9 @@ manic.ui.VideoContainer = function(options, element) {
   this.image_aspect_ratio = -1;
 
   this.element.click(this.on_element_click.bind(this));
+  // this.element.on('tap', this.on_element_click.bind(this));
+  this.element.tap(this.on_element_click.bind(this));
+  
 
 
   this.scale_mode = this.options['scale_mode'];
@@ -327,7 +330,6 @@ manic.ui.VideoContainer.RIGHT = 'right';
 manic.ui.VideoContainer.prototype.delayed_video_init = function() {
 
   this.player = videojs(this.element.find('video')[0]);
-  
   
   this.player.ready(this.on_video_ready.bind(this));
   this.player.on('ended', this.on_video_end.bind(this));
@@ -881,6 +883,7 @@ manic.ui.VideoContainer.prototype.on_video_play = function(event) {
  * @param  {object} event
  */
 manic.ui.VideoContainer.prototype.on_element_click = function(event) {
+  console.log('on_element_click');
   if (this.is_ready == true) { 
     if(manic.IS_MOBILE == true) {
       this.player.play();

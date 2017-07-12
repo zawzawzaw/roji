@@ -41,6 +41,9 @@
     <script>
       videojs.options.flash.swf = "../skin/roji_theme/libs/videojs_new/video-js.swf";
     </script>
+
+    <!-- tap -->
+    <script type="text/javascript" src="../skin/roji_theme/libs/jquery-other/jquery.tap.min.js"></script>
     
     <!-- Google Closure -->
     <script type="text/javascript" src="../skin/roji_theme/libs/google-closure/closure-library/closure/goog/base.js"></script>
