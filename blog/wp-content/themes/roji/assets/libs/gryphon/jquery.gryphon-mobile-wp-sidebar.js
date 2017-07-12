@@ -140,10 +140,10 @@
       // if (scroll_top > (256)) {
       // if (scroll_top > (277 + 9)) {
       if (scroll_top > (57)) {      
-        console.log(scroll_top);
-        this.element.addClass('sticky-version');
+        // console.log(scroll_top);
+        // this.element.addClass('sticky-version');
       } else {
-        this.element.removeClass('sticky-version');
+        // this.element.removeClass('sticky-version');
       }
 
     }

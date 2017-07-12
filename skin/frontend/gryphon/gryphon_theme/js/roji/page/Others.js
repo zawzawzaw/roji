@@ -25,7 +25,8 @@ roji.page.Others = function(options, element) {
     this.is_terms_of_use_page = true;
   }
 
-
+  // variables for sticky sidebar desktop
+  this.sticky_sidebar_scence = null;
 
   // variables for update_others_bg_width
   this.sidebar_bg = $j('#page-others-main-content-section-bg .sidebar-bg');
@@ -90,7 +91,7 @@ roji.page.Others.EVENT_01 = '';
 roji.page.Others.prototype.init = function() {
   roji.page.Others.superClass_.init.call(this);
 
-  
+  this.create_sticky_sidebar();
 
 };
 
@@ -105,6 +106,24 @@ roji.page.Others.prototype.init = function() {
 
 roji.page.Others.prototype.private_method_03 = function() {};
 roji.page.Others.prototype.private_method_04 = function() {};
+
+roji.page.Others.prototype.create_sticky_sidebar = function() {
+  
+  if(manic.IS_MOBILE == false){
+
+      if(this.controller==null){
+        this.controller = new ScrollMagic.Controller(); // needed by some components
+      }
+
+      this.sticky_sidebar_scence = new ScrollMagic.Scene({triggerElement: "#page-others-main-sidebar", triggerHook: 'onLeave' }) //$('.booking-steps.active-step').offset().top + 100
+              // .setClassToggle("#page-others-main-sidebar", "stick") // add class toggle
+              .setPin("#page-others-main-sidebar")
+              // .addIndicators({name: ("" + Math.random()) }) // add indicators (requires plugin)
+              .addTo(this.controller);
+
+  }
+
+};
 
 
 //    ____  _   _ ____  _     ___ ____
@@ -210,6 +229,46 @@ roji.page.Others.prototype.update_others_bg_height = function(){
 
 
 
+/**
+ * @param  {String} str_param
+ */
+roji.page.Others.prototype.show_other_content_item = function(str_param) {
+
+  console.log('show_other_content_item: ' + str_param);
+
+  if (manic.IS_MOBILE == false) {
+
+    // desktop version
+    var target_content_item = $j('.page-others-content-item[data-value="' + str_param + '"]');
+    var target_sidebar_item = $j('#page-others-main-sidebar nav ul li[data-value="' + str_param + '"]');
+
+    if (target_content_item.length != 0) {
+
+      if (target_content_item.hasClass('open-version')) {
+        // do nothing
+
+      } else {
+        
+        $j('.page-others-content-item').removeClass('open-version');
+        target_content_item.addClass('open-version');
+
+        $j('#page-others-main-sidebar nav ul li').removeClass('selected');
+        target_sidebar_item.addClass('selected');
+
+      }
+      
+    } else {
+
+
+      this.show_other_content_item('tea');    // recursive
+
+    }
+
+  }
+  
+  
+  
+};
 
 
 //    _______     _______ _   _ _____ ____
@@ -276,7 +335,7 @@ roji.page.Others.prototype.update_page_layout = function() {
 roji.page.Others.prototype.scroll_to_target = function(str_param, str_param_2, str_param_3) {
   roji.page.Others.superClass_.scroll_to_target.call(this, str_param, str_param_2, str_param_3);
   
-  
+  this.show_other_content_item(str_param);
 }
 
 /**
@@ -287,6 +346,6 @@ roji.page.Others.prototype.on_scroll_to_no_target = function() {
   roji.page.Others.superClass_.on_scroll_to_no_target.call(this);
 
   
-  
+  this.show_other_content_item('tea');
 }
 

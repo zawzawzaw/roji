@@ -18,20 +18,6 @@
   add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
 ?>
-<div id="mobile-blog-sidebar" class="visible-xs visible-sm">
-  <div id="mobile-blog-button-container">
-    <div class="mobile-blog-button" id="gryphon-blog-categories-button">Categories</div>
-    <div class="mobile-blog-button" id="gryphon-blog-tag-button">Tags</div>    
-  </div>
-
-  <div id="mobile-blog-tag-container" style="">
-    <?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>  
-  </div>
-
-  <div id="mobile-blog-category-container">
-    <?php the_widget( 'WP_Widget_Categories' ); ?>  
-  </div>
-</div>
 
 <article id="page-blog-content-section">
   <div id="page-blog-content-section-bg">

@@ -59,7 +59,7 @@
   <article id="page-contact-content-section">
     <div class="container-fluid has-breakpoint">
       <div class="row">
-        <div class="col-md-3 col-tablet-landscape-4 col-sm-12 col-xs-12">
+        <div class="col-md-3 col-tablet-landscape-4 col-sm-12 col-xs-12 hidden-xs hidden-sm">
 
           <div id="page-contact-sidebar">
 
@@ -103,7 +103,7 @@
 
 
         </div>
-        <div class="col-md-2 col-tablet-landscape-1 col-sm-12 col-xs-12">
+        <div class="col-md-2 col-tablet-landscape-1 col-sm-12 col-xs-12 hidden-xs hidden-sm">
 
           <div id="page-contact-seperator"></div>
 
@@ -172,7 +172,9 @@
                       <label>Contact No.</label>
                     </div>
                     <div class="col-md-8">
-                      <input name="telephone" id="telephone" title="<?php echo Mage::helper('contacts')->__('Telephone') ?>" value="" class="remove-input-selection required-entry input-text input-class phone_no_input" type="text" unselectable="on" onselectstart="return false;" />
+                      <div class="roji-intltelinput-container">       
+                        <input name="telephone" id="telephone" title="<?php echo Mage::helper('contacts')->__('Telephone') ?>" value="" class="roji-intltelinput remove-input-selection required-entry input-text input-class phone_no_input" type="text" unselectable="on" onselectstart="return false;" />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -291,6 +293,55 @@
 
 
         </div> <!-- col-md-6 -->
+        <div class="col-md-2 col-tablet-landscape-1 col-sm-12 col-xs-12 visible-xs visible-sm">
+
+          <div id="page-contact-seperator"></div>
+
+        </div>
+        <div class="col-md-3 col-tablet-landscape-4 col-sm-12 col-xs-12 visible-xs visible-sm">
+
+          <div id="page-contact-sidebar">
+
+            <div class="contact-sidebar-address">
+              <div class="detail-item first-version">
+                <h4><?php echo $this->__('Office Address') ?></h4>
+                <p><?php echo $this->__('251 Pandan Loop, Singapore 128431') ?></p>
+              </div>
+              <div class="detail-item">
+                <h4><?php echo $this->__('Operating hours') ?></h4>
+                <p>
+                  <?php echo $this->__('Mondays to Fridays: 9am to 5pm <br>
+                  Closed on weekends and public holidays') ?>
+                </p>
+              </div>
+              <div class="detail-item">
+                <h4><?php echo $this->__('Phone') ?></h4>
+                <p><?php echo $this->__('+65 6779 2948') ?></p>
+              </div>
+            </div> <!-- contact-sidebar-address -->
+
+            <div class="contact-sidebar-address">
+              <div class="detail-item first-version">
+                <h4><?php echo $this->__('Dhoby ghaut xchange') ?></h4>
+                <p><?php echo $this->__('11 Orchard Road, Dhoby Xchange, #B1-05, Singapore 238826') ?></p>
+              </div>
+              <div class="detail-item">
+                <h4><?php echo $this->__('Operating hours') ?></h4>
+                <p>
+                  <?php echo $this->__('Mondays to Fridays: 9am to 5pm <br>
+                  Closed on weekends and public holidays') ?>
+                </p>
+              </div>
+              <div class="detail-item">
+                <h4><?php echo $this->__('Phone') ?></h4>
+                <p><?php echo $this->__('+65 6779 2948') ?></p>
+              </div>
+            </div> <!-- contact-sidebar-address -->
+
+          </div> <!-- page-contact-sidebar -->
+
+
+        </div>
       </div> <!-- row -->
     </div> <!-- container-fluid -->
   </article> <!-- page-contact-content-section -->

@@ -7,9 +7,13 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <link rel="shortcut icon" href="../skin/roji_theme/images/favicon.ico" type="image/x-icon" />
-
+  <link rel="shortcut icon" href="<?php echo THEMEROOT; ?>/assets/images/favicon.ico" type="image/x-icon" />  
+  <?php if(is_home()): ?>
   <title><?php bloginfo('name'); ?></title>
+  <?php else: ?>
+  <?php global $post ?>
+  <title><?php echo get_the_title($post->ID) . ' - Roji Cha'; ?></title>
+  <?php endif; ?>
   <meta name="description" content="">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui"/>
@@ -290,6 +294,21 @@
       <div class="mobile-header-spacer visible-sm visible-xs"></div>
 
       <!-- inside #page-wrapper-content -->
+
+      <div id="mobile-blog-sidebar" class="sticky-version visible-xs visible-sm">
+        <div id="mobile-blog-button-container">
+          <div class="mobile-blog-button" id="gryphon-blog-categories-button">Categories</div>
+          <div class="mobile-blog-button" id="gryphon-blog-tag-button">Tags</div>    
+        </div>
+
+        <div id="mobile-blog-tag-container" style="">
+          <?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>  
+        </div>
+
+        <div id="mobile-blog-category-container">
+          <?php the_widget( 'WP_Widget_Categories' ); ?>  
+        </div>
+      </div>
 
       <article id="page-blog-title-section">
         <div class="container-fluid has-breakpoint">
