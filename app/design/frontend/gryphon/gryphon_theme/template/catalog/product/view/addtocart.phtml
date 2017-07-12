@@ -67,7 +67,7 @@ if(Mage::getSingleton('customer/session')->isLoggedIn()) {
         </div>
         <?php endif; ?>
         <div class="col-md-1 col-sm-12 <?php if ($isGiftcardType) : ?>hidden-xs hidden-sm hidden-lg hidden-md<?php endif; ?>"></div>
-        <div class="<?php if ($isGiftcardType) : ?>col-md-6<?php else: ?>col-md-4<?php endif; ?> col-sm-12">
+        <div class="<?php if ($isGiftcardType) : ?>col-lg-offset-9 col-lg-3 col-md-offset-8 col-md-4<?php else: ?>col-md-4<?php endif; ?> col-sm-12">
 
             <?php if (count($this->getTierPrices()) > 0): ?>   
             <br/> <?php echo $this->getTierPriceHtml() ?>   

@@ -50,7 +50,7 @@
             <div class="col-md-6 col-xs-6">
                 <div class="column-01">
                     <p>REBATE:</p>
-                    <span class="discount_desc"><?php echo $this->helper('checkout')->formatPrice($this->getQuote()->getStore()->convertPrice(Mage::helper('rewardpoints/data')->convertPointsToMoneyEquivalence($pts))); ?> <?php if($pts>1): ?>Rebates<?php else: ?>Rebate<?php endif; ?></span>
+                    <span class="discount_desc"><?php echo $this->helper('checkout')->formatPrice($this->getQuote()->getStore()->convertPrice(Mage::helper('rewardpoints/data')->convertPointsToMoneyEquivalence($pts))); ?> <?php if($pts>1): ?>Rebate<?php else: ?>Rebate<?php endif; ?></span>
                     <a href="#" id="cancel_rebate" class="cancel-btn"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
                 </div>
             </div>

@@ -26,19 +26,19 @@
 ?>
 <?php $_order = $this->getOrder() ?>
 <?php if ($_order): ?>
-<table cellspacing="0" cellpadding="0" border="0" width="650" style="border:1px solid #EAEAEA;">
-    <thead>
+<table cellspacing="0" cellpadding="0" border="0" width="650" style="border-bottom: 1px solid #ccc;">
+    <thead style="border-bottom: 1px solid #ccc;">
         <tr>
-            <th align="left" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px"><?php echo $this->__('Item') ?></th>
-            <th align="left" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px"><?php echo $this->__('Sku') ?></th>
-            <th align="center" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px"><?php echo $this->__('Qty') ?></th>
-            <th align="right" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px"><?php echo $this->__('Subtotal') ?></th>
+            <th align="left" style="font-family: 'Montserrat',Arial,Helvetica,sans-serif;font-style: normal;font-weight: 500;font-size: 12px;line-height: 24px;text-transform: uppercase;letter-spacing: .075em; padding:10px;"><?php echo $this->__('Item') ?></th>
+            <th align="left" style="font-family: 'Montserrat',Arial,Helvetica,sans-serif;font-style: normal;font-weight: 500;font-size: 12px;line-height: 24px;text-transform: uppercase;letter-spacing: .075em; padding:10px;"><?php echo $this->__('Sku') ?></th>
+            <th align="center" style="font-family: 'Montserrat',Arial,Helvetica,sans-serif;font-style: normal;font-weight: 500;font-size: 12px;line-height: 24px;text-transform: uppercase;letter-spacing: .075em; padding:10px;"><?php echo $this->__('Qty') ?></th>
+            <th align="right" style="font-family: 'Montserrat',Arial,Helvetica,sans-serif;font-style: normal;font-weight: 500;font-size: 12px;line-height: 24px;text-transform: uppercase;letter-spacing: .075em; padding:10px;"><?php echo $this->__('Subtotal') ?></th>
         </tr>
     </thead>
 
     <?php $i=0; foreach ($_order->getAllItems() as $_item): ?>
     <?php if($_item->getParentItem()) continue; else $i++; ?>
-    <tbody<?php echo $i%2 ? ' bgcolor="#F6F6F6"' : '' ?>>
+    <tbody>
         <?php echo $this->getItemHtml($_item) ?>
     </tbody>
     <?php endforeach; ?>
@@ -50,7 +50,7 @@
 <?php if ($this->helper('giftmessage/message')->isMessagesAvailable('order', $_order, $_order->getStore()) && $_order->getGiftMessageId()): ?>
     <?php $_giftMessage = $this->helper('giftmessage/message')->getGiftMessage($_order->getGiftMessageId()); ?>
     <?php if ($_giftMessage): ?>
-<br />
+<!-- <br />
 <table cellspacing="0" cellpadding="0" border="0" width="100%" style="border:1px solid #EAEAEA;">
     <thead>
         <tr>
@@ -68,7 +68,7 @@
             </td>
         </tr>
     </tbody>
-</table>
+</table> -->
     <?php endif; ?>
 <?php endif; ?>
 <?php endif; ?>

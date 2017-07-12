@@ -56,6 +56,11 @@
 #page-faq-sidebar{
   padding-top: 41px;
 
+  &.stick {
+    position: fixed;
+    top: 0px;
+  }
+
   nav{
     ul{
 
@@ -105,6 +110,9 @@
 #page-faq-content-section{
   padding-bottom: 94px;
   position: relative;
+  @media all and (max-width: 991px) {
+    padding-bottom: 0px;
+  }
 }
 
 #page-faq-content-section-bg{
@@ -130,6 +138,10 @@
     width: 70%;
     height: 100%;
     background: @off-white-1;
+    @media all and (max-width: 991px) {
+      left: 0;
+      width: 100%;
+    }
   }
 }
 

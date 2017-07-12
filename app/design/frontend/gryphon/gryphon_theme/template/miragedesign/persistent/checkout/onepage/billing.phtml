@@ -227,7 +227,7 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
                                             <div class="col-md-8">
                                                 <div class="dropdown">
                                                     <select id="billing:region_id" name="billing[region_id]" onkeyup="if(document.getElementById('shipping:same_as_billing').checked) shipping.setSameAsBilling(true);" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;">
-                                                        <option value=""><?php echo $this->__('Please select') ?></option>
+                                                        <option value=""><?php echo $this->__('Select') ?></option>
                                                     </select>
                                                 </div>
                                                 <script type="text/javascript">
@@ -383,92 +383,132 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
                                         </div>
                                         <?php endif; ?>
                                     </div>
-                                    <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label for="shipping:street1" class="required"><?php echo $this->__('Address') ?><em>*</em></label>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <input type="text" title="<?php echo $this->__('Street Address') ?>" name="shipping[street][]" id="shipping:street1" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" class="input-text <?php echo $_streetValidationClass ?>" onchange="shipping.setSameAsBilling(false);" />
-                                            </div>
-                                        </div>
+                                    
+                                    <div class="form-group radio-version">
+                                        <ul>
+                                            <?php if ($this->customerHasAddresses()): ?>
+                                                <?php $customerId = Mage::getSingleton('customer/session')->getCustomer();?>    
+                                                <?php $customer = Mage::getModel('customer/customer')->load($customerId->getId()); ?>
+                                                <?php $data = array();?>
+                                                <?php $billing_address = $customer->getPrimaryBillingAddress()->getData(); ?>          
+                                                <?php $i=0; foreach ($customer->getAddresses() as $address):?>                                
+                                                    <?php $data = $address->toArray();?>
+                                                    <?php $country_name = Mage::app()->getLocale()->getCountryTranslation($data['country_id']);?>
+                                                    <?php if($billing_address['entity_id']!==$data['entity_id']): ?>                  
+                                                        <li>
+                                                        <div class="checkbox">
+                                                            <input type="radio" <?php if($i==0): ?>checked="checked"<?php endif; ?> name="custom_shipping_address_select" class="custom_shipping_address_select" value="<?php echo $data['entity_id']; ?>">
+                                                            <label class="checkbox-label" for="custom_shipping_address_select">
+                                                                <span></span>
+                                                                <p class="label-text"><?php echo $data['firstname'] . ' ' . $data['lastname'] . '<br>' . $data['street'] . ', ' . $data['city'] . ', ' . $data['postcode']. ', ' . $country_name;  ?></p>
+                                                            </label> 
+                                                        </div>
+                                                        </li>                                                
+                                                        <?php $i++; ?>
+                                                    <?php endif; ?>
+                                                <?php endforeach; ?>  
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <input type="radio" <?php if($i==0): ?>checked="checked"<?php endif; ?> name="custom_shipping_address_select" class="custom_shipping_address_select" value="">
+                                                        <label class="checkbox-label" for="custom_shipping_address_select">
+                                                            <span></span>
+                                                            <p class="label-text">New Address</p>
+                                                        </label> 
+                                                    </div>
+                                                </li>
+                                            <?php endif; ?>
+                                            <li></li>
+                                        </ul>
                                     </div>
-                                    <?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
-                                    <?php for ($_i = 2, $_n = $this->helper('customer/address')->getStreetLines(); $_i <= $_n; $_i++): ?>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <label></label>
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <input type="text" title="<?php echo $this->__('Street Address %s', $_i) ?>" name="shipping[street][]" id="shipping:street<?php echo $_i ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet($_i)) ?>" class="input-text <?php echo $_streetValidationClass ?>" onchange="shipping.setSameAsBilling(false);" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                    <?php endfor; ?>
-                                    <?php if ($this->helper('customer/address')->isVatAttributeVisible()) : ?>
+
+                                    <div id="address-form-container" style="<?php if($i!==0): ?>display: none;<?php endif; ?>">
+                                        <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <label for="billing:vat_id"><?php echo $this->__('VAT Number'); ?></label>
+                                                    <label for="shipping:street1" class="required"><?php echo $this->__('Address') ?><em>*</em></label>
                                                 </div>
                                                 <div class="col-md-8">
-                                                    <input type="text" id="shipping:vat_id" name="shipping[vat_id]" value="<?php echo $this->escapeHtml($this->getAddress()->getVatId()); ?>" title="<?php echo $this->__('VAT Number'); ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('vat_id') ?>" />
+                                                    <input type="text" title="<?php echo $this->__('Street Address') ?>" name="shipping[street][]" id="shipping:street1" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" class="input-text <?php echo $_streetValidationClass ?>" onchange="shipping.setSameAsBilling(false);" />
                                                 </div>
                                             </div>
                                         </div>
-                                    <?php endif; ?>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label for="shipping:city" class="required"><?php echo $this->__('City') ?><em>*</em></label>
+                                        <?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
+                                        <?php for ($_i = 2, $_n = $this->helper('customer/address')->getStreetLines(); $_i <= $_n; $_i++): ?>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label></label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <input type="text" title="<?php echo $this->__('Street Address %s', $_i) ?>" name="shipping[street][]" id="shipping:street<?php echo $_i ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet($_i)) ?>" class="input-text <?php echo $_streetValidationClass ?>" onchange="shipping.setSameAsBilling(false);" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        <?php endfor; ?>
+                                        <?php if ($this->helper('customer/address')->isVatAttributeVisible()) : ?>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label for="billing:vat_id"><?php echo $this->__('VAT Number'); ?></label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <input type="text" id="shipping:vat_id" name="shipping[vat_id]" value="<?php echo $this->escapeHtml($this->getAddress()->getVatId()); ?>" title="<?php echo $this->__('VAT Number'); ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('vat_id') ?>" />
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col-md-8">
-                                                <input type="text" title="<?php echo $this->__('City') ?>" name="shipping[city]" value="<?php echo $this->escapeHtml($this->getAddress()->getCity()) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('city') ?>" id="shipping:city" onchange="shipping.setSameAsBilling(false);" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label for="shipping:postcode" class="required"><?php echo $this->__('Zip/Postal Code') ?><em>*</em></label>
-                                            </div>                                        
-                                            <div class="col-md-8">
-                                                <input type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="shipping[postcode]" id="shipping:postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" onchange="shipping.setSameAsBilling(false);" />
-                                            </div>
-                                        </div>
-                                    </div>                                
-
-                                    <div class="form-group">                                    
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label for="shipping:country_id" class="required"><?php echo $this->__('Country') ?><em>*</em></label>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="dropdown">
-                                                    <?php echo $this->getCountryHtmlSelect('shipping') ?>
+                                        <?php endif; ?>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label for="shipping:city" class="required"><?php echo $this->__('City') ?><em>*</em></label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <input type="text" title="<?php echo $this->__('City') ?>" name="shipping[city]" value="<?php echo $this->escapeHtml($this->getAddress()->getCity()) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('city') ?>" id="shipping:city" onchange="shipping.setSameAsBilling(false);" />
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label for="shipping:region" class="required"><?php echo $this->__('State/Province') ?><em>*</em></label>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label for="shipping:postcode" class="required"><?php echo $this->__('Zip/Postal Code') ?><em>*</em></label>
+                                                </div>                                        
+                                                <div class="col-md-8">
+                                                    <input type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="shipping[postcode]" id="shipping:postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" onchange="shipping.setSameAsBilling(false);" />
+                                                </div>
                                             </div>
-                                            <div class="col-md-8">
-                                                <div class="dropdown">
-                                                    <select id="shipping:region_id" name="shipping[region_id]" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;">
-                                                        <option value=""><?php echo $this->__('Please select') ?></option>
-                                                    </select>
-                                                    <script type="text/javascript">
-                                                    //<![CDATA[
-                                                        $('shipping:region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
-                                                    //]]>
-                                                    </script>
-                                                    <input type="text" id="shipping:region" name="shipping[region]" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>" title="<?php echo $this->__('State/Province') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" onchange="shipping.setSameAsBilling(false);" />
+                                        </div>                                
+
+                                        <div class="form-group">                                    
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label for="shipping:country_id" class="required"><?php echo $this->__('Country') ?><em>*</em></label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="dropdown">
+                                                        <?php echo $this->getCountryHtmlSelect('shipping') ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label for="shipping:region" class="required"><?php echo $this->__('State/Province') ?><em>*</em></label>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="dropdown">
+                                                        <select id="shipping:region_id" name="shipping[region_id]" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;">
+                                                            <option value=""><?php echo $this->__('Select') ?></option>
+                                                        </select>
+                                                        <script type="text/javascript">
+                                                        //<![CDATA[
+                                                            $('shipping:region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
+                                                        //]]>
+                                                        </script>
+                                                        <input type="text" id="shipping:region" name="shipping[region]" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>" title="<?php echo $this->__('State/Province') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" onchange="shipping.setSameAsBilling(false);" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

@@ -106,8 +106,8 @@ $telephone = ($hasAddress) ? $this->helper('customercustomiser')->getAddress()->
   -->
 
   <article id="page-account-content-section">
-    <div id="page-account-content-section-bg" class="visible-md visible-lg">
-      <div class="sidebar-bg"></div>
+    <div id="page-account-content-section-bg" class="">
+      <div class="sidebar-bg visible-md visible-lg"></div>
       <div class="content-bg"></div>
     </div>
 
@@ -229,7 +229,7 @@ $telephone = ($hasAddress) ? $this->helper('customercustomiser')->getAddress()->
                        <div class="form-group">
                         <div class="row">
                           <div class="col-md-4">
-                            <label>Email address</label>
+                            <label>Email address*</label>
                           </div>
                           <div class="col-md-8">
                             <input type="text" name="email" id="email" value="<?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?>" title="<?php echo $this->__('Email') ?>" class="input-text required-entry validate-email" />
@@ -245,7 +245,7 @@ $telephone = ($hasAddress) ? $this->helper('customercustomiser')->getAddress()->
                       <div class="form-group">
                         <div class="row">
                           <div class="col-md-4">
-                            <label>Billing address*</label>
+                            <label>Default Billing address*</label>
                           </div>
                           <div class="col-md-8">
                             <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>

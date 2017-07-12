@@ -51,7 +51,7 @@ if(empty($creating_or_editing_address_type)) $creating_or_editing_address_type =
         <div class="col-md-3 col-sm-1 col-xs-0"></div>
         <div class="col-md-9 col-sm-10 col-xs-12">
           <div id="page-account-title">
-            <h1><?php echo $this->__('Edit Address.') ?></h1>
+            <h1><?php echo $this->__('Edit Shipping Address.') ?></h1>
           </div> <!-- page-account-title -->
         </div>
       </div>
@@ -68,8 +68,8 @@ if(empty($creating_or_editing_address_type)) $creating_or_editing_address_type =
   -->
 
   <article id="page-account-content-section">
-    <div id="page-account-content-section-bg" class="visible-md visible-lg">
-      <div class="sidebar-bg"></div>
+    <div id="page-account-content-section-bg" class="">
+      <div class="sidebar-bg visible-md visible-lg"></div>
       <div class="content-bg"></div>
     </div>
 
@@ -114,7 +114,11 @@ if(empty($creating_or_editing_address_type)) $creating_or_editing_address_type =
               <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
               
               <div class="page-account-form-header">
-                <h2>Address</h2>
+                <?php if($this->isDefaultShipping()): ?>
+                  <h2>Default Shipping Address</h2>
+                <?php else: ?>
+                  <h2>New Shipping Address</h2>
+                <?php endif; ?>
               </div> <!-- account-edit-info-header -->
 
               <div class="page-account-form-content">
@@ -127,7 +131,7 @@ if(empty($creating_or_editing_address_type)) $creating_or_editing_address_type =
                       <div class="form-group">
                         <div class="row">
                           <div class="col-md-4">
-                            <label>Email address</label>
+                            <label>Email address*</label>
                           </div>
                           <div class="col-md-8">
                             <?php $customer = Mage::getSingleton('customer/session')->getCustomer(); if(isset($customer)) { $customer_email = $customer->getEmail(); } ?>
@@ -188,7 +192,7 @@ if(empty($creating_or_editing_address_type)) $creating_or_editing_address_type =
                             <div class="col-md-8">
                               <div class="input-box dropdown">
                                   <select id="region_id" name="region_id" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;">
-                                      <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                                      <option value=""><?php echo $this->__('Select') ?></option>
                                   </select>
                                   <script type="text/javascript">
                                       //<![CDATA[
@@ -291,9 +295,9 @@ if(empty($creating_or_editing_address_type)) $creating_or_editing_address_type =
               <div class="page-account-form-footer">
                 <div class="row">
                   <div class="col-md-7">
-                    <div class="back-cta-container">
+                    <!-- <div class="back-cta-container">
                       <a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>" class="arrow-cta reverse-version">Back</a>
-                    </div>
+                    </div> -->
                   </div>
                   <div class="col-md-5">
                     <div class="cta-container">
@@ -361,16 +365,23 @@ if(empty($creating_or_editing_address_type)) $creating_or_editing_address_type =
         }                
     });
 
+    var url = window.location.pathname;
+
+    if(url.includes("new")) {
+      $j("#firstname").val("");
+      $j("#lastname").val("");
+      $j("#email").val("");
+    }
+
     $j('#country').on("change", function(e){
-        $j('#telephone, #fax').intlTelInput("setCountry", $j(this).val())
+        $j('#telephone').intlTelInput("setCountry", $j(this).val())
     });
 
-    if($j('#telephone').val().trim()=="") {
-        $j('#telephone').intlTelInput("setNumber", "+65");    
+    if($j.trim($j('#telephone').val())=="") {
+        $j('#telephone').intlTelInput("setNumber", "+65 1234");
     }
-    if($j('#fax').val().trim()=="") {
-        $j('#fax').intlTelInput("setNumber", "+65");    
-    }
+
+
 
 
 </script>

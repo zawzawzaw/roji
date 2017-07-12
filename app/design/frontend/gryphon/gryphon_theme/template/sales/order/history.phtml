@@ -57,8 +57,8 @@
 -->
 
 <article id="page-account-content-section">
-  <div id="page-account-content-section-bg" class="visible-md visible-lg">
-    <div class="sidebar-bg"></div>
+  <div id="page-account-content-section-bg" class="">
+    <div class="sidebar-bg visible-md visible-lg"></div>
     <div class="content-bg"></div>
   </div>
 
@@ -147,23 +147,24 @@
                     <?php foreach ($_orders as $_order): ?>
                     <div class="page-account-table-item">
                       <div class="row">
-                        <div class="col-sm-3 col-xs-6">
+                        <div class="col-sm-3 col-xs-6 hidden-xs">
                           <div class="table-column-first" data-column="Date:">
                             <p><?php echo $this->formatDate($_order->getCreatedAtStoreDate()) ?></p>
                           </div>
                         </div>
-                        <div class="col-sm-3 col-xs-6">
-                          <div class="table-column" data-column="Order:">
-                            <h4><a href="<?php echo $this->getViewUrl($_order); ?>"><?php echo $_order->getRealOrderId() ?></a></h4>
+                        <div class="col-sm-3 col-xs-12">
+                          <div class="table-column one-line-version right-align-version" data-column="Order:">
+                            <h4><a href="<?php echo $this->getViewUrl($_order); ?>"><?php echo $_order->getRealOrderId() ?></a></h4>                            
                           </div>
                         </div>
                         <div class="col-sm-3 col-xs-6">
-                          <div class="table-column mobile-last-version" data-column="Status:">
+                          <div class="table-column mobile-last-version">
+                            <p><?php echo $this->formatDate($_order->getCreatedAtStoreDate()) ?></p>
                             <p><?php echo $_order->getStatusLabel(); ?></p>
                           </div>
                         </div>
                         <div class="col-sm-3 col-xs-6">
-                          <div class="table-column-last mobile-last-version" data-column="Total:">
+                          <div class="table-column-last mobile-last-version right-align-version" data-column="Total:">
                             <h4><?php echo $_order->formatPrice($_order->getSubtotal()) ?></h4>
                           </div>
                         </div>

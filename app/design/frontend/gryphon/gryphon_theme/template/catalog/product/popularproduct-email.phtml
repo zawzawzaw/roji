@@ -1,6 +1,6 @@
 <?php
     // $_productCollection=$this->getLoadedProductCollection()->addAttributeToSort('position');
-    $_productCollection = Mage::getModel('catalog/category')->load(114)
+    $_productCollection = Mage::getModel('catalog/category')->load(116)
                          ->getProductCollection()
                          ->addAttributeToSelect('*')
                          ->addAttributeToFilter('status', 1) // enabled
@@ -20,16 +20,16 @@
                 <td style="padding: 20px 0 20px 0;">
                   <table cellpadding="0" cellspacing="0" border="0" width="100%">
                     <tr>
-                      <td align="center" style="padding: 15px 0 0 0; font-family: 'Gotham-Medium', Tahoma, Helvetica, Arial, sans-serif; color: #333333; font-size: 12px;"><a href="<?php echo $_product->getProductUrl() ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(180, 150); ?>" width="180" height="150" border="0" class="img-max" alt="tea <?php echo $i ?>"></a></td>
+                      <td align="center" style="padding: 15px 0 0 0;"><a href="<?php echo $_product->getProductUrl() ?>"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(180, 150); ?>" width="180" height="150" border="0" class="img-max" alt="tea <?php echo $i ?>"></a></td>
                     </tr>
                     <tr>
                       <td align="center" style="width: 180px;display: block;margin: 0 auto;">
-                        <a href="<?php echo $_product->getProductUrl() ?>" style="font-family: 'BrandonGrotesqueWeb-Medium','Arial Black',Gadget,sans-serif;font-style: normal;font-weight: 400;font-size: 11px;line-height: 32px;letter-spacing: .08em;text-transform: uppercase;color:#fff;text-decoration: none;margin-top: 10px; display: block;"><?php echo $this->htmlEscape($_product->getName()) ?></a>
+                        <a href="<?php echo $_product->getProductUrl() ?>" style="font-family: 'Raleway',Tahoma,Geneva,sans-serif;font-style: normal;font-weight: 600;font-size: 16px;line-height: 24px;letter-spacing: .075em;text-transform: uppercase;color:#333;text-decoration: none;margin-top: 10px; display: block;"><?php echo $this->htmlEscape($_product->getName()) ?></a>
                       </td>
                     </tr>
                     <tr>
                       <td align="center">
-                        <p class="price" style="font-size: 12px;line-height: 21px; font-family: Domine,'Times New Roman',Times,serif;font-style: normal; font-weight: 400; color: #efeeed;"><?php echo $this->getPriceHtml($_product, true) ?></p>
+                        <p class="price" style="font-family: 'Raleway',Tahoma,Geneva,sans-serif;font-style: normal;font-weight: 600;font-size: 16px;line-height: 24px;letter-spacing: .075em;color: #707070;"><?php echo $this->getPriceHtml($_product, true) ?></p>
                       </td>
                     </tr>
                   </table>

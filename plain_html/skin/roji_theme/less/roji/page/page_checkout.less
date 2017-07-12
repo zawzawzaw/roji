@@ -429,6 +429,13 @@
       padding-top: 4px;
     }
 
+    .stock-count {
+      color: @p4-dark-red;
+      .body-font-italic;
+      font-size: 12px;
+
+    }
+
   }
   .cart-item-value{
     .h2-style;
@@ -722,7 +729,13 @@
   }
 }
 
-
+#page-confirmation-cart-subtotal{
+  #page-checkout-cart-subtotal{
+    .cancel-btn {
+      display: none;
+    }
+  }
+}
 
 // DISCOUNT
 
@@ -857,7 +870,16 @@
 } // #page-checkout-billing
 
 #page-checkout-shipping{
-
+  .dropdown-address {
+    display: none;
+  }
+  .radio-version {
+    ul {
+      li {
+        margin-bottom: 35px;
+      }
+    }
+  }
 } // #page-checkout-shipping
 
 
@@ -881,7 +903,7 @@
 
     margin-bottom: 35px;
         
-  }
+  }  
 
   // .checkbox input[type=checkbox]+label p
 } // #page-checkout-billing-shipping-checkbox

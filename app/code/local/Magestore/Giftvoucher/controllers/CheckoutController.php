@@ -124,7 +124,7 @@ class Magestore_Giftvoucher_CheckoutController extends Mage_Core_Controller_Fron
                                             $session->addError($this->__('This gift code limits the number of users', Mage::helper('giftvoucher')->getHiddenCode($code)));
                                         }
                                     } else {
-                                        $session->addError($this->__('Gift code "%s" is no longer available to use.', $code));
+                                        $session->addError($this->__('Gift code "%s" is not available for use.', $code));
                                     }
                                 }
                             } else {

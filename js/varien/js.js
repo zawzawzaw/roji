@@ -501,7 +501,8 @@ Varien.DateElement.prototype = {
             } else {
                 this.advice.innerHTML = this.errorTextModifier(error);
             }
-            this.advice.show();
+            // this.advice.show(300);
+            new Effect.Appear(this.advice, {duration : 1 });
             return false;
         }
 
@@ -510,7 +511,12 @@ Varien.DateElement.prototype = {
         this.month.removeClassName('validation-failed');
         this.year.removeClassName('validation-failed');
 
-        this.advice.hide();
+        new Effect.Fade(this.advice, {
+            duration : 1, 
+            afterFinishInternal : function() {
+                this.advice.hide();
+            }.bind(this)
+        });
         return true;
     },
     validateData: function() {

@@ -65,7 +65,7 @@ $product_type = $_item->getProductType();
               $stock_qty = intval($stock->getQty());
               ?>
               <?php if($product_type!=="giftvoucher"): ?>
-                <p><?php echo ($stock_qty <= 3) ? "Only " .$stock_qty . " left in stock!" : "" ; ?></p>
+                <p class="stock-count"><?php echo ($stock_qty <= 3) ? "Only " .$stock_qty . " left in stock!" : "" ; ?></p>
               <?php endif; ?>
             </div>
 

@@ -24,6 +24,9 @@ roji.page.Faq = function(options, element) {
   this.content_bg = $j('#page-faq-content-section-bg .content-bg');
   this.sidebar_width = $j('#page-faq-sidebar-width');
   this.content_width = $j('#page-faq-content-width');
+
+  // variables for sticky sidebar desktop
+  this.sticky_sidebar_scence = null;
   
   
   // variables for update_faq_bg_height
@@ -39,9 +42,7 @@ roji.page.Faq = function(options, element) {
       this.section_bg.length != 0) {
 
     this.has_sidebar = true;
-  }
-  
-
+  }  
 
   console.log('roji.page.Faq: init');
 };
@@ -78,7 +79,7 @@ roji.page.Faq.EVENT_01 = '';
 roji.page.Faq.prototype.init = function() {
   roji.page.Faq.superClass_.init.call(this);
 
-  
+  this.create_sticky_sidebar();
 
 };
 
@@ -92,7 +93,23 @@ roji.page.Faq.prototype.init = function() {
 
 
 roji.page.Faq.prototype.private_method_03 = function() {};
-roji.page.Faq.prototype.private_method_04 = function() {};
+roji.page.Faq.prototype.create_sticky_sidebar = function() {
+  
+  if(manic.IS_MOBILE == false){
+
+      if(this.controller==null){
+        this.controller = new ScrollMagic.Controller(); // needed by some components
+      }
+
+      this.sticky_sidebar_scence = new ScrollMagic.Scene({triggerElement: "#page-faq-sidebar", triggerHook: 'onLeave' }) //$('.booking-steps.active-step').offset().top + 100
+              // .setClassToggle("#page-faq-sidebar", "stick") // add class toggle
+              .setPin("#page-faq-sidebar")
+              // .addIndicators({name: ("" + Math.random()) }) // add indicators (requires plugin)
+              .addTo(this.controller);
+
+  }
+
+};
 
 
 //    ____  _   _ ____  _     ___ ____
@@ -135,7 +152,7 @@ roji.page.Faq.prototype.update_faq_bg_width = function() {
 roji.page.Faq.prototype.update_faq_bg_height = function(){
 
   // only for desktop
-  if (manic.IS_MOBILE == false) {
+  // if (manic.IS_MOBILE == false) {
     
     
     this.desktop_footer_element = $j("#desktop-footer"); // no idea why desktop_footer_element height is always null...
@@ -145,7 +162,7 @@ roji.page.Faq.prototype.update_faq_bg_height = function(){
       'min-height': target_height + 'px'
     });
     
-  }
+  // }
 };
 
 
@@ -234,9 +251,9 @@ roji.page.Faq.prototype.update_page_layout = function() {
   roji.page.Faq.superClass_.update_page_layout.call(this);
 
   if (this.has_sidebar == true) {
-    this.update_faq_bg_width();
-    this.update_faq_bg_height();
+    this.update_faq_bg_width();    
   }
+  this.update_faq_bg_height();
   
 }
 
