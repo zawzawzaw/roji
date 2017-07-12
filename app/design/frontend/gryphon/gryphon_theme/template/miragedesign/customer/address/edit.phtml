@@ -377,9 +377,9 @@ if(empty($creating_or_editing_address_type)) $creating_or_editing_address_type =
         $j('#telephone').intlTelInput("setCountry", $j(this).val())
     });
 
-    if($j.trim($j('#telephone').val())=="") {
+    // if($j.trim($j('#telephone').val())=="") {
         $j('#telephone').intlTelInput("setNumber", "+65 1234");
-    }
+    // }
 
 
 

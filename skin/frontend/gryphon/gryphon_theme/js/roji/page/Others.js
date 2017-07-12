@@ -259,8 +259,9 @@ roji.page.Others.prototype.show_other_content_item = function(str_param) {
       
     } else {
 
-
-      this.show_other_content_item('tea');    // recursive
+      var sidebar_item_value = $j('#page-others-main-sidebar nav ul li:first').attr("data-value");
+      console.log(sidebar_item_value);
+      this.show_other_content_item(sidebar_item_value);    // recursive
 
     }
 

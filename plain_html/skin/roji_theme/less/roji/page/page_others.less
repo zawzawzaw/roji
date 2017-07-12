@@ -197,6 +197,9 @@
 // added to make show/hide one content at a time
 .page-others-content-item {
   display: none;
+  @media all and (max-width: 991px) {
+    display: block;
+  }
   &.open-version {
     display: block;
   }
@@ -211,11 +214,16 @@
 
 
   &.has-section-2-version{
-    padding-bottom: 40px;
+    // padding-bottom: 40px;
+    padding-bottom: 0px;
+    @media all and (max-width: 991px) {
+      padding-bottom: 40px;
+    }
   }
 
   // TABLET PORTRAIT
   @media only screen and (max-width: 991px) {
+    padding-bottom: 40px;
     padding-left: 23px;
   }
 
@@ -249,13 +257,15 @@
 
 }
 #page-others-content-2-section{
-  padding-top: 43px;
+  // padding-top: 43px;
+  padding-top: 0px;
   padding-bottom: 94px;
   
   padding-left: 53px;
 
   // TABLET PORTRAIT
   @media only screen and (max-width: 991px) {
+    padding-top: 43px;
     padding-left: 23px;
   }
 
@@ -335,6 +345,10 @@
     border-bottom: none;
     padding-bottom: 0px;
     margin-bottom: 0px;
+    @media all and (max-width: 991px) {
+      padding-bottom: 24px;
+      margin-bottom: 22px;
+    }
   }
 
   .default-copy{
