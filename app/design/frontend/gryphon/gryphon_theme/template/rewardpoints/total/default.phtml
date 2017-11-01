@@ -87,7 +87,7 @@
                     $rule_id = $rule->getId();
                 }
             }
-        }
+        }        
     ?>
     <?php if(!empty($current_rule_name)): ?>
         <div class="row">
@@ -95,7 +95,7 @@
                 <div class="column-01">
                     <p>DISCOUNT:</p>
                     <?php $oCoupon = Mage::getModel('salesrule/coupon')->load($rule_id, 'rule_id'); ?>
-                    <span class="discount_desc"><?php echo $oCoupon->getData('code'); ?></span>
+                    <span class="discount_desc"><?php echo Mage::getSingleton('checkout/session')->getQuote()->getCouponCode(); ?></span>
                     <a href="#" id="cancel_discount" class="cancel-btn"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
                 </div>
             </div>

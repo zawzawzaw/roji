@@ -373,7 +373,9 @@ Billing.prototype = {
         if (checkout.loadWaiting!=false) return;
 
         var validator = new Validation(this.form);
-        if (validator.validate()) {
+        console.log(this.form);
+        if (validator.validate()) { // temp fix zaw
+            console.log('set load waiting billing');
             checkout.setLoadWaiting('billing');
 
 //            if ($('billing:use_for_shipping') && $('billing:use_for_shipping').checked) {
@@ -390,6 +392,8 @@ Billing.prototype = {
                     parameters: Form.serialize(this.form)
                 }
             );
+        } else {
+            console.log('set load waiting nothing');
         }
     },
 
@@ -567,8 +571,8 @@ Shipping.prototype = {
         $('shipping:same_as_billing').checked = true;
         // if(!$('billing-address-select')) console.log("here"); else console.log("there");
 
-        var billingAddressInputs = $j("#billing-new-address-form").find("input, select");
-        var shippingAddressInputs = $j("#shipping-new-address-form").find("input, select");
+        var billingAddressInputs = $j("#billing-new-address-form").find("input[type='text'], select");
+        var shippingAddressInputs = $j("#shipping-new-address-form").find("input[type='text'], select");
 
         console.log(billingAddressInputs.length);
         console.log(shippingAddressInputs.length);
@@ -582,6 +586,7 @@ Shipping.prototype = {
             for (var elemIndex in arrElements) {
                 if (arrElements[elemIndex].id) {
                     var sourceField = $(arrElements[elemIndex].id.replace(/^shipping:/, 'billing:'));
+                    // console.log(sourceField);
                     if (sourceField){
                         arrElements[elemIndex].value = sourceField.value;
                     }
@@ -618,9 +623,10 @@ Shipping.prototype = {
     },
 
     save: function(){
-        console.log('save 1');
-        if (checkout.loadWaiting!=false) return;
+        console.log(checkout.loadWaiting);
+        if (checkout.loadWaiting!=false) { console.log('here'); return; }
         var validator = new Validation(this.form);
+        console.log('here 2');
         if (validator.validate()) {
             checkout.setLoadWaiting('shipping');
             var request = new Ajax.Request(
@@ -633,6 +639,8 @@ Shipping.prototype = {
                     parameters: Form.serialize(this.form)
                 }
             );
+        } else {
+            console.log('hi');
         }
     },
 

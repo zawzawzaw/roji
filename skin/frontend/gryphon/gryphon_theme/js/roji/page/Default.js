@@ -158,6 +158,8 @@ roji.page.Default.prototype.init = function() {
 roji.page.Default.prototype.update_page_layout = function(){
   roji.page.Default.superClass_.update_page_layout.call(this);
 
+  console.log('update_page_layout_default')
+
 
   if (this.is_page_min_height == true && manic.IS_MOBILE == false) {
     var target_height = this.window_height - this.desktop_header_element.outerHeight() - $j("#desktop-footer").outerHeight();
@@ -233,8 +235,8 @@ roji.page.Default.prototype.update_header_cart = function() {
 
 
           if(manic.IS_MOBILE == true) {
-            $j("#mobile-header-push-noti").slideDown(300);
-            $j("#mobile-header-push-noti").delay(5000).slideUp(300);  
+            $j("#mobile-header-push-noti").stop(0).slideDown(500);
+            $j("#mobile-header-push-noti").stop(0).delay(5000).slideUp(500);  
           }
         
           // update product count in cart          
@@ -262,9 +264,9 @@ roji.page.Default.prototype.update_header_cart = function() {
 
           $j('.desktop-header-cart-expand-summary').find('.sub-total-amount').html(data.cart_total);
 
-          $j('#desktop-header-cart-expand-container').slideDown(300);
+          $j('#desktop-header-cart-expand-container').stop(0).slideDown(300);
           window.header_cart_is_open = true;
-          $j('#desktop-header-cart-expand-container').delay(5000).slideUp(300);
+          // $j('#desktop-header-cart-expand-container').stop(0).delay(5000).slideUp(300);
 
           setTimeout(function() {
             window.header_cart_is_open = false;
@@ -322,10 +324,11 @@ roji.page.Default.prototype.on_mobile_header_push_noti_close_btn_click = functio
 
 
 roji.page.Default.prototype.update_default_bg_height = function(){
-
+  console.log('update_default_bg_height');
   // only for desktop
   if (manic.IS_MOBILE == false) {
     
+    console.log('update_default_bg_height_2');
     
     this.desktop_title_section = $j(".page-default-title-section");
     this.desktop_footer_element = $j("#desktop-footer"); // no idea why desktop_footer_element height is always null...

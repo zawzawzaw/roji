@@ -52,7 +52,7 @@
                 
                 <article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix page-blog-item' ); ?> role="article">
                   <div class="row vertical-align">
-                    <div class="col-md-4 col-sm-12">
+                    <div class="col-md-4 col-md-offset-0 col-sm-10 col-sm-offset-1">
 
                       <a href="<?php echo get_permalink(); ?>" class="page-blog-item-image">
                                                                     
@@ -83,7 +83,7 @@
                         </div>
                       </a>
                     </div>
-                    <div class="col-md-8 col-sm-12">
+                    <div class="col-md-8 col-md-offset-0 col-sm-10 col-sm-offset-1">
                       <div class="page-blog-item-copy">
 
                         <div class="article-date">

@@ -158,6 +158,9 @@ roji.page.Faq.prototype.update_faq_bg_height = function(){
     this.desktop_footer_element = $j("#desktop-footer"); // no idea why desktop_footer_element height is always null...
 
     var target_height = this.window_height - this.desktop_header_element.outerHeight() - this.desktop_footer_element.outerHeight() - this.desktop_title_section.outerHeight();
+
+    console.log(target_height);
+
     this.section_bg.css({
       'min-height': target_height + 'px'
     });

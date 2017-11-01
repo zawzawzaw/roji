@@ -31,7 +31,8 @@ roji.page.Account = function(options, element) {
   }
 
   
-
+  // variables for sticky sidebar desktop
+  this.sticky_sidebar_scence = null;
 
   // variables for update_account_bg_width
   this.sidebar_bg = $j('#page-account-content-section-bg .sidebar-bg');
@@ -129,6 +130,7 @@ roji.page.Account.prototype.init = function() {
 
   this.create_edit_info_password();
   this.create_intl_tel_input();
+  this.create_sticky_sidebar();
   
 
 };
@@ -196,6 +198,26 @@ roji.page.Account.prototype.create_intl_tel_input = function() {
 //   |  __/| |_| | |_) | |___ | | |___
 //   |_|    \___/|____/|_____|___\____|
 //
+
+roji.page.Account.prototype.create_sticky_sidebar = function() {
+  
+  if(manic.IS_MOBILE == false){
+
+      if(this.controller==null){
+        this.controller = new ScrollMagic.Controller(); // needed by some components
+      }
+
+      // console.log($j("#page-others-main-content-section").height());
+
+      this.sticky_sidebar_scence = new ScrollMagic.Scene({triggerElement: "#page-account-sidebar", triggerHook: 'onLeave', duration: $j("#page-account-content").height()  }) //$('.booking-steps.active-step').offset().top + 100
+              .setClassToggle("#page-account-sidebar", "stick") // add class toggle
+              // .setPin("#page-account-sidebar")
+              // .addIndicators({name: ("" + Math.random()) }) // add indicators (requires plugin)
+              .addTo(this.controller);
+
+  }
+
+};
 
 
 roji.page.Account.prototype.update_account_bg_width = function() {

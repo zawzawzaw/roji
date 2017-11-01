@@ -98,7 +98,7 @@ if($session->isLoggedIn()) {
         <div class="col-md-9 col-tablet-landscape-10 col-sm-10 col-xs-12">
           <div id="page-checkout-title">
             <?php $count = $this->helper('checkout/cart')->getSummaryCount(); ?>
-            <h1>You have <strong><?php echo $count; ?></strong> items in your cart.</h1>
+            <h1><?php echo $this->__('You have') ?> <strong><?php echo $count; ?></strong> <?php echo $this->__('items in your cart.') ?></h1>
           </div>
         </div>
       </div>

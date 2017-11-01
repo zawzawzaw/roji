@@ -138,9 +138,25 @@ if(Mage::getSingleton('customer/session')->isLoggedIn()) {
                                         <div class="col-md-8 col-sm-6 col-xs-8">
                                             <?php
                                             $customer_id = Mage::getSingleton('customer/session')->getCustomer()->getId();
-                                            $collection = Mage::getModel('giftvoucher/customervoucher')->getCollection()->addFieldToFilter('main_table.customer_id', $customer_id);
+                                            $customer_email = Mage::getSingleton('customer/session')->getCustomer()->getEmail();
+
+                                            $collection = Mage::getModel('giftvoucher/customervoucher')->getCollection();
+                                                    // ->addFieldToFilter('main_table.customer_id', $customer_id);
                                             $voucherTable = Mage::getModel('core/resource')->getTableName('giftvoucher');
-                                            $collection->getSelect()->joinleft(array('voucher_table' => $voucherTable), 'main_table.voucher_id = voucher_table.giftvoucher_id', array('recipient_name', 'gift_code', 'balance', 'currency', 'status', 'expired_at', 'customer_check_id' => 'voucher_table.customer_id', 'recipient_email', 'customer_email'))->where('voucher_table.status <> ?', Magestore_Giftvoucher_Model_Status::STATUS_DELETED);
+                                            $voucherHistoryTable = Mage::getModel('core/resource')->getTableName('giftvoucher_history');
+                                            $collection->getSelect()
+                                                    ->joinleft(array('voucher_table' => $voucherTable), 'main_table.voucher_id = voucher_table.giftvoucher_id', array('recipient_name', 'gift_code', 'balance', 'currency', 'status', 'expired_at', 'customer_check_id' => 'voucher_table.customer_id', 'recipient_email', 'customer_email'))
+                                                    ->joinleft(array('voucher_history_table' => $voucherHistoryTable), 'main_table.voucher_id = voucher_history_table.giftvoucher_id', array('customer_id', 'order_increment_id'))
+                                                    ->where('voucher_table.status <> ?', Magestore_Giftvoucher_Model_Status::STATUS_DELETED)
+                                                    ->where('voucher_table.status <> ?', Magestore_Giftvoucher_Model_Status::STATUS_USED)
+                                                    ->where('voucher_table.status <> ?', Magestore_Giftvoucher_Model_Status::STATUS_PENDING)
+                                                    ->where('voucher_table.recipient_email = ?', $customer_email)
+                                                    ->where('voucher_history_table.status = ?', Magestore_Giftvoucher_Model_Status::STATUS_PENDING);
+
+                                            // $collection = Mage::getModel('giftvoucher/customervoucher')->getCollection()->addFieldToFilter('main_table.customer_id', $customer_id);
+                                            // $voucherTable = Mage::getModel('core/resource')->getTableName('giftvoucher');
+                                            // $collection->getSelect()->joinleft(array('voucher_table' => $voucherTable), 'main_table.voucher_id = voucher_table.giftvoucher_id', array('recipient_name', 'gift_code', 'balance', 'currency', 'status', 'expired_at', 'customer_check_id' => 'voucher_table.customer_id', 'recipient_email', 'customer_email'))->where('voucher_table.status <> ?', Magestore_Giftvoucher_Model_Status::STATUS_DELETED);
+
                                             $this->setCollection($collection);
                                             $this->getCollection();
                                             ?>                                

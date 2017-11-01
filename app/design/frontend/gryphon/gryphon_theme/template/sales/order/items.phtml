@@ -157,7 +157,7 @@
           </div>
           <div class="col-md-4 col-xs-4">
             <div class="column-02">
-              <p>- <?php echo $_order->formatPrice($_order->getDiscountAmount()); ?></p>
+              <p><?php echo $_order->formatPrice($_order->getDiscountAmount()); ?></p>
             </div>
           </div>
         </div>
@@ -172,13 +172,13 @@
           </div>
           <div class="col-md-4 col-xs-4">
             <div class="column-02">
-              <p>- <?php echo $_order->formatPrice($_order->getRewardpointsQuantity()); ?></p>
+              <p>-<?php echo $_order->formatPrice($_order->getRewardpointsQuantity()); ?></p>
             </div>
           </div>
         </div>
         <?php endif; ?>
 
-        <?php //if ($_order->getRewardpointsQuantity()) : ?>
+        <?php if ($_order->getGiftVoucherDiscount() > 0) : ?>
         <div class="row" style="display: flex;align-items: flex-end;">
           <div class="col-md-8 col-xs-8">
             <div class="column-01">
@@ -187,11 +187,11 @@
           </div>
           <div class="col-md-4 col-xs-4">
             <div class="column-02">
-              <p>- <?php echo $_order->formatPrice($_order->getGiftVoucherDiscount()); ?></p>
+              <p>-<?php echo $_order->formatPrice($_order->getGiftVoucherDiscount()); ?></p>
             </div>
           </div>
         </div>
-        <?php //endif; ?>
+        <?php endif; ?>
 
         <?php if ($_order->getTaxAmount()): ?>
         <div class="row">

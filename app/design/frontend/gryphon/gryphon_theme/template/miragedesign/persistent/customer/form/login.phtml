@@ -142,7 +142,7 @@
                                 <ul>
                                     <li><a href="#" id="sign-in-facebook"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="#" id="sign-in-twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#" id="sign-in-pinterest"><i class="fa fa-pinterest"></i></a></li>
+                                    <li><a href="javascript:void(0);" id="sign-in-pinterest"><i class="fa fa-pinterest"></i></a></li>
                                     <li>
                                       <a href="#" id="sign-in-google"><i class="fa fa-google-plus"></i></a>
                                       <div class="g-signin2" style="display: none;" data-onsuccess="logGoogleUserIn"><i class="fa fa-google-plus" aria-hidden="true"></i></div>
@@ -446,9 +446,9 @@
       </div>
 
       <div class="row">
-        <div class="col-md-1 col-tablet-landscape-0 col-sm-0"></div>
+        <div class="col-md-1 col-tablet-landscape-0 col-sm-2 col-xs-0"></div>
 
-        <div class="col-md-8 col-tablet-landscape-9 col-sm-12">
+        <div class="col-md-8 col-tablet-landscape-9 col-sm-8 col-xs-12">
 
           <div id="page-login-register-form-container">
             <div id="page-login-register-form">
@@ -465,7 +465,7 @@
 
                   <div class="cta-container">
                     <a href="<?php echo Mage::helper('persistent')->getCreateAccountUrl($this->getCreateAccountUrl()) ?>" class="square-cta"><?php echo $this->__('Create an account') ?></a>
-                    <a href="javascript:void(0);" class="square-cta"><?php echo $this->__('Chaseki Members Program') ?></a>
+                    <a href="<?php echo $this->getUrl('chaseki-members-program') ?>" class="square-cta"><?php echo $this->__('Chaseki Members Program') ?></a>
                   </div>
                   
                 </div>

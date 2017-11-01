@@ -267,7 +267,8 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
      * Create customer account action
      */
     public function createPostAction()
-    {
+    {   
+        // echo 'here 1'; exit();
         /** @var $session Mage_Customer_Model_Session */
         $session = $this->_getSession();
         if ($session->isLoggedIn()) {

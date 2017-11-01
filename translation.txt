@@ -1,0 +1,79 @@
+   ______________  ________________   ________  ________    ____  ___   _________________
+  / ___/_  __/   |/_  __/  _/ ____/  / ____/  |/  / ___/   / __ \/   | / ____/ ____/ ___/
+  \__ \ / / / /| | / /  / // /      / /   / /|_/ /\__ \   / /_/ / /| |/ / __/ __/  \__ \
+ ___/ // / / ___ |/ / _/ // /___   / /___/ /  / /___/ /  / ____/ ___ / /_/ / /___ ___/ /
+/____//_/ /_/  |_/_/ /___/\____/   \____/_/  /_//____/  /_/   /_/  |_\____/_____//____/
+
+For all static page we can duplicate those page in the cms and set the store view to Japanese and change the current pages store view English only. There is wysiwyg editor for those default so that client can do their self but it better that we do for them.
+
+http://www.rojicha.com/about/
+http://www.rojicha.com/our-teas/
+http://www.rojicha.com/chaseki-members-program/
+http://www.rojicha.com/faq/
+http://www.rojicha.com/shipping-info/
+http://www.rojicha.com/privacy-policy/
+http://www.rojicha.com/terms-of-use/
+
+
+ _       ______  ____  ____  ____  ____  ________________
+| |     / / __ \/ __ \/ __ \/ __ \/ __ \/ ____/ ___/ ___/
+| | /| / / / / / /_/ / / / / /_/ / /_/ / __/  \__ \\__ \
+| |/ |/ / /_/ / _, _/ /_/ / ____/ _, _/ /___ ___/ /__/ /
+|__/|__/\____/_/ |_/_____/_/   /_/ |_/_____//____/____/
+
+We will need to do wordpress multi site for japanese site.
+
+http://www.rojicha.com/blog/
+
+
+    ____  ____  ____  ____  __  ______________   ____  ________    ___  ________________     ____  ___   _________________
+   / __ \/ __ \/ __ \/ __ \/ / / / ____/_  __/  / __ \/ ____/ /   /   |/_  __/ ____/ __ \   / __ \/   | / ____/ ____/ ___/
+  / /_/ / /_/ / / / / / / / / / / /     / /    / /_/ / __/ / /   / /| | / / / __/ / / / /  / /_/ / /| |/ / __/ __/  \__ \
+ / ____/ _, _/ /_/ / /_/ / /_/ / /___  / /    / _, _/ /___/ /___/ ___ |/ / / /___/ /_/ /  / ____/ ___ / /_/ / /___ ___/ /
+/_/   /_/ |_|\____/_____/\____/\____/ /_/    /_/ |_/_____/_____/_/  |_/_/ /_____/_____/  /_/   /_/  |_\____/_____//____/
+
+All product related translation can be done in magento admin.
+Catalog > Manage Products > (Select Any Product) > Choose Store View Dropdown to (Japanese) > Uncheck (Use Default Value) and add in japanese translation.
+
+http://www.rojicha.com/
+http://www.rojicha.com/shop.html
+http://www.rojicha.com/gifts.html/
+
+
+    ____  ___  _________    ____  ___   _____ ______   ____  ____  _____    _________   __   ____  ___   _________________
+   / __ \/   |/_  __/   |  / __ )/   | / ___// ____/  / __ \/ __ \/  _/ |  / / ____/ | / /  / __ \/   | / ____/ ____/ ___/
+  / / / / /| | / / / /| | / __  / /| | \__ \/ __/    / / / / /_/ // / | | / / __/ /  |/ /  / /_/ / /| |/ / __/ __/  \__ \
+ / /_/ / ___ |/ / / ___ |/ /_/ / ___ |___/ / /___   / /_/ / _, _// /  | |/ / /___/ /|  /  / ____/ ___ / /_/ / /___ ___/ /
+/_____/_/  |_/_/ /_/  |_/_____/_/  |_/____/_____/  /_____/_/ |_/___/  |___/_____/_/ |_/  /_/   /_/  |_\____/_____//____/
+
+Should be done by us. We will provide client with a list of hardcoded words use in entire site as text file e.g.
+
+"1. YOUR CART", "1.あなたのカート"
+"2. SHIPPING & BILLING", "2.船積みと請求"
+...
+...
+
+
+http://www.rojicha.com/checkout/cart/ (Cart page)
+http://www.rojicha.com/checkout/onepage/ (Billing & Shipping + Review page)
+http://www.rojicha.com/customer/account/forgotpassword/
+http://www.rojicha.com/customer/account/login/
+http://www.rojicha.com/customer/account/create/ (Sign up page)
+http://www.rojicha.com/customer/account/
+http://www.rojicha.com/customer/account/edit/
+http://www.rojicha.com/customer/address/
+http://www.rojicha.com/customer/address/edit
+http://www.rojicha.com/customer/address/new
+http://www.rojicha.com/sales/order/history/
+http://www.rojicha.com/sales/order/view/order_id/xxxx/ (Order history detail)
+http://www.rojicha.com/giftvoucher/index/index/
+http://www.rojicha.com/rewardpoints/index/points/ (Rebate history)
+http://www.rojicha.com/rewardpoints/index/referral/ (Friend referral)
+http://www.rojicha.com/contact/
+
+    ________  ______    ______   _____
+   / ____/  |/  /   |  /  _/ /  / ___/
+  / __/ / /|_/ / /| |  / // /   \__ \
+ / /___/ /  / / ___ |_/ // /______/ /
+/_____/_/  /_/_/  |_/___/_____/____/
+

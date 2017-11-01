@@ -31,8 +31,8 @@
 <?php foreach ($this->getTotals() as $_code => $_total): ?>
     <?php if ($_total->getBlockName()): ?>
         <?php echo $this->getChildHtml($_total->getBlockName(), false); ?>
-    <?php else:?>
-    <tr class="<?php echo $_code?>">
+    <?php else:?>    
+    <tr class="<?php echo $_code; ?>" style="<?php if($_code=="grand_total"): ?>border-top: 1px solid #ccc<?php endif; ?>">
         <td align="right" valign="top" colspan="3" style="font-family: 'Montserrat',Arial,Helvetica,sans-serif;font-style: normal;font-weight: 500;font-size: 12px;line-height: 24px;text-transform: uppercase;letter-spacing: .075em;color: #333; padding: 10px;" >
             <?php if ($_total->getStrong()):?>
             <strong style="font-family: 'Montserrat',Arial,Helvetica,sans-serif;font-style: normal;font-weight: 500;font-size: 12px;line-height: 24px;text-transform: uppercase;letter-spacing: .075em;color: #333;"><?php echo $this->escapeHtml($_total->getLabel());?></strong>

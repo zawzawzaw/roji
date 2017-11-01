@@ -310,15 +310,16 @@ roji.page.Default.prototype.blog_sticky_sidebar = function(){
 
   var duration = parseInt($("#page-blog-content").height()) - intViewportHeight; // 300 = sidebar about section height
 
-  // console.log(duration);
+  console.log(duration);
   // $('#trigger1').css({'top' : intViewportHeight + 'px'});
 
-  if($("#page-blog-content").height() > 1000) {
-    var scene = new ScrollMagic.Scene({triggerElement: "#trigger1", triggerHook: 'onLeave' })
-            .setPin("#sticky-sidebar")
-            // .addIndicators({name: "1 (duration: "+duration+")"}) // add indicators (requires plugin)
+  // if($("#page-blog-content").height() > 1000) {
+    var scene = new ScrollMagic.Scene({triggerElement: "#trigger-sticky-sidebar", triggerHook: 'onLeave' })
+            // .setPin("#sticky-sidebar")
+            .setClassToggle("#mobile-blog-sidebar", "sticky-version") // add class toggle
+            // .addIndicators({name: ("" + Math.random()) }) // add indicators (requires plugin)
             .addTo(controller);  
-  }
+  // }
   
 };
 

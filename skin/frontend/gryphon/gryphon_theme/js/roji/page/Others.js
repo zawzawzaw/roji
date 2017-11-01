@@ -115,11 +115,25 @@ roji.page.Others.prototype.create_sticky_sidebar = function() {
         this.controller = new ScrollMagic.Controller(); // needed by some components
       }
 
-      this.sticky_sidebar_scence = new ScrollMagic.Scene({triggerElement: "#page-others-main-sidebar", triggerHook: 'onLeave' }) //$('.booking-steps.active-step').offset().top + 100
-              // .setClassToggle("#page-others-main-sidebar", "stick") // add class toggle
-              .setPin("#page-others-main-sidebar")
-              // .addIndicators({name: ("" + Math.random()) }) // add indicators (requires plugin)
-              .addTo(this.controller);
+      // console.log($j("#page-others-main-content-section").height());
+      console.log('create_sticky_sidebar');
+      console.log($j("#page-others-main-sidebar").height());
+
+      if($j("#page-others-main-sidebar").height() > 500) {
+        this.sticky_sidebar_scence = new ScrollMagic.Scene({triggerElement: "#page-others-main-sidebar", triggerHook: 'onLeave', duration: "50%"  }) //$('.booking-steps.active-step').offset().top + 100
+            // .setClassToggle("#page-others-main-sidebar", "stick") // add class toggle
+            .setPin("#page-others-main-sidebar")
+            // .addIndicators({name: ("" + Math.random()) }) // add indicators (requires plugin)
+            .addTo(this.controller);
+    } else {
+        this.sticky_sidebar_scence = new ScrollMagic.Scene({triggerElement: "#page-others-main-sidebar", triggerHook: 'onLeave'  }) //$('.booking-steps.active-step').offset().top + 100
+            // .setClassToggle("#page-others-main-sidebar", "stick") // add class toggle
+            .setPin("#page-others-main-sidebar")
+            // .addIndicators({name: ("" + Math.random()) }) // add indicators (requires plugin)
+            .addTo(this.controller);
+      }
+
+
 
   }
 
@@ -182,25 +196,25 @@ roji.page.Others.prototype.update_others_bg_width = function() {
 
     console.log('this.window_width: ' + this.window_width);
     console.log('midpoint: ' + midpoint);
-    this.sidebar_bg.css({
-      'width': midpoint_percent + '%'
-    });
+    // this.sidebar_bg.css({
+    //   'width': midpoint_percent + '%'
+    // });
 
-    this.content_bg.css({
-      'left': midpoint_percent + '%',
-      'width': (100 - midpoint_percent) + '%'
-    });
+    // this.content_bg.css({
+    //   'left': midpoint_percent + '%',
+    //   'width': (100 - midpoint_percent) + '%'
+    // });
 
 
     if (this.is_terms_of_use_page && this.content2_bg.length != 0){
         
       var target_hh = this.content2_bg_target.outerHeight();
 
-      this.content2_bg.css({
-        'left': midpoint_percent + '%',
-        'width': (100 - midpoint_percent) + '%',
-        'height': target_hh + 'px'
-      });
+      // this.content2_bg.css({
+      //   'left': midpoint_percent + '%',
+      //   'width': (100 - midpoint_percent) + '%',
+      //   'height': target_hh + 'px'
+      // });
     }
 
 
@@ -219,6 +233,7 @@ roji.page.Others.prototype.update_others_bg_height = function(){
 
 
     var target_height = this.window_height - this.desktop_header_element.outerHeight() - this.desktop_footer_element.outerHeight() - this.desktop_title_section.outerHeight();
+    console.log(target_height);
     this.section_bg.css({
       'min-height': target_height + 'px'
     });
@@ -312,9 +327,10 @@ roji.page.Others.prototype.update_page_layout = function() {
   roji.page.Others.superClass_.update_page_layout.call(this);
 
   if (this.has_sidebar == true) {
-    this.update_others_bg_width();
-    this.update_others_bg_height();
+    this.update_others_bg_width();    
   }
+  console.log('update_page_layout');
+  this.update_others_bg_height();
   
 }
 

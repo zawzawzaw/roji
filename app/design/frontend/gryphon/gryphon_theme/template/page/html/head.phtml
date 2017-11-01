@@ -36,6 +36,36 @@
 <meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui' />
 
+<meta property="fb:app_id" content="181822275684181"/>
+<?php
+$og = [
+    'title' => $this->getLayout()->getBlock('head')->getTitle(),
+    'site_name' => Mage::app()->getStore()->getName(),
+    'description' => trim(strip_tags($this->getLayout()->getBlock('head')->getDescription())),
+    'url' => $this->helper('core/url')->getCurrentUrl(),
+];
+
+if(Mage::registry('current_product')):
+    $product = Mage::registry('current_product');
+    $og['title'] = $product->getName();
+    $og['type'] = 'product';
+    $og['image'] = $this->helper('catalog/image')->init($product, 'image');    
+    $og['description'] = strip_tags(($product->getShortDescription()));
+    $og['price:amount'] = Mage::registry('product')->getFinalPrice();
+    $og['price:currency'] = Mage::app()->getStore()->getCurrentCurrencyCode();
+elseif(Mage::registry('current_category')):
+    $og['type'] = 'product.group';        
+elseif((Mage::getSingleton('cms/page')->getIdentifier() == 'home' &&
+    Mage::app()->getFrontController()->getRequest()->getRouteName() == 'cms')) :
+    $og['type'] = 'website';
+else:
+    $og['type'] = 'article';
+endif;
+?>
+<?php foreach($og as $key => $value): ?>
+<meta property="og:<?php echo $key ?>" content="<?php echo $value ?>">
+<?php endforeach; ?>
+
 <meta name="google-site-verification" content="o_0QYx-xYh2H7h4l6xXp54uR0x8N69WdDg0U63bhjCU" />
 <meta name="google-signin-client_id" content="379439372325-9n9bcr9kubb0d0tnlbne3gdfabv57md9.apps.googleusercontent.com">
 
@@ -82,3 +112,4 @@ function getSkinUrl() { return '<?php echo $skinUrl; ?>'; }
   ga('send', 'pageview');
 
 </script> -->
+<script src='https://www.google.com/recaptcha/api.js'></script>

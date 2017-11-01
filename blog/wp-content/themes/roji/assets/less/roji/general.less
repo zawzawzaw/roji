@@ -56,6 +56,20 @@ button{
       background-size: cover;
     }
   }
+
+  .vjs-fullscreen{
+    video{
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+}
+
+.video-js .vjs-modal-dialog{
+  display: none;
+}
+.video-js .vjs-tech{
+  background: @black;
 }
 
 .video-js .vjs-control-bar {
@@ -68,7 +82,34 @@ button{
   background: fade(@off-black, 50%);
 }
 
+
+.vjs-paused .vjs-big-play-button {
+  display: block;
+}
+.custom-play{
+  .vjs-paused .vjs-big-play-button {
+    display: none !important;
+  }
+}
+
+
+.is-actual-mobile{
+
+  .manic-video-container{
+    cursor: pointer;  // https://stackoverflow.com/questions/19431822/jquerys-on-dont-work-on-ios
+  }
+  .vjs-paused .vjs-big-play-button {
+    // display: block;
+    // display: ;
+    // pointer-events: none;
+  }
+}
+
 .video-js .vjs-big-play-button{
+
+  &:before{
+    content: '';
+  }
 
   .icon-play;
 
@@ -92,6 +133,15 @@ button{
 
 .no-display {
   display: none;
+}
+
+// https://stackoverflow.com/questions/8911247/hide-iphone-html5-video-play-button
+
+video::-webkit-media-controls {
+  display:none !important;
+}
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
 }
 
 
@@ -257,7 +307,7 @@ button{
       padding: 0px;
     }
     .selected-flag{
-      padding-right: 40px;
+      padding-right: 50px;
       padding-left: 16px;
       width: 55px!important;
       outline: none;

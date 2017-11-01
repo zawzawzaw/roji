@@ -41,7 +41,7 @@
 
 #page-blog-content-section{
   padding-top: 30px;
-  padding-bottom: 94px;
+  padding-bottom: 200px;
   position: relative;
 }
 
@@ -71,7 +71,7 @@
       display: flex;
       align-items: center;
 
-      @media (max-width: 767px) {        
+      @media (max-width: 991px) {        
         display: block; /* Turn off the flexible box layout */
       }
     }
@@ -422,6 +422,18 @@
       margin: 0;
       z-index: 200;
       //.box-shadow(1px, 1px, 16px, #EAEAEA);
+    }
+
+    #mobile-blog-tag-container,
+    #mobile-blog-category-container{
+      position: fixed;
+      //top: 83px;
+      // top: 81px;
+      top: 101px;
+      left: 0;
+      width: 100%;
+      margin: 0;
+      z-index: 200;
     }
   }
 }

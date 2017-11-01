@@ -26,6 +26,46 @@ class Miragedesign_Customercustomiser_AccountController extends Mage_Customer_Ac
             /** @var $customer Mage_Customer_Model_Customer */
             $customer = $this->_getSession()->getCustomer();
 
+            print_r('here'); exit();
+
+            if(!$customer->getPrimaryBillingAddress()) {
+                $address  = Mage::getModel('customer/address');
+                /* @var $addressForm Mage_Customer_Model_Form */
+                $addressForm = Mage::getModel('customer/form');
+                $addressForm->setFormCode('customer_address_edit')
+                    ->setEntity($address);
+                $addressData    = $addressForm->extractData($this->getRequest());
+
+                $addressForm->compactData($addressData);
+                $address->setCustomerId($customer->getId())
+                    ->setIsDefaultBilling(true)
+                    ->setIsDefaultShipping(false);
+
+                $address->save();
+            }else {
+                $address  = Mage::getModel('customer/address');
+                $exiting_billing_address = $customer->getPrimaryBillingAddress()->getData();
+                $addressId = $exiting_billing_address['entity_id'];
+                if ($addressId) {
+                    $existsAddress = $customer->getAddressById($addressId);
+                    if ($existsAddress->getId() && $existsAddress->getCustomerId() == $customer->getId()) {
+                        $address->setId($existsAddress->getId());
+                    }
+                }
+                /* @var $addressForm Mage_Customer_Model_Form */
+                $addressForm = Mage::getModel('customer/form');
+                $addressForm->setFormCode('customer_address_edit')
+                    ->setEntity($address);
+                $addressData    = $addressForm->extractData($this->getRequest());
+
+                $addressForm->compactData($addressData);
+                $address->setCustomerId($customer->getId())
+                    ->setIsDefaultBilling(true)
+                    ->setIsDefaultShipping(false);
+
+                $address->save();
+            }
+
             /** @var $customerForm Mage_Customer_Model_Form */
             $customerForm = Mage::getModel('customer/form');
             $customerForm->setFormCode('customer_account_edit')

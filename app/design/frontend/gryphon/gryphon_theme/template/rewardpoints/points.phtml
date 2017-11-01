@@ -162,7 +162,7 @@
 
                 <div class="page-account-table-header">
                   <div class="row">
-                    <div class="col-sm-4 col-xs-4">
+                    <div class="col-sm-4 col-xs-5">
                       <div class="table-column-first">
                         <h4><?php echo $this->__('Description') ?></h4>
                       </div>
@@ -172,7 +172,7 @@
                         <h4><?php echo $this->__('Status') ?></h4>
                       </div>
                     </div> -->
-                    <div class="col-sm-4 col-xs-4">
+                    <div class="col-sm-4 col-xs-3">
                       <div class="table-column">
                         <h4><?php echo $this->__('Rebates earned') ?></h4>
                       </div>
@@ -190,7 +190,7 @@
                     <?php foreach ($_earnedPoints as $_point): ?>
                       <div class="page-account-table-item">
                         <div class="row">
-                          <div class="col-sm-4 col-xs-4">
+                          <div class="col-sm-4 col-xs-5">
                             <div class="table-column-first"><!-- data-column="Description" -->
                               <?php echo $this->getTypeOfPoint($_point);?>
                             </div>
@@ -207,7 +207,7 @@
                               <p><?php echo (!empty($order_status)) ? $order_status : "-" ?></p>
                             </div>
                           </div> -->
-                          <div class="col-sm-4 col-xs-4">
+                          <div class="col-sm-4 col-xs-3">
                             <div class="table-column"> <!-- data-column="Rebates earned" -->
                               <p><?php echo $_point->getPoints_current() ?></p>
                             </div>
@@ -251,7 +251,7 @@
 
                 <div class="page-account-table-header">
                   <div class="row">
-                    <div class="col-sm-4 col-xs-4">
+                    <div class="col-sm-4 col-xs-5">
                       <div class="table-column-first">
                         <h4><?php echo $this->__('Description') ?></h4>
                       </div>
@@ -261,7 +261,7 @@
                         <h4><?php echo $this->__('Status') ?></h4>
                       </div>
                     </div> -->
-                    <div class="col-sm-4 col-xs-4">
+                    <div class="col-sm-4 col-xs-3">
                       <div class="table-column">
                         <h4><?php echo $this->__('Rebates used') ?></h4>
                       </div>
@@ -281,7 +281,7 @@
                     <?php foreach ($_spentPoints as $_point): ?>
                       <div class="page-account-table-item">
                         <div class="row">
-                          <div class="col-sm-4 col-xs-4">
+                          <div class="col-sm-4 col-xs-5">
                             <div class="table-column-first"><!-- data-column="Description:" -->
                               <?php echo $this->getTypeOfPoint($_point);?>
                             </div>
@@ -298,7 +298,7 @@
                               <p><?php echo (!empty($order_status)) ? $order_status : "-" ?></p>
                             </div>
                           </div> -->
-                          <div class="col-sm-4 col-xs-4">
+                          <div class="col-sm-4 col-xs-3">
                             <div class="table-column"><!-- data-column="Rebates used:" -->
                               <p><?php echo $_point->getPoints_spent() ?></p>
                             </div>
@@ -342,7 +342,7 @@
 
                 <div class="page-account-table-header hidden-xs">
                   <div class="row">
-                    <div class="col-sm-4 col-xs-4">
+                    <div class="col-sm-4 col-xs-5">
                       <div class="table-column-first">
                         <h4><?php echo $this->__('Description') ?></h4>
                       </div>
@@ -352,7 +352,7 @@
                         <h4><?php echo $this->__('Status') ?></h4>
                       </div>
                     </div> -->
-                    <div class="col-sm-4 col-xs-4">
+                    <div class="col-sm-4 col-xs-3">
                       <div class="table-column">
                         <h4><?php echo $this->__('Rebates') ?></h4>
                       </div>
@@ -372,7 +372,7 @@
                     <?php foreach ($_expiredPoints as $_point): ?>
                       <div class="page-account-table-item">
                         <div class="row">
-                          <div class="col-sm-4 col-xs-4">
+                          <div class="col-sm-4 col-xs-5">
                             <div class="table-column-first"><!--  data-column="Description:" -->
                               <?php echo $this->getTypeOfPoint($_point);?>
                             </div>
@@ -389,7 +389,7 @@
                               <p><?php echo (!empty($order_status)) ? $order_status : "-" ?></p>
                             </div>
                           </div> -->
-                          <div class="col-sm-4 col-xs-4">
+                          <div class="col-sm-4 col-xs-3">
                             <div class="table-column"> <!-- data-column="Rebates:" -->
                               <p><?php echo $_point->getPoints_current() ?></p>
                             </div>

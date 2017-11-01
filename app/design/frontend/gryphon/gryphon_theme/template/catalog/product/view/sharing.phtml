@@ -59,7 +59,7 @@
         e.preventDefault();
         var share_url = jQuery(this).attr('href');
         FB.ui({
-            display: 'popup',
+            // display: 'popup',
             method: 'share',
             href: share_url,
             picture: '<?php echo $_productImageUrl_Raw; ?>'
@@ -79,7 +79,7 @@
             var share_url = $(this).attr('href');
             PopupCenter(share_url,'', 500, 500);
         });
-        $('.fa-pintrest').on('click', function(e){
+        $('.fa-pinterest').on('click', function(e){
             e.preventDefault();
             var share_url = $(this).attr('href');
             PopupCenter(share_url,'', 500, 500);

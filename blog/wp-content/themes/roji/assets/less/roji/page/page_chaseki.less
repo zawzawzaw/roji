@@ -113,10 +113,20 @@
 
 .page-chaseki-item-seperator{
   height: 72px;
+  @media all and (max-width: 991px) {
+    height: 0px;
+  }
 }
 
 .page-chaseki-item{
   text-align: center;
+  @media all and (max-width: 991px) {
+    margin-bottom: 30px;
+
+    &.last-version {
+      margin-bottom: 0px;
+    }
+  }
 
   .page-chaseki-item-icon{
     margin-bottom: 9px;

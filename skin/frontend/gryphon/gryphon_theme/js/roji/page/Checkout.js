@@ -118,7 +118,7 @@ roji.page.Checkout.prototype.billing_shipping_input = function() {
             // console.log($j("select[name='shipping[country_id]']"));
             // console.log($j("#shipping:country_id"));
 
-            $j("select[name='shipping[country_id]']").trigger("change");
+            // $j("select[name='shipping[country_id]']").trigger("change");
         } else {
             $j('#shipping-new-address-form').find('input[type=text]').val('');
             $j('#shipping-new-address-form').find('select').val('SG');
@@ -126,6 +126,10 @@ roji.page.Checkout.prototype.billing_shipping_input = function() {
         }
     });
   }  
+
+  if($j("input[name='custom_shipping_address_select']").val()=="") {
+    $j("#address-form-container").show();
+  }
 
   $j("input[name='custom_shipping_address_select']").on('change', function(e){
       if($j(this).val()=="") {

@@ -62,7 +62,7 @@
         // this.product_list_container.css('display', 'inline-block');
         
 
-        this.window.scrollTop(0);
+        // this.window.scrollTop(0);
 
       }
     },
@@ -71,13 +71,13 @@
         this.open_state = "close";
         this.filter_state = "none";
         
-        this.tag_container.stop(0).hide(0);
-        this.category_container.stop(0).hide(0);
+        this.tag_container.stop(0).slideUp(500);
+        this.category_container.stop(0).slideUp(500);
         this.main_buttons.removeClass('selected');
 
         //$(window).scrollTop(0);
 
-        this.window.scrollTop(0);
+        // this.window.scrollTop(0);
       }
     },
 

@@ -34,12 +34,16 @@
     <?php echo $this->renderTotals(null, $_colspan); ?>
     <?php echo $this->renderTotals('footer', $_colspan); ?>
     <?php if ($this->needDisplayBaseGrandtotal()):?>
-    <div class="each-details total-sgd">
-        <div class="a-right label" colspan="<?php echo $_colspan; ?>">
-            <p><?php echo $this->helper('sales')->__('Total in SGD') ?></p>
+    <div class="row each-details total-sgd">
+        <div class="col-md-6 col-xs-6 a-right label">
+            <div class="column-01">
+                <p><?php echo $this->helper('sales')->__('Total in SGD:') ?></p>
+            </div>
         </div>
-        <div class="a-right value">
-            <p><?php echo $this->displayBaseGrandtotal() ?></p>
+        <div class="col-md-6 col-xs-6 a-right value">
+            <div class="column-02">
+                <p><?php echo $this->displayBaseGrandtotal() ?></p>
+            </div>
         </div>
     </div>
     <?php endif?>

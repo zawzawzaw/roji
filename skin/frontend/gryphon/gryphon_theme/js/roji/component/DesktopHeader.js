@@ -99,12 +99,12 @@ roji.component.DesktopHeader.prototype.sticky_header_cart = function() {
 };
 roji.component.DesktopHeader.prototype.open_header_cart = function() {
   window.header_cart_is_open = true;
-  this.element.find("#desktop-header-cart-expand-container").slideDown(300);
+  this.element.find("#desktop-header-cart-expand-container").stop(0).slideDown(300);
   this.close_currency_dropdown();
 };
 roji.component.DesktopHeader.prototype.close_header_cart = function() {
   window.header_cart_is_open = false;
-  this.element.find("#desktop-header-cart-expand-container").slideUp(300);
+  this.element.find("#desktop-header-cart-expand-container").stop(0).slideUp(300);
 };
 roji.component.DesktopHeader.prototype.open_currency_dropdown = function() {
   window.currency_dropdown_is_open = true;

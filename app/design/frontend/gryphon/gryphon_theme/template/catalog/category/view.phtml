@@ -115,8 +115,8 @@
   <article id="page-shop-title-section">
     <div class="container-fluid has-breakpoint">
       <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-9">
+        <div class="col-md-3 col-sm-1"></div>
+        <div class="col-md-9 col-sm-10">
           <div id="page-shop-title">
             <h1><?php echo Mage::registry('current_category')->getDescription(); ?></h1>
           </div> <!-- page-shop-title -->
@@ -142,12 +142,12 @@
                 <?php echo $this->getProductListHtml() ?>
             <?php endif; ?>
 
-            <div id="loading-mask" style="display: none;">
+            <!-- <div id="loading-mask" style="display: none;">
                 <div class="loader">
                     <img src="<?php echo $this->getSkinUrl('images/content/products/ajax-loader.gif'); ?>" alt="<?php echo $this->__('Loading...'); ?>">
                     <br /><?php echo $this->__('Loading...'); ?>
                 </div>
-            </div>                
+            </div> -->                
                    
         </div>
       </div>

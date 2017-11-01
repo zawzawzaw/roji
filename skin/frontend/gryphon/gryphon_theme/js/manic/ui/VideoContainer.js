@@ -72,6 +72,9 @@ manic.ui.VideoContainer = function(options, element) {
   this.image_aspect_ratio = -1;
 
   this.element.click(this.on_element_click.bind(this));
+  // this.element.on('tap', this.on_element_click.bind(this));
+  this.element.tap(this.on_element_click.bind(this));
+  
 
 
   this.scale_mode = this.options['scale_mode'];
@@ -328,7 +331,6 @@ manic.ui.VideoContainer.prototype.delayed_video_init = function() {
 
   this.player = videojs(this.element.find('video')[0]);
   
-  
   this.player.ready(this.on_video_ready.bind(this));
   this.player.on('ended', this.on_video_end.bind(this));
   this.player.on('play', this.on_video_play.bind(this));
@@ -368,6 +370,8 @@ manic.ui.VideoContainer.prototype.replay_video = function() {
       this.player.currentTime(0);
       this.player.play();
 
+      this.element.addClass('custom-play');
+
       this.is_paused = false;
       this.dispatchEvent(new goog.events.Event(manic.ui.VideoContainer.ON_VIDEO_PLAY));      // we also play on video end for final frame.
     }
@@ -377,6 +381,8 @@ manic.ui.VideoContainer.prototype.replay_video = function() {
 manic.ui.VideoContainer.prototype.play_video = function() {
   if(this.is_ready){
     this.player.play();
+
+    this.element.addClass('custom-play');
     this.is_paused = false;
     this.dispatchEvent(new goog.events.Event(manic.ui.VideoContainer.ON_VIDEO_PLAY));      // we also play on video end for final frame.
   }
@@ -387,6 +393,9 @@ manic.ui.VideoContainer.prototype.stop_video = function() {
     //this.player.end();
     //this.is_paused = false;
     this.pause_video();
+
+    this.element.removeClass('custom-play');
+
     TweenMax.to(this.player_poster_image, 0.0, {opacity: 0});
     //this.player.posterImage.show();
     this.player.posterImage['show']();
@@ -402,6 +411,9 @@ manic.ui.VideoContainer.prototype.pause_video = function() {
     console.log(e);
   }
   this.is_paused = true;
+
+  this.element.removeClass('custom-play');
+
 };
 
 /**
@@ -853,10 +865,14 @@ manic.ui.VideoContainer.prototype.on_video_end = function(event) {
   if (this.auto_replay == true) {
     this.player.currentTime(0);
     this.player.play();
+    this.element.addClass('custom-play');
+
   } else {
     this.player.play();
     this.player.currentTime(this.total_duration - 0.1);
     this.player.pause();
+
+    this.element.removeClass('custom-play');
 
     this.dispatchEvent(new goog.events.Event(manic.ui.VideoContainer.ON_VIDEO_END));
   }
@@ -881,9 +897,13 @@ manic.ui.VideoContainer.prototype.on_video_play = function(event) {
  * @param  {object} event
  */
 manic.ui.VideoContainer.prototype.on_element_click = function(event) {
+  console.log('on_element_click');
   if (this.is_ready == true) { 
-    if(manic.IS_MOBILE == true) {
-      this.player.play();
+    if(manic.IS_ACTUAL_MOBILE == true) {
+      // this.player.play();
+      this.play_video();
+      
+
     }
   }
 };

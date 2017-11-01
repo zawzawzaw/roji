@@ -249,6 +249,16 @@
       border: none;
       .round(0px);
 
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      -o-appearance: none;
+      appearance: none;
+
+    }
+
+    select::-ms-expand {
+      display: none;
     }
 
     &:after{
@@ -306,6 +316,11 @@
       border: none;       // remove border on iOS devices
       outline: none;
       background: transparent;  // remove black bg added on select on iOS devices
+
+      -webkit-appearance: none;
+      -moz-appearance:    none;
+      appearance:         none;
+      .opacity(0);
     }
 
     input[type="radio"] + label, input[type="checkbox"] + label{

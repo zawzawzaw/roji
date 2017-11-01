@@ -120,6 +120,13 @@
 #page-account-sidebar{
   padding-top: 51px;
 
+  &.stick {
+    nav {
+      position: fixed;
+      top: 40px;
+    }
+  }
+
 
   nav{
     ul{
@@ -244,6 +251,9 @@
   }
   .page-account-form-content{
     margin-bottom: 54px;
+    @media only screen and (max-width: 991px) {
+      margin-bottom: 34px;
+    }
   }
   .page-account-form-footer{
 
@@ -440,7 +450,8 @@
         font-size: 13px;
         line-height: 20px;
 
-        word-break: break-all;  // for long email addresses that won't fit
+        // word-break: break-all;  // for long email addresses that won't fit
+        word-break: break-word;  // for long email addresses that won't fit
       }
 
       .table-column-first,
@@ -754,8 +765,8 @@
   @media only screen and (max-width: 991px) {
     padding-top: 35px;
     padding-bottom: 33px;
-    border-bottom: 1px solid @border-grey;
-    margin-bottom: 29px;
+    // border-bottom: 1px solid @border-grey;
+    margin-bottom: 0px;
 
     .default-copy{
 
@@ -797,6 +808,13 @@
     // padding-top: 42px;
     padding-top: 41px;
     text-align: right;
+
+    .g-recaptcha {
+      display: block;
+      margin-left: auto;
+      margin-bottom: 40px;
+      width: 300px;
+    }
   }
 
   // TABLET PORTRAIT
@@ -813,6 +831,35 @@
       .square-cta{
         display: block;
         width: 100%;
+      }
+
+      .g-recaptcha {
+        margin: 0 auto;
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    .cta-container {
+      .g-recaptcha {
+        margin-left: 3px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 375px) {
+    .cta-container {
+      .g-recaptcha {
+        margin-left: -15px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 320px) {
+    .cta-container {
+      .g-recaptcha {
+        margin-left: -35px;
       }
     }
   }
@@ -952,7 +999,7 @@
 
   // TABLET PORTRAIT
   @media only screen and (max-width: 991px) {
-    padding-bottom: 40px;
+    padding-bottom: 20px;
   }
 }
 
@@ -970,6 +1017,10 @@
   .cta-container{
     padding-top: 35px;
     text-align: right;
+
+    .edit {
+      margin-right: 15px;
+    }
   }
 
   // TABLET PORTRAIT
@@ -977,6 +1028,9 @@
 
     .cta-container{
       
+      .edit {
+        margin-right: 0px;
+      }
       .square-cta{
         text-align: center;
         width: 100%;
@@ -2040,7 +2094,7 @@ body.account-friend-referral-page{
   margin-bottom: 37px;
 
   @media all and (max-width: 991px) {
-    margin-bottom: 0px;
+    // margin-bottom: 0px;
   }
 
   h2{
@@ -2190,6 +2244,7 @@ body.account-friend-referral-page{
         display: block;
         width: 100%;
         text-align: center;
+        margin-top: 15px;
       }
     }
   }
@@ -2200,6 +2255,9 @@ body.account-friend-referral-page{
 
 
 #page-account-friend-referral-table-container{
+  @media only screen and (max-width: 991px) {
+    padding-bottom: 50px;
+  }
   // MOBILE
   @media only screen and (max-width: 767px) {
     padding-top: 30px;

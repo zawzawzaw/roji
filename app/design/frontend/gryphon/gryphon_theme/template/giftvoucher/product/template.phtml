@@ -14,7 +14,7 @@ if ($_product->getTypeId() == 'giftvoucher'):
         ?>
         <div class="form-group gift-card-form-group">
             <div class="row vertical-align">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <script>
                         var image_old;
                         var image_count;
@@ -37,7 +37,7 @@ if ($_product->getTypeId() == 'giftvoucher'):
                     </select>
                     <input type="hidden" name="giftcard_template_image" id="giftcard-template-images" value="<?php echo $_formData->getGiftcardTemplateImage() ? $_formData->getGiftcardTemplateImage() : '0' ?>" />
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-8">
                     <div id="giftcard-template-show-images" style="display: inline-block;">
                         <div id="giftcard-template-prev" style="filter:alpha(opacity=30);opacity: 0.3;z-index: 10;position: absolute;cursor: pointer; left: 0; top: 7px; width: 20px; height: 62px;" onclick="giftcardPrevImage();"></div>
                         <?php foreach ($templates as $template): ?>

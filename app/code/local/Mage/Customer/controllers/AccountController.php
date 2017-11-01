@@ -272,6 +272,7 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
      */
     public function createPostAction()
     {
+        // echo 'here 2'; exit();
         /** @var $session Mage_Customer_Model_Session */
         $session = $this->_getSession();
         if ($session->isLoggedIn()) {
@@ -283,6 +284,31 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
             $errUrl = $this->_getUrl('*/*/create', array('_secure' => true));
             $this->_redirectError($errUrl);
             return;
+        }
+
+        $postparams = $this->getRequest()->getParams();
+        $data = array(
+            'secret' => "6LdQGSgUAAAAAOpEk2tKNtHBmCmXTvt2tkFEsVnu",
+            'response' => $postparams['g-recaptcha-response']
+        );
+        print_r($postparams);
+        exit();
+
+        $verify = curl_init();
+        curl_setopt($verify, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+        curl_setopt($verify, CURLOPT_POST, true);
+        curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($verify, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($verify);
+
+        $response_arr = json_decode($response, true);
+
+        if($response_arr['success']!==true && $postparams['formtype']!="trader") {
+            Mage::getSingleton('customer/session')->addError(Mage::helper('captcha')->__('Incorrect CAPTCHA.'));
+            $errUrl = $this->_getUrl('*/*/create', array('_secure' => true));         
+            $this->_redirectError($errUrl);
+            return;   
         }
 
         $customer = $this->_getCustomer();
@@ -915,11 +941,12 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
             return $this->_redirect('*/*/edit');
         }
 
-        if ($this->getRequest()->isPost()) {
+        if ($this->getRequest()->isPost()) {            
             /** @var $customer Mage_Customer_Model_Customer */
             $customer = $this->_getSession()->getCustomer();
 
             if(!$customer->getPrimaryBillingAddress()) {
+                // print_r('here1'); exit();
                 $address  = Mage::getModel('customer/address');
                 /* @var $addressForm Mage_Customer_Model_Form */
                 $addressForm = Mage::getModel('customer/form');
@@ -933,26 +960,42 @@ class Mage_Customer_AccountController extends Mage_Core_Controller_Front_Action
                     ->setIsDefaultShipping(false);
 
                 $address->save();
-            }else {
+            }else {               
+                // print_r('here2'); exit();
                 $address  = Mage::getModel('customer/address');
                 $exiting_billing_address = $customer->getPrimaryBillingAddress()->getData();
                 $addressId = $exiting_billing_address['entity_id'];
+
+                // print_r($addressId); exit();
+
                 if ($addressId) {
                     $existsAddress = $customer->getAddressById($addressId);
                     if ($existsAddress->getId() && $existsAddress->getCustomerId() == $customer->getId()) {
                         $address->setId($existsAddress->getId());
                     }
                 }
+                
                 /* @var $addressForm Mage_Customer_Model_Form */
                 $addressForm = Mage::getModel('customer/form');
                 $addressForm->setFormCode('customer_address_edit')
                     ->setEntity($address);
                 $addressData    = $addressForm->extractData($this->getRequest());
+                // print_r($addressData); exit();
+
+                $addressErrors  = $addressForm->validateData($addressData);
+                if ($addressErrors !== true) {
+                    $errors = $addressErrors;
+                }
 
                 $addressForm->compactData($addressData);
                 $address->setCustomerId($customer->getId())
                     ->setIsDefaultBilling(true)
                     ->setIsDefaultShipping(false);
+
+                $addressErrors = $address->validate();
+                if ($addressErrors !== true) {
+                    $errors = array_merge($errors, $addressErrors);
+                }                
 
                 $address->save();
             }

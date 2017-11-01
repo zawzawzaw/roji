@@ -5,7 +5,7 @@
   </div>
   <div class="container-fluid has-breakpoint">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-8 col-md-offset-0 col-sm-10 col-sm-offset-1">
 
         <!--
             ____ ___  _   _ _____ _____ _   _ _____

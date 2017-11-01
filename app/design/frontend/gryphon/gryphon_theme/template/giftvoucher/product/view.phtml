@@ -20,7 +20,7 @@ endif;
         </span>
     </span>
 </div>
-<p class="desc"><?php echo $shortDescription; ?></p>
+<!-- <p class="desc"><?php echo $shortDescription; ?></p> -->
 <div id="giftcard-product-amount-media" style="display: none"></div> 
 <input type="hidden" name="price_amount" id="price_amount" value="0" />
 <script type="text/javascript">
@@ -102,11 +102,11 @@ endif;
                     </script>                    
                 <?php elseif ($_giftAmount['type'] == 'dropdown'): ?>        
                     <div class="row vertical-align">
-                        <div class="col-lg-3 col-md-3 col-xs-4">
+                        <div class="col-lg-3 col-md-4 col-xs-4">
                             <h4 for="amount_dropdown"><?php echo $this->__('Value*') ?></h4>
                         </div>
-                        <div class="col-lg-6 col-md-9 col-xs-8">
-                            <div class="dropdown">
+                        <div class="col-lg-6 col-md-8 col-xs-8">
+                            <div class="dropdown amount_dropdown">
                                 <select id="amount_dropdown" name="amount" class="required-entry select" onchange="changePriceByInputDropdown(this)">
                                     <?php $options = array_combine($_giftAmount['options'], $_giftAmount['options_txt']) ?>
                                     <?php foreach ($options as $value => $label): ?>
@@ -119,7 +119,12 @@ endif;
                     <script type="text/javascript">
                         //<![CDATA[
                         function changePriceByInputDropdown(el) {
-                            $('giftcard-product-price').innerHTML = formatCurrency(giftAmountChange.prices[el.value], giftCardPriceFomat);
+                            var qty = $j("#qty").val();
+                            if(!qty) qty = 1;
+                            $('giftcard-product-price').innerHTML = formatCurrency(giftAmountChange.prices[el.value] * qty, giftCardPriceFomat);
+                            // console.log($j("#giftcard-product-price"));
+                            $j("#page-product-detail-form").find('.form-total-value').html($j("#page-product-detail-content").find(".regular-price").html());
+
                             $('price_amount').value = giftAmountChange.prices[el.value];
                             $('giftcard-product-amount-media').innerHTML = el.options[el.selectedIndex].text;
                             changePriceMediaGiftcard($('giftcard-product-amount-media').innerHTML);
@@ -142,15 +147,40 @@ endif;
             <div class="col-lg-6 col-md-12 col-sm-12">
                 <div class="form-quantity-container">
                     <div class="row vertical-align">
-                        <div class="col-lg-4 col-md-3 col-xs-4">
+                        <div class="col-lg-4 col-md-4 col-xs-4">
                             <h4 for="gift_quantity"><?php echo $this->__('QUANTITY*') ?></h4>
                         </div>
-                        <div class="col-lg-8 col-md-9 col-xs-8">
+                        <div class="col-lg-8 col-md-8 col-xs-8">
                             <div class="quantity-container form-quantity" id="gift_quantity_container">
                                 <a href="#" class="form-quantity-minus-btn minus"></a>                
                                 <input type="text" pattern="\d*" name="qty" id="qty" maxlength="12" class="short qty input-text form-quantity-input-txt" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo $this->__('Qty') ?>" />
                                 <a href="#" class="form-quantity-plus-btn plus"></a>
                             </div>          
+                            <script>
+                            $j('.plus').on('click',function(e){
+                                e.preventDefault();
+                                console.log('click')
+                                var $qty=$j(this).parent().find('.qty');
+                                var currentVal = parseInt($qty.val());
+                                if (!isNaN(currentVal)) {
+                                    $qty.val(currentVal + 1);
+                                }
+                                changePriceByInputDropdown($('amount_dropdown'));
+                            });
+                            $j('.minus').on('click',function(e){
+                                e.preventDefault();
+                                var $qty=$j(this).parent().find('.qty');
+                                var currentVal = parseInt($qty.val());
+                                if (!isNaN(currentVal) && currentVal > 0) {
+                                    $qty.val(currentVal - 1);
+                                }
+                                changePriceByInputDropdown($('amount_dropdown'));
+                            });    
+                            $j('#qty').on('input', function(e){
+                                console.log('changing qty');
+                                changePriceByInputDropdown($('amount_dropdown'));
+                            });                        
+                            </script>
                         </div>
                     </div>            
                 </div>
@@ -241,28 +271,28 @@ endif;
 <div class="giftvoucher-receiver" id="giftvoucher-receiver" style="<?php if (!$_formData->getSendFriend()) echo 'display:none;' ?>">    
     <div class="form-group gift-card-form-group">
         <div class="row vertical-align">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <h4 for="recipient_name"><?php echo $this->__('Recipient name') ?>*</h4>        
             </div>
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <input type="text" class="input-text required-entry" name="recipient_name" value="<?php echo $_formData->getRecipientName() ?>"  onchange="changeReceiverName(this);" onkeyup="changeReceiverName(this);" maxlength="30"/>  
             </div>
         </div>        
     </div>
     <div class="form-group gift-card-form-group">
         <div class="row vertical-align">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <h4 class = "recipient_email" for="recipient_email"><?php echo $this->__('Recipient email') ?>*</h4>        
             </div>
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <input type="text" class="input-text required-entry validate-email validate-same-email" name="recipient_email" id="recipient_email" value="<?php echo $_formData->getRecipientEmail() ?>" />
             </div>
         </div>        
     </div>
     <div class="form-group gift-card-form-group">
         <div class="row vertical-align">
-            <div class="col-md-3"><h4 for="customer_name"><?php echo $this->__('Sender name') ?>*</h4></div>
-            <div class="col-md-9">
+            <div class="col-md-4"><h4 for="customer_name"><?php echo $this->__('Sender name') ?>*</h4></div>
+            <div class="col-md-8">
                 <input type="text" class="input-text required-entry" name="customer_name" value="<?php echo $_formData->getCustomerName() ?>" onchange="changeSenderName(this);" onkeyup="changeSenderName(this);" maxlength="30"/>
             </div>
         </div>        
@@ -278,10 +308,10 @@ endif;
     </p>
     <div class="form-group gift-card-form-group">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <h4 class = "message" for="message"><?php echo $this->__('Message') ?></h4>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <textarea maxlength="<?php echo $this->messageMaxLen(); ?>" name="message" id="message" class="" onchange="changeRemaining(this);" onkeyup="changeRemaining(this);"><?php echo $_formData->getMessage() ?></textarea>
                 <span class="char_remaining"><?php echo $this->__('Characters Remaining: ') ?><span id="giftvoucher_char_remaining"><?php echo $this->messageMaxLen() ?></span></span>
                 <script type="text/javascript">
@@ -341,10 +371,10 @@ endif;
         <?php echo $this->getLayout()->createBlock('core/html_calendar')->setTemplate('page/js/calendar.phtml')->toHtml() ?>
         <div class="form-group gift-card-form-group giftcard-date-box">
             <div class="row vertical-align">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <h4 for="day_to_send"><?php echo $this->__('Day to send') ?>*</h4>            
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-8">
                     <div class="dropdown-container">
                         <div class="row">
                             <div class="col-md-4 col-sm-4 col-xs-4">
@@ -434,8 +464,8 @@ endif;
         <!--        time zone-->
         <div class="form-group gift-card-form-group" style="">
             <div class="row vertical-align">
-                <div class="col-md-3"><h4 for="timezone_to_send"><?php echo $this->__('Time zone') ?></h4></div>
-                <div class="col-md-9">
+                <div class="col-md-4"><h4 for="timezone_to_send"><?php echo $this->__('Time zone') ?></h4></div>
+                <div class="col-md-8">
                     <div class="dropdown">                            
                         <select class="required-entry" name = "timezone_to_send" id = "timezone_to_send">
                             <?php

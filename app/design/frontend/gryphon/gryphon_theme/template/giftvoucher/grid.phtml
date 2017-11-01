@@ -7,6 +7,15 @@
 <?php $collection = $this->getCollection() ?>
 <?php $columns = $this->getColumns() ?>
 <?php $timezone = Mage::app()->getStore()->getConfig('general/locale/timezone'); ?>
+<?php 
+// Check if any user is logged in or not
+if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+ 
+    // Load the user's data
+    $user = Mage::getSingleton('customer/session')->getCustomer();
+    $user_email = $user->getEmail();
+}
+?>
 
   <!--
      ____ _____ ___  ____  _____ ____
@@ -36,7 +45,7 @@
             <!-- <div class="col-md-4"> -->
             <?php //endif; ?>
             <div class="col-sm-3">
-              <div class="<?php if($column_counter==1): ?>table-column-first<?php elseif($column_counter==$column_counter_max): ?>table-column-last<?php else: ?>table-column<?php endif; ?>">
+              <div class="<?php if($column_counter==1): ?>table-column-first<?php elseif($column_counter==$column_counter_max): ?>table-column-last<?php else: ?>table-column<?php endif; ?> <?php if($column['header']=="Customer Email"): ?>no-display<?php endif; ?>">
                 <h4><?php echo $column['header'] ?></h4>
               </div>
             </div>            
@@ -63,8 +72,9 @@
                       <?php //else: ?>
                         <!-- <div class="col-md-4 col-sm-4 col-xs-6"> -->
                       <?php //endif; ?>
+
                         <div class="col-sm-3 col-xs-6">
-                            <div <?php if($column_counter==1): ?>class="table-column-first" data-column="Gift card code: "<?php elseif($column_counter==3): ?>class="table-column" data-column="Order no: "<?php elseif($column_counter==$column_counter_max): ?>class="table-column-last" data-column="Expiry date: "<?php else: ?>class="table-column" data-column="Amount: "<?php endif; ?>">
+                            <div <?php if($column_counter==1): ?>class="table-column-first" data-column="Gift card code: "<?php elseif($column_counter==3): ?>class="table-column" data-column="Order no: "<?php elseif($column_counter==4): ?>class="table-column no-display"<?php elseif($column_counter==$column_counter_max): ?>class="table-column-last" data-column="Expiry date: "<?php else: ?>class="table-column" data-column="Amount: "<?php endif; ?>">
                                 
                                     <!--end by Sally-->
                                     <?php if (isset($column['render']) && $column['render']): ?>                                        
@@ -117,12 +127,12 @@
                                                 break;
                                             case 'order_no':
                                                 ?>
-                                                <p><?php echo (!empty($row->getData($column['index']))) ? $row->getData($column['index']) : '-' ?></p>
+                                                <p><?php echo ($row->getData('customer_email')==$user_email) ? $row->getData($column['index']) : '-' ?></p>
                                                 <?php
                                                 break;
                                             default:
                                                 ?>
-                                                <p><?php echo $row->getData($column['index']) ?></p>
+                                                <p class="default"><?php echo $row->getData($column['index']) ?></p>
                                         <?php endswitch ?>
                                     <?php endif ?>
                                 

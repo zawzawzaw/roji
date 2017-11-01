@@ -87,7 +87,7 @@ class Aemtech_Trader_Customer_AccountController extends Mage_Customer_AccountCon
     }
 
     public function createPostAction() {
-        //echo "Reached Here::Correct";die();
+        // echo "Reached Here::Correct";die();
         /** @var $session Mage_Customer_Model_Session */
         $session = $this->_getSession();
         if ($session->isLoggedIn()) {
@@ -99,6 +99,29 @@ class Aemtech_Trader_Customer_AccountController extends Mage_Customer_AccountCon
             $errUrl = $this->_getUrl('*/*/create', array('_secure' => true));
             $this->_redirectError($errUrl);
             return;
+        }
+
+        $postparams = $this->getRequest()->getParams();
+        $data = array(
+            'secret' => "6LdQGSgUAAAAAOpEk2tKNtHBmCmXTvt2tkFEsVnu",
+            'response' => $postparams['g-recaptcha-response']
+        );
+
+        $verify = curl_init();
+        curl_setopt($verify, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+        curl_setopt($verify, CURLOPT_POST, true);
+        curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($verify, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($verify);
+
+        $response_arr = json_decode($response, true);
+
+        if($response_arr['success']!==true && $postparams['formtype']!="trader") {
+            Mage::getSingleton('customer/session')->addError(Mage::helper('captcha')->__('Incorrect CAPTCHA.'));
+            $errUrl = $this->_getUrl('*/*/create', array('_secure' => true));         
+            $this->_redirectError($errUrl);
+            return;   
         }
 
         $formId = 'trader_register';

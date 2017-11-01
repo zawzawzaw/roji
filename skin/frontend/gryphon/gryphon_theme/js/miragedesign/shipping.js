@@ -5,12 +5,14 @@
                 if ($("#shipping\\:country_id").val()) {
                     var countryId = $("#shipping\\:country_id").val();
                     getShippingFee('new', countryId);
+                    console.log('country field 1: '+countryId)
                 }
             }
             $("#shipping\\:country_id").on('change', function () {
                 if ($(this).val()) {
                     var countryId = $(this).val();
                     getShippingFee('new', countryId);
+                    console.log('country field 2: '+countryId)
                 }
             })
         }
@@ -23,8 +25,10 @@
                 if ($(this).val()) {
                     var addressId = $(this).val();
                     getShippingFee('existed', addressId);
+                    console.log('dropdown change 1:' + addressId);
                 } else {
                     $("#shipping\\:country_id").trigger('change');
+                    console.log('dropdown change 2: new address');
                 }
             })
         }

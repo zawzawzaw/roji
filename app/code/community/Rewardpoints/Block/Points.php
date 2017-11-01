@@ -33,7 +33,7 @@ class Rewardpoints_Block_Points extends Mage_Core_Block_Template
             ->addClientFilter(Mage::getSingleton('customer/session')->getCustomer()->getId());
         $earned_points->getSelect()->where('points_spent = ?', 0);
         $earned_points->getSelect()->where('date_end > NOW() OR date_end IS NULL');
-        $earned_points->getSelect()->where('rewardpoints_state = ?', 'complete');
+        $earned_points->getSelect()->where('rewardpoints_state = "complete" OR rewardpoints_state IS NULL');
         $earned_points->getSelect()->order('rewardpoints_account_id DESC');
 
         $spent_points = Mage::getModel('rewardpoints/stats')->getCollection()
@@ -116,14 +116,14 @@ class Rewardpoints_Block_Points extends Mage_Core_Block_Template
                     && is_object(Mage::getSingleton('customer/session')->getCustomer()) 
                     && $referrer->getRewardpointsReferralParentId() != Mage::getSingleton('customer/session')->getCustomer()->getId()
                     && ($customer_model = Mage::getModel('customer/customer')->load($referrer->getRewardpointsReferralParentId()))){
-                $toHtml .= '<div class="j2t-in-title"><p>'.$this->__('Referral rebates (%s)',$customer_model->getName()).'</p></div>';
+                $toHtml .= '<div class="j2t-in-title"><p>'.$this->__('Referral rebates <br> (%s)',$customer_model->getName()).'</p></div>';
             } else if ($referrer->getRewardpointsReferralParentId() && Mage::getSingleton('customer/session')->getCustomer() 
                     && is_object(Mage::getSingleton('customer/session')->getCustomer()) 
                     && $model->getRewardpointsReferralChildId() != Mage::getSingleton('customer/session')->getCustomer()->getId()
                     && ($customer_model = Mage::getModel('customer/customer')->load($referrer->getRewardpointsReferralChildId()))){
-                $toHtml .= '<div class="j2t-in-title"><p>'.$this->__('Referral rebates (%s)',$customer_model->getName()).'</p></div>';
+                $toHtml .= '<div class="j2t-in-title"><p>'.$this->__('Referral rebates <br> (%s)',$customer_model->getName()).'</p></div>';
             } else {
-                $toHtml .= '<div class="j2t-in-title"><p>'.$this->__('Referral rebates (%s)',$referrer->getRewardpointsReferralEmail()).'</p></div>';
+                $toHtml .= '<div class="j2t-in-title"><p>'.$this->__('Referral rebates <br> (%s)',$referrer->getRewardpointsReferralEmail()).'</p></div>';
             }
             
             $order = Mage::getModel('sales/order')->loadByIncrementId($order_id);
@@ -185,7 +185,7 @@ class Rewardpoints_Block_Points extends Mage_Core_Block_Template
             if (isset($points_name[$order_id])){
                 $toHtml .= '<div class="j2t-in-title"><p>'.$points_name[$order_id].'</p></div>';
             } else {
-                $toHtml .= '<div class="j2t-in-title"><p>'.$this->__('Birthday Month').'</p></div>';
+                $toHtml .= '<div class="j2t-in-title"><p>'.$this->__('Birthday month').'</p></div>';
             }
         }
         elseif ($order_id < 0){
@@ -197,7 +197,7 @@ class Rewardpoints_Block_Points extends Mage_Core_Block_Template
             }
             //$toHtml .= '<div class="j2t-in-title"><p>'.$this->__('Gift').'</p></div>';
         } else {
-            $toHtml .= '<div class="j2t-in-title"><p>'.$this->__('Order: %s', $order_id).'</p></div>';
+            $toHtml .= '<div class="j2t-in-title"><p>'.$this->__('Order: <br> %s', $order_id).'</p></div>';
             $order = Mage::getModel('sales/order')->loadByIncrementId($order_id);
             // $toHtml .= '<div class="j2t-in-txt"><p>'.$this->__('Order state: %s',$this->__($order->getData($status_field))).'</p></div>';
         }

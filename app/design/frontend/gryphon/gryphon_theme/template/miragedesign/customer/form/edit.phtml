@@ -171,30 +171,6 @@ $telephone = ($hasAddress) ? $this->helper('customercustomiser')->getAddress()->
                         ?>
                     </div>
 
-                  </div>
-                  <div class="col-md-6">
-
-                    <div class="page-account-form-column-02">
-                        <div class="form-group dropdown-version">
-                            <div class="row">
-                              <div class="col-md-4">
-                                <label>Country*</label>
-                              </div>
-                              <div class="col-md-8">
-                                <div class="dropdown">
-                                    <?php echo $this->helper('customercustomiser')->getCountryHtmlSelect() ?>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-6">
-
                     <div class="page-account-form-column-01">
                         <?php
                             echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getCustomer())
@@ -202,28 +178,6 @@ $telephone = ($hasAddress) ? $this->helper('customercustomiser')->getAddress()->
                                 ->toHtml()
                         ?>
                     </div>
-
-                  </div>
-                  <div class="col-md-6">
-
-                    <div class="page-account-form-column-02">
-                      <div class="form-group dropdown-version">
-                        <div class="row">
-                          <div class="col-md-4">
-                            <label>City*</label>
-                          </div>
-                          <div class="col-md-8">
-                            <input type="text" name="city" value="<?php echo $this->escapeHtml($city) ?>"  title="<?php echo $this->__('City') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('city') ?>" id="city" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-
-                <div class="row">
-                  <div class="col-md-6">
 
                     <div class="page-account-form-column-01">
                        <div class="form-group">
@@ -238,34 +192,6 @@ $telephone = ($hasAddress) ? $this->helper('customercustomiser')->getAddress()->
                       </div>
                     </div>
 
-                  </div>
-                  <div class="col-md-6">
-
-                    <div class="page-account-form-column-02">
-                      <div class="form-group">
-                        <div class="row">
-                          <div class="col-md-4">
-                            <label>Default Billing address*</label>
-                          </div>
-                          <div class="col-md-8">
-                            <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
-                            <input type="text" name="street[]" id="street_1" value="<?php echo $this->escapeHtml($street); ?>" class="address_input <?php echo $_streetValidationClass ?>" />
-
-                            <?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
-                            <?php for ($_i = 2, $_n = $this->helper('customer/address')->getStreetLines(); $_i <= $_n; $_i++): ?>
-                                <input type="text" name="street[]" value="<?php echo ($hasAddress) ? $this->escapeHtml($this->helper('customercustomiser')->getAddress()->getStreet($_i)) : '' ?>" title="<?php echo $this->__('Street Address %s', $_i) ?>" id="street_<?php echo $_i ?>" class="input-text address_input <?php echo $_streetValidationClass ?>" />
-                            <?php endfor; ?>                            
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-6">
-
                     <div class="page-account-form-column-01">
                       <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
                       <?php if ($_gender->isEnabled()): ?>
@@ -276,28 +202,6 @@ $telephone = ($hasAddress) ? $this->helper('customercustomiser')->getAddress()->
                         ?>
                       <?php endif ?>
                     </div>
-
-                  </div>
-                  <div class="col-md-6">
-
-                    <div class="page-account-form-column-02">
-                      <div class="form-group">
-                        <div class="row">
-                          <div class="col-md-4">
-                            <label>Zip/postal code*</label>
-                          </div>
-                          <div class="col-md-8">
-                            <input type="text" name="postcode" id="postcode" value="<?php echo $this->escapeHtml($postcode) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                </div> <!-- row -->
-
-                <div class="row">
-                  <div class="col-md-6">
 
                     <div class="page-account-form-column-01">
                         <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
@@ -311,53 +215,22 @@ $telephone = ($hasAddress) ? $this->helper('customercustomiser')->getAddress()->
                             </div>
                         <?php endif ?>
                     </div>
-
-                  </div>
-                  <div class="col-md-6">
-                    <div class="page-account-form-column-02">
-                        <div class="form-group">
-                            <div class="row">
-                              <div class="col-md-4">
-                                <label>Contact No.</label>
-                              </div>
-                              <div class="col-md-8">
-
-                                <div class="roji-intltelinput-container">
-                                  <input type="text" name="telephone" id="telephone" value="<?php echo $this->escapeHtml($telephone) ?>" class="roji-intltelinput">
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div id="page-edit-info-password-container">
-
-                  <div class="row">
-                    <div class="col-md-6">
-
+                    
+                    <div id="page-edit-info-password-container">
                       <div class="page-account-form-column-01">
-                        <div class="form-group checkbox-version">
-                          <div class="checkbox">                            
-                            <input type="checkbox" <?php if($this->getCustomer()->getChangePassword()==1): ?> checked="checked"<?php endif; ?> name="change_password" id="page-edit-info-password-checkbox">
+                          <div class="form-group checkbox-version">
+                            <div class="checkbox">                            
+                              <input type="checkbox" <?php if($this->getCustomer()->getChangePassword()==1): ?> checked="checked"<?php endif; ?> name="change_password" id="page-edit-info-password-checkbox">
 
-                            <label>
-                              <span></span>
-                              <p><strong>Change password</strong></p>
-                            </label>
+                              <label>
+                                <span></span>
+                                <p><strong>Change password</strong></p>
+                              </label>
+                            </div>
                           </div>
-                        </div>
                       </div>
-
-
-                    </div>
-                  </div> <!-- row -->
-
-                  <div id="page-edit-info-password-expand-container">
-                    <div class="row">
-                      <div class="col-md-6">
-
+                    
+                      <div id="page-edit-info-password-expand-container">
                         <div class="page-account-form-column-01">
                           <div class="form-group">
                             <div class="row">
@@ -392,18 +265,90 @@ $telephone = ($hasAddress) ? $this->helper('customercustomiser')->getAddress()->
                             </div>
                           </div>
                         </div>
-
-
                       </div>
-                    </div> <!-- row -->
-                  </div> <!-- page-edit-info-password-expand-container -->
+                    </div>
 
+                  </div>
+                  <div class="col-md-6">
 
+                    <div class="page-account-form-column-02">
+                        <div class="form-group dropdown-version">
+                            <div class="row">
+                              <div class="col-md-4">
+                                <label>Country*</label>
+                              </div>
+                              <div class="col-md-8">
+                                <div class="dropdown">
+                                    <?php echo $this->helper('customercustomiser')->getCountryHtmlSelect() ?>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
 
-                  
-                  
-                  
-                </div> <!-- page-edit-info-password-container -->
+                    <div class="page-account-form-column-02">
+                      <div class="form-group dropdown-version">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <label>City*</label>
+                          </div>
+                          <div class="col-md-8">
+                            <input type="text" name="city" value="<?php echo $this->escapeHtml($city) ?>"  title="<?php echo $this->__('City') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('city') ?>" id="city" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="page-account-form-column-02">
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <label>Default Billing address*</label>
+                          </div>
+                          <div class="col-md-8">
+                            <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
+                            <input type="text" name="street[]" id="street_1" value="<?php echo $this->escapeHtml($street); ?>" class="address_input <?php echo $_streetValidationClass ?>" />
+
+                            <?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
+                            <?php for ($_i = 2, $_n = $this->helper('customer/address')->getStreetLines(); $_i <= $_n; $_i++): ?>
+                                <input type="text" name="street[]" value="<?php echo ($hasAddress) ? $this->escapeHtml($this->helper('customercustomiser')->getAddress()->getStreet($_i)) : '' ?>" title="<?php echo $this->__('Street Address %s', $_i) ?>" id="street_<?php echo $_i ?>" class="input-text address_input <?php echo $_streetValidationClass ?>" />
+                            <?php endfor; ?>                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="page-account-form-column-02">
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <label>Zip/postal code*</label>
+                          </div>
+                          <div class="col-md-8">
+                            <input type="text" name="postcode" id="postcode" value="<?php echo $this->escapeHtml($postcode) ?>" title="<?php echo $this->__('Zip/Postal Code') ?>" id="zip" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="page-account-form-column-02">
+                        <div class="form-group">
+                            <div class="row">
+                              <div class="col-md-4">
+                                <label>Contact No.</label>
+                              </div>
+                              <div class="col-md-8">
+
+                                <div class="roji-intltelinput-container">
+                                  <input type="text" name="telephone" id="telephone" value="<?php echo $this->escapeHtml($telephone) ?>" class="">
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+
+                  </div>
+                </div>
 
               </div> <!-- page-account-form-content -->
 
@@ -442,6 +387,12 @@ $telephone = ($hasAddress) ? $this->helper('customercustomiser')->getAddress()->
             autoPlaceholder: false,
             preferredCountries: []
         });
+
+        $j('#country_id').on("change", function(e){
+            $j('#telephone').intlTelInput("setCountry", $j(this).val())
+        });
+
+        $j('#telephone').intlTelInput("setNumber", "<?php echo $this->escapeHtml($telephone) ?>");
 
         var currentCountryCode  = "";
         $(document).keydown(function(e) {

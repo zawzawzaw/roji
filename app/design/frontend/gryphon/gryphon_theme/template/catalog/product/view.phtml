@@ -229,8 +229,12 @@ endif;
                   <?php endif; ?>
 
                   <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-11">
+                    <?php if (!$isGiftcardType) : ?>
+                      <div class="col-md-1"></div>
+                      <div class="col-md-11">
+                    <?php else: ?>
+                      <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1 col-sm-8 col-sm-offset-2">
+                    <?php endif; ?>
 
                       <div id="page-product-detail-copy">
                 
@@ -262,17 +266,17 @@ endif;
                               <?php if(!$is_gift_product): ?>
                                 <li><?php echo $_product->getData('number_of_sachet'); ?> silken sachets</li>
                               <?php endif; ?>
-                              <li><?php echo number_format($_product->getData('weight'), 0); ?> g</li>
+                              <li><?php echo str_replace('.0', '', number_format($_product->getData('weight'), 1)); ?> g</li>
                             </ul>
                           </div>
 
                           <div class="row">
-                            <div class="col-md-3">
+                            <div class="<?php if ($is_gift_product) :?>col-md-4<?php else: ?>col-md-3<?php endif; ?>">
                               
                               <div class="copy-desc red-version">
                                 <?php if($is_gift_product): ?>
                                   Diameter: <?php echo $_product->getData('diameter'); ?> <br>
-                                  Height: <?php echo $_product->getData('height'); ?> <br>
+                                  Height: <?php echo $_product->getData('height'); ?> <br><br>
                                   Made in <?php echo $_product->getData('country'); ?>
                                 <?php else: ?>
                                   <?php echo $shortDescription; ?>  
@@ -280,7 +284,7 @@ endif;
                               </div> <!-- copy-desc -->
 
                             </div>
-                            <div class="col-md-1"></div>
+                            <div class="<?php if ($is_gift_product) :?>col-md-0<?php else: ?>col-md-1<?php endif; ?>"></div>
                             <div class="col-md-8">
 
                               <div class="detail-item-container">
@@ -316,7 +320,7 @@ endif;
                     <div class="row">
 
                       <div class="col-md-1"></div>
-                      <div class="col-md-11">
+                      <div class="col-md-11 col-md-offset-0 col-sm-8 col-sm-offset-2">
 
 
                         <div id="page-product-detail-form">
@@ -453,18 +457,16 @@ endif;
                       return targetWin;
                   } 
 
-                  jQuery(document).ready(function($){
-                      $('.fa-twitter').on('click', function(e){
-                          e.preventDefault();
-                          var share_url = $(this).attr('href');
-                          PopupCenter(share_url,'', 500, 500);
-                      });
-                      $('.fa-pintrest').on('click', function(e){
-                          e.preventDefault();
-                          var share_url = $(this).attr('href');
-                          PopupCenter(share_url,'', 500, 500);
-                      });
-                  });    
+                  $j('.fa-twitter').on('click', function(e){
+                      e.preventDefault();
+                      var share_url = $(this).attr('href');
+                      PopupCenter(share_url,'', 500, 500);
+                  });
+                  $j('.fa-pinterest').on('click', function(e){
+                      e.preventDefault();
+                      var share_url = $(this).attr('href');
+                      PopupCenter(share_url,'', 500, 500); 
+                  });   
                 </script>
             </div>
           </div>
@@ -550,8 +552,8 @@ endif;
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-xs-0 col-sm-2"></div>
-        <div class="col-xs-12 col-sm-8">
+        <div class="col-xs-0 col-sm-1"></div>
+        <div class="col-xs-12 col-sm-10">
 
           <div id="page-product-detail-content-mobile">
 
@@ -601,7 +603,23 @@ endif;
                 </div>
               <?php endif; ?>
             </div>
-
+            
+            <?php if($is_gift_product): ?>
+            <div class="copy-desc">              
+                <div class="row">
+                  <div class="col-xs-6">
+                    <p>Diameter: <?php echo $_product->getData('diameter'); ?> <br>
+                Height: <?php echo $_product->getData('height'); ?> <br><br>
+                </p>              
+                  </div>
+                  <div class="col-xs-6"><p style="text-align: right;">Made in <?php echo $_product->getData('country'); ?></p></div>
+                </div>
+                
+                
+            </div> <!-- copy-desc -->
+            <?php endif; ?>                                
+            
+            <?php if(!$is_gift_product): ?>
             <div class="copy-desc">
               <p><?php echo $shortDescription; ?></p>
             </div> <!-- copy-desc -->
@@ -612,6 +630,14 @@ endif;
                 <p><?php echo $_product->getIngredients(); ?></p>
               </div>
             </div>
+            <?php else: ?>
+            <div class="detail-item-container">
+              <div class="detail-item">
+                <h4>Product description</h4>
+                <p><?php echo $shortDescription; ?></p>
+              </div>
+            </div>
+            <?php endif; ?>
 
             <div id="page-product-detail-form-mobile">
               
@@ -626,89 +652,89 @@ endif;
     </div>
 </article> <!-- page-product-detail-content-section-mobile -->
 
-<article id="page-product-detail-expanding-section-mobile" class="visible-sm visible-xs">
+  <?php if(!$is_gift_product): ?>
+  <article id="page-product-detail-expanding-section-mobile" class="visible-sm visible-xs">
 
-    <div class="manic-expand-container" data-group="product-detail-mobile" data-value="product-detail-expand">
-      <div class="scroll-target" data-value="product-detail-expand"></div>
-      <div class="manic-expand-container-title">
+      <div class="manic-expand-container" data-group="product-detail-mobile" data-value="product-detail-expand">
+        <div class="scroll-target" data-value="product-detail-expand"></div>
         <div class="container-fluid">
-          <div class="row">
-            <div class="col-xs-0 col-sm-2"></div>
-            <div class="col-xs-12 col-sm-8">
-              <h4>Product Details</h4>
+            <div class="row">
+              <div class="col-xs-0 col-sm-1"></div>
+              <div class="col-xs-12 col-sm-10">
+                <div class="manic-expand-container-title">        
+                  <h4>Product Details</h4>
+                </div>
+                <div class="manic-expand-container-btn"></div>                
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="manic-expand-container-btn"></div>
-      <div class="manic-expand-container-content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-xs-0 col-sm-2"></div>
-            <div class="col-xs-12 col-sm-8">
-
-              <div class="detail-item-container">
-                <div class="detail-item">
-                  <h4>Tea Type:</h4>
-                  <p><?php echo $_product->getData('tea_type'); ?></p>
-                </div>
-                <div class="detail-item">
-                  <h4>Origin:</h4>
-                  <p><?php echo $_product->getData('origin'); ?></p>
-                </div>
-                <div class="detail-item">
-                  <h4>Harvest period:</h4>
-                  <p><?php echo $_product->getData('harvest_period'); ?></p>
-                </div>
-                <div class="detail-item">
-                  <h4>Tea Maker’s Note:</h4>
-                  <p><?php echo (!empty($_product->getData('tea_makers_note'))) ? $_product->getData('tea_makers_note') : "Delicate, floral sweet aroma of white peach brings harmony to a smooth finish." ; ?></p>
+        </div>                
+        <div class="manic-expand-container-content">   
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs-0 col-sm-1"></div>
+              <div class="col-xs-12 col-sm-10">             
+                <div class="detail-item-container">
+                  <div class="detail-item">
+                    <h4>Tea Type:</h4>
+                    <p><?php echo $_product->getData('tea_type'); ?></p>
+                  </div>
+                  <div class="detail-item">
+                    <h4>Origin:</h4>
+                    <p><?php echo $_product->getData('origin'); ?></p>
+                  </div>
+                  <div class="detail-item">
+                    <h4>Harvest period:</h4>
+                    <p><?php echo $_product->getData('harvest_period'); ?></p>
+                  </div>
+                  <div class="detail-item">
+                    <h4>Tea Maker’s Note:</h4>
+                    <p><?php echo (!empty($_product->getData('tea_makers_note'))) ? $_product->getData('tea_makers_note') : "Delicate, floral sweet aroma of white peach brings harmony to a smooth finish." ; ?></p>
+                  </div>
                 </div>
               </div>
-
             </div>
-          </div>
+          </div>                      
         </div>
       </div>
-    </div>
 
-    <div class="manic-expand-container" data-group="product-detail-mobile" data-value="brewing-instructions-expand">
-      <div class="scroll-target" data-value="brewing-instructions-expand"></div>
-      <div class="manic-expand-container-title">
+      <div class="manic-expand-container" data-group="product-detail-mobile" data-value="brewing-instructions-expand">
+        <div class="scroll-target" data-value="brewing-instructions-expand"></div>
         <div class="container-fluid">
           <div class="row">
-            <div class="col-xs-0 col-sm-2"></div>
-            <div class="col-xs-12 col-sm-8">
-              <h4>Brewing Instructions</h4>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="manic-expand-container-btn"></div>
-      <div class="manic-expand-container-content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-xs-0 col-sm-2"></div>
-            <div class="col-xs-12 col-sm-8">
-
-              <div class="detail-icon-container">
-                <div class="detail-icon">
-                  <div class="detail-icon-image icon-teapot"></div>
-                  <p><?php echo $_product->getTemperature(); ?></p>
-                </div>
-                <div class="detail-icon">
-                  <div class="detail-icon-image icon-clock"></div>
-                  <p><?php echo $_product->getTime(); ?></p>
-                </div>
+            <div class="col-xs-0 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">
+              <div class="manic-expand-container-title">          
+                <h4>Brewing Instructions</h4>              
               </div>
+              <div class="manic-expand-container-btn"></div>              
+            </div>
+          </div>
+        </div>
+        <div class="manic-expand-container-content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-xs-0 col-sm-1"></div>
+              <div class="col-xs-12 col-sm-10">
 
+                <div class="detail-icon-container">
+                  <div class="detail-icon">
+                    <div class="detail-icon-image icon-teapot"></div>
+                    <p><?php echo $_product->getTemperature(); ?></p>
+                  </div>
+                  <div class="detail-icon">
+                    <div class="detail-icon-image icon-clock"></div>
+                    <p><?php echo $_product->getTime(); ?></p>
+                  </div>
+                </div>
+
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-</article> <!-- page-product-detail-expanding-section-mobile -->
+  </article> <!-- page-product-detail-expanding-section-mobile -->
+  <?php endif; ?>
 <?php endif; ?>
 </form>
 

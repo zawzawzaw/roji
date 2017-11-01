@@ -28,7 +28,7 @@ roji.component.MailingList = function(options, element) {
 
   this.black_bg = this.element.find('.black-bg');
   this.close_btn = this.element.find('#mailing-list-close-btn');
-  this.send_btn = this.element.find('#mailing-list-popup-send-btn');
+  // this.send_btn = this.element.find('#mailing-list-popup-send-btn');
 
   this.is_open = false;
 
@@ -45,7 +45,7 @@ roji.component.MailingList = function(options, element) {
     this.close_popup();
   }.bind(this));
 
-  this.send_btn.click(this.on_send_btn_click.bind(this));
+  // this.send_btn.click(this.on_send_btn_click.bind(this));
 
   var cookie_value = this.cookies.get('rojimailinglist');
 
@@ -68,6 +68,8 @@ roji.component.MailingList = function(options, element) {
     
     console.log('doesnt have cookie, will open in 5 secs');
   } else {
+
+    // TweenMax.delayedCall(5, this.open_popup, [], this);
     console.log('already has cookiee');
   }
   
@@ -122,24 +124,24 @@ roji.component.MailingList.prototype.close_popup = function() {
   }
 };
 
-roji.component.MailingList.prototype.on_send_btn_click = function(event) {
-  event.preventDefault();
-  var subscribe_email = this.element.find('#mailing-list-popup-email-input').val();
+// roji.component.MailingList.prototype.on_send_btn_click = function(event) {
+//   event.preventDefault();
+//   var subscribe_email = this.element.find('#mailing-list-popup-email-input').val();
 
-  if(subscribe_email!=="" && subscribe_email!=="Enter your email address") {
-    var request = $j.ajax({
-        url: "/discovertea/index/subscribe",
-        method: "POST",
-        data: { subscribe_email : subscribe_email },
-        dataType: "html"
-    });
+//   if(subscribe_email!=="" && subscribe_email!=="Enter your email address") {
+//     var request = $j.ajax({
+//         url: "/discovertea/index/subscribe",
+//         method: "POST",
+//         data: { subscribe_email : subscribe_email },
+//         dataType: "html"
+//     });
      
-    request.done(function( msg ) {
-        var message = JSON.parse(msg);
-        if(message.error_messages)
-            this.element.find('span.ajax_msg').html('<p>'+message.error_messages+'</p>').show().delay(5000).fadeOut();
-        else
-            this.element.find('span.ajax_msg').html('<p>Successfully subscribed to mailing list</p>').show().delay(5000).fadeOut();
-    }.bind(this));
-  }
-}
+//     request.done(function( msg ) {
+//         var message = JSON.parse(msg);
+//         if(message.error_messages)
+//             this.element.find('span.ajax_msg').html('<p>'+message.error_messages+'</p>').show().delay(5000).fadeOut();
+//         else
+//             this.element.find('span.ajax_msg').html('<p>Successfully subscribed to mailing list</p>').show().delay(5000).fadeOut();
+//     }.bind(this));
+//   }
+// }

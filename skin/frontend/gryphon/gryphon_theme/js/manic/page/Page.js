@@ -285,7 +285,8 @@ manic.page.Page.prototype.scroll_to_target = function(str_param, str_param_2, st
     if (str_param == scroll_target_str) {
 
       // console.log('manic.page.Page: scroll_to_target: ');
-      // console.log(scroll_target);
+      // console.log($j(scroll_target[0]).offset());
+      // console.log(scroll_target_str);
       this.controller.scrollTo(scroll_target[0]);
     }
   }
@@ -564,6 +565,7 @@ manic.page.Page.prototype.on_expand_container_expand = function(event) {
   if (manic.IS_MOBILE == true) {
 
     if (expand_container.scroll_value != 'none'){
+      // console.log(expand_container.scroll_value);
       this.util_scroll_to(expand_container.scroll_value);
 
     }
@@ -808,6 +810,12 @@ manic.page.Page.prototype.check_device = function() {
  * @param  {object} target
  */
 manic.page.Page.prototype.controller_scroll_to = function(target) {
+
+  if(manic.IS_MOBILE_HEADER == true) {
+    target = target - this.mobile_header_element.height();
+  }
+
+  // console.log(target);
   TweenMax.to(window, 0.5, {
     scrollTo : {
       y : target, // scroll position of the target along y axis

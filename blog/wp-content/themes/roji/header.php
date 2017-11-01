@@ -24,6 +24,8 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
   <![endif]-->
 
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,500|Open+Sans:300,400,400i,600|Raleway:300,600">
+
   <?php wp_head(); ?>
 
 
@@ -266,10 +268,13 @@
                       <li><a href="http://www.rojicha.com/gifts.html">Tin</a></li>
                     </ul>
                   </li>
-
                   <li><a href="http://www.rojicha.com/blog">Blog</a></li>
-                  <li><a href="http://www.rojicha.com/faq">FAQ</a></li>
+                  <li><a href="http://www.rojicha.com/chaseki-members-program">CHASEKI MEMBERS</a></li>
                   <li><a href="http://www.rojicha.com/contact">Contact</a></li>
+                  <li><a href="http://www.rojicha.com/faq">FAQ</a></li>
+                  <li><a href="http://www.rojicha.com/shipping-info">shipping info</a></li>
+                  <li><a href="http://www.rojicha.com/privacy-policy">Privacy policy</a></li>
+                  <li><a href="http://www.rojicha.com/terms-of-use">Terms of Use</a></li>
 
                 </ul>
               </nav>
@@ -295,7 +300,21 @@
 
       <!-- inside #page-wrapper-content -->
 
-      <div id="mobile-blog-sidebar" class="sticky-version visible-xs visible-sm">
+      <article id="page-blog-title-section">
+        <div class="container-fluid has-breakpoint">
+          <div class="row">
+            <div class="col-md-3 col-sm-1 col-xs-0"></div>
+            <div class="col-md-9 col-sm-10 col-xs-12">
+              <div id="page-blog-title">
+                <h1>The Roji Journal.</h1>
+              </div> <!-- page-our-teas-title -->
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <div id="trigger-sticky-sidebar"></div>
+      <div id="mobile-blog-sidebar" class="visible-xs visible-sm">
         <div id="mobile-blog-button-container">
           <div class="mobile-blog-button" id="gryphon-blog-categories-button">Categories</div>
           <div class="mobile-blog-button" id="gryphon-blog-tag-button">Tags</div>    
@@ -308,17 +327,4 @@
         <div id="mobile-blog-category-container">
           <?php the_widget( 'WP_Widget_Categories' ); ?>  
         </div>
-      </div>
-
-      <article id="page-blog-title-section">
-        <div class="container-fluid has-breakpoint">
-          <div class="row">
-            <div class="col-md-3 col-sm-1 col-xs-0"></div>
-            <div class="col-md-9 col-sm-10 col-xs-12">
-              <div id="page-blog-title">
-                <h1>The Roji Jounal.</h1>
-              </div> <!-- page-our-teas-title -->
-            </div>
-          </div>
-        </div>
-      </article>
+      </div>      

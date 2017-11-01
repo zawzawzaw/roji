@@ -98,6 +98,14 @@ class Magestore_Giftvoucher_Block_Giftvoucherlist extends Mage_Core_Block_Templa
             'searchable' => true,
         ));
 
+        $grid->addColumn('customer_email', array(
+            'header' => $this->__('Customer Email'),
+            'index' => 'customer_email',
+            'format' => 'medium',
+            'align' => 'left',
+            'searchable' => true,
+        )); 
+
         $grid->addColumn('expired_at', array(
             'header' => $this->__('Expiry Date'),
             'index' => 'expired_at',
@@ -136,6 +144,14 @@ class Magestore_Giftvoucher_Block_Giftvoucherlist extends Mage_Core_Block_Templa
             'align' => 'left',                        
             'searchable' => true,
         ));
+
+        $grid_redeem->addColumn('customer_email', array(
+            'header' => $this->__('Customer Email'),
+            'index' => 'customer_email',
+            'format' => 'medium',
+            'align' => 'left',
+            'searchable' => true,
+        )); 
 
         $grid_redeem->addColumn('created_at', array(
             'header' => $this->__('Redemption Date'),

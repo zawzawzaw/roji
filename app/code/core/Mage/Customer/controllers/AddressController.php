@@ -136,8 +136,9 @@ class Mage_Customer_AddressController extends Mage_Core_Controller_Front_Action
                 }
             }else {
                 $existing_address_count = $existing_address_count - 1; // minus billing
-                if($existing_address_count >= 3) {                    
-                    return $this->_redirectError(Mage::getUrl('*/*/edit', array('id' => $address->getId())));
+                if($existing_address_count > 3) {                
+                    $this->_getSession()->addError('Cannot add more than 4 shipping address.');    
+                    return $this->_redirectError(Mage::getUrl('*/*/new', array('id' => $address->getId())));
                 }
             }
 

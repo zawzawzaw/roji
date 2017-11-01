@@ -189,7 +189,7 @@ if($isSubscriptionProduct == false)
                     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('shipping-fee-info')->toHtml(); ?>
                 <?php endif; ?>                
             </div>
-            <a href="javascript:void(0);" class="arrow-cta">Shipping information</a>
+            <a href="<?php echo $this->getUrl('shipping-info') ?>" class="arrow-cta">Shipping information</a>
         </div>
         
     </div> <!-- page-checkout-delivery -->

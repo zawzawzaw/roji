@@ -220,7 +220,18 @@
                           <div class="col-md-6 col-xs-6">
                             <div class="detail-item">
                               <h4>Email address</h4>
-                              <p><a href="mailto:<?php echo $shippingAddress->getEmail(); ?>"><?php echo $shippingAddress->getEmail(); ?></a></p>
+                              <p>
+                                <?php 
+                                $billingAddressData = $billingAddress->getData();
+                                $shippingAddressData = $shippingAddress->getData();
+                                if(!empty($shippingAddressData['email'])): ?>
+                                  <a href="mailto:<?php echo $shippingAddressData['email']; ?>"><?php echo $shippingAddressData['email']; ?></a>
+                                <?php elseif(!empty($shippingAddressData['company'])): ?>
+                                  <a href="mailto:<?php echo $shippingAddressData['company']; ?>"><?php echo $shippingAddressData['company']; ?></a>
+                                <?php else: ?>
+                                  <a href="mailto:<?php echo $billingAddressData['email']; ?>"><?php echo $billingAddressData['email']; ?></a>
+                                <?php endif; ?>
+                              </p>
                             </div>
                           </div>
                         </div>

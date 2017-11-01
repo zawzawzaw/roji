@@ -344,4 +344,51 @@ function my_general_settings_fields_html_2()
     $value = get_option( 'about_desc', '' );
     echo '<textarea id="about_desc" name="about_desc" rows="10" cols="50">' . $value . '</textarea>';
 }
+
+add_action('new_to_publish', 'on_new_post_create');
+add_action('draft_to_publish', 'on_new_post_create');
+add_action('pending_to_publish', 'on_new_post_create');
+
+function on_new_post_create($post) {     
+    $fields = (array) $post;
+    // print_r($post); exit();
+
+    //extract data from the post
+    //set POST variables
+    $url = 'http://rojicha.com/test_blog_noti_email.php';
+
+    //url-ify the data for the POST
+    foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+    rtrim($fields_string, '&');
+
+    //open connection
+    $ch = curl_init();
+
+    //set the url, number of POST vars, POST data
+    curl_setopt($ch,CURLOPT_URL, $url);
+    curl_setopt($ch,CURLOPT_POST, count($fields));
+    curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+
+    //execute post
+    $result = curl_exec($ch);
+
+    //close connection
+    curl_close($ch);
+}
+
+function post_published_notification( $ID, $post ) {
+    $author = $post->post_author; /* Post author ID. */
+    $name = 'zaw';
+    $email = 'zawzawzaw@gmail.com';
+    $title = $post->post_title;
+    $permalink = get_permalink( $ID );
+    $edit = get_edit_post_link( $ID, '' );
+    $to[] = sprintf( '%s <%s>', $name, $email );
+    $subject = sprintf( 'Published: %s', $title );
+    $message = sprintf ('Congratulations, %s! Your article “%s” has been published.' . "\n\n", $name, $title );
+    $message .= sprintf( 'View: %s', $permalink );
+    $headers[] = '';
+    wp_mail( $to, $subject, $message, $headers );
+}
+// add_action( 'publish_post', 'post_published_notification', 10, 2 );
 ?>
