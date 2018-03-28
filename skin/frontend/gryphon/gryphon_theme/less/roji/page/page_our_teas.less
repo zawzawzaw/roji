@@ -62,6 +62,7 @@
   @media only screen and (max-width: 991px) {
     .slick-dots{
       // display: none !important;
+      bottom: 10px;
     }
     .slick-prev{
       // display: none !important;
@@ -165,8 +166,21 @@
 
 #page-our-teas-slider-copy-section-mobile{
   background: @off-white-2;
-  padding-top: 30px;
-  padding-bottom: 42px;
+  /*padding-top: 30px;*/
+  /*padding-bottom: 42px;*/
+
+  .manic-image-container {    
+    height: 480px;
+  }
+
+  .default-copy {
+    padding-top: 30px;
+    padding-bottom: 42px;
+    p {
+      font-size: 13px;
+      line-height: 20px;
+    }
+  }
 }
 
 
@@ -507,6 +521,7 @@
   @media only screen and (max-width: 991px) {
     padding-top: 30px;
     margin-bottom: 20px;
+    text-align: left;
 
   }
 }
@@ -587,14 +602,18 @@
 
     // TABLET PORTRAIT
     @media only screen and (max-width: 991px) {
-      padding-left: 80px;
-      padding-right: 80px;
+      // padding-left: 80px;
+      // padding-right: 80px;
+      padding-left: 0px;
+      padding-right: 0px;
+      text-align: left;
     }
 
     // MOBILE
     @media only screen and (max-width: 767px) {
-      padding-left: 20px;
-      padding-right: 20px;
+      padding-left: 0px;
+      padding-right: 0px;
+      text-align: left;
     }
     @media only screen and (max-width: 320px) {
       padding-left: 0px;

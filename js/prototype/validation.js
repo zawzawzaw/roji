@@ -594,16 +594,41 @@ Validation.addAllThese([
             }],
     ['validate-intl-tel-input', 'This is a required field.', function(v) {            
             var stringArray = v.split(/(\s+)/);            
-            if(stringArray[2].length > 1) {                
-                return true; 
-            }else {                
-                return false;
+
+            if(v.indexOf('+65') == -1) {
+                if(stringArray[2].length > 1 || stringArray[0].length > 4) {       
+                    console.log('true');
+                    return true; 
+                }else {          
+                    console.log('false');      
+                    return false;
+                }
+            } else {
+                return true;
             }
     }],
     ['validate-zip-international', 'Please enter a valid zip code.', function(v) {
             //return Validation.get('IsEmpty').test(v) || /(^[A-z0-9]{2,10}([\s]{0,1}|[\-]{0,1})[A-z0-9]{2,10}$)/.test(v);
             return true;
             }],
+    ['validate-postcode-singapore', 'Please enter a valid Singapore postal code.', function(v) {
+
+
+            // console.log("TESTING MOBILE VALIDATION:::::");
+            // console.log(/^\+65 9\d{7}$/.test(v));
+
+            return Validation.get('IsEmpty').test(v) || /^\d{6}$/.test(v);
+    }],
+    ['validate-mobile-singapore', 'Please enter a valid Singapore contact no.', function(v) {
+            console.log("TESTING MOBILE VALIDATION:::::");
+
+            var new_v = v.replace(/\s/g, "");
+
+            console.log(/^\+65(8|9)\d{7}$/.test(new_v));
+            console.log(new_v);
+
+            return Validation.get('IsEmpty').test(new_v) || /^\+65(8|9)\d{7}$/.test(new_v);
+    }],
     ['validate-date-au', 'Please use this date format: dd/mm/yyyy. For example 17/03/2006 for the 17th of March, 2006.', function(v) {
                 if(Validation.get('IsEmpty').test(v)) return true;
                 var regex = /^(\d{2})\/(\d{2})\/(\d{4})$/;
@@ -622,7 +647,7 @@ Validation.addAllThese([
             }],
     ['validate-one-required', 'Please select one of the above options.', function (v,elm) {
                 var p = elm.parentNode;
-                var options = p.getElementsByTagName('INPUT');
+                var options = p.gexrmentsByTagName('INPUT');
                 return $A(options).any(function(elm) {
                     return $F(elm);
                 });

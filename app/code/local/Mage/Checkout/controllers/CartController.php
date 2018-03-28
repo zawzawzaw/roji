@@ -290,9 +290,11 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
  
                 if (!$this->_getSession()->getNoCartRedirect(true)) {
                     if (!$cart->getQuote()->getHasError()){
-                        $message = $this->__('%s was added to your shopping cart.', Mage::helper('core')->htmlEscape($product->getName()));
+                        // $message = $this->__('%s was added to your shopping cart.', Mage::helper('core')->htmlEscape($product->getName()));
+                        $message = "";
                         $response['status'] = 'SUCCESS';
                         $response['message'] = $message;
+
                         // $response['quote_id'] = $cart->getQuote()->getId();
                         // $response['item_id'] = $item->getId();
                         // $response['item_data'] = $itemData;
@@ -360,7 +362,8 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
 
             if (!$this->_getSession()->getNoCartRedirect(true)) {
                 if (!$cart->getQuote()->getHasError()) {
-                    $message = $this->__('%s was added to your shopping cart.', Mage::helper('core')->escapeHtml($product->getName()));
+                    // $message = $this->__('%s was added to your shopping cart.', Mage::helper('core')->escapeHtml($product->getName()));
+                    $message = $this->__('', Mage::helper('core')->escapeHtml($product->getName()));
                     $this->_getSession()->addSuccess($message);
                 }
                 $this->_goBack();

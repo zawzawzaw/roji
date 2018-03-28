@@ -75,18 +75,17 @@
 		?>
         <div class="page-shop-product-item">
             <div class="product-item-content manic-hover-item">
+                <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?> 
                 <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-item-image"> <?php $_imgSize=253; ?> 
                     <div class="manic-image-container">
-                        <img id="product-collection-image-<?php echo $_product->getId(); ?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize($_imgSize, 200); ?>" srcset="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(700); ?> 2x" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="img"/> 
-                    </div>                    
+                        <img id="product-collection-image-<?php echo $_product->getId(); ?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false); ?>" srcset="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize(700); ?> 2x" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="img"/> 
+                    </div>
                 </a> 
                 
-                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-item-title"> 
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-item-title">                                    
                     
-                    <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?> 
-                    
-                    <h2><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></h2> 
-                    <h3><?php echo $_product->getData('product_name_in_color'); ?></h3> 
+                    <h2 class="product-name"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></h2> 
+                    <h3 class="product-name-in-color"><?php echo $_product->getData('product_name_in_color'); ?></h3> 
 
                     <?php if($_productNameStripped=='Gift Card'): ?> 
                         <?php if(($groupname!=='Trader-Temp' && $groupname!=='Trader-Regular' && $groupname!=='Trader-Priority' && $groupname!=='Trader-Premium')): ?> 
@@ -97,14 +96,22 @@
                 <div class="product-item-price">
                   <?php echo $this->getPriceHtml($_product, true) ?>
                 </div>
-                <div class="product-item-cta <?php echo $_productNameStripped; ?>">
-
-                <?php if($_productNameStripped=='Roji E-Gift Card'): ?> 
-                  <a href="<?php echo $_product->getProductUrl() ?>" class="plus-cta">View product</a>  
-                <?php else: ?>
-                  <a href="<?php echo $this->getAddToCartUrl($_product) ?>" class="add-to-cart-links plus-cta"><?php echo $this->__('Add to Cart') ?></a>
-                <?php endif; ?>
+                <div class="product-price" style="display: none;">
+                    <?php echo Mage::helper('core')->currency($_product->getPrice(), true, false); ?>
                 </div>
+                <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>                                    
+                    <div class="product-item-cta <?php echo $_productNameStripped; ?>">                
+                        <?php if($_productNameStripped=='Roji E-Gift Card'): ?> 
+                          <a href="<?php echo $_product->getProductUrl() ?>" class="plus-cta">View product</a>  
+                        <?php else: ?>                    
+                          <a href="<?php echo $this->getAddToCartUrl($_product) ?>" class="add-to-cart-links plus-cta" data-product-id="<?php echo $_product->getId(); ?>" data-product-image="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false)->resize($_imgSize, 200); ?>"><?php echo $this->__('Add to Cart') ?></a>
+                        <?php endif; ?>
+                    </div>
+                <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+                <?php else: ?>
+                    <span class="out-of-stock">Out of stock</span>
+                <?php endif; ?>
+                
             </div>
         </div>
         <?php $counter++; ?>

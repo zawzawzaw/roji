@@ -223,6 +223,96 @@ roji.page.Default.prototype.on_scroll_to_no_target = function() {
   
 }
 
+roji.page.Default.prototype.pre_delete_from_cart = function(event) {
+
+}
+
+roji.page.Default.prototype.pre_add_to_cart = function(event) {
+  $j("#desktop-header-cart-menu").find(".cart-btn-value").removeClass('animated fadeIn').addClass('animated flipOutX');
+
+  var cart_qty = parseInt($j("#mobile-header-cart-btn").find(".cart-btn-value").text()) + 1;
+
+  // update product count in cart          
+  $j("#mobile-header-cart-btn").find(".cart-btn-value").text(cart_qty);
+  $j("#desktop-header-cart-menu").find(".cart-btn-value").text(cart_qty);
+  // $j("#mobile-header-cart-btn-container").find(".count").text(data.cart_qty);
+
+  $j("#desktop-header-cart-menu").find(".cart-btn-value").removeClass('animated flipOutX').addClass('animated fadeIn');
+
+  // $j('.desktop-header-cart-expand').html('');
+
+  var addToCartBtn = $j(event.currentTarget);
+  var currentTile = $j(event.currentTarget).parent().parent().parent();
+
+  var product_image = addToCartBtn.data("product-image");
+  var product_name = currentTile.find("h2.product-name").text();
+  var product_name_in_color = currentTile.find("h3.product-name-in-color").text();
+  var product_qty = 1;
+  var product_price = currentTile.find(".product-price").text();
+  var product_id = addToCartBtn.data("product-id");
+
+  var desktop_header_cart_expand = $j('.desktop-header-cart-expand');
+
+  if(desktop_header_cart_expand.find(".empty-cart").length > 0) {
+    $j('.desktop-header-cart-expand').html('');    
+  }
+
+  // if there is same product already in the cart, update qty
+  if(desktop_header_cart_expand.find('#product-'+product_id).length > 0) {
+    var product_qty_el = $j('#product-'+product_id).find(".product-qty span");
+    product_qty_el.text(parseInt(product_qty_el.text()) + 1);
+  } else { // add as new row
+    $j('<ul id="product-'+product_id+'" class="desktop-header-cart-expand-content"><li><div class="manic-image-container"><img src="'+product_image+'" alt=""></div></li><li><p class="product-qty"><span>'+product_qty+'</span> x</p><p>'+product_name+'</p><p>'+product_name_in_color+'</p><p class="product-price">'+product_price+'</p></li><li><a href="#" title="Remove item" data-item-id="'+product_id+'" class="close-btn remove-item"></a></li></ul>').appendTo('.desktop-header-cart-expand');  
+  }  
+
+  var sub_total = 0;
+  var currency_symbol = "";
+  var symbol = "";
+
+  $j(".desktop-header-cart-expand").find('.desktop-header-cart-expand-content').each(function() {
+    
+    var product_qty = $j(this).find(".product-qty span").text();
+    var product_price_with_symbol = $j(this).find(".product-price").text();
+    product_price_with_symbol = product_price_with_symbol.trim();
+    var product_price = product_price_with_symbol.replace(/[^0-9\.]+/g,"");
+
+    // console.log(product_price_with_symbol)
+    // console.log(product_price);
+    // console.log(product_qty);
+
+    if(product_price_with_symbol != "") {
+      var re = /^([a-z]+)([^\d])([\d.,]+)$/i;
+
+      currency_symbol = re.exec(product_price_with_symbol);
+
+      if(currency_symbol==null || currency_symbol=="") {
+        currency_symbol = product_price_with_symbol.charAt(0);
+      }
+    }  
+    
+    if(Array.isArray(currency_symbol))
+      symbol = currency_symbol[1] + currency_symbol[2];
+    else
+      symbol = currency_symbol;
+
+    console.log(currency_symbol);
+
+    if(product_price != "")
+      sub_total += parseFloat(product_price) * parseInt(product_qty);
+
+  });
+
+  $j('.desktop-header-cart-expand-summary').find('.sub-total-amount').html(symbol+sub_total.toFixed(2));
+
+  $j('#desktop-header-cart-expand-container').stop(0).slideDown(300);
+  // window.header_cart_is_open = true;
+  $j('#desktop-header-cart-expand-container').delay(5000).slideUp(300);
+
+  setTimeout(function() {
+    // window.header_cart_is_open = false;
+  }, 5000);
+}
+
 roji.page.Default.prototype.update_header_cart = function() {
 
   $j("#desktop-header-cart-menu").find(".cart-btn-value").removeClass('animated fadeIn').addClass('animated flipOutX');
@@ -252,7 +342,7 @@ roji.page.Default.prototype.update_header_cart = function() {
 
               $j.each(data.cart_items, function(key,value){
 
-                  $j('.desktop-header-cart-expand').append('<ul class="desktop-header-cart-expand-content"><li><div class="manic-image-container"><img src="'+value.image+'" alt=""></div></li><li><p>'+value.qty+' x</p><p>'+value.name+'</p><p>'+value.name_in_color+'</p><p>'+value.row_price+'</p></li><li><a href="#" title="Remove item" data-item-id="'+value.id+'" class="close-btn remove-item"></a></li></ul>');
+                  $j('.desktop-header-cart-expand').append('<ul id="product-'+value.id+'" class="desktop-header-cart-expand-content"><li><div class="manic-image-container"><img src="'+value.image+'" alt=""></div></li><li><p>'+value.qty+' x</p><p>'+value.name+'</p><p>'+value.name_in_color+'</p><p>'+value.row_price+'</p></li><li><a href="#" title="Remove item" data-item-id="'+value.id+'" class="close-btn remove-item"></a></li></ul>');
 
               });                    
 
@@ -264,13 +354,13 @@ roji.page.Default.prototype.update_header_cart = function() {
 
           $j('.desktop-header-cart-expand-summary').find('.sub-total-amount').html(data.cart_total);
 
-          $j('#desktop-header-cart-expand-container').stop(0).slideDown(300);
-          window.header_cart_is_open = true;
-          // $j('#desktop-header-cart-expand-container').stop(0).delay(5000).slideUp(300);
+          // $j('#desktop-header-cart-expand-container').stop(0).slideDown(300);
+          // window.header_cart_is_open = true;
+          // $j('#desktop-header-cart-expand-container').delay(5000).slideUp(300);
 
-          setTimeout(function() {
-            window.header_cart_is_open = false;
-          }, 5000);
+          // setTimeout(function() {
+          //   window.header_cart_is_open = false;
+          // }, 5000);
 
           // var mobile_header = $j("#main-mobile-header").data('gryphon_mobile_header');
           // mobile_header.public_open_cart();
@@ -289,12 +379,20 @@ roji.page.Default.prototype.update_header_cart = function() {
 roji.page.Default.prototype.on_add_to_cart_link_click = function(event){
     event.preventDefault();
 
-    var add_to_cart_url = $j(event.currentTarget).attr("href");
+    if($j("#desktop-header-cart-expand-container").find("#product-907").length <= 0) {
+      var add_to_cart_url = $j(event.currentTarget).attr("href");
 
-    $j.get( add_to_cart_url, function( data ) {
-       this.update_header_cart();
-    }.bind(this));         
-    
+      this.pre_add_to_cart(event);
+
+      $j.get( add_to_cart_url, function( data ) {  
+        setTimeout(function() {
+          // this.update_header_cart();
+        }.bind(this), 5000);            
+      }.bind(this));         
+    } else {
+      alert('This product cannot be purchased with other items in the cart. Please check out first before making this purchase.');
+    }
+  
 }
 
 

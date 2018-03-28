@@ -96,8 +96,9 @@
     text-align: right;
 
     .square-cta{
-      padding-left: 17px + 23px;
-      padding-right: 17px + 23px;
+      // padding-left: 17px + 23px;
+      // padding-right: 17px + 23px;
+      width: 100%;
     }
   }
 
@@ -174,7 +175,8 @@
 
     // MOBILE
     @media only screen and (max-width: 767px) {
-      height: 200px;
+      // height: 200px;
+      height: 300px;
     }
   }
 }
@@ -218,14 +220,19 @@
   ul {
     margin-top: -5px;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
 
     @media only screen and (max-width: 991px) {
       margin-top: 0px;
+      display: block;
     }
 
     li {
       display: inline-block;
-      margin-right: 14px;
+      // margin-right: 14px;
+      margin-right: 34px;
+      margin-top: 10px;
       &:last-child {
         margin-right: 0px;
       }

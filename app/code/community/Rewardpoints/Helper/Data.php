@@ -126,7 +126,7 @@ class Rewardpoints_Helper_Data extends Mage_Core_Helper_Abstract {
                 } catch (Exception $e) {
                     //Mage::getSingleton('session')->addError($e->getMessage());
                 }
-                $referralModel->sendConfirmation($parent, $child, $parent->getEmail());
+                // $referralModel->sendConfirmation($parent, $child, $parent->getEmail());
             }
         }
     }
@@ -1277,7 +1277,7 @@ class Rewardpoints_Helper_Data extends Mage_Core_Helper_Abstract {
                         $rewardPoints += $item_points;
                     } else {
                         if(strpos($product_name, 'e-gift card')) {
-                            $rewardPoints += $item_points;
+                            // $rewardPoints += $item_points;
                         }
                     }
                     

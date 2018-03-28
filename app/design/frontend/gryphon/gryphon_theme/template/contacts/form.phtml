@@ -1,119 +1,4 @@
-<?php
-/**
- * Magento
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License (AFL 3.0)
- * that is bundled with this package in the file LICENSE_AFL.txt.
- * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/afl-3.0.php
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@magento.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
- * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magento.com for more information.
- *
- * @category    design
- * @package     base_default
- * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- */
-?>
 <!--
-     _____ ___ _____ _     _____
-    |_   _|_ _|_   _| |   | ____|
-      | |  | |  | | | |   |  _|
-      | |  | |  | | | |___| |___
-      |_| |___| |_| |_____|_____|
-
-  -->
-
-  <article id="page-contact-title-section">
-    <div class="container-fluid has-breakpoint">
-      <div class="row">
-        <div class="col-md-3 col-sm-1 col-xs-0"></div>
-        <div class="col-md-9 col-sm-10 col-xs-12">
-          <div id="page-contact-title">
-            <h1><?php echo $this->__('You’ve hit Roji. Let’s talk.') ?></h1>
-          </div> <!-- page-contact-title -->
-        </div>
-      </div>
-    </div>
-  </article> <!-- page-contact-title-section -->
-  
-
-  <!--
-      ____ ___  _   _ _____ _____ _   _ _____
-     / ___/ _ \| \ | |_   _| ____| \ | |_   _|
-    | |  | | | |  \| | | | |  _| |  \| | | |
-    | |__| |_| | |\  | | | | |___| |\  | | |
-     \____\___/|_| \_| |_| |_____|_| \_| |_|
-
-  -->
-
-  <article id="page-contact-content-section">
-    <div class="container-fluid has-breakpoint">
-      <div class="row">
-        <div class="col-md-3 col-tablet-landscape-4 col-sm-12 col-xs-12 hidden-xs hidden-sm">
-
-          <div id="page-contact-sidebar">
-
-            <div class="contact-sidebar-address">
-              <div class="detail-item first-version">
-                <h4><?php echo $this->__('Office Address') ?></h4>
-                <p><?php echo $this->__('251 Pandan Loop, Singapore 128431') ?></p>
-              </div>
-              <div class="detail-item">
-                <h4><?php echo $this->__('Operating hours') ?></h4>
-                <p>
-                  <?php echo $this->__('Mondays to Fridays: 9am to 5pm <br>
-                  Closed on weekends and public holidays') ?>
-                </p>
-              </div>
-              <div class="detail-item">
-                <h4><?php echo $this->__('Phone') ?></h4>
-                <p><?php echo $this->__('+65 6779 2948') ?></p>
-              </div>
-            </div> <!-- contact-sidebar-address -->
-
-            <div class="contact-sidebar-address">
-              <div class="detail-item first-version">
-                <h4><?php echo $this->__('Roji Store') ?></h4>
-                <p><?php echo $this->__('5 Raffles Place, Raffles Xchange #B1-64, <br> Singapore 048618') ?></p>
-              </div>
-              <div class="detail-item">
-                <h4><?php echo $this->__('Operating hours') ?></h4>
-                <p>
-                  <?php echo $this->__('Mondays to Fridays: 10am to 10pm <br>
-                  Saturdays: 10am to 4pm <br> Closed on Sundays and public holidays') ?>
-                </p>
-              </div>
-              <!-- <div class="detail-item">
-                <h4><?php echo $this->__('Phone') ?></h4>
-                <p><?php echo $this->__('+65 6779 2948') ?></p>
-              </div> -->
-            </div> <!-- contact-sidebar-address -->
-
-          </div> <!-- page-contact-sidebar -->
-
-
-        </div>
-        <div class="col-md-2 col-tablet-landscape-1 col-sm-12 col-xs-12 hidden-xs hidden-sm">
-
-          <div id="page-contact-seperator"></div>
-
-        </div>
-        <div class="col-md-6 col-md-offset-0 col-tablet-landscape-7 col-sm-10 col-sm-offset-1 col-xs-12">
-
-
-          <div id="page-contact-content">
-
-            <!--
                _____ ___  ____  __  __
               |  ___/ _ \|  _ \|  \/  |
               | |_ | | | | |_) | |\/| |
@@ -130,7 +15,7 @@
                   <p>For any feedback or enquiries, please feel free to drop us an email with the contact form below. We will be in touch as soon as we can to assist you.</p>
                 </div>
 
-                <?php echo $this->getMessagesBlock()->toHtml() ?>
+                <?php echo $this->getMessagesBlock()->toHtml() ?>                
 
                 <div class="form-group">
                   <div class="row">
@@ -169,11 +54,11 @@
                 <div class="form-group">
                   <div class="row">
                     <div class="col-md-4">
-                      <label>Contact No.</label>
+                      <label>Mobile*</label>
                     </div>
                     <div class="col-md-8">
                       <div class="roji-intltelinput-container">       
-                        <input name="telephone" id="telephone" title="<?php echo Mage::helper('contacts')->__('Telephone') ?>" value="" class="roji-intltelinput remove-input-selection required-entry input-text input-class phone_no_input" type="text" unselectable="on" onselectstart="return false;" />
+                        <input name="telephone" id="telephone" title="<?php echo Mage::helper('contacts')->__('Telephone') ?>" value="" class="roji-intltelinput remove-input-selection required-entry input-text input-class phone_no_input required-entry" type="text" unselectable="on" onselectstart="return false;" />
                       </div>
                     </div>
                   </div>
@@ -182,7 +67,7 @@
                 <div class="form-group dropdown-version">
                   <div class="row">
                     <div class="col-md-4">
-                      <label>Type of enquiry</label>
+                      <label>Type of enquiry*</label>
                     </div>
                     <div class="col-md-8">
                       <div class="dropdown">
@@ -220,6 +105,7 @@
 
                   </div>
                 </div>
+
               </form> <!-- page-contact-form -->
               <script type="text/javascript">
               //<![CDATA[
@@ -228,6 +114,17 @@
               </script>
               <script type="text/javascript">
                   jQuery(document).ready(function($) {
+
+                    if($(".success-msg").length > 0) {
+                      $(".form-group").hide();
+                      $(".cta-container").hide();
+
+                      setTimeout(function() {
+                        window.location.href = "<?php echo $this->getUrl('') ?>";
+                      }, 5000);
+
+                    }
+
                     $(".phone_no_input, .mobile_no_input").intlTelInput({
                       initialCountry: 'sg',
                       nationalMode: false,
@@ -235,6 +132,19 @@
                       autoPlaceholder: false,
                       preferredCountries: []
                     });
+
+                    $(".phone_no_input, .mobile_no_input").on("countrychange", function(e, countryData) {
+                      console.log(countryData)
+                      if(countryData.name=="Singapore") {
+                        console.log('its singapore')
+                        $(".phone_no_input").addClass("validate-mobile-singapore");
+                      } else {
+                        console.log('its not singapore')
+                        $(".phone_no_input").removeClass("validate-mobile-singapore");
+                      }
+                    });
+
+                    $(".phone_no_input").addClass("validate-mobile-singapore");
 
                     var currentCountryCode  = "";
                     $(document).keydown(function(e) {
@@ -284,64 +194,3 @@
                   });
               </script>
             </div> <!-- page-contact-form-container -->
-
-
-
-
-          </div> <!-- page-contact-content -->
-
-
-
-        </div> <!-- col-md-6 -->
-        <div class="col-md-2 col-tablet-landscape-1 col-sm-12 col-xs-12 visible-xs visible-sm">
-
-          <div id="page-contact-seperator"></div>
-
-        </div>
-        <div class="col-md-3 col-tablet-landscape-4 col-sm-10 col-sm-offset-1 col-xs-12 visible-xs visible-sm">
-
-          <div id="page-contact-sidebar">
-
-            <div class="contact-sidebar-address">
-              <div class="detail-item first-version">
-                <h4><?php echo $this->__('Office Address') ?></h4>
-                <p><?php echo $this->__('251 Pandan Loop, Singapore 128431') ?></p>
-              </div>
-              <div class="detail-item">
-                <h4><?php echo $this->__('Operating hours') ?></h4>
-                <p>
-                  <?php echo $this->__('Mondays to Fridays: 9am to 5pm <br>
-                  Closed on weekends and public holidays') ?>
-                </p>
-              </div>
-              <div class="detail-item">
-                <h4><?php echo $this->__('Phone') ?></h4>
-                <p><?php echo $this->__('+65 6779 2948') ?></p>
-              </div>
-            </div> <!-- contact-sidebar-address -->
-
-            <div class="contact-sidebar-address">
-              <div class="detail-item first-version">
-                <h4><?php echo $this->__('Roji Store') ?></h4>
-                <p><?php echo $this->__('5 Raffles Place, Raffles Xchange #B1-64, Singapore 048618') ?></p>
-              </div>
-              <div class="detail-item">
-                <h4><?php echo $this->__('Operating hours') ?></h4>
-                <p>
-                  <?php echo $this->__('Mondays to Fridays: 9am to 5pm <br>
-                  Closed on weekends and public holidays') ?>
-                </p>
-              </div>
-              <!-- <div class="detail-item">
-                <h4><?php echo $this->__('Phone') ?></h4>
-                <p><?php echo $this->__('+65 6779 2948') ?></p>
-              </div> -->
-            </div> <!-- contact-sidebar-address -->
-
-          </div> <!-- page-contact-sidebar -->
-
-
-        </div>
-      </div> <!-- row -->
-    </div> <!-- container-fluid -->
-  </article> <!-- page-contact-content-section -->

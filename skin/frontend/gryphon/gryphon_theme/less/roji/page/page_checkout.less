@@ -295,6 +295,16 @@
 //    \____/_/   \_\_| \_\|_|
 //
 
+#page-checkout-cart {
+  
+  hr.grand-total-divider {
+    display: none;
+  }
+
+  #grand-total {
+    display: none;
+  }
+}
 
 #page-checkout-cart-table{
 
@@ -462,6 +472,11 @@
     
 
     .form-quantity{
+      span {
+        .h2-style;
+        text-align: center;
+        color: @dark-grey;
+      }
       .form-quantity-input-txt{
         width: 66px;
       }
@@ -1436,7 +1451,14 @@
     -webkit-transform: translate(-50%, -50%)!important;   /* Chrome, Safari, Opera */
 }
 
-#checkout-login-popup {
+#checkout-login-popup, #checkout-signup-popup {
+  padding-top: 10px;
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
   a.square-cta {
     width: 55%;
     margin: 0 auto;

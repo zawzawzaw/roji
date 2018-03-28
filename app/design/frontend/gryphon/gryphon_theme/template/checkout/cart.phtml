@@ -263,7 +263,14 @@ if($session->isLoggedIn()) {
                               $quote = Mage::getModel("sales/quote")->load($quoteId);
 
                               $rewardPoints = Mage::helper('rewardpoints/data')->getPointsOnOrder($quote, null, null, true, $quote->getStoreId());
-                              echo $this->__("This shopping cart is worth %s in rebates", Mage::helper('core')->currency($rewardPoints, true, false));?>
+                              $couponCode = Mage::getSingleton('checkout/session')->getQuote()->getCouponCode();
+                              if($rewardPoints > 0 && empty($couponCode)) {
+                                echo $this->__("This shopping cart is worth %s in rebates", Mage::helper('core')->currency($rewardPoints, true, false));  
+                              ?>
+                                <br class="hidden-xs hidden-lg"><span>(for members only)</span>
+                              <?php
+                              }                              
+                              ?>
                               </p>
                               <?php 
                                 }
@@ -411,7 +418,8 @@ if($session->isLoggedIn()) {
  -->
 
 <div id="checkout-login-popup" style="display:none; cursor: default">            
-    <p>Create an account and enjoy a 5 SGD rebate along with other benefits!</p>                           
+    <a href="#" class="close-btn"></a>       
+    <p>Create an account and enjoy an SGD$5 rebate and other benefits!</p>                           
     <a class="square-cta" href="<?php echo Mage::helper('customer')->getRegisterUrl(); ?>" id="yes">Sign up</a>
     <span>Already have an account?</span>    
     <a class="square-cta" href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>" id="yes">Log in</a>            

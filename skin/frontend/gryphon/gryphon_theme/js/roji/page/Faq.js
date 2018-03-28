@@ -205,6 +205,15 @@ roji.page.Faq.prototype.show_faq_content_item = function(str_param) {
 
     }
 
+  } else {
+
+    $j('#page-faq-content-section-mobile .manic-expand-container').removeClass("tablet-open-version mobile-open-version");
+
+    // $(".manic-expand-container[data-value='"+str_param+"']").trigger("click");
+    var some_element = $j('#page-faq-content-section-mobile .manic-expand-container[data-value=' + str_param + ']');
+    var expanding_container = some_element.data('manic.ui.ExpandContainer');
+    expanding_container.instant_expand();
+
   }
   
   
@@ -277,6 +286,8 @@ roji.page.Faq.prototype.update_page_layout = function() {
  */
 roji.page.Faq.prototype.scroll_to_target = function(str_param, str_param_2, str_param_3) {
   roji.page.Faq.superClass_.scroll_to_target.call(this, str_param, str_param_2, str_param_3);
+
+  console.log(str_param);
   
   // scroll to 0, then open 
   this.show_faq_content_item(str_param);

@@ -112,8 +112,8 @@ class Mage_Contacts_IndexController extends Mage_Core_Controller_Front_Action
 
                 $translate->setTranslateInline(true);
 
-                Mage::getSingleton('customer/session')->addSuccess(Mage::helper('contacts')->__('Thank you for contacting us, your message has been submitted and we will be in touch soon.'));
-                $this->_redirect('*/*/');
+                Mage::getSingleton('customer/session')->addSuccess(Mage::helper('contacts')->__('Thank you for contacting us. <span>Your message has been submitted and we will be in touch soon.</span>'));
+                $this->_redirect('contact');
 
                 return;
             } catch (Exception $e) {

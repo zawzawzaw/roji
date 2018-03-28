@@ -39,7 +39,7 @@ $product_type = $_item->getProductType();
                 <a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="cart-item-image">
             <?php endif;?>
               <div class="manic-image-container" data-scale-mode="show_all" data-horizontal-align="left">
-                <?php $image_url = $this->helper('catalog/image')->init($_item->getProduct(), 'thumbnail')->backgroundColor(array(0, 0, 0))->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false)->resize(113); ?>
+                <?php $image_url = $this->helper('catalog/image')->init($_item->getProduct(), 'small_image')->backgroundColor(array(0, 0, 0))->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false)->resize(240); ?>
                     <img src="" 
                         data-image-desktop="<?php echo $image_url; ?>"
                         data-image-tablet="<?php echo $image_url; ?>"
@@ -222,7 +222,7 @@ $product_type = $_item->getProductType();
                     $itemsku_type = $itemsku_type[0]; 
                     ?>
                           
-                    <?php if($itemsku_type=="SGP" || $itemsku_type=="INT"): ?>
+                    <?php if($itemsku_type=="SGP" || $itemsku_type=="INT" || $itemsku_type=="RojiGiftCard"): ?>
                         <span class="qty"><?php echo $this->getQty() ?></span>
                     <?php else: ?>
                         <a href="javascript:void(0)" class="form-quantity-minus-btn minus"></a>

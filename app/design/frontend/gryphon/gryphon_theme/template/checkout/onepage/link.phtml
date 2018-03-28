@@ -79,6 +79,7 @@
 		                backgroundColor:'#fff',
 		                cursor:         'wait',                        
 		            },
+		            onOverlayClick: $.unblockUI
 		        });
 		    <?php elseif(isMobile()!==true): ?>
 		        $.blockUI({ 
@@ -96,6 +97,7 @@
 		                backgroundColor:'#fff',
 		                cursor:         'wait' 
 		            },
+		            onOverlayClick: $.unblockUI
 		        });
 		    <?php else: ?>
 		        $.blockUI({ 
@@ -111,6 +113,7 @@
 		                backgroundColor:'#fff',
 		                cursor:         'wait' 
 		            },
+		            onOverlayClick: $.unblockUI
 		        });                    
 		    <?php endif; ?>
 
@@ -125,6 +128,10 @@
 		  	window.location='<?php echo $this->getCheckoutUrl() ?>';			
 		  <?php endif; ?>
 		}
+
+		$("#checkout-login-popup").on("click", ".close-btn", function(){
+	    $.unblockUI();
+	  });
 
 		$('.btn-checkout').on('click', function(e){
 			e.preventDefault();

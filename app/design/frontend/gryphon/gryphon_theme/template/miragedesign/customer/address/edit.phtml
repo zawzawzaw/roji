@@ -136,7 +136,7 @@ if(empty($creating_or_editing_address_type)) $creating_or_editing_address_type =
                           <div class="col-md-8">
                             <?php $customer = Mage::getSingleton('customer/session')->getCustomer(); if(isset($customer)) { $customer_email = $customer->getEmail(); } ?>
                             <!-- using company field as email here since there is no email field in address book -->
-                            <input type="text" name="company" id="email" value="<?php echo !empty($this->getAddress()->getCompany()) ? $this->escapeHtml($this->getAddress()->getCompany()) : $customer_email; ?>" title="<?php echo $this->__('Email') ?>" class="" />                                    
+                            <input type="text" name="company" id="email" value="<?php echo !empty($this->getAddress()->getCompany()) ? $this->escapeHtml($this->getAddress()->getCompany()) : $customer_email; ?>" title="<?php echo $this->__('Email') ?>" class="input-text input-class required-entry validate-email" />                                    
                           </div>
                         </div>
                       </div>
@@ -388,17 +388,30 @@ if(empty($creating_or_editing_address_type)) $creating_or_editing_address_type =
     });
 
     $j('#country').on("change", function(e){
-        $j('#telephone').intlTelInput("setCountry", $j(this).val())
+        $j('#telephone').intlTelInput("setCountry", $j(this).val());
+        if($j(this).val()=="SG") {
+          $j("#telephone").addClass("validate-mobile-singapore");
+          $j("#zip").addClass("validate-postcode-singapore");              
+        } else {
+          console.log($j(this).val());
+          $j("#telephone").removeClass("validate-mobile-singapore");
+          $j("#zip").removeClass("validate-postcode-singapore");              
+        }
     });
+
+    if($j("#country").val()=="SG") {
+      $j("#telephone").addClass("validate-mobile-singapore");
+      $j("#zip").addClass("validate-postcode-singapore");              
+    }
 
     // if($j.trim($j('#telephone').val())=="") {
         // $j('#telephone').intlTelInput("setNumber", "<?php echo $this->escapeHtml($this->getAddress()->getTelephone()); ?>");
     // }
 
     <?php if(!empty($this->getAddress()->getTelephone())): ?>
-      $j('#telephone').intlTelInput("setNumber", "<?php echo $this->escapeHtml($this->getAddress()->getTelephone()); ?>");
+      $j('#telephone').intlTelInput("setNumber", "<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) . " "; ?>");
     <?php else: ?>
-      $j('#telephone').intlTelInput("setNumber", "+65");
+      $j('#telephone').intlTelInput("setNumber", "+65 ");
     <?php endif; ?>
 
 

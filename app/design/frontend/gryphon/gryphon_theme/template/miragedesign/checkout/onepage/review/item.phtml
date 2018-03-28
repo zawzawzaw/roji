@@ -31,8 +31,8 @@
         <div class="col-md-2 col-sm-4 col-xs-5">
 
           <?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="cart-item-image"><?php endif;?>
-            <div class="manic-image-container" data-scale-mode="show_all" data-horizontal-align="left">
-              <img src="<?php echo $this->helper('catalog/image')->init($_item->getProduct(), 'thumbnail')->backgroundColor(array(0, 0, 0))->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false)->resize(120, 100) ?>" width="120" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" />
+            <div class="manic-image-container has-show-all" data-horizontal-align="left">
+              <img src="<?php echo $this->helper('catalog/image')->init($_item->getProduct(), 'small_image')->backgroundColor(array(0, 0, 0))->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false)->resize(180, null) ?>" style="width: 120px;" data-image-desktop="<?php echo $this->helper('catalog/image')->init($_item->getProduct(), 'small_image')->backgroundColor(array(0, 0, 0))->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false)->resize(180, null) ?>" data-image-tablet="<?php echo $this->helper('catalog/image')->init($_item->getProduct(), 'small_image')->backgroundColor(array(0, 0, 0))->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false)->resize(180, null) ?>" data-image-mobile="<?php echo $this->helper('catalog/image')->init($_item->getProduct(), 'small_image')->backgroundColor(array(0, 0, 0))->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false)->resize(180, null) ?>" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" />
             </div>
           <?php if ($this->hasProductUrl()):?></a><?php endif;?>
 

@@ -100,7 +100,7 @@
                 <?php echo $this->getChildHtml('form_fields_before')?>                
 
                 <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="page-account-create-form" class="scaffold-form sign-up-form checkout-form" enctype="multipart/form-data">
-                    <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
+                    <input type="hidden" name="success_url" id="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
                     <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
 
                     <?php echo $this->getMessagesBlock()->toHtml() ?>
@@ -320,5 +320,33 @@
   <script>
     if($j(".messages").length) {
       $j("#page-account-create-intro-copy").addClass("message-open");
+    }
+  </script>
+
+  <script>
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+
+    var firstname = getUrlParameter('firstname');
+    var lastname = getUrlParameter('lastname');
+    var email = getUrlParameter('email');
+
+    if(firstname!="" && lastname!="" && email!="") {
+      $j("#firstname").val(firstname);
+      $j("#lastname").val(lastname);
+      $j("#email_address").val(email); 
+      $j("#success_url").val('<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>');
     }
   </script>

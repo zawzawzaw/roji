@@ -166,7 +166,11 @@
                     <?php if($_pAddsses = Mage::getSingleton('customer/session')->getCustomer()->getDefaultShipping()): ?>
                       <a href="<?php echo $this->getAddressEditUrl(Mage::getSingleton('customer/session')->getCustomer()->getAddressById($_pAddsses)) ?>?address=shipping" class="edit square-cta"><?php echo $this->__('Edit') ?></a>
                     <?php endif; ?>
-                    <a href="<?php echo Mage::getUrl('customer/address/new'); ?>?address=shipping" class="add_address square-cta">Add New Address</a>                    
+
+
+                    <?php $_pAddsses = $this->getAdditionalAddresses(); echo count($_pAddsses); ?>                    
+                    <a href="<?php if(count($_pAddsses) >= 3) echo 'javascript:void(0);'; else echo Mage::getUrl('customer/address/new') . '?address=shipping'; ?>" class="add_address square-cta <?php if(count($_pAddsses) >= 3) echo 'disabled-btn'; ?>">Add New Address</a>
+
                   </div>
                   
                 </div>
@@ -178,7 +182,7 @@
             <div id="page-account-address-book-other-container">
 
               <div class="book-other-title">
-                <h2>Other shipping addresses</h2>
+                <h2>Other shipping addresses (maximum 3)</h2>
               </div>
               
               <div class="book-other-item-container">

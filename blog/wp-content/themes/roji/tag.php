@@ -43,7 +43,7 @@
 
           <?php if (have_posts()) : while (have_posts()) : the_post(); ?>                  
                 
-                <article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix page-blog-item' ); ?> role="article">
+                <article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix page-blog-item' ); ?> role="article" data-last="<?php if (($wp_query->current_post +1) == ($wp_query->post_count)) echo "1"; else echo "0"; ?>">
                   <div class="row vertical-align">
                     <div class="col-md-4 col-md-offset-0 col-sm-8 col-sm-offset-2">
 

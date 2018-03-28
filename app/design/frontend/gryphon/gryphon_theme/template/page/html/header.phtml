@@ -62,9 +62,9 @@ $quoteData= $quote->getData();
             <!-- </div> -->
           </div> <!-- desktop-header-currency-menu -->
           
-          <div id="desktop-header-language-menu">
-              <?php echo $this->getChildHtml('store_language') ?>
-          </div> <!-- desktop-header-currency-menu -->
+          <!-- <div id="desktop-header-language-menu"> -->
+              <?php //echo $this->getChildHtml('store_language') ?>
+          <!-- </div> --> <!-- desktop-header-currency-menu -->
 
           <div id="desktop-header-cart-menu">
           
@@ -95,17 +95,17 @@ $quoteData= $quote->getData();
                           $productImage = Mage::helper('catalog/image')->init($item->getProduct(), 'thumbnail');
                           
                       ?>
-                      <ul class="desktop-header-cart-expand-content">             
+                      <ul id="product-<?php echo $productId; ?>" class="desktop-header-cart-expand-content">             
                         <li>
                           <div class="manic-image-container">
                             <img src="<?php echo $productImage; ?>" alt="">
                           </div>
                         </li>
                         <li>
-                          <p><?php echo ($productQty) ? $productQty : ""; ?> x</p>
+                          <p class="product-qty"><span><?php echo ($productQty) ? $productQty : ""; ?></span> x</p>
                           <p><?php echo ($productName) ? $productName : ""; ?></p>
                           <p><?php echo (!empty($productNameInColor)) ? $productNameInColor : ""; ?></p>
-                          <p><?php echo Mage::helper('core')->currency($productPrice, true, false); ?></p>
+                          <p class="product-price"><?php echo Mage::helper('core')->currency($productPrice, true, false); ?></p>
                         </li>
                         <li>                        
                           <a href="javascript:void(0);" data-item-id="<?php echo $item->getProduct()->getId(); ?>" title="<?php echo $this->__('Remove item')?>" class="close-btn remove-item"></a>
@@ -266,6 +266,7 @@ $quoteData= $quote->getData();
 
                   <li><a href="<?php echo $this->getUrl('about'); ?>">About</a></li>
 
+                  <li><a href="<?php echo $this->getUrl('our-teas'); ?>">Our Teas</a></li>
                   <!-- currency converter functionality pending -->
                   <li class="currency-version">
                     <?php 
@@ -276,9 +277,7 @@ $quoteData= $quote->getData();
 
                     <?php echo $this->getChildHtml('currency_top') ?>              
 
-                  </li>
-
-                  <li><a href="<?php echo $this->getUrl('our-teas'); ?>">Our Teas</a></li>
+                  </li>                  
 
                   <!-- CLASS HAS TO BE ADDED BY THE JAVASCRIPT -->
                   <li class="submenu-version">

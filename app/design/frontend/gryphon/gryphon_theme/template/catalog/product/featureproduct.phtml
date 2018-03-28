@@ -115,8 +115,8 @@
                     <?php //if(isMobile()===true): ?>
                         <a href="<?php echo $_product->getProductUrl() ?>">
                     <?php //endif; ?>                                        
-                            <h2><?php echo $_product->getName(); ?></h2>
-                            <h3><strong><?php echo $_product->getData('product_name_in_color') ?></h3>
+                            <h2 class="product-name"><?php echo $_product->getName(); ?></h2>
+                            <h3 class="product-name-in-color"><?php echo $_product->getData('product_name_in_color') ?></h3>
                             <?php
                             if(count($categoryIds) ){
                                 foreach ($categoryIds as $key => $categoryId) {
@@ -131,7 +131,7 @@
                             <div class="tile-desc">
                                 <?php echo $_product->getShortDescription(); ?>
                             </div>
-                            <div class="tile-price">
+                            <div class="tile-price product-price">
                                 <?php echo Mage::helper('core')->currency($_product->getPrice(), true, false); ?>
                             </div>   
                     <?php //if(isMobile()===true): ?>    
@@ -141,7 +141,11 @@
             </div>
             <div class="tile-cta">                
                 <?php if($groupname!=='Trader-Temp' && $groupname!=='Trader-Regular' && $groupname!=='Trader-Priority' && $groupname!=='Trader-Premium'): ?>
-                <a id="add-to-cart-<?php echo $product_name; ?>" href="<?php echo $this->getAddToCartUrl($_product) ?>" class="add-to-cart-links plus-cta white-version">add to cart</a>
+                    <?php if($_product->isSaleable()): ?>
+                        <a id="add-to-cart-<?php echo $product_name; ?>" href="<?php echo $this->getAddToCartUrl($_product) ?>" data-product-id="<?php echo $_product->getId(); ?>" data-product-image="<?php echo Mage::helper('catalog/image')->init($_product, 'image'); ?>" class="add-to-cart-links plus-cta white-version">add to cart</a>
+                    <?php else: ?>
+                        <span class="out-of-stock white-version">Out of Stock</span>
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
         </div>
@@ -156,6 +160,9 @@
             </div>
             <div class="tile-content">
                 <h2>Let us share our story</h2>
+                <div class="tile-cta">
+                    <a href="<?php echo $this->getUrl('about'); ?>" class="arrow-cta">About Us</a>
+                </div>
             </div>
         </div>
         <div class="page-home-masonry-tile page-home-shop-tile height-2">
@@ -165,15 +172,15 @@
                     data-image-mobile="<?php echo $this->getSkinUrl('images_cms/home/home-shop-tile-bg-mobile.jpg'); ?>">
             </div>
             <div class="tile-content">
-                <div class="tile-center-container">
-                    <div class="tile-center-content">
+                <!-- <div class="tile-center-container">
+                    <div class="tile-center-content"> -->
                         <h2>The perfect companion for your tea time</h2>
                         <div class="tile-cta">
                             <?php $store_category = Mage::getModel('catalog/category')->loadByAttribute('name', 'Shop'); ?>
                             <a href="<?php echo $store_category->getUrl(); ?>" class="arrow-cta">Shop Now</a>
                         </div>
-                    </div>
-                </div>
+                    <!-- </div>
+                </div> -->
             </div>
         </div>
         <div class="page-home-masonry-tile page-home-our-teas-tile width-2">

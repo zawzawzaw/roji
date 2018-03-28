@@ -23,7 +23,17 @@
   <div id="page-blog-content-section-bg">
       <div class="content-bg"></div>
   </div>
+
   <div class="container-fluid has-breakpoint">
+    <div class="row visible-xs visible-sm">
+      <div class="col-md-3 col-sm-1 col-xs-0"></div>
+      <div class="col-md-9 col-sm-10 col-xs-12">
+        <div id="page-blog-title">
+          <h1>The Roji Journal.</h1>
+          <p><?php echo get_option('about_desc'); ?></p>
+        </div> <!-- page-our-teas-title -->
+      </div>
+    </div>
     <div class="row">
       
       <div class="col-md-9">
@@ -50,7 +60,7 @@
           if($wp_query->have_posts()):
             while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
                 
-                <article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix page-blog-item' ); ?> role="article">
+                <article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix page-blog-item' ); ?> role="article" data-last="<?php if (($wp_query->current_post +1) == ($wp_query->post_count)) echo "1"; else echo "0"; ?>">
                   <div class="row vertical-align">
                     <div class="col-md-4 col-md-offset-0 col-sm-10 col-sm-offset-1">
 
@@ -80,6 +90,17 @@
                               data-image-tablet="<?php echo the_post_thumbnail_url('full'); ?>"
                               data-image-mobile="<?php echo the_post_thumbnail_url('full'); ?>">
                           </div>
+                          <div class="category-image-tag">
+                            <?php 
+                              $post_categories = wp_get_post_categories( get_the_id() );
+                              foreach($post_categories as $c){
+                                $cat = get_category( $c );
+                                if($cat->name!=="All") {
+                                  echo '<span>' . $cat->name . '</span>';
+                                }                      
+                              }
+                            ?>
+                          </div>
                         </div>
                       </a>
                     </div>
@@ -94,7 +115,7 @@
                           <?php the_excerpt(); ?>
                         </div>
                         
-                        <a href="<?php the_permalink() ?>" class="read-more-cta">Read more</a>
+                        <a href="<?php the_permalink() ?>" class="arrow-cta">Read more</a>
                         
                       </div> <!-- page-blog-item-copy -->
                     </div>

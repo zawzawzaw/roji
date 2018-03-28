@@ -6,6 +6,20 @@
       padding-top: 0px;
     }
   }
+  &.gift-product-version {
+    #page-product-detail-closeup{
+      .manic-image-container {
+        height: 600px!important;
+      }
+    }
+    #page-product-detail-sidebar {
+      padding-top: 50px;
+    }
+    #page-product-detail-content {
+      padding-top: 50px;
+    }
+
+  }
 }
 
 //    ____ ___ ____  _____ ____    _    ____
@@ -24,10 +38,10 @@
   &.gift-card-version {
     @media all and (max-width: 991px) {
       padding-top: 30px;
-      // margin-bottom: 20px;
+      margin-bottom: 0px;
     }
     @media all and (max-width: 480px) {
-      padding-top: 0px;
+      padding-top: 30px!important;
     }
   }
 }
@@ -146,6 +160,11 @@
 
   margin-bottom: 27px;
 
+  &.gift-product-version {
+    padding-left: 0px;
+    padding-right: @product-detail-copy-padding-right + @product-detail-copy-padding-left;
+  }
+
 
   .copy-title{
     h1{
@@ -196,12 +215,14 @@
         font-size: 14px;
         line-height: 20px;
         letter-spacing: 0.01em;
-        color: @p4-dark-red;
+        /*color: @p4-dark-red;*/
+        color: @grey-2;
         margin-right: 19px;
         position: relative;
         &:after {
           content: "";
-          border-right: 1px solid @p4-dark-red;
+          /*border-right: 1px solid @p4-dark-red;*/
+          border-right: 1px solid @grey-2;
           position: absolute;
           right: -10px;
           height: 13px;
@@ -308,7 +329,8 @@
     color: @p3-dark-violet;
   }
   &.red-version{
-    color: @p4-dark-red;
+    // color: @p4-dark-red;
+    color: @grey-2;
   }
   &.brown-version{
     color: @p5-dark-brown;
@@ -327,6 +349,12 @@
 
 #page-product-detail-copy .copy-desc,
 #page-product-detail-content-section-mobile .copy-desc {
+
+  // for 1280 to linebreak a bit better
+  font-size: 14px;
+  line-height: 20px;
+  min-width: 140px;
+  //
   
   &.blue-version{
     color: @p1-dark-blue;
@@ -338,7 +366,8 @@
     color: @p3-dark-violet;
   }
   &.red-version{
-    color: @p4-dark-red;
+    // color: @p4-dark-red;
+    color: @grey-2;
   }
   &.brown-version{
     color: @p5-dark-brown;
@@ -373,6 +402,11 @@
   padding-left: @product-detail-copy-padding-left;
   padding-right: @product-detail-copy-padding-right;
 
+  &.gift-product-version {
+    padding-left: 0px;
+    padding-right: @product-detail-copy-padding-right + @product-detail-copy-padding-left;    
+  }
+
   .j2t-loyalty-points {
     display: none;
   }
@@ -404,15 +438,94 @@
 
   }
 
+  .out-of-stock {
+    .body-font;
+    font-size: 14px;
+    line-height: 20px;
+    color: @grey-2!important;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
 } // #page-product-detail-form
 
 
 
 #page-product-detail-content-image-container{
 
+  &:before {
+    content: "";
+    border-top: 1px solid #ccc;
+    display: block;
+    padding-bottom: 50px;
+  }
+
+  .page-product-detail-content-image-title{
+    /*text-align: center;*/
+    h2{
+      .h1-style;
+      font-size: 22px;
+      line-height: 28px;
+
+      margin-bottom: 36px;
+    }
+  }
+
   .page-product-detail-content-image{
-    .manic-image-container{
-      height: 350px;
+    text-align: center;
+    &:hover {
+      .manic-image-container {
+        .opacity(0.7);          
+      }
+      .product-item-title{
+        h2 {
+          color: @grey;
+          .transition-in-single (color, 0.2s, cubic-bezier(0.645, 0.045, 0.355, 1), 0.06s);
+        }
+        h3 {
+          color: @grey;
+          .transition-in-single (color, 0.2s, cubic-bezier(0.645, 0.045, 0.355, 1), 0.08s);
+        }
+      }
+      .product-item-price{
+        color: @grey;
+        .transition-in-single (color, 0.2s, cubic-bezier(0.645, 0.045, 0.355, 1), 0.10s);
+      }
+    }
+    .product-item-image {
+      display: block;
+      margin-bottom: 23px;
+      .manic-image-container{
+        .transition-in(0.1s, cubic-bezier(0.645, 0.045, 0.355, 1), 0.15s);
+        height: 350px;
+      }
+    }    
+    .product-item-title{
+      // display: block;
+      .display-inline-block;
+      margin-bottom: 14px;
+
+      h2{
+        text-transform: uppercase;
+        color: @off-black;
+
+        margin-bottom: -2px;
+
+        .transition-in-single (color, 0.3s, cubic-bezier(0.645, 0.045, 0.355, 1), 0.10s + 0.05s);
+      }
+      h3{
+        color: @dark-grey;
+
+        .transition-in-single (color, 0.3s, cubic-bezier(0.645, 0.045, 0.355, 1), 0.08s + 0.05s);
+      }
+    }
+    .product-item-price{
+      .h2-style;
+      color: @dark-grey;
+
+      margin-bottom: 17px;
+
+      .transition-in-single (color, 0.3s, cubic-bezier(0.645, 0.045, 0.355, 1), 0.06s + 0.05s);
     }
   }
 }
@@ -427,11 +540,24 @@
 #page-product-detail-footer-section{
   // padding-bottom: 100px;
   padding-bottom: 94px;
+
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+#page-product-back-btn-container {
+  float: left;
+  display: inline-block;
 }
 
 #page-product-social-container{
 
-  text-align: right;
+  /*text-align: right;*/
+  float: right;
+  display: inline-block;
 
   padding-top: 4px;
   padding-right: 1px;
@@ -578,7 +704,7 @@
 
   }
   .copy-desc{
-    // margin-bottom: 20px;
+    // margin-bottom: 20px;    
 
     p{
       .body-font-italic;
@@ -590,6 +716,16 @@
 
   .detail-item-container{
     padding-bottom: 5px;
+
+    @media all and (max-width: 991px) {
+      margin-top: 30px;
+
+      .detail-item {
+        h4 {
+          text-transform: capitalize;
+        }
+      }
+    }
     
   }
 
@@ -622,6 +758,16 @@
       height: 210px;
     }
 
+  }
+
+  &.gift-product-version {
+    margin-top: 30px;
+
+    .manic-image-container {
+      @media only screen and (max-width: 767px) {
+        height: 320px;
+      }
+    }
   }
 }
 
@@ -667,8 +813,11 @@
   padding-left: 20px;
   padding-right: 20px;
 
-  .detail-item-container{
+  .detail-item-container{    
     .detail-item{
+      h4 {
+        text-transform: capitalize;
+      }
       &:last-child{
         margin-bottom: 0px;
       }
@@ -750,7 +899,7 @@
       background-position: top;
     }
     @media all and (max-width: 991px) {
-      background-position: center;
+      // background-position: center;
     }
   }
 
@@ -759,64 +908,37 @@
     display: table;
     width: 100%;
     //height: 467px;
-    height: 874px;
+    // height: 874px;
+    height: 860px;
     float: none!important;
 
+    @media all and (max-width: 1024px) {
+      height: 700px;
+    }
+    @media all and (max-width: 991px) {
+      height: 1000px;
+    }
     @media all and (max-width: 480px) {
-      height: 100%;
+      height: 520px;
+    }
+    @media all and (max-width: 375px) {
+      height: 465px;
+    }
+    @media all and (max-width: 320px) {
+      height: 390px;
     }
 
     .vcenter2{
       display: table-cell;
       vertical-align: middle;
-      position: static!important;
+      // position: relative!important;
       height: 100%!important;
-      // background-size: 448px 617px;
-      // background-size: 465px 750px;
-      background-size: contain;
-
-      @media all and (max-width: 990px) {
-        background-size: 100%;
-        background-position: 0 0;
-      }
-
-      @media all and (max-width: 480px) {
-        background-size: 100%;
-        background-position: 50% 50%;
-      }
+      background-size: cover;
 
       #gift-design-01,
       #gift-design-02{
         display: block;
         margin: 0 auto;
-        position: relative;
-
-        // width: 465px;
-        width: 525px;
-        height: 750px;
-        margin-top: 62px;
-
-        @media all and (max-width: 1024px) {
-          width: 485px;
-          margin-top: 12px;
-        }                
-
-        @media all and (max-width: 991px) {
-          margin-top: 0px;
-        }
-
-        @media all and (max-width: 480px) {
-          width: 100%;
-          height: 670px;
-        }
-        @media all and (max-width: 380px) {
-          width: 100%;
-          height: 580px;
-        }
-        @media all and (max-width: 320px) {
-          width: 100%;
-          height: 490px;
-        }
 
         img{
           position: absolute;
@@ -826,55 +948,66 @@
 
         .gifttext{
           position: absolute;
-          top: 110px;
-          left: 30px;
-          height: 620px;
-          width: 90%;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+
           text-align: left;
-          color: #7b706b!important;
-
-          @media all and (max-width: 991px) {
-            top: 180px;
-            left: -75px;
-          }
-
-          @media all and (max-width: 480px) {
-            top: 140px;
-            left: 25px;
-            height: 480px;
-          }
-
-          @media all and (max-width: 380px) {
-            top: 110px;
-            left: 22px;
-            height: 430px;
-            width: 100%;
-          }
-          @media all and (max-width: 320px) {
-           top: 90px;
-            left: 19px;      
-            height: 370px;
-            width: 100%;
-          }
+          color: #818181!important;
 
           .gifttext-intro{
-            .h2-style;
-            text-transform: uppercase;
-
-            height: 45px;
-            @media all and (max-width: 480px) {
-              font-size: 8px;
-              line-height: 10px;                  
-              height: 30px;
+            position: absolute;
+            top: 40px;
+            left: 60px;
+            h1 {
+              .raleway-light;
+              font-size: 25px;
+              line-height: 25px;
+              letter-spacing: 0.075em;
+              text-transform: capitalize;
+              margin-bottom: 15px;
             }
-            // .dear {
-            //   font-size: 20px;
-            //   margin-bottom: 4px;
-            //   @media all and (max-width: 990px) {
-            //     font-size: 10px;   
-            //   }
-            // }
-          }
+
+            h5 {
+              .raleway-light;
+              font-size: 14px;
+              letter-spacing: 0.075em;
+
+              span {
+                text-transform: capitalize;
+              }
+            }
+            @media all and (max-width: 1280px) {
+              left: 40px;
+            }
+            @media all and (max-width: 1024px) {
+              left: 30px;
+            }
+            @media all and (max-width: 991px) {
+              top: 40px;
+              left: 40px;
+            }
+            
+            @media all and (max-width: 480px) {
+              top: 30px;
+              left: 30px;
+              h1 {
+                font-size: 20px;
+                line-height: 20px;
+                margin-bottom: 8px;
+              } 
+              h5 {
+                font-size: 12px;
+              }             
+            }
+
+            @media all and (max-width: 375px) {
+              top: 25px;
+              left: 30px;
+            }
+
+          }          
           .gifttext-title{
             .h4-style;            
             text-transform: uppercase;
@@ -884,47 +1017,56 @@
               font-size: 10px;
               line-height: 14px;
             }
-          }
-          .gifttext-amount{
-            font-size: 45px;
-            line-height: 30px;
-            letter-spacing: 0.01em;
-            // color: @dark-brown;
-
-            margin-bottom: 20px;
-            @media all and (max-width: 480px) {
-              font-size: 25px;
-              line-height: 25px;
-              margin-bottom: 5px;
-            }
-          }
+          }          
           .gifttext-copy{
             .body-font;
             font-size: 12px;
             line-height: 20px;
             // color: @dark-brown;
 
-            height: 113px;
-            margin-bottom: 29px;
+            // height: 113px;
             word-wrap: break-word;
-            width: 95%;
+            width: 50%;
+            margin-top: 10px;
+            // position: absolute;
+            // top: 120px;
+            // left: 60px;
             // margin: 0 auto;
             margin-bottom: 0px;
             @media all and (max-width: 480px) {
               min-height: 55px;
-              width: 80%;
+              width: 45%;
               // margin: 0 auto;
               height: auto;
               margin-bottom: 10px;
+              max-height: auto;
+            }
+          }
+          #giftcard-details-container {
+            position: absolute;
+            top: 210px;
+            right: 0;
+            background: rgba(118, 105, 93, 0.5);
+            padding: 20px 55px 20px 25px;     
+
+            @media all and (max-width: 991px) {
+              top: 240px;
+            }
+            @media all and (max-width: 480px) {
+              top: 140px;
+            }
+            @media all and (max-width: 375px) {
+              top: 100px;
             }
           }
           .gifttext-code-title{
-            .h4-style;
-            // color: @dark-brown;
+            .raleway-semibold;
             font-size: 10px;
             line-height: 20px;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.075em;
+
+            color: @white;
             margin-bottom: 10px;
             @media all and (max-width: 480px) {
               font-size: 6px;
@@ -933,11 +1075,12 @@
           }
           .gifttext-code{
             display: inline-block;
-            .h4-style;            
-            font-size: 12px;
+
+            .raleway-semibold;
+            font-size: 10px;
             line-height: 20px;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.075em;
 
             // margin-bottom: 32px;
             // @media all and (max-width: 990px) {
@@ -946,22 +1089,67 @@
             //   margin-bottom: 16px;
             // }
           }
+          .gifttext-amount{
+            .raleway-regular;
+            font-size: 40px;
+            line-height: 26px;
+            color: @white;
+
+            @media all and (max-width: 480px) {
+              font-size: 25px;
+              line-height: 25px;
+              margin-bottom: 5px;
+            }
+          }
           .gifttext-disclaimer{
             .body-font;
             font-size: 11px;
             line-height: 18px;
             letter-spacing: 0.015em;
-            color: @white;
+            color: @dark-grey;
             position: absolute;
-            bottom: 0px;
+            bottom: 30px;
+            left: 60px;
+            
+            @media all and (max-width: 1280px) {
+              left: 40px;
+            }
+            @media all and (max-width: 1024px) {
+              left: 30px;
+            }
+            @media all and (max-width: 991px) {
+              left: 40px;
+            }
 
             @media all and (max-width: 480px) {
-              font-size: 10px;
-              width: 80%;
+              font-size: 9px;
+              line-height: 12px;
+              width: 90%;
+              bottom: 20px;
+              left: 20px;
+            }            
+          }
+          .gifttext-link {
+            position: absolute;
+            right: 60px;
+            bottom: 27px;            
+            text-transform: uppercase;
+            .raleway-semibold;
+            font-size: 10px;
+            letter-spacing: 0.03em;
+            @media all and (max-width: 1280px) {
+              right: 40px;
             }
-            @media all and (max-width: 380px) {
-              font-size: 10px;
-              width: 70%;
+            @media all and (max-width: 1024px) {
+              right: 30px;
+            }
+            @media all and (max-width: 991px) {
+              right: 40px;
+              bottom: 25px;              
+            }
+            @media all and (max-width: 480px) {
+              right: 20px;
+              bottom: 15px;
             }
           }
         }
@@ -969,6 +1157,11 @@
           color: @white !important;
           .gifttext-disclaimer{
             color: @white !important;
+          }
+          .gifttext-link {
+            a {
+              color: @white!important;  
+            }            
           }
         }
 
@@ -1007,6 +1200,12 @@
     margin-bottom: 10px;
   }
 
+  #gift-card-product-notice {
+    font-size: 14px;
+    line-height: 20px;
+    color: @grey-2;
+  }
+
   .gift-card-form-group {
     margin-bottom: 36px;    
 
@@ -1014,6 +1213,9 @@
       color: @off-black;
       line-height: 17px;
     }    
+    .form-quantity-container {
+      display: none;
+    }
 
     @media all and (max-width: 1024px) {
       margin-bottom: 25px;
@@ -1103,6 +1305,7 @@
     width: 30%;
     height: 100px;
     position: relative;   
+    border: 0.5px solid #ccc;
 
     @media all and (max-width: 1024px) {
       height: 90px;
@@ -1116,6 +1319,14 @@
       height: 110px;
     }
 
+    @media all and (max-width: 375px) {
+      height: 100px;
+    }
+
+    @media all and (max-width: 320px) {
+      height: 80px;
+    }
+
     margin-right: 5%;
 
     &:last-child {
@@ -1123,7 +1334,13 @@
     }
 
     &.gift-active {
-      border: none!important;
+      border: 1px solid #707070;
+    }
+
+    .radio-image {
+      img {
+        border: 0px!important;  
+      }      
     }
 
 
@@ -1188,9 +1405,10 @@
   &:before {
     content: "";
     border-top: 1px solid #ccc;
-    width: 97%;
+    /*width: 97%;*/
+    width: 100%;
     position: absolute;
-    margin-left: 30px;
+    /*margin-left: 30px;*/
     margin-top: -20px;
   }
 

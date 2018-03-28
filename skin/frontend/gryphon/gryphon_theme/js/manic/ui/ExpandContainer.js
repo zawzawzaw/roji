@@ -21,6 +21,8 @@ manic.ui.ExpandContainer = function(options, element) {
   this.title_element = this.element.find('.manic-expand-container-title');
   this.content_element = this.element.find('.manic-expand-container-content');
 
+  this.element.data('manic.ui.ExpandContainer', this);
+
   this.extra_button_element = this.element.find('.manic-expand-container-btn');
 
   this.scroll_value = 'none';

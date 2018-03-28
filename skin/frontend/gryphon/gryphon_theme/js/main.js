@@ -786,22 +786,22 @@ var initialLoad = true;
         }
 
         // product details qty
-        $('.plus').on('click',function(e){
-            e.preventDefault();
-            var $qty=$(this).parent().find('.qty');
-            var currentVal = parseInt($qty.val());
-            if (!isNaN(currentVal)) {
-                $qty.val(currentVal + 1);
-            }
-        });
-        $('.minus').on('click',function(e){
-            e.preventDefault();
-            var $qty=$(this).parent().find('.qty');
-            var currentVal = parseInt($qty.val());
-            if (!isNaN(currentVal) && currentVal > 0) {
-                $qty.val(currentVal - 1);
-            }
-        });       
+        // $('.plus').on('click',function(e){
+        //     e.preventDefault();
+        //     var $qty=$(this).parent().find('.qty');
+        //     var currentVal = parseInt($qty.val());
+        //     if (!isNaN(currentVal)) {
+        //         $qty.val(currentVal + 1);
+        //     }
+        // });
+        // $('.minus').on('click',function(e){
+        //     e.preventDefault();
+        //     var $qty=$(this).parent().find('.qty');
+        //     var currentVal = parseInt($qty.val());
+        //     if (!isNaN(currentVal) && currentVal > 0) {
+        //         $qty.val(currentVal - 1);
+        //     }
+        // });       
 
         // // gift card specific
         // $('.orange').html($('.j2t-loyalty-points').html());

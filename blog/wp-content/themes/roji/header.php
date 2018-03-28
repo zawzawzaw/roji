@@ -300,7 +300,7 @@
 
       <!-- inside #page-wrapper-content -->
 
-      <article id="page-blog-title-section">
+      <article id="page-blog-title-section" class="hidden-xs hidden-sm">
         <div class="container-fluid has-breakpoint">
           <div class="row">
             <div class="col-md-3 col-sm-1 col-xs-0"></div>

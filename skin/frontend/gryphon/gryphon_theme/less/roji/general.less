@@ -229,7 +229,8 @@ video::-webkit-media-controls-start-playback-button {
 
 
   .slick-dots{
-    bottom: 39px;
+    // bottom: 39px;
+    bottom: 19px;
 
     li{
       margin-left: 6px;
@@ -244,8 +245,10 @@ video::-webkit-media-controls-start-playback-button {
 
           content: "\f111"; // .fa-circle:before {
           .fa;
-          font-size: 15px;
-          line-height: 30px;
+          // font-size: 15px;
+          // line-height: 30px;
+          font-size: 10px;
+          line-height: 20px;
           color: @white;
 
           .transition-in(0.15s);
@@ -381,5 +384,23 @@ ul.messages {
   span {
     .body-font-small;
     color: red;
+  }
+}
+
+.out-of-stock {
+  .h4-style;
+  font-size: 12px;
+  line-height: 24px;
+  color: @dark-grey !important;
+  display: block;
+
+  &.white-version {
+    color: @white !important;
+  }
+
+  @media all and (max-width: 991px) {
+    font-size: 9px;
+    color: #cdc8c1!important;
+    text-transform: uppercase;
   }
 }

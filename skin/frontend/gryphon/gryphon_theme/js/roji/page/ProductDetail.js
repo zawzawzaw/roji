@@ -66,8 +66,8 @@ roji.page.ProductDetail.prototype.init = function() {
   $j('#form-quantity-container .form-quantity').find(".form-quantity-minus-btn").click(this.on_quantity_minus_btn_click.bind(this));
   $j('#form-quantity-container .form-quantity').find(".form-quantity-input-txt").on('input', this.on_quantity_input_change.bind(this));
 
-  $j('#page-product-detail-form-mobile .form-quantity').find(".form-quantity-plus-btn").click(this.on_quantity_plus_btn_click.bind(this));
-  $j('#page-product-detail-form-mobile .form-quantity').find(".form-quantity-minus-btn").click(this.on_quantity_minus_btn_click.bind(this));
+  // $j('#page-product-detail-form-mobile .form-quantity').find(".form-quantity-plus-btn").click(this.on_quantity_plus_btn_click.bind(this));
+  // $j('#page-product-detail-form-mobile .form-quantity').find(".form-quantity-minus-btn").click(this.on_quantity_minus_btn_click.bind(this));
   $j('#page-product-detail-form-mobile .form-quantity').find(".form-quantity-input-txt").on('input', this.on_quantity_input_change.bind(this));
 
 
@@ -157,6 +157,8 @@ roji.page.ProductDetail.prototype.on_quantity_plus_btn_click = function(event) {
     event.preventDefault();
     var $qty=$j(event.currentTarget).parent().find('.qty');
     var currentVal = parseInt($qty.val());
+
+    console.log(currentVal);
 
     if (!isNaN(currentVal)) {
       currentVal = currentVal + 1;

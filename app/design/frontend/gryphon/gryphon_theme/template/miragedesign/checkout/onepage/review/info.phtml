@@ -137,7 +137,14 @@ function isMobile()
           $quote = Mage::getModel("sales/quote")->load($quoteId);
 
           $rewardPoints = Mage::helper('rewardpoints/data')->getPointsOnOrder($quote, null, null, true, $quote->getStoreId());
-          echo $this->__("This shopping cart is worth %s in rebates", Mage::helper('core')->currency($rewardPoints, true, false));?>
+          $couponCode = Mage::getSingleton('checkout/session')->getQuote()->getCouponCode();                            
+          if($rewardPoints > 0 && empty($couponCode)) {
+            echo $this->__("This shopping cart is worth %s in rebates", Mage::helper('core')->currency($rewardPoints, true, false));
+          ?>
+            <br class="hidden-xs hidden-lg"><span>(for members only)</span>
+          <?php
+          }
+          ?>
           </p>
           <?php 
             }
@@ -358,3 +365,86 @@ function isMobile()
 
   </div> <!-- page-confirmation-cart -->
 </div> <!-- #page-shopping-cart-content -->
+
+<!--     
+        ____  ____  ____     __  ______
+       / __ \/ __ \/ __ \   / / / / __ \
+      / /_/ / / / / /_/ /  / / / / /_/ /
+     / ____/ /_/ / ____/  / /_/ / ____/
+    /_/    \____/_/       \____/_/
+
+ -->
+
+<div id="checkout-signup-popup" style="display:none; cursor: default">     
+    <a href="#" class="close-btn"></a>       
+    <p>Sign up now for instant rebates.</p>
+    <a class="square-cta" href="<?php echo Mage::helper('customer')->getRegisterUrl(); ?>?firstname=<?php echo $billingAddress['firstname']; ?>&lastname=<?php echo $billingAddress['lastname']; ?>&email=<?php echo $billingAddress['email']; ?>" id="sign-up">Sign up</a>
+    <span>No, thank you. I don't like rebates.</span>     
+    <a class="square-cta" href="javascript(void);" id="proceed-pay">Proceed To Pay</a>            
+</div>
+
+
+<script>
+jQuery(document).ready(function($){
+  $("#page-confirmation-cart-payment-mobile").find("#proceed-to-pay").click(function(){
+    <?php if(!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+      $.blockUI({ 
+          message: $('#checkout-signup-popup'),  
+          css: { 
+              padding:        '28px 20px', 
+              margin:         0, 
+              width:          '28%',
+              minWidth:       '354px',                                        
+              textAlign:      'center', 
+              color:          '#707070', 
+              border:         '7px',
+              borderColor:    '#cdc8c1',
+              borderStyle:    'solid',
+              backgroundColor:'#fff',
+              cursor:         'wait' 
+          },
+          onOverlayClick: $.unblockUI
+      });
+
+      $('.blockUI.blockMsg').center();
+    <?php else: ?>
+      review.save();
+    <?php endif; ?>      
+  });
+  $("#page-confirmation-cart-payment").find("#proceed-to-pay").click(function(){
+
+      <?php if(!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+        $.blockUI({ 
+            message: $('#checkout-signup-popup'),  
+            css: { 
+                padding:        '28px 20px', 
+                margin:         0, 
+                width:          '28%',
+                minWidth:       '354px',                                        
+                textAlign:      'center', 
+                color:          '#707070', 
+                border:         '7px',
+                borderColor:    '#cdc8c1',
+                borderStyle:    'solid',
+                backgroundColor:'#fff',
+                cursor:         'wait' 
+            },
+            onOverlayClick: $.unblockUI
+        });
+
+        $('.blockUI.blockMsg').center();
+      <?php else: ?>
+        review.save();
+      <?php endif; ?>      
+
+  });
+
+  $("#checkout-signup-popup").on("click", ".close-btn", function(){
+    $.unblockUI();
+  });
+
+  $("#checkout-signup-popup").on("click", "#proceed-pay",function(){
+    review.save();
+  });
+});
+</script>

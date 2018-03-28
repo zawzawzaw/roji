@@ -242,12 +242,12 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label for="billing:telephone" class="required"><?php echo $this->__('Telephone') ?><em>*</em></label>
+                                                <label for="billing:telephone" class="required"><?php echo $this->__('Mobile') ?><em>*</em></label>
                                             </div>
                                             <div class="col-md-8">            
                                                 <div class="roji-intltelinput-container">
                                                     <?php $billing_telephone = $this->getAddress()->getTelephone(); ?>
-                                                    <input type="text" name="billing[telephone]" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) . " " ?>" title="<?php echo $this->__('Telephone') ?>" class="validate-intl-tel-input roji-intltelinput remove-input-selection input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="billing:telephone" onkeyup="if(document.getElementById('shipping:same_as_billing').checked) shipping.setSameAsBilling(true);" />
+                                                    <input type="text" name="billing[telephone]" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) . " " ?>" title="<?php echo $this->__('Mobile') ?>" class="validate-intl-tel-input roji-intltelinput remove-input-selection input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="billing:telephone" onkeyup="if(document.getElementById('shipping:same_as_billing').checked) shipping.setSameAsBilling(true);" />
                                                 </div>
                                             </div>
                                         </div>
@@ -255,12 +255,12 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label for="billing:fax"><?php echo $this->__('Fax') ?></label>
+                                                <label for="billing:fax"><?php echo $this->__('Telephone') ?></label>
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="roji-intltelinput-container">       
                                                     <?php $billing_fax = $this->getAddress()->getFax(); ?>     
-                                                    <input type="text" name="billing[fax]" value="<?php echo $this->escapeHtml($this->getAddress()->getFax()) . " " ?>" title="<?php echo $this->__('Fax') ?>" class="roji-intltelinput remove-input-selection input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('fax') ?>" id="billing:fax" onkeyup="if(document.getElementById('shipping:same_as_billing').checked) shipping.setSameAsBilling(true);" />
+                                                    <input type="text" name="billing[fax]" value="<?php echo $this->escapeHtml($this->getAddress()->getFax()) . " " ?>" title="<?php echo $this->__('Telephone') ?>" class="roji-intltelinput remove-input-selection input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('fax') ?>" id="billing:fax" onkeyup="if(document.getElementById('shipping:same_as_billing').checked) shipping.setSameAsBilling(true);" />
                                                 </div>
                                             </div>
                                         </div>
@@ -524,12 +524,12 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label for="shipping:telephone" class="required"><?php echo $this->__('Telephone') ?><em>*</em></label>
+                                                <label for="shipping:telephone" class="required"><?php echo $this->__('Mobile') ?><em>*</em></label>
                                             </div>
                                             <div class="col-md-8">
                                                 <?php $shipping_telephone = $this->getAddress()->getTelephone(); ?>
                                                 <div class="roji-intltelinput-container align-right-dropdown">                                           
-                                                    <input type="text" name="shipping[telephone]" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) . " " ?>" title="<?php echo $this->__('Telephone') ?>" class="validate-intl-tel-input roji-intltelinput remove-input-selection input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="shipping:telephone" onchange="shipping.setSameAsBilling(false);" />
+                                                    <input type="text" name="shipping[telephone]" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) . " " ?>" title="<?php echo $this->__('Mobile') ?>" class="validate-intl-tel-input roji-intltelinput remove-input-selection input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="shipping:telephone" onchange="shipping.setSameAsBilling(false);" />
                                                 </div>
                                             </div>
                                         </div>
@@ -537,12 +537,12 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label for="shipping:fax"><?php echo $this->__('Fax') ?></label>
+                                                <label for="shipping:fax"><?php echo $this->__('Telephone') ?></label>
                                             </div>                                    
                                             <div class="col-md-8">
                                                 <?php $shipping_fax = $this->getAddress()->getTelephone(); ?>
                                                 <div class="roji-intltelinput-container align-right-dropdown">
-                                                    <input type="text" name="shipping[fax]" value="<?php echo $this->escapeHtml($this->getAddress()->getFax()) . " " ?>" title="<?php echo $this->__('Fax') ?>" class="roji-intltelinput remove-input-selection input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('fax') ?>" id="shipping:fax" onchange="shipping.setSameAsBilling(false);" />
+                                                    <input type="text" name="shipping[fax]" value="<?php echo $this->escapeHtml($this->getAddress()->getFax()) . " " ?>" title="<?php echo $this->__('Telephone') ?>" class="roji-intltelinput remove-input-selection input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('fax') ?>" id="shipping:fax" onchange="shipping.setSameAsBilling(false);" />
                                                 </div>
                                             </div>
                                         </div>
@@ -846,7 +846,32 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
             $billing_telephone.intlTelInput("setCountry", country);
             $billing_fax.intlTelInput("setCountry", country);
 
+            if(country=="SG") {
+                $("input[name='billing[telephone]']").addClass("validate-mobile-singapore");
+                $("input[name='billing[postcode]']").addClass("validate-postcode-singapore");
+            }
+            else {
+                $("input[name='billing[telephone]']").removeClass("validate-mobile-singapore");
+                $("input[name='billing[postcode]']").removeClass("validate-postcode-singapore");
+            }
+
         });
+
+        $("#shipping-address-select").on('change', function () {
+            setTimeout(function(){ 
+                console.log($('select[name="shipping[country_id]"]').val());            
+                if($('select[name="shipping[country_id]"]').val()=="SG") {
+                    $("input[name='shipping[telephone]']").addClass("validate-mobile-singapore");
+                    $("input[name='shipping[postcode]']").addClass("validate-postcode-singapore");
+                } else {
+                    $("input[name='shipping[telephone]']").removeClass("validate-mobile-singapore");
+                    $("input[name='shipping[postcode]']").removeClass("validate-postcode-singapore");
+                }
+            }, 3000);
+        });
+
+        $("input[name='billing[telephone]']").addClass("validate-mobile-singapore");
+        $("input[name='billing[postcode]']").addClass("validate-postcode-singapore");
 
         $('select[name="shipping[country_id]"]').on('change', function(e){
             e.preventDefault();
@@ -857,7 +882,18 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
             $shipping_telephone.intlTelInput("setCountry", country);
             $shipping_fax.intlTelInput("setCountry", country);
 
+            if(country=="SG") {
+                $("input[name='shipping[telephone]']").addClass("validate-mobile-singapore");
+                $("input[name='shipping[postcode]']").addClass("validate-postcode-singapore");
+            }
+            else {
+                $("input[name='shipping[telephone]']").removeClass("validate-mobile-singapore");
+                $("input[name='shipping[postcode]']").removeClass("validate-postcode-singapore");
+            }
+
         });
+        $("input[name='shipping[telephone]']").addClass("validate-mobile-singapore");
+        $("input[name='shipping[postcode]']").addClass("validate-postcode-singapore");
 
         $("#continue-to-checkout").on("click", function(e){
             e.preventDefault();
@@ -977,11 +1013,6 @@ $isiPad = (bool) strpos($_SERVER['HTTP_USER_AGENT'],'iPad');
         //alert( "ready!" );
         var currentCountryIdLoad = $j('#shipping\\:country_id').val();   //alert(currentCountryIdLoad); 
         jQuery('.selfcollect')[currentCountryIdLoad == 'SG' ? 'show' : 'hide']();
-    });
-
-    $j('.same-as-billing-checkbox').on("change", function(){
-        if($j(this).is(":checked")) $j("input[name='shipping[save_in_address_book]'").val(0);
-        else $j("input[name='shipping[save_in_address_book]'").val(1);
     });
     
     

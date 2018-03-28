@@ -60,6 +60,7 @@
 
 #page-contact-seperator{
   position: relative;
+  height: 100vh;
 
   &:after{
     content: "";
@@ -69,7 +70,8 @@
     top: -15px;
     left: 50%;
     width: 0;
-    height: 620px;
+    /*height: 620px;*/
+    height: 100%;
 
     border-left: 1px solid @border-grey;
   }
@@ -181,7 +183,35 @@
 //
 
 #page-contact-form-container{
+  ul.messages {
+    display: block;
+    li.success-msg {
+      background: @grey;
+      text-align: center;
+      padding: 35px 65px;  
 
+      @media all and (max-width: 320px) {
+        padding: 35px 45px;
+      }    
+
+      span {
+        .raleway-light;
+        font-size: 22px;
+        line-height: 34px;
+        letter-spacing: 0.075em;
+        color: @white;
+
+        span {
+          .open-sans-regular;
+          font-size: 16px;
+          line-height: 24px;
+          letter-spacing: 0.01em;
+          padding-top: 10px;
+          display: block;
+        }
+      }
+    }
+  }
 }
 
 #page-contact-form-title{
@@ -266,4 +296,8 @@
 
 
 
-  
+body.cms-contact {
+  .messages {
+    display: none;
+  }
+}

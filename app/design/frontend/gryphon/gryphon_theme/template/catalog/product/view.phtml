@@ -85,7 +85,7 @@ endif;
     }
 
     $gift_in_the_cart = 0;
-    $giftsku = array("testGiftCard2");
+    $giftsku = array("RojiGiftCard");
     foreach ($quote->getAllVisibleItems() as $item) {
         $itemsku = $item->getProduct()->getData('sku');        
         if(in_array($itemsku, $giftsku)) {
@@ -108,7 +108,7 @@ endif;
   <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
   <input type="hidden" name="related_product" id="related-products-field" value="" />
 
-<article id="page-product-detail-content-section" <?php if (!$isGiftcardType) : ?>class="visible-md visible-lg"<?php else: ?>class="gift-card-version"<?php endif; ?>>
+<article id="page-product-detail-content-section" class="<?php if($is_gift_product): ?>gift-product-version <?php endif; ?><?php if (!$isGiftcardType) : ?>visible-md visible-lg<?php else: ?>gift-card-version<?php endif; ?>">
     <div class="container-fluid has-breakpoint">
         
       <div class="row">
@@ -135,17 +135,27 @@ endif;
                                 if($_image->getLabel()=="closeup"):
                                     $closeup_image_exist = true;
                         ?>
-                            <div class="manic-image-container">
-                                <img src="" data-image-desktop="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false)->resize(830, null); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" class=""/>
+                          <?php if($is_gift_product): ?>
+                            <div class="manic-image-container has-show-all">
+                                <img src="" data-image-desktop="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" class="real"/>
                             </div>
+                          <?php else: ?>
+                            <div class="manic-image-container">
+                                <img src="" data-image-desktop="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false)->resize(830, null); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" class="real"/>
+                            </div>
+                          <?php endif; ?>
                         <?php   endif;
                             endforeach;
                         ?>
                         <?php if(!$closeup_image_exist): // temporary ?>                                    
-                                    <div class="manic-image-container">
-                                        <img src="" data-image-desktop="<?php echo $this->getSkinUrl('images_cms/product-detail/product-detail-closeup.jpg'); ?>" alt="" title="" class=""/>
-                                    </div>
+                          <div class="manic-image-container">
+                              <img src="" data-image-desktop="<?php echo $this->getSkinUrl('images_cms/product-detail/product-detail-closeup-new.jpg'); ?>" alt="" title="" class="temp"/>
+                          </div>
                         <?php endif; ?>
+
+                        <!-- <div class="manic-image-container">
+                            <img src="" data-image-desktop="<?php echo $this->getSkinUrl('images_cms/product-detail/product-detail-closeup-new.jpg'); ?>" alt="" title="" class="temp"/>
+                        </div> -->
                     </div>
                   <?php endif; ?>
 
@@ -206,7 +216,7 @@ endif;
               -->
               
               <div id="page-product-detail-content" <?php if ($isGiftcardType) : ?>class="gift-card-version"<?php endif; ?>>
-                  <?php if (!$isGiftcardType) : ?>
+                  <?php if (!$isGiftcardType && !$is_gift_product) : ?>
                   <div id="page-product-detail-banner">
                       <?php
                           $banner_image_exist = false;
@@ -236,7 +246,7 @@ endif;
                       <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1 col-sm-8 col-sm-offset-2">
                     <?php endif; ?>
 
-                      <div id="page-product-detail-copy">
+                      <div id="page-product-detail-copy" class="<?php if($is_gift_product) echo "gift-product-version"; ?>">
                 
                         <div class="copy-title">                            
                           <h1><?php echo $_product->getName(); ?></h1>
@@ -323,11 +333,17 @@ endif;
                       <div class="col-md-11 col-md-offset-0 col-sm-8 col-sm-offset-2">
 
 
-                        <div id="page-product-detail-form">
+                        <div id="page-product-detail-form" class="<?php if($is_gift_product) echo "gift-product-version"; ?>">
                           <?php if (!$this->hasOptions()):?>
                               
                               <?php if($_product->isSaleable()): ?>
                                   <?php echo $this->getChildHtml('addtocart') ?>
+                              <?php else: ?>
+                                <div class="row">
+                                  <div class="col-md-8 col-md-push-4">
+                                    <span class="out-of-stock">This item is currently out of stock.</span>
+                                  </div>
+                                </div>
                               <?php endif; ?>
                               <?php echo $this->getChildHtml('addto') ?>
                               
@@ -336,6 +352,12 @@ endif;
                               <div class="row">
                                   <?php echo $this->getChildHtml('addto') ?>
                               </div>
+                          <?php else: ?>
+                            <div class="row">
+                              <div class="col-md-12">
+                                <h4>Out of Stock</h4>
+                              </div>
+                            </div>
                           <?php endif; ?>                            
                         </div> <!-- page-product-detail-form -->
 
@@ -347,17 +369,39 @@ endif;
                     <div id="page-product-detail-content-image-container">
                       <div class="row">
                         <div class="col-md-1"></div>
-                        <div class="col-md-6">
+                        <div class="col-md-11">
+                          <div class="page-product-detail-content-image-title">
+                            <h2>You may also like</h2>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-6">                          
                           <div class="page-product-detail-content-image">
                             <?php
                                 $content_1_image_exist = false;
                                 foreach ($_images as $_image): 
-                                    if($_image->getLabel()=="content-1"):
-                                        $content_1_image_exist = true;
+                                  $img_label = $_image->getLabel();                                  
+                                    if(strpos($img_label, 'content-1') !== false):
+                                      $product_name = explode('_', $img_label);             
+                                      if(count($product_name) > 1) {
+                                        $content_1_product = Mage::getModel('catalog/product')->loadByAttribute('name', $product_name[1]);
+                                      }
+                                      $content_1_image_exist = true;
                             ?>
+                              <a href="<?php echo (isset($content_1_product)) ? $content_1_product->getUrlPath() : "#"; ?>" class="product-item-image">
                                 <div class="manic-image-container">
-                                    <img src="" data-image-desktop="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false)->resize(1163, null); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" class=""/>
+                                    <img src="" data-image-desktop="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false)->resize(850, 553); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" class=""/>
                                 </div>
+                              </a>
+                              <a href="<?php echo (isset($content_1_product)) ? $content_1_product->getUrlPath() : "#"; ?>" title="<?php echo $this->stripTags($this->getImageLabel($content_1_product, 'small_image'), null, true) ?>" class="product-item-title">           
+                                  <h2 class="product-name"><?php echo $_helper->productAttribute($content_1_product, $content_1_product->getName() , 'name'); ?></h2> 
+                                  <h3 class="product-name-in-color"><?php echo $content_1_product->getData('product_name_in_color'); ?></h3> 
+                              </a>
+                              <div class="product-item-price">
+                                <?php echo $this->getPriceHtml($content_1_product, true) ?>
+                              </div>
                             <?php   endif;
                                 endforeach;
                             ?>
@@ -373,12 +417,27 @@ endif;
                             <?php
                                 $content_2_image_exist = false;
                                 foreach ($_images as $_image): 
-                                    if($_image->getLabel()=="content-2"):
-                                        $content_2_image_exist = true;
+                                    $img_label = $_image->getLabel();
+                                    $product_name = explode('_', $img_label);
+                                    if(strpos($img_label, 'content-2') !== false):
+                                      $product_name = explode('_', $img_label);             
+                                      if(count($product_name) > 1) {
+                                        $content_2_product = Mage::getModel('catalog/product')->loadByAttribute('name', $product_name[1]);
+                                      }
+                                      $content_2_image_exist = true;
                             ?>
-                                <div class="manic-image-container">
-                                    <img src="" data-image-desktop="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false)->resize(1163, null); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" class=""/>
+                              <a href="<?php echo (isset($content_2_product)) ? $content_2_product->getUrlPath() : "#"; ?>" class="product-item-image">
+                                <div class="manic-image-container has-show-all">
+                                    <img src="" data-image-desktop="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false)->resize(440, null); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" class=""/>
                                 </div>
+                              </a>
+                              <a href="<?php echo (isset($content_2_product)) ? $content_2_product->getUrlPath() : "#"; ?>" title="<?php echo $this->stripTags($this->getImageLabel($content_2_product, 'small_image'), null, true) ?>" class="product-item-title">           
+                                  <h2 class="product-name"><?php echo $_helper->productAttribute($content_2_product, $content_2_product->getName() , 'name'); ?></h2> 
+                                  <h3 class="product-name-in-color"><?php echo $content_2_product->getData('product_name_in_color'); ?></h3> 
+                              </a>
+                              <div class="product-item-price">
+                                <?php echo $this->getPriceHtml($content_2_product, true) ?>
+                              </div>
                             <?php   endif;
                                 endforeach;
                             ?>
@@ -399,7 +458,11 @@ endif;
       </div>
       <?php if ($isGiftcardType) : ?>
       <div id="gift-card-social-media-share-container" class="row">
-          <div class="col-lg-offset-10 col-lg-2 col-md-offset-9 col-md-3">
+          <div class="col-md-3 col-lg-2">     
+            <?php $gifts_products = Mage::getModel('catalog/category')->loadByAttribute('name', 'gifts'); ?>       
+            <a href="<?php echo $gifts_products->getUrl(); ?>" class="arrow-cta reverse-version">Back to gifts</a>            
+          </div>
+          <div class="col-lg-offset-8 col-lg-2 col-md-offset-6 col-md-3">
             <?php $_helper = $this->helper('catalog/output'); ?>
             <?php $_productName = urlencode(trim($_helper->productAttribute($_product, $_product->getName(), 'name')))?>
             <?php $_productImageUrl = urlencode(trim($this->helper('catalog/image')->init($_product, 'image')))?>
@@ -424,9 +487,9 @@ endif;
                           <a href="<?php echo Mage::helper('core/url')->getCurrentUrl(); ?>" target="_blank" title="<?php echo $this->__('Share on Facebook') ?>" class="fa fa-facebook">
                           </a>
                       </li>    
-                      <li>        
+                      <!-- <li>        
                           <a href="<?php echo 'https://twitter.com/share?url=' . $_productUrl . '&text=' . $_productName; ?>" target="_blank" title="<?php echo $this->__('Share on Twitter') ?>" class="fa fa-twitter" target="_blank"></a>
-                      </li>
+                      </li> -->
                       <li>
                           <!-- <a href="http://pinterest.com/pin/create/button/?url=<?php echo $_productUrl; ?>&media=<?php echo $_productImageUrl; ?>&description=<?php echo $_productName; ?>" class="pintrest" target="_blank"></a> -->
                           <a href="http://pinterest.com/pin/create/button/?url=<?php echo $_productUrl; ?>&media=<?php echo $_productImageUrl; ?>&description=<?php echo $_productName; ?>" class="fa fa-pinterest" target="_blank"></a>
@@ -491,7 +554,17 @@ endif;
 
         <div id="page-product-detail-footer">
           <hr>
-
+          <?php $store_category = Mage::getModel('catalog/category')->loadByAttribute('name', 'Shop'); ?>
+          <?php $gifts_products = Mage::getModel('catalog/category')->loadByAttribute('name', 'gifts'); ?>
+          <?php $gifts_products_data = $gifts_products->getData(); ?>
+          
+          <div id="page-product-back-btn-container">
+            <?php if(!$is_gift_product): ?>
+              <a href="<?php echo $store_category->getUrl(); ?>" class="arrow-cta reverse-version">Back to shop</a>
+            <?php else: ?>
+              <a href="<?php echo $gifts_products->getUrl(); ?>" class="arrow-cta reverse-version">Back to gifts</a>
+            <?php endif; ?>
+          </div>
           <div id="page-product-social-container">
             <h4>Share</h4>
             <?php echo $this->getChildHtml('sharing') ?>            
@@ -513,38 +586,76 @@ endif;
 -->
 <?php if (!$isGiftcardType) : ?>
 <article id="page-product-detail-banner-section-mobile" class="visible-sm visible-xs">
+  
+  <?php if($is_gift_product): ?>
 
-  <div id="page-product-detail-banner-mobile">
-    <?php
-        $banner_tablet_exist = false;
-        $banner_mobile_exist = false;
-        foreach ($_images as $_image): 
-            if($_image->getLabel()=="banner-tablet"):
-              $banner_tablet_exist = true;    
-              $banner_tablet_url = $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false)->resize(1163, null);              
-            endif;
-            if($_image->getLabel()=="banner-mobile"):
-              $banner_mobile_exist = true;    
-              $banner_mobile_url = $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false)->resize(1163, null);              
-            endif;
-            $img_lbl = $this->htmlEscape($_image->getLabel());
-            $img_title = $this->htmlEscape($_image->getLabel());
-        endforeach;
-    ?>
-    <?php if($banner_tablet_exist && $banner_mobile_exist): // temporary ?>
-      <div class="manic-image-container">
-          <img src="" 
-            data-image-tablet="<?php echo $banner_tablet_url; ?>" 
-            data-image-mobile="<?php echo $banner_mobile_url; ?>" alt="<?php echo $img_lbl; ?>" title="<?php echo $img_title ?>" class=""/>
-      </div>
-    <?php else: // temporary ?>        
-        <div class="manic-image-container">
-          <img src="" 
-            data-image-tablet="<?php echo $this->getSkinUrl('images_cms/product-detail/product-detail-banner-tablet.jpg'); ?>"
-            data-image-mobile="<?php echo $this->getSkinUrl('images_cms/product-detail/product-detail-banner-mobile.jpg'); ?>">
+    <div id="page-product-detail-closeup-mobile" class="gift-product-version">
+      <?php
+          $closeup_tablet_exist = false;
+          $closeup_mobile_exist = false;
+          foreach ($_images as $_image): 
+              if($_image->getLabel()=="closeup-tablet"):
+                $closeup_tablet_exist = true;    
+                $closeup_tablet_url = $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false);              
+              endif;
+              if($_image->getLabel()=="closeup-mobile"):
+                $closeup_mobile_exist = true;
+                $closeup_mobile_url = $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false);              
+              endif;
+              $img_lbl = $this->htmlEscape($_image->getLabel());
+              $img_title = $this->htmlEscape($_image->getLabel());
+          endforeach;
+      ?>
+      <?php if($closeup_tablet_exist && $closeup_mobile_exist): // temporary ?>
+        <div class="manic-image-container has-show-all">
+            <img src="" 
+              data-image-tablet="<?php echo $closeup_tablet_url; ?>" 
+              data-image-mobile="<?php echo $closeup_mobile_url; ?>" alt="<?php echo $img_lbl; ?>" title="<?php echo $img_title ?>" class=""/>
         </div>
-    <?php endif; ?>    
-  </div> <!-- page-product-detail-banner -->
+      <?php else: ?>
+        <div class="manic-image-container has-show-all">
+          <img src="" 
+            data-image-tablet="<?php echo $this->getSkinUrl('images_cms/product-detail/product-detail-closeup-tablet.jpg'); ?>"
+            data-image-mobile="<?php echo $this->getSkinUrl('images_cms/product-detail/product-detail-closeup-mobile.jpg'); ?>">
+        </div>
+      <?php endif; ?>
+    </div>
+
+  <?php else: ?>
+
+    <div id="page-product-detail-banner-mobile">
+      <?php
+          $banner_tablet_exist = false;
+          $banner_mobile_exist = false;
+          foreach ($_images as $_image): 
+              if($_image->getLabel()=="banner-tablet"):
+                $banner_tablet_exist = true;    
+                $banner_tablet_url = $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false)->resize(1163, null);              
+              endif;
+              if($_image->getLabel()=="banner-mobile"):
+                $banner_mobile_exist = true;    
+                $banner_mobile_url = $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->constrainOnly(false)->keepAspectRatio(true)->keepFrame(false)->resize(1163, null);              
+              endif;
+              $img_lbl = $this->htmlEscape($_image->getLabel());
+              $img_title = $this->htmlEscape($_image->getLabel());
+          endforeach;
+      ?>
+      <?php if($banner_tablet_exist && $banner_mobile_exist): // temporary ?>
+        <div class="manic-image-container">
+            <img src="" 
+              data-image-tablet="<?php echo $banner_tablet_url; ?>" 
+              data-image-mobile="<?php echo $banner_mobile_url; ?>" alt="<?php echo $img_lbl; ?>" title="<?php echo $img_title ?>" class=""/>
+        </div>
+      <?php else: // temporary ?>        
+          <div class="manic-image-container">
+            <img src="" 
+              data-image-tablet="<?php echo $this->getSkinUrl('images_cms/product-detail/product-detail-banner-tablet.jpg'); ?>"
+              data-image-mobile="<?php echo $this->getSkinUrl('images_cms/product-detail/product-detail-banner-mobile.jpg'); ?>">
+          </div>
+      <?php endif; ?>    
+    </div> <!-- page-product-detail-banner -->
+
+  <?php endif; ?>
 
 </article> <!-- page-product-detail-banner-section-mobile -->
 
@@ -572,6 +683,7 @@ endif;
               </ul>
             </div>
             
+            <?php if(!$is_gift_product): ?>
             <div id="page-product-detail-closeup-mobile">
               <?php
                   $closeup_tablet_exist = false;
@@ -603,21 +715,7 @@ endif;
                 </div>
               <?php endif; ?>
             </div>
-            
-            <?php if($is_gift_product): ?>
-            <div class="copy-desc">              
-                <div class="row">
-                  <div class="col-xs-6">
-                    <p>Diameter: <?php echo $_product->getData('diameter'); ?> <br>
-                Height: <?php echo $_product->getData('height'); ?> <br><br>
-                </p>              
-                  </div>
-                  <div class="col-xs-6"><p style="text-align: right;">Made in <?php echo $_product->getData('country'); ?></p></div>
-                </div>
-                
-                
-            </div> <!-- copy-desc -->
-            <?php endif; ?>                                
+            <?php endif; ?>                            
             
             <?php if(!$is_gift_product): ?>
             <div class="copy-desc">
@@ -641,7 +739,15 @@ endif;
 
             <div id="page-product-detail-form-mobile">
               
-              <?php echo $this->getChildHtml('addtocart') ?>              
+              <?php if($_product->isSaleable()): ?>
+                  <?php echo $this->getChildHtml('addtocart') ?>
+              <?php else: ?>
+                <div class="row">
+                  <div class="col-md-8 col-md-push-4">
+                    <span class="out-of-stock">This item is currently out of stock.</span>
+                  </div>
+                </div>
+              <?php endif; ?>              
 
             </div> <!-- page-product-detail-form-mobile -->
 
@@ -652,28 +758,38 @@ endif;
     </div>
 </article> <!-- page-product-detail-content-section-mobile -->
 
-  <?php if(!$is_gift_product): ?>
-  <article id="page-product-detail-expanding-section-mobile" class="visible-sm visible-xs">
 
-      <div class="manic-expand-container" data-group="product-detail-mobile" data-value="product-detail-expand">
-        <div class="scroll-target" data-value="product-detail-expand"></div>
-        <div class="container-fluid">
-            <div class="row">
-              <div class="col-xs-0 col-sm-1"></div>
-              <div class="col-xs-12 col-sm-10">
-                <div class="manic-expand-container-title">        
-                  <h4>Product Details</h4>
-                </div>
-                <div class="manic-expand-container-btn"></div>                
+  
+<article id="page-product-detail-expanding-section-mobile" class="visible-sm visible-xs">
+
+    <div class="manic-expand-container" data-group="product-detail-mobile" data-value="product-detail-expand">
+      <div class="scroll-target" data-value="product-detail-expand"></div>
+      <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-0 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">
+              <div class="manic-expand-container-title">        
+                <h4>Product Details</h4>
               </div>
+              <div class="manic-expand-container-btn"></div>                
             </div>
-        </div>                
-        <div class="manic-expand-container-content">   
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-xs-0 col-sm-1"></div>
-              <div class="col-xs-12 col-sm-10">             
-                <div class="detail-item-container">
+          </div>
+      </div>                
+      <div class="manic-expand-container-content">   
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-0 col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">             
+              <div class="detail-item-container">
+
+                <?php if($is_gift_product): ?>
+                  <div class="detail-item">
+                    <h4>Dimensions:</h4>
+                    <p>Diameter: <?php echo $_product->getData('diameter'); ?><br>
+                    Height: <?php echo $_product->getData('diameter'); ?></p>
+                    <p>Made in <?php echo $_product->getData('country'); ?></p>
+                  </div>                  
+                <?php else: ?>
                   <div class="detail-item">
                     <h4>Tea Type:</h4>
                     <p><?php echo $_product->getData('tea_type'); ?></p>
@@ -690,51 +806,55 @@ endif;
                     <h4>Tea Maker’s Note:</h4>
                     <p><?php echo (!empty($_product->getData('tea_makers_note'))) ? $_product->getData('tea_makers_note') : "Delicate, floral sweet aroma of white peach brings harmony to a smooth finish." ; ?></p>
                   </div>
-                </div>
+                <?php endif; ?>
+
               </div>
             </div>
-          </div>                      
+          </div>
+        </div>                      
+      </div>
+    </div>
+    
+    <?php if(!$is_gift_product): ?>
+    <div class="manic-expand-container" data-group="product-detail-mobile" data-value="brewing-instructions-expand">
+      <div class="scroll-target" data-value="brewing-instructions-expand"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-0 col-sm-1"></div>
+          <div class="col-xs-12 col-sm-10">
+            <div class="manic-expand-container-title">          
+              <h4>Brewing Instructions</h4>              
+            </div>
+            <div class="manic-expand-container-btn"></div>              
+          </div>
         </div>
       </div>
-
-      <div class="manic-expand-container" data-group="product-detail-mobile" data-value="brewing-instructions-expand">
-        <div class="scroll-target" data-value="brewing-instructions-expand"></div>
+      <div class="manic-expand-container-content">
         <div class="container-fluid">
           <div class="row">
             <div class="col-xs-0 col-sm-1"></div>
             <div class="col-xs-12 col-sm-10">
-              <div class="manic-expand-container-title">          
-                <h4>Brewing Instructions</h4>              
-              </div>
-              <div class="manic-expand-container-btn"></div>              
-            </div>
-          </div>
-        </div>
-        <div class="manic-expand-container-content">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-xs-0 col-sm-1"></div>
-              <div class="col-xs-12 col-sm-10">
 
-                <div class="detail-icon-container">
-                  <div class="detail-icon">
-                    <div class="detail-icon-image icon-teapot"></div>
-                    <p><?php echo $_product->getTemperature(); ?></p>
-                  </div>
-                  <div class="detail-icon">
-                    <div class="detail-icon-image icon-clock"></div>
-                    <p><?php echo $_product->getTime(); ?></p>
-                  </div>
+              <div class="detail-icon-container">
+                <div class="detail-icon">
+                  <div class="detail-icon-image icon-teapot"></div>
+                  <p><?php echo $_product->getTemperature(); ?></p>
                 </div>
-
+                <div class="detail-icon">
+                  <div class="detail-icon-image icon-clock"></div>
+                  <p><?php echo $_product->getTime(); ?></p>
+                </div>
               </div>
+
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <?php endif; ?>
 
-  </article> <!-- page-product-detail-expanding-section-mobile -->
-  <?php endif; ?>
+</article> <!-- page-product-detail-expanding-section-mobile -->
+  
 <?php endif; ?>
 </form>
 

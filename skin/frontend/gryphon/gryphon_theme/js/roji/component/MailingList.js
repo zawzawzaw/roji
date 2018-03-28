@@ -57,10 +57,12 @@ roji.component.MailingList = function(options, element) {
   // console.log('testingggg');
 
   
-  if (goog.isDefAndNotNull(cookie_value) == false && $j("body").hasClass("category-shop")) {  
+  // if (goog.isDefAndNotNull(cookie_value) == false && $j("body").hasClass("category-shop")) {  
+
+  if (goog.isDefAndNotNull(cookie_value) == false) {
   // if (goog.isDefAndNotNull(cookie_value) == false || true) {      // for testing
 
-    var max_seconds = 60 * 60 * 10;   // 10 hr expiry
+    var max_seconds = 60 * 60 * 12;   // 12 hr expiry
 
     this.cookies.set('rojimailinglist', 'hascookie', max_seconds);
 
