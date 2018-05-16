@@ -1,6 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 /**
  * Magento
  *
@@ -45,12 +43,12 @@ function get_client_ip() {
     return $ipaddress;
 }
 
-// $url =  $_SERVER['REQUEST_URI']; 
+$url =  $_SERVER['REQUEST_URI']; 
 
-// $show = $_GET['show'];
-// if($show !== "true" && $url === "/" && get_client_ip() !== "219.74.46.210" ) {    
-//     header("Location: index.html");
-// }
+$show = $_GET['show'];
+if($show !== "true" && get_client_ip() !== "219.74.46.210" && get_client_ip() !== "119.74.10.62" && get_client_ip() !== "128.106.131.178" && get_client_ip() !== "128.106.142.180" && get_client_ip() !== "128.106.174.190" && get_client_ip() !== "118.200.198.101" ) {    
+    header("Location: coming_soon/index.html");
+}
 
 if (version_compare(phpversion(), '5.3.0', '<')===true) {
     echo  '<div style="font:12px/1.35em arial, helvetica, sans-serif;">
